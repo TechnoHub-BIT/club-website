@@ -8,7 +8,7 @@ function Footer(props) {
             <div className="row justify-content-between">
                 <div className="col-sm-6 col-md-3 col-xl-3">
                     <div className="single-footer-widget footer_1">
-                        <a href="index.html"> <img src='assets/images/logowhite.png' height="160" width="200" alt="" /> </a>
+                        <a href="index.html"> <img src='assets/images/logowhite.png' height="160" width="280" alt="" /> </a>
                     </div>
                 </div>
 

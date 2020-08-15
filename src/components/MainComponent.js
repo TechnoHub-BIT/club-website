@@ -4,8 +4,7 @@ import About from './AboutUsComponent';
 import Header from './HeaderComponent';
 import Contact from './ContactComponents';
 import Footer from './FooterComponent';
-import { Switch, Route, Redirect } from 'react-router-dom'
-
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
 
@@ -28,7 +27,7 @@ class Main extends Component {
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
                   <Route exact path='/aboutus' component={AboutPage} />
-                  <Route exact path='/contactus' component={() => <Contact postFeedback={this.props.postFeedback} />} />
+                  <Route exact path='/contactus' component={() => <Contact />} />
                   <Redirect to="/home" />
               </Switch>
         <Footer />

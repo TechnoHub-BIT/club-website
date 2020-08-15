@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
             Button, Row, Col, Label } from 'reactstrap';
-import { Control, Form, Errors } from 'react-redux-form';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
 const required = (val) => val && val.length;
@@ -20,8 +20,7 @@ class Contact extends Component {
 
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
-        this.props.postFeedback(this.props.id, values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message);
+        alert('Thank You for the Feedback ! : ' + JSON.stringify(values));
     }
 
     render() {
@@ -45,12 +44,12 @@ class Contact extends Component {
                 <div className="col-12 col-sm-4 offset-sm-1">
                         <h5>Our Address</h5>
                         <address>
-                        121, Clear Water Bay Road<br />
-                        Clear Water Bay, Kowloon<br />
-                        HONG KONG<br />
-                        <i className="fa fa-phone"></i>: +852 1234 5678<br />
-                        <i className="fa fa-fax"></i>: +852 8765 4321<br />
-                        <i className="fa fa-envelope"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
+                        TechnoHub,  <br />
+                        Bhilai Institute of Technology, Durg,<br />
+                        Chhattisgarh 491001<br />
+                        <i className="fa fa-phone"></i>: +91-7722874355<br />
+                        <i className="fa fa-fax"></i>: +91-7722874355<br />
+                        <i className="fa fa-envelope"></i>: <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
                         </address>
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
@@ -58,9 +57,9 @@ class Contact extends Component {
                 </div>
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
-                        <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
+                        <a role="button" className="btn btn-primary" href="tel:+917722874355"><i className="fa fa-phone"></i> Call</a>
                         <a role="button" className="btn btn-info" href="http://skype.com/"><i className="fa fa-skype"></i> Skype</a>
-                        <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
+                        <a role="button" className="btn btn-success" href="mailto:bit.technohub@gmail.com"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +68,7 @@ class Contact extends Component {
                       <h3>Send us your Feedback</h3>
                    </div>
                     <div className="col-12 col-md-9">
-                    <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
+                    <LocalForm model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                         <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -192,7 +191,7 @@ class Contact extends Component {
                                     </Button>
                                 </Col>
                             </Row>
-                            </Form>
+                            </LocalForm>
                     </div>
                </div>
 

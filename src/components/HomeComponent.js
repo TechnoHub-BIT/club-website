@@ -10,25 +10,31 @@ function Home(props) {
             <div className="row align-items-center">
                 <div className="col-lg-3 col-sm-6 col-md-6">
                     <div className="single_service_part">
+                        <div className="services0">
                         <i className="fa fa-microchip "></i>
                         <span className="line"></span>
                         <h3>Project Development</h3>
                         <p>The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge.
                             </p>
+                        </div>    
                     </div>
                 </div>
                 <div className="col-lg-3 col-sm-6 col-md-6">
                     <div className="single_service_part">
+                        <div className="services1">
                         <i className="fa fa-wrench"></i>
                         <span className="line"></span>
                         <h3>Learn and Develop</h3>
                         <p>Learn through exclusive capacity building programs, preferential internship and job opportunities.Develop the Team by participating in projects that create a huge impact.
 
                             </p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="col-lg-3 col-sm-6 col-md-6">
                     <div className="single_service_part">
+                        <div className="services2">
                         <i className="fa fa-users"></i>
                         <span className="line"></span>
                         <h3>Leadership Skills </h3>
@@ -39,6 +45,8 @@ function Home(props) {
                                
                                
                                 </p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="col-lg-3 col-sm-6 col-md-6">
@@ -70,7 +78,7 @@ function Home(props) {
                <div className="row align-items-center justify-content-between">
                    <div className="col-md-6 col-lg-6">
                     <div className="about_img">
-                        <img src='assets/images/technology.jpg' height="200" width="550" alt="Technology" />
+                        <img src='assets/images/technology.jpg' height="250" width="550" alt="Technology" />
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-6">
@@ -215,7 +223,7 @@ function Home(props) {
                 <div className="col-lg-12">
                     <div className="card-columns">
                         <div className="card tittle">
-                            <blockquote className="blockquote mb-0">
+                            <blockquote className="blockquote0">
                                 <h2>Recent Completed
                                     Project</h2>
                             </blockquote>
@@ -268,7 +276,7 @@ function Home(props) {
                             </div>
                         </div>
                         <div className="card see_more_project">
-                            <blockquote className="blockquote mb-0">
+                            <blockquote className="blockquote1">
                                 <a href="#" className="btn_1">more project</a>
                             </blockquote>
                         </div>
