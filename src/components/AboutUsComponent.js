@@ -29,11 +29,10 @@ function About(props) {
                                       <Card>
                                 <CardBody className="bg-faded">
                                     <blockquote className="blockquote">
-                                           <p className="mb-0">You better cut the pizza in four pieces because
-                                              I'm not hungry enough to eat six.</p>
-                                         <footer className="blockquote-footer">Yogi Berra,
-                                         <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
-                                            P. Pepe, Diversion Books, 2014</cite>
+                                           <p className="mb-0">You have to grow from the inside out. None can teach you, none can make you spiritual. There is no other teacher but your own soul.</p>
+                                         <footer className="blockquote-footer">Swami Vivekananda,
+                                         <cite title="Source Title"> Indian monk,
+                                         a chief disciple of the 19th-century Indian mystic Ramakrishna.</cite>
                                          </footer>
                                     </blockquote>
                                 </CardBody>
@@ -50,8 +49,9 @@ function About(props) {
                                          <div className="single_industries_text">
 
                                       <h3>Dr. Manisha Sharma</h3>
+                                      <h5>( Head )</h5>
 
-                                      <p>Electronics and Telecommunications Department</p>
+                                      <p>Training and Placement Cell</p>
 
                                        </div>
                         

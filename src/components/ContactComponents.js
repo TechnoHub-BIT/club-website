@@ -54,6 +54,8 @@ class Contact extends Component {
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
                     <h5>Map of our Location</h5>
+                    <img src='assets/images/sitmap.png' height="200" width="400" alt='SiteMap' />
+                     
                 </div>
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
