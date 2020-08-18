@@ -4,7 +4,9 @@ import About from './AboutUsComponent';
 import Header from './HeaderComponent';
 import Contact from './ContactComponents';
 import Footer from './FooterComponent';
+import Register from "./RegisterComponents";
 import { Switch, Route, Redirect } from 'react-router-dom';
+import Members from './MembersComponent';
 
 class Main extends Component {
 
@@ -26,6 +28,8 @@ class Main extends Component {
         <Header />
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
+                  <Route path='/register' component={Register} />
+                  <Route exact path="/members" component={Members} />
                   <Route exact path='/aboutus' component={AboutPage} />
                   <Route exact path='/contactus' component={() => <Contact />} />
                   <Redirect to="/home" />

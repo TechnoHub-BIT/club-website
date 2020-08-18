@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
+import register from "./RegisterComponents";
 
 class Header extends Component {
     constructor(props) {
@@ -204,7 +205,8 @@ class Header extends Component {
 </div>
 
 </section>*/}
-                                   <a href="#" class="btn_1">Register </a>
+                                    <Link to="/register" className="btn_1" >Register</Link>
+                                   {/* <a href="#" class="btn_1">Register </a> */}
                                 </div>
                             </div>
                         </div>
