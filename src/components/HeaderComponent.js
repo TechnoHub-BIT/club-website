@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink,Link } from 'react-router-dom';
-import register from "./RegisterComponents";
+
 
 class Header extends Component {
     constructor(props) {
@@ -46,167 +46,39 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                             <NavItem>
-                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span><div className="nav-btn">Home</div> </NavLink>
+                                <NavLink className="nav-link"  to='/home'><div className="nav-btn">Home</div> </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to='/aboutus'><span className="fa fa-info fa-lg"></span><div className="nav-btn">About Us</div></NavLink>
+                                <NavLink className="nav-link" to='/aboutus'><div className="nav-btn">About Us</div></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link"  to='/forum'><span className="fa fa-list fa-lg"></span><div className="nav-btn">Forum</div></NavLink>
+                                <NavLink className="nav-link"  to='/forum'><div className="nav-btn">Forum</div></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span><div className="nav-btn">Contact Us</div></NavLink>
+                                <NavLink className="nav-link" to='/contactus'><div className="nav-btn">Contact Us</div></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/members'><div className="nav-btn">Members</div></NavLink>
                             </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg"></span> Login</Button>
+                                    <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
                 <Jumbotron>
-                <div class="container">
-                   <div class="row align-items-center justify-content-center">
-                       <div class="col-lg-10">
-                            <div class="banner_text text-center">
-                                <div class="banner_text_iner">
+                <div className="container">
+                   <div className="row align-items-center justify-content-center">
+                       <div className="col-lg-10">
+                            <div className="banner_text text-center">
+                                <div className="banner_text_iner">
                                    <h5> <span></span> </h5>
                                    <h3> Imagine.Invent.Inspire</h3>
                                    <h1> Technohub</h1>
                                    <h3>Bhilai Institute of Technology, Durg</h3>
-                                   {/*
-
-<section id="pre" class="our_Professional team_single_Professional section_padding">
-
-<div class="container">
-
-<div class="row justify-content-around">
-
-<div class="col-xl-4">
-
-<div class="section_tittle">
-
-<h2>President</h2>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="row justify-content-around">
-
-<div class="col-lg-4 col-sm-6">
-
-<div class="single_industries">
-
-<img src='img/comm/gaurav.jpeg' alt="" height="400px" width="360px" >
-
-<div class="single_industries_text">
-
-<h3>Kumar Gaurav</h3>
-
-<p><i class="flaticon-phone-call"></i>+91-8434986336</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-
-<section id="oc" class="our_Professional team_single_Professional section_padding">
-
-<div class="container">
-
-<div class="row">
-
-<div class="col-xl-4">
-
-<div class="section_tittle">
-
-<h2>Overall Coordinators</h2>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="row justify-content-around">
-
-<div class="col-lg-4 col-sm-6">
-
-<div class="single_industries">
-
-<img src='img/comm/satyam2.jpeg' alt="" height="400px" width="360px" >
-
-<div class="single_industries_text">
-
-<h3>Satyam Bharadwaj</h3>
-
-<p><i class="flaticon-phone-call"></i>+91-7781898921</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="col-lg-4 col-sm-6">
-
-<div class="single_industries">
-
-<img src='img/comm/anurup2.jpg' alt="" height="400px" width="360px">
-
-<div class="single_industries_text">
-
-<h3>Anurup Bandyopadhyay</h3>
-
-<p><i class="flaticon-phone-call"></i>+91-9770258799</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="col-lg-4 col-sm-6">
-
-<div class="single_industries">
-
-<img src='img/comm/adi2.jpeg' alt="" height="400px" width="360px">
-
-<div class="single_industries_text">
-
-<h3>Aditya Nayak</h3>
-
-<p><i class="flaticon-phone-call"></i>+91-8602199395</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>*/}
-                                    <Link to="/register" className="btn_1" >Register</Link>
-                                   {/* <a href="#" class="btn_1">Register </a> */}
                                 </div>
                             </div>
                         </div>

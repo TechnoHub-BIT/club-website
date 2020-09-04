@@ -78,7 +78,7 @@ function Home(props) {
                <div className="row align-items-center justify-content-between">
                    <div className="col-md-6 col-lg-6">
                     <div className="about_img">
-                        <img src='assets/images/technology.jpg' height="250" width="550" alt="Technology" />
+                        <img src='assets/images/technology.jpg' height="200" width="300" alt="Technology" />
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-6">
@@ -110,7 +110,7 @@ function Home(props) {
                 </div>
                 <div className="col-md-5 col-lg-5">
                         <div className="about_img">
-                                <img src='assets/images/management1.jpg' height="200" width="450" alt="" />
+                                <img src='assets/images/management1.jpg' height="200" width="300" alt="" />
                             </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@ function Home(props) {
     {/* <!--::industries end::-->
 
     <!-- portfolio_part start--> */}
-    <section className="portfolio_part section_padding">
+    <section className="portfolio_part">
         <div className="container"><a name ="rcp"></a>
             <div className="row">
                 <div className="col-lg-12">
