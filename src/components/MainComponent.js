@@ -5,9 +5,26 @@ import Header from './HeaderComponent';
 import Contact from './ContactComponents';
 import Footer from './FooterComponent';
 import Register from "./RegisterComponents";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { postFeedback, loginUser, logoutUser, googleLogin } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
 import Members from './MembersComponent';
 import Forum from './ForumComponent';
+
+const mapStateToProps = state => {
+    return {
+      auth: state.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
+  loginUser: (creds) => dispatch(loginUser(creds)),
+  logoutUser: () => dispatch(logoutUser()),
+  postFeedback: (feedback) => dispatch(postFeedback(feedback)),
+  googleLogin: () => dispatch(googleLogin())
+});
 
 class Main extends Component {
 
@@ -29,11 +46,14 @@ class Main extends Component {
         <Header />
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
-                  <Route path='/register' component={Register} />
+                  <Route path='/register' component={() => <Register auth={this.props.auth} 
+          loginUser={this.props.loginUser} 
+          logoutUser={this.props.logoutUser}
+          googleLogin={this.props.googleLogin} />} />
                   <Route exact path='/forum' component={() => <Forum />} />
                   <Route exact path="/members" component={Members} />
                   <Route exact path='/aboutus' component={AboutPage} />
-                  <Route exact path='/contactus' component={() => <Contact />} />
+                  <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback}  />} />
                   <Redirect to="/home" />
               </Switch>
         <Footer />
@@ -42,4 +62,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
