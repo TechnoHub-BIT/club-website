@@ -3,9 +3,10 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink,Link } from 'react-router-dom';
-
+import {firebaseApp} from "../firebase";
 
 class Header extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -64,6 +65,7 @@ class Header extends Component {
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>
+                                    <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -85,7 +87,7 @@ class Header extends Component {
                     </div>
                 </div>
                 </Jumbotron>
-                
+
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <div className="login-modal">
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>

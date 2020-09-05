@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import "../styles/Register.css";
 import {Link, useHistory } from "react-router-dom";
-import {auth} from "../firebase";
+import {firebaseApp,auth} from "../firebase";
 
 function RegisterComponents() {
 
@@ -29,7 +29,7 @@ function RegisterComponents() {
         auth.createUserWithEmailAndPassword(email, password)
         .then((auth) => {
             //create a use and loggedin , redirect to homepage
-            history.push("/members");
+            history.push("/profileCompletion");
         })
         .catch((e)=> alert(e.message));
     };
