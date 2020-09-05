@@ -78,7 +78,7 @@ function Home(props) {
                <div className="row align-items-center justify-content-between">
                    <div className="col-md-6 col-lg-6">
                     <div className="about_img">
-                        <img src='assets/images/technology.jpg' height="200" width="300" alt="Technology" />
+                        <img src='assets/images/technology.jpg' height="200" width="350" alt="Technology" />
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-6">
