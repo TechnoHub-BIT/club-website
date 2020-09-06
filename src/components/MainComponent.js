@@ -8,7 +8,6 @@ import Register from "./RegisterComponents";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Members from './MembersComponent';
 import ProfileCompletion from './ProfileCompletionComponents';
-import Forum from './ForumComponent';
 import { AuthProvider } from '../Auth';
 import PrivateRoute from '../PrivateRoute';
 
@@ -29,12 +28,11 @@ class Main extends Component {
 
     return (
       <AuthProvider>
-      <div>
+      <React.Fragment>
         <Header />
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
                   <Route path='/register' component={Register} />
-                  <PrivateRoute exact path='/forum' component={() => <Forum />} />
                   <PrivateRoute exact path="/members" component={Members} />
                   <Route exact path="/profileCompletion" component={ProfileCompletion}/>
                   <Route exact path='/aboutus' component={AboutPage} />
@@ -42,7 +40,7 @@ class Main extends Component {
                   <Redirect to="/home" />
               </Switch>
         <Footer />
-      </div>
+      </React.Fragment>
       </AuthProvider>
     );
   }

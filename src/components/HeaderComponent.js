@@ -14,7 +14,7 @@ class Header extends Component {
         this.state = {
             isNavOpen: false,
             isModalOpen: false,
-            
+            user:firebaseApp.auth().currentUser,            
         };
     
         this.toggleNav = this.toggleNav.bind(this);
@@ -38,6 +38,37 @@ class Header extends Component {
         alert("Username: " + this.username.value + " Password: " + this.password.value
             + " Remember: " + this.remember.checked);
         event.preventDefault();
+    }
+
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //     if (user) {
+    //       // User is signed in.
+    //     } else {
+    //       // No user is signed in.
+    //     }
+    //     });
+//     var user = firebase.auth().currentUser;
+
+// if (user) {
+//   // User is signed in.
+// } else {
+//   // No user is signed in.
+// }
+
+    showLogin= () =>{    
+        console.log(this.state.user)
+        if(this.state.user){
+            console.log("yessssssssssssssss")
+            return(
+                     <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>  
+            );
+        }
+        else{
+            console.log("Nooooooooooooooooooo")
+            return(
+                    <Button outline href="/register"><span className="fa fa-user"></span> Lele </Button>
+            );
+         }
 
     }
 
@@ -68,22 +99,11 @@ class Header extends Component {
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                               { auth.onAuthStateChanged(function(user) {
-                                        if (user) {
-                                            // User is signed in.
-                                          return console.log("return in if "+ user); //<div> <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
-                                        // </div>
-                                        } else {
-                                            // No user is signed in.
-                                           return console.log("return in else " + user) //<div> <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>
-                                        //</div>
-                                        }
-                                        })
-}
+                                {this.showLogin()}        
+                                    {/*                                 
+                                    {this.state.user ?    :
+                                            console.log(user); //<div> <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
 
-{/*                                 
-                                    {this.state.user ?   <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> :
-                                    <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button> 
                                             } */}
                                     
                                 </NavItem>
