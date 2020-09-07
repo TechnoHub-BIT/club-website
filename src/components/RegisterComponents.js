@@ -20,8 +20,7 @@ class RegisterComponents extends Component {
     }
     
     handleLogin(event) {
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
+        this.props.loginUser({username: this.username.value, password: this.password.value});
         event.preventDefault();
 
     }
@@ -75,12 +74,24 @@ class RegisterComponents extends Component {
                     <div className="Row justify-content-around">
                                                 <div className="navbar-text col-12">Name : {this.props.auth.user.displayName}</div>
                                                 <div className="navbar-text col-12">Email : {this.props.auth.user.email}</div>
+                                                <Form>
+                                    <FormGroup>
+                                        <Label htmlFor="field">Select your field</Label>
+                                        <Input type="text" id="field" name="field"
+                                            innerRef={(input) => this.field = input} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label htmlFor="skills">What are your skills ?</Label>
+                                        <Input type="skills" id="skills" name="skills"
+                                            innerRef={(input) => this.skills = input}  />
+                                    </FormGroup>
+                                    <FormGroup check>
+                                        
+                                    </FormGroup>
+                                    <Button type="submit" value="submit" color="primary">Update</Button>
+                                </Form>
                                                 <Button outline onClick={this.handleLogout}>
-                                                    <span className="fa fa-sign-out fa-lg"></span> Logout
-                                                    {this.props.auth.isFetching ?
-                                                        <span className="fa fa-spinner fa-pulse fa-fw"></span>
-                                                        : null
-                                                    }
+                                                <span className="fa fa-sign-out fa-lg"></span> Logout
                                                 </Button>
                                                 </div>
                                                 </div>

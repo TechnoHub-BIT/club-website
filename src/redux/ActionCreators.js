@@ -2,7 +2,6 @@ import * as ActionTypes from './ActionTypes';
 import { auth, firestore, fireauth, firebasestore } from '../firebase';
 
 export const postFeedback = (feedback) => (dispatch) => {
-        
     return firestore.collection('feedback').add(feedback)
     .then(response => { console.log('Feedback', response); alert('Thank you for your feedback!'); })
     .catch(error =>  { console.log('Feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });

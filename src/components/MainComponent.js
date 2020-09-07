@@ -53,7 +53,7 @@ class Main extends Component {
                   <Route exact path='/forum' component={() => <Forum />} />
                   <Route exact path="/members" component={Members} />
                   <Route exact path='/aboutus' component={AboutPage} />
-                  <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback}  />} />
+                  <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
                   <Redirect to="/home" />
               </Switch>
         <Footer />
