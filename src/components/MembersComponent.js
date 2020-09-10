@@ -6,8 +6,11 @@ import '../App.css';
 //Calling Bootstrap 4.5 css
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//css
+import '../styles/MembersList.css';
+
 //Calling Firebase config setting to call the data
-import {firebaseApp,db} from '../firebase';
+import {firebaseApp} from '../firebase';
 
 
 class Member extends React.Component {
@@ -19,12 +22,12 @@ constructor(props) {
     this.state = {
         memberslist : [],
     }
-    this.open = false;
+    // this.open = false;
     }
  
     //Fetching for firebase realtime database
   componentDidMount() {
-      console.log("\n\n\n\n\n\n"+this.open+"\n\n\n\n\n")
+      // console.log("\n\n\n\n\n\n"+this.open+"\n\n\n\n\n")
       firebaseApp.database().ref("members").on("value", snapshot => {
         let memberlist = [];
         snapshot.forEach(snap => {
@@ -34,6 +37,7 @@ constructor(props) {
         this.setState({ memberslist: memberlist });
       });
  }
+
 ///////////////////
 //firestore retrivel
 // getUsers=async()=>{
@@ -65,10 +69,10 @@ constructor(props) {
           <table id="example" className="display table">
             <thead className="thead-dark">
                 <tr>
-                    <th>Full Name</th>
-                    <th>Branch</th>
-                    <th>Semester</th>
-                    <th>Skills</th>
+                    <th scope="col" >Full Name</th>
+                    <th scope="col" >Branch</th>
+                    <th scope="col" >Semester</th>
+                    <th scope="col" >Skills</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +80,10 @@ constructor(props) {
                 
                 return (
                     <tr key={i}>     
-                    <td>{data.fullname}</td>
-                    <td>{data.branch}</td>
-                    <td>{data.semester}</td>
-                    <td>{data.skills}</td>
+                    <td data-label="Full Name" >{data.fullname}</td>
+                    <td data-label="Branch" >{data.branch}</td>
+                    <td data-label="Semester" >{data.semester}</td>
+                    <td data-label="Skills" >{data.skills}</td>
                     </tr>
                     
                 );
@@ -90,6 +94,43 @@ constructor(props) {
             </tbody>
             
          </table>
+         {/* <table>
+  <caption>Statement Summary</caption>
+  <thead>
+    <tr>
+      <th scope="col">Account</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Period</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Account">Visa - 3412</td>
+      <td data-label="Due Date">04/01/2016</td>
+      <td data-label="Amount">$1,190</td>
+      <td data-label="Period">03/01/2016 - 03/31/2016</td>
+    </tr>
+    <tr>
+      <td scope="row" data-label="Account">Visa - 6076</td>
+      <td data-label="Due Date">03/01/2016</td>
+      <td data-label="Amount">$2,443</td>
+      <td data-label="Period">02/01/2016 - 02/29/2016</td>
+    </tr>
+    <tr>
+      <td scope="row" data-label="Account">Corporate AMEX</td>
+      <td data-label="Due Date">03/01/2016</td>
+      <td data-label="Amount">$1,181</td>
+      <td data-label="Period">02/01/2016 - 02/29/2016</td>
+    </tr>
+    <tr>
+      <td scope="row" data-label="Acount">Visa - 3412</td>
+      <td data-label="Due Date">02/01/2016</td>
+      <td data-label="Amount">$842</td>
+      <td data-label="Period">01/01/2016 - 01/31/2016</td>
+    </tr>
+  </tbody>
+</table> */}
           
      </div>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Footer(props) {
     return(
@@ -54,7 +54,7 @@ function Footer(props) {
                         <h4 id="ci">Contact Info</h4>
                         <p id="fc">TechnoHub, Bhilai Institute of Technology, Durg, Chhattisgarh 491001</p>
                         <ul>
-                            <li><a href="#"><i className="ti-mobile"></i>+91-7722874355</a></li>
+                            <li><a href="#somethingtoremovewarning"><i className="ti-mobile"></i>+91-7722874355</a></li>
                             <li><a href="mailto:bit.technohub@gmail.com? subject=subject text">bit.technohub@gmail.com</a></li>
                             <li><a href="https://www.instagram.com/bit.technohub/">Follow Us On Instagram</a></li>
                         </ul>

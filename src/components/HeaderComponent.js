@@ -2,26 +2,28 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
-import { NavLink,Link } from 'react-router-dom';
-import {firebaseApp,auth} from "../firebase";
-import {useStateValue} from "../StateProvider";
+import { NavLink } from 'react-router-dom';
+import {firebaseApp} from "../firebase";
+// import {AuthContext} from '../Auth';
 
 
 class Header extends Component {
-   
+
+         
     constructor(props) {
         super(props);
         this.state = {
             isNavOpen: false,
             isModalOpen: false,
-            user:firebaseApp.auth().currentUser,            
+        
         };
-    
         this.toggleNav = this.toggleNav.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
 
       }
+
+
 
       toggleNav() {
         this.setState({
@@ -38,39 +40,46 @@ class Header extends Component {
         alert("Username: " + this.username.value + " Password: " + this.password.value
             + " Remember: " + this.remember.checked);
         event.preventDefault();
+
     }
 
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //     if (user) {
-    //       // User is signed in.
-    //     } else {
-    //       // No user is signed in.
+    // state = {
+    //     user: null
+    //   };
+
+    // componentDidMount = () => {
+    //         firebaseApp.auth().onAuthStateChanged(function(user) {
+    //             console.log("user value")
+    //             console.log(user);
+    //           });
+              
     //     }
-    //     });
-//     var user = firebase.auth().currentUser;
+    
 
-// if (user) {
-//   // User is signed in.
-// } else {
-//   // No user is signed in.
-// }
+    // showLogin = () =>{    
+        
+    //     // const [{currentUser}] = this.useContext(AuthContext)
+    //     // const currentUser = ""
+    //     // this.currentUser({
+    //     //     user: useContext(AuthContext)
+    //     // })        
+    //     // console.log(this.state.user);
 
-    showLogin= () =>{    
-        console.log(this.state.user)
-        if(this.state.user){
-            console.log("yessssssssssssssss")
-            return(
-                     <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>  
-            );
-        }
-        else{
-            console.log("Nooooooooooooooooooo")
-            return(
-                    <Button outline href="/register"><span className="fa fa-user"></span> Lele </Button>
-            );
-         }
+    //     if(user){
+    //         console.log("yessssssssssssssss")
+    //         return(
+    //             <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
+    //         );
+    //     }
+    //     else{
+    //         console.log("Nooooooooooooooooooo")
+    //         return(
+    //             <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>  
+               
+    //         );
+    //      }
 
-    }
+    // }
 
     render() {
         return(
@@ -99,13 +108,10 @@ class Header extends Component {
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                {this.showLogin()}        
-                                    {/*                                 
-                                    {this.state.user ?    :
-                                            console.log(user); //<div> <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
-
-                                            } */}
-                                    
+                                {/* {this.showLogin()}    */}
+                                
+                                 <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> 
+                                <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>  
                                 </NavItem>
                             </Nav>
                         </Collapse>

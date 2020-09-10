@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
             Button, Row, Col, Label } from 'reactstrap';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+// import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import ContactUs from './ContactUsComponents';
 
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+// const required = (val) => val && val.length;
+// const maxLength = (len) => (val) => !(val) || (val.length <= len);
+// const minLength = (len) => (val) => val && (val.length >= len);
+// const isNumber = (val) => !isNaN(Number(val));
+// const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class Contact extends Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
         
-        this.handleSubmit = this.handleSubmit.bind(this);
-        
-    }
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+ 
+    // }
 
-    handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Thank You for the Feedback ! : ' + JSON.stringify(values));
-    }
+    // handleSubmit(values) {
+    //     console.log('Current State is: ' + JSON.stringify(values));
+    //     // alert('Thank You for the Feedback ! : ' + JSON.stringify(values));
+
+
+    // }
 
     render() {
       
@@ -37,7 +40,8 @@ class Contact extends Component {
                         <hr />
                     </div>                
                 </div>
-            <div className="row row-content">
+
+             <div className="row row-content">
                 <div className="col-12">
                 <h3>Location Information</h3>
                 </div>
@@ -65,17 +69,20 @@ class Contact extends Component {
                     </div>
                 </div>
             </div>
-            <div className="row row-content">
+            <div>
+                    <ContactUs/>
+                </div>
+           {/* <div className="row row-content">
                    <div className="col-12">
                       <h3>Send us your Feedback</h3>
                    </div>
                     <div className="col-12 col-md-9">
                     <LocalForm model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                         <Row className="form-group">
-                                <Label htmlFor="firstname" md={2}>First Name</Label>
+                                <Label htmlFor="fullname" md={2}>Full Name</Label>
                                 <Col md={10}>
-                                    <Control.text model=".firstname" id="firstname" name="firstname"
-                                        placeholder="First Name"
+                                    <Control.text model=".fullname" id="fullname" name="fullname"
+                                        placeholder="Full Name"
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
@@ -84,28 +91,6 @@ class Contact extends Component {
                                     <Errors
                                         className="text-danger"
                                         model=".firstname"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
-                                            maxLength: 'Must be 15 characters or less'
-                                        }}
-                                     />
-                                </Col>
-                            </Row>
-                            <Row className="form-group">
-                                <Label htmlFor="lastname" md={2}>Last Name</Label>
-                                <Col md={10}>
-                                    <Control.text model=".lastname" id="lastname" name="lastname"
-                                        placeholder="Last Name"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3), maxLength: maxLength(15)
-                                        }}
-                                         />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".lastname"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -195,7 +180,7 @@ class Contact extends Component {
                             </Row>
                             </LocalForm>
                     </div>
-               </div>
+               </div> */}
 
         </div>
     );

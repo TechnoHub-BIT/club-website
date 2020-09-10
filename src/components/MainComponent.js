@@ -10,7 +10,7 @@ import Members from './MembersComponent';
 import ProfileCompletion from './ProfileCompletionComponents';
 import { AuthProvider } from '../Auth';
 import PrivateRoute from '../PrivateRoute';
-
+import Forum from './ForumComponent';
 class Main extends Component {
 
   render() {
@@ -36,6 +36,7 @@ class Main extends Component {
                   <PrivateRoute exact path="/members" component={Members} />
                   <Route exact path="/profileCompletion" component={ProfileCompletion}/>
                   <Route exact path='/aboutus' component={AboutPage} />
+                  <PrivateRoute exact path='/forum' component={() => <Forum />} />
                   <Route exact path='/contactus' component={() => <Contact />} />
                   <Redirect to="/home" />
               </Switch>

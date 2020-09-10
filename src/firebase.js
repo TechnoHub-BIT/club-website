@@ -1,5 +1,11 @@
-import firebase from "firebase";
+import firebase from 'firebase/app';
 
+import 'firebase/auth';        // for authentication
+// import 'firebase/storage';     // for storage
+import 'firebase/database';    // for realtime database
+import 'firebase/firestore';   // for cloud firestore
+// import 'firebase/messaging';   // for cloud messaging
+// import 'firebase/functions';   // for cloud functions
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyCDFpw7Je6RcwkcugyLeeGuQ9W_9XQOaoY",
   authDomain: "technohub-webtest.firebaseapp.com",
