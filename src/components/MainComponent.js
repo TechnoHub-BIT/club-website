@@ -7,10 +7,11 @@ import Footer from './FooterComponent';
 import Register from "./RegisterComponents";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Members from './MembersComponent';
-import ProfileCompletion from './ProfileCompletionComponents';
+import Profile from './ProfileComponent';
 import { AuthProvider } from '../Auth';
 import PrivateRoute from '../PrivateRoute';
-import Forum from './ForumComponent';
+import Admin from './AdminComponent/AdminComponent';
+
 class Main extends Component {
 
   render() {
@@ -34,9 +35,9 @@ class Main extends Component {
                   <Route path='/home' component={HomePage} />
                   <Route path='/register' component={Register} />
                   <PrivateRoute exact path="/members" component={Members} />
-                  <Route exact path="/profileCompletion" component={ProfileCompletion}/>
+                  <Route exact path="/profile" component={Profile}/>
                   <Route exact path='/aboutus' component={AboutPage} />
-                  <PrivateRoute exact path='/forum' component={() => <Forum />} />
+                  <Route exact path='/admin' component={Admin} />
                   <Route exact path='/contactus' component={() => <Contact />} />
                   <Redirect to="/home" />
               </Switch>

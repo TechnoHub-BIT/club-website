@@ -4,25 +4,70 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import {firebaseApp} from "../firebase";
+import { SignedButton } from './SignedButtonComponent';
 // import {AuthContext} from '../Auth';
 
+// Message Component 
+function Message(props) 
+{ 
+    if (props.isLoggedIn) 
+        return <h1>Welcome User</h1>; 
+    else
+        return <h1>Please Login</h1>; 
+} 
+  
+// Login Component 
+function Login(props) 
+{ 
+   return( 
+           <button onClick = {props.clickFunc}> 
+               Login 
+           </button> 
+       ); 
+} 
+  
+// Logout Component 
+function Logout(props) 
+{ 
+    return( 
+           <button onClick = {props.clickFunc}> 
+               Logout 
+           </button> 
+       ); 
+} 
 
 class Header extends Component {
 
          
     constructor(props) {
         super(props);
+  
+
         this.state = {
             isNavOpen: false,
             isModalOpen: false,
-        
+            isLoggedIn : false
         };
+
+        this.ifLoginClicked = this.ifLoginClicked.bind(this); 
+        this.ifLogoutClicked = this.ifLogoutClicked.bind(this); 
+
+
         this.toggleNav = this.toggleNav.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
 
       }
 
+      ifLoginClicked() 
+      { 
+          this.setState({isLoggedIn : true}); 
+      } 
+    
+      ifLogoutClicked() 
+      { 
+          this.setState({isLoggedIn : false}); 
+      } 
 
 
       toggleNav() {
@@ -81,7 +126,24 @@ class Header extends Component {
 
     // }
 
+    
+
     render() {
+
+        // const button = <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>;
+        let button;
+        firebaseApp.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              button = <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>;
+             
+            } else {
+              // No user is signed in.
+
+                button = <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>;
+            }
+          });
+
         return(
             <React.Fragment>
                 <Navbar dark expand="md">
@@ -97,21 +159,30 @@ class Header extends Component {
                                 <NavLink className="nav-link" to='/aboutus'><div className="nav-btn">About Us</div></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link"  to='/forum'><div className="nav-btn">Forum</div></NavLink>
-                            </NavItem>
-                            <NavItem>
                                 <NavLink className="nav-link" to='/contactus'><div className="nav-btn">Contact Us</div></NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/members'><div className="nav-btn">Members</div></NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/admin'><div className="nav-btn">Admin</div></NavLink>
+                            </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                {/* {this.showLogin()}    */}
                                 
-                                 <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> 
-                                <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>  
+                                {/* <Message isLoggedIn = {this.state.isLoggedIn}/>  */}
+                  
+                                    {/* { 
+                                        (this.state.isLoggedIn)?( 
+                                        <Logout clickFunc = {this.ifLogoutClicked} /> 
+                                        ) : ( 
+                                        <Login clickFunc = {this.ifLoginClicked} /> 
+                                        ) 
+                                    }  */}
+                                  <Button outline href="/profile"><span className="fa fa-user"></span> Profile </Button> 
+                                  {/* <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> */}
+                                  <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button> 
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -131,7 +202,8 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>\
+
                 </Jumbotron>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

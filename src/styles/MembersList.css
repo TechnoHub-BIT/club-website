@@ -10,7 +10,16 @@ body {
     padding: 0;
     width: 100%;
     table-layout: fixed;
+    overflow:scroll;
+    object-fit:contain;
+    text-overflow:ellipsis;
   }
+
+td
+{
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
   
   table caption {
     font-size: 1.5em;
