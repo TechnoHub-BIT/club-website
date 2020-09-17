@@ -19,7 +19,7 @@ import {
 import { NavLink, Link } from "react-router-dom";
 import { firebaseApp } from "../firebase";
 import { useStateValue } from "../StateProvider";
-import { SignedButton } from "./SignedButtonComponent";
+// import { SignedButton } from "./SignedButtonComponent";
 import HeaderButtons from "./HeaderButtons";
 // import {AuthContext} from '../Auth';
 

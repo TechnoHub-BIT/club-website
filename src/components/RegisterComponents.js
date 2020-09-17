@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles/Register.css";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import firebase from 'firebase';
+import { connect } from "react-redux";
 
 function RegisterComponents() {
   const [{ user }, dispatch] = useStateValue();
@@ -28,6 +30,32 @@ function RegisterComponents() {
       .catch((e) => alert(e.message));
   };
 
+  const onSubmit = () => {  
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      console.log(result);
+      dispatch({
+        type: "SET_USER",
+        user: result.user,
+      });
+      history.push("/profile");
+
+    }).catch(function(error) {
+        console.log(error)
+    });
+  }
+
+  const forgotPassword = (event) => {
+    event.preventDefault();
+
+    auth.sendPasswordResetEmail(email).then(function() {
+      console.log("email sent", email)
+    }).catch(function(error) {
+      // An error happened.
+      console.log(error);
+    });
+  }
+
   const register = (event) => {
     event.preventDefault(); //this stops the refresh!!!
     //do the register logic ...
@@ -35,6 +63,24 @@ function RegisterComponents() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
+
+        console.log(auth.user);
+        dispatch({
+          type: "SET_USER",
+          user: auth.user,
+        });
+        // console.log(auth.user.uid)
+        db.collection('accounts').doc(auth.user.uid).set({
+          fullname : auth.user.displayName,
+          email: auth.user.email,
+          id: 2,
+          branch: 'N/A',
+          semester: 'N/A',
+          member: 'N/A',
+          skills: 'N/A',
+          workshops: 'N/A',
+          interest: 'N/A'
+        })
         //create a use and loggedin , redirect to homepage
         history.push("/profile");
       })
@@ -68,11 +114,15 @@ function RegisterComponents() {
           <button onClick={login} type="submit" className="login_signInButton">
             Sign In
           </button>
+          <button onClick={onSubmit} type="button" className="login_signInButton" >Join with Google</button>
         </form>
         <p>
           By signing-in you agree to TechnoHub Terms and Conditions of Use
           Privacy policy
         </p>
+        <button onClick={forgotPassword} className="login_registerButton">
+          Forgot Password
+        </button>
         <button onClick={register} className="login_registerButton">
           Create Account using Email
         </button>

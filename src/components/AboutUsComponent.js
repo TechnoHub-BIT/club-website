@@ -91,7 +91,7 @@ function About(props) {
 <div class="row justify-content-around">
 <div class="col-lg-4 col-sm-6">
 <div class="single_industries">
-<img src='assets/images/DSC_0733_3.jpg' alt="" height="400px" width="350px" />
+<img src='assets/images/DSC_0733_3.jpg' alt="Sachet Sabarad" height="400px" width="350px" />
 <div class="single_industries_text">
 <h3>Sachet Sabarad</h3>
 <p><i class="fa fa-phone"></i>+91-7722874355</p>

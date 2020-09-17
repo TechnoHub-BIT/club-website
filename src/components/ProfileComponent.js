@@ -1,35 +1,4 @@
-// import React, {useState, useEffect} from 'react';
-// import {firebaseApp} from '../firebase';
-// import firebase, { auth } from 'firebase';
-
-// export const ProfileComponent = () => {
-//   const [currentUser, setCurrentUser] = useState();
-//   const provider = new firebase.auth.GoogleAuthProvider();
-
-//   useEffect(() => {
-//     firebaseApp.auth().onAuthStateChanged((user)=> {
-//       setCurrentUser(user);
-//     });
-//   }, []);
-
-//   const authWithGoogle = () => {
-//     firebase.auth().signInWithPopup(provider);
-//   };
-
-//   return (
-//     <>
-//     { currentUser && <>
-//     <img src={currentUser.photoURL} width="100" height="100" alt="avatar"/>
-//     <p>{currentUser.displayName}</p>
-//     <p>{currentUser.email}</p>
-//     </>}
-//     <button onClick={authWithGoogle} >Login</button>
-//     <button onClick={firebaseApp.auth().signOut()} >Logout</button>
-//     </>
-//   );
-// };
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ContactUs.css";
 import { db, firebaseApp } from "../firebase";
 import { Link, useHistory } from "react-router-dom";
@@ -37,17 +6,19 @@ import { Button } from "react-bootstrap";
 import { useStateValue } from "../StateProvider";
 
 const Profile = () => {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [branch, setBranch] = useState("");
-  const [semester, setSemester] = useState("");
-  const [member, setMember] = useState("");
-  const [skills, setSkills] = useState("");
-  const [workshops, setWorkshops] = useState("");
-  const [interest, setInterest] = useState("");
+  // const [fullname, setFullname] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [branch, setBranch] = useState("");
+  // const [semester, setSemester] = useState("");
+  // const [member, setMember] = useState("");
+  // const [skills, setSkills] = useState("");
+  // const [workshops, setWorkshops] = useState("");
+  // const [interest, setInterest] = useState("");
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const [{ user }, dispatch] = useStateValue();
+  const [profiles, setProfiles] = useState([]);
+
   const signOut = () => {
     firebaseApp.auth().signOut();
     dispatch({
@@ -55,47 +26,97 @@ const Profile = () => {
     });
     history.push("/");
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoader(true);
 
-    db.collection("accounts")
-      .add({
-        fullname: fullname,
-        email: email,
-        branch: branch,
-        semester: semester,
-        member: member,
-        skills: skills,
-        workshops: workshops,
-        interest: interest,
-        id: 2,
-      })
-      .then(() => {
-        setLoader(false);
-        alert("Your Profile Submitted");
-      })
-      .catch((error) => {
-        alert(error.message);
-        setLoader(false);
-      });
+  const Test = () => {
+    db.collection("members").doc(user.uid)
+    .onSnapshot(function(doc) {
+        console.log("Current data: ", doc.data());
+        const data = doc.data();
+        setProfiles(data)
+    });
+    
+  }
+  const showPayment = () => {
+    if(profiles.payment == false){
+      return <p>"Not Done Payment"</p>
+     }else if(profiles.payment == true) {
+      return  <p>"Payment Done"</p>
+     }
+     else {
+       return <p>Loading...</p>
+     }
+  }
+ 
+  // useEffect(()=>{
 
-    setFullname("");
-    setEmail("");
-    setBranch("");
-    setSemester("");
-    setMember("");
-    setSkills("");
-    setWorkshops("");
-    setInterest("");
-  };
+  //     db.collection('accounts').doc(user.uid).get().then(querySnapshot => {
+  //         const data = querySnapshot.docs.map(doc => doc.data());
+  //         console.log(data);
+  //         setProfiles(data);
+  //     });
+  // },[]);
+
+  // },[profiles]);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setLoader(true);
+
+  //   db.collection("accounts")
+  //     .add({
+  //       fullname: fullname,
+  //       email: email,
+  //       branch: branch,
+  //       semester: semester,
+  //       member: member,
+  //       skills: skills,
+  //       workshops: workshops,
+  //       interest: interest,
+  //       id: 2,
+  //     })
+  //     .then(() => {
+  //       setLoader(false);
+  //       alert("Your Profile Submitted");
+  //     })
+  //     .catch((error) => {
+  //       alert(error.message);
+  //       setLoader(false);
+  //     });
+
+  //   setFullname("");
+  //   setEmail("");
+  //   setBranch("");
+  //   setSemester("");
+  //   setMember("");
+  //   setSkills("");
+  //   setWorkshops("");
+  //   setInterest("");
+  // };
 
   return (
     <div>
       <div className="container">
         <h1 style={{ textAlign: "center" }}>Profile</h1>
+        <br/>
+        <br/>
+        <button onClick={Test} >Test</button>
         <br />
-        <form className="form" onSubmit={handleSubmit}>
+        <br/>
+         { user && <>
+         <img src={user.photoURL} width="100" height="100" alt="avatar"/>
+         <p>{user.displayName}</p>
+         <p>{user.email}</p>
+         <p>Full Name : {profiles.fullname}</p>
+         <p>Branch : {profiles.branch}</p>
+         <p>Semester : {profiles.semester}</p>
+         <p>Member : {profiles.member}</p>
+         <p>Skills : {profiles.skills}</p>
+         <p>Workshops : {profiles.workshops}</p>
+         <p>Interest : {profiles.interest}</p>
+         <p>Payment : {showPayment()}</p>
+
+         </>}
+        <br/>
+        {/* <form className="form" onSubmit={handleSubmit}>
           <label>Full Name</label>
           <input
             placeholder="Full Name"
@@ -158,9 +179,8 @@ const Profile = () => {
           >
             Submit
           </button>
-        </form>
-        <br />
-        <br />
+        </form> */}
+                                       
         <Link href="/home">
           <Button onClick={signOut}>
             <span className="fa fa-user"></span> Logout{" "}
