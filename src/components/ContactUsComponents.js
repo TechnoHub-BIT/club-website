@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ContactUs.css";
 import { db } from "../firebase";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -29,12 +29,21 @@ const Contact = () => {
         setLoader(false);
       });
 
-      emailjs.sendForm('gmail', 'template_safo57w', e.target, 'user_cYxQj4CXBNqFVuIqfsndF')
-      .then((result) => {
+    emailjs
+      .sendForm(
+        "gmail",
+        "template_safo57w",
+        e.target,
+        "user_cYxQj4CXBNqFVuIqfsndF"
+      )
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
-      });
+        }
+      );
 
     setName("");
     setEmail("");
