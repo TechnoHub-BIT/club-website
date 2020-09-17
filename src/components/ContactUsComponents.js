@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ContactUs.css";
 import { db } from "../firebase";
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -28,6 +29,13 @@ const Contact = () => {
         setLoader(false);
       });
 
+      emailjs.sendForm('gmail', 'template_safo57w', e.target, 'user_cYxQj4CXBNqFVuIqfsndF')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+
     setName("");
     setEmail("");
     setMessage("");
@@ -42,6 +50,7 @@ const Contact = () => {
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        name="name"
       />
 
       <label>Email</label>
@@ -49,6 +58,7 @@ const Contact = () => {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        name="email"
       />
 
       <label>Message</label>
@@ -56,6 +66,7 @@ const Contact = () => {
         placeholder="Message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        name="message"
       ></textarea>
 
       <button

@@ -7,7 +7,7 @@ import Footer from './FooterComponent';
 import Register from "./RegisterComponents";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Members from './MembersComponent';
-import Profile from './ProfileComponent';
+import {ProfileComponent} from './ProfileComponent';
 import { AuthProvider } from '../Auth';
 import PrivateRoute from '../PrivateRoute';
 import Admin from './AdminComponent/AdminComponent';
@@ -35,7 +35,7 @@ class Main extends Component {
                   <Route path='/home' component={HomePage} />
                   <Route path='/register' component={Register} />
                   <PrivateRoute exact path="/members" component={Members} />
-                  <Route exact path="/profile" component={Profile}/>
+                  <Route exact path="/profile" component={ProfileComponent}/>
                   <Route exact path='/aboutus' component={AboutPage} />
                   <Route exact path='/admin' component={Admin} />
                   <Route exact path='/contactus' component={() => <Contact />} />

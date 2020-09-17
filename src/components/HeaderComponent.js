@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {firebaseApp} from "../firebase";
 import { SignedButton } from './SignedButtonComponent';
 // import {AuthContext} from '../Auth';
@@ -180,9 +180,10 @@ class Header extends Component {
                                         <Login clickFunc = {this.ifLoginClicked} /> 
                                         ) 
                                     }  */}
-                                  <Button outline href="/profile"><span className="fa fa-user"></span> Profile </Button> 
+                                    <Link to="/profile" ><Button outline ><span className="fa fa-user" >Profile</span></Button></Link>
+                                  {/* <Button outline href="/profile"><span className="fa fa-user"></span> Profile </Button>  */}
                                   {/* <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> */}
-                                  <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button> 
+                                  <Link to="/register" ><Button outline ><span className="fa fa-user"></span> Login/Sign Up </Button></Link> 
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -202,7 +203,7 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                </div>\
+                </div>
 
                 </Jumbotron>
 
