@@ -89,11 +89,11 @@ class Header extends Component {
     event.preventDefault();
   }
 
-  componentDidMount() {
-    const user = this.context;
+  //   componentDidMount() {
+  //     const user = this.context;
 
-    console.log(user); // { name: 'Tania', loggedIn: true }
-  }
+  //     console.log(user); // { name: 'Tania', loggedIn: true }
+  //   }
   // state = {
   //     user: null
   //   };
@@ -208,11 +208,6 @@ class Header extends Component {
                   <HeaderButtons />
                   {/* <Button outline href="/profile"><span className="fa fa-user"></span> Profile </Button>  */}
                   {/* <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> */}
-                  <Link to="/register">
-                    <Button outline>
-                      <span className="fa fa-user"></span> Login/Sign Up{" "}
-                    </Button>
-                  </Link>
                 </NavItem>
               </Nav>
             </Collapse>

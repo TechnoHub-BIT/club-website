@@ -18,6 +18,7 @@ function Member() {
   let history = useHistory();
 
   useEffect(() => {
+    console.log(user);
     if (!user) {
       history.push("/register");
     }

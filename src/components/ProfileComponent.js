@@ -1,164 +1,177 @@
-import React, {useState, useEffect} from 'react';
-import {firebaseApp} from '../firebase';
-import firebase, { auth } from 'firebase';
+// import React, {useState, useEffect} from 'react';
+// import {firebaseApp} from '../firebase';
+// import firebase, { auth } from 'firebase';
 
-export const ProfileComponent = () => {
-  const [currentUser, setCurrentUser] = useState();
-  const provider = new firebase.auth.GoogleAuthProvider();
+// export const ProfileComponent = () => {
+//   const [currentUser, setCurrentUser] = useState();
+//   const provider = new firebase.auth.GoogleAuthProvider();
 
-  useEffect(() => {
-    firebaseApp.auth().onAuthStateChanged((user)=> {
-      setCurrentUser(user);
-    });
-  }, []);
-  
-  const authWithGoogle = () => {
-    firebase.auth().signInWithPopup(provider);
-  };
+//   useEffect(() => {
+//     firebaseApp.auth().onAuthStateChanged((user)=> {
+//       setCurrentUser(user);
+//     });
+//   }, []);
 
-  return (
-    <>
-    { currentUser && <>
-    <img src={currentUser.photoURL} width="100" height="100" alt="avatar"/>
-    <p>{currentUser.displayName}</p>  
-    <p>{currentUser.email}</p>
-    </>}
-    <button onClick={authWithGoogle} >Login</button>
-    <button onClick={firebaseApp.auth().signOut()} >Logout</button>
-    </>
-  );
-};
-
-
-// import React, { useState } from "react";
-// import "../styles/ContactUs.css";
-// import { db, firebaseApp } from "../firebase";
-// import { Link } from "react-router-dom";
-// import  { Button } from "react-bootstrap";
-
-// const Contact = () => {
-//   const [fullname, setFullname] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [branch, setBranch] = useState("");
-//   const [semester, setSemester] = useState("");
-//   const [member, setMember] = useState("");
-//   const [skills, setSkills] = useState("");
-//   const [workshops, setWorkshops] = useState("");
-//   const [interest, setInterest] = useState("");
-
-//   const [loader, setLoader] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setLoader(true);
-
-//     db.collection("accounts")
-//       .add({
-//         fullname: fullname,
-//         email: email,
-//         branch: branch,
-//         semester: semester,
-//         member: member,
-//         skills: skills,
-//         workshops: workshops,
-//         interest: interest,
-//         id: 2
-//       })
-//       .then(() => {
-//         setLoader(false);
-//         alert("Your Profile Submitted");
-//       })
-//       .catch((error) => {
-//         alert(error.message);
-//         setLoader(false);
-//       });
-
-//     setFullname("");
-//     setEmail("");
-//     setBranch("");
-//     setSemester("");
-//     setMember("");
-//     setSkills("");
-//     setWorkshops("");
-//     setInterest("");
+//   const authWithGoogle = () => {
+//     firebase.auth().signInWithPopup(provider);
 //   };
 
 //   return (
-//     <div>
-//     <div className="container" > 
-//     <h1 style={{textAlign: "center"}} >Profile</h1>
-//     <br/>
-//     <form className="form" onSubmit={handleSubmit}>
-//       <label>Full Name</label>
-//       <input
-//         placeholder="Full Name"
-//         value={fullname}
-//         onChange={(e) => setFullname(e.target.value)}
-//       />
-
-//       <label>Email</label>
-//       <input
-//         placeholder="Email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-
-//       <label>Branch</label>
-//       <input
-//         placeholder="Branch"
-//         value={branch}
-//         onChange={(e) => setBranch(e.target.value)}
-//       />
-
-//       <label>Semester</label>
-//       <input
-//         placeholder="Semester"
-//         value={semester}
-//         onChange={(e) => setSemester(e.target.value)}
-//       />
-
-//       <label>Member</label>
-//       <input
-//         placeholder="Member"
-//         value={member}
-//         onChange={(e) => setMember(e.target.value)}
-//       />
-
-//       <label>Skills</label>
-//       <input
-//         placeholder="Skills"
-//         value={skills}
-//         onChange={(e) => setSkills(e.target.value)}
-//       />
-
-//       <label>Workshops</label>
-//       <input
-//         placeholder="Workshops"
-//         value={workshops}
-//         onChange={(e) => setWorkshops(e.target.value)}
-//       />
-
-//       <label>Interest</label>
-//       <input
-//         placeholder="Interest"
-//         value={interest}
-//         onChange={(e) => setInterest(e.target.value)}
-//       />
-
-//       <button type="submit" style={{ background: loader ? "#ccc" : " rgb(2, 2, 110)" }}>Submit</button>
-//       </form>
-//       <br/>
-//       <br/>
-//      <Link  href="/home" ><Button onClick={()=>firebaseApp.auth().signOut()} ><span className="fa fa-user"></span> Logout </Button></Link>
-
-//     </div>
-//     </div>
+//     <>
+//     { currentUser && <>
+//     <img src={currentUser.photoURL} width="100" height="100" alt="avatar"/>
+//     <p>{currentUser.displayName}</p>
+//     <p>{currentUser.email}</p>
+//     </>}
+//     <button onClick={authWithGoogle} >Login</button>
+//     <button onClick={firebaseApp.auth().signOut()} >Logout</button>
+//     </>
 //   );
 // };
 
-// export default Contact;
+import React, { useState } from "react";
+import "../styles/ContactUs.css";
+import { db, firebaseApp } from "../firebase";
+import { Link, useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { useStateValue } from "../StateProvider";
 
+const Profile = () => {
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [branch, setBranch] = useState("");
+  const [semester, setSemester] = useState("");
+  const [member, setMember] = useState("");
+  const [skills, setSkills] = useState("");
+  const [workshops, setWorkshops] = useState("");
+  const [interest, setInterest] = useState("");
+  const history = useHistory();
+  const [loader, setLoader] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
+  const signOut = () => {
+    firebaseApp.auth().signOut();
+    dispatch({
+      type: "LOGOUT_USER",
+    });
+    history.push("/");
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoader(true);
 
+    db.collection("accounts")
+      .add({
+        fullname: fullname,
+        email: email,
+        branch: branch,
+        semester: semester,
+        member: member,
+        skills: skills,
+        workshops: workshops,
+        interest: interest,
+        id: 2,
+      })
+      .then(() => {
+        setLoader(false);
+        alert("Your Profile Submitted");
+      })
+      .catch((error) => {
+        alert(error.message);
+        setLoader(false);
+      });
+
+    setFullname("");
+    setEmail("");
+    setBranch("");
+    setSemester("");
+    setMember("");
+    setSkills("");
+    setWorkshops("");
+    setInterest("");
+  };
+
+  return (
+    <div>
+      <div className="container">
+        <h1 style={{ textAlign: "center" }}>Profile</h1>
+        <br />
+        <form className="form" onSubmit={handleSubmit}>
+          <label>Full Name</label>
+          <input
+            placeholder="Full Name"
+            value={fullname}
+            onChange={(e) => setFullname(e.target.value)}
+          />
+
+          <label>Email</label>
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <label>Branch</label>
+          <input
+            placeholder="Branch"
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
+          />
+
+          <label>Semester</label>
+          <input
+            placeholder="Semester"
+            value={semester}
+            onChange={(e) => setSemester(e.target.value)}
+          />
+
+          <label>Member</label>
+          <input
+            placeholder="Member"
+            value={member}
+            onChange={(e) => setMember(e.target.value)}
+          />
+
+          <label>Skills</label>
+          <input
+            placeholder="Skills"
+            value={skills}
+            onChange={(e) => setSkills(e.target.value)}
+          />
+
+          <label>Workshops</label>
+          <input
+            placeholder="Workshops"
+            value={workshops}
+            onChange={(e) => setWorkshops(e.target.value)}
+          />
+
+          <label>Interest</label>
+          <input
+            placeholder="Interest"
+            value={interest}
+            onChange={(e) => setInterest(e.target.value)}
+          />
+
+          <button
+            type="submit"
+            style={{ background: loader ? "#ccc" : " rgb(2, 2, 110)" }}
+          >
+            Submit
+          </button>
+        </form>
+        <br />
+        <br />
+        <Link href="/home">
+          <Button onClick={signOut}>
+            <span className="fa fa-user"></span> Logout{" "}
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
 
 // // import React from 'react'
 // // import { FormControl,InputLabel,Input,FormHelperText } from '@material-ui/core';
@@ -215,7 +228,7 @@ export const ProfileComponent = () => {
 // //         branch: this.state.branch,
 // //         semester: this.state.semester,
 // //         skills: this.state.skills
-// //       });  
+// //       });
 // //       this.setState({
 // //         fullname: "",
 // //         branch: "",
@@ -272,7 +285,7 @@ export const ProfileComponent = () => {
 // //                   name: 'semester',
 // //                   id: 'semester',
 // //                 }}
-// //                 onChange={this.updateInput} 
+// //                 onChange={this.updateInput}
 // //                 value={this.state.semester}>
 // //                 <option aria-label="None" value="" />
 // //                 <option value={1}>First</option>
@@ -283,7 +296,7 @@ export const ProfileComponent = () => {
 // //                 <option value={6}>Sixth</option>
 // //                 <option value={7}>Seventh</option>
 // //                 <option value={8}>Eighth</option>
-                
+
 // //               </Select>
 // //             </FormControl>
 // //             <br/>
@@ -303,7 +316,7 @@ export const ProfileComponent = () => {
 // //                 <option value={3}>Both</option>
 // //               </Select>
 // //             </FormControl>
-// //             <TextField 
+// //             <TextField
 // //                 id="skills"
 // //                 label="Skills"
 // //                 placeholder="About Your Self"
@@ -323,7 +336,7 @@ export const ProfileComponent = () => {
 // //             <Button type="submit" variant="contained" color="primary">
 // //                  Submit
 // //              </Button>
-  
+
 // //             </form>
 // //         </div>
 // //     )

@@ -20,7 +20,7 @@ function RegisterComponents() {
         //logged ini, redirect to homepage
         console.log(auth.user);
         dispatch({
-          type: "ADD_USER",
+          type: "SET_USER",
           user: auth.user,
         });
         history.push("/profile");
