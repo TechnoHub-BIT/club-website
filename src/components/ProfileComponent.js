@@ -4,6 +4,8 @@ import { db, firebaseApp } from "../firebase";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useStateValue } from "../StateProvider";
+import { Row , Col } from 'react-bootstrap';
+
 
 const Profile = () => {
   // const [fullname, setFullname] = useState("");
@@ -36,21 +38,31 @@ const Profile = () => {
     });
     
   }
+  
   const showPayment = () => {
     if(profiles.payment == false){
-      return <p>"Not Done Payment"</p>
+      return <p>Payment : Not Done Payment</p>
      }else if(profiles.payment == true) {
-      return  <p>"Payment Done"</p>
+      return  <p>Payment : Payment Done</p>
      }
      else {
        return <p>Loading...</p>
      }
   }
+
+  const UpdateDetails = () => {
+    db.collection("members").doc(user.uid).update({
+      branch: "ETC",
+      semester: "Fifth"
+  }).then(function() {
+    console.log("Document successfully updated!");
+});
+  }
  
   // useEffect(()=>{
 
   //     db.collection('accounts').doc(user.uid).get().then(querySnapshot => {
-  //         const data = querySnapshot.docs.map(doc => doc.data());
+  //         const data = querySnapshot.docs.map(doc => ({fullname: doc.data().fullname}));
   //         console.log(data);
   //         setProfiles(data);
   //     });
@@ -98,13 +110,23 @@ const Profile = () => {
         <h1 style={{ textAlign: "center" }}>Profile</h1>
         <br/>
         <br/>
-        <button onClick={Test} >Test</button>
-        <br />
-        <br/>
-         { user && <>
+        <Row>
+          <Col>
+          { user && <>
          <img src={user.photoURL} width="100" height="100" alt="avatar"/>
          <p>{user.displayName}</p>
          <p>{user.email}</p>
+                    <Link href="/home">
+          <Button onClick={signOut}>
+            <span className="fa fa-user"></span> Logout{" "}
+          </Button>
+        </Link>
+         </>}
+          </Col>
+          <Col>
+        <button onClick={Test} >See The Details</button>
+        <button onClick={UpdateDetails} >Update The Details</button>
+        { user && <>
          <p>Full Name : {profiles.fullname}</p>
          <p>Branch : {profiles.branch}</p>
          <p>Semester : {profiles.semester}</p>
@@ -112,9 +134,12 @@ const Profile = () => {
          <p>Skills : {profiles.skills}</p>
          <p>Workshops : {profiles.workshops}</p>
          <p>Interest : {profiles.interest}</p>
-         <p>Payment : {showPayment()}</p>
+         <p>{showPayment()}</p>
 
          </>}
+          </Col>
+        </Row>
+        <br />
         <br/>
         {/* <form className="form" onSubmit={handleSubmit}>
           <label>Full Name</label>
@@ -181,11 +206,7 @@ const Profile = () => {
           </button>
         </form> */}
                                        
-        <Link href="/home">
-          <Button onClick={signOut}>
-            <span className="fa fa-user"></span> Logout{" "}
-          </Button>
-        </Link>
+
       </div>
     </div>
   );

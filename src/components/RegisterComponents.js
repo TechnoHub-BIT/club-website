@@ -38,6 +38,31 @@ function RegisterComponents() {
         type: "SET_USER",
         user: result.user,
       });
+
+      const usersRef = db.collection('members').doc(result.user.uid)
+
+      
+
+      usersRef.get()
+        .then((docSnapshot) => {
+          if (docSnapshot.exists) {
+              console.log("exists", docSnapshot)
+          } else {
+          db.collection('members').doc(result.user.uid).set({
+          fullname : result.user.displayName,
+          email: result.user.email,
+          id: 2,
+          branch: 'N/A',
+          semester: 'N/A',
+          member: 'N/A',
+          skills: 'N/A',
+          workshops: 'N/A',
+          interest: 'N/A',
+          payment: false
+        })
+          }
+      });
+
       history.push("/profile");
 
     }).catch(function(error) {
@@ -70,7 +95,7 @@ function RegisterComponents() {
           user: auth.user,
         });
         // console.log(auth.user.uid)
-        db.collection('accounts').doc(auth.user.uid).set({
+        db.collection('members').doc(auth.user.uid).set({
           fullname : auth.user.displayName,
           email: auth.user.email,
           id: 2,
@@ -79,7 +104,9 @@ function RegisterComponents() {
           member: 'N/A',
           skills: 'N/A',
           workshops: 'N/A',
-          interest: 'N/A'
+          interest: 'N/A',
+          payment: false
+
         })
         //create a use and loggedin , redirect to homepage
         history.push("/profile");
@@ -114,7 +141,7 @@ function RegisterComponents() {
           <button onClick={login} type="submit" className="login_signInButton">
             Sign In
           </button>
-          <button onClick={onSubmit} type="button" className="login_signInButton" >Join with Google</button>
+          <button onClick={onSubmit} type="button" className="login_signInButton" >SignIn/SignUp with Google</button>
         </form>
         <p>
           By signing-in you agree to TechnoHub Terms and Conditions of Use

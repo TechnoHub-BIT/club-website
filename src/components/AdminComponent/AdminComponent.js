@@ -17,7 +17,7 @@ function AdminComponent() {
             setContacts(data);
         })
 
-        db.collection('accounts').get().then(querySnapshot => {
+        db.collection('members').get().then(querySnapshot => {
             const data = querySnapshot.docs.map(doc => doc.data());
             console.log(data);
             setProfiles(data);
@@ -36,9 +36,8 @@ function AdminComponent() {
                                             <tr>
                                             <th scope="col" >Full Name</th>
                                             <th scope="col" >Email</th>
-                                            <th scope="col" >Branch</th>
-                                            <th scope="col" >Semester</th>
                                             <th scope="col" >Member</th>
+                                            <th scope="col" >Payment</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -48,36 +47,15 @@ function AdminComponent() {
                                             <tr key={i}>     
                                             <td data-label="Full Name" >{profile.fullname}</td>
                                             <td data-label="Email" >{profile.email}</td>
-                                            <td data-label="Branch" >{profile.branch}</td>
-                                            <td data-label="Semester" >{profile.semester}</td>
-                                            <td data-label="Member" >{profile.member}</td>
+                                            <td data-label="Branch" >{profile.member}</td>
+                                            <td data-label="Semester" >{profile.payment}</td>
                                             </tr>
                                             
                                         );
                                     
                                         })}
                                     </tbody>
-                                    <thead className="thead-dark" >
-                                            <tr>
-                                            <th scope="col" >Skills</th>
-                                            <th scope="col" >Workshops</th>
-                                            <th scope="col" >Interests</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                         {profiles?.map((profile,i) => {
-                                        
-                                        return (
-                                            <tr key={i}>     
-                                            <td data-label="Skills" >{profile.skills}</td>
-                                            <td data-label="Workshops" >{profile.workshops}</td>
-                                            <td data-label="Interests" >{profile.interest}</td>
-                                            </tr>
-                                            
-                                        );
-                                    
-                                        })}
-                                    </tbody>
+                                   
                                     </table>
                                     </Col>
                                     <Col> 

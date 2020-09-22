@@ -21,6 +21,7 @@ import { firebaseApp } from "../firebase";
 import { useStateValue } from "../StateProvider";
 // import { SignedButton } from "./SignedButtonComponent";
 import HeaderButtons from "./HeaderButtons";
+import AdminHeader from './AdminComponent/AdminHeaderButton';
 // import {AuthContext} from '../Auth';
 
 // Message Component
@@ -190,7 +191,8 @@ class Header extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/admin">
-                    <div className="nav-btn">Admin</div>
+                    <div className="nav-btn"><AdminHeader/>
+                    </div>
                   </NavLink>
                 </NavItem>
               </Nav>
