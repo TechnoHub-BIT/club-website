@@ -16,7 +16,7 @@ function AdminHeader() {
         });
     }
   }, [user]);
-  return <span>{user && true ? <p>Admin</p> : <p></p>}</span>;
+  return <span>{isAdmin ? <p>Admin</p> : <p></p>}</span>;
 }
 
 export default AdminHeader;
