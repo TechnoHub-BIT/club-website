@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/ContactUs.css";
 import { db } from "../firebase";
 import emailjs from "emailjs-com";
@@ -22,7 +22,7 @@ const Contact = () => {
       })
       .then(() => {
         setLoader(false);
-        alert("Your message has been submitted 👍");
+        alert("Your message has been submitted ");
       })
       .catch((error) => {
         alert(error.message);
@@ -52,7 +52,7 @@ const Contact = () => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h1>Contact Us 🤳</h1>
+      <h1>Contact Us </h1>
 
       <label>Name</label>
       <input

@@ -16,29 +16,11 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { firebaseApp } from "../firebase";
-import { useStateValue } from "../StateProvider";
-// import { SignedButton } from "./SignedButtonComponent";
 import HeaderButtons from "./HeaderButtons";
 import AdminHeader from './AdminComponent/AdminHeaderButton';
-// import {AuthContext} from '../Auth';
 
-// Message Component
-function Message(props) {
-  if (props.isLoggedIn) return <h1>Welcome User</h1>;
-  else return <h1>Please Login</h1>;
-}
-
-// Login Component
-function Login(props) {
-  return <button onClick={props.clickFunc}>Login</button>;
-}
-
-// Logout Component
-function Logout(props) {
-  return <button onClick={props.clickFunc}>Logout</button>;
-}
 
 class Header extends Component {
   constructor(props) {
@@ -90,50 +72,8 @@ class Header extends Component {
     event.preventDefault();
   }
 
-  //   componentDidMount() {
-  //     const user = this.context;
-
-  //     console.log(user); // { name: 'Tania', loggedIn: true }
-  //   }
-  // state = {
-  //     user: null
-  //   };
-
-  // componentDidMount = () => {
-  //         firebaseApp.auth().onAuthStateChanged(function(user) {
-  //             console.log("user value")
-  //             console.log(user);
-  //           });
-
-  //     }
-
-  // showLogin = () =>{
-
-  //     // const [{currentUser}] = this.useContext(AuthContext)
-  //     // const currentUser = ""
-  //     // this.currentUser({
-  //     //     user: useContext(AuthContext)
-  //     // })
-  //     // console.log(this.state.user);
-
-  //     if(user){
-  //         console.log("yessssssssssssssss")
-  //         return(
-  //             <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>
-  //         );
-  //     }
-  //     else{
-  //         console.log("Nooooooooooooooooooo")
-  //         return(
-  //             <Button outline href="/register"><span className="fa fa-user"></span> Login/Sign Up </Button>
-
-  //         );
-  //      }
-
-  // }
 
   render() {
-    // const button = <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button>;
     let button;
     firebaseApp.auth().onAuthStateChanged(function (userIn) {
       if (userIn) {

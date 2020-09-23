@@ -9,12 +9,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/MembersList.css";
 
 //Calling Firebase config setting to call the data
-import { firebaseApp } from "../firebase";
+import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 
 function Member() {
   const [memberList, setMemberList] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
   let history = useHistory();
 
   useEffect(() => {
@@ -22,22 +22,15 @@ function Member() {
     if (!user) {
       history.push("/register");
     }
-    firebaseApp
-      .database()
-      .ref("members")
-      .on("value", (snapshot) => {
-        snapshot.forEach((snap) => {
-          // snap.val() is the dictionary with all your keys/values from the 'students-list' path
-          setMemberList([...memberList, snap.val()]);
-          // memberlist.push(snap.val());
-        });
-      });
-  }, []);
+    db.collection("members")
+    .get()
+    .then((querySnapshot) => {
+      const data = querySnapshot.docs.map((doc) => doc.data());
+      console.log(data);
+      setMemberList(data);
+    });
+}, []);
 
-  const tableStyle = {
-    objectFit: "contain",
-    overflow: "hidden",
-  };
 
   return (
     <div className="MainDiv">

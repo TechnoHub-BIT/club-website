@@ -4,7 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import firebase from 'firebase';
-import { connect } from "react-redux";
 
 function RegisterComponents() {
   const [{ user }, dispatch] = useStateValue();
@@ -20,7 +19,7 @@ function RegisterComponents() {
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
         //logged ini, redirect to homepage
-        console.log(auth.user);
+        // console.log(auth.user);
         dispatch({
           type: "SET_USER",
           user: auth.user,
@@ -40,8 +39,6 @@ function RegisterComponents() {
       });
 
       const usersRef = db.collection('members').doc(result.user.uid)
-
-      
 
       usersRef.get()
         .then((docSnapshot) => {

@@ -23,7 +23,7 @@ class Main extends Component {
     };
 
     return (
-      <AuthProvider>
+      // <AuthProvider>
         <React.Fragment>
           <Header />
           <Switch location={this.props.location}>
@@ -38,7 +38,7 @@ class Main extends Component {
           </Switch>
           <Footer />
         </React.Fragment>
-      </AuthProvider>
+      //  </AuthProvider>
     );
   }
 }

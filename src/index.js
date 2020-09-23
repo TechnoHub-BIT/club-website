@@ -11,9 +11,10 @@ import reducer, { initialState } from "./reducer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider reducer={reducer} initialState={initialState}>
-      <App />
+          <StateProvider reducer={reducer} initialState={initialState}>
+          <App />
     </StateProvider>
+
   </React.StrictMode>,
 
   document.getElementById("root")

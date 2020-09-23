@@ -2,14 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../../firebase";
-import { Row, Container, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./adminComponent.css";
-import { useStateValue } from "../../StateProvider";
+import Modal from 'react-bootstrap/Modal';
+import { Button } from "react-bootstrap";
+
 
 function AdminComponent() {
   const [contacts, setContacts] = useState([]);
   const [profiles, setProfiles] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
+
+  const [payment, setPayment] = useState("");
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     db.collection("contacts")
@@ -28,6 +35,18 @@ function AdminComponent() {
         setProfiles(data);
       });
   }, []);
+
+  const UpdateDetails = () => {
+    db.collection("members")
+      .doc()
+      .update({
+          payment : payment
+      })
+      .then(function () {
+        console.log("Document successfully updated!");
+        setShow(false);
+      });
+  };
 
   return (
     <div>
@@ -51,7 +70,28 @@ function AdminComponent() {
                     <td data-label="Full Name">{profile.fullname}</td>
                     <td data-label="Email">{profile.email}</td>
                     <td data-label="Branch">{profile.member}</td>
-                    <td data-label="Semester">{profile.payment}</td>
+                    <td data-label="Semester">{profile.payment}
+                    <Button variant="primary" onClick={handleShow}>
+                        Edit
+                      </Button>
+
+                      <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                        <Modal.Header closeButton>
+                          <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Payment : 
+                                  <input placeholder={profiles.payment} value={payment} onChange={event => setPayment(event.target.value)} />
+                          </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                          <Button variant="primary" onClick={console.log(profile.id)}>
+                            Save Changes
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                    </td>
                   </tr>
                 );
               })}
