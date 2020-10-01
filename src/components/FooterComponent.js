@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import photos from '../img/footer_img/randomName1.jpeg';
 
 function Footer(props) {
     return(
@@ -18,32 +19,33 @@ function Footer(props) {
                         <h2 className="ourg"> Our Gallery</h2>
                         <div className="footer_img">
                                 <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0142.jpg" height="50" width="50" alt="" />
+                                <img src={photos} height="50" width="50" alt="" />
+                                
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0206.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName2.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0247.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName3.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0187.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName4.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0177.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName5.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0180.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName6.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/DSC_0169.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName7.jpeg" height="50" width="50" alt="" />
                             </div>
                             
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/3.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName8.jpeg" height="50" width="50" alt="" />
                             </div>
                             <div className="single_footer_img">
-                                <img src="assets/images/footer_img/4.jpg" height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName9.jpeg" height="50" width="50" alt="" />
                             </div>
                            
                         </div>
@@ -54,7 +56,7 @@ function Footer(props) {
                         <h4 id="ci">Contact Info</h4>
                         <p id="fc">TechnoHub, Bhilai Institute of Technology, Durg, Chhattisgarh 491001</p>
                         <ul>
-                            <li><a href="#"><i className="ti-mobile"></i>+91-7722874355</a></li>
+                            <li><a href="#somethingtoremovewarning"><i className="ti-mobile"></i>+91-7722874355</a></li>
                             <li><a href="mailto:bit.technohub@gmail.com? subject=subject text">bit.technohub@gmail.com</a></li>
                             <li><a href="https://www.instagram.com/bit.technohub/">Follow Us On Instagram</a></li>
                         </ul>

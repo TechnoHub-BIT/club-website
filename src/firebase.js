@@ -1,5 +1,11 @@
-import firebase from "firebase";
+import firebase from 'firebase/app';
 
+import 'firebase/auth';        // for authentication
+// import 'firebase/storage';     // for storage
+import 'firebase/database';    // for realtime database
+import 'firebase/firestore';   // for cloud firestore
+// import 'firebase/messaging';   // for cloud messaging
+// import 'firebase/functions';   // for cloud functions
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyCDFpw7Je6RcwkcugyLeeGuQ9W_9XQOaoY",
   authDomain: "technohub-webtest.firebaseapp.com",
@@ -12,13 +18,18 @@ const firebaseApp = firebase.initializeApp({
 });
 
 const auth = firebase.auth();
+const db = firebaseApp.firestore();
+// export default firebaseApp;
+export {auth, firebaseApp,db}; 
+// =======
 
-export {auth}; 
+// export {auth}; 
 
-export const fireauth = firebase.auth;
+// export const fireauth = firebase.auth;
 
-const settings = {timestampsInSnapshots: true};
-firebase.firestore().settings(settings);
-export const firestore = firebase.firestore();
+// const settings = {timestampsInSnapshots: true};
+// firebase.firestore().settings(settings);
+// export const firestore = firebase.firestore();
 
-export const firebasestore = firebase.firestore;
+// export const firebasestore = firebase.firestore;
+// >>>>>>> master
