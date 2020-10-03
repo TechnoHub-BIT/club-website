@@ -51,6 +51,7 @@ function Home(props) {
                 </div>
                 <div className="col-lg-3 col-sm-6 col-md-6">
                     <div className="single_service_part">
+                        <div className="services3">
                         <i className="fa fa-graduation-cap "></i>
                         <span className="line"></span>
                         <h3>Entrepreneurship</h3>
@@ -58,6 +59,8 @@ function Home(props) {
                                 Get support and mentorship from the TechnoHub network for your ideas and innovations
                                 
                                 </p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -66,7 +69,7 @@ function Home(props) {
          
         <div className="container">
         
-        <div className="allign"><a href="#somethingtoremovewarning" name ="about"><h2>Our Club Supports</h2><hr /></a></div>
+        <div className="allign"><h2>Our Club Supports</h2><hr /></div>
             <div className="row">
             
             </div>
@@ -78,7 +81,7 @@ function Home(props) {
                <div className="row align-items-center justify-content-between">
                    <div className="col-md-6 col-lg-6">
                     <div className="about_img">
-                        <img src='assets/images/technology.jpg' height="200" width="350" alt="Technology" />
+                        <img src='assets/images/technology.jpg' height="200" width="300" alt="Technology" />
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-6">
