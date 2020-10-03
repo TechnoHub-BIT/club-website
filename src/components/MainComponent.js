@@ -26,16 +26,16 @@ class Main extends Component {
       // <AuthProvider>
       <React.Fragment>
         <Header />
-        <Switch location={this.props.location}>
-          <Route path="/home" component={HomePage} />
-          <Route path="/register" component={Register} />
-          <Route exact path="/members" component={Members} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/aboutus" component={AboutPage} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/contactus" component={() => <Contact />} />
-          <Redirect to="/home" />
-        </Switch>
+        {/* <Switch location={this.props.location}> */}
+        <Route path="/home" component={HomePage} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/members" component={Members} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/aboutus" component={AboutPage} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/contactus" component={() => <Contact />} />
+        <Redirect to="/home" />
+        {/* </Switch> */}
         <Footer />
       </React.Fragment>
       //  </AuthProvider>

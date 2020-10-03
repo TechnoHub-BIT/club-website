@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Register.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { useStateValue } from "../StateProvider";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 function RegisterComponents() {
   const [{ user }, dispatch] = useStateValue();
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const login = (event) => {
     event.preventDefault(); //this stops the refresh!!!
     //do the login logic ...
@@ -29,54 +28,59 @@ function RegisterComponents() {
       .catch((e) => alert(e.message));
   };
 
-  const onSubmit = () => {  
+  const onSubmit = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      console.log(result);
-      dispatch({
-        type: "SET_USER",
-        user: result.user,
-      });
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function (result) {
+        console.log(result);
+        dispatch({
+          type: "SET_USER",
+          user: result.user,
+        });
 
-      const usersRef = db.collection('members').doc(result.user.uid)
+        const usersRef = db.collection("members").doc(result.user.uid);
 
-      usersRef.get()
-        .then((docSnapshot) => {
+        usersRef.get().then((docSnapshot) => {
           if (docSnapshot.exists) {
-              console.log("exists", docSnapshot)
+            console.log("exists", docSnapshot);
           } else {
-          db.collection('members').doc(result.user.uid).set({
-          fullname : result.user.displayName,
-          email: result.user.email,
-          id: 2,
-          branch: 'N/A',
-          semester: 'N/A',
-          member: 'N/A',
-          skills: 'N/A',
-          workshops: 'N/A',
-          interest: 'N/A',
-          payment: false
-        })
+            db.collection("members").doc(result.user.uid).set({
+              fullname: result.user.displayName,
+              email: result.user.email,
+              id: 2,
+              branch: "N/A",
+              semester: "N/A",
+              member: "N/A",
+              skills: "N/A",
+              workshops: "N/A",
+              interest: "N/A",
+              payment: false,
+            });
           }
+        });
+
+        history.push("/profile");
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-
-      history.push("/profile");
-
-    }).catch(function(error) {
-        console.log(error)
-    });
-  }
+  };
 
   const forgotPassword = (event) => {
     event.preventDefault();
 
-    auth.sendPasswordResetEmail(email).then(function() {
-      console.log("email sent", email)
-    }).catch(function(error) {
-      // An error happened.
-      console.log(error);
-    });
-  }
+    auth
+      .sendPasswordResetEmail(email)
+      .then(function () {
+        console.log("email sent", email);
+      })
+      .catch(function (error) {
+        // An error happened.
+        console.log(error);
+      });
+  };
 
   const register = (event) => {
     event.preventDefault(); //this stops the refresh!!!
@@ -85,32 +89,30 @@ function RegisterComponents() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-
         console.log(auth.user);
         dispatch({
           type: "SET_USER",
           user: auth.user,
         });
         // console.log(auth.user.uid)
-        db.collection('members').doc(auth.user.uid).set({
-          fullname : auth.user.displayName,
+        db.collection("members").doc(auth.user.uid).set({
+          fullname: auth.user.displayName,
           email: auth.user.email,
           id: 2,
-          branch: 'N/A',
-          semester: 'N/A',
-          member: 'N/A',
-          skills: 'N/A',
-          workshops: 'N/A',
-          interest: 'N/A',
-          payment: false
-
-        })
+          branch: "N/A",
+          semester: "N/A",
+          member: "N/A",
+          skills: "N/A",
+          workshops: "N/A",
+          interest: "N/A",
+          payment: false,
+        });
         //create a use and loggedin , redirect to homepage
         history.push("/profile");
       })
       .catch((e) => alert(e.message));
   };
-
+  if (user) return <Redirect to="/home" />;
   return (
     <div className="login">
       <Link to="/">
@@ -138,7 +140,13 @@ function RegisterComponents() {
           <button onClick={login} type="submit" className="login_signInButton">
             Sign In
           </button>
-          <button onClick={onSubmit} type="button" className="login_signInButton" >SignIn/SignUp with Google</button>
+          <button
+            onClick={onSubmit}
+            type="button"
+            className="login_signInButton"
+          >
+            SignIn/SignUp with Google
+          </button>
         </form>
         <p>
           By signing-in you agree to TechnoHub Terms and Conditions of Use
