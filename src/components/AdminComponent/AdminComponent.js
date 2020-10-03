@@ -47,6 +47,18 @@ function AdminComponent() {
       });
   };
 
+  // const updatePayment = () => {
+  //   db.collection("members")
+  //     .doc(user.uid)
+  //     .update({
+  //       payment: payment,
+  //     })
+  //     .then(function () {
+  //       console.log("Document successfully updated!");
+  //       handleClose(false);
+  //     });
+  // };
+
   return (
     <div>
       {/* <Container> */}
@@ -71,6 +83,7 @@ function AdminComponent() {
                     <td data-label="Branch">{profile.member}</td>
                     <td data-label="Semester">
                       {profile.payment}
+                      {console.log("\n\n\n" + profile.payment)}
                       <Button variant="primary" onClick={handleShow}>
                         Edit
                       </Button>
@@ -90,7 +103,7 @@ function AdminComponent() {
                         <Modal.Body>
                           Payment :
                           <input
-                            placeholder={profiles.payment}
+                            placeholder={profile.payment ? "true" : "false"}
                             value={payment}
                             onChange={(event) => setPayment(event.target.value)}
                           />
@@ -101,7 +114,7 @@ function AdminComponent() {
                           </Button>
                           <Button
                             variant="primary"
-                            // onClick={console.log(profile.id)}
+                            onClick={() => (profile.payment = !profile.payment)}
                           >
                             Save Changes
                           </Button>
