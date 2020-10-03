@@ -35,7 +35,7 @@ const Profile = () => {
 
   const handleCloseBranch = () => setShowBranch(false);
   const handleShowBranch = () => setShowBranch(true);
-  
+
   const handleCloseSemester = () => setShowSemester(false);
   const handleShowSemester = () => setShowSemester(true);
 
@@ -83,7 +83,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        fullname : fullname
+        fullname: fullname,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -95,7 +95,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        branch : branch
+        branch: branch,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -107,7 +107,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        semester : semester
+        semester: semester,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -119,7 +119,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        member : member
+        member: member,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -131,7 +131,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        skills : skills
+        skills: skills,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -143,7 +143,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        workshops : workshops
+        workshops: workshops,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -155,7 +155,7 @@ const Profile = () => {
     db.collection("members")
       .doc(user.uid)
       .update({
-        interest : interest
+        interest: interest,
       })
       .then(function () {
         console.log("Document successfully updated!");
@@ -185,12 +185,21 @@ const Profile = () => {
           <Col>
             {user && (
               <>
-                <img
-                  src={user.photoURL}
-                  width="100"
-                  height="100"
-                  alt="avatar"
-                />
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    width="100"
+                    height="100"
+                    alt="avatar"
+                  />
+                ) : (
+                  <img
+                    src={"/assets/images/sampleProfile.png"}
+                    width="100"
+                    height="100"
+                  />
+                )}
+
                 <p>{user.displayName}</p>
                 <p>{user.email}</p>
                 <Link href="/home">
@@ -209,182 +218,312 @@ const Profile = () => {
             {user && (
               <>
                 <Card>
-                  <Card.Body>Full Name : {profiles.fullname}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowFullname}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showFullname} onHide={handleCloseFullname} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Full Name : 
-                              <input placeholder={profiles.fullname} value={fullname} onChange={event => setFullname(event.target.value)} />
+                  <Card.Body>
+                    Full Name : {profiles.fullname}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowFullname}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showFullname}
+                      onHide={handleCloseFullname}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Full Name :
+                        <input
+                          placeholder={profiles.fullname}
+                          value={fullname}
+                          onChange={(event) => setFullname(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseFullname}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateFullname}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={handleCloseFullname}
+                        >
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateFullname}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
 
                 <Card>
-                  <Card.Body>Branch : {profiles.branch}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowBranch}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showBranch} onHide={handleCloseBranch} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Branch : 
-                              <input placeholder={profiles.branch} value={branch} onChange={event => setBranch(event.target.value)} />
+                  <Card.Body>
+                    Branch : {profiles.branch}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowBranch}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showBranch}
+                      onHide={handleCloseBranch}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Branch :
+                        <input
+                          placeholder={profiles.branch}
+                          value={branch}
+                          onChange={(event) => setBranch(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseBranch}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateBranch}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseBranch}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateBranch}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>Semester : {profiles.semester}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowSemester}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showSemester} onHide={handleCloseSemester} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Semester : 
-                              <input placeholder={profiles.semester} value={semester} onChange={event => setSemester(event.target.value)} />
+                  <Card.Body>
+                    Semester : {profiles.semester}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowSemester}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showSemester}
+                      onHide={handleCloseSemester}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Semester :
+                        <input
+                          placeholder={profiles.semester}
+                          value={semester}
+                          onChange={(event) => setSemester(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseSemester}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateSemester}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={handleCloseSemester}
+                        >
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateSemester}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>Member : {profiles.member}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowMember}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showMember} onHide={handleCloseMember} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Member : 
-                              <input placeholder={profiles.member} value={member} onChange={event => setMember(event.target.value)} />
+                  <Card.Body>
+                    Member : {profiles.member}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowMember}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showMember}
+                      onHide={handleCloseMember}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Member :
+                        <input
+                          placeholder={profiles.member}
+                          value={member}
+                          onChange={(event) => setMember(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseMember}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateMember}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseMember}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateMember}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>Skills : {profiles.skills}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowSkills}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showSkills} onHide={handleCloseSkills} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Skills : 
-                              <input placeholder={profiles.skills} value={skills} onChange={event => setSkills(event.target.value)} />
+                  <Card.Body>
+                    Skills : {profiles.skills}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowSkills}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showSkills}
+                      onHide={handleCloseSkills}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Skills :
+                        <input
+                          placeholder={profiles.skills}
+                          value={skills}
+                          onChange={(event) => setSkills(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseSkills}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateSkills}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseSkills}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateSkills}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
 
                 {/* <p>Workshops : {profiles.workshops}</p> */}
-                  <Card>
-                  <Card.Body>Workshops : {profiles.workshops}
-                  <Button style={{float : 'right'}} variant="primary" onClick={handleShowWorkshops}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showWorkshops} onHide={handleCloseWorkshops} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>WorkShops : 
-                              <input placeholder={profiles.workshops} value={workshops} onChange={event => setWorkshops(event.target.value)} />
+                <Card>
+                  <Card.Body>
+                    Workshops : {profiles.workshops}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowWorkshops}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showWorkshops}
+                      onHide={handleCloseWorkshops}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        WorkShops :
+                        <input
+                          placeholder={profiles.workshops}
+                          value={workshops}
+                          onChange={(event) => setWorkshops(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseWorkshops}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateWorkshops}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={handleCloseWorkshops}
+                        >
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateWorkshops}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
 
                 {/* <p>Interest : {profiles.interest}</p> */}
                 <Card>
-                  <Card.Body>Interest : {profiles.interest}
-                  <Button style={{textAlign : 'right'}} variant="primary" onClick={handleShowInterest}>
-                    Edit
-                  </Button>
-
-                  <Modal show={showInterest} onHide={handleCloseInterest} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Interest : 
-                              <input placeholder={profiles.interest} value={interest} onChange={event => setInterest(event.target.value)} />
+                  <Card.Body>
+                    Interest : {profiles.interest}
+                    <Button
+                      style={{ float: "right" }}
+                      variant="primary"
+                      onClick={handleShowInterest}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      show={showInterest}
+                      onHide={handleCloseInterest}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                          Updating Profile
+                        </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Interest :
+                        <input
+                          placeholder={profiles.interest}
+                          value={interest}
+                          onChange={(event) => setInterest(event.target.value)}
+                        />
                       </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseInterest}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={updateInterest}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                      </Card.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={handleCloseInterest}
+                        >
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={updateInterest}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Card.Body>
                 </Card>
 
                 <Card>
-                  <Card.Body>{showPayment()}
-                  </Card.Body>
+                  <Card.Body>{showPayment()}</Card.Body>
                 </Card>
               </>
             )}

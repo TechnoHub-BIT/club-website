@@ -4,9 +4,8 @@ import { useEffect } from "react";
 import { db } from "../../firebase";
 import { Row, Col } from "react-bootstrap";
 import "./adminComponent.css";
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
-
 
 function AdminComponent() {
   const [contacts, setContacts] = useState([]);
@@ -23,7 +22,7 @@ function AdminComponent() {
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log(data);
+        // console.log(data);
         setContacts(data);
       });
 
@@ -31,7 +30,7 @@ function AdminComponent() {
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log(data);
+        // console.log(data);
         setProfiles(data);
       });
   }, []);
@@ -40,10 +39,10 @@ function AdminComponent() {
     db.collection("members")
       .doc()
       .update({
-          payment : payment
+        payment: payment,
       })
       .then(function () {
-        console.log("Document successfully updated!");
+        // console.log("Document successfully updated!");
         setShow(false);
       });
   };
@@ -70,23 +69,40 @@ function AdminComponent() {
                     <td data-label="Full Name">{profile.fullname}</td>
                     <td data-label="Email">{profile.email}</td>
                     <td data-label="Branch">{profile.member}</td>
-                    <td data-label="Semester">{profile.payment}
-                    <Button variant="primary" onClick={handleShow}>
+                    <td data-label="Semester">
+                      {profile.payment}
+                      <Button variant="primary" onClick={handleShow}>
                         Edit
                       </Button>
 
-                      <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                      <Modal
+                        show={show}
+                        onHide={handleClose}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                      >
                         <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title-vcenter">Updating Profile</Modal.Title>
+                          <Modal.Title id="contained-modal-title-vcenter">
+                            Updating Profile
+                          </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Payment : 
-                                  <input placeholder={profiles.payment} value={payment} onChange={event => setPayment(event.target.value)} />
-                          </Modal.Body>
+                        <Modal.Body>
+                          Payment :
+                          <input
+                            placeholder={profiles.payment}
+                            value={payment}
+                            onChange={(event) => setPayment(event.target.value)}
+                          />
+                        </Modal.Body>
                         <Modal.Footer>
                           <Button variant="secondary" onClick={handleClose}>
                             Close
                           </Button>
-                          <Button variant="primary" onClick={console.log(profile.id)}>
+                          <Button
+                            variant="primary"
+                            // onClick={console.log(profile.id)}
+                          >
                             Save Changes
                           </Button>
                         </Modal.Footer>

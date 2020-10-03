@@ -1,9 +1,9 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 
-import 'firebase/auth';        // for authentication
+import "firebase/auth"; // for authentication
 // import 'firebase/storage';     // for storage
-import 'firebase/database';    // for realtime database
-import 'firebase/firestore';   // for cloud firestore
+import "firebase/database"; // for realtime database
+import "firebase/firestore"; // for cloud firestore
 // import 'firebase/messaging';   // for cloud messaging
 // import 'firebase/functions';   // for cloud functions
 const firebaseApp = firebase.initializeApp({
@@ -14,16 +14,16 @@ const firebaseApp = firebase.initializeApp({
   storageBucket: "technohub-webtest.appspot.com",
   messagingSenderId: "600542744960",
   appId: "1:600542744960:web:f5f6545506b23781c0b165",
-  measurementId: "G-LJ1HYX8YRP"
+  measurementId: "G-LJ1HYX8YRP",
 });
 
 const auth = firebase.auth();
 const db = firebaseApp.firestore();
 // export default firebaseApp;
-export {auth, firebaseApp,db}; 
+export { auth, firebaseApp, db };
 // =======
 
-// export {auth}; 
+// export {auth};
 
 // export const fireauth = firebase.auth;
 
