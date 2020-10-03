@@ -20,20 +20,4 @@ const firebaseApp = firebase.initializeApp({
 const auth = firebase.auth();
 const db = firebaseApp.firestore();
 // export default firebaseApp;
-<<<<<<< HEAD
 export { auth, firebaseApp, db };
-// =======
-
-// export {auth};
-
-// export const fireauth = firebase.auth;
-
-// const settings = {timestampsInSnapshots: true};
-// firebase.firestore().settings(settings);
-// export const firestore = firebase.firestore();
-
-// export const firebasestore = firebase.firestore;
-// >>>>>>> master
-=======
-export {auth, firebaseApp,db}; 
->>>>>>> 1adacebc963e9b420fc5389427b714c8ac39e1f2

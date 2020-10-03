@@ -3,8 +3,6 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
-
-
   switch (action.type) {
     case "SET_USER":
       return {
@@ -32,12 +30,12 @@ export default reducer;
 //     const [currentUser, setCurrentUser] = useState(null);
 //     const [pending, setPending] = useState(true);
 
-//     useEffect(()=>{
-//         firebaseApp.auth().onAuthStateChanged((user)=>{
-//             setCurrentUser(user)
-//             setPending(false)
-//         });
-//     }, []);
+// useEffect(()=>{
+//     firebaseApp.auth().onAuthStateChanged((user)=>{
+//         setCurrentUser(user)
+//         setPending(false)
+//     });
+// }, []);
 
 //     if(pending){
 //         return <>Loading ... </>

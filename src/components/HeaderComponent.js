@@ -100,15 +100,13 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
               <div className="header-logo">
-              <img
-                src="assets/images/logo.png"
-                height="60"
-                width="100"
-                alt="Technohub"
-              />
+                <img
+                  src="assets/images/logo.png"
+                  height="60"
+                  width="100"
+                  alt="Technohub"
+                />
               </div>
-              
-
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
@@ -134,13 +132,7 @@ class Header extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/admin">
-<<<<<<< HEAD
-                    <div className="nav-btn">
-                      <AdminHeader />
-=======
-                    <div className="nav-btn"><AdminHeader/>
->>>>>>> 1adacebc963e9b420fc5389427b714c8ac39e1f2
-                    </div>
+                    <AdminHeader />
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -182,8 +174,6 @@ class Header extends Component {
             </div>
           </div>
         </Jumbotron>
-<<<<<<< HEAD
-=======
 
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <div className="login-modal">
@@ -225,7 +215,6 @@ class Header extends Component {
             </ModalBody>
           </div>
         </Modal>
->>>>>>> 1adacebc963e9b420fc5389427b714c8ac39e1f2
       </React.Fragment>
     );
   }

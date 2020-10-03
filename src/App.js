@@ -1,18 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import Main from "./components/MainComponent";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
+import { firebaseApp } from "./firebase";
+import { useStateValue } from "./StateProvider";
+const App = () => {
+  const [state, dispatch] = useStateValue();
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Main />
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+  useEffect(() => {
+    firebaseApp.auth().onAuthStateChanged((user) => {
+      dispatch({
+        type: "SET_USER",
+        user: user,
+      });
+    });
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;
