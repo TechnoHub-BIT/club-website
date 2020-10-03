@@ -1,10 +1,58 @@
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
+import FAQ from './FAQ';
 
 
 function Home(props) {
+    const [faqs, setfaqs] = useState([
+        {
+          question: 'Why TechnoHub?',
+          answer: 'In its attempt to provide a national platform for the youth to showcase their talents and skills in aggressive competitions, displaying latest technology and having renowned personalities motivate the youth and providing solutions to various significant problems, TechnoHub endeavors for one and all to get inspired and look up to.',
+          open: true
+        },
+        {
+          question: 'How do I start a new project?',
+          answer: 'If you don,t like any of the current projects that are being worked on in the Club, you can start your own! That is the beauty of TechnoHub, we are here for you. Just approach any coordinator and tell them about your idea. They will help you get funding and publicity so you can recruit others into your crazy robot plot.',
+          open: false
+        },
+        {
+          question: 'What if I don,t know anything about robots?',
+          answer: 'That,s fine! There is no entrance exam or prerequisites. No experience is required.',
+          open: false
+        },
+        {
+            question: 'How many of the robots are built by faculty?',
+            answer: 'Absolutely none of the robots are built by faculty. They are built by a majority of undergraduate students, as well as some graduate students.',
+            open: false
+        },
+        {
+            question: 'How can I become a member?',
+            answer: 'Even if you don,t know much to begin with, you,ll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. Note: If you pay dues that cover only one time investment. ',
+            open: false
+        },
+        {
+            question: 'How is TechnoHub put up?',
+            answer: 'Complete planning and execution of TechnoHub are done by the students of BIT Durg in a five-layer team structure. We greatly rely upon the perception of “Together everyone achieves more”. Every success and failure is shared equally by all of us.Although every facet of TechnoHub is no dear to one coordinator than the other for proper functioning, certain assortments are made within the team. The assortments can be broadly categorised into six sections. Each domain is specialised in its own task. The various groups are Tech Team, Documentation Team, Design Team and Marketing Team. They collaboratively take care of the various happenings and initiatives of TechnoHub. ',
+            open: false
+        }
+      ]);
+    
+      const toggleFAQ = index => {
+        setfaqs(faqs.map((faq, i) => {
+          if (i === index) {
+            faq.open = !faq.open
+          } else {
+            faq.open = false;
+          }
+    
+          return faq;
+        }))
+      }
     return(
+
+
         
      <Fragment>
+         
          <section className="service_part">
          <div className="container">
             <div className="row align-items-center">
@@ -54,7 +102,7 @@ function Home(props) {
                         <div className="services3">
                         <i className="fa fa-graduation-cap "></i>
                         <span className="line"></span>
-                        <h3>Entrepreneurship</h3>
+                        <h4>Entrepreneurship</h4>
                         <p>Develop an entrepreneurial mindset to innovate and create new value with hands-on training and workshops
                                 Get support and mentorship from the TechnoHub network for your ideas and innovations
                                 
@@ -130,9 +178,17 @@ function Home(props) {
      <section className="faq_part">
             <div className="allign"><h2>Frequently Asked Questions</h2><hr /></div>
         <div className="container-fluid">
-            <div className="row">
+
+        <div className="faqs">
+        {faqs.map((faq, i) => (
+          <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
+        ))}
+      </div>
+
+            {/*<div className="row">
                 <div className="col-sm-6 col-md-6">
                     <div className="faq_content">
+                    
                         <div className="accordion">
                             <div className="accordion-item active">
                                 <div className="accordion-header">
@@ -213,7 +269,7 @@ function Home(props) {
                             </div>
                         </div>
                     </div>
-            </div>
+        </div>*/}
         </div>
     </section>
     
