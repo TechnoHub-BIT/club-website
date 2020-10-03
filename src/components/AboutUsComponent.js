@@ -23,7 +23,7 @@ function About(props) {
                              <p>The club provides an ambiance for students to prepare and to showcase their skills at technical events and entrepreneurship held all across India and Asia in various colleges with the aim to add more feathers in the cap. The ultimate goal of the TechnoHub club is to educate more students and make robotics and entrepreneurship an everyday phenomenon.</p>
                            </div>
                             <div className="col-12 col-md-5">
-                                    <img src='assets/images/logo.png' height="200" width="400" alt='Technohub' />
+                                    <img src='assets/images/logo.png' height="150" width="280" alt='Technohub' />
                             </div>
                               <div className="col-12">
                                       <Card>

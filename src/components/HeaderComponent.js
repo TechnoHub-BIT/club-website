@@ -99,12 +99,16 @@ class Header extends Component {
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
+              <div className="header-logo">
               <img
                 src="assets/images/logo.png"
                 height="60"
                 width="100"
                 alt="Technohub"
               />
+              </div>
+              
+
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
@@ -130,8 +134,12 @@ class Header extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/admin">
+<<<<<<< HEAD
                     <div className="nav-btn">
                       <AdminHeader />
+=======
+                    <div className="nav-btn"><AdminHeader/>
+>>>>>>> 1adacebc963e9b420fc5389427b714c8ac39e1f2
                     </div>
                   </NavLink>
                 </NavItem>
@@ -174,6 +182,50 @@ class Header extends Component {
             </div>
           </div>
         </Jumbotron>
+<<<<<<< HEAD
+=======
+
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <div className="login-modal">
+            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+            <ModalBody>
+              <Form onSubmit={this.handleLogin}>
+                <FormGroup>
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    type="text"
+                    id="username"
+                    name="username"
+                    innerRef={(input) => (this.username = input)}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    type="password"
+                    id="password"
+                    name="password"
+                    innerRef={(input) => (this.password = input)}
+                  />
+                </FormGroup>
+                <FormGroup check>
+                  <Label check>
+                    <Input
+                      type="checkbox"
+                      name="remember"
+                      innerRef={(input) => (this.remember = input)}
+                    />
+                    Remember me
+                  </Label>
+                </FormGroup>
+                <Button type="submit" value="submit" color="primary">
+                  Login
+                </Button>
+              </Form>
+            </ModalBody>
+          </div>
+        </Modal>
+>>>>>>> 1adacebc963e9b420fc5389427b714c8ac39e1f2
       </React.Fragment>
     );
   }
