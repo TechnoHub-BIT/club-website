@@ -101,7 +101,7 @@ function About(props) {
                 <h3>Kumar Gaurav</h3>
 
                 <p>
-                  <i class="fa fa-phone"></i>+91-8434986336
+                  <i className="fa fa-phone"></i>+91-8434986336
                 </p>
               </div>
             </div>
@@ -109,75 +109,75 @@ function About(props) {
         </div>
 
         <div className="container">
-          <div class="row">
-            <div class="col-xl-4">
-              <div class="section_tittle">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
                 <h2>Vice President</h2>
                 <br />
               </div>
             </div>
           </div>
-          <div class="row justify-content-around">
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+          <div className="row justify-content-around">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/DSC_0733_3.jpg"
                   alt="Sachet Sabarad"
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Sachet Sabarad</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7722874355
+                    <i className="fa fa-phone"></i>+91-7722874355
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/shub.jpeg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Shubham Agrawal</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7771878241
+                    <i className="fa fa-phone"></i>+91-7771878241
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/harsha.jpeg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Harsha Dubey</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9111258904
+                    <i className="fa fa-phone"></i>+91-9111258904
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/Saisha.jpeg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>T Saisha</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-8085999174
+                    <i className="fa fa-phone"></i>+91-8085999174
                   </p>
                 </div>
               </div>
@@ -185,96 +185,96 @@ function About(props) {
           </div>
         </div>
         <div className="container">
-          <div class="row">
-            <div class="col-xl-4">
-              <div class="section_tittle">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
                 <h2>Our Managers</h2>
                 <br />
               </div>
             </div>
           </div>
-          <div class="row justify-content-around">
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+          <div className="row justify-content-around">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/agney.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Agney Deshkar</h3>
                   <h6>Program Manager</h6>
                   <p>
-                    <i class="fa fa-phone"></i>+91-6261731565
+                    <i className="fa fa-phone"></i>+91-6261731565
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/shubharangshu.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Shubharangshu Chakraborty </h3>
                   <h6>Marketing Manager</h6>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9407762880
+                    <i className="fa fa-phone"></i>+91-9407762880
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/arpit.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Arpit Sahu </h3>
                   <h6>Finance Manager</h6>
                   <p>
-                    <i class="fa fa-phone"></i>+91-8319560199
+                    <i className="fa fa-phone"></i>+91-8319560199
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/Suchi.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Shuchi Agrawal</h3>
                   <h6>Public Relations Manager</h6>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9893010932
+                    <i className="fa fa-phone"></i>+91-9893010932
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/kartikey.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Kartikey Rawat </h3>
                   <h6>Technical Lead</h6>
                   <p>
-                    <i class="fa fa-phone"></i>+91-8839256099
+                    <i className="fa fa-phone"></i>+91-8839256099
                   </p>
                 </div>
               </div>
@@ -283,139 +283,139 @@ function About(props) {
         </div>
 
         <div className="container">
-          <div class="row">
-            <div class="col-xl-4">
-              <div class="section_tittle">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
                 <h2>Our Coordinators</h2>
                 <br />
               </div>
             </div>
           </div>
-          <div class="row justify-content-around">
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+          <div className="row justify-content-around">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/aditya.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Aditya Deshmukh </h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9584913846
+                    <i className="fa fa-phone"></i>+91-9584913846
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/nitesh.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Nitesh Bharti</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7354124249
+                    <i className="fa fa-phone"></i>+91-7354124249
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/abhishek.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Abhishek Agrawal</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-8871637776
+                    <i className="fa fa-phone"></i>+91-8871637776
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/navya.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Navya Singh</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-6264365144
+                    <i className="fa fa-phone"></i>+91-6264365144
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/tanmay.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Tanmay Soni</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9329847520
+                    <i className="fa fa-phone"></i>+91-9329847520
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/shubhangi.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Shubhangi Sharma</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7489488979
+                    <i className="fa fa-phone"></i>+91-7489488979
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/kuldeep.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Kuldeep Patel</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7000728570
+                    <i className="fa fa-phone"></i>+91-7000728570
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
                 <img
                   src="assets/images/aman.jpg"
                   alt=""
                   height="400px"
                   width="350px"
                 />
-                <div class="single_industries_text">
+                <div className="single_industries_text">
                   <h3>Aman Mandal</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7225952566
+                    <i className="fa fa-phone"></i>+91-7225952566
                   </p>
                 </div>
               </div>
@@ -423,51 +423,51 @@ function About(props) {
           </div>
         </div>
         <div className="container">
-          <div class="row">
-            <div class="col-xl-4">
-              <div class="section_tittle">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
                 <h2>Secretary</h2>
                 <br />
               </div>
             </div>
           </div>
-          <div class="row justify-content-around">
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
-                <div class="single_industries_text">
+          <div className="row justify-content-around">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <div className="single_industries_text">
                   <h3>Bipul Biswas</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-9358222648
+                    <i className="fa fa-phone"></i>+91-9358222648
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
-                <div class="single_industries_text">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <div className="single_industries_text">
                   <h3>Anubhav Bhatt</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-8234993336
+                    <i className="fa fa-phone"></i>+91-8234993336
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
-                <div class="single_industries_text">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <div className="single_industries_text">
                   <h3>Anurag Sharma</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7566837132
+                    <i className="fa fa-phone"></i>+91-7566837132
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_industries">
-                <div class="single_industries_text">
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <div className="single_industries_text">
                   <h3>Anubhav Agrawal</h3>
                   <p>
-                    <i class="fa fa-phone"></i>+91-7024880719
+                    <i className="fa fa-phone"></i>+91-7024880719
                   </p>
                 </div>
               </div>

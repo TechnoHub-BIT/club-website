@@ -9,6 +9,8 @@ const App = () => {
 
   useEffect(() => {
     firebaseApp.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      console.log("APP.JS");
       dispatch({
         type: "SET_USER",
         user: user,
