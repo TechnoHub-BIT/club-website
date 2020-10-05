@@ -206,10 +206,23 @@ const Profile = () => {
                   <Button onClick={signOut}>
                     <span className="fa fa-user"></span> Logout{" "}
                   </Button>
-                  {/* <Button onClick={event => db.collection('members').doc(user.uid).delete() && user.delete().then(function() {
-                          console.log("user Deleted")
-                          {signOut()}
-                    })} >Delete Account</Button> */}
+                  <Button
+                    onClick={(event) => {
+                      dispatch({
+                        type: "LOGOUT_USER",
+                      });
+                      db.collection("members").doc(user.uid).delete() &&
+                        user.delete().then(function () {
+                          history.push("/");
+                          console.log("user Deleted");
+                          {
+                            signOut();
+                          }
+                        });
+                    }}
+                  >
+                    Delete Account
+                  </Button>
                 </Link>
               </>
             )}

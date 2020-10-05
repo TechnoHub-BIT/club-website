@@ -29,7 +29,16 @@ function AdminComponent() {
     db.collection("members")
       .get()
       .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
+        const data = querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            uid: doc.id,
+          };
+        });
+        console.warn(data);
+        const userId = querySnapshot.docs.map((doc) => doc.id);
+        // console.log(userId);
+        // setUserids(userId);
         // console.log(data);
         setProfiles(data);
       });
@@ -114,7 +123,17 @@ function AdminComponent() {
                           </Button>
                           <Button
                             variant="primary"
-                            onClick={() => (profile.payment = !profile.payment)}
+                            onClick={() => {
+                              db.collection("members")
+                                .doc(profile.uid)
+                                .update({
+                                  payment: payment,
+                                })
+                                .then(function () {
+                                  console.log("Payment successfully updated!");
+                                  setShow(false);
+                                });
+                            }}
                           >
                             Save Changes
                           </Button>
