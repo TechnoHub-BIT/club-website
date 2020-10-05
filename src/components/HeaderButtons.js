@@ -6,11 +6,13 @@ function HeaderButtons() {
   const [{ user }, dispatch] = useStateValue();
   const [users, setUsers] = useState(null);
   useEffect(() => {
+    console.warn(user);
+
     setUsers(user);
   }, [user]);
   return (
     <span>
-      {user ? (
+      {user != null ? (
         <Link to="/profile">
           <Button outline>
             <span className="fa fa-user">Profile</span>

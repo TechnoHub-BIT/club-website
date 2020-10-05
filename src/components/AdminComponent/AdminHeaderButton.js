@@ -14,7 +14,7 @@ function AdminHeader() {
         .doc(user.uid)
         .onSnapshot(function (doc) {
           console.log("Current data: ", doc.data());
-          doc.data().id == 1 ? setIsAdmin(true) : setIsAdmin(false);
+          doc?.data()?.id == 1 ? setIsAdmin(true) : setIsAdmin(false);
         });
     } else {
       history.push("/register");

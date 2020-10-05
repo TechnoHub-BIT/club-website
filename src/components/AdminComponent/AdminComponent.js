@@ -123,7 +123,17 @@ function AdminComponent() {
                           </Button>
                           <Button
                             variant="primary"
-                            onClick={() => (profile.payment = !profile.payment)}
+                            onClick={() => {
+                              db.collection("members")
+                                .doc(profile.uid)
+                                .update({
+                                  payment: payment,
+                                })
+                                .then(function () {
+                                  console.log("Payment successfully updated!");
+                                  setShow(false);
+                                });
+                            }}
                           >
                             Save Changes
                           </Button>
