@@ -29,7 +29,16 @@ function AdminComponent() {
     db.collection("members")
       .get()
       .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
+        const data = querySnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            uid: doc.id,
+          };
+        });
+        console.warn(data);
+        const userId = querySnapshot.docs.map((doc) => doc.id);
+        // console.log(userId);
+        // setUserids(userId);
         // console.log(data);
         setProfiles(data);
       });
