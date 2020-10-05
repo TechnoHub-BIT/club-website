@@ -55,9 +55,10 @@ function Home(props) {
          
          <section className="service_part">
          <div className="container">
-            <div className="row align-items-center">
+            <div className="row">
+                
                 <div className="col-lg-3 col-sm-6 col-md-6">
-                    <div className="single_service_part">
+                <div className="single_service_part">
                         <div className="services0">
                         <i className="fa fa-microchip "></i>
                         <span className="line"></span>
@@ -67,8 +68,9 @@ function Home(props) {
                         </div>    
                     </div>
                 </div>
+                    
                 <div className="col-lg-3 col-sm-6 col-md-6">
-                    <div className="single_service_part">
+                <div className="single_service_part">
                         <div className="services1">
                         <i className="fa fa-wrench"></i>
                         <span className="line"></span>
@@ -80,6 +82,7 @@ function Home(props) {
                         
                     </div>
                 </div>
+                
                 <div className="col-lg-3 col-sm-6 col-md-6">
                     <div className="single_service_part">
                         <div className="services2">
@@ -111,6 +114,7 @@ function Home(props) {
                         
                     </div>
                 </div>
+                    
             </div>
         </div>
          </section>
@@ -168,15 +172,10 @@ function Home(props) {
         </div>
     </section>
    
-    {/*<!-- about part start-->
-
-    <!--::industries start::-->
-   
-    <!--::industries end::-->
-
-    <!--::industries start::-->*/}
+    
      <section className="faq_part">
-            <div className="allign"><h2>Frequently Asked Questions</h2><hr /></div>
+         <div className="container">
+         <div className="allign"><h2>Frequently Asked Questions</h2><hr /></div>
         <div className="container-fluid">
 
         <div className="faqs">
@@ -184,93 +183,9 @@ function Home(props) {
           <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
         ))}
       </div>
-
-            {/*<div className="row">
-                <div className="col-sm-6 col-md-6">
-                    <div className="faq_content">
-                    
-                        <div className="accordion">
-                            <div className="accordion-item active">
-                                <div className="accordion-header">
-                                    <h2>Why TechnoHub?</h2>
-                                </div>
-                                <div className="accordion-body">
-                                    <p>In its attempt to provide a national platform for the youth to showcase their talents and skills in aggressive competitions, displaying latest technology and having renowned personalities motivate the youth and providing solutions to various significant problems, TechnoHub endeavors for one and all to get inspired and look up to.
-
-                                        </p>
-                                </div>
-                            </div>
-                            <div className="accordion-item">
-                                <div className="accordion-header">
-                                    <h2>How do I start a new project?
-                                        </h2>
-                                </div>
-                                <div className="accordion-body">
-                                    <p>If you don't like any of the current projects that are being worked on in the Club, you can start your own! That is the beauty of TechnoHub, we are here for you. Just approach any coordinator and tell them about your idea. They will help you get funding and publicity so you can recruit others into your crazy robot plot.
-                                        </p>
-                                </div>
-                            </div>
-                            <div className="accordion-item">
-                                <div className="accordion-header">
-                                    <h2>What if I don't know anything about robots?
-                                        </h2>
-                                </div>
-                                <div className="accordion-body">
-                                    <p>That's fine! There is no entrance exam or prerequisites. No experience is required.
-                                        </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-6">
-                        <div className="faq_content">
-                            <div className="accordion">
-                                <div className="accordion-item active">
-                                    <div className="accordion-header">
-                                        <h2>How many of the robots are built by faculty?
-                                            </h2>
-                                    </div>
-                                    <div className="accordion-body">
-                                        <p>Absolutely none of the robots are built by faculty. They are built by a majority of undergraduate students, as well as some graduate students.
-
-                                            </p>
-                                    </div>
-                                </div>
-                                <div className="accordion-item">
-                                    <div className="accordion-header">
-                                        <h2>How can I become a member?
-                                            </h2>
-                                    </div>
-                                    <div className="accordion-body">
-                                        <p>Even if you don't know much to begin with, you'll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. 
-                                                
-                                            Note: If you pay dues that cover only one time investment. 
-                                                </p>
-                                    </div>
-                                </div>
-                                <div className="accordion-item">
-                                    <div className="accordion-header">
-                                        <h2>How is TechnoHub put up?
-
-                                            </h2>
-                                    </div>
-                                    <div className="accordion-body">
-                                        <p>
-                                                Complete planning and execution of TechnoHub are done by the students of BIT Durg in a five-layer team structure. We greatly rely upon the perception of “Together everyone achieves more”. Every success and failure is shared equally by all of us.
-                                                
-                                                 Although every facet of TechnoHub is no dear to one coordinator than the other for proper functioning, certain assortments are made within the team. The assortments can be broadly categorised into six sections. Each domain is specialised in its own task. The various groups are Tech Team, Documentation Team, Design Team and Marketing Team.
-                                                 They collaboratively take care of the various happenings and initiatives of TechnoHub. 
-                                                
-                                                
-                                            </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        </div>*/}
         </div>
+         </div>
+            
     </section>
     
     {/* <!--::industries end::-->

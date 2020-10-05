@@ -11,7 +11,7 @@
     "cross-fetch": "^3.0.6",
     "emailjs": "^3.3.0",
     "emailjs-com": "^2.6.3",
-    "firebase": "^7.18.0",
+    "firebase": "^7.22.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",

@@ -17,9 +17,9 @@
   padding: 20px 0px 20px 0px;
 }
 .jumbotron {
-  padding:180px 30px 70px 30px;
+  padding:180px 0px 70px 0px;
   margin:0px auto;
-  background-image: url(./img/faq.jpeg);
+  background-image: url(./img/faq.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -48,7 +48,8 @@ address{
 }
 .nav-btn {
   color: black;
-  padding: 20px 30px 20px 30px;
+  margin: 0px 10px 0px 10px;
+  padding: 20px 10px 20px 10px;
 }
 .navbar-toggler {
   background: #b6b6b6;
@@ -58,9 +59,6 @@ address{
   text-decoration: none;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Barlow Condensed", sans-serif;
 }
 .banner_text_iner {
   color: antiquewhite;;
@@ -125,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .single_service_part {
-  margin: 0px 10px 0px 10px;
+  margin: 10px 10px 10px 10px;
   font-weight: 300;
   text-align: center;
   -webkit-transition: 1s;
@@ -184,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 60px;
 }
 .faq_part {
-  padding: 40px 80px 40px 80px;
+  padding: 40px 0px 40px 0px;
   color: #000000;
 }
 
@@ -201,23 +199,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .services0 {
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 10px 20px;
 }
 
 .services1 {
-  padding: 5px 5px 5px 5px;
+  padding: 10px 5px 0px 5px;
 }
 
 .services2 {
-  padding: 15px 10px 15px 15px;
+  padding: 20px 13px 10px 13px;
+}
+
+.btn-primary {
+  margin-right: 50px;
 }
 
 .services3 {
-  padding: 30px 5px 20px 5px;
+  padding: 20px 15px 10px 15px;
 }
 
 .header-logo {
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .footer_img {
@@ -243,11 +245,10 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	max-width: 768px;
 	margin: 0 auto;
-	padding: 15px;
 }
 
 .faqs .faq {
-	margin: 15px;
+	margin: 15px 5px 15px 5px;
 	padding: 15px;
 	background-color: #FFF;
 	border-radius: 8px;
