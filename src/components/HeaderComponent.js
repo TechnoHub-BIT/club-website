@@ -20,6 +20,7 @@ import { NavLink } from "react-router-dom";
 import { firebaseApp } from "../firebase";
 import HeaderButtons from "./HeaderButtons";
 import AdminHeader from "./AdminComponent/AdminHeaderButton";
+import "../styles/HeaderComponent.css"
 
 class Header extends Component {
   constructor(props) {
@@ -109,9 +110,9 @@ class Header extends Component {
               </div>
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav onClick={this.toggleNav} navbar>
+              <Nav navbar>
                 <NavItem>
-                  <NavLink className="nav-link" to="/home">
+                  <NavLink onClick={this.toggleNav} className="nav-link" to="/home">
                     <div className="nav-btn">Home</div>{" "}
                   </NavLink>
                 </NavItem>

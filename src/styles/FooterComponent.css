@@ -1,0 +1,31 @@
+.footer{
+    background-color: #000f52;
+    color: whitesmoke;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+
+.footer_img {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  .single_footer_img {
+    margin: 5px 5px 5px 5px;
+    transition: transform 450ms;
+  }
+  
+  .single_footer_img:hover {
+    transform: scale(3);
+  }
+  
+  .footer-list {
+    margin-left: 20px;
+  }

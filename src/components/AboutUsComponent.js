@@ -1,7 +1,7 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem, Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
-import styles from "./aboutStyles.module.css";
+import styles from "../styles/aboutStyles.module.css";
 
 function About(props) {
   return (

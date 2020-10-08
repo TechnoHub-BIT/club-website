@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import photos from '../img/footer_img/randomName1.jpeg';
+import "../styles/FooterComponent.css"
 
 function Footer(props) {
     return(

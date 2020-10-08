@@ -13,6 +13,11 @@ code {
 }
 
 @font-face {
+  font-family: 'themify';
+  src: local('themify'), url('./fonts/themify.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Flaticon';
   src: local('Flaticon'), url('./fonts/Flaticon.ttf') format('truetype');
 }
