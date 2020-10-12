@@ -58,7 +58,7 @@ function Footer(props) {
                         <p id="fc">TechnoHub, Bhilai Institute of Technology, Durg, Chhattisgarh 491001</p>
                         <div className="footer-list">
                         <ul>
-                            <li><a href="#somethingtoremovewarning"><i className="ti-mobile"></i>+91-7722874355</a></li>
+                            <li><i className="ti-mobile"></i>+91-7722874355</li>
                             <li><a href="mailto:bit.technohub@gmail.com? subject=subject text">bit.technohub@gmail.com</a></li>
                             <li><a href="https://www.instagram.com/bit.technohub/">Follow Us On Instagram</a></li>
                         </ul>

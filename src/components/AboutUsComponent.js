@@ -91,17 +91,17 @@ function About(props) {
             </div>
             <div className="col-lg-4 col-sm-6">
               <img
-                src="assets/images/gaurav.jpeg"
-                alt=""
+                src="assets/images/DSC_0733_3.jpg"
+                alt="Sachet Sabarad"
                 height="400px"
                 width="350px"
               />
 
               <div className="single_industries_text">
-                <h3>Kumar Gaurav</h3>
+                <h3>Sachet Sabarad</h3>
 
                 <p>
-                  <i className="fa fa-phone"></i>+91-8434986336
+                  <i className="fa fa-phone"></i>+91-7722874355
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ function About(props) {
             </div>
           </div>
           <div className="row justify-content-around">
-            <div className="col-lg-4 col-sm-6">
+            {/* <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
                   src="assets/images/DSC_0733_3.jpg"
@@ -133,7 +133,7 @@ function About(props) {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
@@ -166,7 +166,7 @@ function About(props) {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-sm-6">
+            {/* <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
                   src="assets/images/Saisha.jpeg"
@@ -181,14 +181,111 @@ function About(props) {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
+        {/* General Manager Start */}
         <div className="container">
           <div className="row">
             <div className="col-xl-4">
               <div className="section_tittle">
-                <h2>Our Managers</h2>
+                <h2>General Manager</h2>
+                <br />
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-around">
+            {/* <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <img
+                  src="assets/images/DSC_0733_3.jpg"
+                  alt="Sachet Sabarad"
+                  height="400px"
+                  width="350px"
+                />
+                <div className="single_industries_text">
+                  <h3>Sachet Sabarad</h3>
+                  <p>
+                    <i className="fa fa-phone"></i>+91-7722874355
+                  </p>
+                </div>
+              </div>
+            </div> */}
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <img
+                  src="assets/images/nir.jpeg"
+                  alt="Nirbhay Kumar"
+                  height="400px"
+                  width="350px"
+                />
+                <div className="single_industries_text">
+                  <h3>Nirbhay Kumar</h3>
+                  <p>
+                    <i className="fa fa-phone"></i>+91-8210886680
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <img
+                  src="assets/images/Saisha.jpeg"
+                  alt="T Saisha"
+                  height="400px"
+                  width="350px"
+                />
+                <div className="single_industries_text">
+                  <h3>T Saisha</h3>
+                  <p>
+                    <i className="fa fa-phone"></i>+91-8085999174
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <img
+                  src="assets/images/Darshita1.jpeg"
+                  alt="Darshita Mahaski"
+                  height="400px"
+                  width="350px"
+                />
+                <div className="single_industries_text">
+                  <h3>Darshita Mahaski</h3>
+                  <p>
+                    <i className="fa fa-phone"></i>+91-7999766849
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-sm-6">
+              <div className="single_industries">
+                <img
+                  src="assets/images/rishabh.jpeg"
+                  alt="Rishabh Deshmukh"
+                  height="400px"
+                  width="350px"
+                />
+                <div className="single_industries_text">
+                  <h3>Rishabh Deshmukh</h3>
+                  <p>
+                    <i className="fa fa-phone"></i>+91-9057316055
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* General Manager End */}
+
+
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
+                <h2>Program Manager</h2>
                 <br />
               </div>
             </div>
@@ -204,13 +301,27 @@ function About(props) {
                 />
                 <div className="single_industries_text">
                   <h3>Agney Deshkar</h3>
-                  <h6>Program Manager</h6>
+                  {/* <h6>Program Manager</h6> */}
                   <p>
                     <i className="fa fa-phone"></i>+91-6261731565
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+{/* Project Managers start */}
+<div className="container">
+          <div className="row">
+            <div className="col-xl-4">
+              <div className="section_tittle">
+                <h2>Project Managers</h2>
+                <br />
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-around">
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
@@ -281,12 +392,12 @@ function About(props) {
             </div>
           </div>
         </div>
-
+{/* Project Managers End */}
         <div className="container">
           <div className="row">
             <div className="col-xl-4">
               <div className="section_tittle">
-                <h2>Our Coordinators</h2>
+                <h2>Coordinators</h2>
                 <br />
               </div>
             </div>

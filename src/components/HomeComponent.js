@@ -251,11 +251,11 @@ function Home(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="card see_more_project">
+                        {/* <div className="card see_more_project">
                             <blockquote className="blockquote1">
                                 <a href="#somethingtoremovewarning" className="btn_1">more project</a>
                             </blockquote>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
