@@ -5,10 +5,10 @@ import Header from "./HeaderComponent";
 import Contact from "./ContactComponents";
 import Footer from "./FooterComponent";
 import Register from "./RegisterComponents";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Members from "./MembersComponent";
 import Profile from "./ProfileComponent";
-import { AuthProvider } from "../Auth";
+// import { AuthProvider } from "../Auth";
 // import PrivateRoute from "../PrivateRoute";
 import Admin from "./AdminComponent/AdminComponent";
 

@@ -13,7 +13,6 @@ function AdminHeader() {
       db.collection("members")
         .doc(user.uid)
         .onSnapshot(function (doc) {
-          console.log("Current data: ", doc.data());
           doc?.data()?.id == 1 ? setIsAdmin(true) : setIsAdmin(false);
         });
     } else {

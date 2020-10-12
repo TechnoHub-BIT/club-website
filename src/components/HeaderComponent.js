@@ -8,19 +8,12 @@ import {
   NavItem,
   Jumbotron,
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Input,
-  Label,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { firebaseApp } from "../firebase";
 import HeaderButtons from "./HeaderButtons";
 import AdminHeader from "./AdminComponent/AdminHeaderButton";
-import "../styles/HeaderComponent.css"
+import "../styles/HeaderComponent.css";
 
 class Header extends Component {
   constructor(props) {
@@ -31,24 +24,12 @@ class Header extends Component {
       isModalOpen: false,
       isLoggedIn: false,
       isAdmin: false,
-      //   user: null
     };
-
-    // this.ifLoginClicked = this.ifLoginClicked.bind(this);
-    // this.ifLogoutClicked = this.ifLogoutClicked.bind(this);
 
     this.toggleNav = this.toggleNav.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
-
-  // ifLoginClicked() {
-  //   this.setState({ isLoggedIn: true });
-  // }
-
-  // ifLogoutClicked() {
-  //   this.setState({ isLoggedIn: false });
-  // }
 
   toggleNav() {
     this.setState({
@@ -112,7 +93,11 @@ class Header extends Component {
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem>
-                  <NavLink onClick={this.toggleNav} className="nav-link" to="/home">
+                  <NavLink
+                    onClick={this.toggleNav}
+                    className="nav-link"
+                    to="/home"
+                  >
                     <div className="nav-btn">Home</div>{" "}
                   </NavLink>
                 </NavItem>
@@ -139,18 +124,7 @@ class Header extends Component {
               </Nav>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  {/* <Message isLoggedIn = {this.state.isLoggedIn}/>  */}
-
-                  {/* { 
-                                        (this.state.isLoggedIn)?( 
-                                        <Logout clickFunc = {this.ifLogoutClicked} /> 
-                                        ) : ( 
-                                        <Login clickFunc = {this.ifLoginClicked} /> 
-                                        ) 
-                                    }  */}
                   <HeaderButtons />
-                  {/* <Button outline href="/profile"><span className="fa fa-user"></span> Profile </Button>  */}
-                  {/* <Button onClick={()=>firebaseApp.auth().signOut()} href="/home"><span className="fa fa-user"></span> Logout </Button> */}
                 </NavItem>
               </Nav>
             </Collapse>
@@ -175,47 +149,6 @@ class Header extends Component {
             </div>
           </div>
         </Jumbotron>
-
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <div className="login-modal">
-            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-            <ModalBody>
-              <Form onSubmit={this.handleLogin}>
-                <FormGroup>
-                  <Label htmlFor="username">Username</Label>
-                  <Input
-                    type="text"
-                    id="username"
-                    name="username"
-                    innerRef={(input) => (this.username = input)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    type="password"
-                    id="password"
-                    name="password"
-                    innerRef={(input) => (this.password = input)}
-                  />
-                </FormGroup>
-                <FormGroup check>
-                  <Label check>
-                    <Input
-                      type="checkbox"
-                      name="remember"
-                      innerRef={(input) => (this.remember = input)}
-                    />
-                    Remember me
-                  </Label>
-                </FormGroup>
-                <Button type="submit" value="submit" color="primary">
-                  Login
-                </Button>
-              </Form>
-            </ModalBody>
-          </div>
-        </Modal>
       </React.Fragment>
     );
   }

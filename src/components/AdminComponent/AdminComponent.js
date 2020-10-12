@@ -35,38 +35,10 @@ function AdminComponent() {
             uid: doc.id,
           };
         });
-        console.warn(data);
-        const userId = querySnapshot.docs.map((doc) => doc.id);
-        // console.log(userId);
-        // setUserids(userId);
-        // console.log(data);
+
         setProfiles(data);
       });
   }, []);
-
-  const UpdateDetails = () => {
-    db.collection("members")
-      .doc()
-      .update({
-        payment: payment,
-      })
-      .then(function () {
-        // console.log("Document successfully updated!");
-        setShow(false);
-      });
-  };
-
-  // const updatePayment = () => {
-  //   db.collection("members")
-  //     .doc(user.uid)
-  //     .update({
-  //       payment: payment,
-  //     })
-  //     .then(function () {
-  //       console.log("Document successfully updated!");
-  //       handleClose(false);
-  //     });
-  // };
 
   return (
     <div>
@@ -91,8 +63,8 @@ function AdminComponent() {
                     <td data-label="Email">{profile.email}</td>
                     <td data-label="Branch">{profile.member}</td>
                     <td data-label="Semester">
-                      {profile.payment}
-                      {console.log("\n\n\n" + profile.payment)}
+                      {profile.payment ? "true " : "false "}
+                      {/* {console.log("\n\n\n" + profile.payment)} */}
                       <Button variant="primary" onClick={handleShow}>
                         Edit
                       </Button>
@@ -124,6 +96,7 @@ function AdminComponent() {
                           <Button
                             variant="primary"
                             onClick={() => {
+                              console.log(profile.uid);
                               db.collection("members")
                                 .doc(profile.uid)
                                 .update({
