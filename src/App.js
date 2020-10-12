@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { firebaseApp } from "./firebase";
 import { useStateValue } from "./StateProvider";
 const App = () => {
-  const [state, dispatch] = useStateValue();
+  // const [state, dispatch] = useStateValue();
 
   // useEffect(() => {
   //   firebaseApp.auth().onAuthStateChanged((user) => {

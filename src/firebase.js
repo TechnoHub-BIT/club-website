@@ -7,14 +7,14 @@ import "firebase/firestore"; // for cloud firestore
 // import 'firebase/messaging';   // for cloud messaging
 // import 'firebase/functions';   // for cloud functions
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyCDFpw7Je6RcwkcugyLeeGuQ9W_9XQOaoY",
-  authDomain: "technohub-webtest.firebaseapp.com",
-  databaseURL: "https://technohub-webtest.firebaseio.com",
-  projectId: "technohub-webtest",
-  storageBucket: "technohub-webtest.appspot.com",
-  messagingSenderId: "600542744960",
-  appId: "1:600542744960:web:f5f6545506b23781c0b165",
-  measurementId: "G-LJ1HYX8YRP",
+  apiKey: "AIzaSyDHtL3pN1p8KzvI24Bp40YUpHR4uKs3PGw",
+  authDomain: "technohub-web.firebaseapp.com",
+  databaseURL: "https://technohub-web.firebaseio.com",
+  projectId: "technohub-web",
+  storageBucket: "technohub-web.appspot.com",
+  messagingSenderId: "112818585976",
+  appId: "1:112818585976:web:5016a114ee83613709c88d",
+  measurementId: "G-0QLV7TLK08"
 });
 
 const auth = firebase.auth();

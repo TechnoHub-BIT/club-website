@@ -9,7 +9,7 @@ import {
   Jumbotron,
   Button,
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { firebaseApp } from "../firebase";
 import HeaderButtons from "./HeaderButtons";
 import AdminHeader from "./AdminComponent/AdminHeaderButton";
@@ -80,7 +80,7 @@ class Header extends Component {
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto" href="/">
+            <NavbarBrand className="mr-auto" href="/home">
               <div className="header-logo">
                 <img
                   src="assets/images/logo.png"
@@ -112,21 +112,21 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className="nav-link" to="/members">
-                    <div className="nav-btn">Members</div>
-                  </NavLink>
+                  <Link className="nav-link" onClick={()=> window.open("https://technoquiz.herokuapp.com/", "_blank")}>
+                    <div className="nav-btn">Aptitude</div>
+                  </Link>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink className="nav-link" to="/admin">
                     <AdminHeader />
-                  </NavLink>
-                </NavItem>
+                  </NavLink> */}
+                {/* </NavItem> */}
               </Nav>
-              <Nav className="ml-auto" navbar>
+              {/* <Nav className="ml-auto" navbar>
                 <NavItem>
                   <HeaderButtons />
                 </NavItem>
-              </Nav>
+              </Nav> */}
             </Collapse>
           </div>
         </Navbar>

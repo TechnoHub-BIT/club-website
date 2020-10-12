@@ -12,7 +12,7 @@ import './fonts/Flaticon.ttf'
 
 ReactDOM.render(
   <React.StrictMode>
-          <StateProvider reducer={reducer} initialState={initialState}>
+          <StateProvider>
           <App />
     </StateProvider>
 
