@@ -1,8 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import FAQ from './FAQ';
 import "./HomeComponent.css"
-
-
+import Header from '../HeaderComponents/HeaderComponent';
 function Home(props) {
     const [faqs, setfaqs] = useState([
         {
@@ -50,10 +49,10 @@ function Home(props) {
       }
     return(
 
-
         
      <Fragment>
-         
+         <Header/>
+      
          <section className="service_part">
          <div className="container">
             <div className="row">

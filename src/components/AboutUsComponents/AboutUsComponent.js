@@ -1,12 +1,13 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem, Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
-import styles from "./aboutStyles.module.css";
+import "./AboutUsStyles.css";
 
 function About(props) {
   return (
     <React.Fragment>
-      <div className={styles.mainContainer}>
+      {/* <NavbarPage/> */}
+      <div className="aboutus-container">
         <div className="container">
           <div className="row">
             <Breadcrumb>

@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import ContactUs from './ContactUsComponents';
-
+import './ContactUsStyles.css'
+// import NavbarPage from '../HeaderComponents/NavbarComponents/NavbarComponent'
 class Contact extends Component {
 
     render() {
       
     return(
-        <div className="container">
+
+        <div className="contactus-container">
+            <div className="container" >
+
+        {/* <NavbarPage/> */}
             <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
@@ -53,6 +58,8 @@ class Contact extends Component {
                 </div>
 
         </div>
+        </div>
+
     );
 }
 }

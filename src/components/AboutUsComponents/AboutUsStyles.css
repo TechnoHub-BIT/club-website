@@ -1,0 +1,8 @@
+img {
+  object-fit: cover;
+  object-position: top;
+}
+
+.aboutus-container {
+  padding-top: 110px;
+}
