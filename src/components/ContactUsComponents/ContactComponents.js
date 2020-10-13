@@ -3,9 +3,15 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import ContactUs from './ContactUsComponents';
 import './ContactUsStyles.css'
+import MapIframe from './MapIFrame';
 // import NavbarPage from '../HeaderComponents/NavbarComponents/NavbarComponent'
 class Contact extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.949613255931!2d81.29698091542912!3d21.1941604874859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a293cf9cb28d18f%3A0x88523ddfbff6ee3f!2sBhilai%20Institute%20of%20Technology%20Durg!5e0!3m2!1sen!2sin!4v1602619858016!5m2!1sen!2sin'
+        };
+    }
     render() {
       
     return(
@@ -42,7 +48,7 @@ class Contact extends Component {
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
                     <h5>Map of our Location</h5>
-                    <img src='assets/images/sitmap.png' height="150" width="280" alt='SiteMap' />
+                    <MapIframe source={this.state.src} />
                      
                 </div>
                 <div className="col-12 col-sm-11 offset-sm-1">
