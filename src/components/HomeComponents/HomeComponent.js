@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import FAQ from './FAQ';
-import "../styles/HomeComponent.css"
+import "./HomeComponent.css"
 
 
 function Home(props) {
@@ -181,7 +181,7 @@ function Home(props) {
 
         <div className="faqs">
         {faqs.map((faq, i) => (
-          <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
+          <FAQ faq={faq} key={i} index={i} toggleFAQ={toggleFAQ} />
         ))}
       </div>
         </div>
@@ -282,7 +282,7 @@ function Home(props) {
                     <div className="single_catagory_post post_2">
                         <div className="category_post_img">
                             <img src='assets/images/drdo.png' alt="" />
-                            <a href="https://www.instagram.com/tv/Bz4E9XLB2kc/" className="category_btn">DRDO</a>
+                            {/* <a href="https://www.instagram.com/tv/Bz4E9XLB2kc/" className="category_btn">DRDO</a> */}
                         </div>
                         <div className="post_text_1 pr_30">
                             <p><span></span> July 14 , 2019 </p>
@@ -302,7 +302,7 @@ function Home(props) {
                     <div className="single_catagory_post post_2">
                         <div className="category_post_img">
                             <img src='assets/images/bsnl.png' height="220" width="200" alt="" />
-                            <a href="https://www.instagram.com/tv/B0DyRXTBvN5/" className="category_btn">BSNL</a>
+                            {/* <a href="https://www.instagram.com/tv/B0DyRXTBvN5/" className="category_btn">BSNL</a> */}
                         </div>
                         <div className="post_text_1 pr_30">
                             <p><span></span> July 18 , 2019</p>
@@ -322,7 +322,7 @@ function Home(props) {
                     <div className="single_catagory_post post_2">
                         <div className="category_post_img">
                             <img src='assets/images/proje.jpeg' height="220" width="250" alt="" />
-                            <a href="https://www.instagram.com/p/Bvx608Og9xj/" className="category_btn">Tech Expo</a>
+                            {/* <a href="https://www.instagram.com/p/Bvx608Og9xj/" className="category_btn">Tech Expo</a> */}
                         </div>
                         <div className="post_text_1 pr_30">
                             <p><span></span> April 03 , 2019</p>

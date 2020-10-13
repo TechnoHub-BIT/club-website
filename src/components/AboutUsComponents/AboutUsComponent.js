@@ -1,7 +1,7 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem, Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
-import styles from "../styles/aboutStyles.module.css";
+import styles from "./aboutStyles.module.css";
 
 function About(props) {
   return (
@@ -70,7 +70,7 @@ function About(props) {
             </div>
             <div className="col-lg-4 col-sm-6">
               <img
-                src="assets/images/DSC_2055.jpg"
+                src="assets/images/aboutus_img/DSC_2055.jpg"
                 alt=""
                 height="400px"
                 width="350px"
@@ -91,7 +91,7 @@ function About(props) {
             </div>
             <div className="col-lg-4 col-sm-6">
               <img
-                src="assets/images/DSC_0733_3.jpg"
+                src="assets/images/aboutus_img/DSC_0733_3.jpg"
                 alt="Sachet Sabarad"
                 height="400px"
                 width="350px"
@@ -118,27 +118,11 @@ function About(props) {
             </div>
           </div>
           <div className="row justify-content-around">
-            {/* <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <img
-                  src="assets/images/DSC_0733_3.jpg"
-                  alt="Sachet Sabarad"
-                  height="400px"
-                  width="350px"
-                />
-                <div className="single_industries_text">
-                  <h3>Sachet Sabarad</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-7722874355
-                  </p>
-                </div>
-              </div>
-            </div> */}
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/shub.jpeg"
-                  alt=""
+                  src="assets/images/aboutus_img/shub.jpeg"
+                  alt="Shubham Agrawal"
                   height="400px"
                   width="350px"
                 />
@@ -153,8 +137,8 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/harsha.jpeg"
-                  alt=""
+                  src="assets/images/aboutus_img/harsha.jpeg"
+                  alt="Harsha Dubey"
                   height="400px"
                   width="350px"
                 />
@@ -166,22 +150,6 @@ function About(props) {
                 </div>
               </div>
             </div>
-            {/* <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <img
-                  src="assets/images/Saisha.jpeg"
-                  alt=""
-                  height="400px"
-                  width="350px"
-                />
-                <div className="single_industries_text">
-                  <h3>T Saisha</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-8085999174
-                  </p>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
         {/* General Manager Start */}
@@ -195,26 +163,10 @@ function About(props) {
             </div>
           </div>
           <div className="row justify-content-around">
-            {/* <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <img
-                  src="assets/images/DSC_0733_3.jpg"
-                  alt="Sachet Sabarad"
-                  height="400px"
-                  width="350px"
-                />
-                <div className="single_industries_text">
-                  <h3>Sachet Sabarad</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-7722874355
-                  </p>
-                </div>
-              </div>
-            </div> */}
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/nir.jpeg"
+                  src="assets/images/aboutus_img/nir.jpeg"
                   alt="Nirbhay Kumar"
                   height="400px"
                   width="350px"
@@ -231,7 +183,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/Saisha.jpeg"
+                  src="assets/images/aboutus_img/Saisha.jpeg"
                   alt="T Saisha"
                   height="400px"
                   width="350px"
@@ -247,7 +199,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/Darshita1.jpeg"
+                  src="assets/images/aboutus_img/Darshita1.jpeg"
                   alt="Darshita Mahaski"
                   height="400px"
                   width="350px"
@@ -263,7 +215,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/rishabh.jpeg"
+                  src="assets/images/aboutus_img/rishabh.jpeg"
                   alt="Rishabh Deshmukh"
                   height="400px"
                   width="350px"
@@ -294,14 +246,14 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/agney.jpg"
-                  alt=""
+                  src="assets/images/aboutus_img/agney.jpg"
+                  alt="Agney Deshkar"
                   height="400px"
                   width="350px"
                 />
                 <div className="single_industries_text">
                   <h3>Agney Deshkar</h3>
-                  {/* <h6>Program Manager</h6> */}
+                  
                   <p>
                     <i className="fa fa-phone"></i>+91-6261731565
                   </p>
@@ -325,8 +277,8 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/shubharangshu.jpg"
-                  alt=""
+                  src="assets/images/aboutus_img/shubharangshu.jpg"
+                  alt="Shubharangshu"
                   height="400px"
                   width="350px"
                 />
@@ -342,8 +294,8 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/arpit.jpg"
-                  alt=""
+                  src="assets/images/aboutus_img/arpit.jpg"
+                  alt="Arpit Sahu"
                   height="400px"
                   width="350px"
                 />
@@ -359,8 +311,8 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/Suchi.jpg"
-                  alt=""
+                  src="assets/images/aboutus_img/Suchi.jpg"
+                  alt="Shuchi Agrawal"
                   height="400px"
                   width="350px"
                 />
@@ -376,7 +328,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/kartikey.jpg"
+                  src="assets/images/aboutus_img/kartikey.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -406,7 +358,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/aditya.jpg"
+                  src="assets/images/aboutus_img/aditya.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -422,7 +374,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/nitesh.jpg"
+                  src="assets/images/aboutus_img/nitesh.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -438,7 +390,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/abhishek.jpg"
+                  src="assets/images/aboutus_img/abhishek.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -454,7 +406,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/navya.jpg"
+                  src="assets/images/aboutus_img/navya.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -470,7 +422,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/tanmay.jpg"
+                  src="assets/images/aboutus_img/tanmay.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -486,7 +438,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/shubhangi.jpg"
+                  src="assets/images/aboutus_img/shubhangi.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -502,7 +454,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/kuldeep.jpg"
+                  src="assets/images/aboutus_img/kuldeep.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -518,7 +470,7 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <div className="single_industries">
                 <img
-                  src="assets/images/aman.jpg"
+                  src="assets/images/aboutus_img/aman.jpg"
                   alt=""
                   height="400px"
                   width="350px"
@@ -527,58 +479,6 @@ function About(props) {
                   <h3>Aman Mandal</h3>
                   <p>
                     <i className="fa fa-phone"></i>+91-7225952566
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-4">
-              <div className="section_tittle">
-                <h2>Secretary</h2>
-                <br />
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-around">
-            <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <div className="single_industries_text">
-                  <h3>Bipul Biswas</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-9358222648
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <div className="single_industries_text">
-                  <h3>Anubhav Bhatt</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-8234993336
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <div className="single_industries_text">
-                  <h3>Anurag Sharma</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-7566837132
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-sm-6">
-              <div className="single_industries">
-                <div className="single_industries_text">
-                  <h3>Anubhav Agrawal</h3>
-                  <p>
-                    <i className="fa fa-phone"></i>+91-7024880719
                   </p>
                 </div>
               </div>

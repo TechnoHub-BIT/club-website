@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "../styles/ContactUs.css";
-import { db } from "../firebase";
+import "./ContactUs.css";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
@@ -14,21 +13,6 @@ const Contact = () => {
     e.preventDefault();
     setLoader(true);
 
-    db.collection("contacts")
-      .add({
-        name: name,
-        email: email,
-        message: message,
-      })
-      .then(() => {
-        setLoader(false);
-        alert("Your message has been submitted ");
-      })
-      .catch((error) => {
-        alert(error.message);
-        setLoader(false);
-      });
-
     emailjs
       .sendForm(
         "gmail",
@@ -38,10 +22,14 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
+        alert("Your message has been submitted ");
+        setLoader(false);
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
+        alert(error.message);
+        setLoader(false);
         }
       );
 

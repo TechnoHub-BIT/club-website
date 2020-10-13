@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import photos from '../img/footer_img/randomName1.jpeg';
-import "../styles/FooterComponent.css"
+// import photos from '/assets/images/footer_img/randomName1.jpeg';
+import "./FooterComponent.css"
 
 function Footer(props) {
     return(
@@ -20,7 +20,7 @@ function Footer(props) {
                         <h2 className="ourg"> Our Gallery</h2>
                         <div className="footer_img">
                                 <div className="single_footer_img">
-                                <img src={photos} height="50" width="50" alt="" />
+                                <img src="/assets/images/footer_img/randomName1.jpeg" height="50" width="50" alt="" />
                                 
                             </div>
                             <div className="single_footer_img">

@@ -7,13 +7,10 @@ import {
   Collapse,
   NavItem,
   Jumbotron,
-  Button,
+  
 } from "reactstrap";
-import { Link, NavLink } from "react-router-dom";
-import { firebaseApp } from "../firebase";
-import HeaderButtons from "./HeaderButtons";
-import AdminHeader from "./AdminComponent/AdminHeaderButton";
-import "../styles/HeaderComponent.css";
+import { NavLink } from "react-router-dom";
+import "./HeaderComponent.css";
 
 class Header extends Component {
   constructor(props) {
@@ -55,25 +52,6 @@ class Header extends Component {
   }
 
   render() {
-    let button;
-    firebaseApp.auth().onAuthStateChanged(function (userIn) {
-      if (userIn) {
-        // User is signed in.
-        button = (
-          <Button onClick={() => firebaseApp.auth().signOut()} href="/home">
-            <span className="fa fa-user"></span> Logout{" "}
-          </Button>
-        );
-      } else {
-        // No user is signed in.
-
-        button = (
-          <Button outline href="/register">
-            <span className="fa fa-user"></span> Login/Sign Up{" "}
-          </Button>
-        );
-      }
-    });
 
     return (
       <React.Fragment>
@@ -112,21 +90,9 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <Link className="nav-link" onClick={()=> window.open("https://technoquiz.herokuapp.com/", "_blank")}>
-                    <div className="nav-btn">Aptitude</div>
-                  </Link>
+                  <a className="nav-link" href="https://technoquiz.herokuapp.com/" target="_blank" rel="noopener noreferrer"> <div className="nav-btn">Aptitude</div></a>
                 </NavItem>
-                {/* <NavItem>
-                  <NavLink className="nav-link" to="/admin">
-                    <AdminHeader />
-                  </NavLink> */}
-                {/* </NavItem> */}
               </Nav>
-              {/* <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <HeaderButtons />
-                </NavItem>
-              </Nav> */}
             </Collapse>
           </div>
         </Navbar>
