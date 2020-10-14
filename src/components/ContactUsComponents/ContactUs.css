@@ -23,6 +23,10 @@ button {
   font-family: "Inter", sans-serif;
 }
 
+.btn {
+  margin: 10px;
+}
+
 .app {
   width: 400px;
   margin: 0 auto;
@@ -35,6 +39,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .form > h1 {
@@ -62,7 +67,7 @@ textarea:focus {
 
 .form > textarea {
   height: 150px;
-  max-width: 400px;
+  max-width: 1400px;
   min-height: 100px;
 }
 
