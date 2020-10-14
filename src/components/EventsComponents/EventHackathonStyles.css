@@ -1,0 +1,16 @@
+.hackathon {
+  margin: 20px;
+  padding-top: 80px;
+}
+
+.events-card-title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.events-card-subtitle {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 550;
+}

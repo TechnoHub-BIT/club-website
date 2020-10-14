@@ -12,11 +12,11 @@ class EventsComponent extends Component {
             <div className="events-container" >
                 <div className="container">
                 <h1 style={{textAlign:"center", margin: "15px"}} >Upcomming Events</h1>
-                      <Link  >
+                      <Link to="/hackathon2020" >
                       <Card className="events-card">
                           <Row>
                               <Col style={{maxWidth: "350px"}} >
-                             <CardImg style={{alignSelf:"center"}} className="card_img" top width="100%" src="assets/images/aboutus_img/DSC_2055.jpg" alt="Card image cap sample" />
+                             <CardImg style={{alignSelf:"center"}} className="card_img" top width="100%" src="assets/images/events_img/hackathonlogo.jpeg" alt="hackathon" />
                             <  div className="top-right">ONLINE</div>
                               </Col>
                               <Col>
@@ -28,8 +28,6 @@ class EventsComponent extends Component {
           </Col>
                           </Row>
 
-          {/* <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText> */}
-          {/* <Button>Button</Button> */}
        </Card>
        </Link>
        </div>
@@ -38,26 +36,3 @@ class EventsComponent extends Component {
     }
 }
 export default EventsComponent;
-// import React from 'react';
-// import {
-//   Card, CardImg, CardText, CardBody,
-//   CardTitle, CardSubtitle, Button
-// } from 'reactstrap';
-
-// const EventsComponent = (props) => {
-//   return (
-//     <div>
-//       <Card>
-//         <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-//         <CardBody>
-//           <CardTitle>Card title</CardTitle>
-//           <CardSubtitle>Card subtitle</CardSubtitle>
-//           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-//           <Button>Button</Button>
-//         </CardBody>
-//       </Card>
-//     </div>
-//   );
-// };
-
-// export default EventsComponent;
