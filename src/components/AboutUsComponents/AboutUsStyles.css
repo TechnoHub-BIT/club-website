@@ -7,3 +7,14 @@ img {
   padding-top: 90px;
   margin: 20px;
 }
+
+.single_industries_text {
+  margin: 0px 5px 20px 5px;
+  padding: 20px 15px 20px;
+  background-color: #fff;
+  text-align: center;
+  border: 2px solid #eaebed;
+  border-top: 2px solid #eaebed;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
