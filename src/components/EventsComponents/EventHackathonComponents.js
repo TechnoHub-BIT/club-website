@@ -10,28 +10,29 @@ import {
         return (
             <div className="hackathon" > 
                                 <div className="container">
-                      <Card className="events-card">
+                      <Card className="events-card-hackathon">
                           
                              <CardImg style={{alignSelf:"center"}} className="card_img" top width="100%" src="assets/images/events_img/hackathonlogo.jpeg" alt="hackathon" />
-                           
-
                           
                           <Col>
-                              <CardBody className="events-card-body" >
-          <CardTitle className="events-card-title" >Hackathon</CardTitle>
-          <CardSubtitle className="events-card-subtitle" >OCT 17 - 18</CardSubtitle>
+                              <CardBody className="events-card-body-hackathon" >
+          <CardTitle className="events-card-hackathon-title" >Hackathon</CardTitle>
+          <CardSubtitle className="events-card-hackathon-subtitle" >OCT 17 - 18</CardSubtitle>
          </CardBody>
 
           </Col>
           <CardText>
-              <h2>Event Description</h2>
-              <h5>TechnoHub is organising and virtual online hackathon.</h5>
-
-              <h2>Who can attend ?</h2>
-              <h5>This hackathon can only be attend by BIT, Durg students. and there will we minimal fees charge for non-technohub team members team</h5>
-
-              <h2>Schedule</h2>
-              <h4>17th October</h4>
+              <h3 className="event-hackathon-h3">Event Description</h3>
+              <p className="event-hackathon-p">Greetings to all Tech Buddies!!</p>
+    
+    <p className="event-hackathon-p">We all know Hackathons are a great chance to meet people who are just as excited about programming as you are, And to provide you with an 
+      opportunity to practice and compete among yourselves, Technohub brings an amazing Hackathon
+    </p>
+              <h3 className="event-hackathon-h3">About the contest</h3>
+              <p className="event-hackathon-p">This hackathon can only be attend by BIT, Durg students.You can participate in team of 2-4, Registration for Technohub member is <b>Free</b> and <b>Rs.50</b> for teams with <b>Non-Technohub</b> member.</p>
+<p className="event-hackathon-p">Certificate of Participation will be provided to all the participants. and Certificate of Appreciation will be provided to Winner. <b>Cash Prize upto Rs. 1000</b> </p>
+              <h3 className="event-hackathon-h3">Schedule</h3>
+              <h5 className="event-hackathon-h5">17th October</h5>
               <Table responsive>
       <thead>
         <tr>
@@ -54,7 +55,7 @@ import {
         </tr>
       </tbody>
     </Table>
-    <h4>18th October</h4>
+    <h5 className="event-hackathon-h5">18th October</h5>
               <Table responsive>
       <thead>
         <tr>
@@ -78,15 +79,14 @@ import {
       </tbody>
     </Table>
 
-    <h2>Registration</h2>
-    <h5>Team can have 2-4 members, and you have to submit this registration form </h5>
+    <h3 className="event-hackathon-h3">Registration</h3>
+    <p className="event-hackathon-p">Team can have 2-4 members, and you have to submit this <a href="https://forms.gle/jRDUJEdJ9sf324Q79">registration form</a>  </p>
 
-<h2>Problem Statement</h2>
-<p>It will upload on 16th October</p>
-<h2>Contact-Us</h2>
-<h5>For any quiory you can contact us at</h5>
-<p>Abhishek : +91-XXXXXXX</p>
-<p>Kartikey : +91-XXXXXXX</p>
+<h3 className="event-hackathon-h3">Problem Statement</h3 >
+<p className="event-hackathon-p">It will upload on 16th October</p>
+<h3 className="event-hackathon-h3">For Queries:</h3>
+<p className="event-hackathon-p">Abhishek : +91-88716 37776</p>
+<p className="event-hackathon-p">Kartikey : +91-88392 56099</p>
 
           </CardText>
           {/* <Button>Button</Button> */}

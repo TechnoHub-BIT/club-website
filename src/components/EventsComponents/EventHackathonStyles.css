@@ -3,14 +3,58 @@
   padding-top: 80px;
 }
 
-.events-card-title {
-  font-size: 24px;
+.events-card-hackathon-title {
+  font-size: 26px;
   text-align: center;
   font-weight: bold;
 }
 
-.events-card-subtitle {
-  font-size: 18px;
+.events-card-hackathon-subtitle {
+  font-size: 20px;
   text-align: center;
   font-weight: 550;
+}
+
+.events-container {
+  padding-top: 9 0px;
+  margin: 20px;
+  position: relative;
+  min-height: 70vh;
+}
+
+.events-card-hackathon {
+  margin: 20px;
+  padding: 10px;
+  position: relative;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);   */
+  /* transition: 0.3s; */
+  /* width: 40%; */
+}
+
+.card_img {
+  max-height: 400px;
+  min-height: 200px;
+  max-width: 350px;
+  min-width: 150px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  padding: 3px;
+  background-color: green;
+  color: aliceblue;
+  right: 16px;
+}
+
+.event-hackathon-h3 {
+  margin-top: 5px;
+}
+
+.event-hackathon-p {
+  margin-left: 10px;
+}
+
+.event-hackathon-h5 {
+  margin-left: 10px;
 }
