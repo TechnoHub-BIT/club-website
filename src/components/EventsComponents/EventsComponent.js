@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './EventsComponentStyles.css';
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Row, Col, Breadcrumb, BreadcrumbItem
+  Card, CardImg, CardBody,
+  CardTitle, CardSubtitle,  Row, Col, Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ class EventsComponent extends Component {
                           <Row>
                               <Col style={{maxWidth: "350px"}} >
                              <CardImg style={{alignSelf:"center"}} className="card_img" top width="100%" src="assets/images/events_img/hackathonlogo.jpeg" alt="hackathon" />
-                            <  div className="top-right">ONLINE</div>
+                            <div className="top-right">ONLINE</div>
                               </Col>
                               <Col style={{alignSelf:"center"}} >
                               <CardBody className="events-card-body" >
