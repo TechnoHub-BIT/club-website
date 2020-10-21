@@ -13,8 +13,8 @@ code {
 }
 
 @font-face {
-  font-family: 'themify';
-  src: local('themify'), url('./fonts/themify.ttf') format('truetype');
+  font-family: 'Sango-Light';
+  src: local('Sango-Light'), url('./fonts/Sango-Light.otf') format('truetype');
 }
 
 @font-face {
