@@ -142,6 +142,7 @@ import {
     </Table>
     
 <div className="container_card_img" >
+<h3 className="event-hackathon-h3">Winners</h3 >
   <Row>
     <Col>
     <CardImg className="card_img_winners" src="assets/images/events_img/hackathon1st.jpg" alt="hackathon" />
