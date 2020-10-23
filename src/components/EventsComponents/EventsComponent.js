@@ -19,7 +19,20 @@ class EventsComponent extends Component {
               <BreadcrumbItem active>Events</BreadcrumbItem>
             </Breadcrumb>
           </div>
+          <div style={{marginBottom: "100px"}}>
                 <h1 style={{textAlign:"center", margin: "15px"}} >Upcomming Events</h1>
+                <Card className="events-card" style={{backgroundColor: "lightgray"}} >
+                          <Row >
+                              <CardBody className="events-card-body" >
+          <CardTitle className="events-card-title" >Comming Soon</CardTitle>
+          <CardSubtitle className="events-card-subtitle" >Stay Tuned With Us</CardSubtitle>
+         </CardBody>
+
+                          </Row>
+
+       </Card>
+       </div>
+                <h1 style={{textAlign:"center", margin: "15px"}} >Past Events</h1>
                       <Link to="/hackathon2020" >
                       <Card className="events-card">
                           <Row>

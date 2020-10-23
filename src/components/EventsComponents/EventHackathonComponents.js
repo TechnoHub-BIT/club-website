@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './EventHackathonStyles.css';    
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Col,Table
+    CardTitle, CardSubtitle, Col,Table, Row
   } from 'reactstrap';
 
  class EventHackathonComponents extends Component {
@@ -141,11 +141,25 @@ import {
       </tbody>
     </Table>
     
+<div className="container_card_img" >
+<h3 className="event-hackathon-h3">Winners</h3 >
+  <Row>
+    <Col>
+    <CardImg className="card_img_winners" src="assets/images/events_img/hackathon1st.jpg" alt="hackathon" />
 
+    </Col>
+    <Col>
+    <CardImg className="card_img_winners" src="assets/images/events_img/hackathon2nd.jpg" alt="hackathon" />
 
-<h3 className="event-hackathon-h3">For Queries:</h3>
-<p className="event-hackathon-p">Abhishek : +91-88716 37776</p>
-<p className="event-hackathon-p">Kartikey : +91-88392 56099</p>
+    
+    </Col>
+    <Col>
+    <CardImg className="card_img_winners" src="assets/images/events_img/hackathon3rd.jpg" alt="hackathon" />
+
+    
+    </Col>
+  </Row>
+</div>
 </div>
           </CardText>
           {/* <Button>Button</Button> */}

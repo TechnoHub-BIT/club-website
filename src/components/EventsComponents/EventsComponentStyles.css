@@ -1,5 +1,5 @@
 .events-container {
-  padding-top: 90px;
+  padding-top: 100px;
   margin: 20px;
   position: relative;
   min-height: 70vh;
@@ -48,4 +48,23 @@
   font-size: 24px;
   text-align: center;
   font-weight: 550;
+}
+
+.card_img_winners {
+  align-items: center;
+  /* max-height: 640px;
+  min-height: 480px;
+  max-width: 450px;
+  min-width: 200px; */
+  min-width: 300px;
+  margin: 20px;
+}
+
+@media screen and (max-width: 1015px) and (min-width: 694px) {
+  .card_img_winners {
+    height: 250px;
+    align-items: center;
+    margin: 15px;
+    width: 250px;
+  }
 }
