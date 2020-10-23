@@ -28,7 +28,8 @@
     transition: 0.5s;
   }
   .banner_text_iner {
-    color: antiquewhite;;
+    color: antiquewhite;
+    font-family: 'Sango-Light';
   }
   
   .page-enter {

@@ -38,7 +38,7 @@ function About(props) {
               <img
                 src="assets/images/logo.png"
                 height="150"
-                width="280"
+                width="260"
                 alt="Technohub"
               />
             </div>
@@ -72,9 +72,8 @@ function About(props) {
             <div className="col-lg-4 col-sm-6">
               <img
                 src="assets/images/aboutus_img/DSC_2055.jpg"
+                className="img-fluid" 
                 alt=""
-                height="400px"
-                width="350px"
               />
 
               <div className="single_industries_text">
@@ -94,8 +93,7 @@ function About(props) {
               <img
                 src="assets/images/aboutus_img/DSC_0733_3.jpg"
                 alt="Sachet Sabarad"
-                height="400px"
-                width="350px"
+                className="img-fluid"
               />
 
               <div className="single_industries_text">
@@ -124,8 +122,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/shub.jpeg"
                   alt="Shubham Agrawal"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Shubham Agrawal</h3>
@@ -140,8 +138,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/harsha.jpeg"
                   alt="Harsha Dubey"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Harsha Dubey</h3>
@@ -169,8 +167,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/nir.jpeg"
                   alt="Nirbhay Kumar"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Nirbhay Kumar</h3>
@@ -186,8 +184,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/Saisha.jpeg"
                   alt="T Saisha"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>T Saisha</h3>
@@ -202,8 +200,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/Darshita1.jpeg"
                   alt="Darshita Mahaski"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Darshita Mahaski</h3>
@@ -218,8 +216,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/rishabh.jpeg"
                   alt="Rishabh Deshmukh"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Rishabh Deshmukh</h3>
@@ -249,8 +247,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/agney.jpg"
                   alt="Agney Deshkar"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Agney Deshkar</h3>
@@ -280,8 +278,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/shubharangshu.jpg"
                   alt="Shubharangshu"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Shubharangshu Chakraborty </h3>
@@ -297,8 +295,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/arpit.jpg"
                   alt="Arpit Sahu"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Arpit Sahu </h3>
@@ -314,8 +312,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/Suchi.jpg"
                   alt="Shuchi Agrawal"
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Shuchi Agrawal</h3>
@@ -331,8 +329,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/kartikey.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Kartikey Rawat </h3>
@@ -361,8 +359,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/aditya.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Aditya Deshmukh </h3>
@@ -377,8 +375,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/nitesh.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Nitesh Bharti</h3>
@@ -393,8 +391,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/abhishek.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Abhishek Agrawal</h3>
@@ -409,8 +407,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/navya.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Navya Singh</h3>
@@ -425,8 +423,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/tanmay.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Tanmay Soni</h3>
@@ -441,8 +439,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/shubhangi.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Shubhangi Sharma</h3>
@@ -457,8 +455,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/kuldeep.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Kuldeep Patel</h3>
@@ -473,8 +471,8 @@ function About(props) {
                 <img
                   src="assets/images/aboutus_img/aman.jpg"
                   alt=""
-                  height="400px"
-                  width="350px"
+                  className="img-fluid" 
+                
                 />
                 <div className="single_industries_text">
                   <h3>Aman Mandal</h3>

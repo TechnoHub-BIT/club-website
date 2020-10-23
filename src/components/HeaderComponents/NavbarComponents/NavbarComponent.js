@@ -60,19 +60,16 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/home">
               <div className="header-logo">
-                <img
+                <img className="header-logo-img"
                   src="assets/images/logo.png"
-                  height="60"
-                  width="100"
                   alt="Technohub"
                 />
               </div>
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav navbar>
+              <Nav navbar onClick={this.toggleNav}>
                 <NavItem>
                   <NavLink
-                    onClick={this.toggleNav}
                     className="nav-link"
                     to="/home"
                   >
@@ -87,6 +84,11 @@ class Header extends Component {
                 <NavItem>
                   <NavLink className="nav-link" to="/contactus">
                     <div className="nav-btn">Contact Us</div>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="nav-link" to="/events">
+                    <div className="nav-btn">Events</div>
                   </NavLink>
                 </NavItem>
                 <NavItem>

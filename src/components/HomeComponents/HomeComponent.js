@@ -62,7 +62,7 @@ function Home(props) {
                         <div className="services0">
                         <i className="fa fa-microchip "></i>
                         <span className="line"></span>
-                        <h3>Project Development</h3>
+                        <h4>Project Development</h4>
                         <p>The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge.
                             </p>
                         </div>    
@@ -74,7 +74,7 @@ function Home(props) {
                         <div className="services1">
                         <i className="fa fa-wrench"></i>
                         <span className="line"></span>
-                        <h3>Learn and Develop</h3>
+                        <h4>Learn and Develop</h4>
                         <p>Learn through exclusive capacity building programs, preferential internship and job opportunities.Develop the Team by participating in projects that create a huge impact.
 
                             </p>
@@ -88,7 +88,7 @@ function Home(props) {
                         <div className="services2">
                         <i className="fa fa-users"></i>
                         <span className="line"></span>
-                        <h3>Leadership Skills </h3>
+                        <h4>Leadership Skills </h4>
                         <p>Enhance your leadership skills and competencies in learning by doing approach. 
                             
                             Become equipped to inspire, build and manage strong teams.
@@ -133,11 +133,11 @@ function Home(props) {
                <div className="row align-items-center justify-content-center">
                    <div className="col-md-6 col-lg-6">
                     <div className="about_img">
-                        <img src='assets/images/technology.jpg' height="200" width="300" alt="Technology" />
+                        <img src='assets/images/technology.jpg' className="img-fluid" alt="Technology" />
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-6">
-                    <div className="about_text">
+                    <div className="about_text1">
                         <h2>Technical Activities </h2>
                         <p>For the all-round development of the students and to enrich their technical knowledge the institute provides a platform for various students’ activities. This club envisages conducive platform to explore student’s latent talents and also to enable them to come out with their innovative ideas. 
 
@@ -149,9 +149,12 @@ function Home(props) {
         </div>
     </section>
    
-    <section className="about_part1 section_bg section_padding">
+    <section className="section_bg section_padding">
+    <div className="about_part1">
         <div className="container">
+        
             <div className="row align-items-center justify-content-between">
+                
                 <div className="col-md-6 col-lg-6">
                     <div className="about_text">
                             <h2>Management  </h2>
@@ -165,9 +168,11 @@ function Home(props) {
                 </div>
                 <div className="col-md-5 col-lg-5">
                         <div className="about_img">
-                                <img src='assets/images/management1.jpg' height="200" width="300" alt="" />
+                                <img src='assets/images/management1.jpg' className="img-fluid" alt="" />
                             </div>
                 </div>
+                </div>
+                
             </div>
         </div>
     </section>
