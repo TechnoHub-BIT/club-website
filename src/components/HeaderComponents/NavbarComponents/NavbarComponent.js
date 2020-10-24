@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import "./HeaderComponent.css";
+import HeaderButtons from "../HeaderButtons";
 
 class Header extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class Header extends Component {
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto" href="/home">
+            <NavbarBrand className="mr-auto" href="/">
               <div className="header-logo">
                 <img className="header-logo-img"
                   src="assets/images/logo.png"
@@ -71,7 +72,7 @@ class Header extends Component {
                 <NavItem>
                   <NavLink
                     className="nav-link"
-                    to="/home"
+                    to="/"
                   >
                     <div className="nav-btn">Home</div>{" "}
                   </NavLink>
@@ -93,6 +94,9 @@ class Header extends Component {
                 </NavItem>
                 <NavItem>
                   <a className="nav-link" href="https://technoquiz.herokuapp.com/" target="_blank" rel="noopener noreferrer"> <div className="nav-btn">Aptitude</div></a>
+                </NavItem>
+                <NavItem>
+                  <HeaderButtons/>
                 </NavItem>
               </Nav>
             </Collapse>

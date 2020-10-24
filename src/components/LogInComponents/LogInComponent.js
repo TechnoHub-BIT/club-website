@@ -1,9 +1,10 @@
 import React, {useRef} from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Label, Alert } from 'reactstrap'
+import { Button, Card, Form, CardBody, FormGroup, Alert,  Row, Col } from 'reactstrap'
 import {useAuth} from '../../contexts/AuthContext'
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import './LogInStyles.css'
 
 function LogInComponent() {
 
@@ -32,34 +33,50 @@ function LogInComponent() {
 
     return (
         <>
-          <Card className="signup-card" style={{paddingTop:"100px"}}>
-              <CardBody>
-                <h2>Log In</h2>
+          <div className="login-container" >
+                <div className="container">
+          
+       
+                <Card className="login-card" >
+                       
+                          <CardBody>
+                
+                <Row>
+                <Col xs="6" style={{textAlign:"center"}}><Link to="/signup" ><h4>Sign Up</h4>
+      </Link>  
+      </Col>
+      <Col xs="6" style={{textAlign:"center"}}><Link to="/login" ><h4>Log In</h4>
+      </Link>  
+      </Col>
+      </Row>
                 {error && <Alert color="danger">{error}</Alert>}
 
                 <Form onSubmit={handleSubmit}>
                     <FormGroup id="email" >
-                        <Label>
-                            Email
-                        </Label>
-                        <FormControl type="email" ref={emailRef} required />
+
+                        <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
                     </FormGroup>
 
                     <FormGroup id="password" >
-                        <Label>
-                            Password
-                        </Label>
-                        <FormControl type="password" ref={passwordRef} required />
+
+                        <FormControl type="password" ref={passwordRef} placeholder="Enter Your Password" required />
                     </FormGroup>
 
                     <Button disabled={loading} type="submit" >Log In</Button>
                 </Form>
+                <Row>
+        <Col ><hr class="solid"/></Col>
+        <Col style={{minWidth:"160px"}}>Or Connect With</Col>
+        <Col ><hr class="solid"/></Col>
+      </Row>
               </CardBody>
 
-          </Card>
-          {/* <div className="singup-div">
-              
-          </div>   */}
+                          {/* </Row> */}
+
+       </Card>
+       </div>
+       {/* </div> */}
+            </div>
         </>
     )
 }

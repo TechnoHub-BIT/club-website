@@ -1,9 +1,10 @@
 import React, {useRef} from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Label, Alert } from 'reactstrap'
+import { Button, Card, Form, CardBody, FormGroup, Label, Alert, Row, Col } from 'reactstrap'
 import {useAuth} from '../../contexts/AuthContext'
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import './SignUpStyles.css';
 
 function SignUpComponent() {
 
@@ -36,9 +37,19 @@ function SignUpComponent() {
 
     return (
         <>
-          <Card className="signup-card" style={{paddingTop:"100px"}}>
+                  <div className="signup-container" >
+                <div className="container">
+          
+          <Card className="signup-card">
               <CardBody>
-                <h2>Sign Up</h2>
+              <Row>
+                <Col xs="6" style={{textAlign:"center"}}><Link to="/signup" ><h4>Sign Up</h4>
+      </Link>  
+      </Col>
+      <Col xs="6" style={{textAlign:"center"}}><Link to="/login" ><h4>Log In</h4>
+      </Link>  
+      </Col>
+      </Row>
                 {error && <Alert color="danger">{error}</Alert>}
 
                 <Form onSubmit={handleSubmit}>
@@ -64,12 +75,17 @@ function SignUpComponent() {
                     </FormGroup>
                     <Button disabled={loading} type="submit" >Sign Up</Button>
                 </Form>
+                <Row>
+        <Col ><hr class="solid"/></Col>
+        <Col style={{minWidth:"160px"}}>Or Connect With</Col>
+        <Col ><hr class="solid"/></Col>
+      </Row>
               </CardBody>
 
           </Card>
-          {/* <div className="singup-div">
-              
-          </div>   */}
+          </div>
+       {/* </div> */}
+            </div>
         </>
     )
 }
