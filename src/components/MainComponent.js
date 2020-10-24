@@ -6,21 +6,34 @@ import HackathonPage from './EventsComponents/EventHackathonComponents';
 import Navbar from './HeaderComponents/NavbarComponents/NavbarComponent'
 import Contact from "./ContactUsComponents/ContactComponents";
 import Footer from "./FooterComponents/FooterComponent";
-import {  Route, Redirect } from "react-router-dom";
+import SignUpComponent from './SignUpComponents/SignUpComponent'
+import Login from './LogInComponents/LogInComponent';
+import Profile from './ProfileComponents/ProfileComponent';
+import {  BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {AuthProvider} from '../contexts/AuthContext';
+import PrivateRoute from "../PrivateRoute";
 
 class Main extends Component {
   render() {
 
     return (
       <React.Fragment>
+        <Router>
+        <AuthProvider>
+          {/* <Switch> */}
         <Navbar />
-        <Route path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/aboutus" component={About} />
         <Route exact path="/contactus" component={Contact} />
-        <Route export path="/events" component={EventPage} />
-        <Route export path="/hackathon2020" component={HackathonPage} />
-        <Redirect to="/home" />
+        <Route exact path="/events" component={EventPage} />
+        <Route exact path="/signup" component={SignUpComponent}/>
+        <PrivateRoute exact path="/profile" component={Profile}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/hackathon2020" component={HackathonPage} />
         <Footer />
+        {/* </Switch> */}
+        </AuthProvider>
+        </Router>
       </React.Fragment>
     );
   }
