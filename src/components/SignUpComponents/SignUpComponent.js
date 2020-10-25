@@ -1,9 +1,10 @@
 import React, {useRef} from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Label, Alert, Row, Col } from 'reactstrap'
+import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Label,Col} from 'reactstrap'
 import {useAuth} from '../../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom';
+import classnames from 'classnames';
 import './SignUpStyles.css';
 
 function SignUpComponent() {
@@ -35,6 +36,12 @@ function SignUpComponent() {
 
     }
 
+    const [activeTab, setActiveTab] = useState('1');
+
+    const toggle = tab => {
+      if(activeTab !== tab) setActiveTab(tab);
+    }
+
     return (
         <>
                   <div className="signup-container" >
@@ -42,42 +49,47 @@ function SignUpComponent() {
           
           <Card className="signup-card">
               <CardBody>
-              <Row>
-                <Col xs="6" style={{textAlign:"center"}}><Link to="/signup" ><h4>Sign Up</h4>
-      </Link>  
-      </Col>
-      <Col xs="6" style={{textAlign:"center"}}><Link to="/login" ><h4>Log In</h4>
-      </Link>  
-      </Col>
-      </Row>
+              <Nav tabs className="nav-fill">
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '1' })}
+            onClick={() => { toggle('1'); }}
+            href="/signup"
+          >
+            Sign Up
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '2' })} 
+            href="/login"
+            onClick={() => { toggle('2'); }}
+          >
+            Log In
+          </NavLink>
+        </NavItem>
+      </Nav>
                 {error && <Alert color="danger">{error}</Alert>}
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="signup-form" >
                     <FormGroup id="email" >
-                        <Label>
-                            Email
-                        </Label>
-                        <FormControl type="email" ref={emailRef} required />
+                        <FormControl type="email" ref={emailRef} placeholder="Email" required />
                     </FormGroup>
 
                     <FormGroup id="password" >
-                        <Label>
-                            Password
-                        </Label>
-                        <FormControl type="password" ref={passwordRef} required />
+
+                        <FormControl type="password" ref={passwordRef} placeholder="Password" required />
                     </FormGroup>
 
                     <FormGroup id="password-confirm" >
-                        <Label>
-                            Password Confirmation
-                        </Label>
-                        <FormControl type="password" ref={passwordConfirmRef} required />
+
+                        <FormControl type="password" ref={passwordConfirmRef} placeholder="Confirm Password" required />
                     </FormGroup>
                     <Button disabled={loading} type="submit" >Sign Up</Button>
                 </Form>
                 <Row>
         <Col ><hr class="solid"/></Col>
-        <Col style={{minWidth:"160px"}}>Or Connect With</Col>
+        <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
         <Col ><hr class="solid"/></Col>
       </Row>
               </CardBody>

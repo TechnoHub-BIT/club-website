@@ -12,6 +12,7 @@ import Profile from './ProfileComponents/ProfileComponent';
 import {  BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {AuthProvider} from '../contexts/AuthContext';
 import PrivateRoute from "../PrivateRoute";
+import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
 
 class Main extends Component {
   render() {
@@ -29,6 +30,7 @@ class Main extends Component {
         <Route exact path="/signup" component={SignUpComponent}/>
         <PrivateRoute exact path="/profile" component={Profile}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/forgot-password" component={ForgotPassword}/>
         <Route exact path="/hackathon2020" component={HackathonPage} />
         <Footer />
         {/* </Switch> */}

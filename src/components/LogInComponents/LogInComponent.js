@@ -1,9 +1,10 @@
 import React, {useRef} from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Alert,  Row, Col } from 'reactstrap'
+import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Col} from 'reactstrap'
 import {useAuth} from '../../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom';
+import classnames from 'classnames';
 import './LogInStyles.css'
 
 function LogInComponent() {
@@ -30,6 +31,11 @@ function LogInComponent() {
         setLoading(false)
 
     }
+    const [activeTab, setActiveTab] = useState('2');
+
+    const toggle = tab => {
+      if(activeTab !== tab) setActiveTab(tab);
+    }
 
     return (
         <>
@@ -41,17 +47,29 @@ function LogInComponent() {
                        
                           <CardBody>
                 
-                <Row>
-                <Col xs="6" style={{textAlign:"center"}}><Link to="/signup" ><h4>Sign Up</h4>
-      </Link>  
-      </Col>
-      <Col xs="6" style={{textAlign:"center"}}><Link to="/login" ><h4>Log In</h4>
-      </Link>  
-      </Col>
-      </Row>
+                          <Nav tabs className="nav-fill">
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '1' })}
+            onClick={() => { toggle('1'); }}
+            href="/signup"
+          >
+            Sign Up
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '2' })} 
+            href="/login"
+            onClick={() => { toggle('2'); }}
+          >
+            Log In
+          </NavLink>
+        </NavItem>
+      </Nav>
                 {error && <Alert color="danger">{error}</Alert>}
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="login-form" >
                     <FormGroup id="email" >
 
                         <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
@@ -61,16 +79,19 @@ function LogInComponent() {
 
                         <FormControl type="password" ref={passwordRef} placeholder="Enter Your Password" required />
                     </FormGroup>
+                    <div style={{textAlign:"right", margin:"20px"}} >
+                      <Link to="/forgot-password" >Forgot your password?</Link> 
+                      </div>
 
-                    <Button disabled={loading} type="submit" >Log In</Button>
+                    <Button disabled={loading}  type="submit" >Log In</Button>
                 </Form>
+
                 <Row>
         <Col ><hr class="solid"/></Col>
-        <Col style={{minWidth:"160px"}}>Or Connect With</Col>
+        <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
         <Col ><hr class="solid"/></Col>
       </Row>
               </CardBody>
-
                           {/* </Row> */}
 
        </Card>
