@@ -1,31 +1,42 @@
-.footer {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
+
+footer {
   background-color: #000f52;
-  color: whitesmoke;
-  margin: 0px auto;
-  padding: 20px 0px 20px 0px;
+  color: #fff;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
-
-address {
-  font-size: 80%;
-  margin: 0px;
-  color: #0f0f0f;
+.whiteLogo {
+  height: 100px;
 }
-
-.footer_img {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+.heading {
+  border-left: 4px solid #fff;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
 }
-
-.single_footer_img {
-  margin: 5px 5px 5px 5px;
-  transition: transform 450ms;
+.list {
+  list-style-type: none;
+  margin: 30px 0 0 14px;
 }
-
-.single_footer_img:hover {
-  transform: scale(3);
+.list li {
+  display: grid;
+  grid-template-columns: 1fr 20fr;
+  align-items: center;
+  grid-column-gap: 1em;
+  color: #f9f6f9;
+  font-size: 0.9em;
+  transition: 0.3s all ease;
 }
-
-.footer-list {
-  margin-left: 20px;
+.list li:hover {
+  margin-left: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+.list li:not(:first-child) {
+  margin-top: 10px;
+}
+.list li a {
+  color: #f9f6f9;
+  text-decoration: none;
 }

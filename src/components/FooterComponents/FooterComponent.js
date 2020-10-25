@@ -1,75 +1,69 @@
-import React from 'react';
+import React from "react";
 // import { Link } from 'react-router-dom';
 // import photos from '/assets/images/footer_img/randomName1.jpeg';
-import "./FooterComponent.css"
+import "./FooterComponent.css";
 
-function Footer(props) {
-    return(
-    <div className="footer">
-        <div className="container">
-            <div className="row justify-content-between">
-                <div className="col-sm-6 col-md-3 col-xl-3">
-                    <div className="single-footer-widget footer_1">
-                        <a href="index.html"> <img src='assets/images/logowhite.png' height="130" width="230" alt="" /> </a>
-                    </div>
-                </div>
-
-               
-                <div className="col-sm-6 col-md-4 col-xl-3 ">
-                    <div className="single-footer-widget footer_3">
-                        <h2 className="ourg"> Our Gallery</h2>
-                        <div className="footer_img">
-                                <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName1.jpeg" height="50" width="50" alt="" />
-                                
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName2.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName3.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName4.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName5.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName6.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName7.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName8.jpeg" height="50" width="50" alt="" />
-                            </div>
-                            <div className="single_footer_img">
-                                <img src="/assets/images/footer_img/randomName9.jpeg" height="50" width="50" alt="" />
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-3 col-xl-3">
-                    <div className="single-footer-widget footer_icon">
-                        <h4 id="ci">Contact Info</h4>
-                        <p id="fc">TechnoHub, Bhilai Institute of Technology, Durg, Chhattisgarh 491001</p>
-                        <div className="footer-list">
-                        <ul>
-                            <li><i className="ti-mobile"></i>+91-7722874355</li>
-                            <li><a href="mailto:bit.technohub@gmail.com? subject=subject text">bit.technohub@gmail.com</a></li>
-                            <li><a href="https://www.instagram.com/bit.technohub/">Follow Us On Instagram</a></li>
-                        </ul>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+const footer = () => {
+  return (
+    <footer>
+      <div className="row">
+        <div className="col-xl-3 col-md-4 col-sm-6">
+          <img className="whiteLogo" src="./assets/images/logowhite.png" />
         </div>
-    </div>
-    )
-}
+        <div className="col-xl-3 col-md-4 col-sm-6">
+          <h3 className="heading">Contact Us</h3>
+          <ul className="list">
+            <li>
+              <i className="fa fa-phone"></i>
+              <a href="tel:+916261731565">6261731565</a>
+            </li>
+            <li>
+              <i className="fa fa-envelope"></i>
+              <a href="mailto:technohub@gmail.com">technohub@gmail.com</a>
+            </li>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>
+              <a href="#">Reach Us</a>
+            </li>
+          </ul>
+        </div>
+        <div className="col-xl-3 col-md-4 col-sm-6">
+          <h3 className="heading">Contact Us</h3>
+          <ul className="list">
+            <li>
+              <i className="fa fa-phone"></i>
+              <a href="tel:+916261731565">6261731565</a>
+            </li>
+            <li>
+              <i className="fa fa-envelope"></i>
+              <a href="mailto:technohub@gmail.com">technohub@gmail.com</a>
+            </li>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>
+              <a href="#">Reach Us</a>
+            </li>
+          </ul>
+        </div>
+        <div className="col-xl-3 col-md-4 col-sm-6">
+          <h3 className="heading">Contact Us</h3>
+          <ul className="list">
+            <li>
+              <i className="fa fa-phone"></i>
+              <a href="tel:+916261731565">6261731565</a>
+            </li>
+            <li>
+              <i className="fa fa-envelope"></i>
+              <a href="mailto:technohub@gmail.com">technohub@gmail.com</a>
+            </li>
+            <li>
+              <i className="fas fa-map-marker-alt"></i>
+              <a href="#">Reach Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
-export default Footer;
+export default footer;
