@@ -49,22 +49,34 @@ function LogInComponent() {
                 
                           <Nav tabs className="nav-fill">
         <NavItem>
+        <Link to="/signup" style={{color:"inherit", textDecoration:"none"}}>
+
           <NavLink
             className={classnames({ active: activeTab === '1' })}
             onClick={() => { toggle('1'); }}
-            href="/signup"
+            style={{backgroundColor:"#E6E6E6",backgroundImage:"linear-gradient(to right, #E6E6E6 , #F2F5F3)",color:"darkgray", fontWeight:"bold"}}
+
+            // href="/signup"
           >
             Sign Up
+            {/* Sign Up */}
           </NavLink>
+          </Link>
+
         </NavItem>
         <NavItem>
+        <Link to="/login" style={{color:"black", textDecoration:"none"}}>
+
           <NavLink
             className={classnames({ active: activeTab === '2' })} 
-            href="/login"
+            // href="/login"
+            style={{fontWeight:"bold"}}
             onClick={() => { toggle('2'); }}
           >
             Log In
           </NavLink>
+          </Link>
+
         </NavItem>
       </Nav>
                 {error && <Alert color="danger">{error}</Alert>}
