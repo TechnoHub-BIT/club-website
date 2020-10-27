@@ -42,27 +42,6 @@ function About(props) {
                 alt="Technohub"
               />
             </div>
-            <div className="col-12">
-              <Card>
-                <CardBody className="bg-faded">
-                  <blockquote className="blockquote">
-                    <p className="mb-0">
-                      You have to grow from the inside out. None can teach you,
-                      none can make you spiritual. There is no other teacher but
-                      your own soul.
-                    </p>
-                    <footer className="blockquote-footer">
-                      Swami Vivekananda,
-                      <cite title="Source Title">
-                        {" "}
-                        Indian monk, a chief disciple of the 19th-century Indian
-                        mystic Ramakrishna.
-                      </cite>
-                    </footer>
-                  </blockquote>
-                </CardBody>
-              </Card>
-            </div>
           </div>
           <div className="row justify-content-around">
             <div className="col-12">

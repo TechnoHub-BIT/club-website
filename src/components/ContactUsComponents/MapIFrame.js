@@ -1,4 +1,5 @@
 import React from 'react';
+import './MapIFrame.css';
 
 const Iframe = ({ source }) => {
 
@@ -11,7 +12,7 @@ const Iframe = ({ source }) => {
         // basic bootstrap classes. you can change with yours.
         <div className="col-md-12">
             <div className="emdeb-responsive">
-                <iframe style={{padding: "absolute",width: "100%" , height: "100%", border: "none" }} src={src}></iframe>
+                <iframe style={{padding: "absolute",width: "80%" , height: "100%", border: "none" }} src={src}></iframe>
             </div>
         </div>
     );
