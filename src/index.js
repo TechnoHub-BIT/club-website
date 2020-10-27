@@ -11,9 +11,9 @@ import './fonts/Flaticon.ttf'
 
 ReactDOM.render(
   <React.StrictMode>
-          <StateProvider>
+          {/* <StateProvider> */}
           <App />
-    </StateProvider>
+    {/* </StateProvider> */}
 
   </React.StrictMode>,
 

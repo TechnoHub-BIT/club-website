@@ -65,50 +65,8 @@ address {
   background-color: #fff;
 }
 
-.single_service_part {
-  margin: 10px 10px 10px 10px;
-  font-weight: 300;
-  text-align: center;
-  -webkit-transition: 1s;
-  transition: 1s;
-  border: 1px solid #dfdfdf;
-  box-shadow: 8px 10px 8px rgba(0,0,0,0.2);
-}
-
-.single_service_part:hover {
-  font-weight: 300;
-  background-color: #279309;
-  color: floralwhite;
-  text-align: center;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  border: 1px solid #dfdfdf;
-}
-
-.service_part {
-  margin: 20px 0px 20px 0px;
-}
-
-.fa-microchip {
-  font-size: 50px;
-}
-
-.fa-graduation-cap {
-  font-size: 50px;
-}
-
-.fa-wrench {
-  font-size: 50px;
-}
-
-.fa-users {
-  font-size: 50px;
-}
-
-
-
 .about_text {
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0 0;
 }
 
 .faq_part {
@@ -135,34 +93,14 @@ address {
   margin: 10px;
 }
 
+.about_part {
+  margin-bottom: 4em;
+}
 .about_part1 {
   background-color: rgb(248, 208, 74);
   padding-bottom: 30px;
   margin: 0px 10px 0px 10px;
-  border-radius: 25px
-}
-.services0 {
-
-  padding: 20px 25px 10px 25px;
-
-}
-
-.services1 {
-
-  padding: 10px 10px 0px 10px;
-
-}
-
-.services2 {
-
-  padding: 15px 20px 0px 20px;
-
-}
-
-.services3 {
-  
-  padding: 20px 5px 0px 5px;
-  
+  border-radius: 25px;
 }
 
 .faqs {
@@ -222,4 +160,47 @@ address {
 .faqs .faq.open .faq-answer {
   max-height: 1000px;
   opacity: 1;
+}
+
+.servicesSection {
+  margin: 2em 0;
+}
+.services {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 16px;
+  min-height: 400px;
+  transition: 0.3s all ease;
+}
+.services:hover {
+  background-color: #4dbb39;
+  color: #fff;
+}
+.services:hover .line {
+  background-color: #fff;
+}
+.services i {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+.services .line {
+  height: 3px;
+  width: 25%;
+  background-color: #fe5f28;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1em;
+}
+.services h4 {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.services p {
+  margin-top: 1em;
+  text-align: justify;
+  font-family: "Poppins", sans-serif;
 }
