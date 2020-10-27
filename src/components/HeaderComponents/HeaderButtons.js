@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import {useAuth} from '../../contexts/AuthContext';
 
+import "./HeaderComponent.css";
+
 
 function HeaderButtons() {
 //   const [{ user }, dispatch] = useStateValue();
@@ -13,14 +15,14 @@ function HeaderButtons() {
     <span>
       {currentUser != null ? (
         <Link to="/profile">
-          <Button outline>
-            <span className="fa fa-user">Profile</span>
+          <Button className="headerBtn" outline>
+            <span className="loginBtn"><i className="fa fa-user"></i> Profile</span>
           </Button>
         </Link>
       ) : (
         <Link to="/login">
-          <Button outline>
-            <span className="fa fa-user">LogIn / SignUp</span> 
+          <Button className="headerBtn" outline>
+            <span className="loginBtn"><i className="fa fa-user"></i> Login / Sign Up</span> 
           </Button>
         </Link>
       )}
