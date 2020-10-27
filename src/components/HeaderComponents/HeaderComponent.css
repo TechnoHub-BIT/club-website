@@ -55,9 +55,16 @@
   transition: all 300ms ease-out;
 }
 
-.loginBtn {
+.loginText {
   font-family: "Poppins", sans-serif;
 }
 .headerBtn {
   padding: 10px 20px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .loginText {
+    font-size: 0.8em;
+  }
 }

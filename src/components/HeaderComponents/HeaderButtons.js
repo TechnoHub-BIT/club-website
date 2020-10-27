@@ -16,13 +16,13 @@ function HeaderButtons() {
       {currentUser != null ? (
         <Link to="/profile">
           <Button className="headerBtn" outline>
-            <span className="loginBtn"><i className="fa fa-user"></i> Profile</span>
+            <span className="loginText"><i className="fa fa-user"></i> Profile</span>
           </Button>
         </Link>
       ) : (
         <Link to="/login">
           <Button className="headerBtn" outline>
-            <span className="loginBtn"><i className="fa fa-user"></i> Login / Sign Up</span> 
+            <span className="loginText"><i className="fa fa-user"></i> Login / Sign Up</span> 
           </Button>
         </Link>
       )}
