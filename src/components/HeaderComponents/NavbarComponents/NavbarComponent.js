@@ -68,7 +68,7 @@ class Header extends Component {
               </div>
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav navbar onClick={this.toggleNav}>
+              <Nav className="topNavbar" navbar onClick={this.toggleNav}>
                 <NavItem>
                   <NavLink
                     className="nav-link"
@@ -96,7 +96,7 @@ class Header extends Component {
                   <a className="nav-link" href="https://technoquiz.herokuapp.com/" target="_blank" rel="noopener noreferrer"> <div className="nav-btn">Aptitude</div></a>
                 </NavItem>
                 <NavItem>
-                  <HeaderButtons/>
+                  <HeaderButtons />
                 </NavItem>
               </Nav>
             </Collapse>
