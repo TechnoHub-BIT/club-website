@@ -170,8 +170,8 @@ address {
   border-radius: 10px;
   box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
   text-align: center;
-  padding: 25px 20px;
   font-size: 16px;
+  padding-top: 20px;
   min-height: 400px;
   transition: 0.3s all ease;
 }
@@ -186,6 +186,11 @@ address {
   font-size: 2.5em;
   margin-bottom: 0.5em;
 }
+
+.entinner{
+  padding: 0px 20px 0px 20px;
+}
+
 .services .line {
   height: 3px;
   width: 25%;

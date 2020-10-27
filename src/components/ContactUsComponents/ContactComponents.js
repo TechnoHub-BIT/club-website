@@ -41,19 +41,21 @@ class Contact extends Component {
                         TechnoHub,  <br />
                         Bhilai Institute of Technology, Durg,<br />
                         Chhattisgarh 491001<br />
-                        <i className="fa fa-phone"></i>: +91-7722874355<br />
-                        <i className="fa fa-fax"></i>: +91-7722874355<br />
+                        <i className="fa fa-phone"></i>: +91-6261731565<br />
                         <i className="fa fa-envelope"></i>: <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
                         </address>
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
                     <h5>Map of our Location</h5>
-                    <MapIframe source={this.state.src} />
+                    <div className="miniMap">
+                        <MapIframe source={this.state.src} />
+                    </div>
+                    
                      
                 </div>
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
-                        <a role="button" className="btn btn-primary" href="tel:+917722874355"><i className="fa fa-phone"></i> Call</a>
+                        <a role="button" className="btn btn-primary" href="tel:+916261731565"><i className="fa fa-phone"></i> Call</a>
                         {/* <a role="button" className="btn btn-info" href="http://skype.com/"><i className="fa fa-skype"></i> Skype</a> */}
                         <a role="button" className="btn btn-success" href="mailto:bit.technohub@gmail.com"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
