@@ -1,22 +1,17 @@
-.row-header{
-  margin:0px auto;
-  padding:0px auto;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Barlow+Condensed&display=swap");
+
+.App {
+  font-family: "Poppins", sans-serif;
+}
+
+.row-header {
+  margin: 0px auto;
+  padding: 0px auto;
 }
 
 .row-content {
-  margin:0px auto;
+  margin: 0px auto;
   padding: 50px 0px 50px 0px;
   border-bottom: 1px ridge;
-  min-height:400px;
+  min-height: 400px;
 }
-
-
-
-
-
-
-
-
-
-
-

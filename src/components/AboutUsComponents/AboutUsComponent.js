@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb, BreadcrumbItem, Card, CardBody } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import Image from "./ImageComponent/ImageComponent";
 
@@ -29,7 +29,7 @@ class About extends Component {
               <div className="col-12 col-md-6">
                 <h2>Technohub</h2>
                 <br />
-                <p>
+                <p className="aboutText">
                   The club provides an ambiance for students to prepare and to
                   showcase their skills at technical events and entrepreneurship
                   held all across India and Asia in various colleges with the aim
@@ -47,20 +47,34 @@ class About extends Component {
                 />
               </div>
             </div>
-            <div className="row justify-content-around">
-              <div className="col-12">
-                <h2>Training & Placement Officer</h2>
-                <br />
-              </div>
-              <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" />
+          </div>
+          
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-4">
+                <div className="title">
+                  <h2>Training & Placement Officer</h2>
+                  <br />
+                </div>
               </div>
             </div>
             <div className="row justify-content-around">
-              <div className="col-12">
-                <h2>President</h2>
-                <br />
+              <div className="col-lg-4 col-sm-6">
+                <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head" />
               </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-4">
+                <div className="title">
+                  <h2>President</h2>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355" />
               </div>
