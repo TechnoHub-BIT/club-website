@@ -10,7 +10,7 @@ function FAQ ({faq, index, toggleFAQ}) {
 			<div className="faq-question">
 				{faq.question}
 			</div>
-			<div className="faq-answer">
+			<div className="faq-answer text-justify">
 				{faq.answer}
 			</div>
 		</div>

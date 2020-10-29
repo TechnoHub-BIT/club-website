@@ -15,11 +15,11 @@ class About extends Component {
           <div className="container">
             <div className="row">
               <Breadcrumb>
-                <BreadcrumbItem>
-                  <Link to="/home">Home</Link>
-                </BreadcrumbItem>
-                <BreadcrumbItem active>About Us</BreadcrumbItem>
+                  <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                  <BreadcrumbItem active>About Us</BreadcrumbItem>
               </Breadcrumb>
+            </div>
+            <div className="row">
               <div className="col-12">
                 <h3>About Us</h3>
                 <hr />

@@ -187,7 +187,7 @@ address {
   margin-bottom: 0.5em;
 }
 
-.entinner{
+.entinner {
   padding: 0px 20px 0px 20px;
 }
 
@@ -207,5 +207,4 @@ address {
 .services p {
   margin-top: 1em;
   text-align: justify;
-  font-family: "Poppins", sans-serif;
 }
