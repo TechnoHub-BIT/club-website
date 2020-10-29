@@ -1,0 +1,21 @@
+.achievementCard {
+  width: 100%;
+  box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+  border-radius: 10px;
+  margin: 0 auto 1.5em;
+}
+.achievementImage {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: 0.3s all ease;
+}
+.achievementDetails {
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  padding: 20px 20px 7px;
+}
+.achievementDetails p {
+  text-align: justify;
+}
