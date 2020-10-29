@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import photos from '/assets/images/footer_img/randomName1.jpeg';
 import "./FooterComponent.css";
 
@@ -8,7 +8,7 @@ const footer = () => {
     <footer>
       <div className="row">
         <div className="col-xl-3 col-md-4 col-sm-6 firstColumn">
-          <img className="whiteLogo" src="./assets/images/logowhite.png" />
+          <img className="whiteLogo" alt="Technohub" src="./assets/images/logowhite.png" />
           <p>
             The ultimate goal of the TechnoHub club is to educate more students
             and make robotics and entrepreneurship an everyday phenomenon.
@@ -19,19 +19,19 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-angle-right"></i>
-              <a href="#">Club Members</a>
+              <Link to="/gallery">Club Members</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <a href="#">Achievements</a>
+              <Link to="/achivements">Achievements</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <a href="#">Gallery</a>
+              <Link to="/gallery">Gallery</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <a href="#">Aptitude Test</a>
+              <a href="https://technoquiz.herokuapp.com/">Aptitude Test</a>
             </li>
           </ul>
         </div>
