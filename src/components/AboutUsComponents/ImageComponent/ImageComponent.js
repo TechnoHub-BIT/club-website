@@ -7,7 +7,7 @@ const image = (props) => {
     if(contact > 0) {
         text = 
             <div>
-                <i className="fa fa-phone"></i> <a href={"tel:+91"+props.contact}>+91-{props.contact}</a>
+                <i className="fa fa-phone-alt"></i> <a href={"tel:+91"+props.contact}>+91-{props.contact}</a>
             </div>;
     }
 
@@ -30,6 +30,9 @@ const image = (props) => {
                     <br />
                     {text}
                 </p>
+            </div>
+            <div className="personBranch">
+                <p>{ props.children }</p>
             </div>
         </div>
     );

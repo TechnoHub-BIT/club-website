@@ -23,7 +23,7 @@ const footer = () => {
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <Link to="/achivements">Achievements</Link>
+              <Link to="/achievements">Achievements</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
@@ -48,7 +48,7 @@ const footer = () => {
           <h3 className="heading">Contact Us</h3>
           <ul className="list">
             <li>
-              <i className="fa fa-phone"></i>
+              <i className="fa fa-phone-alt"></i>
               <a href="tel:+916261731565">6261731565</a>
             </li>
             <li>

@@ -111,14 +111,18 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680" />
+                <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/saisha.jpeg" name="T Saisha" contact="8085999174" />
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849" />
+                <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" />
@@ -139,7 +143,9 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565" />
+                <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565">
+                  Electronics and Telecommunication
+                </Image>
               </div>
             </div>
           </div>
@@ -159,13 +165,17 @@ class About extends Component {
                 <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880" />
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199" />
+                <Image path="./assets/images/aboutus_img/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932" />
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099" />
+                <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099">
+                  Computer Science
+                </Image>
               </div>
             </div>
           </div>
@@ -182,25 +192,35 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846" />
+                <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846">
+                  Electrical and Electronics
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/nitesh.jpg" name="Nitesh Bharti" contact="7354124249" />
+                <Image path="./assets/images/aboutus_img/nitesh.jpg" name="Nitesh Bharti" contact="7354124249">
+                  Mechanical
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/abhishek.jpg" name="Abhishek Agrawal" contact="8871637776" />
+                <Image path="./assets/images/aboutus_img/abhishek.jpg" name="Abhishek Agrawal" contact="8871637776">
+                  Computer Science
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/navya.jpg" name="Navya Singh" contact="6264365144" />
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/tanmay.jpg" name="Tanmay Soni" contact="9329847520" />
+                <Image path="./assets/images/aboutus_img/tanmay.jpg" name="Tanmay Soni" contact="9329847520">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979" />
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570" />
+                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/aman.jpg" name="Aman Mandal" contact="7225952566" />
@@ -220,10 +240,19 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828" />
+                <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/narayan.jpg" name="Bavisetti Narayan" contact="9406108766" />
+                <Image path="./assets/images/aboutus_img/narayan.jpg" name="Bavisetti Narayan" contact="9406108766">
+                  Electronics and Telecommunication
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image path="./assets/images/aboutus_img/bipul.jpeg" name="Bipul Biswas" contact="9358222648">
+                  Electronics and Telecommunication
+                </Image>
               </div>
             </div>
           </div>
