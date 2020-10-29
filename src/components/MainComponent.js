@@ -13,6 +13,7 @@ import {  BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {AuthProvider} from '../contexts/AuthContext';
 import PrivateRoute from "../PrivateRoute";
 import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
+import Achievements from "./AchievementsComponent/AchievementsComponent";
 
 class Main extends Component {
   render() {
@@ -32,6 +33,7 @@ class Main extends Component {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/forgot-password" component={ForgotPassword}/>
         <Route exact path="/hackathon2020" component={HackathonPage} />
+        <Route exact path="/achievements" component={Achievements} />
         <Footer />
         {/* </Switch> */}
         </AuthProvider>
