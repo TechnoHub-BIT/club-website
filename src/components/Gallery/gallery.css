@@ -1,7 +1,5 @@
 .gallery-container {
-    padding-top: 100px;
-    margin: 20px;
-    position: relative;
-    min-height: 70vh;
-  }
-  
+  position: relative;
+  margin: 20px;
+  min-height: 70vh;
+}

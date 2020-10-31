@@ -17,7 +17,7 @@ class Contact extends Component {
 
         <div className="contactus-container">
             <Breadcrumb>
-                <BreadcrumbItem title="Home" />
+                <BreadcrumbItem title="Home" path="/" />
                 <BreadcrumbItem title="Contact Us" status="active" />
             </Breadcrumb>
             <div className="container" >

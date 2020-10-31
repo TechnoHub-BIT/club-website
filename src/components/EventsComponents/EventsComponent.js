@@ -18,7 +18,7 @@ class EventsComponent extends Component {
     return (
         <div className="events-container">
           <Breadcrumb>
-              <BreadcrumbItem title="Home" />
+              <BreadcrumbItem title="Home" path="/" />
               <BreadcrumbItem title="Events" status="active" />
           </Breadcrumb>
           <div className="container">

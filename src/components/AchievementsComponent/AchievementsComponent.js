@@ -9,7 +9,7 @@ const achievements = (props) => {
         <React.Fragment>    
             <div className="achievementsCont">
                 <Breadcrumb>
-                    <BreadcrumbItem title="Home" />
+                    <BreadcrumbItem title="Home" path="/" />
                     <BreadcrumbItem title="Achievements" status="active" />
                 </Breadcrumb>
                 <div className="container">

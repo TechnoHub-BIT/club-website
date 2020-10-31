@@ -17,7 +17,7 @@ const BreadcrumbItem = (props) => {
     const status = props.status;
 
     let className = "link";
-    let title = <Link to="/">Home</Link>;
+    let title = <Link to={ props.path }>Home</Link>;
 
     if(status != null) {
         className = "active";

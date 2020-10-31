@@ -43,12 +43,21 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!-- Load jQuery(1.7+) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7368c40b21.js"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      plugins: [
+          // other plugins,
+          new webpack.ProvidePlugin({
+              $: 'jquery',
+              jQuery: 'jquery',
+              'window.jQuery': 'jquery'
+          }),
+      ],
+    </script>
   </body>
 </html>
