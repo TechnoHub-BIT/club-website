@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import { Link } from "react-router-dom";
+import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import Image from "./ImageComponent/ImageComponent";
 
 import "./AboutUsStyles.css";
@@ -12,13 +11,11 @@ class About extends Component {
       <React.Fragment>
         {/* <NavbarPage/> */}
         <div className="aboutus-container">
+          <Breadcrumb>
+            <BreadcrumbItem title="Home" />
+            <BreadcrumbItem title="About Us" status="active" />
+          </Breadcrumb>
           <div className="container">
-            <div className="row">
-              <Breadcrumb>
-                  <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                  <BreadcrumbItem active>About Us</BreadcrumbItem>
-              </Breadcrumb>
-            </div>
             <div className="row">
               <div className="col-12">
                 <h3>About Us</h3>

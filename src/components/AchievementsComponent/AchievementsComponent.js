@@ -1,6 +1,5 @@
 import React from "react";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import { Link } from "react-router-dom";
+import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import SingleAchievement from "./SingleAchievementComponent/SingleAchievement";
 
 import "./Achievements.css";
@@ -9,14 +8,10 @@ const achievements = (props) => {
     return(
         <React.Fragment>    
             <div className="achievementsCont">
-                <div className="container">
-                    <div className="row">
-                        <Breadcrumb>
-                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>Achievements</BreadcrumbItem>
-                        </Breadcrumb>
-                    </div>
-                </div>
+                <Breadcrumb>
+                    <BreadcrumbItem title="Home" />
+                    <BreadcrumbItem title="Achievements" status="active" />
+                </Breadcrumb>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">

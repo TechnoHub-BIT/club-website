@@ -1,0 +1,22 @@
+.breadcrumbCont {
+  margin-top: 120px;
+  list-style-type: none;
+  display: flex;
+}
+.breadcrumbCont li {
+  position: relative;
+}
+.breadcrumbCont li:not(:first-child) {
+  margin-left: 1.5em;
+}
+.breadcrumbCont li:not(:last-child)::after {
+  position: absolute;
+  content: ">";
+  top: 50%;
+  right: -1em;
+  transform: translateY(-50%);
+}
+.breadcrumbCont li a {
+  color: #007bff;
+  text-decoration: none;
+}

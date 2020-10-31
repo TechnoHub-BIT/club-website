@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import ContactUs from './ContactUsComponents';
 import './ContactUsStyles.css'
 import MapIframe from './MapIFrame';
@@ -17,19 +16,19 @@ class Contact extends Component {
     return(
 
         <div className="contactus-container">
+            <Breadcrumb>
+                <BreadcrumbItem title="Home" />
+                <BreadcrumbItem title="Contact Us" status="active" />
+            </Breadcrumb>
             <div className="container" >
 
         {/* <NavbarPage/> */}
             <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Contact Us</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>Contact Us</h3>
-                        <hr />
-                    </div>                
-                </div>
+                <div className="col-12">
+                    <h3>Contact Us</h3>
+                    <hr />
+                </div>                
+            </div>
 
              <div className="row row-content">
                 <div className="col-12">
