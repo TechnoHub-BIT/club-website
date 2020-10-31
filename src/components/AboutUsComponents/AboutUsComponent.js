@@ -60,7 +60,9 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head" />
+                <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head">
+                  TPO Head
+                </Image>
               </div>
             </div>
           </div>
@@ -76,7 +78,9 @@ class About extends Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355" />
+                <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355">
+                  Electronics and Telecommunication
+                </Image>
               </div>
             </div>
           </div>
@@ -170,7 +174,9 @@ class About extends Component {
                 </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932" />
+                <Image path="./assets/images/aboutus_img/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099">
@@ -215,7 +221,9 @@ class About extends Component {
                 </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
-                <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979" />
+                <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979">
+                  Electronics and Telecommunication
+                </Image>
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
@@ -251,6 +259,41 @@ class About extends Component {
               </div>
               <div className="col-lg-4 col-sm-6">
                 <Image path="./assets/images/aboutus_img/bipul.jpeg" name="Bipul Biswas" contact="9358222648">
+                  Electronics and Telecommunication
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image path="./assets/images/aboutus_img/saumya.jpeg" name="Saumya Shrivastava" contact="9893475993">
+                  Computer Science
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image path="./assets/images/aboutus_img/preeti.jpeg" name="Preeti Gabel" contact="9179243009">
+                  Electrical and Electronics
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image path="./assets/images/aboutus_img/rishita.jpeg" name="Rishita Upadhyay" contact="870289342">
+                  Electrical and Electronics
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image name="Kritika Upadhyay">
+                  Electronics and Telecommunication
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image name="Pawan Kumar" contact="9340400425">
+                  Electrical
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image name="Stuti Mishra">
+                  Electronics and Telecommunication
+                </Image>
+              </div>
+              <div className="col-lg-4 col-sm-6">
+                <Image name="Anshul Lanjhewar">
                   Electronics and Telecommunication
                 </Image>
               </div>
