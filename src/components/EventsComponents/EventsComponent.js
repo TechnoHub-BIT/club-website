@@ -12,18 +12,20 @@ import {
 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import HeadingTitle from "../HeaderComponents/HeaderTitle";
 
 class EventsComponent extends Component {
   render() {
     return (
         <div className="events-container">
+          <HeadingTitle heading="TECHNOHUB EVENTS" />
           <Breadcrumb>
               <BreadcrumbItem title="Home" path="/" />
               <BreadcrumbItem title="Events" status="active" />
           </Breadcrumb>
           <div className="container">
             <div style={{marginBottom: "100px"}}>
-              <h1 style={{textAlign:"center", margin: "15px"}} >Upcomming Events</h1>
+              <h1 style={{textAlign:"center", margin: "15px"}} >Upcoming Events</h1>
                 <Card className="events-card" style={{backgroundColor: "lightgray"}} >
                   <Row >
                     <CardBody className="events-card-body" >

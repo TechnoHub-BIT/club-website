@@ -3,6 +3,7 @@
 }
 .title {
   font-family: "Barlow Condensed", sans-serif;
+  font-weight: normal;
   margin-top: 1em;
 }
 .title h2 {

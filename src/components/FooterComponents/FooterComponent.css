@@ -18,6 +18,9 @@ footer {
   border-left: 3.5px solid #fff;
   padding-left: 10px;
   font-family: "Barlow Condensed", sans-serif;
+  font-weight: normal;
+  color: #fff;
+  font-size: 1.17em;
 }
 .list {
   list-style-type: none;

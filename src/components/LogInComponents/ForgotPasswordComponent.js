@@ -5,6 +5,8 @@ import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink,
 import {useAuth} from '../../contexts/AuthContext'
 import {Link} from 'react-router-dom';
 import './ForgotPasswordStyles.css'
+import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import HeadingTitle from "../HeaderComponents/HeaderTitle";
 
 function ForgotPasswordComponent() {
 
@@ -33,37 +35,32 @@ function ForgotPasswordComponent() {
 
     return (
         <>
-          <div className="forgot-password-container" >
-                <div className="container">
-          
-       
-                <Card className="forgot-password-card" >
-                       
-                          <CardBody>
-                
+          <div className="forgot-password-container">
+            <HeadingTitle heading="LOGIN / SIGN UP" />
+            <Breadcrumb>
+                <BreadcrumbItem title="Home" path="/" />
+                <BreadcrumbItem title="Login / Sign Up" path="/login" />
+                <BreadcrumbItem title="Forgot Password" status="active" />
+            </Breadcrumb>
+            <div className="container">
+                <Card className="forgot-password-card">
+                    <CardBody>
                         <CardTitle className="forgot-password-card-title">Forgot Password</CardTitle>
-                {error && <Alert color="danger">{error}</Alert>}
-                {message && <Alert color="success">{message}</Alert>}
-
-
-                <Form onSubmit={handleSubmit} className="forgot-password-form" >
-                    <FormGroup id="email" >
-
-                        <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
-                    </FormGroup>
-
-
-                    <Button disabled={loading}  type="submit" >Reset Password</Button>
-                </Form>
-
-              </CardBody>
-              <div style={{textAlign:"center"}} >
-              Back to <Link to="/login" >Login</Link> 
-                      </div>
-
-       </Card>
-       </div>
+                        {error && <Alert color="danger">{error}</Alert>}
+                        {message && <Alert color="success">{message}</Alert>}
+                        <Form onSubmit={handleSubmit} className="forgot-password-form" >
+                            <FormGroup id="email" >
+                                <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
+                            </FormGroup>
+                            <Button disabled={loading}  type="submit" >Reset Password</Button>
+                        </Form>
+                    </CardBody>
+                    <div style={{textAlign:"center"}} >
+                        Back to <Link to="/login" >Login</Link> 
+                    </div>
+                </Card>
             </div>
+          </div>
         </>
     )
 }
