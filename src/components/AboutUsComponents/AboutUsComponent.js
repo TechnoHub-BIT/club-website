@@ -181,7 +181,7 @@ class About extends Component {
                 </div>
                 <div>
                   <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
-                    Computer Science
+                    Electronics and Telecommunication
                   </Image>
                 </div>
                 <div>
@@ -374,13 +374,18 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image name="Stuti Mishra">
+                  <Image path="./assets/images/aboutus_img/stuti.jpeg" name="Stuti Mishra" contact="7987671690">
                     Electronics and Telecommunication
                   </Image>
                 </div>
                 <div>
-                  <Image name="Anshul Lanjhewar">
-                    Electronics and Telecommunication
+                  <Image path="./assets/images/aboutus_img/anshul.jpeg" name="Anshul Lanjewar" contact="7049223604">
+                    Electrical and Electronics
+                  </Image>
+                </div>
+                <div>
+                  <Image path="./assets/images/aboutus_img/vinayak.jpeg" name="Vinayak Rawat" contact="9571089472">
+                    Computer Science
                   </Image>
                 </div>
               </OwlCarousel>
