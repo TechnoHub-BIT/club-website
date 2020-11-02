@@ -3,6 +3,7 @@ import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbCompo
 import ContactUs from './ContactUsComponents';
 import './ContactUsStyles.css'
 import MapIframe from './MapIFrame';
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
 // import NavbarPage from '../HeaderComponents/NavbarComponents/NavbarComponent'
 class Contact extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Contact extends Component {
     return(
 
         <div className="contactus-container">
+            <HeaderTitle heading="CONTACT US" />
             <Breadcrumb>
                 <BreadcrumbItem title="Home" path="/" />
                 <BreadcrumbItem title="Contact Us" status="active" />
@@ -23,13 +25,6 @@ class Contact extends Component {
             <div className="container" >
 
         {/* <NavbarPage/> */}
-            <div className="row">
-                <div className="col-12">
-                    <h3>Contact Us</h3>
-                    <hr />
-                </div>                
-            </div>
-
              <div className="row row-content">
                 <div className="col-12">
                 <h3>Location Information</h3>

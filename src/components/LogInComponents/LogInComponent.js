@@ -6,6 +6,8 @@ import {useAuth} from '../../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom';
 import classnames from 'classnames';
 import './LogInStyles.css'
+import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import HeadingTitle from "../HeaderComponents/HeaderTitle";
 
 function LogInComponent() {
 
@@ -39,77 +41,67 @@ function LogInComponent() {
 
     return (
         <>
-          <div className="login-container" >
-                <div className="container">
-          
-       
-                <Card className="login-card" >
-                       
-                          <CardBody>
-                
-                          <Nav tabs className="nav-fill">
-        <NavItem>
-        <Link to="/signup" style={{color:"inherit", textDecoration:"none"}}>
+          <div className="login-container">
+            <HeadingTitle heading="LOGIN / SIGN UP" />
+            <Breadcrumb>
+                <BreadcrumbItem title="Home" path="/" />
+                <BreadcrumbItem title="Login / Sign Up" status="active" />
+            </Breadcrumb>
+            <div className="container">
+              <Card className="login-card">
+                <CardBody>
+                  <Nav tabs className="nav-fill">
+                    <NavItem>
+                      <Link to="/signup" style={{color:"inherit", textDecoration:"none"}}>
+                        <NavLink
+                          className={classnames({ active: activeTab === '1' })}
+                          onClick={() => { toggle('1'); }}
+                          style={{backgroundColor:"#E6E6E6",backgroundImage:"linear-gradient(to right, #E6E6E6 , #F2F5F3)",color:"darkgray", fontWeight:"bold"}}
 
-          <NavLink
-            className={classnames({ active: activeTab === '1' })}
-            onClick={() => { toggle('1'); }}
-            style={{backgroundColor:"#E6E6E6",backgroundImage:"linear-gradient(to right, #E6E6E6 , #F2F5F3)",color:"darkgray", fontWeight:"bold"}}
-
-            // href="/signup"
-          >
-            Sign Up
-            {/* Sign Up */}
-          </NavLink>
-          </Link>
-
-        </NavItem>
-        <NavItem>
-        <Link to="/login" style={{color:"black", textDecoration:"none"}}>
-
-          <NavLink
-            className={classnames({ active: activeTab === '2' })} 
-            // href="/login"
-            style={{fontWeight:"bold"}}
-            onClick={() => { toggle('2'); }}
-          >
-            Log In
-          </NavLink>
-          </Link>
-
-        </NavItem>
-      </Nav>
-                {error && <Alert color="danger">{error}</Alert>}
-
-                <Form onSubmit={handleSubmit} className="login-form" >
+                          // href="/signup"
+                        >
+                          Sign Up
+                          {/* Sign Up */}
+                        </NavLink>
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link to="/login" style={{color:"black", textDecoration:"none"}}>
+                        <NavLink
+                          className={classnames({ active: activeTab === '2' })} 
+                          // href="/login"
+                          style={{fontWeight:"bold"}}
+                          onClick={() => { toggle('2'); }}
+                        >
+                          Log In
+                        </NavLink>
+                      </Link>
+                    </NavItem>
+                  </Nav>
+                  {error && <Alert color="danger">{error}</Alert>}
+                  <Form onSubmit={handleSubmit} className="login-form" >
                     <FormGroup id="email" >
-
-                        <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
+                      <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
                     </FormGroup>
-
                     <FormGroup id="password" >
-
-                        <FormControl type="password" ref={passwordRef} placeholder="Enter Your Password" required />
+                      <FormControl type="password" ref={passwordRef} placeholder="Enter Your Password" required />
                     </FormGroup>
                     <div style={{textAlign:"right", margin:"20px"}} >
                       <Link to="/forgot-password" >Forgot your password?</Link> 
-                      </div>
-
+                    </div>
                     <Button disabled={loading}  type="submit" >Log In</Button>
-                </Form>
-
-                <Row>
-        <Col ><hr class="solid"/></Col>
-        <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
-        <Col ><hr class="solid"/></Col>
-      </Row>
-              </CardBody>
+                  </Form>
+                  <Row>
+                    <Col ><hr class="solid"/></Col>
+                    <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
+                    <Col ><hr class="solid"/></Col>
+                  </Row>
+                </CardBody>
                           {/* </Row> */}
-
-       </Card>
-       </div>
-       {/* </div> */}
+              </Card>
             </div>
+       {/* </div> */}
+          </div>
         </>
     )
 }

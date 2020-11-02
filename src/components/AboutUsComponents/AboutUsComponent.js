@@ -4,6 +4,7 @@ import Image from "./ImageComponent/ImageComponent";
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
 
 import "./AboutUsStyles.css";
 
@@ -45,17 +46,12 @@ class About extends Component {
       <React.Fragment>
         {/* <NavbarPage/> */}
         <div className="aboutus-container">
+          <HeaderTitle heading="ABOUT US" />
           <Breadcrumb>
             <BreadcrumbItem title="Home" path="/" />
             <BreadcrumbItem title="About Us" status="active" />
           </Breadcrumb>
           <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <h3>About Us</h3>
-                <hr />
-              </div>
-            </div>
             <div className="row row-content">
               <div className="col-12 col-md-6">
                 <h2>TechnoHub</h2>
@@ -185,7 +181,7 @@ class About extends Component {
                 </div>
                 <div>
                   <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
-                    Computer Science
+                    Electronics and Telecommunication
                   </Image>
                 </div>
                 <div>
@@ -384,13 +380,23 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image name="Stuti Mishra">
+                  <Image path="./assets/images/aboutus_img/stuti.jpeg" name="Stuti Mishra" contact="7987671690">
                     Electronics and Telecommunication
                   </Image>
                 </div>
                 <div>
-                  <Image name="Anshul Lanjhewar">
-                    Electronics and Telecommunication
+                  <Image path="./assets/images/aboutus_img/anshul.jpeg" name="Anshul Lanjewar" contact="7049223604">
+                    Electrical and Electronics
+                  </Image>
+                </div>
+                <div>
+                  <Image path="./assets/images/aboutus_img/vinayak.jpeg" name="Vinayak Rawat" contact="9571089472">
+                    Computer Science
+                  </Image>
+                </div>
+                <div>
+                  <Image path="./assets/images/aboutus_img/anubhav.jpeg" name="Anubhav Bhatt" contact="8234993336">
+                    Mechanical
                   </Image>
                 </div>
               </OwlCarousel>
