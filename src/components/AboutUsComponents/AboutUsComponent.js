@@ -142,10 +142,14 @@ class About extends Component {
                   responsive={this.state.responsive}
                 >  
                   <div>
-                    <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" />
+                    <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
+                      Electronics and Telecommunication
+                    </Image>
                   </div>
                   <div>
-                    <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" />
+                    <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
+                      Electronics and Telecommunication
+                    </Image>
                   </div>
                 </OwlCarousel>
             </div>
@@ -175,7 +179,7 @@ class About extends Component {
                 </div>
                 
                 <div>
-                  <Image path="./assets/images/aboutus_img/saisha.jpeg" name="T Saisha" contact="8085999174">
+                  <Image path="./assets/images/aboutus_img/Saisha.jpeg" name="T Saisha" contact="8085999174">
                     Electronics and Telecommunication
                   </Image>
                 </div>
@@ -185,7 +189,9 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image path="./assets/images/aboutus_img/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" />
+                  <Image path="./assets/images/aboutus_img/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" >
+                    Electrical and Electronics
+                  </Image>
                 </div>
               </OwlCarousel>
             </div>
@@ -235,7 +241,7 @@ class About extends Component {
               >
                 <div>
                   <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880">
-                    Electrical and Electronics
+                    Electronics and Telecommunication
                   </Image>
                 </div>
                 <div>
@@ -244,7 +250,7 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image path="./assets/images/aboutus_img/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
+                  <Image path="./assets/images/aboutus_img/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
                     Electronics and Telecommunication
                   </Image>
                 </div>
@@ -291,7 +297,9 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image path="./assets/images/aboutus_img/navya.jpg" name="Navya Singh" contact="6264365144" />
+                  <Image path="./assets/images/aboutus_img/navya.jpg" name="Navya Singh" contact="6264365144" >
+                    Information Technology
+                    </Image>
                 </div>
                 <div>
                   <Image path="./assets/images/aboutus_img/tanmay.jpg" name="Tanmay Soni" contact="9329847520">
@@ -309,7 +317,9 @@ class About extends Component {
                   </Image>
                 </div>
                 <div>
-                  <Image path="./assets/images/aboutus_img/aman.jpg" name="Aman Mandal" contact="7225952566" />
+                  <Image path="./assets/images/aboutus_img/aman.jpg" name="Aman Mandal" contact="7225952566" >
+                  Electronics and Telecommunication
+                  </Image>
                 </div>
               </OwlCarousel>
             </div>

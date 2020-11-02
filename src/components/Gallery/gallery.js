@@ -12,7 +12,20 @@ const gallery = (props) => {
                     <BreadcrumbItem title="Gallery" status="active" />
                 </Breadcrumb>
                 <div className="container">
-                    <h1> OUR GALLERY </h1>
+                    <div className="row">
+                        <div className="title">
+                            <h2>OUR GALLERY</h2>
+                            <br />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <h5>Tech-Expo @ Ojas2019</h5>
+
+                    </div>
+                    <div className="row">
+                        <h5>Robotics Workshop</h5>
+
+                    </div>
                 </div>
             </div>
         </React.Fragment>

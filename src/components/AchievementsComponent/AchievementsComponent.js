@@ -25,7 +25,7 @@ const achievements = (props) => {
                             </SingleAchievement>
                         </div>
                         <div className="col-md-6">
-                            <SingleAchievement>
+                            <SingleAchievement path="./assets/images/achievements/EyantraBhupesh.jpg">
                                 Seriate to the event was EYANTRA which is an initiative to
                                 spread education in Embedded systems and Robotics by IIT
                                 Bombay sponsored by Ministry of Human Resource
@@ -39,7 +39,7 @@ const achievements = (props) => {
                             </SingleAchievement>
                         </div>
                         <div className="col-md-6">
-                            <SingleAchievement>
+                            <SingleAchievement path="./assets/images/achievements/Drone.jpg">
                                 Aerial Painting Drone is one of the major projects in which
                                 few of the most talented and hardworking TechnoHub
                                 members are working. It is all about a simple drone which is
@@ -47,6 +47,13 @@ const achievements = (props) => {
                                 principles of drone. And this drone was funded worth
                                 Rs.30,000 by the university. Seeing upon the progress, the
                                 university will fund more up to Rs.50,000.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-md-6">
+                            <SingleAchievement path="./assets/images/achievements/KuldeepMIT.jpg">
+                                One of our member Kuldeep Patel of 5th Semester from Electrical 
+                                and Electronics Department has won the MIT COVID-19 Challenge .
+                                Which is a hackathon organised by MIT,Massachusetts.
                             </SingleAchievement>
                         </div>
                     </div>
