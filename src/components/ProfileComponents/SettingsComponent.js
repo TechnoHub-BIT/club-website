@@ -45,7 +45,7 @@ try {
                         </div>
                     </div>
                     <div className="profileContent">
-                        <div className="general">
+                        <div className="settings">
                             <div>
                                 <h6 className="contentHeading">Change Password</h6>
                                 <div className="input-group">
@@ -60,9 +60,15 @@ try {
                                     <input type="password" id="new" placeholder="New Password" />
                                     <label for="new">New Password</label>
                                 </div>
+                                <Button color="primary">
+                                    Change Password
+                                </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Account Actions</h6>
+                                <Button color="danger">
+                                    <i className="fas fa-times"></i> Delete Account
+                                </Button>
                             </div>
                         </div>
                     </div>

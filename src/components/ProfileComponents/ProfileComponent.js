@@ -72,17 +72,23 @@ try {
                                     <input type="text" id="contact" placeholder="Contact No." />
                                     <label for="contact">Contact No.</label>
                                 </div>
+                                <Button color="primary">
+                                    <i className="far fa-file"></i> Save Changes
+                                </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
                                 <div className="input-group">
                                     <input type="text" id="interest" placeholder="Interested in" />
-                                    <label for="interest">Interested in(Eg- Web Development)</label>
+                                    <label for="interest">Interested In(Eg- Web Development)</label>
                                 </div>
                                 <div className="input-group">
                                     <input type="text" id="languages" placeholder="Known Languages" />
                                     <label for="name">Known Languages</label>
                                 </div>
+                                <Button color="primary">
+                                    <i className="far fa-file"></i> Save Changes
+                                </Button>
                             </div>
                         </div>
                     </div>

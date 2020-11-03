@@ -76,6 +76,7 @@
 }
 
 .profileCont .profileDetails .profileBody .profileContent {
+  margin: 0 5em;
   padding: 1.5em 2em 0;
 }
 
@@ -87,7 +88,7 @@
 }
 
 .profileCont .profileDetails .profileBody .profileContent .input-group {
-  width: 50%;
+  width: 40%;
 }
 
 .profileCont .profileDetails .profileBody .profileContent > div > div:not(:first-child) {
