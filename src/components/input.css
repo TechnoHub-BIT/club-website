@@ -1,0 +1,85 @@
+.input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  margin: 0.5em 0;
+}
+
+.input-group.half {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em;
+}
+
+.input-group input {
+  background-color: inherit;
+  color: #000;
+  font-size: 1em;
+  padding: 30px 10px 10px;
+  border: none;
+  border-bottom: 2px solid darkgray;
+  outline: none;
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+}
+
+.input-group input::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.input-group input:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.input-group input::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.input-group input::placeholder {
+  opacity: 0;
+}
+
+.input-group input:focus,
+.input-group input:not(:placeholder-shown) {
+  border-bottom: 2px solid #000;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+  -webkit-transform: translate(10px, -35px) scale(0.9);
+  transform: translate(10px, -35px) scale(0.9);
+  padding: 0;
+  color: #000;
+}
+
+.input-group label {
+  position: absolute;
+  padding-left: 10px;
+  margin-bottom: 2px;
+  color: darkgray;
+  cursor: pointer;
+  -webkit-transform: translate(4px, -14px) scale(1.02);
+  transform: translate(4px, -14px) scale(1.02);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  font-weight: normal;
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+}
+
+.input-group select {
+  border: none;
+  margin: 2em 0 0;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  outline: none;
+  padding-bottom: 14px;
+}

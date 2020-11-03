@@ -1,0 +1,113 @@
+.profileCont {
+  .profileDetails {
+    .profileHeader {
+      background-color: #ebf6fa;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      align-items: center;
+      grid-column-gap: 1em;
+
+      .profileImage {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+      }
+
+      .profileName {
+        h6 {
+          color: #535353;
+        }
+      }
+    }
+
+    .profileBody {
+      margin-top: 2em;
+      padding-bottom: 0.5em;
+
+      .profileNav {
+        display: flex;
+        border-bottom: 1px solid #8a8a8a;
+        padding: 0 2em 0.3em;
+
+        .profileNavItem {
+          position: relative;
+          color: #8a8a8a;
+          cursor: pointer;
+
+          &.active {
+            color: #000;
+
+            &::after {
+              position: absolute;
+              content: "";
+              height: 3px;
+              width: 120%;
+              background-color: #007bff;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: -0.4em;
+              z-index: 2;
+              border-top-left-radius: 2px;
+              border-top-right-radius: 2px;
+            }
+          }
+
+          &:hover {
+            color: #000;
+          }
+
+          &:not(:first-child) {
+            margin-left: 1em;
+          }
+
+          i {
+            margin-right: 0.3em;
+          }
+        }
+      }
+
+      .profileContent {
+        margin: 0 3em;
+        padding: 1.5em 2em 0;
+
+        .contentHeading {
+          font-family: "Barlow Condensed", sans-serif;
+          font-weight: 400 !important;
+          font-size: 1.5em;
+          color: #8a8a8a;
+        }
+
+        .input-group {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .profileCont {
+    .profileDetails {
+      .profileHeader {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .profileImage {
+          margin-bottom: 1em;
+        }
+      }
+    }
+
+    .profileBody {
+      .profileContent {
+        margin: 0 !important;
+
+        .input-group {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}

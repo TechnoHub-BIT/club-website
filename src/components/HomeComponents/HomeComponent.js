@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import FAQ from "./FAQ";
 import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
+import { Link } from "react-router-dom";
 function Home(props) {
   const [faqs, setfaqs] = useState([
     {
@@ -158,9 +159,9 @@ function Home(props) {
                   conducive platform to explore student’s latent talents and
                   also to enable them to come out with their innovative ideas.
                 </p>
-                <a href="#rcp" className="btn_2">
-                  read more
-                </a>
+                <Link to="/events" className="btn_2">
+                  Read More
+                </Link>
               </div>
             </div>
           </div>
@@ -186,9 +187,9 @@ function Home(props) {
                     encourage members to get involved in activities outside
                     their academic timetables.
                   </p>
-                  <a href="#rcp" className="btn_2">
-                    read more
-                  </a>
+                  <Link to="/aboutus" className="btn_2">
+                    Read More
+                  </Link>
                 </div>
               </div>
               <div className="col-md-5 col-lg-5">

@@ -42,6 +42,7 @@ address {
   background-color: #0b025f;
   font-weight: 500;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .btn_1 {
@@ -63,6 +64,7 @@ address {
 .btn_2:hover {
   color: #4dbb39;
   background-color: #fff;
+  text-decoration: none;
 }
 
 .about_text {
@@ -201,7 +203,7 @@ address {
 }
 .services h4 {
   font-family: "Barlow Condensed", sans-serif;
-  font-weight: normal;
+  font-weight: 600 !important;
   text-transform: uppercase;
   font-weight: bold;
 }

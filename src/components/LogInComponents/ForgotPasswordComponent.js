@@ -24,7 +24,7 @@ function ForgotPasswordComponent() {
             setError("")
             setLoading(true)
             await resetPassword(emailRef.current.value)
-            setMessage("Check your indox for further instructions")
+            setMessage("Check your inbox for further instructions")
         }
         catch{
             setError("Failed to Reset Password")

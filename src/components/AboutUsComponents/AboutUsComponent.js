@@ -46,7 +46,7 @@ class About extends Component {
       <React.Fragment>
         {/* <NavbarPage/> */}
         <div className="aboutus-container">
-          <HeaderTitle heading="ABOUT US" />
+          <HeaderTitle heading="ABOUT THE CLUB" />
           <Breadcrumb>
             <BreadcrumbItem title="Home" path="/" />
             <BreadcrumbItem title="About Us" status="active" />
@@ -89,11 +89,9 @@ class About extends Component {
               <OwlCarousel
                 items={1}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head">
-                    TPO Head
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head">
+                  TPO Head
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -111,11 +109,9 @@ class About extends Component {
               <OwlCarousel
                 items={1}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355">
+                  Electronics and Telecommunication
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -137,16 +133,13 @@ class About extends Component {
                   autoplayHoverPause
                   responsive={this.state.responsive}
                 >  
-                  <div>
-                    <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
-                      Electronics and Telecommunication
-                    </Image>
-                  </div>
-                  <div>
-                    <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
-                      Electronics and Telecommunication
-                    </Image>
-                  </div>
+                  <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
+                    Electronics and Telecommunication
+                  </Image>
+                  
+                  <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
+                    Electronics and Telecommunication
+                  </Image>
                 </OwlCarousel>
             </div>
           </div>
@@ -168,27 +161,21 @@ class About extends Component {
                   autoplayHoverPause
                   responsive={this.state.responsive2}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
+                  Electronics and Telecommunication
+                </Image>
+              
+                <Image path="./assets/images/aboutus_img/Saisha.jpeg" name="T Saisha" contact="8085999174">
+                  Electronics and Telecommunication
+                </Image>
+
+                <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
+                  Electronics and Telecommunication
+                </Image>
                 
-                <div>
-                  <Image path="./assets/images/aboutus_img/Saisha.jpeg" name="T Saisha" contact="8085999174">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" >
-                    Electrical and Electronics
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" >
+                  Electrical and Electronics
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -208,11 +195,9 @@ class About extends Component {
               <OwlCarousel
                 items={1}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565">
+                  Electronics and Telecommunication
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -235,26 +220,21 @@ class About extends Component {
                   autoplayHoverPause
                   responsive={this.state.responsive2}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099">
-                    Computer Science
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099">
+                  Computer Science
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -277,46 +257,37 @@ class About extends Component {
                   autoplayHoverPause
                   responsive={this.state.responsive2}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846">
-                    Electrical and Electronics
+                <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846">
+                  Electrical and Electronics
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/nitesh.jpg" name="Nitesh Bharti" contact="7354124249">
+                  Mechanical
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/abhishek.jpg" name="Abhishek Agrawal" contact="8871637776">
+                  Computer Science
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/navya.jpg" name="Navya Singh" contact="6264365144" >
+                  Information Technology
                   </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/nitesh.jpg" name="Nitesh Bharti" contact="7354124249">
-                    Mechanical
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/abhishek.jpg" name="Abhishek Agrawal" contact="8871637776">
-                    Computer Science
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/navya.jpg" name="Navya Singh" contact="6264365144" >
-                    Information Technology
-                    </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/tanmay.jpg" name="Tanmay Soni" contact="9329847520">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/aman.jpg" name="Aman Mandal" contact="7225952566" >
+                  
+                <Image path="./assets/images/aboutus_img/tanmay.jpg" name="Tanmay Soni" contact="9329847520">
                   Electronics and Telecommunication
-                  </Image>
-                </div>
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/aman.jpg" name="Aman Mandal" contact="7225952566" >
+                  Electronics and Telecommunication
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -339,66 +310,53 @@ class About extends Component {
                   autoplayHoverPause
                   responsive={this.state.responsive2}
               >
-                <div>
-                  <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/narayan.jpg" name="Bavisetti Narayan" contact="9406108766">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/bipul.jpeg" name="Bipul Biswas" contact="9358222648">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/saumya.jpeg" name="Saumya Shrivastava" contact="9893475993">
-                    Computer Science
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/preeti.jpeg" name="Preeti Gabel" contact="9179243009">
-                    Electrical and Electronics
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/rishita.jpeg" name="Rishita Upadhyay" contact="870289342">
-                    Electrical and Electronics
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/kritika.jpeg" name="Kritika Upadhyay" contact="6261516782">
-                    Civil
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/pawan.jpeg" name="Pawan Kumar" contact="9340400425">
-                    Electrical
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/stuti.jpeg" name="Stuti Mishra" contact="7987671690">
-                    Electronics and Telecommunication
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/anshul.jpeg" name="Anshul Lanjewar" contact="7049223604">
-                    Electrical and Electronics
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/vinayak.jpeg" name="Vinayak Rawat" contact="9571089472">
-                    Computer Science
-                  </Image>
-                </div>
-                <div>
-                  <Image path="./assets/images/aboutus_img/anubhav.jpeg" name="Anubhav Bhatt" contact="8234993336">
-                    Mechanical
-                  </Image>
-                </div>
+                <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/narayan.jpg" name="Bavisetti Narayan" contact="9406108766">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/bipul.jpeg" name="Bipul Biswas" contact="9358222648">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/saumya.jpeg" name="Saumya Shrivastava" contact="9893475993">
+                  Computer Science
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/preeti.jpeg" name="Preeti Gabel" contact="9179243009">
+                  Electrical and Electronics
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/rishita.jpeg" name="Rishita Upadhyay" contact="870289342">
+                  Electrical and Electronics
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/kritika.jpeg" name="Kritika Upadhyay" contact="6261516782">
+                  Civil
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/pawan.jpeg" name="Pawan Kumar" contact="9340400425">
+                  Electrical
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/stuti.jpeg" name="Stuti Mishra" contact="7987671690">
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/anshul.jpeg" name="Anshul Lanjewar" contact="7049223604">
+                  Electrical and Electronics
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/vinayak.jpeg" name="Vinayak Rawat" contact="9571089472">
+                  Computer Science
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/anubhav.jpeg" name="Anubhav Bhatt" contact="8234993336">
+                  Mechanical
+                </Image>
               </OwlCarousel>
             </div>
           </div>
