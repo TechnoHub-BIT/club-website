@@ -1,6 +1,7 @@
 import React from "react";
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import SingleAchievement from "./SingleAchievementComponent/SingleAchievement";
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
 
 import "./Achievements.css";
 
@@ -8,6 +9,7 @@ const achievements = (props) => {
     return(
         <React.Fragment>    
             <div className="achievementsCont">
+                <HeaderTitle heading="ACHIEVEMENTS" />
                 <Breadcrumb>
                     <BreadcrumbItem title="Home" path="/" />
                     <BreadcrumbItem title="Achievements" status="active" />
