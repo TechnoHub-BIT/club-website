@@ -36,15 +36,23 @@
 
 .profileCont .profileDetails .profileBody .profileNav .profileNavItem {
   position: relative;
-  color: #8a8a8a;
   cursor: pointer;
 }
 
-.profileCont .profileDetails .profileBody .profileNav .profileNavItem.active {
+.profileCont .profileDetails .profileBody .profileNav .profileNavItem a {
+  color: #8a8a8a;
+  text-decoration: none;
+}
+
+.profileCont .profileDetails .profileBody .profileNav .profileNavItem a:hover {
   color: #000;
 }
 
-.profileCont .profileDetails .profileBody .profileNav .profileNavItem.active::after {
+.profileCont .profileDetails .profileBody .profileNav .profileNavItem.active a {
+  color: #000;
+}
+
+.profileCont .profileDetails .profileBody .profileNav .profileNavItem.active a::after {
   position: absolute;
   content: "";
   height: 3px;
@@ -59,10 +67,6 @@
   border-top-right-radius: 2px;
 }
 
-.profileCont .profileDetails .profileBody .profileNav .profileNavItem:hover {
-  color: #000;
-}
-
 .profileCont .profileDetails .profileBody .profileNav .profileNavItem:not(:first-child) {
   margin-left: 1em;
 }
@@ -72,7 +76,6 @@
 }
 
 .profileCont .profileDetails .profileBody .profileContent {
-  margin: 0 3em;
   padding: 1.5em 2em 0;
 }
 
@@ -85,6 +88,10 @@
 
 .profileCont .profileDetails .profileBody .profileContent .input-group {
   width: 50%;
+}
+
+.profileCont .profileDetails .profileBody .profileContent > div > div:not(:first-child) {
+  margin-top: 3em;
 }
 
 @media only screen and (max-width: 992px) {

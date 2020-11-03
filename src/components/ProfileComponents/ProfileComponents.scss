@@ -32,10 +32,18 @@
 
         .profileNavItem {
           position: relative;
-          color: #8a8a8a;
           cursor: pointer;
 
-          &.active {
+          a {
+            color: #8a8a8a;
+            text-decoration: none;
+
+            &:hover {
+              color: #000;
+            }
+          }
+
+          &.active a {
             color: #000;
 
             &::after {
@@ -53,10 +61,6 @@
             }
           }
 
-          &:hover {
-            color: #000;
-          }
-
           &:not(:first-child) {
             margin-left: 1em;
           }
@@ -68,7 +72,6 @@
       }
 
       .profileContent {
-        margin: 0 3em;
         padding: 1.5em 2em 0;
 
         .contentHeading {
@@ -80,6 +83,12 @@
 
         .input-group {
           width: 50%;
+        }
+
+        & > div > div {
+          &:not(:first-child) {
+            margin-top: 3em;
+          }
         }
       }
     }

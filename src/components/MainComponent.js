@@ -14,7 +14,8 @@ import {AuthProvider} from '../contexts/AuthContext';
 import PrivateRoute from "../PrivateRoute";
 import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
 import Achievements from "./AchievementsComponent/AchievementsComponent";
-import gallery from "./Gallery/gallery";
+import Gallery from "./Gallery/gallery";
+import Settings from "./ProfileComponents/SettingsComponent";
 
 class Main extends Component {
   render() {
@@ -31,11 +32,12 @@ class Main extends Component {
             <Route exact path="/events" component={EventPage} />
             <Route exact path="/signup" component={SignUpComponent}/>
             <PrivateRoute exact path="/profile" component={Profile}/>
+            <PrivateRoute exact path="/settings" component={Settings}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/forgot-password" component={ForgotPassword}/>
             <Route exact path="/hackathon2020" component={HackathonPage} />
             <Route exact path="/achievements" component={Achievements} />
-            <Route exact path="/gallery" component={gallery} />
+            <Route exact path="/gallery" component={Gallery} />
             <Footer />
             {/* </Switch> */}
           </AuthProvider>

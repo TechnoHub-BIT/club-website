@@ -37,52 +37,32 @@ try {
                 </div>
                 <div className="profileBody">
                     <div className="profileNav">
-                        <div className="profileNavItem active">
+                        <div className="profileNavItem">
                             <Link to="/profile"><i className="fas fa-info"></i> General</Link>
                         </div>
-                        <div className="profileNavItem">
+                        <div className="profileNavItem active">
                             <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
                         </div>
                     </div>
                     <div className="profileContent">
                         <div className="general">
                             <div>
-                                <h6 className="contentHeading">Personal Information</h6>
+                                <h6 className="contentHeading">Change Password</h6>
                                 <div className="input-group">
-                                    <input type="text" id="name" placeholder="Name" />
-                                    <label for="name">Name</label>
+                                    <input type="password" id="old" placeholder="Old Password" />
+                                    <label for="old">Old Password</label>
                                 </div>
                                 <div className="input-group">
-                                    <select required>
-                                        <option value="">Select Branch</option>
-                                        <option value="1">Electronics and Telecommunication</option>
-                                    </select>
+                                    <input type="password" id="confirm" placeholder="Confirm Old Password" />
+                                    <label for="confirm">Confirm Old Password</label>
                                 </div>
                                 <div className="input-group">
-                                    <select required>
-                                        <option value="">Select Semester</option>
-                                        <option value="1">1</option>
-                                    </select>
-                                </div>
-                                <div className="input-group">
-                                    <input type="email" id="email" placeholder="Email" />
-                                    <label for="email">Email-Id</label>
-                                </div>
-                                <div className="input-group">
-                                    <input type="text" id="contact" placeholder="Contact No." />
-                                    <label for="contact">Contact No.</label>
+                                    <input type="password" id="new" placeholder="New Password" />
+                                    <label for="new">New Password</label>
                                 </div>
                             </div>
                             <div>
-                                <h6 className="contentHeading">Field Information</h6>
-                                <div className="input-group">
-                                    <input type="text" id="interest" placeholder="Interested in" />
-                                    <label for="interest">Interested in(Eg- Web Development)</label>
-                                </div>
-                                <div className="input-group">
-                                    <input type="text" id="languages" placeholder="Known Languages" />
-                                    <label for="name">Known Languages</label>
-                                </div>
+                                <h6 className="contentHeading">Account Actions</h6>
                             </div>
                         </div>
                     </div>
