@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import './SignUpStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { db,auth } from '../../firebase'
 
 function SignUpComponent() {
 
@@ -29,6 +30,7 @@ function SignUpComponent() {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
+
             history.push("/")
 
         }catch{
