@@ -26,9 +26,16 @@ try {
             <HeaderTitle heading="PROFILE" />
             <div className="profileDetails">
                 <div className="profileHeader">
-                    <img src="./assets/images/aboutus_img/aaryan.jpg" className="profileImage" />
+ { currentUser.photoURL ?
+                    <img src={currentUser.photoURL} className="profileImage" />
+:
+                    <img src="./assets/images/profile-user.svg" className="profileImage" />
+
+}
+
                     <div className="profileName">
-                        <h5>Aaryan Khandelwal</h5>
+                        <h5>{currentUser.displayName}</h5>
+<h6>{currentUser.email}</h6>
                         <h6>Electronics and Telecommunication</h6>
                         <Button onClick={handleLogout} >
                             Log Out
