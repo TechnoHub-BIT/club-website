@@ -16,6 +16,7 @@ import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
 import Achievements from "./AchievementsComponent/AchievementsComponent";
 import Gallery from "./Gallery/gallery";
 import Settings from "./ProfileComponents/SettingsComponent";
+import OurMembers from "./MembersListComponent/MembersList";
 
 class Main extends Component {
   render() {
@@ -30,6 +31,7 @@ class Main extends Component {
             <Route exact path="/aboutus" component={About} />
             <Route exact path="/contactus" component={Contact} />
             <Route exact path="/events" component={EventPage} />
+            <Route exact path="/ourmembers" component={OurMembers} />
             <Route exact path="/signup" component={SignUpComponent}/>
             <PrivateRoute exact path="/profile" component={Profile}/>
             <PrivateRoute exact path="/settings" component={Settings}/>

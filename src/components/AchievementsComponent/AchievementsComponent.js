@@ -53,8 +53,8 @@ const achievements = (props) => {
                         </div>
                         <div className="col-md-6">
                             <SingleAchievement path="./assets/images/achievements/KuldeepMIT.jpg">
-                                One of our member Kuldeep Patel of 5th Semester from Electrical 
-                                and Electronics Department has won the MIT COVID-19 Challenge .
+                                One of our member Kuldeep Patel of 5th Semester from Electronics 
+                                and Telecommunications Department has won the MIT COVID-19 Challenge .
                                 Which is a hackathon organised by MIT,Massachusetts.
                             </SingleAchievement>
                         </div>
