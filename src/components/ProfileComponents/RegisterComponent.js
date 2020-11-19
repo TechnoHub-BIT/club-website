@@ -42,7 +42,7 @@ const RegisterComponent = () => {
                         </div>
                     </div>
                     <div className="profileContent">
-                        <div className="settings">
+                        <div className="register">
                             <div>
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">

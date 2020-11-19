@@ -126,7 +126,7 @@
   .profileCont .profileBody .profileContent {
     margin: 0 !important;
   }
-  .profileCont .profileBody .profileContent .general {
+  .profileCont .profileBody .profileContent > div {
     -ms-grid-columns: (1fr)[1] !important;
         grid-template-columns: repeat(1, 1fr) !important;
   }

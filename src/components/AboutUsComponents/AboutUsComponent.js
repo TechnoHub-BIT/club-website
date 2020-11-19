@@ -87,6 +87,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head">
@@ -107,6 +108,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355">
@@ -126,21 +128,22 @@ class About extends Component {
               </div>
             </div>
             <div className="row">
-                <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive}
-                >  
-                  <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
-                    Electronics and Telecommunication
-                  </Image>
-                  
-                  <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
-                    Electronics and Telecommunication
-                  </Image>
-                </OwlCarousel>
+              <OwlCarousel
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive}
+              >  
+                <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
+                  Electronics and Telecommunication
+                </Image>
+              </OwlCarousel>
             </div>
           </div>
           {/* General Manager Start */}
@@ -155,11 +158,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
                   Electronics and Telecommunication
@@ -193,6 +197,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565">
@@ -214,11 +219,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880">
                   Electronics and Telecommunication
@@ -251,11 +257,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846">
                   Electrical and Electronics
@@ -304,11 +311,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828">
                   Electronics and Telecommunication
