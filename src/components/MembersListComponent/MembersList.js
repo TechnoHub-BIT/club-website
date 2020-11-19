@@ -40,7 +40,7 @@ const OurMembers = (props) => {
                 <Td>Electronics and Telecommunications</Td>
                 <Td>5th</Td>
                 <Td>Web Development, NodeJS, AndroidDev</Td>
-                <Td>All</Td>
+                <Td>Robotics, EagleCAD, Electric Vehicles</Td>
               </Tr>
             </Tbody>
           </Table>

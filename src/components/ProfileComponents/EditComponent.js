@@ -79,13 +79,26 @@ function EditComponent() {
                                 <div className="input-group">
                                     <select required>
                                         <option value="">Select Branch</option>
-                                        <option value="1">Electronics and Telecommunication</option>
+                                        <option value="1">Computer Science Engineering</option>
+                                        <option value="2">Electronics and Telecommunication</option>
+                                        <option value="3">Information Technology</option>
+                                        <option value="4">Electronics and Electronics</option>
+                                        <option value="5">Electrical Engineering</option>
+                                        <option value="6">Civil Engineering</option>
+                                        <option value="7">Mechanical Engineering</option>
+                                        <option value="8">Others</option>
                                     </select>
                                 </div>
                                 <div className="input-group">
                                     <select required>
                                         <option value="">Select Semester</option>
                                         <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
                                     </select>
                                 </div>
                                 <div className="input-group">

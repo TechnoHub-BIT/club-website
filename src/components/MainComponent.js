@@ -19,6 +19,7 @@ import Settings from "./ProfileComponents/SettingsComponent";
 import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
 import OurMembers from "./MembersListComponent/MembersList";
+import Projects from "./ProjectsComponent/ProjectsComponent";
 
 class Main extends Component {
   render() {
@@ -47,6 +48,7 @@ class Main extends Component {
             <Route exact path="/hackathon2020" component={HackathonPage} />
             <Route exact path="/achievements" component={Achievements} />
             <Route exact path="/gallery" component={Gallery} />
+            <Route exact path="/projects" component={Projects} />
             <Footer />
             {/* </Switch> */}
           </AuthProvider>

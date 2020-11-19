@@ -191,6 +191,7 @@ address {
 
 .entinner {
   padding: 0px 20px 0px 20px;
+  text-align: center;
 }
 
 .services .line {
@@ -211,3 +212,12 @@ address {
   margin-top: 1em;
   text-align: justify;
 }
+
+.about_text {
+  text-align: center;
+}
+
+.about_text1 {
+  text-align: center;
+}
+

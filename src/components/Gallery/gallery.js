@@ -22,7 +22,36 @@ const gallery = (props) => {
                     </div>
                     <div className="row">
                         <h5>Tech-Expo @ Ojas2019</h5>
-
+                            <div className="container">
+                        <div className="gallery_img">
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName2.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName3.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName4.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName5.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName6.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName7.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName8.jpeg" height="100" width="100" alt="" />
+                            </div>
+                            <div className="single_gallery_img">
+                                <img src="/assets/images/footer_img/randomName9.jpeg" height="100" width="100" alt="" />
+                            </div>
+                           
+                        </div>
+                            </div>
                     </div>
                     <div className="row">
                         <h5>Robotics Workshop</h5>

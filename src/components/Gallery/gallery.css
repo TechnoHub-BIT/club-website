@@ -24,3 +24,18 @@
 .aboutText {
   text-align: justify;
 }
+
+.gallery_img {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.single_gallery_img {
+  margin: 5px 5px 5px 5px;
+  transition: transform 450ms;
+}
+
+.single_gallery_img:hover {
+  transform: scale(3);
+}

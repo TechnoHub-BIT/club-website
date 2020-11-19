@@ -19,7 +19,7 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-angle-right"></i>
-              <Link to="/gallery">Club Members</Link>
+              <Link to="/aboutus">Club Members</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
@@ -32,6 +32,10 @@ const footer = () => {
             <li>
               <i className="fas fa-angle-right"></i>
               <a href="https://technoquiz.herokuapp.com/">Aptitude Test</a>
+            </li>
+            <li>
+              <i className="fas fa-angle-right"></i>
+              <Link to="/projects">Our Projects</Link>
             </li>
           </ul>
         </div>
