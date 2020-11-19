@@ -5,36 +5,27 @@ import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
+import ProfileHeader from './ProfileHeader';
 
-function ProfileComponent() {
+function SettingsComponent() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
     const history = useHistory()
     async function handleLogout(){
-setError('')
-
-try {
-    await logout()
-    history.push('/login')
-}catch{
-    setError('Failed to log out')
-}
+        setError('')
+        try {
+            await logout()
+            history.push('/login')
+        } catch {
+            setError('Failed to log out')
+        }
     }
 
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
             <div className="profileDetails">
-                <div className="profileHeader">
-                    <img src="./assets/images/aboutus_img/aaryan.jpg" className="profileImage" />
-                    <div className="profileName">
-                        <h5>Aaryan Khandelwal</h5>
-                        <h6>Electronics and Telecommunication</h6>
-                        <Button onClick={handleLogout} >
-                            Log Out
-                        </Button>
-                    </div>
-                </div>
+                <ProfileHeader />
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">
@@ -81,4 +72,4 @@ try {
     )
 }
 
-export default ProfileComponent
+export default SettingsComponent;

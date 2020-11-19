@@ -6,6 +6,7 @@ import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';
+import ProfileHeader from './ProfileHeader';
 
 function ProfileComponent() {
     const [error, setError] = useState('');
@@ -23,54 +24,33 @@ function ProfileComponent() {
 
     const history = useHistory()
     async function handleLogout(){
-setError('')
-
-try {
-    await logout()
-    history.push('/login')
-}catch{
-    setError('Failed to log out')
-}
+        setError('')
+        try {
+            await logout()
+            history.push('/login')
+        } catch{
+            setError('Failed to log out')
+        }
     }
 
-  useEffect(() => {
-    if(currentUser){
-      db.collection("members")
-        .doc(currentUser.uid)
-        .onSnapshot(function (doc) {
-          console.log("Current data: ", doc.data());
-          const data = doc.data();
-          setProfiles(data);
-        });
-  }
-  }, [currentUser]);
+    useEffect(() => {
+        if(currentUser) {
+            db.collection("members")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+                console.log("Current data: ", doc.data());
+                const data = doc.data();
+                setProfiles(data);
+            });
+        }
+    }, [currentUser]);
 
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
             { currentUser && (
             <div className="profileDetails">
-                <div className="profileHeader">
-                    { currentUser.photoURL ?
-                        <img src={currentUser.photoURL} className="profileImage" />
-                        :
-                        <img src="./assets/images/profile-user.svg" className="profileImage" />
-                    }
-
-                    <div className="profileName">
-                        {/* <h5>{profiles.fullname}</h5> */}
-                        <h6>{currentUser.email}</h6>
-                        <h6>Electronics and Telecommunication</h6>
-                        <Link to="/register">
-                            <Button color="primary">
-                                <i className="fas fa-pencil-alt"></i> Apply for Membership
-                            </Button>
-                        </Link>
-                        <Button onClick={handleLogout} >
-                            Log Out
-                        </Button>
-                    </div>
-                </div>
+                <ProfileHeader />
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem active">

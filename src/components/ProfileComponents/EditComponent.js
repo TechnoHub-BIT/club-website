@@ -1,45 +1,57 @@
-import React, {useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {Card, Button, Alert, CardBody} from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
+import { db } from '../../firebase';
+import ProfileHeader from "./ProfileHeader";
 
-function ProfileComponent() {
+function EditComponent() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
-    const history = useHistory()
-    async function handleLogout(){
-        setError('')
 
+    const [fullname, setFullname] = useState("");
+    const [branch, setBranch] = useState("");
+    const [semester, setSemester] = useState("");
+    const [member, setMember] = useState("");
+    const [skills, setSkills] = useState("");
+    const [workshops, setWorkshops] = useState("");
+    const [interest, setInterest] = useState("");
+
+    const [profiles, setProfiles] = useState([]);
+
+    const history = useHistory()
+    async function handleLogout() {
+        setError('')
         try {
             await logout()
             history.push('/login')
-        } catch {
+        } catch{
             setError('Failed to log out')
         }
     }
 
+    useEffect(() => {
+        if(currentUser) {
+            db.collection("members")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+                console.log("Current data: ", doc.data());
+                const data = doc.data();
+                setProfiles(data);
+            });
+        }
+    }, [currentUser]);
+
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
+            { currentUser && (
+                
             <div className="profileDetails">
-                <div className="profileHeader">
-                    <img src="./assets/images/aboutus_img/aaryan.jpg" className="profileImage" />
-                    <div className="profileName">
-                        <h5>Aaryan Khandelwal</h5>
-                        <h6>Electronics and Telecommunication</h6>
-                        <Link to="/register">
-                            <Button color="primary">
-                                <i className="fas fa-pencil-alt"></i> Apply for Membership
-                            </Button>
-                        </Link>
-                        <Button onClick={handleLogout}>
-                            Log Out
-                        </Button>
-                    </div>
-                </div>
+                <ProfileHeader />
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">
@@ -102,8 +114,10 @@ function ProfileComponent() {
                     </div>
                 </div>
             </div>
+        )}
         </div>
+
     )
 }
 
-export default ProfileComponent;
+export default EditComponent;
