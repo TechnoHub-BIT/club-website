@@ -37,14 +37,8 @@ try {
                 </div>
                 <div className="profileBody">
                     <div className="profileNav">
-                        <div className="profileNavItem">
-                            <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
-                        </div>
-                        <div className="profileNavItem">
-                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
-                        </div>
                         <div className="profileNavItem active">
-                            <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
+                            <Link to="/register"><i className="fas fa-pencil-alt"></i> Register</Link>
                         </div>
                     </div>
                     <div className="profileContent">
