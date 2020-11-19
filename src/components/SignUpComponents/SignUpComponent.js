@@ -8,13 +8,14 @@ import classnames from 'classnames';
 import './SignUpStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { db,auth } from '../../firebase'
 
 function SignUpComponent() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const {signup} = useAuth()
+    const {signup, signupWithGoogle} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -29,6 +30,7 @@ function SignUpComponent() {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
+
             history.push("/")
 
         }catch{
@@ -37,6 +39,24 @@ function SignUpComponent() {
         setLoading(false)
 
     }
+
+    async function handleSubmitWithGoogle(e) {
+      e.preventDefault()
+
+
+      try{
+
+          setError('')
+          setLoading(true)          
+          await signupWithGoogle()
+          history.push("/")
+      }catch{
+
+          setError('Failed to Login')
+      }
+      setLoading(false)
+
+  }
 
     const [activeTab, setActiveTab] = useState('1');
 
@@ -101,6 +121,13 @@ function SignUpComponent() {
                     <Col ><hr class="solid"/></Col>
                   </Row>
                 </CardBody>
+                <Button
+            onClick={handleSubmitWithGoogle}
+            type="button"
+            className="login_signInButton"
+          >
+            Continue with Google
+          </Button>
               </Card>
             </div>
             {/* </div> */}

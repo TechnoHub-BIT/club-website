@@ -13,7 +13,7 @@ function LogInComponent() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
-    const {login} = useAuth()
+    const {login, signupWithGoogle} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -33,6 +33,25 @@ function LogInComponent() {
         setLoading(false)
 
     }
+
+    async function handleSubmitWithGoogle(e) {
+      e.preventDefault()
+
+
+      try{
+
+          setError('')
+          setLoading(true)          
+          await signupWithGoogle()
+          history.push("/")
+      }catch{
+
+          setError('Failed to Login')
+      }
+      setLoading(false)
+
+  }
+
     const [activeTab, setActiveTab] = useState('2');
 
     const toggle = tab => {
@@ -96,7 +115,17 @@ function LogInComponent() {
                     <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
                     <Col ><hr class="solid"/></Col>
                   </Row>
+                  <Row>
+                    
+                  </Row>
                 </CardBody>
+                <Button
+            onClick={handleSubmitWithGoogle}
+            type="button"
+            className="login_signInButton"
+          >
+            Continue with Google
+          </Button>
                           {/* </Row> */}
               </Card>
             </div>

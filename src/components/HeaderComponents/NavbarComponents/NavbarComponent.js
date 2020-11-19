@@ -93,6 +93,11 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink className="nav-link" to="/ourmembers">
+                    <div className="nav-btn">Our Members</div>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
                   <a className="nav-link" href="https://technoquiz.herokuapp.com/" target="_blank" rel="noopener noreferrer"> <div className="nav-btn">Aptitude</div></a>
                 </NavItem>
                 <NavItem>

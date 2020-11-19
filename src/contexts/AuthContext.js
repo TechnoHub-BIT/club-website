@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {auth} from '../firebase';
+import {auth,db}  from '../firebase';
+import firebase from 'firebase';
 
 const AuthContext = React.createContext()
 
@@ -12,7 +13,50 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
     function signup(email, password){
-        return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password).then((auth) => {
+            db.collection("members").doc(auth.user.uid).set({
+                fullname: auth.user.displayName,
+                email: auth.user.email,
+                id: 2,
+                branch: "N/A",
+                semester: "N/A",
+                member: "N/A",
+                skills: "N/A",
+                workshops: "N/A",
+                interest: "N/A",
+                payment: false,
+              });
+        })
+
+    }
+
+    function signupWithGoogle(){
+        var provider = new firebase.auth.GoogleAuthProvider();
+     return auth.signInWithPopup(provider)
+        .then(function (result){
+            setCurrentUser(result.user)
+        const usersRef = db.collection("members").doc(result.user.uid);
+
+        usersRef.get().then((docSnapshot) => {
+          if (docSnapshot.exists) {
+            console.log("exists", docSnapshot);
+          } else {
+            db.collection("members").doc(result.user.uid).set({
+              fullname: result.user.displayName,
+              email: result.user.email,
+              id: 2,
+              branch: "N/A",
+              semester: "N/A",
+              member: "N/A",
+              skills: "N/A",
+              workshops: "N/A",
+              interest: "N/A",
+              payment: false,
+            });
+          }
+        })
+
+        });
     }
 
     function login(email, password){
@@ -41,6 +85,7 @@ export function AuthProvider({ children }) {
         currentUser,
         login,
         signup,
+        signupWithGoogle,
         logout,
         resetPassword
     }

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "../App.css";
 
 //Calling Bootstrap 4.5 css
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //css
-import "../styles/MembersList.css";
+import "./MembersList.css";
 
 //Calling Firebase config setting to call the data
-import { db } from "../firebase";
-import { useStateValue } from "../StateProvider";
+import { db } from "../../firebase";
+import { useStateValue } from "../../StateProvider";
 
 function Member() {
   const [memberList, setMemberList] = useState([]);
