@@ -65,7 +65,7 @@ function ProfileComponent() {
                     </div>
                     <div className="dashboard">
                         <h4>Well, Hello!</h4>
-                        <p>This is your Dashboard.</p>
+                        <p>Welcome to the TechnoHub Team,<br />Leaving is not an option here.</p>
                     </div>
                 </div>
             </div>

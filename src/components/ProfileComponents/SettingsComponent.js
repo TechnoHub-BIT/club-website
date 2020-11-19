@@ -69,7 +69,7 @@ function SettingsComponent() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default SettingsComponent;

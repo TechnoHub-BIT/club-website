@@ -73,6 +73,10 @@ function EditComponent() {
                                     <label for="name">Name</label>
                                 </div>
                                 <div className="input-group">
+                                    <input type="file" id="image" placeholder="Profile Image" />
+                                    <label for="image">Profile Image</label>
+                                </div>
+                                <div className="input-group">
                                     <select required>
                                         <option value="">Select Branch</option>
                                         <option value="1">Electronics and Telecommunication</option>
@@ -99,12 +103,20 @@ function EditComponent() {
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
                                 <div className="input-group">
-                                    <input type="text" id="interest" placeholder="Interested in" />
-                                    <label for="interest">Interested In(Eg- Web Development)</label>
+                                    <input type="text" id="projects" placeholder="Projects Done Till Now" />
+                                    <label for="projects">Projects Done Till Now</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="languages" placeholder="Known Languages" />
-                                    <label for="name">Known Languages</label>
+                                    <input type="text" id="skills" placeholder="Skills you Have" />
+                                    <label for="skills">Skills you Have</label>
+                                </div>
+                                <div className="input-group">
+                                    <input type="text" id="interest" placeholder="Interested Field" />
+                                    <label for="interest">Interested Field*</label>
+                                </div>
+                                <div className="input-group">
+                                    <input type="text" id="workshop" placeholder="Workshops Attended" />
+                                    <label for="workshop">Workshops Attended</label>
                                 </div>
                                 <Button color="primary">
                                     <i className="far fa-file"></i> Save Changes
