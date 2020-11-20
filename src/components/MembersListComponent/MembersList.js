@@ -16,7 +16,7 @@ const OurMembers = (props) => {
             <BreadcrumbItem title="Home" path="/" />
             <BreadcrumbItem title="Members" status="active" />
         </Breadcrumb>
-        <div className="table-container ">
+        <div className="table-container">
           <Table>
             <Thead>
               <Tr>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
 import emailjs from "emailjs-com";
+import "../input.css";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -39,40 +40,51 @@ const Contact = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h1>Contact Us </h1>
+    <div>
+      <form className="form" onSubmit={handleSubmit}>
+        <h3>Feel free to Send us a Message</h3>
+        <div className="input-group">
+          <input
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            name="name"
+            id="name"
+            required
+          />
+          <label for="name">Name</label>
+        </div>
 
-      <label>Name</label>
-      <input
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        name="name"
-      />
+        <div className="input-group">
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            id="email"
+            required
+          />
+          <label for="email">Email</label>
+        </div>
 
-      <label>Email</label>
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        name="email"
-      />
+        <div className="input-group">
+          <textarea
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            name="message"
+            required
+          ></textarea>
+        </div>
 
-      <label>Message</label>
-      <textarea
-        placeholder="Message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        name="message"
-      ></textarea>
-
-      <button
-        type="submit"
-        style={{ background: loader ? "#ccc" : " rgb(2, 2, 110)" }}
-      >
-        Submit
-      </button>
-    </form>
+        <button
+          type="submit"
+          style={{ background: loader ? "#ccc" : " rgb(2, 2, 110)" }}
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
