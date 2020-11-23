@@ -33,6 +33,28 @@ try {
 }
     }
 
+
+    const updateDetailsProfile = (e) => {
+        e.preventDefault();
+        if(fullname != ""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              fullname: fullname
+              
+            })
+            .then(function () {
+              console.log("FullName successfully updated!");
+            });
+            e.target.value = '';
+        }
+        
+        
+
+
+      };
+
+
   useEffect(() => {
     if(currentUser){
       db.collection("members")
@@ -62,7 +84,7 @@ try {
                     <div className="profileName">
                         <h5>{profiles.fullname}</h5>
                         <h6>{currentUser.email}</h6>
-                        <h6>Electronics and Telecommunication</h6>
+                        {/* <h6>Electronics and Telecommunication</h6> */}
                         <Button onClick={handleLogout} >
                             Log Out
                         </Button>
@@ -82,30 +104,48 @@ try {
                             <div>
                                 <h6 className="contentHeading">Personal Information</h6>
                                 <div className="input-group">
-                                    <input type="text" id="name" placeholder="Name" />
+                                    <input type="text" id="name" placeholder={profiles.fullname} value={fullname} onChange={(event) => setFullname(event.target.value)}/>
                                     <label for="name">Name</label>
                                 </div>
                                 <div className="input-group">
                                     <select required>
                                         <option value="">Select Branch</option>
                                         <option value="1">Electronics and Telecommunication</option>
+                                        <option value="2">CSE</option>
+                                        <option value="3">IT</option>
+                                        <option value="4">MECH</option>
+                                        <option value="5">CIVIL</option>
+                                        <option value="6">MBA</option>
+                                        <option value="7">EEE</option>
+                                        <option value="8">EE</option>
+                                        <option value="9">MCA</option>
+
                                     </select>
                                 </div>
                                 <div className="input-group">
                                     <select required>
                                         <option value="">Select Semester</option>
                                         <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+
+
                                     </select>
                                 </div>
                                 <div className="input-group">
-                                    <input type="email" id="email" placeholder="Email" />
-                                    <label for="email">Email-Id</label>
+                                    <input type="email" id="email" placeholder={profiles.email}/>
+                                    <label for="email">Email</label>
                                 </div>
-                                <div className="input-group">
+                                {/* <div className="input-group">
                                     <input type="text" id="contact" placeholder="Contact No." />
                                     <label for="contact">Contact No.</label>
-                                </div>
-                                <Button color="primary">
+                                </div> */}
+                                <Button color="primary" onClick={updateDetailsProfile}>
                                     <i className="far fa-file"></i> Save Changes
                                 </Button>
                             </div>
