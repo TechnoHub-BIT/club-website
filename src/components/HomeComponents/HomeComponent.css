@@ -175,6 +175,7 @@ address {
   font-size: 16px;
   padding-top: 20px;
   min-height: 400px;
+  margin: 20px 0;
   transition: 0.3s all ease;
 }
 .services:hover {
@@ -191,6 +192,7 @@ address {
 
 .entinner {
   padding: 0px 20px 0px 20px;
+  text-align: center;
 }
 
 .services .line {
@@ -210,4 +212,12 @@ address {
 .services p {
   margin-top: 1em;
   text-align: justify;
+}
+
+.about_text {
+  text-align: center;
+}
+
+.about_text1 {
+  text-align: center;
 }

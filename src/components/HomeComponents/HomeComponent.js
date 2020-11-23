@@ -3,6 +3,10 @@ import FAQ from "./FAQ";
 import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css';  
+
 function Home(props) {
   const [faqs, setfaqs] = useState([
     {
@@ -62,8 +66,17 @@ function Home(props) {
 
       <section className="servicesSection">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-3 col-sm-6 col-md-6">
+          <div>
+            <OwlCarousel
+              className="owl-theme"
+              margin={20}
+              dots={false}
+              loop
+              autoplay
+              autoplayTimeout={1500}
+              autoplayHoverPause
+              stagePadding={20}
+            >
               <div className="services">
                 <i className="fa fa-microchip"></i>
                 <div className="line"></div>
@@ -74,57 +87,70 @@ function Home(props) {
                   students gain practical as well as theoretical technical knowledge.
                 </p>
                 </div>
-                
               </div>
-            </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
               <div className="services">
                 <i className="fa fa-wrench"></i>
                 <div className="line"></div>
                 <h4>Learn and Develop</h4>
                 <div className="entinner">
-                <p>
-                  Learn through exclusive capacity building programs,
-                  preferential internship and job opportunities.Develop the Team
-                  by participating in projects that create a huge impact.
-                </p>
+                  <p>
+                    Learn through exclusive capacity building programs,
+                    preferential internship and job opportunities.Develop the Team
+                    by participating in projects that create a huge impact.
+                  </p>
                 </div>
-                
               </div>
-            </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
               <div className="services">
                 <i className="fa fa-users"></i>
                 <div className="line"></div>
-                <h4>Leadership Skills </h4>
-                <div className="entinner">
-                <p>
-                  Enhance your leadership skills and competencies in learning by
-                  doing approach. Become equipped to inspire, build and manage
-                  strong teams.
-                </p>
+                  <h4>Leadership Skills </h4>
+                  <div className="entinner">
+                  <p>
+                    Enhance your leadership skills and competencies in learning by
+                    doing approach. Become equipped to inspire, build and manage
+                    strong teams.
+                  </p>
                 </div>
-                
               </div>
-            </div>
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            
               <div className="services">
                 <i className="fa fa-graduation-cap"></i>
                 <div className="line"></div>
                 <h4>Entrepreneurship</h4>
                 <div className="entinner">
-                <p>
-                  Develop an entrepreneurial mindset to innovate and create new
-                  value with hands-on training and workshops Get support and
-                  mentorship from the TechnoHub network for your ideas and
-                  innovations.
-                </p>
+                  <p>
+                    Develop an entrepreneurial mindset to innovate and create new
+                    value with hands-on training and workshops Get support and
+                    mentorship from the TechnoHub network for your ideas and
+                    innovations.
+                  </p>
                 </div>
-                
               </div>
-            </div>
+            
+              {/* <div className="services">
+                <i className="fab fa-android"></i>
+                <div className="line"></div>
+                <h4>App & Software Development</h4>
+                <div className="entinner">
+                  <p>
+                    Dummy text
+                  </p>
+                </div>
+              </div>
+            
+              <div className="services">
+                <i className="fas fa-tv"></i>
+                <div className="line"></div>
+                <h4>Web Development</h4>
+                <div className="entinner">
+                  <p>
+                    Dummy text
+                  </p>
+                </div>
+              </div> */}
+            </OwlCarousel>
           </div>
         </div>
       </section>
@@ -150,8 +176,8 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6">
-              <div className="about_text1">
-                <h2>Technical Activities </h2>
+              <div className="about_text1 text-left">
+                <h2>Technical Activities</h2>
                 <p className="text-justify">
                   For the all-round development of the students and to enrich
                   their technical knowledge the institute provides a platform
@@ -173,9 +199,8 @@ function Home(props) {
           <div className="container">
             <div className="row align-items-center justify-content-between">
               <div className="col-md-6 col-lg-6">
-                <div className="about_text">
-                  <h2>Management </h2>
-
+                <div className="about_text text-left">
+                  <h2>Management</h2>
                   <p className="text-justify">
                     The aim of this club is to offer the ability to plan and
                     execute events throughout the college. Event Management for
@@ -226,120 +251,7 @@ function Home(props) {
 
     <!-- portfolio_part start--> */}
       <section className="portfolio_part">
-        <div className="container">
-          {/* <a href="#somethingtoremovewarning" name ="rcp"></a> */}
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="card-columns">
-                <div className="card tittle">
-                  <blockquote className="blockquote0">
-                    <h2>Recent Completed Project</h2>
-                  </blockquote>
-                </div>
-                <div className="card ">
-                  <div className="card_iner overlay">
-                    <img
-                      src="assets/images/Drone.jpg"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Quadcopter</h5>
-                      <p className="card-text">
-                        Drone surveillance is the use of unmanned aeriel
-                        vehichle to capture still images and video to gather
-                        information about specific target which might be
-                        idividuals, groups or environments.
-                      </p>
-                      <a
-                        href="#somethingtoremovewarning"
-                        className="portfolio_btn"
-                      >
-                        read more{" "}
-                        <img src="assets/images/right-arrow.svg" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="card_iner overlay">
-                    <img
-                      src="assets/images/eyantra2.jpg"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">e-yantra - Nutty Squirrel</h5>
-                      <p className="card-text">
-                        A squirrel builds itself an elevator mechanism to ease
-                        its load-carrying capacity.
-                      </p>
-                      <a
-                        href="#somethingtoremovewarning"
-                        className="portfolio_btn"
-                      >
-                        read more{" "}
-                        <img src="assets/images/right-arrow.svg" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="card_iner overlay">
-                    <img
-                      src="assets/images/firebird.jpg"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Fire Bird V</h5>
-                      <p className="card-text">
-                        This bot detects colours and picks a particular coloured
-                        box and place it to the destination.
-                      </p>
-                      <a
-                        href="#somethingtoremovewarning"
-                        className="portfolio_btn"
-                      >
-                        read more{" "}
-                        <img src="assets/images/right-arrow.svg" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="card_iner overlay">
-                    <img
-                      src="assets/images/unknown.jpeg"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Visual Weight Detector</h5>
-                      <p className="card-text">
-                        The aim of this project is to present a visual body
-                        weight estimation, which is suitable for medical
-                        applications.
-                      </p>
-                      <a
-                        href="#somethingtoremovewarning"
-                        className="portfolio_btn"
-                      >
-                        read more{" "}
-                        <img src="assets/images/right-arrow.svg" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                {/* <div className="card see_more_project">
-                            <blockquote className="blockquote1">
-                                <a href="#somethingtoremovewarning" className="btn_1">more project</a>
-                            </blockquote>
-                        </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </section>
       {/*<!-- portfolio_part part end-->*/}
     </Fragment>

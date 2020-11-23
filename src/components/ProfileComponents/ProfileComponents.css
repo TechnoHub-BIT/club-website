@@ -36,6 +36,7 @@
 
 .profileCont .profileDetails .profileBody .profileNav .profileNavItem {
   position: relative;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -80,6 +81,14 @@
   padding: 1.5em 2em 0;
 }
 
+.profileCont .profileDetails .profileBody .profileContent > div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5em;
+}
+
 .profileCont .profileDetails .profileBody .profileContent .contentHeading {
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 400 !important;
@@ -88,11 +97,16 @@
 }
 
 .profileCont .profileDetails .profileBody .profileContent .input-group {
-  width: 40%;
+  width: 80%;
 }
 
-.profileCont .profileDetails .profileBody .profileContent > div > div:not(:first-child) {
-  margin-top: 3em;
+.profileCont .profileDetails .profileBody .dashboard {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.profileCont .profileDetails .profileBody .dashboard p {
+  color: #818181;
 }
 
 @media only screen and (max-width: 992px) {
@@ -111,6 +125,10 @@
   }
   .profileCont .profileBody .profileContent {
     margin: 0 !important;
+  }
+  .profileCont .profileBody .profileContent > div {
+    -ms-grid-columns: (1fr)[1] !important;
+        grid-template-columns: repeat(1, 1fr) !important;
   }
   .profileCont .profileBody .profileContent .input-group {
     width: 100% !important;

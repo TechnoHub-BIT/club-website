@@ -10,9 +10,9 @@ const Iframe = ({ source }) => {
     const src = source;     
     return (
         // basic bootstrap classes. you can change with yours.
-        <div className="col-md-12">
+        <div>
             <div className="emdeb-responsive">
-                <iframe style={{padding: "absolute",width: "80%" , height: "100%", border: "none" }} src={src}></iframe>
+                <iframe style={{padding: "absolute",width: "100%" , height: "350px", border: "none" }} src={src}></iframe>
             </div>
         </div>
     );

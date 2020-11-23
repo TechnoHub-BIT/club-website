@@ -1,31 +1,30 @@
 .members-container {
-    position: relative;
-    margin: 20px;
-    min-height: 70vh;
-  }
-  
-  .title {
-    font-family: "Barlow Condensed", sans-serif;
-    margin-top: 1em;
-  }
-  .title h2 {
-    position: relative;
-    font-size: 2em;
-  }
-  .title h2::after {
-    position: absolute;
-    content: "";
-    height: 2px;
-    width: 50%;
-    background-color: #ff7e5f;
-    bottom: -0.1em;
-    left: 0;
-  }
-  .aboutText {
-    text-align: justify;
-  }
-  
-div.table-container {
-    text-align: center;
+  position: relative;
+  margin: 20px;
+  min-height: 70vh;
+}
 
+.title {
+  font-family: "Barlow Condensed", sans-serif;
+  margin-top: 1em;
+}
+.title h2 {
+  position: relative;
+  font-size: 2em;
+}
+.title h2::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 50%;
+  background-color: #ff7e5f;
+  bottom: -0.1em;
+  left: 0;
+}
+.aboutText {
+  text-align: justify;
+}
+
+.table-container {
+  text-align: center;
 }

@@ -52,8 +52,16 @@ class About extends Component {
             <BreadcrumbItem title="About Us" status="active" />
           </Breadcrumb>
           <div className="container">
-            <div className="row row-content">
-              <div className="col-12 col-md-6">
+            <div className="row row-content align-items-center justify-content-center">
+              <div className="col-12 col-md-4">
+                <img
+                  src="./assets/images/logo.png"
+                  height="150"
+                  width="260"
+                  alt="Technohub"
+                />
+              </div>
+              <div className="col-12 col-md-8">
                 <h2>TechnoHub</h2>
                 <br />
                 <p className="aboutText">
@@ -63,15 +71,8 @@ class About extends Component {
                   to add more feathers in the cap. The ultimate goal of the
                   TechnoHub club is to educate more students and make robotics and
                   entrepreneurship an everyday phenomenon.
+                  The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge. The Journey started with a mere some 4 members and today it is a colossal family of 125+ members.
                 </p>
-              </div>
-              <div className="col-12 col-md-5">
-                <img
-                  src="./assets/images/logo.png"
-                  height="150"
-                  width="260"
-                  alt="Technohub"
-                />
               </div>
             </div>
           </div>
@@ -87,6 +88,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/manisha.jpg" name="Dr. Manisha Sharma" post="Head">
@@ -107,6 +109,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/sachet.jpg" name="Sachet Sabarad" contact="7722874355">
@@ -126,21 +129,22 @@ class About extends Component {
               </div>
             </div>
             <div className="row">
-                <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive}
-                >  
-                  <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
-                    Electronics and Telecommunication
-                  </Image>
-                  
-                  <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
-                    Electronics and Telecommunication
-                  </Image>
-                </OwlCarousel>
+              <OwlCarousel
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive}
+              >  
+                <Image path="./assets/images/aboutus_img/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
+                  Electronics and Telecommunication
+                </Image>
+                
+                <Image path="./assets/images/aboutus_img/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
+                  Electronics and Telecommunication
+                </Image>
+              </OwlCarousel>
             </div>
           </div>
           {/* General Manager Start */}
@@ -155,11 +159,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
                   Electronics and Telecommunication
@@ -193,6 +198,7 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
+                className="owl-theme"
                 items={1}
               >
                 <Image path="./assets/images/aboutus_img/agney.jpg" name="Agney Deshkar" contact="6261731565">
@@ -214,11 +220,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/shubharangshu.jpg" name="Shubharangshu Chakraborty" post="Marketing Manager" contact="9407762880">
                   Electronics and Telecommunication
@@ -251,11 +258,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
 
                 <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat"  contact="8839256099">
@@ -305,11 +313,12 @@ class About extends Component {
             </div>
             <div className="row">
               <OwlCarousel
-                  loop
-                  autoplay
-                  autoplayTimeout={2000}
-                  autoplayHoverPause
-                  responsive={this.state.responsive2}
+                className="owl-theme"
+                loop
+                autoplay
+                autoplayTimeout={2000}
+                autoplayHoverPause
+                responsive={this.state.responsive2}
               >
                 <Image path="./assets/images/aboutus_img/aaryan.jpg" name="Aaryan Khandelwal" contact="8103445828">
                   Electronics and Telecommunication
@@ -362,6 +371,44 @@ class About extends Component {
             </div>
           </div>
           {/* Secretaries End */}
+
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-4">
+                <div className="title">
+                  <h2>Our Vision</h2>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div className="row text-justify ml-1">
+              <p>
+                ‘IMAGINE INVENT INSPIRE ‘TechnoHub, revolves and works under this catchphrase. 
+                Think of society with the technical perspective and lead the society technically (technical startups) to spread awareness of technology.
+                The most impressive thing about TechnoHub is that it believes in team work. Each and every session and workshop is consummate because of each and every individual’s contribution. It toils on the principle   ‘IMAGINE INVENT INSPIRE ‘ where each and every individual is given equal opportunity . TechnoHub stands out from the rest of the clubs because of its assiduous members and constant guidance and support from the faculty members.
+                It is a matter of amour-propre and repletion that TechnoHub has its own website wherein students get to know about the upcoming events as well as they get to interact with the seniors to collab with them having same kind of interest. Technical part of TechnoHub has 60+ members working in the technical ground and take up projects and showcase their talent. Also compete with other splendid talent.
+              </p>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-4">
+                <div className="title">
+                  <h2>Our Mission</h2>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div className="row text-justify ml-1">
+              <p>
+                Forthcoming, TechnoHub has sessions delineated. A Google Developers Group (GDG) meetup event is being planned which includes talks on a wide range of technical topics where one can learn new skills through hands-on workshops. From containerizing applications to data engineering, study jams can be tailored to specific cloud topics and skill levels and much more. 
+                Furthermore, many more bracing and exhilarating sessions and workshops are being planned and strategized. 
+                TechnoHub grabbed each and everyone’s attention and thus today it is a colossal family of 125+ members. In mere future TechnoHub promises to increase its gargantuan family, due to its perseverance and dedication that every TechnoHub member poses. 
+              </p>
+            </div>
+          </div>
+
         </div>
       </React.Fragment>
     );

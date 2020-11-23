@@ -24,3 +24,10 @@
 .aboutText {
   text-align: justify;
 }
+.gallery {
+  margin-top: 1em;
+}
+.gallery img {
+  border-radius: 7px;
+  height: 230px;
+}

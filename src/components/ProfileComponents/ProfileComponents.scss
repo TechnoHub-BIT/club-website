@@ -32,6 +32,7 @@
 
         .profileNavItem {
           position: relative;
+          text-align: center;
           cursor: pointer;
 
           a {
@@ -75,6 +76,12 @@
         margin: 0 5em;
         padding: 1.5em 2em 0;
 
+        & > div {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 1.5em;
+        }
+
         .contentHeading {
           font-family: "Barlow Condensed", sans-serif;
           font-weight: 400 !important;
@@ -83,13 +90,16 @@
         }
 
         .input-group {
-          width: 40%;
+          width: 80%;
         }
+      }
 
-        & > div > div {
-          &:not(:first-child) {
-            margin-top: 3em;
-          }
+      .dashboard {
+        margin-top: 2em;
+        text-align: center;
+
+        p {
+          color: #818181;
         }
       }
     }
@@ -113,6 +123,10 @@
     .profileBody {
       .profileContent {
         margin: 0 !important;
+
+        & > div {
+          grid-template-columns: repeat(1, 1fr) !important;
+        }
 
         .input-group {
           width: 100% !important;

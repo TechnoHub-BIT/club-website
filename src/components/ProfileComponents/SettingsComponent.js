@@ -5,9 +5,10 @@ import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
+import ProfileHeader from './ProfileHeader';
 import { db } from '../../firebase';
 
-function ProfileComponent() {
+function SettingsComponent() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
 
@@ -23,14 +24,13 @@ function ProfileComponent() {
 
     const history = useHistory()
     async function handleLogout(){
-setError('')
-
-try {
-    await logout()
-    history.push('/login')
-}catch{
-    setError('Failed to log out')
-}
+        setError('')
+        try {
+            await logout()
+            history.push('/login')
+        } catch {
+            setError('Failed to log out')
+        }
     }
     async function handleDelete(){
         setError('')
@@ -69,26 +69,14 @@ try {
             { currentUser && (
 
             <div className="profileDetails">
-                <div className="profileHeader">
-                                  { currentUser.photoURL ?
-                        <img src={currentUser.photoURL} className="profileImage" />
-                        :
-                        <img src="./assets/images/profile-user.svg" className="profileImage" />
-}
-                    <div className="profileName">
-                    <h5>{profiles.fullname}</h5>
-                    <h6>{profiles.email}</h6>
-
-                        {/* <h6>Electronics and Telecommunication</h6> */}
-                        <Button onClick={handleLogout} >
-                            Log Out
-                        </Button>
-                    </div>
-                </div>
+                <ProfileHeader />
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">
-                            <Link to="/profile"><i className="fas fa-info"></i> General</Link>
+                            <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
+                        </div>
+                        <div className="profileNavItem">
+                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
                         </div>
                         <div className="profileNavItem active">
                             <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
@@ -128,9 +116,7 @@ try {
             </div>
                     )}
         </div>
-
-        
-    )
+    );
 }
 
-export default ProfileComponent
+export default SettingsComponent;

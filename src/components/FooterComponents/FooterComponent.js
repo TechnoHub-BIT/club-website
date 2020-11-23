@@ -19,7 +19,7 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-angle-right"></i>
-              <Link to="/gallery">Club Members</Link>
+              <Link to="/aboutus">Club Members</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
@@ -33,9 +33,13 @@ const footer = () => {
               <i className="fas fa-angle-right"></i>
               <a href="https://technoquiz.herokuapp.com/">Aptitude Test</a>
             </li>
+            <li>
+              <i className="fas fa-angle-right"></i>
+              <Link to="/projects">Our Projects</Link>
+            </li>
           </ul>
         </div>
-        <div className="col-xl-3 col-md-4 col-sm-6">
+        {/* <div className="col-xl-3 col-md-4 col-sm-6">
           <h3 className="heading">For Members</h3>
           <ul className="list">
             <li>
@@ -43,7 +47,7 @@ const footer = () => {
               <a href="#">Login</a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="col-xl-3 col-md-4 col-sm-6">
           <h3 className="heading">Contact Us</h3>
           <ul className="list">
