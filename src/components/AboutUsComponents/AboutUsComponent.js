@@ -238,6 +238,9 @@ class About extends Component {
                 <Image path="./assets/images/aboutus_img/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
                   Electronics and Telecommunication
                 </Image>
+                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">
+                  Electronics and Telecommunication
+                </Image>
                 <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" post="Technical Lead" contact="9584913846">
                   Electrical and Electronics
                 </Image>
@@ -287,10 +290,6 @@ class About extends Component {
                 </Image>
                 
                 <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979">
-                  Electronics and Telecommunication
-                </Image>
-                
-                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
                   Electronics and Telecommunication
                 </Image>
                 
