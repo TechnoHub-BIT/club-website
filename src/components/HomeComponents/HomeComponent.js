@@ -129,7 +129,7 @@ function Home(props) {
                 </div>
               </div>
             
-              {/* <div className="services">
+              <div className="services">
                 <i className="fab fa-android"></i>
                 <div className="line"></div>
                 <h4>App & Software Development</h4>
@@ -149,7 +149,7 @@ function Home(props) {
                     Dummy text
                   </p>
                 </div>
-              </div> */}
+              </div>
             </OwlCarousel>
           </div>
         </div>

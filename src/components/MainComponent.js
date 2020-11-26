@@ -35,14 +35,14 @@ class Main extends Component {
             <Route exact path="/contactus" component={Contact} />
             <Route exact path="/events" component={EventPage} />
             <Route exact path="/signup" component={SignUpComponent} />
-            {/* <PrivateRoute exact path="/register" component={Register} /> */}
-            {/* <PrivateRoute exact path="/edit" component={EditProfile} /> */}
-            {/* <Route exact path="/ourmembers" component={OurMembers} /> */}
-            {/* <Route exact path="/signup" component={SignUpComponent}/> */}
-            {/* <PrivateRoute exact path="/profile" component={Profile}/> */}
-            {/* <PrivateRoute exact path="/settings" component={Settings}/> */}
-            {/* <Route exact path="/login" component={Login}/> */}
-            {/* <Route exact path="/forgot-password" component={ForgotPassword}/> */}
+            <PrivateRoute exact path="/register" component={Register} />
+            <PrivateRoute exact path="/edit" component={EditProfile} />
+            <Route exact path="/ourmembers" component={OurMembers} />
+            <Route exact path="/signup" component={SignUpComponent}/>
+            <PrivateRoute exact path="/profile" component={Profile}/>
+            <PrivateRoute exact path="/settings" component={Settings}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/forgot-password" component={ForgotPassword}/>
             <Route exact path="/hackathon2020" component={HackathonPage} />
             <Route exact path="/achievements" component={Achievements} />
             <Route exact path="/gallery" component={Gallery} />
