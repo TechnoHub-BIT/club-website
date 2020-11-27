@@ -46,36 +46,32 @@ function ProfileComponent() {
     }, [currentUser]);
 
     return (
-        <div className="profileCont">
-            <HeaderTitle heading="PROFILE" />
-            { currentUser && (
-            <div className="profileDetails">
-                <ProfileHeader />
-                <div className="profileBody">
-                    <div className="profileNav">
-                        <div className="profileNavItem active">
-                            <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
-                        </div>
-                        <div className="profileNavItem">
-                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
-                        </div>
-                        <div className="profileNavItem">
-                            <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
+            <div className="profileCont">
+                <HeaderTitle heading="PROFILE" />
+                { currentUser && (
+                    <div className="profileDetails">
+                        <ProfileHeader />
+                        <div className="profileBody">
+                            <div className="profileNav">
+                                <div className="profileNavItem active">
+                                    <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
+                                </div>
+                                <div className="profileNavItem">
+                                    <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
+                                </div>
+                                <div className="profileNavItem">
+                                    <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
+                                </div>
+                            </div>
+                            <div className="dashboard">
+                                <h4>Well, Hello!</h4>
+                                <p>Welcome to the TechnoHub Team,<br />Leaving is not an option here.</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="dashboard">
-                        <h4>Well, Hello!</h4>
-                        <p>Welcome to the TechnoHub Team,<br />Leaving is not an option here.</p>
-                    </div>
-                </div>
+                )}
             </div>
-
-     
-
-        )}
-        </div>
-
-    )
+        )
 }
 
-export default ProfileComponent
+export default ProfileComponent;

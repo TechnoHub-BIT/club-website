@@ -71,7 +71,7 @@ class About extends Component {
                   to add more feathers in the cap. The ultimate goal of the
                   TechnoHub club is to educate more students and make robotics and
                   entrepreneurship an everyday phenomenon.
-                  The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge. The Journey started with a mere some 4 members and today it is a colossal family of 125+ members.
+                  The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge. The Journey started with a mere some 4 members and today it is a colossal family of 225+ members.
                 </p>
               </div>
             </div>
@@ -231,6 +231,10 @@ class About extends Component {
                   Electronics and Telecommunication
                 </Image>
                 
+                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">
+                  Electronics and Telecommunication
+                </Image>
+                
                 <Image path="./assets/images/aboutus_img/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199">
                   Electronics and Telecommunication
                 </Image>
@@ -286,10 +290,6 @@ class About extends Component {
                 </Image>
                 
                 <Image path="./assets/images/aboutus_img/shubhangi.jpg" name="Shubhangi Sharma" contact="7489488979">
-                  Electronics and Telecommunication
-                </Image>
-                
-                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" contact="7000728570">
                   Electronics and Telecommunication
                 </Image>
                 
@@ -366,6 +366,22 @@ class About extends Component {
                 <Image path="./assets/images/aboutus_img/anubhav.jpeg" name="Anubhav Bhatt" contact="8234993336">
                   Mechanical
                 </Image>
+
+                <Image path="./assets/images/aboutus_img/sija.jpeg" name="Sija Badgaiyan" contact="9770314575">
+                  Electronics and Telecommunication
+                </Image>
+
+                <Image path="./assets/images/aboutus_img/baisali.jpeg" name="Vaishali Pandey" contact="7828516224">
+                  Electronics and Telecommunication
+                </Image>
+
+                <Image path="./assets/images/aboutus_img/aanchal.jpeg" name="Aanchal Makhija" contact="7999354593">
+                  Electronics and Telecommunication
+                </Image>
+
+                <Image path="./assets/images/aboutus_img/palak.jpeg" name="Palak Dewangan" contact="7617236125">
+                  Electrical
+                </Image>
               </OwlCarousel>
             </div>
           </div>
@@ -389,25 +405,6 @@ class About extends Component {
               </p>
             </div>
           </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-4">
-                <div className="title">
-                  <h2>Our Mission</h2>
-                  <br />
-                </div>
-              </div>
-            </div>
-            <div className="row text-justify ml-1">
-              <p>
-                Forthcoming, TechnoHub has sessions delineated. A Google Developers Group (GDG) meetup event is being planned which includes talks on a wide range of technical topics where one can learn new skills through hands-on workshops. From containerizing applications to data engineering, study jams can be tailored to specific cloud topics and skill levels and much more. 
-                Furthermore, many more bracing and exhilarating sessions and workshops are being planned and strategized. 
-                TechnoHub grabbed each and everyone’s attention and thus today it is a colossal family of 125+ members. In mere future TechnoHub promises to increase its gargantuan family, due to its perseverance and dedication that every TechnoHub member poses. 
-              </p>
-            </div>
-          </div>
-
         </div>
       </React.Fragment>
     );

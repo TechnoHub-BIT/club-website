@@ -55,7 +55,7 @@ class Header extends Component {
                 <div className="banner_text text-center">
                   <div className="banner_text_iner">
                     <div class="typewriter">
-                    <h3> Imagine.Invent.Inspire</h3>
+                      <h3>Imagine.Invent.Inspire</h3>
                     </div>
                     <h5>
                       {" "}

@@ -66,91 +66,58 @@ function Home(props) {
 
       <section className="servicesSection">
         <div className="container">
-          <div>
-            <OwlCarousel
-              className="owl-theme"
-              margin={20}
-              dots={false}
-              loop
-              autoplay
-              autoplayTimeout={1500}
-              autoplayHoverPause
-              stagePadding={20}
-            >
-              <div className="services">
-                <i className="fa fa-microchip"></i>
-                <div className="line"></div>
-                <h4>Project Development</h4>
+          <div className="serviceCont">
+            <div className="services">
+              <i className="fa fa-microchip"></i>
+              <div className="line"></div>
+              <h4>Project Development</h4>
+              <div className="entinner">
+              <p>
+                The focus of the TechnoHub club primarily is to help the
+                students gain practical as well as theoretical technical knowledge.
+              </p>
+              </div>
+            </div>
+
+            <div className="services">
+              <i className="fa fa-wrench"></i>
+              <div className="line"></div>
+              <h4>Learn and Develop</h4>
+              <div className="entinner">
+                <p>
+                  Learn through exclusive capacity building programs,
+                  preferential internship and job opportunities.Develop the Team
+                  by participating in projects that create a huge impact.
+                </p>
+              </div>
+            </div>
+
+            <div className="services">
+              <i className="fa fa-users"></i>
+              <div className="line"></div>
+                <h4>Leadership Skills </h4>
                 <div className="entinner">
                 <p>
-                  The focus of the TechnoHub club primarily is to help the
-                  students gain practical as well as theoretical technical knowledge.
+                  Enhance your leadership skills and competencies in learning by
+                  doing approach. Become equipped to inspire, build and manage
+                  strong teams.
                 </p>
-                </div>
               </div>
-
-              <div className="services">
-                <i className="fa fa-wrench"></i>
-                <div className="line"></div>
-                <h4>Learn and Develop</h4>
-                <div className="entinner">
-                  <p>
-                    Learn through exclusive capacity building programs,
-                    preferential internship and job opportunities.Develop the Team
-                    by participating in projects that create a huge impact.
-                  </p>
-                </div>
+            </div>
+          
+            <div className="services">
+              <i className="fa fa-graduation-cap"></i>
+              <div className="line"></div>
+              <h4>Entrepreneurship</h4>
+              <div className="entinner">
+                <p>
+                  Develop an entrepreneurial mindset to innovate and create new
+                  value with hands-on training and workshops Get support and
+                  mentorship from the TechnoHub network for your ideas and
+                  innovations.
+                </p>
               </div>
-
-              <div className="services">
-                <i className="fa fa-users"></i>
-                <div className="line"></div>
-                  <h4>Leadership Skills </h4>
-                  <div className="entinner">
-                  <p>
-                    Enhance your leadership skills and competencies in learning by
-                    doing approach. Become equipped to inspire, build and manage
-                    strong teams.
-                  </p>
-                </div>
-              </div>
-            
-              <div className="services">
-                <i className="fa fa-graduation-cap"></i>
-                <div className="line"></div>
-                <h4>Entrepreneurship</h4>
-                <div className="entinner">
-                  <p>
-                    Develop an entrepreneurial mindset to innovate and create new
-                    value with hands-on training and workshops Get support and
-                    mentorship from the TechnoHub network for your ideas and
-                    innovations.
-                  </p>
-                </div>
-              </div>
-            
-              <div className="services">
-                <i className="fab fa-android"></i>
-                <div className="line"></div>
-                <h4>App & Software Development</h4>
-                <div className="entinner">
-                  <p>
-                    Dummy text
-                  </p>
-                </div>
-              </div>
-            
-              <div className="services">
-                <i className="fas fa-tv"></i>
-                <div className="line"></div>
-                <h4>Web Development</h4>
-                <div className="entinner">
-                  <p>
-                    Dummy text
-                  </p>
-                </div>
-              </div>
-            </OwlCarousel>
+            </div>
           </div>
         </div>
       </section>

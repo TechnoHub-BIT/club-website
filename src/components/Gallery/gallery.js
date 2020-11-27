@@ -18,7 +18,7 @@ class gallery extends Component {
                 items: 1,
             },
             768: {
-                items: 2.
+                items: 2,
             },
             1000: {
                 items: 3,
@@ -38,12 +38,8 @@ class gallery extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="title">
-                                <h2>OUR GALLERY</h2>
-                                <br />
+                                <h2>Tech-Expo @ Ojas2019</h2>
                             </div>
-                        </div>
-                        <div className="row">
-                            <h5>Tech-Expo @ Ojas2019</h5>
                             <div className="container">
                                 <div className="gallery">
                                     <OwlCarousel
@@ -57,35 +53,92 @@ class gallery extends Component {
                                         responsive={this.state.responsive}
                                     >
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName2.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/1.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName3.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/2.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName4.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/3.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName5.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/4.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName6.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/5.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName7.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/6.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName8.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/7.jpeg" alt="" />
                                         </div>
                                         <div>
-                                            <img src="/assets/images/footer_img/randomName9.jpeg" alt="" />
+                                            <img src="./assets/images/gallery/tech-expo/8.jpeg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/tech-expo/9.jpeg" alt="" />
                                         </div>
                                     </OwlCarousel>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
-                            <h5>Robotics Workshop</h5>
+                            <div className="title">
+                                <h2>GSEA</h2>
+                            </div>
+                            <div className="container">
+                                <div className="gallery">
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        margin={10}
+                                        autoplay
+                                        autoplayTimeout={1000}
+                                        autoplayHoverPause
+                                        dotsEach
+                                        responsive={this.state.responsive}
+                                    >
+                                        <div>
+                                            <img src="./assets/images/gallery/gsea/1.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/gsea/2.jpg" alt="" />
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-4">
+                            <div className="title">
+                                <h2>How to position yourself for the future</h2>
+                            </div>
+                            <div className="container">
+                                <div className="gallery">
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        margin={10}
+                                        loop
+                                        autoplay
+                                        autoplayTimeout={1000}
+                                        autoplayHoverPause
+                                        dotsEach
+                                        responsive={this.state.responsive}
+                                    >
+                                        <div>
+                                            <img src="./assets/images/gallery/feb-20/1.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/feb-20/2.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/feb-20/3.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/feb-20/4.jpg" alt="" />
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

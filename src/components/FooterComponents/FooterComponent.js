@@ -10,8 +10,7 @@ const footer = () => {
         <div className="col-xl-3 col-md-4 col-sm-6 firstColumn">
           <img className="whiteLogo" alt="Technohub" src="./assets/images/logowhite.png" />
           <p>
-            The ultimate goal of the TechnoHub club is to educate more students
-            and make robotics and entrepreneurship an everyday phenomenon.
+            Our goal is to provide a platform to students by students which give proper guidance, training and connectivity with school alumni and industry experts to students to become Industry Ready
           </p>
         </div>
         <div className="col-xl-3 col-md-4 col-sm-6">
