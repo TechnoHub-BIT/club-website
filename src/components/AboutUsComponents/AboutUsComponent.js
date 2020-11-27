@@ -242,10 +242,13 @@ class About extends Component {
                 <Image path="./assets/images/aboutus_img/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
                   Electronics and Telecommunication
                 </Image>
-                
-                <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat" post="Technical Lead" contact="8839256099">
-                  Computer Science
+                <Image path="./assets/images/aboutus_img/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">
+                  Electronics and Telecommunication
                 </Image>
+                <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" post="Technical Lead" contact="9584913846">
+                  Electrical and Electronics
+                </Image>
+
               </OwlCarousel>
             </div>
           </div>
@@ -269,8 +272,9 @@ class About extends Component {
                 autoplayHoverPause
                 responsive={this.state.responsive2}
               >
-                <Image path="./assets/images/aboutus_img/aditya.jpg" name="Aditya Deshmukh" contact="9584913846">
-                  Electrical and Electronics
+
+                <Image path="./assets/images/aboutus_img/kartikey.jpg" name="Kartikey Rawat"  contact="8839256099">
+                  Computer Science
                 </Image>
                 
                 <Image path="./assets/images/aboutus_img/nitesh.jpg" name="Nitesh Bharti" contact="7354124249">
@@ -335,7 +339,7 @@ class About extends Component {
                   Computer Science
                 </Image>
                 
-                <Image path="./assets/images/aboutus_img/preeti.jpeg" name="Preeti Gabel" contact="9179243009">
+                <Image path="./assets/images/aboutus_img/PREETI.jpeg" name="Preeti Gabel" contact="9179243009">
                   Electrical and Electronics
                 </Image>
                 
