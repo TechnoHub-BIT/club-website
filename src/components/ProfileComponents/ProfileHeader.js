@@ -1,8 +1,7 @@
 import React,{useState, useEffect} from 'react'
-import {Card, Button, Alert, CardBody} from 'reactstrap';
+import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
-import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';

@@ -3,20 +3,17 @@ import FAQ from "./FAQ";
 import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css';  
 
 function Home(props) {
   const [faqs, setfaqs] = useState([
     {
-      question: "Why TechnoHub ?",
+      question: "Why TechnoHub?",
       answer:
         "In its attempt to provide a national platform for the youth to showcase their talents and skills in aggressive competitions, displaying latest technology and having renowned personalities motivate the youth and providing solutions to various significant problems, TechnoHub endeavors for one and all to get inspired and look up to.",
       open: true,
     },
     {
-      question: "How do I start a new project ?",
+      question: "How do I start a new project?",
       answer:
         "If you don't like any of the current projects that are being worked on in the Club, you can start your own! That is the beauty of TechnoHub, we are here for you. Just approach any coordinator and tell them about your idea. They will help you get funding and publicity so you can recruit others into your crazy robot plot.",
       open: false,
@@ -28,13 +25,13 @@ function Home(props) {
       open: false,
     },
     {
-      question: "How many of the robots are built by faculty ?",
+      question: "How many of the robots are built by faculty?",
       answer:
         "Absolutely none of the robots are built by faculty. They are built by a majority of undergraduate students, as well as some graduate students.",
       open: false,
     },
     {
-      question: "How can I become a member ?",
+      question: "How can I become a member?",
       answer:
         "Even if you don't know much to begin with, you,ll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. Note: If you pay dues that cover only one time investment. ",
       open: false,
