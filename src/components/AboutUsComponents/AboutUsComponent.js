@@ -174,7 +174,7 @@ class About extends Component {
                   Electronics and Telecommunication
                 </Image>
               
-                <Image path="./assets/images/members/Saisha.jpeg" name="T Saisha" contact="8085999174">
+                <Image path="./assets/images/members/saisha.jpeg" name="T Saisha" contact="8085999174">
                   Electronics and Telecommunication
                 </Image>
 
@@ -243,7 +243,7 @@ class About extends Component {
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/Suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
+                <Image path="./assets/images/members/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
                   Electronics and Telecommunication
                 </Image>
                 <Image path="./assets/images/members/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">

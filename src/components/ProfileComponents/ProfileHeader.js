@@ -56,9 +56,9 @@ try {
                     }
 
                     <div className="profileName">
-                        { /* <h5>{profiles.fullname}</h5> */ }
+                         <h5>{profiles.fullname}</h5>  
                         <h6>{currentUser.email}</h6>
-                        <h6>Electronics and Telecommunication</h6>
+                        <h6>{profiles.branch}</h6>
                         <Link to="/register" target="_blank">
                             <Button color="primary">
                                 <i className="fas fa-external-link-alt"></i> Apply for Membership
