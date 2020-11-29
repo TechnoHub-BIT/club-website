@@ -45,6 +45,76 @@ function EditComponent() {
         }
     }, [currentUser]);
 
+    const profileUpdate = () => {
+        if(fullname!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              fullname: fullname,
+            })
+            .then(function () {
+              console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(branch!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              branch: branch,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(semester!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              semester: semester,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(skills!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              skills: skills,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(interest!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              interest: interest,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(workshops!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              workshops: workshops,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+
+      };
+
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
@@ -69,28 +139,28 @@ function EditComponent() {
                             <div>
                                 <h6 className="contentHeading">Personal Information</h6>
                                 <div className="input-group">
-                                    <input type="text" id="name" placeholder="Name" />
+                                    <input type="text" id="name" placeholder="Name"   onChange={(event) => setFullname(event.target.value)}/>
                                     <label for="name">Name</label>
                                 </div>
-                                <div className="input-group">
+                                {/* <div className="input-group">
                                     <input type="file" id="image" placeholder="Profile Image" />
                                     <label for="image">Profile Image</label>
-                                </div>
+                                </div> */}
                                 <div className="input-group">
-                                    <select required>
+                                    <select onChange={(event) => setBranch(event.target.value)} required>
                                         <option value="">Select Branch</option>
-                                        <option value="1">Computer Science Engineering</option>
-                                        <option value="2">Electronics and Telecommunication</option>
-                                        <option value="3">Information Technology</option>
-                                        <option value="4">Electronics and Electronics</option>
-                                        <option value="5">Electrical Engineering</option>
-                                        <option value="6">Civil Engineering</option>
-                                        <option value="7">Mechanical Engineering</option>
-                                        <option value="8">Others</option>
+                                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+                                        <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Electronics and Electronics">Electronics and Electronics</option>
+                                        <option value="Electrical Engineering">Electrical Engineering</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div className="input-group">
-                                    <select required>
+                                    <select onChange={(event) => setSemester(event.target.value)} required>
                                         <option value="">Select Semester</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -101,37 +171,37 @@ function EditComponent() {
                                         <option value="7">7</option>
                                     </select>
                                 </div>
-                                <div className="input-group">
+                                {/* <div className="input-group">
                                     <input type="email" id="email" placeholder="Email" />
                                     <label for="email">Email-Id</label>
-                                </div>
-                                <div className="input-group">
+                                </div> */}
+                                {/* <div className="input-group">
                                     <input type="text" id="contact" placeholder="Contact No." />
                                     <label for="contact">Contact No.</label>
-                                </div>
-                                <Button color="primary">
+                                </div> */}
+                                <Button color="primary" onClick={profileUpdate}>
                                     <i className="far fa-file"></i> Save Changes
                                 </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
-                                <div className="input-group">
+                                {/* <div className="input-group">
                                     <input type="text" id="projects" placeholder="Projects Done Till Now" />
                                     <label for="projects">Projects Done Till Now</label>
-                                </div>
+                                </div> */}
                                 <div className="input-group">
-                                    <input type="text" id="skills" placeholder="Skills you Have" />
+                                    <input type="text" id="skills" placeholder="Skills you Have" onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="interest" placeholder="Interested Field" />
+                                    <input type="text" id="interest" placeholder="Interested Field" onChange={(event) => setInterest(event.target.value)}/>
                                     <label for="interest">Interested Field*</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="workshop" placeholder="Workshops Attended" />
+                                    <input type="text" id="workshop" placeholder="Workshops Attended" onChange={(event) => setWorkshops(event.target.value)}/>
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
-                                <Button color="primary">
+                                <Button color="primary" onClick={profileUpdate}>
                                     <i className="far fa-file"></i> Save Changes
                                 </Button>
                             </div>

@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 
 import "firebase/auth"; // for authentication
-// import 'firebase/storage';     // for storage
+import 'firebase/storage';     // for storage
 import "firebase/database"; // for realtime database
 import "firebase/firestore"; // for cloud firestore
 // import 'firebase/messaging';   // for cloud messaging
@@ -20,4 +20,5 @@ const firebaseApp = firebase.initializeApp({
 
 export const auth = firebaseApp.auth()
 export const db = firebaseApp.firestore()
+export const storage = firebaseApp.storage()
 export default firebaseApp
