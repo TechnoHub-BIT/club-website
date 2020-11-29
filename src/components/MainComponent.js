@@ -32,6 +32,7 @@ class Main extends Component {
               {/* <Switch> */}
               <Navbar />
               <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
               <Route exact path="/aboutus" component={About} />
               <Route exact path="/contactus" component={Contact} />
               <Route exact path="/events" component={EventPage} />

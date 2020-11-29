@@ -41,7 +41,11 @@ function EditComponent() {
                 console.log("Current data: ", doc.data());
                 const data = doc.data();
                 setProfiles(data);
+
             });
+            // setFullname(profiles.fullname)
+            // console.log(profiles.fullname)
+            // console.log(fullname)
         }
     }, [currentUser]);
 
@@ -112,7 +116,7 @@ function EditComponent() {
               
             });
         }
-
+        alert("Profile Successfully Updated");
       };
 
     return (
@@ -139,7 +143,7 @@ function EditComponent() {
                             <div>
                                 <h6 className="contentHeading">Personal Information</h6>
                                 <div className="input-group">
-                                    <input type="text" id="name" placeholder="Name"   onChange={(event) => setFullname(event.target.value)}/>
+                                    <input type="text" id="name" placeholder={profiles.fullname} defaultValue={profiles.fullname} onChange={(event) => setFullname(event.target.value)}/>
                                     <label for="name">Name</label>
                                 </div>
                                 {/* <div className="input-group">
@@ -190,15 +194,15 @@ function EditComponent() {
                                     <label for="projects">Projects Done Till Now</label>
                                 </div> */}
                                 <div className="input-group">
-                                    <input type="text" id="skills" placeholder="Skills you Have" onChange={(event) => setSkills(event.target.value)}/>
+                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="interest" placeholder="Interested Field" onChange={(event) => setInterest(event.target.value)}/>
+                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
                                     <label for="interest">Interested Field*</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="workshop" placeholder="Workshops Attended" onChange={(event) => setWorkshops(event.target.value)}/>
+                                    <input type="text" id="workshop" placeholder="Workshops Attended" defaultValue={profiles.workshops} onChange={(event) => setWorkshops(event.target.value)}/>
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
                                 <Button color="primary" onClick={profileUpdate}>
