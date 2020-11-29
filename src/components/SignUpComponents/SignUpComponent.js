@@ -24,7 +24,7 @@ function SignUpComponent() {
         e.preventDefault()
 
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
-            return setError('Password do not match')
+            return setError('Passwords do not match')
         }
         try{
             setError('')
@@ -116,9 +116,9 @@ function SignUpComponent() {
                     <Button className="signup-button" disabled={loading} type="submit" >Sign Up</Button>
                   </Form>
                   <Row>
-                    <Col ><hr class="solid"/></Col>
+                    <Col><hr class="solid"/></Col>
                     <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
-                    <Col ><hr class="solid"/></Col>
+                    <Col><hr class="solid"/></Col>
                   </Row>
                 </CardBody>
                 <Button

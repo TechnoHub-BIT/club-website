@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import { Link } from "react-router-dom";
 import "./gallery.css";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import OwlCarousel from 'react-owl-carousel';  

@@ -87,6 +87,7 @@
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .profileCont .profileDetails .profileBody .profileContent .contentHeading {

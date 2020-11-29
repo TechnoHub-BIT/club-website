@@ -96,6 +96,21 @@
   padding: 10px 20px;
   white-space: nowrap;
 }
+.ctaBtn {
+  padding: 10px 45px;
+  border-radius: 25px;
+  background-color: #4dbb39;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+.ctaBtn:hover {
+  background-color: #fff;
+  color: #4dbb39;
+}
 
 @media screen and (max-width: 992px) and (min-width: 768px) {
   .loginText {

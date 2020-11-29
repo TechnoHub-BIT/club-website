@@ -16,6 +16,9 @@
   border-bottom-right-radius: 7px;
   min-height: 200px;
 }
+.cardBody h3 {
+  font-family: "Barlow Condensed", sans-serif;
+}
 .cardBody p {
   text-align: justify;
   font-size: 0.95em;

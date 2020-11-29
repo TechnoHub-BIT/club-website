@@ -139,7 +139,7 @@ function EditComponent() {
                         </div>
                     </div>
                     <div className="profileContent">
-                        <div className="general">
+                        <div className="edit">
                             <div>
                                 <h6 className="contentHeading">Personal Information</h6>
                                 <div className="input-group">

@@ -28,9 +28,13 @@ class About extends Component {
     responsive2: {
         0: {
           items: 1,
+          dots: false,
+          dotsEach: false,
         },
         600: {
           items: 1,
+          dots: false,
+          dotsEach: false,
         },
         768: {
           items: 2,
@@ -123,7 +127,7 @@ class About extends Component {
             <div className="row">
               <div className="col-xl-4">
                 <div className="title">
-                  <h2>Vice President</h2>
+                  <h2>Vice Presidents</h2>
                   <br />
                 </div>
               </div>
@@ -152,7 +156,7 @@ class About extends Component {
             <div className="row">
               <div className="col-xl-4">
                 <div className="title">
-                  <h2>General Manager</h2>
+                  <h2>General Managers</h2>
                   <br />
                 </div>
               </div>
