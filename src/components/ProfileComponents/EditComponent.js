@@ -156,7 +156,7 @@ function EditComponent() {
                                         <option value="Computer Science Engineering">Computer Science Engineering</option>
                                         <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
                                         <option value="Information Technology">Information Technology</option>
-                                        <option value="Electronics and Electronics">Electronics and Electronics</option>
+                                        <option value="Electrical and Electronics">Electrical and Electronics</option>
                                         <option value="Electrical Engineering">Electrical Engineering</option>
                                         <option value="Civil Engineering">Civil Engineering</option>
                                         <option value="Mechanical Engineering">Mechanical Engineering</option>

@@ -85,20 +85,17 @@ address {
   padding: 0px 0px 30px 80px;
 }
 
-.about_text1 {
-  margin-bottom: 20px;
-}
-
 .about_img {
   margin: 10px;
 }
 
 .about_part {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
+  
 }
 .about_part1 {
   background-color: rgb(248, 208, 74);
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   margin: 0px 10px 0px 10px;
   border-radius: 25px;
 }
