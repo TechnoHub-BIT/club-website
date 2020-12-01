@@ -235,10 +235,6 @@ class About extends Component {
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">
-                  Electronics and Telecommunication
-                </Image>
-                
                 <Image path="./assets/images/members/arpit.jpg" name="Arpit Sahu" post="Finance Manager" contact="8319560199">
                   Electronics and Telecommunication
                 </Image>
