@@ -60,7 +60,6 @@ function Home(props) {
   return (
     <Fragment>
       <Header />
-
       <section className="servicesSection">
         <div className="container">
           <div className="serviceCont">

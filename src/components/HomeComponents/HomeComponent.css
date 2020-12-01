@@ -1,18 +1,18 @@
 .row-header {
-  margin: 0px auto;
-  padding: 0px auto;
+  margin: 0 auto;
+  padding: 0 auto;
 }
 
 .row-content {
-  margin: 0px auto;
-  padding: 50px 0px 50px 0px;
+  margin: 0 auto;
+  padding: 50px 0;
   border-bottom: 1px ridge;
   min-height: 400px;
 }
 
 .jumbotron {
-  padding: 180px 0px 70px 0px;
-  margin: 0px auto;
+  padding: 180px 0 70px;
+  margin: 0 auto;
   background-image: url(../../img/faq.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,19 +70,19 @@ address {
 }
 
 .faq_part {
-  padding: 40px 0px 40px 0px;
+  padding: 40px 0;
   color: #000000;
 }
 
 .blockquote0 {
   background-color: #000f52;
   color: white;
-  padding: 10px 0px 10px 25px;
+  padding: 10px 0 10px 25px;
 }
 
 .blockquote1 {
   background-color: #000f52;
-  padding: 0px 0px 30px 80px;
+  padding: 0 0 30px 80px;
 }
 
 .about_text1 {
@@ -99,7 +99,7 @@ address {
 .about_part1 {
   background-color: rgb(248, 208, 74);
   padding-bottom: 30px;
-  margin: 0px 10px 0px 10px;
+  margin: 0 10px;
   border-radius: 25px;
 }
 
@@ -110,11 +110,12 @@ address {
 }
 
 .faqs .faq {
-  margin: 15px 5px 15px 5px;
+  margin: 15px 5px;
   padding: 15px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .faqs .faq .faq-question {
@@ -193,7 +194,7 @@ address {
 }
 
 .entinner {
-  padding: 0px 20px 0px 20px;
+  padding: 0 20px;
   text-align: center;
 }
 

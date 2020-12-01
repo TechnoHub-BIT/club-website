@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavbarToggler,
-  Collapse,
-  NavItem,  
-} from "reactstrap";
-import { NavLink } from "react-router-dom";
 import "./HeaderComponent.css";
 import HeaderButtons from "../HeaderButtons";
+import "./NavbarComponent.css";
+import { Link } from "react-router-dom";
+import showNavbar from "../../common";
 
 class Header extends Component {
   constructor(props) {
@@ -50,61 +44,59 @@ class Header extends Component {
     event.preventDefault();
   }
 
-  render() {
+  componentDidMount() {
+    showNavbar();
+  }
 
+  render() {
     return (
       <React.Fragment>
-        <Navbar dark expand="md">
-          <div className="container">
-            <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto" href="/">
-              <div className="header-logo">
-                <img className="header-logo-img"
-                  src="assets/images/logo.png"
-                  alt="Technohub"
-                />
-              </div>
-            </NavbarBrand>
-            <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav className="topNavbar" navbar onClick={this.toggleNav}>
-                <NavItem>
-                  <NavLink
-                    className="nav-link"
-                    to="/"
-                  >
-                    <div className="nav-btn">Home</div>{" "}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/aboutus">
-                    <div className="nav-btn">About Us</div>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/contactus">
-                    <div className="nav-btn">Contact Us</div>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/events">
-                    <div className="nav-btn">Events</div>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/ourmembers">
-                    <div className="nav-btn">Our Members</div>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <a className="nav-link" href="https://technoquiz.herokuapp.com/" target="_blank" rel="noopener noreferrer"> <div className="nav-btn">Aptitude</div></a>
-                </NavItem>
-                <NavItem>
-                  <HeaderButtons />
-                </NavItem>
-              </Nav>
-            </Collapse>
+        <div className="navbarTop">
+          <ul>
+            <Link to="/">
+              <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
+            </Link>
+            <li>
+              <Link to="/">
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link to="/aboutus">
+                ABOUT US
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery">
+                GALLERY
+              </Link>
+            </li>
+            <li>
+              <Link to="/projects">
+                PROJECTS
+              </Link>
+            </li>
+            <li>
+              <Link to="/events">
+                EVENTS
+              </Link>
+            </li>
+            <li>
+              <Link to="/ourmembers">
+                OUR MEMBERS
+              </Link>
+            </li>
+            <li>
+              <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
+            </li>
+            <li>
+              <HeaderButtons />
+            </li>
+          </ul>
+          <div className="menuBtn">
+            <i className="fas fa-bars"></i>
           </div>
-        </Navbar>
+        </div>
       </React.Fragment>
     );
   }

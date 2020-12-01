@@ -105,10 +105,10 @@ function LogInComponent() {
                     <FormGroup id="password" >
                       <FormControl type="password" ref={passwordRef} placeholder="Enter Your Password" required />
                     </FormGroup>
-                    <div style={{textAlign:"right", margin:"20px"}} >
+                    <div style={{textAlign:"right", marginTop:"20px"}} >
                       <Link to="/forgot-password" >Forgot your password?</Link> 
                     </div>
-                    <Button disabled={loading}  type="submit" >Log In</Button>
+                    <Button disabled={loading}  type="submit" >Login</Button>
                   </Form>
                   <Row>
                     <Col ><hr class="solid"/></Col>
@@ -120,13 +120,14 @@ function LogInComponent() {
                   </Row>
                 </CardBody>
                 <Button
-            onClick={handleSubmitWithGoogle}
-            type="button"
-            className="login_signInButton"
-          >
-            Continue with Google
-          </Button>
-                          {/* </Row> */}
+                  onClick={handleSubmitWithGoogle}
+                  type="button"
+                  className="login_signInButton"
+                  color="info"
+                >
+                  <i className="fab fa-google"></i>&nbsp;&nbsp;Login with Google
+                </Button>
+                {/* </Row> */}
               </Card>
             </div>
        {/* </div> */}

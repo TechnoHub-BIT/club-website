@@ -56,7 +56,7 @@ const footer = () => {
             </li>
             <li>
               <i className="fa fa-envelope"></i>
-              <a href="mailto:technohub@gmail.com">technohub@gmail.com</a>
+              <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i>

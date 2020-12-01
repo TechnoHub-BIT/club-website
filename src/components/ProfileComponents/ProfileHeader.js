@@ -44,6 +44,16 @@ try {
   }
   }, [currentUser]);
 
+  //Setting the Suffix for Semester
+    let suffix = "th";
+
+    if (profiles.semester == 1)
+        suffix = "st";
+    else if (profiles.semester == 2)
+        suffix = "nd";
+    else if (profiles.semester == 3)
+        suffix = "rd";
+
     return (
         <div>
             { currentUser && (
@@ -56,9 +66,11 @@ try {
                     }
 
                     <div className="profileName">
-                         <h5>{profiles.fullname}</h5>  
-                        <h6>{currentUser.email}</h6>
+                        <h5>{profiles.fullname}</h5>
                         <h6>{profiles.branch}</h6>
+                        <h6>
+                            {profiles.semester}{suffix} Semester
+                        </h6>
                         <Link to="/register" target="_blank">
                             <Button color="primary">
                                 <i className="fas fa-external-link-alt"></i> Apply for Membership
@@ -69,10 +81,9 @@ try {
                         </Button>
                     </div>
                 </div>
-
             )}
         </div>
-    )
-}
+    );
+};
 
 export default ProfileHeader;

@@ -94,7 +94,19 @@
 }
 .headerBtn {
   padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background-color: #191d34;
+  color: #fff;
+  font-size: 0.9em;
   white-space: nowrap;
+  outline: none !important;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+.headerBtn:hover {
+  color: #191d34;
+  background-color: #fff;
 }
 .ctaBtn {
   padding: 10px 45px;

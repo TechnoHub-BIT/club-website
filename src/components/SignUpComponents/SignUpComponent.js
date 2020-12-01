@@ -122,12 +122,13 @@ function SignUpComponent() {
                   </Row>
                 </CardBody>
                 <Button
-            onClick={handleSubmitWithGoogle}
-            type="button"
-            className="login_signInButton"
-          >
-            Continue with Google
-          </Button>
+                  onClick={handleSubmitWithGoogle}
+                  type="button"
+                  className="login_signInButton"
+                  color="info"
+                >
+                  <i className="fab fa-google"></i>&nbsp;&nbsp;Sign Up with Google
+                </Button>
               </Card>
             </div>
             {/* </div> */}

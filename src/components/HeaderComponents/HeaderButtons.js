@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import {useAuth} from '../../contexts/AuthContext';
 
 import "./HeaderComponent.css";
@@ -15,15 +14,15 @@ function HeaderButtons() {
     <span>
       {currentUser != null ? (
         <Link to="/profile">
-          <Button className="headerBtn" outline>
+          <button className="headerBtn" outline>
             <span className="loginText"><i className="fa fa-user"></i> Profile</span>
-          </Button>
+          </button>
         </Link>
       ) : (
         <Link to="/login">
-          <Button className="headerBtn" outline>
+          <button className="headerBtn" outline>
             <span className="loginText"><i className="fa fa-user"></i> Login / Sign Up</span> 
-          </Button>
+          </button>
         </Link>
       )}
     </span>
