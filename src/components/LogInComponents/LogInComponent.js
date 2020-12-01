@@ -61,10 +61,10 @@ function LogInComponent() {
     return (
         <>
           <div className="login-container">
-            <HeadingTitle heading="LOGIN / SIGN UP" />
+            <HeadingTitle heading="LOG IN / SIGN UP" />
             <Breadcrumb>
-                <BreadcrumbItem title="Home" path="/" />
-                <BreadcrumbItem title="Login / Sign Up" status="active" />
+                <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In / Sign Up" status="active" />
             </Breadcrumb>
             <div className="container">
               <Card className="login-card">
@@ -108,12 +108,12 @@ function LogInComponent() {
                     <div style={{textAlign:"right", marginTop:"20px"}} >
                       <Link to="/forgot-password" >Forgot your password?</Link> 
                     </div>
-                    <Button disabled={loading}  type="submit" >Login</Button>
+                    <Button disabled={loading}  type="submit" ><i className="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Log In</Button>
                   </Form>
                   <Row>
-                    <Col ><hr class="solid"/></Col>
+                    <Col><hr class="solid"/></Col>
                     <Col style={{minWidth:"160px", textAlign:"center"}}>Or Connect With</Col>
-                    <Col ><hr class="solid"/></Col>
+                    <Col><hr class="solid"/></Col>
                   </Row>
                   <Row>
                     
@@ -125,12 +125,12 @@ function LogInComponent() {
                   className="login_signInButton"
                   color="info"
                 >
-                  <i className="fab fa-google"></i>&nbsp;&nbsp;Login with Google
+                  <i className="fab fa-google"></i>&nbsp;&nbsp;Log In with Google
                 </Button>
                 {/* </Row> */}
               </Card>
             </div>
-       {/* </div> */}
+            {/* </div> */}
           </div>
         </>
     )

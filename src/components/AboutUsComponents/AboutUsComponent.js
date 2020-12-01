@@ -52,8 +52,8 @@ class About extends Component {
         <div className="aboutus-container">
           <HeaderTitle heading="ABOUT THE CLUB" />
           <Breadcrumb>
-            <BreadcrumbItem title="Home" path="/" />
-            <BreadcrumbItem title="About Us" status="active" />
+            <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+            <BreadcrumbItem icon="fas fa-info-circle" title="About Us" status="active" />
           </Breadcrumb>
           <div className="container">
             <div className="row row-content align-items-center justify-content-center">

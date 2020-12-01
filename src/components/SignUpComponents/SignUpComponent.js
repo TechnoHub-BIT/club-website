@@ -67,10 +67,10 @@ function SignUpComponent() {
     return (
         <>
           <div className="signup-container">
-            <HeaderTitle heading="LOGIN / SIGN UP" />
+            <HeaderTitle heading="LOG IN / SIGN UP" />
             <Breadcrumb>
-                <BreadcrumbItem title="Home" path="/" />
-                <BreadcrumbItem title="Login / Sign Up" status="active" />
+                <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In / Sign Up" status="active" />
             </Breadcrumb>
             <div className="container">
               <Card className="signup-card">
@@ -113,7 +113,7 @@ function SignUpComponent() {
                     <FormGroup id="password-confirm" >
                         <FormControl type="password" ref={passwordConfirmRef} placeholder="Confirm Password" required />
                     </FormGroup>
-                    <Button className="signup-button" disabled={loading} type="submit" >Sign Up</Button>
+                    <Button className="signup-button" disabled={loading} type="submit"><i className="fas fa-user-plus"></i>&nbsp;&nbsp;Sign Up</Button>
                   </Form>
                   <Row>
                     <Col><hr class="solid"/></Col>

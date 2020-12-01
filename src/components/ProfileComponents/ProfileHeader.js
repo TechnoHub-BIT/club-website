@@ -73,11 +73,11 @@ try {
                         </h6>
                         <Link to="/register" target="_blank">
                             <Button color="primary">
-                                <i className="fas fa-external-link-alt"></i> Apply for Membership
+                                <i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership
                             </Button>
                         </Link>
                         <Button onClick={handleLogout} >
-                            Log Out
+                            <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
                         </Button>
                     </div>
                 </div>

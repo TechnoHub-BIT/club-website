@@ -20,8 +20,8 @@ class EventsComponent extends Component {
         <div className="events-container">
           <HeadingTitle heading="TECHNOHUB EVENTS" />
           <Breadcrumb>
-              <BreadcrumbItem title="Home" path="/" />
-              <BreadcrumbItem title="Events" status="active" />
+              <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+              <BreadcrumbItem icon="far fa-calendar-alt" title="Events" status="active" />
           </Breadcrumb>
           <div className="container">
             <div style={{marginBottom: "100px"}}>

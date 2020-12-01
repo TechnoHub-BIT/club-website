@@ -62,7 +62,7 @@ class Header extends Component {
                     <h1> TECHNOHUB</h1>
                     <h3>Bhilai Institute of Technology, Durg</h3>
                     <Link to="/signup">
-                      <button type="button" class="ctaBtn">Sign up Now!</button>
+                      <button type="button" class="ctaBtn"><i className="fas fa-user-plus"></i>&nbsp;&nbsp;Sign up Now!</button>
                     </Link>
                   </div>
                 </div>

@@ -31,8 +31,8 @@ class gallery extends Component {
                 <div className="gallery-container">
                     <HeadingTitle heading="GALLERY" />
                     <Breadcrumb>
-                        <BreadcrumbItem title="Home" path="/" />
-                        <BreadcrumbItem title="Gallery" status="active" />
+                        <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                        <BreadcrumbItem icon="fas fa-images" title="Gallery" status="active" />
                     </Breadcrumb>
                     <div className="container">
                         <div className="row">
@@ -131,9 +131,6 @@ class gallery extends Component {
                                         </div>
                                         <div>
                                             <img src="./assets/images/gallery/feb-20/3.jpg" alt="" />
-                                        </div>
-                                        <div>
-                                            <img src="./assets/images/gallery/feb-20/4.jpg" alt="" />
                                         </div>
                                     </OwlCarousel>
                                 </div>
