@@ -41,7 +41,11 @@ function EditComponent() {
                 console.log("Current data: ", doc.data());
                 const data = doc.data();
                 setProfiles(data);
+
             });
+            // setFullname(profiles.fullname)
+            // console.log(profiles.fullname)
+            // console.log(fullname)
         }
     }, [currentUser]);
 
@@ -112,7 +116,7 @@ function EditComponent() {
               
             });
         }
-
+        alert("Profile Successfully Updated");
       };
 
     return (
@@ -139,7 +143,7 @@ function EditComponent() {
                             <div>
                                 <h6 className="contentHeading">Personal Information</h6>
                                 <div className="input-group">
-                                    <input type="text" id="name" placeholder="Name" value={profiles.fullname} onChange={(event) => setFullname(event.target.value)}/>
+                                    <input type="text" id="name" placeholder={profiles.fullname} defaultValue={profiles.fullname} onChange={(event) => setFullname(event.target.value)}/>
                                     <label for="name">Name</label>
                                 </div>
                                 {/* <div className="input-group">
@@ -152,7 +156,7 @@ function EditComponent() {
                                         <option value="Computer Science Engineering">Computer Science Engineering</option>
                                         <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
                                         <option value="Information Technology">Information Technology</option>
-                                        <option value="Electronics and Electronics">Electronics and Electronics</option>
+                                        <option value="Electrical and Electronics">Electrical and Electronics</option>
                                         <option value="Electrical Engineering">Electrical Engineering</option>
                                         <option value="Civil Engineering">Civil Engineering</option>
                                         <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -190,15 +194,15 @@ function EditComponent() {
                                     <label for="projects">Projects Done Till Now</label>
                                 </div> */}
                                 <div className="input-group">
-                                    <input type="text" id="skills" placeholder="Skills you Have" value={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
+                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="interest" placeholder="Interested Field" value={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
+                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
                                     <label for="interest">Interested Field*</label>
                                 </div>
                                 <div className="input-group">
-                                    <input type="text" id="workshop" placeholder="Workshops Attended" value={profiles.workshops} onChange={(event) => setWorkshops(event.target.value)}/>
+                                    <input type="text" id="workshop" placeholder="Workshops Attended" defaultValue={profiles.workshops} onChange={(event) => setWorkshops(event.target.value)}/>
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
                                 <Button color="primary" onClick={profileUpdate}>

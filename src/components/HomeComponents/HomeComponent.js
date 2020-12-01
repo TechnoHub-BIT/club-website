@@ -139,8 +139,9 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6">
-              <div className="about_text1 text-left">
+              <div className="about_text1">
                 <h2>Technical Activities</h2>
+                <br />
                 <p className="text-justify">
                   For the all-round development of the students and to enrich
                   their technical knowledge the institute provides a platform
@@ -162,8 +163,9 @@ function Home(props) {
           <div className="container">
             <div className="row align-items-center justify-content-between">
               <div className="col-md-6 col-lg-6">
-                <div className="about_text text-left">
+                <div className="about_text">
                   <h2>Management</h2>
+                  <br/>
                   <p className="text-justify">
                     The aim of this club is to offer the ability to plan and
                     execute events throughout the college. Event Management for
