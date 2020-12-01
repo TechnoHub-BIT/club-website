@@ -17,16 +17,19 @@ const BreadcrumbItem = (props) => {
     const status = props.status;
 
     let className = "link";
-    let title = <Link to={ props.path }>{ props.title }</Link>;
+    let title = 
+        <Link to={ props.path }>
+            <i className={ props.icon }></i>&nbsp;&nbsp;{ props.title }
+        </Link>;
 
     if(status != null) {
         className = "active";
-        title =  props.title;
+        title =  <span><i className={ props.icon }></i>&nbsp;&nbsp;{ props.title }</span>;
     }
 
     return(
         <li className={ className }>
-            { title }
+            &nbsp;&nbsp;{ title }
         </li>
     );
 };

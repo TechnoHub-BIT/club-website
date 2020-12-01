@@ -93,9 +93,9 @@ class Header extends Component {
               <HeaderButtons />
             </li>
           </ul>
-          <div className="menuBtn">
-            <i className="fas fa-bars"></i>
-          </div>
+        </div>
+        <div className="menuBtn">
+          <i className="fas fa-bars"></i>
         </div>
       </React.Fragment>
     );

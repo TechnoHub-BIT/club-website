@@ -150,7 +150,7 @@ function Home(props) {
                   also to enable them to come out with their innovative ideas.
                 </p>
                 <Link to="/events" className="btn_2">
-                  Read More
+                  Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
                 </Link>
               </div>
             </div>
@@ -165,7 +165,7 @@ function Home(props) {
               <div className="col-md-6 col-lg-6">
                 <div className="about_text">
                   <h2>Management</h2>
-                  <br/>
+                  <br />
                   <p className="text-justify">
                     The aim of this club is to offer the ability to plan and
                     execute events throughout the college. Event Management for
@@ -178,7 +178,7 @@ function Home(props) {
                     their academic timetables.
                   </p>
                   <Link to="/aboutus" className="btn_2">
-                    Read More
+                    Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
                   </Link>
                 </div>
               </div>

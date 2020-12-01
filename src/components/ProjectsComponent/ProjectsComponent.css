@@ -3,6 +3,12 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1em;
 }
+.singleCard {
+  transition: 0.3s all ease;
+}
+.singleCard:hover {
+  transform: scale(1.05);
+}
 .cardImage {
   width: 100%;
   border-top-left-radius: 7px;

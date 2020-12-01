@@ -184,7 +184,7 @@ function EditComponent() {
                                     <label for="contact">Contact No.</label>
                                 </div> */}
                                 <Button color="primary" onClick={profileUpdate}>
-                                    <i className="far fa-file"></i> Save Changes
+                                    <i className="fas fa-save"></i>&nbsp;&nbsp;Save Changes
                                 </Button>
                             </div>
                             <div>
@@ -206,7 +206,7 @@ function EditComponent() {
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
                                 <Button color="primary" onClick={profileUpdate}>
-                                    <i className="far fa-file"></i> Save Changes
+                                    <i className="fas fa-save"></i>&nbsp;&nbsp;Save Changes
                                 </Button>
                             </div>
                         </div>

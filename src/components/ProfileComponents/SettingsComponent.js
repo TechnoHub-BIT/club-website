@@ -99,15 +99,13 @@ function SettingsComponent() {
                                     <label for="new">New Password</label>
                                 </div>
                                 <Button color="primary">
-                                    Change Password
+                                    <i className="fas fa-exchange-alt"></i>&nbsp;&nbsp;Change Password
                                 </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Account Actions</h6>
-                                <Button color="danger"
-                                                    onClick={handleDelete}
-                                >
-                                    <i className="fas fa-times"></i> Delete Account
+                                <Button color="danger" onClick={handleDelete}>
+                                    <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account
                                 </Button>
                             </div>
                         </div>

@@ -30,10 +30,10 @@ const OurMembers = (props) => {
   return (
     <React.Fragment>    
       <div className="members-container">
-        <HeadingTitle heading="Members" />
+        <HeadingTitle heading="MEMBERS" />
         <Breadcrumb>
-            <BreadcrumbItem title="Home" path="/" />
-            <BreadcrumbItem title="Members" status="active" />
+            <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+            <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />
         </Breadcrumb>
         <div className="table-container">
           <Table>
