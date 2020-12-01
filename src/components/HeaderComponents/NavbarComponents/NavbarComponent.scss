@@ -1,7 +1,7 @@
 .navbarTop {
   position: sticky;
   top: 0;
-  z-index: 100000;
+  z-index: 1000;
 
   ul {
     background-color: #191d34;
@@ -25,49 +25,56 @@
       }
     }
   }
-
-  .menuBtn {
-    i {
-      display: none;
-    }
+}
+.menuBtn {
+  i {
+    display: none;
+    z-index: 1001;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .navbarTop {
-    position: fixed;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    pointer-events: none;
 
     ul {
       flex-direction: column;
-      min-height: 100vh;
-      min-width: 100vw;
       clip-path: circle(0px at 0% -10%);
-      transition: 0.7s all ease;
+      transition: 0.6s all ease;
+      height: 100%;
+    }
 
-      &.show {
+    &.show {
+      pointer-events: all;
+
+      ul {
         clip-path: circle(1500px at 0% -10%);
       }
     }
+  }
 
-    .menuBtn {
-      i {
-        display: inline;
-        position: absolute;
-        top: 1em;
-        left: 0.5em;
-        padding: 20px;
-        border-radius: 50%;
-        font-size: 1.5em;
-        background: linear-gradient(145deg, #e6e6e6, #ffffff);
-        box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
-        cursor: pointer;
-        transition: 0.7s all ease;
+  .menuBtn {
+    i {
+      display: inline;
+      position: absolute;
+      top: 1em;
+      left: 0.5em;
+      padding: 20px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      color: #191d34;
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
+      cursor: pointer;
+      transition: 0.7s all ease;
 
-        &.show {
-          background: linear-gradient(145deg, #171a2f, #1b1f38);
-          box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
-          color: #fff;
-        }
+      &.show {
+        background: linear-gradient(145deg, #171a2f, #1b1f38);
+        box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
+        color: #fff;
       }
     }
   }

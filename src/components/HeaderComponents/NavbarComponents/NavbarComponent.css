@@ -2,7 +2,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 100000;
+  z-index: 1000;
 }
 
 .navbarTop ul {
@@ -31,31 +31,37 @@
   text-decoration: none;
 }
 
-.navbarTop .menuBtn i {
+.menuBtn i {
   display: none;
+  z-index: 1001;
 }
 
 @media only screen and (max-width: 768px) {
   .navbarTop {
-    position: fixed;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    pointer-events: none;
   }
   .navbarTop ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
     -webkit-clip-path: circle(0px at 0% -10%);
             clip-path: circle(0px at 0% -10%);
-    -webkit-transition: 0.7s all ease;
-    transition: 0.7s all ease;
+    -webkit-transition: 0.6s all ease;
+    transition: 0.6s all ease;
+    height: 100%;
   }
-  .navbarTop ul.show {
+  .navbarTop.show {
+    pointer-events: all;
+  }
+  .navbarTop.show ul {
     -webkit-clip-path: circle(1500px at 0% -10%);
             clip-path: circle(1500px at 0% -10%);
   }
-  .navbarTop .menuBtn i {
+  .menuBtn i {
     display: inline;
     position: absolute;
     top: 1em;
@@ -63,6 +69,7 @@
     padding: 20px;
     border-radius: 50%;
     font-size: 1.5em;
+    color: #191d34;
     background: linear-gradient(145deg, #e6e6e6, #ffffff);
     -webkit-box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
             box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
@@ -70,7 +77,7 @@
     -webkit-transition: 0.7s all ease;
     transition: 0.7s all ease;
   }
-  .navbarTop .menuBtn i.show {
+  .menuBtn i.show {
     background: linear-gradient(145deg, #171a2f, #1b1f38);
     -webkit-box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
             box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
