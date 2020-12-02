@@ -100,16 +100,13 @@ class gallery extends Component {
                                         <div>
                                             <img src="./assets/images/gallery/gsea/1.jpg" alt="" />
                                         </div>
-                                        <div>
-                                            <img src="./assets/images/gallery/gsea/2.jpg" alt="" />
-                                        </div>
                                     </OwlCarousel>
                                 </div>
                             </div>
                         </div>
                         <div className="row mt-4">
                             <div className="title">
-                                <h2>How to position yourself for the future</h2>
+                                <h2>How to position yourself for the future?</h2>
                             </div>
                             <div className="container">
                                 <div className="gallery">
@@ -131,6 +128,100 @@ class gallery extends Component {
                                         </div>
                                         <div>
                                             <img src="./assets/images/gallery/feb-20/3.jpg" alt="" />
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-4">
+                            <div className="title">
+                                <h2>Robotics Workshop</h2>
+                            </div>
+                            <div className="container">
+                                <div className="gallery">
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        margin={10}
+                                        loop
+                                        autoplay
+                                        autoplayTimeout={1000}
+                                        autoplayHoverPause
+                                        dotsEach
+                                        responsive={this.state.responsive}
+                                    >
+                                        <div>
+                                            <img src="./assets/images/gallery/robotics-workshop/1.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/robotics-workshop/2.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/robotics-workshop/3.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/robotics-workshop/4.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/robotics-workshop/5.jpeg" alt="" />
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="title">
+                                <h2>Hult Prize- January 2020</h2>
+                            </div>
+                            <div className="container">
+                                <div className="gallery">
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        margin={10}
+                                        autoplay
+                                        autoplayTimeout={1000}
+                                        autoplayHoverPause
+                                        dotsEach
+                                        responsive={this.state.responsive}
+                                    >
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-january/1.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-january/2.jpg" alt="" />
+                                        </div>
+                                    </OwlCarousel>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-4">
+                            <div className="title">
+                                <h2>Hult Prize- 2021</h2>
+                            </div>
+                            <div className="container">
+                                <div className="gallery">
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        margin={10}
+                                        autoplay
+                                        autoplayTimeout={1000}
+                                        autoplayHoverPause
+                                        dotsEach
+                                        responsive={this.state.responsive}
+                                    >
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-2021/1.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-2021/2.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-2021/3.jpg" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-2021/4.png" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="./assets/images/gallery/hult-prize-2021/5.png" alt="" />
                                         </div>
                                     </OwlCarousel>
                                 </div>

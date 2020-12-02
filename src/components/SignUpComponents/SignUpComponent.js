@@ -67,10 +67,10 @@ function SignUpComponent() {
     return (
         <>
           <div className="signup-container">
-            <HeaderTitle heading="LOG IN / SIGN UP" />
+            <HeaderTitle heading="SIGN UP" />
             <Breadcrumb>
                 <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
-                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In / Sign Up" status="active" />
+                <BreadcrumbItem icon="fas fa-user-plus" title="Sign Up" status="active" />
             </Breadcrumb>
             <div className="container">
               <Card className="signup-card">

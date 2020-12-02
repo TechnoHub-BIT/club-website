@@ -11,13 +11,13 @@ const achievements = (props) => {
             <div className="achievementsCont">
                 <HeaderTitle heading="ACHIEVEMENTS" />
                 <Breadcrumb>
-                    <BreadcrumbItem title="Home" path="/" />
-                    <BreadcrumbItem title="Achievements" status="active" />
+                    <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                    <BreadcrumbItem icon="fas fa-award" title="Achievements" status="active" />
                 </Breadcrumb>
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-6">
-                            <SingleAchievement path="./assets/images/achievements/eogsea.jpeg">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/gsea.jpeg">
                                 It is a matter of pride and honor that one of the team
                                 members of TechnoHub competed in the Global Student
                                 Entrepreneurship Award(GSEA) with well-known
@@ -26,8 +26,8 @@ const achievements = (props) => {
                                 held at Coimbatore.
                             </SingleAchievement>
                         </div>
-                        <div className="col-md-6">
-                            <SingleAchievement path="./assets/images/achievements/EyantraBhupesh.jpg">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/e-yantra.jpg">
                                 Seriate to the event was EYANTRA which is an initiative to
                                 spread education in Embedded systems and Robotics by IIT
                                 Bombay sponsored by Ministry of Human Resource
@@ -40,8 +40,8 @@ const achievements = (props) => {
                                 their project.
                             </SingleAchievement>
                         </div>
-                        <div className="col-md-6">
-                            <SingleAchievement path="./assets/images/achievements/Drone.jpg">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/drone.jpg">
                                 Aerial Painting Drone is one of the major projects in which
                                 few of the most talented and hardworking TechnoHub
                                 members are working. It is all about a simple drone which is
@@ -51,11 +51,36 @@ const achievements = (props) => {
                                 university will fund more upto Rs. 50,000.
                             </SingleAchievement>
                         </div>
-                        <div className="col-md-6">
-                            <SingleAchievement path="./assets/images/achievements/KuldeepMIT.jpg">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/kuldeep-mit.jpg">
                                 One of our members, Kuldeep Patel of 5th Semester from Electronics 
                                 and Telecommunications Department, has won the MIT COVID-19 Challenge,
                                 which is a hackathon organised by MIT, Massachusetts.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/hult-prize-january.jpg">
+                                Team Jaivik led by Kartikey Rawat won the Hult Prize On-Campus 2020 Challenge and represented BIT Durg in Vietnam Regional Finals.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/sih.jpg">
+                                Abhishek Agrawal and team represented BIT Durg at a national level in Smart India Hackathon Software Edition.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/thagda-dam.jpg">
+                                Akshay Sharma’s 3D modeling of Thagda Dam park and recreation got approved by the CMO of Chhattisgarh for use in the upcoming project.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement path="./assets/images/achievements/hult-prize-2021.jpeg">
+                                Team Barleyn led by Anubhav Bhatt won the Hult Prize 2021 On Campus Challenge.
+                            </SingleAchievement>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <SingleAchievement>
+                                Aman Mandal and team represented BIT Durg at a national level in Smart India Hackathon Hardware Edition.
                             </SingleAchievement>
                         </div>
                     </div>

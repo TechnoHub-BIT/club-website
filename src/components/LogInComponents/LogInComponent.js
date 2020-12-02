@@ -61,10 +61,10 @@ function LogInComponent() {
     return (
         <>
           <div className="login-container">
-            <HeadingTitle heading="LOG IN / SIGN UP" />
+            <HeadingTitle heading="LOG IN" />
             <Breadcrumb>
                 <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
-                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In / Sign Up" status="active" />
+                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In" status="active" />
             </Breadcrumb>
             <div className="container">
               <Card className="login-card">
