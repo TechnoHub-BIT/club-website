@@ -3,6 +3,10 @@
   box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
   border-radius: 10px;
   margin: 0 auto 1.5em;
+  transition: 0.3s all ease;
+}
+.achievementCard:hover {
+  transform: scale(1.05);
 }
 .achievementImage {
   width: 100%;
@@ -14,8 +18,34 @@
   color: #000;
   text-decoration: none;
   text-align: center;
+  font-size: 0.95em;
   padding: 20px 20px 7px;
+}
+.achievementDetails::-webkit-scrollbar {
+  width: 3px;
+}
+.achievementDetails::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+.achievementDetails::-webkit-scrollbar-thumb {
+  background-color: #000;
 }
 .achievementDetails p {
   text-align: justify;
+}
+
+@media only screen and (min-width: 768px) {
+  .achievementImage {
+    height: 270px;
+  }
+  .achievementDetails {
+    height: 200px;
+    overflow: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .achievementImage {
+    height: 300px;
+  }
 }

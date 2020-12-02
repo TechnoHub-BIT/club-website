@@ -1,17 +1,14 @@
 const showNavbar = () => {
-  const menuBtn = document.querySelector(".menuBtn i");
-  const navbarTop = document.querySelector(".navbarTop");
-  const links = document.querySelectorAll(".navbarTop ul li a");
-  menuBtn.addEventListener("click", () => {
-    navbarTop.classList.toggle("show");
-    menuBtn.classList.toggle("show");
-  });
+  const navList = document.querySelector(".navList");
+  const links = document.querySelectorAll(".navList li a");
 
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      navbarTop.classList.remove("show");
-      menuBtn.classList.remove("show");
-    });
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    navList.classList.toggle("open");
+      links.forEach(link => {
+        link.addEventListener("click", () => {
+          navList.classList.remove("open");
+        });
+      });
   });
 };
 

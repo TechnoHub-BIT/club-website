@@ -51,52 +51,62 @@ class Header extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="navbarTop">
-          <ul>
-            <Link to="/">
-              <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
-            </Link>
-            <li>
+        <div class="header">
+          <div class="navbarTop">
+            <div class="hamburger">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </div>
+            <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
+            <ul className="navList">
               <Link to="/">
-                HOME
+                <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
               </Link>
-            </li>
-            <li>
-              <Link to="/aboutus">
-                ABOUT US
-              </Link>
-            </li>
-            <li>
-              <Link to="/gallery">
-                GALLERY
-              </Link>
-            </li>
-            <li>
-              <Link to="/projects">
-                PROJECTS
-              </Link>
-            </li>
-            <li>
-              <Link to="/events">
-                EVENTS
-              </Link>
-            </li>
-            <li>
-              <Link to="/ourmembers">
-                OUR MEMBERS
-              </Link>
-            </li>
-            <li>
-              <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
-            </li>
-            <li>
-              <HeaderButtons />
-            </li>
-          </ul>
-        </div>
-        <div className="menuBtn">
-          <i className="fas fa-bars"></i>
-        </div>
+              <li>
+                <Link to="/">
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link to="/aboutus">
+                  ABOUT US
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery">
+                  GALLERY
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects">
+                  PROJECTS
+                </Link>
+              </li>
+              <li>
+                <Link to="/achievements">
+                  ACHIEVEMENTS
+                </Link>
+              </li>
+              <li>
+                <Link to="/events">
+                  EVENTS
+                </Link>
+              </li>
+              <li>
+                <Link to="/ourmembers">
+                  OUR MEMBERS
+                </Link>
+              </li>
+              <li>
+                <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
+              </li>
+              <li>
+                <HeaderButtons />
+              </li>
+            </ul>
+          </div>
+      </div>
       </React.Fragment>
     );
   }

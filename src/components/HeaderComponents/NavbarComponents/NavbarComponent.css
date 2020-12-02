@@ -1,87 +1,109 @@
-.navbarTop {
+.header {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.navbarTop ul {
+.header .navbarTop {
+  height: 11vh;
   background-color: #191d34;
   color: #fff;
-  padding: 20px;
-  list-style-type: none;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.header .navbarTop .mobileNavLogo {
+  display: none;
+}
+
+.header .navbarTop .navList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 20px;
+  height: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
+  list-style: none;
 }
 
-.navbarTop ul img {
+.header .navbarTop .navList img {
   width: 100px;
 }
 
-.navbarTop ul li a {
-  font-family: "Barlow Condensed", sans-serif;
+.header .navbarTop .navList li {
+  display: inline;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.header .navbarTop .navList li a {
   color: #fff;
   text-decoration: none;
 }
 
-.menuBtn i {
-  display: none;
-  z-index: 1001;
-}
-
-@media only screen and (max-width: 768px) {
-  .navbarTop {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    pointer-events: none;
+@media only screen and (max-width: 792px) {
+  .header .navbarTop {
+    position: relative;
+    z-index: 5;
   }
-  .navbarTop ul {
+  .header .navbarTop .mobileNavLogo {
+    position: absolute;
+    display: block;
+    width: 100px;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .header .navbarTop .hamburger {
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+  }
+  .header .navbarTop .hamburger .line {
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+  }
+  .header .navbarTop .hamburger .line1 {
+    width: 30px;
+  }
+  .header .navbarTop .hamburger .line2 {
+    width: 20px;
+  }
+  .header .navbarTop .hamburger .line3 {
+    width: 27px;
+  }
+  .header .navbarTop .navList {
+    position: fixed;
+    background-color: #191d34;
+    height: 100vh;
+    width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     -webkit-clip-path: circle(0px at 0% -10%);
             clip-path: circle(0px at 0% -10%);
-    -webkit-transition: 0.6s all ease;
-    transition: 0.6s all ease;
-    height: 100%;
+    -webkit-transition: 0.65s all ease;
+    transition: 0.65s all ease;
+    pointer-events: none;
   }
-  .navbarTop.show {
+  .header .navbarTop .navList img {
+    display: none;
+  }
+  .header .navbarTop .navList.open {
+    -webkit-clip-path: circle(1010px at 0% -10%);
+            clip-path: circle(1010px at 0% -10%);
     pointer-events: all;
-  }
-  .navbarTop.show ul {
-    -webkit-clip-path: circle(1500px at 0% -10%);
-            clip-path: circle(1500px at 0% -10%);
-  }
-  .menuBtn i {
-    display: inline;
-    position: absolute;
-    top: 1em;
-    left: 0.5em;
-    padding: 20px;
-    border-radius: 50%;
-    font-size: 1.5em;
-    color: #191d34;
-    background: linear-gradient(145deg, #e6e6e6, #ffffff);
-    -webkit-box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
-            box-shadow: 6px 6px 12px #c4c4c4, -6px -6px 12px #ffffff;
-    cursor: pointer;
-    -webkit-transition: 0.7s all ease;
-    transition: 0.7s all ease;
-  }
-  .menuBtn i.show {
-    background: linear-gradient(145deg, #171a2f, #1b1f38);
-    -webkit-box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
-            box-shadow: 6px 6px 12px #15192c, -6px -6px 12px #1d213c;
-    color: #fff;
   }
 }
 /*# sourceMappingURL=NavbarComponent.css.map */
