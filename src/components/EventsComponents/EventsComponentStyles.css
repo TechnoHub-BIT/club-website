@@ -32,6 +32,15 @@
   color: green;
   right: 16px;
 }
+
+.top-right2 {
+  position: absolute;
+  top: 8px;
+  padding: 3px;
+  background-color: red;
+  color: whitesmoke;
+  right: 16px;
+}
 /* 
 .events-card-body {
 
