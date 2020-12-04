@@ -1,78 +1,64 @@
-.events-container {
-  margin: 20px;
-  position: relative;
-  min-height: 70vh;
-}
-
-.events-card {
-  margin: 20px;
-  padding: 10px;
-  position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  /* width: 40%; */
-}
-
-.events-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card_img {
-  max-height: 400px;
-  min-height: 200px;
-  max-width: 350px;
-  min-width: 150px;
-}
-
-.top-right {
-  position: absolute;
-  top: 8px;
-  padding: 3px;
-  background-color: white;
-  color: green;
-  right: 16px;
-}
-
-.top-right2 {
-  position: absolute;
-  top: 8px;
-  padding: 3px;
-  background-color: red;
-  color: whitesmoke;
-  right: 16px;
-}
-/* 
-.events-card-body {
-
-} */
-
-.events-card-title {
-  font-size: 28px;
+.sectionTitle {
   text-align: center;
-  font-weight: 700;
+  margin: 2em 0 1em;
+  font-size: 2em;
 }
-
-.events-card-subtitle {
-  font-size: 24px;
+a {
+  text-decoration: none !important;
+}
+.eventsCardCont {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+}
+.eventsCard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto 1.5em;
+  transition: 0.3s all ease;
+}
+.eventsCard:hover {
+  transform: scale(1.03);
+}
+.eventsCard.comingSoon {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  background-color: lightgray;
+}
+.cardImage img {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.cardBody {
+  margin: 0 !important;
+  padding: 30px 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none !important;
   text-align: center;
-  font-weight: 550;
+  color: #000;
+}
+.cardTitle {
+  font-size: 1.25em;
+}
+.cardSubtitle {
+  color: #616161;
+  font-size: 1.1em;
 }
 
-.card_img_winners {
-  align-items: center;
-  /* max-height: 640px;
-  min-height: 480px;
-  max-width: 450px;
-  min-width: 200px; */
-  min-width: 300px;
-  margin: 20px;
-}
-
-@media screen and (max-width: 1015px) and (min-width: 694px) {
-  .card_img_winners {
-    height: 250px;
-    align-items: center;
-    margin: 15px;
-    width: 250px;
+@media only screen and (max-width: 768px) {
+  .eventsCardCont {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .eventsCard {
+    grid-template-columns: repeat(1, 2fr 3fr);
+    height: 170px;
   }
 }

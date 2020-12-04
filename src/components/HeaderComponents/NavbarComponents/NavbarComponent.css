@@ -101,8 +101,8 @@
     display: none;
   }
   .header .navbarTop .navList.open {
-    -webkit-clip-path: circle(1010px at 0% -10%);
-            clip-path: circle(1010px at 0% -10%);
+    -webkit-clip-path: circle(1500px at 0% -10%);
+            clip-path: circle(1500px at 0% -10%);
     pointer-events: all;
   }
 }
