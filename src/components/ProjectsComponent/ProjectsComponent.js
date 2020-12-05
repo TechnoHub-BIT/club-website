@@ -1,6 +1,5 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import { Link } from "react-router-dom";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./ProjectsComponent.css";
 
@@ -25,7 +24,7 @@ const Projects = (props) => {
               <div className="cardCont">
                 <div className="singleCard">
                   <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/drone.jpg" />
+                    <img className="cardImage" src="./assets/images/projects/drone.jpg" alt="drone"/>
                   </div>
                   <div className="cardBody">
                     <h3>Quadcopter</h3>
@@ -39,7 +38,7 @@ const Projects = (props) => {
                 </div>
                 <div className="singleCard">
                   <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/eyantra.jpg" />
+                    <img className="cardImage" src="./assets/images/projects/eyantra.jpg" alt="eyantra" />
                   </div>
                   <div className="cardBody">
                     <h3>e-yantra - Nutty Squirrel</h3>
@@ -51,7 +50,7 @@ const Projects = (props) => {
                 </div>
                 <div className="singleCard">
                   <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/firebird.jpg" />
+                    <img className="cardImage" src="./assets/images/projects/firebird.jpg" alt="firebird" />
                   </div>
                   <div className="cardBody">
                     <h3>Fire Bird V</h3>
@@ -63,7 +62,7 @@ const Projects = (props) => {
                 </div>
                 <div className="singleCard">
                   <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/weight-detector.jpeg" />
+                    <img className="cardImage" src="./assets/images/projects/weight-detector.jpeg" alt="weight-detector" />
                   </div>
                   <div className="cardBody">
                     <h3>Visual Weight Detector</h3>

@@ -37,7 +37,6 @@ try {
       db.collection("members")
         .doc(currentUser.uid)
         .onSnapshot(function (doc) {
-          console.log("Current data: ", doc.data());
           const data = doc.data();
           setProfiles(data);
         });

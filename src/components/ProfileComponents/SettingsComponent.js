@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import {Card, Button, Alert, CardBody} from 'reactstrap';
+import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
@@ -11,14 +11,6 @@ import { db } from '../../firebase';
 function SettingsComponent() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
-
-    const [fullname, setFullname] = useState("");
-    const [branch, setBranch] = useState("");
-    const [semester, setSemester] = useState("");
-    const [member, setMember] = useState("");
-    const [skills, setSkills] = useState("");
-    const [workshops, setWorkshops] = useState("");
-    const [interest, setInterest] = useState("");
 
     const [profiles, setProfiles] = useState([]);
 

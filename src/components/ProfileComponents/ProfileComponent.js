@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import {Card, Button, Alert, CardBody} from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
@@ -11,14 +10,6 @@ import ProfileHeader from './ProfileHeader';
 function ProfileComponent() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
-
-    const [fullname, setFullname] = useState("");
-    const [branch, setBranch] = useState("");
-    const [semester, setSemester] = useState("");
-    const [member, setMember] = useState("");
-    const [skills, setSkills] = useState("");
-    const [workshops, setWorkshops] = useState("");
-    const [interest, setInterest] = useState("");
 
     const [profiles, setProfiles] = useState([]);
 
@@ -38,7 +29,6 @@ function ProfileComponent() {
             db.collection("members")
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
-                console.log("Current data: ", doc.data());
                 const data = doc.data();
                 setProfiles(data);
             });

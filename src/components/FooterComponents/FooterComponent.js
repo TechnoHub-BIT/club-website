@@ -38,7 +38,7 @@ const footer = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="col-xl-3 col-md-4 col-sm-6">
+        <div className="col-xl-3 col-md-4 col-sm-6">
           <h3 className="heading">For Members</h3>
           <ul className="list">
             <li>
@@ -46,9 +46,11 @@ const footer = () => {
               <a href="#">Login</a>
             </li>
           </ul>
-        </div> */}
+        </div>
         <div className="col-xl-3 col-md-4 col-sm-6">
+          <Link to="/contactus" style={{color: 'inherit'}}>
           <h3 className="heading">Contact Us</h3>
+          </Link>
           <ul className="list">
             <li>
               <i className="fa fa-phone-alt"></i>
@@ -56,7 +58,7 @@ const footer = () => {
             </li>
             <li>
               <i className="fa fa-envelope"></i>
-              <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
+              <a href="mailto:bit.technohub@gmail.com" >bit.technohub@gmail.com</a>
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i>

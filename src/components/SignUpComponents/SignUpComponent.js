@@ -1,14 +1,13 @@
 import React, {useRef} from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Label,Col} from 'reactstrap'
+import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Col} from 'reactstrap'
 import {useAuth} from '../../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom';
 import classnames from 'classnames';
 import './SignUpStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
-import { db,auth } from '../../firebase'
 
 function SignUpComponent() {
 
@@ -127,7 +126,7 @@ function SignUpComponent() {
                   className="login_signInButton"
                   color="info"
                 >
-                  <i className="fab fa-google"></i>&nbsp;&nbsp;Sign Up with Google
+                  <i className="fab fa-google"></i>&nbsp;&nbsp;Continue with Google
                 </Button>
               </Card>
             </div>

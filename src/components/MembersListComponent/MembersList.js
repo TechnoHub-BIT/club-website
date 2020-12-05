@@ -8,7 +8,6 @@ import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
 import { db } from "../../firebase";
 
-
 const OurMembers = (props) => {
 
   const [memberList, setMemberList] = useState([]);
@@ -20,7 +19,6 @@ const OurMembers = (props) => {
         .get()
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log(data);
           setMemberList(data);
         });
   }
@@ -36,6 +34,7 @@ const OurMembers = (props) => {
             <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />
         </Breadcrumb>
         <div className="table-container">
+
           <Table>
             <Thead>
               <Tr>
@@ -47,23 +46,20 @@ const OurMembers = (props) => {
               </Tr>
             </Thead>
             <Tbody>
-              {/* <Tr>
-                <Td>Aditya Deshmukh</Td>
-                <Td>Electrical and Electronics</Td>
-                <Td>5th</Td>
-                <Td>Web Development(MERN), Robotics, Python/C++, Electronics Simulation</Td>
-                <Td>Robotics, EagleCAD, Electric Vehicles</Td>
-              </Tr> */}
-              {memberList?.map((data, i) => {
-              return (
-                <Tr key={i}>
-                  <Td data-label="Full Name">{data.fullname}</Td>
-                  <Td data-label="Branch">{data.branch}</Td>
-                  <Td data-label="Semester">{data.semester}</Td>
-                  <Td data-label="Skills">{data.skills}</Td>
-                  <Td data-label="Skills">{data.workshops}</Td>
-                </Tr>
-              );
+              {
+              memberList?.map((data, i) => {
+              if(data.payment == true){
+                return (
+                  <Tr key={i}>
+                    <Td data-label="Full Name">{data.fullname}</Td>
+                    <Td data-label="Branch">{data.branch}</Td>
+                    <Td data-label="Semester">{data.semester}</Td>
+                    <Td data-label="Skills">{data.skills}</Td>
+                    <Td data-label="Skills">{data.workshops}</Td>
+                  </Tr>
+                );
+              }
+
             })}
 
             </Tbody>

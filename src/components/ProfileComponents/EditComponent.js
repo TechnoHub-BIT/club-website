@@ -17,6 +17,8 @@ function EditComponent() {
     const [semester, setSemester] = useState("");
     const [member, setMember] = useState("");
     const [skills, setSkills] = useState("");
+    const [projects, setProjects] = useState("");
+    const [contactNo, setContactNo] = useState("");
     const [workshops, setWorkshops] = useState("");
     const [interest, setInterest] = useState("");
 
@@ -116,6 +118,28 @@ function EditComponent() {
               
             });
         }
+        if(projects!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              projects: projects,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(contactNo!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              contactNo: contactNo,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
         alert("Profile Successfully Updated");
       };
 
@@ -179,20 +203,20 @@ function EditComponent() {
                                     <input type="email" id="email" placeholder="Email" />
                                     <label for="email">Email-Id</label>
                                 </div> */}
-                                {/* <div className="input-group">
-                                    <input type="text" id="contact" placeholder="Contact No." />
+                                <div className="input-group">
+                                    <input type="text" id="contact" placeholder="Contact No." defaultValue={profiles.contactNo} onChange={(event) => setContactNo(event.target.value)}/>
                                     <label for="contact">Contact No.</label>
-                                </div> */}
+                                </div>
                                 <Button color="primary" onClick={profileUpdate}>
                                     <i className="fas fa-save"></i>&nbsp;&nbsp;Save Changes
                                 </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
-                                {/* <div className="input-group">
-                                    <input type="text" id="projects" placeholder="Projects Done Till Now" />
+                                <div className="input-group">
+                                    <input type="text" id="projects" placeholder="Projects Done Till Now" defaultValue={profiles.projects} onChange={(event) => setProjects(event.target.value)}/>
                                     <label for="projects">Projects Done Till Now</label>
-                                </div> */}
+                                </div>
                                 <div className="input-group">
                                     <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>
