@@ -85,24 +85,6 @@ function SettingsComponent() {
                     <div className="profileContent">
                         <div className="settings">
                             <div>
-                                <h6 className="contentHeading">Change Password</h6>
-                                <div className="input-group">
-                                    <input type="password" id="old" placeholder="Old Password" />
-                                    <label for="old">Old Password</label>
-                                </div>
-                                <div className="input-group">
-                                    <input type="password" id="confirm" placeholder="Confirm Old Password" />
-                                    <label for="confirm">Confirm Old Password</label>
-                                </div>
-                                <div className="input-group">
-                                    <input type="password" id="new" placeholder="New Password" />
-                                    <label for="new">New Password</label>
-                                </div>
-                                <Button color="primary">
-                                    <i className="fas fa-exchange-alt"></i>&nbsp;&nbsp;Change Password
-                                </Button>
-                            </div>
-                            <div>
                                 <h6 className="contentHeading">Account Actions</h6>
                                 <Button color="danger" onClick={handleDelete}>
                                     <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account

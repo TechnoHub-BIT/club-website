@@ -31,12 +31,6 @@ const RegisterComponent = () => {
                         <div className="profileNavItem">
                             <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
                         </div>
-                        <div className="profileNavItem">
-                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
-                        </div>
-                        <div className="profileNavItem">
-                            <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
-                        </div>
                         <div className="profileNavItem active">
                             <Link to="/register"><i className="fas fa-plus"></i> Register</Link>
                         </div>
@@ -68,8 +62,11 @@ const RegisterComponent = () => {
                                     <input type="text" id="workshop" placeholder="Workshops Attended" />
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
+                                <p className="infoText">
+                                    After Applying, submit registration charge(₹ 150) by calling on 8319560199 and get your registration approved.
+                                </p>
                                 <Button color="primary">
-                                    Apply Now
+                                    <i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now
                                 </Button>
                             </div>
                         </div>

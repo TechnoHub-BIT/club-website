@@ -101,6 +101,10 @@
   width: 80%;
 }
 
+.profileCont .profileDetails .profileBody .profileContent .infoText {
+  margin-top: 1em;
+}
+
 .profileCont .profileDetails .profileBody .dashboard {
   margin-top: 2em;
   text-align: center;

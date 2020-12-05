@@ -20,6 +20,7 @@ import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
 import OurMembers from "./MembersListComponent/MembersList";
 import Projects from "./ProjectsComponent/ProjectsComponent";
+import Admin from "./AdminComponents/AdminComponent";
 
 
 class Main extends Component {
@@ -32,6 +33,7 @@ class Main extends Component {
               {/* <Switch> */}
               <Navbar />
               <Route exact path="/" component={Home} />
+              <Route exact path="/admin" component={Admin} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/aboutus" component={About} />
               <Route exact path="/contactus" component={Contact} />
@@ -40,7 +42,6 @@ class Main extends Component {
               <PrivateRoute exact path="/register" component={Register} />
               <PrivateRoute exact path="/edit" component={EditProfile} />
               <PrivateRoute exact path="/ourmembers" component={OurMembers} />
-              {/* <Route exact path="/signup" component={SignUpComponent}/> */}
               <PrivateRoute exact path="/profile" component={Profile}/>
               <PrivateRoute exact path="/settings" component={Settings}/>
               <Route exact path="/login" component={Login}/>

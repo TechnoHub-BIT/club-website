@@ -1,10 +1,9 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import { Link } from "react-router-dom";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./ProjectsComponent.css";
 
-const Projects = (props) => {
+const Projects = () => {
   return(
     <React.Fragment>    
       <div className="gallery-container">
@@ -43,10 +42,10 @@ const Projects = (props) => {
                   </div>
                   <div className="cardBody">
                     <h3>e-yantra - Nutty Squirrel</h3>
-                      <p>
-                        A squirrel builds itself an elevator mechanism to ease
-                        its load-carrying capacity.
-                      </p>
+                    <p>
+                      A squirrel builds itself an elevator mechanism to ease
+                      its load-carrying capacity.
+                    </p>
                   </div>
                 </div>
                 <div className="singleCard">
@@ -55,10 +54,10 @@ const Projects = (props) => {
                   </div>
                   <div className="cardBody">
                     <h3>Fire Bird V</h3>
-                      <p>
-                        This bot detects colours and picks a particular coloured
-                        box and place it to the destination.
-                      </p>
+                    <p>
+                      This bot detects colours and picks a particular coloured
+                      box and place it to the destination.
+                    </p>
                   </div>
                 </div>
                 <div className="singleCard">
@@ -67,11 +66,22 @@ const Projects = (props) => {
                   </div>
                   <div className="cardBody">
                     <h3>Visual Weight Detector</h3>
-                      <p>
-                        The aim of this project is to present a visual body
-                        weight estimation, which is suitable for medical
-                        applications.
-                      </p>
+                    <p>
+                      The aim of this project is to present a visual body
+                      weight estimation, which is suitable for medical
+                      applications.
+                    </p>
+                  </div>
+                </div>
+                <div className="singleCard">
+                  <div className="cardHeader">
+                    <img className="cardImage" src="./assets/images/projects/thagda-dam.jpg" />
+                  </div>
+                  <div className="cardBody">
+                    <h3>Simulation of Thagda Dam</h3>
+                    <p>
+                      Akshay Sharma’s 3D modeling of Thagda Dam park and recreation got approved by the CMO of Chhattisgarh for use in the upcoming project.
+                    </p>
                   </div>
                 </div>
               </div>
