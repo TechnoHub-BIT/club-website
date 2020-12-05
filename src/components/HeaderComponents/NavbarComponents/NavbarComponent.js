@@ -58,7 +58,9 @@ class Header extends Component {
                 <div class="line line2"></div>
                 <div class="line line3"></div>
             </div>
-            <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
+            <Link to="/">
+              <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
+            </Link>
             <ul className="navList">
               <Link to="/">
                 <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />

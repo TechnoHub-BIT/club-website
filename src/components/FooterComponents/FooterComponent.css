@@ -1,7 +1,7 @@
 footer {
   background-color: #191d34;
   color: #fff;
-  padding: 50px 20px;
+  padding: 50px 20px 30px;
   font-size: 16px;
 }
 .firstColumn {
@@ -44,6 +44,19 @@ footer {
 .list li a {
   color: #f9f6f9;
   text-decoration: none;
+}
+.socialIcons {
+  display: flex;
+  justify-content: center;
+}
+.socialIcon:not(:first-child) {
+  margin-left: 1.2em;
+}
+.socialIcon a {
+  color: #fff;
+}
+.socialIcon i {
+  font-size: 1.4em;
 }
 
 @media only screen and (max-width: 992px) {

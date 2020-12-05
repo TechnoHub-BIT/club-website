@@ -67,6 +67,19 @@ const footer = () => {
           </ul>
         </div>
       </div>
+      <div className="row">
+        <div className="col-md-12 socialIcons">
+          <div className="socialIcon">
+            <a href="https://instagram.com/bit.technohub" target="_blank"><i className="fab fa-instagram"></i></a>
+          </div>
+          <div className="socialIcon">
+            <a href="https://www.facebook.com/bit.technohub" target="_blank"><i className="fab fa-facebook"></i></a>
+          </div>
+          <div className="socialIcon">
+            <a href="https://www.linkedin.com/company/technohubbitd/" target="_blank"><i className="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };

@@ -14,7 +14,7 @@ function ProfileComponent() {
     const [profiles, setProfiles] = useState([]);
 
     const history = useHistory()
-    async function handleLogout(){
+    async function handleLogout() {
         setError('')
         try {
             await logout()
