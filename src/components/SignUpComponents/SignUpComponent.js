@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import './SignUpStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
-import { db,auth } from '../../firebase'
+import { db, auth } from '../../firebase'
 
 function SignUpComponent() {
 
@@ -23,18 +23,18 @@ function SignUpComponent() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        if(passwordRef.current.value !== passwordConfirmRef.current.value){
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Passwords do not match')
         }
-        try{
-            setError('')
-            setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+        try {
+          setError('')
+          setLoading(true)
+          await signup(emailRef.current.value, passwordRef.current.value)
 
-            history.push("/")
+          history.push("/")
 
-        }catch{
-            setError('Failed to Create an Account')
+        } catch {
+          setError('Failed to Create an Account')
         }
         setLoading(false)
 
@@ -44,15 +44,13 @@ function SignUpComponent() {
       e.preventDefault()
 
 
-      try{
-
-          setError('')
-          setLoading(true)          
-          await signupWithGoogle()
-          history.push("/")
-      }catch{
-
-          setError('Failed to Login')
+      try {
+        setError('')
+        setLoading(true)          
+        await signupWithGoogle()
+        history.push("/")
+      } catch {
+        setError('Failed to Login')
       }
       setLoading(false)
 

@@ -2,7 +2,6 @@ import React,{useState, useEffect} from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import { Link } from "react-router-dom";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
@@ -55,17 +54,16 @@ const OurMembers = (props) => {
                 <Td>Robotics, EagleCAD, Electric Vehicles</Td>
               </Tr> */}
               {memberList?.map((data, i) => {
-              return (
-                <Tr key={i}>
-                  <Td data-label="Full Name">{data.fullname}</Td>
-                  <Td data-label="Branch">{data.branch}</Td>
-                  <Td data-label="Semester">{data.semester}</Td>
-                  <Td data-label="Skills">{data.skills}</Td>
-                  <Td data-label="Skills">{data.workshops}</Td>
-                </Tr>
-              );
-            })}
-
+                return (
+                  <Tr key={i}>
+                    <Td data-label="Full Name">{data.fullname}</Td>
+                    <Td data-label="Branch">{data.branch}</Td>
+                    <Td data-label="Semester">{data.semester}</Td>
+                    <Td data-label="Skills">{data.skills}</Td>
+                    <Td data-label="Skills">{data.workshops}</Td>
+                  </Tr>
+                );
+              })}
             </Tbody>
           </Table>
         </div>

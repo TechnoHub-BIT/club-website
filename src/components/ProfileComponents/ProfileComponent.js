@@ -1,6 +1,6 @@
-import React,{useState, useEffect} from 'react'
-import {useAuth} from '../../contexts/AuthContext';
-import {useHistory, Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useAuth } from '../../contexts/AuthContext';
+import { useHistory, Link } from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
@@ -9,7 +9,7 @@ import ProfileHeader from './ProfileHeader';
 
 function ProfileComponent() {
     const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth()
+    const {currentUser, logout} = useAuth();
 
     const [fullname, setFullname] = useState("");
     const [branch, setBranch] = useState("");

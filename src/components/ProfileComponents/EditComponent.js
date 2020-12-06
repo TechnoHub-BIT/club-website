@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
@@ -50,7 +50,7 @@ function EditComponent() {
     }, [currentUser]);
 
     const profileUpdate = () => {
-        if(fullname!=""){
+        if(fullname != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -61,7 +61,7 @@ function EditComponent() {
               
             });
         }
-        if(branch!=""){
+        if(branch != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -72,7 +72,7 @@ function EditComponent() {
               
             });
         }
-        if(semester!=""){
+        if(semester != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -83,7 +83,7 @@ function EditComponent() {
               
             });
         }
-        if(skills!=""){
+        if(skills != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -94,7 +94,7 @@ function EditComponent() {
               
             });
         }
-        if(interest!=""){
+        if(interest != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -105,7 +105,7 @@ function EditComponent() {
               
             });
         }
-        if(workshops!=""){
+        if(workshops != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({

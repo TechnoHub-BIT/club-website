@@ -22,10 +22,6 @@ const RegisterComponent = () => {
         }
     }
 
-    const renderFields = (value) => {
-        showRenderedFields(value);
-    }
-
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
@@ -45,7 +41,7 @@ const RegisterComponent = () => {
                             <div>
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">
-                                    <select required onChange={e => renderFields(e.target.value)}>
+                                    <select required onChange={e => showRenderedFields(e.target.value)}>
                                         <option value="">Select Role*</option>
                                         <option value="technical">Technical Team Member</option>
                                         <option value="management">Management Team Member</option>
