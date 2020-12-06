@@ -38,9 +38,9 @@ function ForgotPasswordComponent() {
           <div className="forgot-password-container">
             <HeadingTitle heading="LOGIN / SIGN UP" />
             <Breadcrumb>
-                <BreadcrumbItem title="Home" path="/" />
-                <BreadcrumbItem title="Login / Sign Up" path="/login" />
-                <BreadcrumbItem title="Forgot Password" status="active" />
+                <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                <BreadcrumbItem icon="fas fa-sign-in-alt" title="Login / Sign Up" path="/login" />
+                <BreadcrumbItem icon="fas fa-key" title="Forgot Password" status="active" />
             </Breadcrumb>
             <div className="container">
                 <Card className="forgot-password-card">
@@ -52,7 +52,7 @@ function ForgotPasswordComponent() {
                             <FormGroup id="email" >
                                 <FormControl type="email" ref={emailRef} placeholder="Enter Your Email" required />
                             </FormGroup>
-                            <Button disabled={loading}  type="submit" >Reset Password</Button>
+                            <Button disabled={loading} type="submit"><i className="fas fa-undo-alt"></i>&nbsp;&nbsp;Reset Password</Button>
                         </Form>
                     </CardBody>
                     <div style={{textAlign:"center"}} >

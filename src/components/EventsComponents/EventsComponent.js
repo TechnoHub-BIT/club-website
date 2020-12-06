@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import { Link } from 'react-router-dom';
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
-import './EventsComponentStyles.css';
+import './EventsComponent.css';
 
 class EventsComponent extends Component {
   render() {
