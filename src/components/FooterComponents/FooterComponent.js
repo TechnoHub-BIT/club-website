@@ -1,16 +1,36 @@
 import React from "react";
+import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-// import photos from '/assets/images/footer_img/randomName1.jpeg';
 import "./FooterComponent.css";
 
-const footer = () => {
+const Footer = () => {
+  const { currentUser } = useAuth();
+  let forMembers = null;
+
+  if(currentUser)
+    forMembers = 
+      <div className="col-xl-3 col-md-4 col-sm-6">
+        <h3 className="heading">For Members</h3>
+        <ul className="list">
+          <li>
+            <i className="fas fa-angle-right"></i>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <i className="fas fa-angle-right"></i>
+            <Link to="/ourmembers">Club Members</Link>
+          </li>
+        </ul>
+      </div>
+    ;
+
   return (
     <footer>
       <div className="row">
         <div className="col-xl-3 col-md-4 col-sm-6 firstColumn">
           <img className="whiteLogo" alt="Technohub" src="./assets/images/logowhite.png" />
           <p>
-            Our goal is to provide a platform to students by students which give proper guidance, training and connectivity with school alumni and industry experts to students to become Industry Ready
+            Our goal is to provide a platform to students by students which give proper guidance, training and connectivity with school alumni and industry experts to students to become Industry ready.
           </p>
         </div>
         <div className="col-xl-3 col-md-4 col-sm-6">
@@ -18,7 +38,7 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-angle-right"></i>
-              <Link to="/aboutus">Club Members</Link>
+              <Link to="/aboutus">About the Club</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
@@ -38,15 +58,9 @@ const footer = () => {
             </li>
           </ul>
         </div>
-        <div className="col-xl-3 col-md-4 col-sm-6">
-          <h3 className="heading">For Members</h3>
-          <ul className="list">
-            <li>
-              <i className="fas fa-sign-in-alt"></i>
-              <Link to="/login" >Login</Link>
-            </li>
-          </ul>
-        </div>
+
+        { forMembers }
+        
         <div className="col-xl-3 col-md-4 col-sm-6">
           <Link to="/contactus" style={{color: 'inherit'}}>
           <h3 className="heading">Contact Us</h3>
@@ -80,8 +94,11 @@ const footer = () => {
           </div>
         </div>
       </div>
+      <div className="row developedBy">
+        Site Developed by- <a href="https://instagram.com/aaryan610" target="_blank">Aaryan Khandelwal</a>,<a href="https://instagram.com/kuldeeppatel0001" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank">Aditya Deshmukh</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
+      </div>
     </footer>
   );
 };
 
-export default footer;
+export default Footer;
