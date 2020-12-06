@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import './EventsComponentStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle, 
-  Row,
-} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
+import './EventsComponentStyles.css';
 
 class EventsComponent extends Component {
   render() {

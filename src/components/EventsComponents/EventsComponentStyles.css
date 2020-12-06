@@ -10,15 +10,14 @@ a {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-gap: 1em;
+  margin: 0 0 2em;
 }
 .eventsCard {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 100%;
+  grid-template-columns: repeat(1, 45% 55%);
   box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
   border-radius: 10px;
-  border: none;
-  margin: 0 auto 1.5em;
+  border: none !important;
   transition: 0.3s all ease;
 }
 .eventsCard:hover {
@@ -41,8 +40,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: none !important;
   text-align: center;
+  border: none !important;
   color: #000;
 }
 .cardTitle {

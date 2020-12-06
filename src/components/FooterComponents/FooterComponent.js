@@ -54,7 +54,7 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fa fa-phone-alt"></i>
-              <a href="tel:+916261731565">6261731565</a>
+              <a href="tel:+916261731565">+91-6261731565</a>
             </li>
             <li>
               <i className="fa fa-envelope"></i>

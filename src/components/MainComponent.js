@@ -20,6 +20,8 @@ import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
 import OurMembers from "./MembersListComponent/MembersList";
 import Projects from "./ProjectsComponent/ProjectsComponent";
+import Admin from "./AdminComponents/AdminComponent";
+import ScrollToTop from './ScrollToTop';
 
 
 class Main extends Component {
@@ -30,8 +32,10 @@ class Main extends Component {
         <Router>
           <AuthProvider>
               {/* <Switch> */}
+              <ScrollToTop />
               <Navbar />
               <Route exact path="/" component={Home} />
+              <Route exact path="/admin" component={Admin} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/aboutus" component={About} />
               <Route exact path="/contactus" component={Contact} />

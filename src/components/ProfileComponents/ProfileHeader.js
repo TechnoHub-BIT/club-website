@@ -74,7 +74,7 @@ try {
 
                             <Button color="primary">
 
-                                {profiles.payment == false ? <i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i> : <i className="fas fa-external-link-alt">&nbsp;&nbsp;Your are member</i>    
+                                {profiles.payment == false ? <i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i> : <i className="fas fa-external-link-alt">&nbsp;&nbsp;Your are {profiles.member} member</i>    
                             }
                                 
                             </Button>

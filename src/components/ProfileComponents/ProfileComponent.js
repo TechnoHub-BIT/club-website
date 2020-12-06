@@ -9,7 +9,7 @@ import ProfileHeader from './ProfileHeader';
 
 function ProfileComponent() {
     const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth()
+    const {currentUser, logout} = useAuth();
 
     const [profiles, setProfiles] = useState([]);
 

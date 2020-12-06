@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Jumbotron } from "reactstrap";
 import "./HeaderComponent.css";
 import { Link } from "react-router-dom";
+import CTAButton from "./CTAButton";
 
 class Header extends Component {
   constructor(props) {
@@ -43,7 +44,6 @@ class Header extends Component {
   }
 
   render() {
-
     return (
       <React.Fragment>
         <Jumbotron>
@@ -61,9 +61,7 @@ class Header extends Component {
                     </h5>
                     <h1> TECHNOHUB</h1>
                     <h3>Bhilai Institute of Technology, Durg</h3>
-                    <Link to="/signup">
-                      <button type="button" class="ctaBtn"><i className="fas fa-user-plus"></i>&nbsp;&nbsp;Sign up Now!</button>
-                    </Link>
+                    <CTAButton />
                   </div>
                 </div>
               </div>

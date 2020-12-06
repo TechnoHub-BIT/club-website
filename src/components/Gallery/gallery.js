@@ -46,7 +46,7 @@ class gallery extends Component {
                                         margin={10}
                                         loop
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}
@@ -92,7 +92,7 @@ class gallery extends Component {
                                         className="owl-theme"
                                         margin={10}
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}
@@ -115,7 +115,7 @@ class gallery extends Component {
                                         margin={10}
                                         loop
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}
@@ -144,7 +144,7 @@ class gallery extends Component {
                                         margin={10}
                                         loop
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}
@@ -178,7 +178,7 @@ class gallery extends Component {
                                         className="owl-theme"
                                         margin={10}
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}
@@ -203,7 +203,7 @@ class gallery extends Component {
                                         className="owl-theme"
                                         margin={10}
                                         autoplay
-                                        autoplayTimeout={1000}
+                                        autoplayTimeout={1500}
                                         autoplayHoverPause
                                         dotsEach
                                         responsive={this.state.responsive}

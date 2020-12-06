@@ -4,7 +4,7 @@ import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
 
-function Home(props) {
+const Home = () => {
   const [faqs, setfaqs] = useState([
     {
       question: "Why TechnoHub?",
@@ -57,6 +57,7 @@ function Home(props) {
       })
     );
   };
+  
   return (
     <Fragment>
       <Header />
@@ -212,13 +213,7 @@ function Home(props) {
         </div>
       </section>
 
-      {/* <!--::industries end::-->
-
-    <!-- portfolio_part start--> */}
-      <section className="portfolio_part">
-        
-      </section>
-      {/*<!-- portfolio_part part end-->*/}
+      {/* <!--::industries end::--> */}
     </Fragment>
   );
 }
