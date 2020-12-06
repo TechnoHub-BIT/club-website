@@ -1,11 +1,11 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Col, CardTitle} from 'reactstrap'
-import {useAuth} from '../../contexts/AuthContext'
-import {Link} from 'react-router-dom';
+import { Button, Card, Form, CardBody, FormGroup, Alert, CardTitle} from 'reactstrap'
+import { useAuth } from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom';
 import './ForgotPasswordStyles.css'
-import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 
 function ForgotPasswordComponent() {

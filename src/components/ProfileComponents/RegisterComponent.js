@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import {Card, Button, Alert, CardBody} from 'reactstrap';
+import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
 import ProfileHeader from './ProfileHeader';
+import showRenderedFields from "../renderFields";
 
 const RegisterComponent = () => {
     const [error, setError] = useState('');
@@ -19,6 +20,10 @@ const RegisterComponent = () => {
         } catch {
             setError('Failed to log out')
         }
+    }
+
+    const renderFields = (value) => {
+        showRenderedFields(value);
     }
 
     return (
@@ -40,25 +45,30 @@ const RegisterComponent = () => {
                             <div>
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">
-                                    <select required>
+                                    <select required onChange={e => renderFields(e.target.value)}>
                                         <option value="">Select Role*</option>
-                                        <option value="1">Technical Team Member</option>
-                                        <option value="2">Management Team Member</option>
+                                        <option value="technical">Technical Team Member</option>
+                                        <option value="management">Management Team Member</option>
+                                        <option value="techno-management">Techno-Management Team Member</option>
                                     </select>
                                 </div>
-                                <div className="input-group">
+                                <div className="input-group" technical="true" techno-management="true">
                                     <input type="text" id="projects" placeholder="Projects Done Till Now" />
                                     <label for="projects">Projects Done Till Now</label>
                                 </div>
-                                <div className="input-group">
+                                <div className="input-group" management="true" techno-management="true">
+                                    <input type="text" id="experience" placeholder="Any Previous Experience?" />
+                                    <label for="experience">Any Previous Experience?</label>
+                                </div>
+                                <div className="input-group" technical="true" management="true" techno-management="true">
                                     <input type="text" id="skills" placeholder="Skills you Have" />
                                     <label for="skills">Skills you Have</label>
                                 </div>
-                                <div className="input-group">
+                                <div className="input-group" technical="true" management="true" techno-management="true">
                                     <input type="text" id="interest" placeholder="Interested Field" />
                                     <label for="interest">Interested Field*</label>
                                 </div>
-                                <div className="input-group">
+                                <div className="input-group" technical="true" techno-management="true">
                                     <input type="text" id="workshop" placeholder="Workshops Attended" />
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
