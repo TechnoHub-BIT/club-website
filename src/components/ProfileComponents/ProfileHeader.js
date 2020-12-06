@@ -71,8 +71,12 @@ try {
                             {profiles.semester}{suffix} Semester
                         </h6>
                         <Link to="/register" target="_blank">
+
                             <Button color="primary">
-                                <i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership
+
+                                {profiles.payment == false ? <i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i> : <i className="fas fa-external-link-alt">&nbsp;&nbsp;Your are member</i>    
+                            }
+                                
                             </Button>
                         </Link>
                         <Button onClick={handleLogout} >

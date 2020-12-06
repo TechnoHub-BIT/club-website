@@ -43,7 +43,7 @@ const footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-sign-in-alt"></i>
-              <a href="#">Login</a>
+              <Link to="/login" >Login</Link>
             </li>
           </ul>
         </div>

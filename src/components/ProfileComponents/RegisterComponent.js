@@ -50,6 +50,8 @@ const RegisterComponent = () => {
                                         <option value="">Select Role*</option>
                                         <option value="1">Technical Team Member</option>
                                         <option value="2">Management Team Member</option>
+                                        <option value="3">Both</option>
+
                                     </select>
                                 </div>
                                 <div className="input-group">
@@ -67,6 +69,10 @@ const RegisterComponent = () => {
                                 <div className="input-group">
                                     <input type="text" id="workshop" placeholder="Workshops Attended" />
                                     <label for="workshop">Workshops Attended</label>
+                                </div>
+                                <div className="input-group">
+                                    <input type="text" id="workshop" placeholder="Previous Experience" />
+                                    <label for="experience">Any previous experience in management</label>
                                 </div>
                                 <Button color="primary">
                                     Apply Now
