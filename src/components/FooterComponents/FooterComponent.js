@@ -95,7 +95,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="row developedBy">
-        Site Developed by- <a href="https://instagram.com/kuldeeppatel0001" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
+        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
       </div>
     </footer>
   );

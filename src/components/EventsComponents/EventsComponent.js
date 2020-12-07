@@ -34,7 +34,7 @@ class EventsComponent extends Component {
                   </div>
                 </div>
               </Link>
-              <Link to="/hultprize2020">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
                     <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Hult Prize 2021" />
@@ -70,7 +70,7 @@ class EventsComponent extends Component {
               <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Position Yourself" />
+                    <img src="./assets/images/events_img/position_yourself.png" alt="Position Yourself" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">How to position yourself in future ..</h2>
@@ -78,7 +78,7 @@ class EventsComponent extends Component {
                   </div>
                 </div>
               </Link>
-              <Link to="/#">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
                     <img src="./assets/images/events_img/HultPrize_jan2020.png" alt="Hult Prize 2020" />
@@ -103,7 +103,7 @@ class EventsComponent extends Component {
               <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Headstart Startup" />
+                    <img src="./assets/images/events_img/headstart_startup_friday.png" alt="Headstart Startup" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Headstart Startup Friday</h2>
@@ -114,7 +114,7 @@ class EventsComponent extends Component {
               <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Armed Forces" />
+                    <img src="./assets/images/events_img/armed_forces.png" alt="Armed Forces" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Armed Force a Career Option</h2>
