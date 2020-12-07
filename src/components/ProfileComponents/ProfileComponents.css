@@ -110,8 +110,61 @@
   text-align: center;
 }
 
-.profileCont .profileDetails .profileBody .dashboard p {
+.profileCont .profileDetails .profileBody .dashboard .introMessage p {
   color: #818181;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.5em;
+  margin: 2em 1.5em;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard {
+  background-color: #fff;
+  -webkit-box-shadow: 6px 6px 15px #d6d6d6, -6px -6px 15px #ffffff;
+          box-shadow: 6px 6px 15px #d6d6d6, -6px -6px 15px #ffffff;
+  border-radius: 7px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50% 50%)[1];
+      grid-template-columns: repeat(1, 50% 50%);
+  color: #000;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard .cardDetails {
+  width: 100%;
+  padding: 15px 10px;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard .cardDetails h5 {
+  text-align: left;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard .cardDetails .cardCount {
+  font-size: 2em;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 3.5em;
+  color: #191d34;
+  text-align: center;
+}
+
+.profileCont .profileDetails .profileBody .dashboard .statCardsCont .statCard img {
+  height: 160px;
+  width: 100%;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -137,6 +190,21 @@
   }
   .profileCont .profileBody .profileContent .input-group {
     width: 100% !important;
+  }
+  .profileCont .profileBody .dashboard .statCardsCont {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2] !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .profileCont .profileBody .dashboard .statCardsCont {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1] !important;
+        grid-template-columns: repeat(1, 1fr) !important;
   }
 }
 /*# sourceMappingURL=ProfileComponents.css.map */

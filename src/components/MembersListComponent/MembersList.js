@@ -1,6 +1,4 @@
 import React,{useState, useEffect} from 'react';
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./MembersList.css"
@@ -27,24 +25,25 @@ const OurMembers = (props) => {
   return (
     <React.Fragment>    
       <div className="members-container">
+        
         <HeadingTitle heading="MEMBERS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />
         </Breadcrumb>
-        <div className="table-container">
 
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Branch</Th>
-                <Th>Semester</Th>
-                <Th>Skills</Th>
-                <Th>Workshops Attended</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
+        <div className="table-container">
+          <div className="table table-responsive table-striped table-hover table-borderless">
+            <thead className="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Skills</th>
+                <th>Workshops Attended</th>
+              </tr>
+            </thead>
+            <tbody>
               {/* <Tr>
                 <Td>Aditya Deshmukh</Td>
                 <Td>Electrical and Electronics</Td>
@@ -54,17 +53,17 @@ const OurMembers = (props) => {
               </Tr> */}
               {memberList?.map((data, i) => {
                 return (
-                  <Tr key={i}>
-                    <Td data-label="Full Name">{data.fullname}</Td>
-                    <Td data-label="Branch">{data.branch}</Td>
-                    <Td data-label="Semester">{data.semester}</Td>
-                    <Td data-label="Skills">{data.skills}</Td>
-                    <Td data-label="Skills">{data.workshops}</Td>
-                  </Tr>
+                  <tr key={i}>
+                    <td data-label="Full Name">{data.fullname}</td>
+                    <td data-label="Branch">{data.branch}</td>
+                    <td data-label="Semester">{data.semester}</td>
+                    <td data-label="Skills">{data.skills}</td>
+                    <td data-label="Skills">{data.workshops}</td>
+                  </tr>
                 );
               })}
-            </Tbody>
-          </Table>
+            </tbody>
+          </div>
         </div>
       </div>
     </React.Fragment>

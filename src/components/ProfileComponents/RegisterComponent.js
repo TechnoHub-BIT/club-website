@@ -14,7 +14,7 @@ const RegisterComponent = () => {
     const {currentUser, logout} = useAuth()
 
     const [experience, setExperience] = useState("");
-    const [member, showRenderedFields] = useState("");
+    const [member] = useState("");
     const [skills, setSkills] = useState("");
     const [projects, setProjects] = useState("");
     const [workshops, setWorkshops] = useState("");
@@ -24,7 +24,7 @@ const RegisterComponent = () => {
 
 
     const history = useHistory()
-    async function handleLogout(){
+    async function handleLogout() {
         setError('')
         try {
             await logout()
