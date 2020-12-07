@@ -15,7 +15,7 @@ function EditComponent() {
     const [fullname, setFullname] = useState("");
     const [branch, setBranch] = useState("");
     const [semester, setSemester] = useState("");
-    const [member, setMember] = useState("");
+    const [experience, setExperience] = useState("");
     const [skills, setSkills] = useState("");
     const [projects, setProjects] = useState("");
     const [contactNo, setContactNo] = useState("");
@@ -216,10 +216,30 @@ function EditComponent() {
                                 <div className="input-group">
                                     <input type="text" readOnly value={profiles.member} />   
                                 </div>
-                                <div className="input-group">
+
+                                {(profiles.member == 'Technical' || profiles.member == 'Techno-Management') && 
+<div>
+                                    <div className="input-group" > 
                                     <input type="text" id="projects" placeholder="Projects Done Till Now" defaultValue={profiles.projects} onChange={(event) => setProjects(event.target.value)}/>
                                     <label for="projects">Projects Done Till Now</label>
-                                </div>
+                                    </div>
+
+                                        <div className="input-group">
+                                        <input type="text" id="workshop" placeholder="Workshops Attended" defaultValue={profiles.workshops} onChange={(event) => setWorkshops(event.target.value)}/>
+                                        <label for="workshop">Workshops Attended</label>
+                                        </div>
+                                        </div>
+}
+                                {(profiles.member == 'Management' || profiles.member == 'Techno-Management') &&
+
+                                    <div className="input-group">
+                                    <input type="text" id="experience" placeholder="Any Previous Experience?" defaultValue={profiles.experience} onChange={(event) => setExperience(event.target.value)}/>
+                                    <label for="experience">Any Previous Experience?</label>
+                                 </div>
+                                }
+
+
+                                        
                                 <div className="input-group">
                                     <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>
@@ -228,10 +248,7 @@ function EditComponent() {
                                     <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
                                     <label for="interest">Interested Field*</label>
                                 </div>
-                                <div className="input-group">
-                                    <input type="text" id="workshop" placeholder="Workshops Attended" defaultValue={profiles.workshops} onChange={(event) => setWorkshops(event.target.value)}/>
-                                    <label for="workshop">Workshops Attended</label>
-                                </div>
+
                                 <Button color="primary" onClick={profileUpdate}>
                                     <i className="fas fa-save"></i>&nbsp;&nbsp;Save Changes
                                 </Button>
