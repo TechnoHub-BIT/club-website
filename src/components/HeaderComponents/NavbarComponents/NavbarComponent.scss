@@ -1,13 +1,14 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1000000;
+  z-index: 10000000;
 
   .navbarTop {
     height: 11vh;
     background-color: #191d34;
     color: #fff;
     font-family: "Barlow Condensed", sans-serif;
+    z-index: 10000001;
 
     .mobileNavLogo {
       display: none;
@@ -20,20 +21,18 @@
       justify-content: space-around;
       align-items: center;
       list-style: none;
+      z-index: 10000002;
 
       img {
         width: 100px;
       }
 
-      li {
+      a {
         display: inline;
         text-transform: uppercase;
         cursor: pointer;
-
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
+        color: #fff;
+        text-decoration: none;
       }
     }
   }
@@ -60,7 +59,7 @@
         left: 3%;
         transform: translateY(-50%);
         cursor: pointer;
-        z-index: 2;
+        z-index: 10000003;
 
         .line {
           height: 3px;
@@ -97,7 +96,7 @@
 
         &.open {
           clip-path: circle(1500px at 0% -10%);
-          pointer-events: all;
+          pointer-events: all !important;
         }
       }
     }
