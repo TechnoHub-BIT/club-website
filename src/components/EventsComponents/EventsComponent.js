@@ -41,58 +41,91 @@ class EventsComponent extends Component {
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Hult Prize 2021</h2>
-                    <h5 className="cardSubtitle">Aug 23 - Nov 08</h5>
+                    <h5 className="cardSubtitle">AUG 23 - NOV 08 2020</h5>
                   </div>
                 </div>
               </Link>
-              <Link to="/hultprize2020">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/EV.png" alt="Hult Prize 2021" />
+                    <img src="./assets/images/events_img/EV.png" alt="EV Technologies" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Electical Vehicle - By Suraj SD</h2>
-                    <h5 className="cardSubtitle">Oct 04 2020</h5>
+                    <h5 className="cardSubtitle">OCT 04 2020</h5>
                   </div>
                 </div>
               </Link>
-              <Link to="/eaglecad">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/EagleCAD.png" alt="Hult Prize 2021" />
+                    <img src="./assets/images/events_img/EagleCAD.png" alt="EagleCAD Workshop" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">EagleCAD Workshop</h2>
-                    <h5 className="cardSubtitle">Sep 26 2020</h5>
+                    <h5 className="cardSubtitle">SEP 26 2020</h5>
                   </div>
                 </div>
               </Link>
-              <Link to="/hultprize2020">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/HultPrize_jan2020.png" alt="Hult Prize 2021" />
+                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Position Yourself" />
+                  </div>
+                  <div className="cardBody">
+                    <h2 className="cardTitle">How to position yourself in future ..</h2>
+                    <h5 className="cardSubtitle">FEB 9 2020</h5>
+                  </div>
+                </div>
+              </Link>
+              <Link to="/#">
+                <div className="eventsCard">
+                  <div className="cardImage">
+                    <img src="./assets/images/events_img/HultPrize_jan2020.png" alt="Hult Prize 2020" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Hult Prize 2020</h2>
-                    <h5 className="cardSubtitle">Jan 16 - 23 2020</h5>
+                    <h5 className="cardSubtitle">JAN 16 - 23 2020</h5>
                   </div>
                 </div>
               </Link>
-              <Link to="/hultprize2020">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/Robotics.png" alt="Hult Prize 2021" />
+                    <img src="./assets/images/events_img/Robotics.png" alt="Robotics Workshop" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Robotics Workshop</h2>
-                    <h5 className="cardSubtitle">Sep 28 - 29 2019</h5>
+                    <h5 className="cardSubtitle">OCT 10 2019</h5>
                   </div>
                 </div>
               </Link>
-              <Link to="/hultprize2020">
+              <Link to="#">
                 <div className="eventsCard">
                   <div className="cardImage">
-                    <img src="./assets/images/events_img/teche.jpeg" alt="Hult Prize 2021" />
+                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Headstart Startup" />
+                  </div>
+                  <div className="cardBody">
+                    <h2 className="cardTitle">Headstart Startup Friday</h2>
+                    <h5 className="cardSubtitle">SEP 21 2019</h5>
+                  </div>
+                </div>
+              </Link>
+              <Link to="#">
+                <div className="eventsCard">
+                  <div className="cardImage">
+                    <img src="./assets/images/events_img/HultPrize_nov2020.png" alt="Armed Forces" />
+                  </div>
+                  <div className="cardBody">
+                    <h2 className="cardTitle">Armed Force a Career Option</h2>
+                    <h5 className="cardSubtitle">SEP 18 2019</h5>
+                  </div>
+                </div>
+              </Link>
+              <Link to="#">
+                <div className="eventsCard">
+                  <div className="cardImage">
+                    <img src="./assets/images/events_img/teche.jpeg" alt="Tech-Expo" />
                   </div>
                   <div className="cardBody">
                     <h2 className="cardTitle">Tech Expo @ OJAS 2019</h2>
