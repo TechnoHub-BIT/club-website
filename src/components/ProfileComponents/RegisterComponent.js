@@ -42,7 +42,6 @@ const RegisterComponent = () => {
                 console.log("Current data: ", doc.data());
                 const data = doc.data();
                 setProfiles(data);
-
             });
  
         }
@@ -168,7 +167,8 @@ const RegisterComponent = () => {
                                     <label for="workshop">Workshops Attended</label>
                                 </div>
                                 <p className="infoText">
-                                    After Applying, submit registration charge(₹ 150) by calling on 8319560199 and get your registration approved.
+                                    After applying, submit registration charge(₹ 150) by calling on
+                                    <br /><a href="tel:+918319560199">+91-8319560199</a> and get your registration approved.
                                 </p>
                                 <Button color="primary" onClick={registerUpdate}>
                                     <i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now

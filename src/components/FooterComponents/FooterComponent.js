@@ -10,7 +10,7 @@ const Footer = () => {
   if(currentUser)
     forMembers = 
       <div className="col-xl-3 col-md-4 col-sm-6">
-        <h3 className="heading">For Members</h3>
+        <h3 className="heading">For Users</h3>
         <ul className="list">
           <li>
             <i className="fas fa-angle-right"></i>

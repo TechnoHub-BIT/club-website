@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
-import "./adminComponent.css";
+import "./AdminComponent.css";
 import { Button, Modal } from "react-bootstrap";
 
 function AdminComponent() {
