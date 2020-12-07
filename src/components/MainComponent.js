@@ -35,7 +35,7 @@ class Main extends Component {
               <ScrollToTop />
               <Navbar />
               <Route exact path="/" component={Home} />
-              <Route exact path="/admin" component={Admin} />
+              <PrivateRoute exact path="/admin" component={Admin} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/aboutus" component={About} />
               <Route exact path="/contactus" component={Contact} />

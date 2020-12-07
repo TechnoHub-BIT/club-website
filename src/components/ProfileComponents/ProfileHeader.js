@@ -72,7 +72,7 @@ try {
                         </h6>
 
                         {
-                            profiles.payment == false
+                            !profiles.payment
                             ?
                                 <Link to="/register" target="_blank">
                                     <Button color="primary">
@@ -81,8 +81,8 @@ try {
                                 </Link>
                             :
                                 <Button color="primary">
-                                    You are {profiles.member} Member
-                                </Button>   
+                                    { profiles.member } Team Member
+                                </Button>
                         }
                                 
                         <Button onClick={handleLogout} >

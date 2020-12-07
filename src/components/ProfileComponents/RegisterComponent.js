@@ -141,9 +141,9 @@ const RegisterComponent = () => {
                                 <div className="input-group">
                                     <select required onChange={e => showRenderedFields(e.target.value)}>
                                         <option value="">Select Role*</option>
-                                        <option value="technical">Technical Team Member</option>
-                                        <option value="management">Management Team Member</option>
-                                        <option value="techno-management">Techno-Management Team Member</option>
+                                        <option value="Technical">Technical Team Member</option>
+                                        <option value="Management">Management Team Member</option>
+                                        <option value="Techno-Management">Techno-Management Team Member</option>
                                     </select>
                                 </div>
                                 <div className="input-group" technical="true" techno-management="true" >

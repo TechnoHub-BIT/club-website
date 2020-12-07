@@ -44,14 +44,9 @@ const OurMembers = (props) => {
               </tr>
             </thead>
             <tbody>
-              {/* <Tr>
-                <Td>Aditya Deshmukh</Td>
-                <Td>Electrical and Electronics</Td>
-                <Td>5th</Td>
-                <Td>Web Development(MERN), Robotics, Python/C++, Electronics Simulation</Td>
-                <Td>Robotics, EagleCAD, Electric Vehicles</Td>
-              </Tr> */}
-              {memberList?.map((data, i) => {
+            {
+              memberList?.map((data, i) => {
+              if(data.payment == true){
                 return (
                   <tr key={i}>
                     <td data-label="Full Name">{data.fullname}</td>
@@ -61,7 +56,9 @@ const OurMembers = (props) => {
                     <td data-label="Skills">{data.workshops}</td>
                   </tr>
                 );
-              })}
+              }
+
+            })}
             </tbody>
           </div>
         </div>
