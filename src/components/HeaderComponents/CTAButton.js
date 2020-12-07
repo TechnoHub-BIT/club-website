@@ -36,7 +36,7 @@ const CTAButton = () => {
     
     if(memberList.member !== ''){
         button = null;
-
+        
     }
     
 

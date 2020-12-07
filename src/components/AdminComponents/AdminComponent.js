@@ -3,18 +3,24 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import "./adminComponent.css";
 import { Button, Modal } from "react-bootstrap";
+import { useAuth } from "../../contexts/AuthContext";
 
 function AdminComponent() {
+
   const [contacts, setContacts] = useState([]);
   const [profiles, setProfiles] = useState([]);
-
+  const [selectedProfile, setSelectedProfile] = useState();
   const [payment, setPayment] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [currentProfile, setCurrentProfile] = useState('');
+  const {currentUser} = useAuth();
+
   useEffect(() => {
+    
     db.collection("contacts")
       .get()
       .then((querySnapshot) => {
@@ -35,12 +41,26 @@ function AdminComponent() {
 
         setProfiles(data);
       });
+
+      if(currentUser) {
+        db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+            const data = doc.data();
+            setCurrentProfile(data);
+        });
+    }
   }, []);
 
+ 
   return (
+
+    
     <div className="container-fluid">
       {/* <Container> */}
-      <h3 className="h3-text">Profiles</h3>
+      {
+        (currentProfile.id == 1) && <div>
+<h3 className="h3-text">Profiles</h3>
       <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
         <thead className="thead-dark">
           <tr className="text-center">
@@ -59,9 +79,12 @@ function AdminComponent() {
                 <td data-label="Email">{profile.email}</td>
                 <td data-label="Branch">{profile.member}</td>
                 <td data-label="Payment" className="text-center">
-                  {profile.payment ? "true " : "false "}
-                  {/* {console.log("\n\n\n" + profile.payment)} */}
-                  <Modal
+                  {profile.payment.toString()}
+
+
+                </td>
+                <td data-label="Action" className="text-center">
+                <Modal
                     show={show}
                     onHide={handleClose}
                     size="lg"
@@ -79,6 +102,7 @@ function AdminComponent() {
                         placeholder={profile.payment ? "true" : "false"}
                         value={payment}
                         onChange={(event) => setPayment(event.target.value)}
+                        
                       />
                     </Modal.Body>
                     <Modal.Footer>
@@ -88,11 +112,11 @@ function AdminComponent() {
                       <Button
                         variant="primary"
                         onClick={() => {
-                          console.log(profile.uid);
+                          console.log(profile);
                           db.collection("members")
-                            .doc(profile.uid)
+                            .doc(selectedProfile.uid)
                             .update({
-                              payment: payment,
+                              payment: payment==='true',
                             })
                             .then(function () {
                               console.log("Payment successfully updated!");
@@ -104,9 +128,7 @@ function AdminComponent() {
                       </Button>
                     </Modal.Footer>
                   </Modal>
-                </td>
-                <td data-label="Action" className="text-center">
-                  <Button variant="primary" onClick={handleShow} style={{whiteSpace: "nowrap"}}>
+                  <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
                     <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                   </Button>
                 </td>
@@ -136,6 +158,9 @@ function AdminComponent() {
           })}
         </tbody>
       </table>
+        </div>
+      }
+      
       {/* </Container>  */}
     </div>
   );
