@@ -43,21 +43,17 @@ try {
   }
   }, [currentUser]);
 
-  function memberButton(){
-    if (profiles.payment == true) {
-        return <Button color="primary" ><i className=" fa-external-link-alt">Your are {profiles.member} member</i> </Button>
-
-    }
-    else{ if(profiles.registrationApply == true){
-        return <Button color="primary"><i className=" fa-external-link-alt"></i>&nbsp;&nbsp;Waiting for Payment Confirmation</Button>
-    }
-    else{
-        return<Link to="/register" target="_blank">
-                <Button color="primary"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</Button>
-              </Link>
-        ;
-
-    }
+  const memberButton = () => {
+    if (profiles.payment == true)
+        return <Button color="primary"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{profiles.member} Team Member</Button>;
+    else { 
+        if(profiles.registrationApply == true)
+            return <Button color="primary"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</Button>;
+        else
+            return <Link to="/register" target="_blank">
+                    <Button color="primary"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</Button>
+                   </Link>
+            ;
     }
   };
 

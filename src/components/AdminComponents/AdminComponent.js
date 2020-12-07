@@ -80,8 +80,6 @@ function AdminComponent() {
                 <td data-label="Branch">{profile.member}</td>
                 <td data-label="Payment" className="text-center">
                   {profile.payment.toString()}
-
-
                 </td>
                 <td data-label="Action" className="text-center">
                 <Modal

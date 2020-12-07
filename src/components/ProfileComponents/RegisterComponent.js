@@ -125,15 +125,13 @@ const RegisterComponent = () => {
         //   console.log("Fullname successfully updated!");
           
         });
-        alert("Profile Successfully Updated");
+        alert("Application Submitted!");
       };
 
- function paymentDone(){
-    if(profiles.payment){
-    return <h1 style={{textAlign:"center"}}>You Are Already {profiles.member} member </h1>
+    const paymentDone = () => {
+        if (profiles.payment)
+            return <h3 style={{textAlign: "center", margin: "2em 0"}}>You already are a {profiles.member} Team Member!</h3>
     }
-
-}
 
 
     return (
@@ -142,7 +140,7 @@ const RegisterComponent = () => {
             <div className="profileDetails">
                 <ProfileHeader />
                 {
-        (profiles.payment == false) && <div>
+                (profiles.payment == false) && <div>
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">

@@ -28,16 +28,19 @@ const CTAButton = () => {
     ;
 
     if (currentUser) {
-        if (profiles.payment == '')
-            button =
-                <Link to="/register" target="_blank">
-                    <button type="button" className="ctaBtn"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</button>
-                </Link>
-            ;
-        else
+        if (profiles.payment == true)
             button =  
-                <button type="button" className="ctaBtn" disabled>{ profiles.member } Team Member</button>
+                <button type="button" className="ctaBtn" disabled><i className="fas fa-user-check"></i>&nbsp;&nbsp;{ profiles.member } Team Member</button>
             ;
+        else { 
+            if(profiles.registrationApply == true)
+                return <button type="button" className="ctaBtn"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</button>;
+            else
+                return <Link to="/register" target="_blank">
+                        <button type="button" className="ctaBtn"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</button>
+                    </Link>
+                ;
+        }
     }
 
     return(
