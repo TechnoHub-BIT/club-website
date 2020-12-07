@@ -141,11 +141,11 @@ class About extends Component {
                 autoplayHoverPause
                 responsive={this.state.responsive}
               >  
-                <Image path="./assets/images/members/shubham.jpeg" name="Shubham Agrawal" contact="7771878241" >
+                <Image path="./assets/images/members/shubham.jpg" name="Shubham Agrawal" contact="7771878241" >
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/harsha.jpeg" name="Harsha Dubey" contact="9111258904" >
+                <Image path="./assets/images/members/harsha.jpg" name="Harsha Dubey" contact="9111258904" >
                   Electronics and Telecommunication
                 </Image>
               </OwlCarousel>
@@ -170,19 +170,19 @@ class About extends Component {
                 autoplayHoverPause
                 responsive={this.state.responsive2}
               >
-                <Image path="./assets/images/members/nirbhay.jpeg" name="Nirbhay Kumar" contact="8210886680">
+                <Image path="./assets/images/members/nirbhay.jpg" name="Nirbhay Kumar" contact="8210886680">
                   Electronics and Telecommunication
                 </Image>
               
-                <Image path="./assets/images/members/saisha.jpeg" name="T Saisha" contact="8085999174">
+                <Image path="./assets/images/members/saisha.jpg" name="T Saisha" contact="8085999174">
                   Electronics and Telecommunication
                 </Image>
 
-                <Image path="./assets/images/members/darshita.jpeg" name="Darshita Mahaski" contact="7999766849">
+                <Image path="./assets/images/members/darshita.jpg" name="Darshita Mahaski" contact="7999766849">
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/rishabh.jpeg" name="Rishabh Deshmukh" contact="9057316055" >
+                <Image path="./assets/images/members/rishabh.jpg" name="Rishabh Deshmukh" contact="9057316055" >
                   Electrical and Electronics
                 </Image>
               </OwlCarousel>
@@ -331,59 +331,59 @@ class About extends Component {
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/bipul.jpeg" name="Bipul Biswas" contact="9358222648">
+                <Image path="./assets/images/members/bipul.jpg" name="Bipul Biswas" contact="9358222648">
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/saumya.jpeg" name="Saumya Shrivastava" contact="9893475993">
+                <Image path="./assets/images/members/saumya.jpg" name="Saumya Shrivastava" contact="9893475993">
                   Computer Science
                 </Image>
                 
-                <Image path="./assets/images/members/PREETI.jpeg" name="Preeti Gabel" contact="9179243009">
+                <Image path="./assets/images/members/PREETI.jpg" name="Preeti Gabel" contact="9179243009">
                   Electrical and Electronics
                 </Image>
                 
-                <Image path="./assets/images/members/rishita.jpeg" name="Rishita Upadhyay" contact="870289342">
+                <Image path="./assets/images/members/rishita.jpg" name="Rishita Upadhyay" contact="870289342">
                   Electrical and Electronics
                 </Image>
                 
-                <Image path="./assets/images/members/kritika.jpeg" name="Kritika Upadhyay" contact="6261516782">
+                <Image path="./assets/images/members/kritika.jpg" name="Kritika Upadhyay" contact="6261516782">
                   Civil
                 </Image>
                 
-                <Image path="./assets/images/members/pawan.jpeg" name="Pawan Kumar" contact="9340400425">
+                <Image path="./assets/images/members/pawan.jpg" name="Pawan Kumar" contact="9340400425">
                   Electrical
                 </Image>
                 
-                <Image path="./assets/images/members/stuti.jpeg" name="Stuti Mishra" contact="7987671690">
+                <Image path="./assets/images/members/stuti.jpg" name="Stuti Mishra" contact="7987671690">
                   Electronics and Telecommunication
                 </Image>
                 
-                <Image path="./assets/images/members/anshul.jpeg" name="Anshul Lanjewar" contact="7049223604">
+                <Image path="./assets/images/members/anshul.jpg" name="Anshul Lanjewar" contact="7049223604">
                   Electrical and Electronics
                 </Image>
                 
-                <Image path="./assets/images/members/vinayak.jpeg" name="Vinayak Rawat" contact="9571089472">
+                <Image path="./assets/images/members/vinayak.jpg" name="Vinayak Rawat" contact="9571089472">
                   Computer Science
                 </Image>
                 
-                <Image path="./assets/images/members/anubhav.jpeg" name="Anubhav Bhatt" contact="8234993336">
+                <Image path="./assets/images/members/anubhav.jpg" name="Anubhav Bhatt" contact="8234993336">
                   Mechanical
                 </Image>
 
-                <Image path="./assets/images/members/sija.jpeg" name="Sija Badgaiyan" contact="9770314575">
+                <Image path="./assets/images/members/sija.jpg" name="Sija Badgaiyan" contact="9770314575">
                   Electronics and Telecommunication
                 </Image>
 
-                <Image path="./assets/images/members/baisali.jpeg" name="Vaishali Pandey" contact="7828516224">
+                <Image path="./assets/images/members/baisali.jpg" name="Vaishali Pandey" contact="7828516224">
                   Electronics and Telecommunication
                 </Image>
 
-                <Image path="./assets/images/members/aanchal.jpeg" name="Aanchal Makhija" contact="7999354593">
+                <Image path="./assets/images/members/aanchal.jpg" name="Aanchal Makhija" contact="7999354593">
                   Electronics and Telecommunication
                 </Image>
 
-                <Image path="./assets/images/members/palak.jpeg" name="Palak Dewangan" contact="7617236125">
+                <Image path="./assets/images/members/palak.jpg" name="Palak Dewangan" contact="7617236125">
                   Electrical
                 </Image>
               </OwlCarousel>
