@@ -28,6 +28,7 @@ export function AuthProvider({ children }) {
                 workshops: null,
                 interest: null,
                 payment: false,
+                registrationApply: false
               });
         })
 
@@ -58,6 +59,7 @@ export function AuthProvider({ children }) {
               workshops: null,
               interest: null,
               payment: false,
+              registrationApply: false
             });
           }
         })

@@ -14,7 +14,7 @@ const RegisterComponent = () => {
     const {currentUser, logout} = useAuth()
 
     const [experience, setExperience] = useState("");
-    const [member, showRenderedFields] = useState("");
+    const [member, setMember] = useState("");
     const [skills, setSkills] = useState("");
     const [projects, setProjects] = useState("");
     const [workshops, setWorkshops] = useState("");
@@ -117,6 +117,15 @@ const RegisterComponent = () => {
               
             });
         }
+        db.collection("members")
+        .doc(currentUser.uid)
+        .update({
+            registrationApply: true,
+        })
+        .then(function () {
+        //   console.log("Fullname successfully updated!");
+          
+        });
         alert("Profile Successfully Updated");
       };
 
@@ -140,7 +149,7 @@ const RegisterComponent = () => {
                             <div>
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">
-                                    <select required onChange={e => showRenderedFields(e.target.value)}>
+                                    <select required onChange={e => {showRenderedFields(e.target.value); setMember(e.target.value)}}>
                                         <option value="">Select Role*</option>
                                         <option value="technical">Technical Team Member</option>
                                         <option value="management">Management Team Member</option>

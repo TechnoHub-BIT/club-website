@@ -43,6 +43,21 @@ try {
   }
   }, [currentUser]);
 
+  function memberButton(){
+    if (profiles.payment == true) {
+        return <Button color="primary" ><i className=" fa-external-link-alt">Your are {profiles.member} member</i> </Button>
+
+    }
+    else{ if(profiles.registrationApply == true){
+        return <Button color="primary"><i className=" fa-external-link-alt">Waiting for Payment Confirmation</i></Button>
+    }
+    else{
+      return <Button color="primary"><Link to="/register" target="_blank"><i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i></Link></Button>;
+
+    }
+    }
+  };
+
   //Setting the Suffix for Semester
     let suffix = "th";
 
@@ -73,7 +88,7 @@ try {
                         
 
 
-                                {profiles.payment == false ? <Button color="primary"><Link to="/register" target="_blank"><i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i></Link></Button> : <Button color="primary" ><i className=" fa-external-link-alt">Your are {profiles.member} member</i> </Button>   
+                                {memberButton()   
                             }
                                 
                         <Button onClick={handleLogout} >

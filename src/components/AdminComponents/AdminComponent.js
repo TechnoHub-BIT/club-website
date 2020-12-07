@@ -117,6 +117,7 @@ function AdminComponent() {
                             .doc(selectedProfile.uid)
                             .update({
                               payment: payment==='true',
+                              registrationApply: false
                             })
                             .then(function () {
                               console.log("Payment successfully updated!");
