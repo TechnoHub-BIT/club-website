@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import "./FooterComponent.css";
 
 const Footer = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+
+  const [error, setError] = useState('');
+  const history = useHistory();
+
+  async function handleLogout(){
+      setError('')
+
+      try {
+          await logout()
+          history.push('/login')
+      } catch{
+          setError('Failed to log out')
+      }
+  }
   let forMembers = null;
 
   if(currentUser)
@@ -19,6 +33,10 @@ const Footer = () => {
           <li>
             <i className="fas fa-angle-right"></i>
             <Link to="/ourmembers">Club Members</Link>
+          </li>
+          <li>
+            <i className="fas fa-sign-out-alt"></i>
+            <Link onClick={handleLogout}>Log Out</Link>
           </li>
         </ul>
       </div>

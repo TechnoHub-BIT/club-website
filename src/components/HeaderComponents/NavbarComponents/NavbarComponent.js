@@ -26,11 +26,13 @@ class Header extends Component {
       isNavOpen: !this.state.isNavOpen,
     });
   }
+
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
+  
   handleLogin(event) {
     this.toggleModal();
     alert(
@@ -84,7 +86,7 @@ class Header extends Component {
                 <li>EVENTS</li>
               </Link>
               <Link to="/ourmembers">
-                <li>OUR MEMBERS</li>
+                <li>CLUB MEMBERS</li>
               </Link>
               <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
               <HeaderButtons />

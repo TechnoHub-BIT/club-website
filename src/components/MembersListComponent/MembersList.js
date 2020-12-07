@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import HeadingTitle from "../HeaderComponents/HeaderTitle";
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
 import { db } from "../../firebase";
@@ -26,20 +26,21 @@ const OurMembers = (props) => {
     <React.Fragment>    
       <div className="members-container">
         
-        <HeadingTitle heading="MEMBERS" />
+        <HeaderTitle heading="MEMBERS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />
         </Breadcrumb>
 
-        <div className="table-container">
-          <div className="table table-responsive table-striped table-hover table-borderless">
-            <thead className="thead-dark">
+        <div className="container-fluid">
+          <div className="table table-responsive-sm table-responsive-md table-striped table-hover table-borderless">
+            <thead className="thead-dark text-center">
               <tr>
                 <th>Name</th>
                 <th>Branch</th>
                 <th>Semester</th>
                 <th>Skills</th>
+                <th>Interest</th>
                 <th>Workshops Attended</th>
               </tr>
             </thead>
@@ -51,8 +52,9 @@ const OurMembers = (props) => {
                   <tr key={i}>
                     <td data-label="Full Name">{data.fullname}</td>
                     <td data-label="Branch">{data.branch}</td>
-                    <td data-label="Semester">{data.semester}</td>
+                    <td className="text-center" data-label="Semester">{data.semester}</td>
                     <td data-label="Skills">{data.skills}</td>
+                    <td data-label="Interests">{data.interest}</td>
                     <td data-label="Skills">{data.workshops}</td>
                   </tr>
                 );

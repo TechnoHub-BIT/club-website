@@ -1,7 +1,7 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'reactstrap';
-import {useAuth} from '../../contexts/AuthContext';
-import {useHistory, Link} from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { useHistory, Link } from 'react-router-dom';
 import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';
@@ -21,15 +21,16 @@ function ProfileHeader() {
     const [profiles, setProfiles] = useState([]);
 
     const history = useHistory()
-    async function handleLogout(){
-setError('')
 
-try {
-    await logout()
-    history.push('/login')
-}catch{
-    setError('Failed to log out')
-}
+    async function handleLogout(){
+        setError('')
+
+        try {
+            await logout()
+            history.push('/login')
+        } catch{
+            setError('Failed to log out')
+        }
     }
 
   useEffect(() => {
@@ -81,9 +82,11 @@ try {
                     <div className="profileName">
                         <h5>{profiles.fullname}</h5>
                         <h6>{profiles.branch}</h6>
-                       {profiles.semester ? <h6>{profiles.semester}{suffix} Semester</h6> : null} 
+                        <h6>
+                            {profiles.semester}{suffix} Semester
+                        </h6>
                         { memberButton() }
-                        <Button onClick={handleLogout} >
+                        <Button onClick={handleLogout}>
                             <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
                         </Button>
                     </div>
