@@ -67,9 +67,11 @@ function SettingsComponent() {
                         <div className="profileNavItem">
                             <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
                         </div>
-                        <div className="profileNavItem">
-                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
-                        </div>
+                        {profiles.payment ? (
+                                                            <div className="profileNavItem">
+                                                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
+                                                        </div>
+                            ):null}
                         <div className="profileNavItem active">
                             <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
                         </div>

@@ -41,7 +41,7 @@ const achievements = (props) => {
                             </SingleAchievement>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                            <SingleAchievement path="./assets/images/achievements/drone.jpg">
+                            <SingleAchievement path="./assets/images/achievements/Drone.jpg">
                                 Aerial Painting Drone is one of the major projects in which
                                 few of the most talented and hardworking TechnoHub
                                 members are working. It is all about a simple drone which is

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ContactUs.css";
 import emailjs from "emailjs-com";
 import "../input.css";
+import { db } from "../../firebase";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -13,6 +14,22 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoader(true);
+
+    db.collection("contacts")
+    .add({
+      name: name,
+      email: email,
+      message: message,
+    })
+    .then(() => {
+      setLoader(false);
+      // alert("Your message has been submitted ");
+    })
+    .catch((error) => {
+      alert(error.message);
+      setLoader(false);
+    });
+
 
     emailjs
       .sendForm(
