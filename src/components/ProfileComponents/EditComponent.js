@@ -214,7 +214,7 @@ function EditComponent() {
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
                                 <div className="input-group">
-                                    <input type="text" readOnly value={profiles.role} />   
+                                    <input type="text" readOnly value={profiles.member} />   
                                 </div>
                                 <div className="input-group">
                                     <input type="text" id="projects" placeholder="Projects Done Till Now" defaultValue={profiles.projects} onChange={(event) => setProjects(event.target.value)}/>
