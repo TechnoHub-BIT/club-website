@@ -65,7 +65,7 @@ const achievements = (props) => {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <SingleAchievement path="./assets/images/achievements/sih.jpg">
-                                Abhishek Agrawal and team represented BIT Durg at a national level in Smart India Hackathon Software Edition.
+                                Abhishek Agrawal and team represented BIT Durg at a national level in Smart India Hackathon Software Edition & Aman Mandal and team represented BIT Durg at a national level in Smart India Hackathon Hardware Edition.
                             </SingleAchievement>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
@@ -78,11 +78,11 @@ const achievements = (props) => {
                                 Team Barleyn led by Anubhav Bhatt won the Hult Prize 2021 On Campus Challenge.
                             </SingleAchievement>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12">
+                        {/*<div className="col-lg-4 col-md-6 col-sm-12">
                             <SingleAchievement>
                                 Aman Mandal and team represented BIT Durg at a national level in Smart India Hackathon Hardware Edition.
                             </SingleAchievement>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </div>

@@ -76,7 +76,7 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i>
-              <a href="#">Reach Us</a>
+              <Link to="/contactus">Reach Us or Give Feedback</ Link>
             </li>
           </ul>
         </div>
