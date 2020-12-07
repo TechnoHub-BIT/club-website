@@ -129,12 +129,21 @@ const RegisterComponent = () => {
         alert("Profile Successfully Updated");
       };
 
+ function paymentDone(){
+    if(profiles.payment){
+    return <h1 style={{textAlign:"center"}}>You Are Already {profiles.member} member </h1>
+    }
+
+}
+
 
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
             <div className="profileDetails">
                 <ProfileHeader />
+                {
+        (profiles.payment == false) && <div>
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">
@@ -146,6 +155,7 @@ const RegisterComponent = () => {
                     </div>
                     <div className="profileContent">
                         <div className="register">
+                        
                             <div>
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">
@@ -183,10 +193,17 @@ const RegisterComponent = () => {
                                     <i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now
                                 </Button>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+}
+            </div>
+            {
+                paymentDone()
+            }
+
         </div>
     );
 }
