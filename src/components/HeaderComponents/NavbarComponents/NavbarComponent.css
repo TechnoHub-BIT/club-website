@@ -2,7 +2,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1000000;
+  z-index: 10000000;
 }
 
 .header .navbarTop {
@@ -10,6 +10,7 @@
   background-color: #191d34;
   color: #fff;
   font-family: "Barlow Condensed", sans-serif;
+  z-index: 10000001;
 }
 
 .header .navbarTop .mobileNavLogo {
@@ -28,19 +29,17 @@
       -ms-flex-align: center;
           align-items: center;
   list-style: none;
+  z-index: 10000002;
 }
 
 .header .navbarTop .navList img {
   width: 100px;
 }
 
-.header .navbarTop .navList li {
+.header .navbarTop .navList a {
   display: inline;
   text-transform: uppercase;
   cursor: pointer;
-}
-
-.header .navbarTop .navList li a {
   color: #fff;
   text-decoration: none;
 }
@@ -66,7 +65,7 @@
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
     cursor: pointer;
-    z-index: 2;
+    z-index: 10000003;
   }
   .header .navbarTop .hamburger .line {
     height: 3px;
@@ -103,7 +102,7 @@
   .header .navbarTop .navList.open {
     -webkit-clip-path: circle(1500px at 0% -10%);
             clip-path: circle(1500px at 0% -10%);
-    pointer-events: all;
+    pointer-events: all !important;
   }
 }
 /*# sourceMappingURL=NavbarComponent.css.map */

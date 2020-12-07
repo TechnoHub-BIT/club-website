@@ -65,48 +65,29 @@ class Header extends Component {
               <Link to="/">
                 <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
               </Link>
-              <li>
-                <Link to="/">
-                  HOME
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/aboutus">
-                  ABOUT US
-                </Link>
-              </li>
-              <li>
-                <Link to="/gallery">
-                  GALLERY
-                </Link>
-              </li>
-              <li>
-                <Link to="/projects">
-                  PROJECTS
-                </Link>
-              </li>
-              <li>
-                <Link to="/achievements">
-                  ACHIEVEMENTS
-                </Link>
-              </li>
-              <li>
-                <Link to="/events">
-                  EVENTS
-                </Link>
-              </li>
-              <li>
-                <Link to="/ourmembers">
-                  OUR MEMBERS
-                </Link>
-              </li>
-              <li>
-                <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
-              </li>
-              <li>
-                <HeaderButtons />
-              </li>
+              <Link to="/">
+                <li>HOME</li>
+              </Link>
+              <Link to="/aboutus">
+                <li>ABOUT US</li>
+              </Link>
+              <Link to="/gallery">
+                <li>GALLERY</li>
+              </Link>
+              <Link to="/projects">
+                <li>PROJECTS</li>
+              </Link>
+              <Link to="/achievements">
+                <li>ACHIEVEMENTS</li>
+              </Link>
+              <Link to="/events">
+                <li>EVENTS</li>
+              </Link>
+              <Link to="/ourmembers">
+                <li>OUR MEMBERS</li>
+              </Link>
+              <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
+              <HeaderButtons />
             </ul>
           </div>
         </div>
