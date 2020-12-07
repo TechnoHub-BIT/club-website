@@ -1,9 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from "react-router-dom";
+import { db } from '../../firebase';
 
 const CTAButton = () => {
     const { currentUser } = useAuth();
+
+    const [memberList, setMemberList] = useState([]);
+  
+    useEffect(() => {
+      if(currentUser){
+        db.collection("members")
+          .get()
+          .then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => doc.data());
+            setMemberList(data);
+          });
+    }
+    }, [currentUser]);
+  
 
     let button =
         <Link to="/signup">
@@ -18,10 +33,12 @@ const CTAButton = () => {
             </Link>
         ;
 
-    /*
-    if(member == true)
+    
+    if(memberList.member !== ''){
         button = null;
-    */
+
+    }
+    
 
     return(
         <div>
