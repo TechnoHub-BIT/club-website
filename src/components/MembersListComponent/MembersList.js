@@ -1,13 +1,9 @@
 import React,{useState, useEffect} from 'react';
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import { Link } from "react-router-dom";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
 import { db } from "../../firebase";
-
 
 const OurMembers = (props) => {
 
@@ -20,7 +16,6 @@ const OurMembers = (props) => {
         .get()
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log(data);
           setMemberList(data);
         });
   }
@@ -30,44 +25,42 @@ const OurMembers = (props) => {
   return (
     <React.Fragment>    
       <div className="members-container">
+        
         <HeadingTitle heading="MEMBERS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />
         </Breadcrumb>
-        <div className="table-container">
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Branch</Th>
-                <Th>Semester</Th>
-                <Th>Skills</Th>
-                <Th>Workshops Attended</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {/* <Tr>
-                <Td>Aditya Deshmukh</Td>
-                <Td>Electrical and Electronics</Td>
-                <Td>5th</Td>
-                <Td>Web Development(MERN), Robotics, Python/C++, Electronics Simulation</Td>
-                <Td>Robotics, EagleCAD, Electric Vehicles</Td>
-              </Tr> */}
-              {memberList?.map((data, i) => {
-              return (
-                <Tr key={i}>
-                  <Td data-label="Full Name">{data.fullname}</Td>
-                  <Td data-label="Branch">{data.branch}</Td>
-                  <Td data-label="Semester">{data.semester}</Td>
-                  <Td data-label="Skills">{data.skills}</Td>
-                  <Td data-label="Skills">{data.workshops}</Td>
-                </Tr>
-              );
-            })}
 
-            </Tbody>
-          </Table>
+        <div className="table-container">
+          <div className="table table-responsive table-striped table-hover table-borderless">
+            <thead className="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Skills</th>
+                <th>Workshops Attended</th>
+              </tr>
+            </thead>
+            <tbody>
+            {
+              memberList?.map((data, i) => {
+              if(data.payment == true){
+                return (
+                  <tr key={i}>
+                    <td data-label="Full Name">{data.fullname}</td>
+                    <td data-label="Branch">{data.branch}</td>
+                    <td data-label="Semester">{data.semester}</td>
+                    <td data-label="Skills">{data.skills}</td>
+                    <td data-label="Skills">{data.workshops}</td>
+                  </tr>
+                );
+              }
+
+            })}
+            </tbody>
+          </div>
         </div>
       </div>
     </React.Fragment>

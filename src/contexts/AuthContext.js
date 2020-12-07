@@ -18,13 +18,17 @@ export function AuthProvider({ children }) {
                 fullname: auth.user.displayName,
                 email: auth.user.email,
                 id: 2,
-                branch: "Branch",
-                semester: "N/A",
-                member: "N/A",
-                skills: "N/A",
-                workshops: "N/A",
-                interest: "N/A",
+                branch: null,
+                semester: null,
+                member: null,
+                skills: null,
+                contactNo: null,
+                projects: null,
+                experience: null,
+                workshops: null,
+                interest: null,
                 payment: false,
+                registrationApply: false
               });
         })
 
@@ -45,13 +49,17 @@ export function AuthProvider({ children }) {
               fullname: result.user.displayName,
               email: result.user.email,
               id: 2,
-              branch: "Branch",
-              semester: "N/A",
-              member: "N/A",
-              skills: "N/A",
-              workshops: "N/A",
-              interest: "N/A",
+              branch: null,
+              semester: null,
+              member: null,
+              skills: null,
+              projects : null,
+              experience: null,
+              contactNo: null,
+              workshops: null,
+              interest: null,
               payment: false,
+              registrationApply: false
             });
           }
         })

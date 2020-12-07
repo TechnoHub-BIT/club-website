@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
@@ -17,6 +17,8 @@ function EditComponent() {
     const [semester, setSemester] = useState("");
     const [member, setMember] = useState("");
     const [skills, setSkills] = useState("");
+    const [projects, setProjects] = useState("");
+    const [contactNo, setContactNo] = useState("");
     const [workshops, setWorkshops] = useState("");
     const [interest, setInterest] = useState("");
 
@@ -50,7 +52,7 @@ function EditComponent() {
     }, [currentUser]);
 
     const profileUpdate = () => {
-        if(fullname!=""){
+        if(fullname != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -61,7 +63,7 @@ function EditComponent() {
               
             });
         }
-        if(branch!=""){
+        if(branch != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -72,7 +74,7 @@ function EditComponent() {
               
             });
         }
-        if(semester!=""){
+        if(semester != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -83,7 +85,7 @@ function EditComponent() {
               
             });
         }
-        if(skills!=""){
+        if(skills != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -94,7 +96,7 @@ function EditComponent() {
               
             });
         }
-        if(interest!=""){
+        if(interest != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -105,11 +107,33 @@ function EditComponent() {
               
             });
         }
-        if(workshops!=""){
+        if(workshops != "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
               workshops: workshops,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(projects!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              projects: projects,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(contactNo!=""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              contactNo: contactNo,
             })
             .then(function () {
             //   console.log("Fullname successfully updated!");
@@ -179,20 +203,23 @@ function EditComponent() {
                                     <input type="email" id="email" placeholder="Email" />
                                     <label for="email">Email-Id</label>
                                 </div> */}
-                                {/* <div className="input-group">
-                                    <input type="text" id="contact" placeholder="Contact No." />
+                                <div className="input-group">
+                                    <input type="text" id="contact" placeholder="Contact No." defaultValue={profiles.contactNo} onChange={(event) => setContactNo(event.target.value)}/>
                                     <label for="contact">Contact No.</label>
-                                </div> */}
+                                </div>
                                 <Button color="primary" onClick={profileUpdate}>
                                     <i className="fas fa-save"></i>&nbsp;&nbsp;Save Changes
                                 </Button>
                             </div>
                             <div>
                                 <h6 className="contentHeading">Field Information</h6>
-                                {/* <div className="input-group">
-                                    <input type="text" id="projects" placeholder="Projects Done Till Now" />
+                                <div className="input-group">
+                                    <input type="text" readOnly value={profiles.role} />   
+                                </div>
+                                <div className="input-group">
+                                    <input type="text" id="projects" placeholder="Projects Done Till Now" defaultValue={profiles.projects} onChange={(event) => setProjects(event.target.value)}/>
                                     <label for="projects">Projects Done Till Now</label>
-                                </div> */}
+                                </div>
                                 <div className="input-group">
                                     <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
                                     <label for="skills">Skills you Have</label>

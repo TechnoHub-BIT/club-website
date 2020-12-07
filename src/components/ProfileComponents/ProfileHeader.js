@@ -37,12 +37,25 @@ try {
       db.collection("members")
         .doc(currentUser.uid)
         .onSnapshot(function (doc) {
-          console.log("Current data: ", doc.data());
           const data = doc.data();
           setProfiles(data);
         });
   }
   }, [currentUser]);
+
+  const memberButton = () => {
+    if (profiles.payment == true)
+        return <Button color="primary"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{profiles.member} Team Member</Button>;
+    else { 
+        if(profiles.registrationApply == true)
+            return <Button color="primary"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</Button>;
+        else
+            return <Link to="/register" target="_blank">
+                    <Button color="primary"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</Button>
+                   </Link>
+            ;
+    }
+  };
 
   //Setting the Suffix for Semester
     let suffix = "th";
@@ -71,11 +84,7 @@ try {
                         <h6>
                             {profiles.semester}{suffix} Semester
                         </h6>
-                        <Link to="/register" target="_blank">
-                            <Button color="primary">
-                                <i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership
-                            </Button>
-                        </Link>
+                        { memberButton() }
                         <Button onClick={handleLogout} >
                             <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
                         </Button>

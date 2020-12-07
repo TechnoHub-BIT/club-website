@@ -125,7 +125,7 @@ function LogInComponent() {
                   className="login_signInButton"
                   color="info"
                 >
-                  <i className="fab fa-google"></i>&nbsp;&nbsp;Log In with Google
+                  <i className="fab fa-google"></i>&nbsp;&nbsp;Continue with Google
                 </Button>
                 {/* </Row> */}
               </Card>
