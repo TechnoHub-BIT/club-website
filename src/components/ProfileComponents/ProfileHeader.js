@@ -70,15 +70,12 @@ try {
                         <h6>
                             {profiles.semester}{suffix} Semester
                         </h6>
-                        <Link to="/register" target="_blank">
+                        
 
-                            <Button color="primary">
 
-                                {profiles.payment == false ? <i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i> : <i className="fas fa-external-link-alt">&nbsp;&nbsp;Your are {profiles.member} member</i>    
+                                {profiles.payment == false ? <Button color="primary"><Link to="/register" target="_blank"><i className="fas fa-external-link-alt">&nbsp;&nbsp;Apply for Membership</i></Link></Button> : <Button color="primary" ><i className=" fa-external-link-alt">Your are {profiles.member} member</i> </Button>   
                             }
                                 
-                            </Button>
-                        </Link>
                         <Button onClick={handleLogout} >
                             <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
                         </Button>
