@@ -1,0 +1,122 @@
+[debug] [2020-12-08T04:14:36.253Z] ----------------------------------------------------------------------
+[debug] [2020-12-08T04:14:36.254Z] Command:       /usr/local/bin/firebase /home/kuldeep/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2020-12-08T04:14:36.255Z] CLI Version:   8.7.0
+[debug] [2020-12-08T04:14:36.255Z] Platform:      linux
+[debug] [2020-12-08T04:14:36.255Z] Node Version:  v12.18.1
+[debug] [2020-12-08T04:14:36.258Z] Time:          Tue Dec 08 2020 09:44:36 GMT+0530 (India Standard Time)
+[debug] [2020-12-08T04:14:36.258Z] ----------------------------------------------------------------------
+[debug] [2020-12-08T04:14:36.258Z] 
+[debug] [2020-12-08T04:14:36.263Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-08T04:14:36.263Z] > authorizing via signed-in user
+[debug] [2020-12-08T04:14:36.263Z] [iam] checking project technohub-webtest for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-08T04:14:36.266Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-12-08T04:14:36.266Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-12-08T04:14:42.723Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 08 Dec 2020 04:14:42 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-08T04:14:42.731Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/technohub-webtest:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-08T04:14:44.773Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 08 Dec 2020 04:14:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1310","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-08T04:14:44.776Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/technohub-webtest  
+ 
+[debug] [2020-12-08T04:14:49.214Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 08 Dec 2020 04:14:49 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'technohub-webtest'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-08T04:14:49.217Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/technohub-webtest/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-08T04:14:52.535Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 08 Dec 2020 04:14:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[technohub-webtest]: beginning deploy... 
+[info] i  hosting[technohub-webtest]: found 135 files in build 
+[debug] [2020-12-08T04:14:53.414Z] [hosting] hash cache [YnVpbGQ] stored for 135 files
+[debug] [2020-12-08T04:14:53.414Z] [hosting][hash queue][FINAL] {"max":653,"min":25,"avg":100.68148148148151,"active":0,"complete":135,"success":135,"errored":0,"retried":0,"total":135,"elapsed":810}
+[debug] [2020-12-08T04:14:53.414Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/technohub-webtest/versions/b839844e0f587993:populateFiles  
+ <request body omitted>
+[debug] [2020-12-08T04:14:57.146Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 08 Dec 2020 04:14:56 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-08T04:14:57.228Z] [hosting][populate queue][FINAL] {"max":3744,"min":3744,"avg":3744,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":3815}
+[debug] [2020-12-08T04:14:57.229Z] [hosting] uploads queued: 49
+[debug] [2020-12-08T04:15:14.720Z] [uploadQueue] Retrying task 1e3377181ded9db99680ccd6dd479433d375052058fa450b2c3d8db4e9e0ab13
+[debug] [2020-12-08T04:15:14.736Z] [uploadQueue] Retrying task baf63714fb0ac768e22d44f4cf774e5cc62d95d0ed0aaee9607c32847f340be7
+[debug] [2020-12-08T04:15:14.744Z] [uploadQueue] Retrying task bdc82ba2f30c47f93c5e139358ccbb5effa2c6653f957ec88c9d9788a391957e
+[debug] [2020-12-08T04:15:35.840Z] [uploadQueue] Retrying task e4f6101de3ec6cdcc92b0e26b386e3808a3112d61700f70bb74f72df5451458a
+[debug] [2020-12-08T04:15:35.851Z] [uploadQueue] Retrying task 90aad7610892a5283fdae44dbd174738a5f23a87ce6aa0643c1ce3a0f73bef4c
+[debug] [2020-12-08T04:15:35.858Z] [uploadQueue] Retrying task 9bfea9b7876a7db65a4c4e1da7ffeb8d874ebe2a90742eb208601858edd63e06
+[debug] [2020-12-08T04:15:35.860Z] [uploadQueue] Retrying task b3981cd2939f3d1750f3025221b0a3a51f917e12e1f6005e552c5f34ca7fb008
+[debug] [2020-12-08T04:15:35.887Z] [uploadQueue] Retrying task bec274c54798c86c9bfabb804a39ecc572546b0d51e9679a77b62057f70779de
+[debug] [2020-12-08T04:15:35.902Z] [uploadQueue] Retrying task 24f8f177f768c46785e8de117d6fe1570ab6e2d8a1d54cb51e176468423d561f
+[debug] [2020-12-08T04:15:35.902Z] [uploadQueue] Retrying task 918b3668f553af6c817baacc06de4f8ed9d5b5e0d499f60a1c51acde99f3eced
+[debug] [2020-12-08T04:15:43.968Z] [uploadQueue] Retrying task d235692684a953530f94f5bfc5681553da9726514034f4a338fb00912aebab96
+[debug] [2020-12-08T04:15:44.145Z] [uploadQueue] Retrying task b9f17eed5bae1a1ae1ac28841bb25cd8c3555699cc3e55427fc2c8e6d701fe84
+[debug] [2020-12-08T04:15:44.343Z] [uploadQueue] Retrying task 61a717ed2d9e5b1bfe5dbeff47be2078dace4e3ef42410ca5a6e6615f7ed5bdf
+[debug] [2020-12-08T04:16:05.393Z] [uploadQueue] Retrying task 465e9bbc7666a8690bff6c2f4075bba4947bb23d8b9e00948a7cfb316ed5dcc1
+[debug] [2020-12-08T04:16:05.837Z] [uploadQueue] Retrying task fe77a8a37b93e3d7af8f90706d10c1bbdeb6b347b1d3eef96eb7973f06ae79f0
+[debug] [2020-12-08T04:16:05.840Z] [uploadQueue] Retrying task 737aa850ca914c5842b3e39f51fa520b27e097ade8a7fda3d7616b9d72125797
+[debug] [2020-12-08T04:16:05.842Z] [uploadQueue] Retrying task ec67f30c5684c19320fa0fadb0b603c8ac51649cce3341886e42c495f9668be5
+[debug] [2020-12-08T04:16:05.890Z] [uploadQueue] Retrying task 4d095a7766c2547528e166cb172fc8d96e14da1907083ba3345edebf039afafe
+[debug] [2020-12-08T04:16:05.898Z] [uploadQueue] Retrying task 43c6e07e7aff79ce4dca996956f87b1349980a4b1d15d62d9763ba67d6ab2561
+[debug] [2020-12-08T04:16:05.900Z] [uploadQueue] Retrying task f8b56194296dfd712f0602154478f6922611e4f6a977f74d92ae012e47c8e181
+[debug] [2020-12-08T04:16:05.903Z] [uploadQueue] Retrying task 1de6c20df1d89abacf40e9e2146aa34be9f949665ec2384b7c5a7f7d6d145a29
+[debug] [2020-12-08T04:16:05.938Z] [uploadQueue] Retrying task 2fd536baee83d8e76083aa418a34e984eb596b7b661668b06e758745b4203113
+[debug] [2020-12-08T04:16:06.388Z] [uploadQueue] Retrying task 6abe676626231826a4b026e6c344ae3b5ddab46ecafcd839e3d4525fc6190d11
+[debug] [2020-12-08T04:16:06.508Z] [uploadQueue] Retrying task 7560fd2005862922fd40af3fd50e475b4d8153da200c6a26fe8641227933e689
+[debug] [2020-12-08T04:16:07.482Z] [uploadQueue] Retrying task 90aad7610892a5283fdae44dbd174738a5f23a87ce6aa0643c1ce3a0f73bef4c
+[debug] [2020-12-08T04:16:07.518Z] [uploadQueue] Retrying task 918b3668f553af6c817baacc06de4f8ed9d5b5e0d499f60a1c51acde99f3eced
+[debug] [2020-12-08T04:16:10.081Z] [uploadQueue] Retrying task 41f60643fee57b2ba749f11bcbf0ed75ba539e219ce5b8e7fc00f6152932325d
+[debug] [2020-12-08T04:16:14.732Z] [uploadQueue] Retrying task 0af3aeddfb2d6619cf7236d3c35b26e9692d377ef584bd2cf35e6cd61316c858
+[debug] [2020-12-08T04:16:17.221Z] [uploadQueue] Retrying task f8b56194296dfd712f0602154478f6922611e4f6a977f74d92ae012e47c8e181
+[debug] [2020-12-08T04:16:17.223Z] [uploadQueue] Retrying task 2fd536baee83d8e76083aa418a34e984eb596b7b661668b06e758745b4203113
+[debug] [2020-12-08T04:16:17.226Z] [uploadQueue] Retrying task 737aa850ca914c5842b3e39f51fa520b27e097ade8a7fda3d7616b9d72125797
+[debug] [2020-12-08T04:16:17.228Z] [uploadQueue] Retrying task 1de6c20df1d89abacf40e9e2146aa34be9f949665ec2384b7c5a7f7d6d145a29
+[debug] [2020-12-08T04:16:17.232Z] [uploadQueue] Retrying task 43c6e07e7aff79ce4dca996956f87b1349980a4b1d15d62d9763ba67d6ab2561
+[debug] [2020-12-08T04:16:17.234Z] [uploadQueue] Retrying task fe77a8a37b93e3d7af8f90706d10c1bbdeb6b347b1d3eef96eb7973f06ae79f0
+[debug] [2020-12-08T04:16:17.236Z] [uploadQueue] Retrying task 4d095a7766c2547528e166cb172fc8d96e14da1907083ba3345edebf039afafe
+[debug] [2020-12-08T04:16:17.581Z] [uploadQueue] Retrying task baf63714fb0ac768e22d44f4cf774e5cc62d95d0ed0aaee9607c32847f340be7
+[debug] [2020-12-08T04:16:17.936Z] [uploadQueue] Retrying task 7560fd2005862922fd40af3fd50e475b4d8153da200c6a26fe8641227933e689
+[debug] [2020-12-08T04:16:19.321Z] [uploadQueue] Retrying task 90aad7610892a5283fdae44dbd174738a5f23a87ce6aa0643c1ce3a0f73bef4c
+[debug] [2020-12-08T04:16:19.699Z] [uploadQueue] Retrying task 7c3cf83d398849bd9f6e07ab4d30ae2f391a22998da2236a0ce2c42b7c63c08e
+[debug] [2020-12-08T04:16:19.729Z] [uploadQueue] Retrying task 405e7917d37aab99f96622659ae6175587c6303e80bef6f11d932f524b20bb21
+[debug] [2020-12-08T04:16:20.045Z] [uploadQueue] Retrying task bdc82ba2f30c47f93c5e139358ccbb5effa2c6653f957ec88c9d9788a391957e
+[debug] [2020-12-08T04:16:20.207Z] [uploadQueue] Retrying task 1a92a5573df8715e464cda70bb9e076cfea6b3e8d8c34a9ef2955136c1a7c95b
+[debug] [2020-12-08T04:16:20.407Z] [uploadQueue] Retrying task 9bfea9b7876a7db65a4c4e1da7ffeb8d874ebe2a90742eb208601858edd63e06
+[debug] [2020-12-08T04:16:27.015Z] [uploadQueue] Retrying task b9f17eed5bae1a1ae1ac28841bb25cd8c3555699cc3e55427fc2c8e6d701fe84
+[debug] [2020-12-08T04:16:29.634Z] [uploadQueue] Retrying task 737aa850ca914c5842b3e39f51fa520b27e097ade8a7fda3d7616b9d72125797
+[debug] [2020-12-08T04:16:29.636Z] [uploadQueue] Retrying task 4d095a7766c2547528e166cb172fc8d96e14da1907083ba3345edebf039afafe
+[debug] [2020-12-08T04:16:29.899Z] [uploadQueue] Retrying task baf63714fb0ac768e22d44f4cf774e5cc62d95d0ed0aaee9607c32847f340be7
+[debug] [2020-12-08T04:16:31.509Z] [uploadQueue] Retrying task 7c3cf83d398849bd9f6e07ab4d30ae2f391a22998da2236a0ce2c42b7c63c08e
+[debug] [2020-12-08T04:16:32.145Z] [uploadQueue] Retrying task 405e7917d37aab99f96622659ae6175587c6303e80bef6f11d932f524b20bb21
+[debug] [2020-12-08T04:16:32.629Z] [uploadQueue] Retrying task 1a92a5573df8715e464cda70bb9e076cfea6b3e8d8c34a9ef2955136c1a7c95b
+[debug] [2020-12-08T04:16:33.027Z] [uploadQueue] Retrying task bdc82ba2f30c47f93c5e139358ccbb5effa2c6653f957ec88c9d9788a391957e
+[debug] [2020-12-08T04:16:33.108Z] [uploadQueue] Retrying task 9bfea9b7876a7db65a4c4e1da7ffeb8d874ebe2a90742eb208601858edd63e06
+[debug] [2020-12-08T04:16:33.443Z] [uploadQueue] Retrying task 90aad7610892a5283fdae44dbd174738a5f23a87ce6aa0643c1ce3a0f73bef4c
+[debug] [2020-12-08T04:16:33.721Z] [uploadQueue] Retrying task e4f6101de3ec6cdcc92b0e26b386e3808a3112d61700f70bb74f72df5451458a
+[debug] [2020-12-08T04:16:34.874Z] [uploadQueue] Retrying task 94454ba7d0b15d97f9ef5f59c0680b0346b02507aa3a228199526734a8e2878e
+[debug] [2020-12-08T04:16:35.075Z] [uploadQueue] Retrying task 8d70dcb9734ee817d62e29f44eec2f10db38c8647b38eb5f0606834e376d9a0e
+[debug] [2020-12-08T04:16:35.492Z] [uploadQueue] Retrying task d235692684a953530f94f5bfc5681553da9726514034f4a338fb00912aebab96
+[debug] [2020-12-08T04:16:37.431Z] [uploadQueue] Retrying task 24f8f177f768c46785e8de117d6fe1570ab6e2d8a1d54cb51e176468423d561f
+[debug] [2020-12-08T04:16:37.484Z] [uploadQueue] Retrying task b3981cd2939f3d1750f3025221b0a3a51f917e12e1f6005e552c5f34ca7fb008
+[debug] [2020-12-08T04:16:38.201Z] [uploadQueue] Retrying task 2538ff5b927ea6182032aeea1b22db383a54a0de04d3a6d19d6174ff85c7066b
+[debug] [2020-12-08T04:16:39.789Z] [uploadQueue] Retrying task b9f17eed5bae1a1ae1ac28841bb25cd8c3555699cc3e55427fc2c8e6d701fe84
+[debug] [2020-12-08T04:16:40.111Z] [uploadQueue] Retrying task 918b3668f553af6c817baacc06de4f8ed9d5b5e0d499f60a1c51acde99f3eced
+[debug] [2020-12-08T04:16:40.881Z] [uploadQueue] Retrying task 1d8392e8f7e37a71a4cbd5c9076afcd959d3c375b6ff347103853aa694e5ad71
+[debug] [2020-12-08T04:16:46.202Z] [uploadQueue] Retrying task fe00dca75538d7217b1940a9fc0b999efc8bd20f8e41ffc7916719f9c2455b83
+[debug] [2020-12-08T04:16:46.910Z] [uploadQueue] Retrying task dc55ad65a2e6431dc296e10b7da092cc781eba6c82de8d214826b85cc7f55498
+[debug] [2020-12-08T04:16:46.914Z] [uploadQueue] Retrying task 7c3cf83d398849bd9f6e07ab4d30ae2f391a22998da2236a0ce2c42b7c63c08e
+[debug] [2020-12-08T04:16:47.754Z] [uploadQueue] Retrying task 1a92a5573df8715e464cda70bb9e076cfea6b3e8d8c34a9ef2955136c1a7c95b
+[debug] [2020-12-08T04:16:48.508Z] [uploadQueue] Retrying task 9bfea9b7876a7db65a4c4e1da7ffeb8d874ebe2a90742eb208601858edd63e06
+[debug] [2020-12-08T04:16:49.427Z] [uploadQueue] Retrying task b3981cd2939f3d1750f3025221b0a3a51f917e12e1f6005e552c5f34ca7fb008
+[debug] [2020-12-08T04:16:50.507Z] [uploadQueue] Retrying task 4d095a7766c2547528e166cb172fc8d96e14da1907083ba3345edebf039afafe
+[debug] [2020-12-08T04:16:50.514Z] [uploadQueue] Retrying task 737aa850ca914c5842b3e39f51fa520b27e097ade8a7fda3d7616b9d72125797
+[debug] [2020-12-08T04:16:51.726Z] [uploadQueue] Retrying task 90aad7610892a5283fdae44dbd174738a5f23a87ce6aa0643c1ce3a0f73bef4c
+[debug] [2020-12-08T04:16:59.109Z] [uploadQueue] Retrying task 89f9bfc9dd56e4897b1040378fc7f7255acde23512097b7924847bb1e1c64843
+[debug] [2020-12-08T04:17:01.155Z] [uploadQueue] Retrying task 1a92a5573df8715e464cda70bb9e076cfea6b3e8d8c34a9ef2955136c1a7c95b
+[debug] [2020-12-08T04:17:03.532Z] [uploadQueue] Retrying task e8a6aa916077ddc34c0c645e9a0995b79c824e73bb1d74594015745906a577db
+[debug] [2020-12-08T04:17:05.130Z] [uploadQueue] Retrying task c644eb403c00123ff855144a4529094ede2f4d23e582e3fd44be01401dddaa0c
+[debug] [2020-12-08T04:17:06.204Z] [uploadQueue] Retrying task 217cfe2d9dde9f3afba4ff4aaf06bb978660b6908e11267c95f15491c202fb7c
+[debug] [2020-12-08T04:17:07.148Z] [uploadQueue] Retrying task 4d095a7766c2547528e166cb172fc8d96e14da1907083ba3345edebf039afafe
+[debug] [2020-12-08T04:17:08.331Z] [uploadQueue] Retrying task ec67f30c5684c19320fa0fadb0b603c8ac51649cce3341886e42c495f9668be5
+[debug] [2020-12-08T04:17:08.458Z] [uploadQueue] Retrying task 465e9bbc7666a8690bff6c2f4075bba4947bb23d8b9e00948a7cfb316ed5dcc1
+[debug] [2020-12-08T04:17:11.122Z] [uploadQueue] Retrying task 6abe676626231826a4b026e6c344ae3b5ddab46ecafcd839e3d4525fc6190d11
+[debug] [2020-12-08T04:17:12.682Z] [uploadQueue] Retrying task 41f60643fee57b2ba749f11bcbf0ed75ba539e219ce5b8e7fc00f6152932325d
+[debug] [2020-12-08T04:17:14.048Z] [uploadQueue] Retrying task 61a717ed2d9e5b1bfe5dbeff47be2078dace4e3ef42410ca5a6e6615f7ed5bdf
+[debug] [2020-12-08T04:17:14.327Z] [uploadQueue] Retrying task 918b3668f553af6c817baacc06de4f8ed9d5b5e0d499f60a1c51acde99f3eced
+[debug] [2020-12-08T04:17:15.690Z] [uploadQueue] Retrying task e8a6aa916077ddc34c0c645e9a0995b79c824e73bb1d74594015745906a577db
