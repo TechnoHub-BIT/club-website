@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
 
         usersRef.get().then((docSnapshot) => {
           if (docSnapshot.exists) {
-            console.log("exists", docSnapshot);
+            // console.log("exists", docSnapshot);
           } else {
             db.collection("members").doc(result.user.uid).set({
               fullname: result.user.displayName,

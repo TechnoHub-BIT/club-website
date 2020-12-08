@@ -82,9 +82,8 @@ function ProfileHeader() {
                     <div className="profileName">
                         <h5>{profiles.fullname}</h5>
                         <h6>{profiles.branch}</h6>
-                        <h6>
-                            {profiles.semester}{suffix} Semester
-                        </h6>
+                        { profiles.semester !== null ? <h6>{profiles.semester}{suffix} Semester</h6> : null}
+
                         { memberButton() }
                         <Button onClick={handleLogout}>
                             <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out

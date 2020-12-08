@@ -39,7 +39,7 @@ function SettingsComponent() {
                 db.collection("members").doc(currentUser.uid).delete() &&
                   currentUser.delete().then(function () {
                     history.push("/");
-                    console.log("user Deleted");
+                    // console.log("user Deleted");
                   })
             history.push('/login')
         }
@@ -53,7 +53,6 @@ function SettingsComponent() {
           db.collection("members")
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
-              console.log("Current data: ", doc.data());
               const data = doc.data();
               setProfiles(data);
             });
