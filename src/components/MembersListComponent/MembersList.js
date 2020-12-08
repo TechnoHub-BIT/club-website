@@ -33,7 +33,7 @@ const OurMembers = (props) => {
         </Breadcrumb>
 
         <div className="container-fluid">
-          <div className="table table-responsive-sm table-responsive-md table-striped table-hover table-borderless">
+          <table className="table table-responsive-sm table-responsive-md table-striped table-hover table-borderless">
             <thead className="thead-dark text-center">
               <tr>
                 <th>Name</th>
@@ -62,7 +62,7 @@ const OurMembers = (props) => {
 
             })}
             </tbody>
-          </div>
+          </table>
         </div>
       </div>
     </React.Fragment>
