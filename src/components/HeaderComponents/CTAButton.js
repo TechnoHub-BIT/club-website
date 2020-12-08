@@ -16,6 +16,7 @@ const CTAButton = () => {
                 const data = doc.data();
                 setProfile(data);
                 });
+                
         }
     }, [currentUser]);
 
@@ -27,7 +28,7 @@ const CTAButton = () => {
         </Link>
     ;
 
-    if (currentUser) {
+    if (currentUser && (profiles.payment !== null)) {
         if (profiles.payment === true)
             button =  
             <Link to="/profile">

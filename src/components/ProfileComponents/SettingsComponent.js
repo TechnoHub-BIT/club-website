@@ -1,8 +1,10 @@
 import React,{useState, useEffect} from 'react'
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
 import {useHistory, Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Button, Modal } from "react-bootstrap";
+
 import "./ProfileComponents.css";
 import "../input.css";
 import ProfileHeader from './ProfileHeader';
@@ -13,6 +15,11 @@ function SettingsComponent() {
     const {currentUser, logout} = useAuth()
 
     const [profiles, setProfiles] = useState([]);
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
 
     const history = useHistory()
     async function handleLogout(){
@@ -80,7 +87,39 @@ function SettingsComponent() {
                         <div className="settings">
                             <div>
                                 <h6 className="contentHeading">Account Actions</h6>
-                                <Button color="danger" onClick={handleDelete}>
+
+                    <Modal
+                    show={show}
+                    onHide={handleClose}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Delete Profile
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Are You sure you want to delete account
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={handleDelete}
+                      >
+                        Delete Account
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                  {/* <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
+                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
+                  </Button> */}
+
+                                <Button color="danger" onClick={()=>handleShow()}>
                                     <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account
                                 </Button>
                             </div>
