@@ -2,7 +2,7 @@
 
 
 <p align="center">
-    <a href="https://snakegame.github.io/" target="_blank"><img alt="Technohub logo" title="CSI" src="https://img.collegedekhocdn.com/media/img/institute/logo/Bhilai-Institute-Of-Technology_logo_BITLOGO.jpg" width="150"></a>
+    <a href="https://club-website.github.io/" target="_blank"><img alt="Technohub logo" title="CSI" src="https://img.collegedekhocdn.com/media/img/institute/logo/Bhilai-Institute-Of-Technology_logo_BITLOGO.jpg" width="150"></a>
 </p>
 
 <h1 align="center">Technohub</h1>
