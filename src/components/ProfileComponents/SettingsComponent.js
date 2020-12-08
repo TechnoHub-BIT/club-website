@@ -101,17 +101,18 @@ function SettingsComponent() {
                       </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      Are You sure you want to delete account
+                      All of your information will be deleted forever! Are you sure you want to delete your account?
                     </Modal.Body>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose}>
                         Close
                       </Button>
                       <Button
-                        variant="primary"
+                        variant="danger"
                         onClick={handleDelete}
                       >
-                        Delete Account
+                        <i className="far fa-trash-alt"></i>
+                        &nbsp;&nbsp;Delete Account
                       </Button>
                     </Modal.Footer>
                   </Modal>
@@ -119,7 +120,7 @@ function SettingsComponent() {
                     <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                   </Button> */}
 
-                                <Button color="danger" onClick={()=>handleShow()}>
+                                <Button variant="danger" onClick={()=>handleShow()}>
                                     <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account
                                 </Button>
                             </div>
