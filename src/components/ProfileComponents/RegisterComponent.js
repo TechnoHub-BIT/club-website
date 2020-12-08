@@ -172,11 +172,11 @@ const RegisterComponent = () => {
                                     <label for="experience">Any Previous Experience?</label>
                                 </div>
                                 <div className="input-group" technical="true" management="true" techno-management="true">
-                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
+                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)} required />
                                     <label for="skills">Skills you Have</label>
                                 </div>
                                 <div className="input-group" technical="true" management="true" techno-management="true">
-                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
+                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)} required />
                                     <label for="interest">Interested Field*</label>
                                 </div>
                                 <div className="input-group" technical="true" techno-management="true">
@@ -188,10 +188,9 @@ const RegisterComponent = () => {
                                     <br /><a href="tel:+918319560199">+91-8319560199</a> and get your registration approved.
                                 </p>
                                 <Button color="primary" onClick={registerUpdate}>
-                                    <Link style={{color: 'inherit'}} to="/profile" className="fas fa-check">&nbsp;&nbsp;Apply Now</Link>
+                                    <Link style={{color: 'inherit'}} to="/profile"><i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now</Link>
                                 </Button>
                             </div>
-
                         </div>
                     </div>
                 </div>
