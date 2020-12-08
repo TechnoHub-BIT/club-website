@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 const CTAButton = () => {
     const { currentUser } = useAuth();
 
-    const [profiles, setProfile] = useState([]);
+    const [profiles, setProfile] = useState('');
   
     useEffect(() => {
         if(currentUser){
@@ -16,7 +16,30 @@ const CTAButton = () => {
                 const data = doc.data();
                 setProfile(data);
                 });
+
         }
+
+        if (currentUser && profiles.payment === true)
+        button =  
+        <Link to="/profile">
+            <button type="button" className="ctaBtn"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{ profiles.member } Team Member</button>
+        </Link>
+        ;
+        else { 
+        if(currentUser && profiles.registrationApply === true)
+            return <Link to="/profile">
+                <button type="button" className="ctaBtn"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</button>
+            </Link>
+            ;
+            
+        else if(currentUser){
+            return <Link to="/register" target="_blank">
+                    <button type="button" className="ctaBtn"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</button>
+                </Link>
+            ;
+        }
+    }
+
     }, [currentUser]);
 
   
@@ -27,27 +50,28 @@ const CTAButton = () => {
         </Link>
     ;
 
-    if (currentUser) {
-        if (profiles.payment === true)
-            button =  
-            <Link to="/profile">
-                <button type="button" className="ctaBtn"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{ profiles.member } Team Member</button>
-            </Link>
-            ;
-        else { 
-            if(profiles.registrationApply === true)
-                return <Link to="/profile">
-                    <button type="button" className="ctaBtn"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</button>
-                </Link>
-                ;
+    //  {
+    //     if (currentUser && profiles.payment === true)
+    //         button =  
+    //         <Link to="/profile">
+    //             <button type="button" className="ctaBtn"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{ profiles.member } Team Member</button>
+    //         </Link>
+    //         ;
+    //     else { 
+    //         if(currentUser && profiles.registrationApply === true)
+    //             return <Link to="/profile">
+    //                 <button type="button" className="ctaBtn"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</button>
+    //             </Link>
+    //             ;
                 
-            else
-                return <Link to="/register" target="_blank">
-                        <button type="button" className="ctaBtn"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</button>
-                    </Link>
-                ;
-        }
-    }
+    //         else if(currentUser){
+    //             return <Link to="/register" target="_blank">
+    //                     <button type="button" className="ctaBtn"><i className="fas fa-external-link-alt"></i>&nbsp;&nbsp;Apply for Membership</button>
+    //                 </Link>
+    //             ;
+    //         }
+    //     }
+    // }
 
     return(
         <div>
