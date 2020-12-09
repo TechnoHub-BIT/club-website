@@ -22,15 +22,7 @@ function SettingsComponent() {
 
 
     const history = useHistory()
-    async function handleLogout(){
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError('Failed to log out')
-        }
-    }
+
     async function handleDelete(){
         setError('')
 
@@ -39,7 +31,7 @@ function SettingsComponent() {
                 db.collection("members").doc(currentUser.uid).delete() &&
                   currentUser.delete().then(function () {
                     history.push("/");
-                    console.log("user Deleted");
+                    // console.log("user Deleted");
                   })
             history.push('/login')
         }
@@ -53,7 +45,6 @@ function SettingsComponent() {
           db.collection("members")
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
-              console.log("Current data: ", doc.data());
               const data = doc.data();
               setProfiles(data);
             });
@@ -64,7 +55,7 @@ function SettingsComponent() {
     return (
         <div className="profileCont">
             <HeaderTitle heading="PROFILE" />
-
+    {error && <div>{error}</div>}
             { currentUser && (
 
             <div className="profileDetails">
@@ -74,7 +65,7 @@ function SettingsComponent() {
                         <div className="profileNavItem">
                             <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
                         </div>
-                        {profiles.payment ? (
+                        {profiles?.payment ? (
                                                             <div className="profileNavItem">
                                                             <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
                                                         </div>

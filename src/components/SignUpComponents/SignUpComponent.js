@@ -8,7 +8,6 @@ import classnames from 'classnames';
 import './SignUpStyles.css';
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
-import { db, auth } from '../../firebase'
 
 function SignUpComponent() {
 
@@ -31,7 +30,7 @@ function SignUpComponent() {
           setLoading(true)
           await signup(emailRef.current.value, passwordRef.current.value)
 
-          history.push("/")
+          history.push("/profile")
 
         } catch {
           setError('Failed to Create an Account')
@@ -48,7 +47,7 @@ function SignUpComponent() {
         setError('')
         setLoading(true)          
         await signupWithGoogle()
-        history.push("/")
+        history.push("/profile")
       } catch {
         setError('Failed to Login')
       }

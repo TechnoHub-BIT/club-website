@@ -9,7 +9,7 @@ import Footer from "./FooterComponents/FooterComponent";
 import SignUpComponent from './SignUpComponents/SignUpComponent'
 import Login from './LogInComponents/LogInComponent';
 import Profile from './ProfileComponents/ProfileComponent';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router,  Route } from "react-router-dom";
 import {AuthProvider} from '../contexts/AuthContext';
 import PrivateRoute from "../PrivateRoute";
 import ForgotPassword from './LogInComponents/ForgotPasswordComponent';

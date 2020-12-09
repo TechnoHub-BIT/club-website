@@ -75,7 +75,7 @@ const Projects = () => {
                 </div>
                 <div className="singleCard">
                   <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/thagda-dam.jpg" />
+                    <img className="cardImage" src="./assets/images/projects/thagda-dam.jpg"  alt="Thagda-dam"/>
                   </div>
                   <div className="cardBody">
                     <h3>Simulation of Thagda Dam</h3>

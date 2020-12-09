@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
-import {useHistory, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
@@ -10,8 +10,8 @@ import showRenderedFields from "../renderFields";
 import { db } from '../../firebase';
 
 const RegisterComponent = () => {
-    const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth()
+    // const [error, setError] = useState('');
+    const {currentUser} = useAuth()
 
     const [experience, setExperience] = useState("");
     const [member, setMember] = useState("");
@@ -23,32 +23,24 @@ const RegisterComponent = () => {
     const [profiles, setProfiles] = useState([]);
 
 
-    const history = useHistory()
-    async function handleLogout() {
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError('Failed to log out')
-        }
-    }
+    // const history = useHistory()
+
 
     useEffect(() => {
         if(currentUser) {
             db.collection("members")
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
-                console.log("Current data: ", doc.data());
-                const data = doc.data();
+                    const data = doc.data();
+                    console.log(data)
                 setProfiles(data);
             });
- 
+            console.log(profiles)
         }
     }, [currentUser]);
 
     const registerUpdate = () => {
-        if(member != "") {
+        if(member !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -61,7 +53,7 @@ const RegisterComponent = () => {
         }
 
 
-        if(skills != "") {
+        if(skills !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -72,7 +64,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(interest != "") {
+        if(interest !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -83,7 +75,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(workshops != "") {
+        if(workshops !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -94,7 +86,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(projects!=""){
+        if(projects!== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -105,7 +97,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(experience!=""){
+        if(experience!== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -129,7 +121,7 @@ const RegisterComponent = () => {
       };
 
     const paymentDone = () => {
-        if (profiles.payment)
+        if (profiles?.payment)
             return <h3 style={{textAlign: "center", margin: "2em 0"}}>You already are a {profiles.member} Team Member!</h3>
     }
 
@@ -140,7 +132,8 @@ const RegisterComponent = () => {
             <div className="profileDetails">
                 <ProfileHeader />
                 {
-                (profiles.payment == false) && <div>
+                (profiles?.payment === false) && 
+                <div>
                 <div className="profileBody">
                     <div className="profileNav">
                         <div className="profileNavItem">
@@ -154,6 +147,7 @@ const RegisterComponent = () => {
                         <div className="register">
                         
                             <div>
+                                {/* <form> */}
                                 <h6 className="contentHeading">Fill in all the Necessary Details</h6>
                                 <div className="input-group">
                                     <select required onChange={e => {showRenderedFields(e.target.value); setMember(e.target.value)}}>
@@ -172,11 +166,11 @@ const RegisterComponent = () => {
                                     <label for="experience">Any Previous Experience?</label>
                                 </div>
                                 <div className="input-group" technical="true" management="true" techno-management="true">
-                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)}/>
-                                    <label for="skills">Skills you Have</label>
+                                    <input type="text" id="skills" placeholder="Skills you Have" defaultValue={profiles.skills} onChange={(event) => setSkills(event.target.value)} />
+                                    <label for="skills">Skills you Have*</label>
                                 </div>
                                 <div className="input-group" technical="true" management="true" techno-management="true">
-                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)}/>
+                                    <input type="text" id="interest" placeholder="Interested Field" defaultValue={profiles.interest} onChange={(event) => setInterest(event.target.value)} />
                                     <label for="interest">Interested Field*</label>
                                 </div>
                                 <div className="input-group" technical="true" techno-management="true">
@@ -187,9 +181,12 @@ const RegisterComponent = () => {
                                     After applying, submit registration charge(₹ 150) by calling on
                                     <br /><a href="tel:+918319560199">+91-8319560199</a> and get your registration approved.
                                 </p>
-                                <Button color="primary" onClick={registerUpdate}>
-                                    <Link to="/profile" style={{color: 'inherit'}} to="/profile" className="fas fa-check">&nbsp;&nbsp;Apply Now</Link>
-                                </Button>
+                                <Link to='/profile' style={{color: 'inherit'}}>
+                                <Button color="primary" className="fas fa-check" onClick={()=>{registerUpdate()}}>
+                                    &nbsp;&nbsp;Apply Now
+                                </Button> 
+                                </Link>
+                                {/* </form> */}
                             </div>
 
                         </div>

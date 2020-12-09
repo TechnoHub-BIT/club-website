@@ -50,7 +50,7 @@ function AdminComponent() {
             setCurrentProfile(data);
         });
     }
-  }, []);
+  }, [currentUser]);
 
  
   return (
@@ -59,7 +59,7 @@ function AdminComponent() {
     <div className="container-fluid">
       {/* <Container> */}
       {
-        (currentProfile.id == 1) && <div>
+        (currentProfile.id === 1) && <div>
       <h3 className="h3-text">Profiles</h3>
       <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
         <thead className="thead-dark">

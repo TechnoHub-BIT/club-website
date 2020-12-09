@@ -47,7 +47,7 @@ const OurMembers = (props) => {
             <tbody>
             {
               memberList?.map((data, i) => {
-              if(data.payment == true){
+              if(data.payment === true){
                 return (
                   <tr key={i}>
                     <td data-label="Full Name">{data.fullname}</td>
@@ -59,7 +59,9 @@ const OurMembers = (props) => {
                   </tr>
                 );
               }
-
+              else {
+                <div>No Data to show now</div>
+              }
             })}
             </tbody>
           </table>

@@ -30,8 +30,10 @@ const ProfileComponent = () => {
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
                 const data = doc.data();
+                console.log(data)
                 setProfiles(data);
             });
+            console.log(profiles)
         }
     }, [currentUser]);
 
@@ -46,7 +48,7 @@ const ProfileComponent = () => {
                             <div className="profileNavItem active">
                                 <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
                             </div>
-                            {profiles.payment ? (
+                            {profiles?.payment ? (
                                                             <div className="profileNavItem">
                                                             <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
                                                         </div>

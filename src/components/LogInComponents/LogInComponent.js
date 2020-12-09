@@ -26,7 +26,7 @@ function LogInComponent() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            history.push("/profile")
         }catch{
             setError('Failed to Login')
         }
@@ -43,7 +43,7 @@ function LogInComponent() {
           setError('')
           setLoading(true)          
           await signupWithGoogle()
-          history.push("/")
+          history.push("/profile")
       }catch{
 
           setError('Failed to Login')

@@ -10,14 +10,6 @@ function ProfileHeader() {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
 
-    const [fullname, setFullname] = useState("");
-    const [branch, setBranch] = useState("");
-    const [semester, setSemester] = useState("");
-    const [member, setMember] = useState("");
-    const [skills, setSkills] = useState("");
-    const [workshops, setWorkshops] = useState("");
-    const [interest, setInterest] = useState("");
-
     const [profiles, setProfiles] = useState([]);
 
     const history = useHistory()
@@ -41,14 +33,16 @@ function ProfileHeader() {
           const data = doc.data();
           setProfiles(data);
         });
+
+
   }
   }, [currentUser]);
 
   const memberButton = () => {
-    if (profiles.payment == true)
+    if (profiles?.payment === true)
         return <Button color="primary"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{profiles.member} Team Member</Button>;
     else { 
-        if(profiles.registrationApply == true)
+        if(profiles?.registrationApply === true)
             return <Button color="primary"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</Button>;
         else
             return <Link to="/register" target="_blank">
@@ -60,38 +54,44 @@ function ProfileHeader() {
 
   //Setting the Suffix for Semester
     let suffix = "th";
+  
 
-    if (profiles.semester == 1)
+        if (profiles?.semester === 1)
         suffix = "st";
-    else if (profiles.semester == 2)
+    else if (profiles?.semester === 2)
         suffix = "nd";
-    else if (profiles.semester == 3)
+    else if (profiles?.semester === 3)
         suffix = "rd";
-
-    return (
-        <div>
-            { currentUser && (
-            
-                <div className="profileHeader">
-                    { currentUser.photoURL ?
-                        <img src={currentUser.photoURL} className="profileImage" />
-                        :
-                        <img src="./assets/images/profile-user.svg" className="profileImage" />
-                    }
-
-                    <div className="profileName">
-                        <h5>{profiles.fullname}</h5>
-                        <h6>{profiles.branch}</h6>
-                       {profiles.semester !== null ?  <h6>{profiles.semester}{suffix} Semester</h6> : null}
-                        { memberButton() }
-                        <Button onClick={handleLogout}>
-                            <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
-                        </Button>
+        
+        return (
+            <>
+            <div>
+                { currentUser && (
+                
+                    <div className="profileHeader">
+                        {error && <div>{error}</div>}
+                        { currentUser.photoURL ?
+                            <img src={currentUser.photoURL} alt="Profile Photo" className="profileImage" />
+                            :
+                            <img src="./assets/images/profile-user.svg" alt="Profile Photo" className="profileImage" />
+                        }
+    
+                        <div className="profileName">
+                            <h5>{profiles?.fullname}</h5>
+                            <h6>{profiles?.branch}</h6>
+                           {profiles?.semester != null ?  <h6>{profiles.semester}{suffix} Semester</h6> : null}
+                            { memberButton() }
+                            <Button onClick={handleLogout}>
+                                <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out
+                            </Button>
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
-    );
+                )}
+            </div>
+</>
+
+        );
+
 };
 
 export default ProfileHeader;

@@ -46,6 +46,7 @@ const Footer = () => {
     <footer>
       <div className="row">
         <div className="col-xl-3 col-md-4 col-sm-6 firstColumn">
+  {error && <div>{error}</div>}
           <img className="whiteLogo" alt="Technohub" src="./assets/images/logowhite.png" />
           <p>
             Our goal is to provide a platform to students by students which give proper guidance, training and connectivity with school alumni and industry experts to students to become Industry ready.
@@ -102,18 +103,18 @@ const Footer = () => {
       <div className="row">
         <div className="col-md-12 socialIcons">
           <div className="socialIcon">
-            <a href="https://instagram.com/bit.technohub" target="_blank"><i className="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/bit.technohub" rel="noreferrer" target="_blank"><i className="fab fa-instagram"></i></a>
           </div>
           <div className="socialIcon">
-            <a href="https://www.facebook.com/bit.technohub" target="_blank"><i className="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/bit.technohub" rel="noreferrer" target="_blank"><i className="fab fa-facebook"></i></a>
           </div>
           <div className="socialIcon">
-            <a href="https://www.linkedin.com/company/technohubbitd/" target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/technohubbitd/" rel="noreferrer" target="_blank"><i className="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>
       <div className="row developedBy">
-        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
+        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" rel="noreferrer" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" rel="noreferrer" target="_blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" rel="noreferrer" target="_blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" rel="noreferrer" target="_blank">Bavisetti Narayan</a>
       </div>
     </footer>
   );

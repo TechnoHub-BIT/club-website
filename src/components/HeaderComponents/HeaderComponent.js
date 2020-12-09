@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron } from "reactstrap";
 import "./HeaderComponent.css";
-import { Link } from "react-router-dom";
 import CTAButton from "./CTAButton";
 
 class Header extends Component {

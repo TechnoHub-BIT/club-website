@@ -61,7 +61,7 @@ class Header extends Component {
                 <div class="line line3"></div>
             </div>
             <Link to="/">
-              <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
+              <img src="./assets/images/logowhite.png" alt="Logo" className="mobileNavLogo" />
             </Link>
             <ul className="navList">
               <Link to="/">
