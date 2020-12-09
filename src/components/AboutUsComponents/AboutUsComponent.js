@@ -356,7 +356,7 @@ class About extends Component {
                 </Image>
                 
                 <Image path="./assets/images/members/stuti.jpg" name="Stuti Mishra" contact="7987671690">
-                  Electronics and Telecommunication
+                  Electrical and Electronics
                 </Image>
                 
                 <Image path="./assets/images/members/anshul.jpg" name="Anshul Lanjewar" contact="7049223604">

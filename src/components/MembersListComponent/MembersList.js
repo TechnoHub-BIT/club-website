@@ -40,33 +40,33 @@ const OurMembers = (props) => {
                 <th>Branch</th>
                 <th>Semester</th>
                 <th>Skills</th>
-                <th>Interest</th>
+                <th>Interests</th>
                 <th>Workshops Attended</th>
               </tr>
             </thead>
             <tbody>
-            {
-              memberList?.map((data, i) => {
-              if(data.payment == true){
-                return (
-                  <tr key={i}>
-                    <td data-label="Full Name">{data.fullname}</td>
-                    <td data-label="Branch">{data.branch}</td>
-                    <td className="text-center" data-label="Semester">{data.semester}</td>
-                    <td data-label="Skills">{data.skills}</td>
-                    <td data-label="Interests">{data.interest}</td>
-                    <td data-label="Skills">{data.workshops}</td>
-                  </tr>
-                );
-              }
+              {
+                memberList?.map((data, i) => {
+                if(data.payment == true){
+                  return (
+                    <tr key={i}>
+                      <td data-label="Full Name">{data.fullname}</td>
+                      <td data-label="Branch">{data.branch}</td>
+                      <td className="text-center" data-label="Semester">{data.semester}</td>
+                      <td data-label="Skills">{data.skills}</td>
+                      <td data-label="Interests">{data.interest}</td>
+                      <td data-label="Skills">{data.workshops}</td>
+                    </tr>
+                  );
+                }
 
-            })}
+              })}
             </tbody>
           </table>
         </div>
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default OurMembers;
