@@ -6,7 +6,7 @@ import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';
 
-function ProfileHeader() {
+const ProfileHeader = () => {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
 

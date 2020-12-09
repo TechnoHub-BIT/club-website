@@ -1,7 +1,7 @@
 import React from "react";
 import "./SingleAchievement.css";
 
-const achievement = (props) => {
+const singleAchievement = (props) => {
     const path = props.path;
     let img = null;
     if(path != null) {
@@ -21,4 +21,4 @@ const achievement = (props) => {
     );
 }
 
-export default achievement;
+export default singleAchievement;

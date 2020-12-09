@@ -33,7 +33,7 @@ const Home = () => {
     {
       question: "How can I become a member?",
       answer:
-        "Even if you don't know much to begin with, you,ll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. Note: If you pay dues that cover only one time investment. ",
+        "Even if you don't know much to begin with, you'll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. Note: If you pay dues that cover only one time investment. ",
       open: false,
     },
     {
@@ -83,7 +83,7 @@ const Home = () => {
               <div className="entinner">
                 <p>
                   Learn through exclusive capacity building programs,
-                  preferential internship and job opportunities.Develop the Team
+                  preferential internship and job opportunities. Develop the Team
                   by participating in projects that create a huge impact.
                 </p>
               </div>
