@@ -39,7 +39,7 @@ const SettingsComponent = () => {
               db.collection("members").doc(currentUser.uid).delete() &&
                 currentUser.delete().then(function () {
                   history.push("/");
-                  console.log("user Deleted");
+                  // console.log("user Deleted");
                 })
           history.push('/login')
       }

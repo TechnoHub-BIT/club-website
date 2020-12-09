@@ -194,9 +194,11 @@ const RegisterComponent = () => {
                                             After applying, submit registration charge(₹ 150) by calling on
                                             <br /><a href="tel:+918319560199">+91-8319560199</a> and get your registration approved.
                                         </p>
-                                        <Button color="primary" onClick={registerUpdate}>
-                                            <Link style={{color: 'inherit'}} to="/profile"><i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now</Link>
-                                        </Button>
+                                        <Link style={{color: 'inherit'}} to="/profile">
+                                            <Button color="primary" onClick={registerUpdate}>
+                                            <i className="fas fa-check"></i>&nbsp;&nbsp;Apply Now
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

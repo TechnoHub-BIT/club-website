@@ -339,7 +339,7 @@ class About extends Component {
                   Computer Science
                 </Image>
                 
-                <Image path="./assets/images/members/PREETI.jpg" name="Preeti Gabel" contact="9179243009">
+                <Image path="./assets/images/members/preeti.jpg" name="Preeti Gabel" contact="9179243009">
                   Electrical and Electronics
                 </Image>
                 

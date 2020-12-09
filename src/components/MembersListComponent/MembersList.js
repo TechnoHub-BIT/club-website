@@ -21,7 +21,6 @@ const OurMembers = (props) => {
   }
   }, [currentUser]);
 
-
   return (
     <React.Fragment>    
       <div className="members-container">
@@ -59,7 +58,6 @@ const OurMembers = (props) => {
                     </tr>
                   );
                 }
-
               })}
             </tbody>
           </table>

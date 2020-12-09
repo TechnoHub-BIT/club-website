@@ -30,7 +30,7 @@ function SignUpComponent() {
           setLoading(true)
           await signup(emailRef.current.value, passwordRef.current.value)
 
-          history.push("/")
+          history.push("/profile")
 
         } catch {
           setError('Failed to Create an Account')
@@ -47,7 +47,7 @@ function SignUpComponent() {
         setError('')
         setLoading(true)          
         await signupWithGoogle()
-        history.push("/")
+        history.push("/profile")
       } catch {
         setError('Failed to Login')
       }
