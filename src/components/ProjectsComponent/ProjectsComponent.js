@@ -2,6 +2,7 @@ import React from "react";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./ProjectsComponent.css";
+import SingleProject from "./SingleProjectComponent/SingleProject";
 
 const Projects = () => {
   return(
@@ -22,68 +23,32 @@ const Projects = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="cardCont">
-                <div className="singleCard">
-                  <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/drone.jpg" alt="drone"/>
-                  </div>
-                  <div className="cardBody">
-                    <h3>Quadcopter</h3>
-                    <p>
-                      Drone surveillance is the use of unmanned aeriel
-                      vehichle to capture still images and video to gather
-                      information about specific target which might be
-                      idividuals, groups or environments.
-                    </p>
-                  </div>
-                </div>
-                <div className="singleCard">
-                  <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/eyantra.jpg" alt="eyantra" />
-                  </div>
-                  <div className="cardBody">
-                    <h3>e-yantra - Nutty Squirrel</h3>
-                    <p>
-                      A squirrel builds itself an elevator mechanism to ease
-                      its load-carrying capacity.
-                    </p>
-                  </div>
-                </div>
-                <div className="singleCard">
-                  <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/firebird.jpg" alt="firebird" />
-                  </div>
-                  <div className="cardBody">
-                    <h3>Fire Bird V</h3>
-                    <p>
-                      This bot detects colours and picks a particular coloured
-                      box and place it to the destination.
-                    </p>
-                  </div>
-                </div>
-                <div className="singleCard">
-                  <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/weight-detector.jpeg" alt="weight-detector" />
-                  </div>
-                  <div className="cardBody">
-                    <h3>Visual Weight Detector</h3>
-                    <p>
-                      The aim of this project is to present a visual body
-                      weight estimation, which is suitable for medical
-                      applications.
-                    </p>
-                  </div>
-                </div>
-                <div className="singleCard">
-                  <div className="cardHeader">
-                    <img className="cardImage" src="./assets/images/projects/thagda-dam.jpg" />
-                  </div>
-                  <div className="cardBody">
-                    <h3>Simulation of Thagda Dam</h3>
-                    <p>
-                      Akshay Sharma’s 3D modeling of Thagda Dam park and recreation got approved by the CMO of Chhattisgarh for use in the upcoming project.
-                    </p>
-                  </div>
-                </div>
+                <SingleProject img="./assets/images/projects/drone.jpg" title="Quadcopter">
+                  Drone surveillance is the use of unmanned aeriel
+                  vehichle to capture still images and video to gather
+                  information about specific target which might be
+                  idividuals, groups or environments.
+                </SingleProject>
+
+                <SingleProject img="./assets/images/projects/eyantra.jpg" title="e-yantra - Nutty Squirrel">
+                  A squirrel builds itself an elevator mechanism to ease
+                  its load-carrying capacity.
+                </SingleProject>
+                
+                <SingleProject img="./assets/images/projects/firebird.jpg" title="Fire Bird V">
+                  This bot detects colours and picks a particular coloured
+                  box and place it to the destination.
+                </SingleProject>
+                
+                <SingleProject img="./assets/images/projects/weight-detector.jpeg" title="Visual Weight Detector">
+                  The aim of this project is to present a visual body
+                  weight estimation, which is suitable for medical
+                  applications.
+                </SingleProject>
+                
+                <SingleProject img="./assets/images/projects/thagda-dam.jpg" title="Simulation of Thagda Dam">
+                  Akshay Sharma’s 3D modeling of Thagda Dam park and recreation got approved by the CMO of Chhattisgarh for use in the upcoming project.
+                </SingleProject>
               </div>
             </div>
           </div>

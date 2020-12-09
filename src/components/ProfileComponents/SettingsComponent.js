@@ -10,85 +10,84 @@ import "../input.css";
 import ProfileHeader from './ProfileHeader';
 import { db } from '../../firebase';
 
-function SettingsComponent() {
-    const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth()
+const SettingsComponent = () => {
+  const [error, setError] = useState('');
+  const {currentUser, logout} = useAuth()
 
-    const [profiles, setProfiles] = useState([]);
+  const [profiles, setProfiles] = useState([]);
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const history = useHistory()
-    async function handleLogout(){
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError('Failed to log out')
-        }
-    }
-    async function handleDelete(){
-        setError('')
 
-        try {
-            await logout()                                     
-                db.collection("members").doc(currentUser.uid).delete() &&
-                  currentUser.delete().then(function () {
-                    history.push("/");
-                    console.log("user Deleted");
-                  })
-            history.push('/login')
-        }
-        catch{
-            setError('Failed to Delete Account')
-        }
-    }
-
-    useEffect(() => {
-        if(currentUser){
-          db.collection("members")
-            .doc(currentUser.uid)
-            .onSnapshot(function (doc) {
-              console.log("Current data: ", doc.data());
-              const data = doc.data();
-              setProfiles(data);
-            });
+  const history = useHistory()
+  async function handleLogout(){
+      setError('')
+      try {
+          await logout()
+          history.push('/login')
+      } catch {
+          setError('Failed to log out')
       }
-      }, [currentUser]);
+  }
+  async function handleDelete(){
+      setError('')
+
+      try {
+          await logout()                                     
+              db.collection("members").doc(currentUser.uid).delete() &&
+                currentUser.delete().then(function () {
+                  history.push("/");
+                  // console.log("user Deleted");
+                })
+          history.push('/login')
+      }
+      catch{
+          setError('Failed to Delete Account')
+      }
+  }
+
+  useEffect(() => {
+      if(currentUser){
+        db.collection("members")
+          .doc(currentUser.uid)
+          .onSnapshot(function (doc) {
+            console.log("Current data: ", doc.data());
+            const data = doc.data();
+            setProfiles(data);
+          });
+    }
+    }, [currentUser]);
 
 
-    return (
-        <div className="profileCont">
-            <HeaderTitle heading="PROFILE" />
+  return (
+    <div className="profileCont">
+      <HeaderTitle heading="PROFILE" />
 
-            { currentUser && (
+      { currentUser && (
 
-            <div className="profileDetails">
-                <ProfileHeader />
-                <div className="profileBody">
-                    <div className="profileNav">
-                        <div className="profileNavItem">
-                            <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
-                        </div>
-                        {profiles.payment ? (
-                                                            <div className="profileNavItem">
-                                                            <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
-                                                        </div>
-                            ):null}
-                        <div className="profileNavItem active">
-                            <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
-                        </div>
-                    </div>
-                    <div className="profileContent">
-                        <div className="settings">
-                            <div>
-                                <h6 className="contentHeading">Account Actions</h6>
-
-                    <Modal
+        <div className="profileDetails">
+          <ProfileHeader />
+          <div className="profileBody">
+            <div className="profileNav">
+              <div className="profileNavItem">
+                <Link to="/profile"><i className="fas fa-house-user"></i> Dashboard</Link>
+              </div>
+              {profiles.payment ? (
+                <div className="profileNavItem">
+                  <Link to="/edit"><i className="fas fa-pencil-alt"></i> Edit Profile</Link>
+                </div>
+              ):null}
+              <div className="profileNavItem active">
+                <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
+              </div>
+            </div>
+            <div className="profileContent">
+              <div className="settings">
+                <div>
+                  <h6 className="contentHeading">Account Actions</h6>
+                  <Modal
                     show={show}
                     onHide={handleClose}
                     size="lg"
@@ -119,18 +118,17 @@ function SettingsComponent() {
                   {/* <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
                     <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                   </Button> */}
-
-                                <Button variant="danger" onClick={()=>handleShow()}>
-                                    <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
+                  <Button variant="danger" onClick={()=>handleShow()}>
+                      <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Account
+                  </Button>
                 </div>
+              </div>
             </div>
-                    )}
+          </div>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
 
 export default SettingsComponent;

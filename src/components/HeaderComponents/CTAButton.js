@@ -26,7 +26,7 @@ const CTAButton = () => {
         <Link to="/signup">
             <button type="button" className="ctaBtn"><i className="fas fa-user-plus"></i>&nbsp;&nbsp;Sign up Now!</button>
         </Link>
-    ;
+    
 
     if (currentUser && (profiles.payment !== null)) {
         if (profiles.payment === true)
