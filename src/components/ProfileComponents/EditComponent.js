@@ -9,8 +9,7 @@ import { db } from '../../firebase';
 import ProfileHeader from "./ProfileHeader";
 
 function EditComponent() {
-    const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth()
+    const {currentUser} = useAuth()
 
     const [fullname, setFullname] = useState("");
     const [branch, setBranch] = useState("");
@@ -24,16 +23,6 @@ function EditComponent() {
 
     const [profiles, setProfiles] = useState([]);
 
-    const history = useHistory()
-    async function handleLogout() {
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch{
-            setError('Failed to log out')
-        }
-    }
 
     useEffect(() => {
         if(currentUser) {
@@ -52,18 +41,18 @@ function EditComponent() {
     }, [currentUser]);
 
     const profileUpdate = () => {
-        if(fullname != "") {
+        if(fullname !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
               fullname: fullname,
             })
             .then(function () {
-              console.log("Fullname successfully updated!");
+            //   console.log("Fullname successfully updated!");
               
             });
         }
-        if(branch != "") {
+        if(branch !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -74,7 +63,7 @@ function EditComponent() {
               
             });
         }
-        if(semester != "") {
+        if(semester !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -85,7 +74,7 @@ function EditComponent() {
               
             });
         }
-        if(skills != "") {
+        if(skills !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -96,7 +85,7 @@ function EditComponent() {
               
             });
         }
-        if(interest != "") {
+        if(interest !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -107,7 +96,7 @@ function EditComponent() {
               
             });
         }
-        if(workshops != "") {
+        if(workshops !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -118,7 +107,7 @@ function EditComponent() {
               
             });
         }
-        if(projects!=""){
+        if(projects!==""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -129,11 +118,22 @@ function EditComponent() {
               
             });
         }
-        if(contactNo!=""){
+        if(contactNo!==""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
               contactNo: contactNo,
+            })
+            .then(function () {
+            //   console.log("Fullname successfully updated!");
+              
+            });
+        }
+        if(experience!==""){
+            db.collection("members")
+            .doc(currentUser.uid)
+            .update({
+              experience: experience,
             })
             .then(function () {
             //   console.log("Fullname successfully updated!");

@@ -32,10 +32,10 @@ const RegisterComponent = () => {
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
                     const data = doc.data();
-                    console.log(data)
+                    // console.log(data)
                 setProfiles(data);
             });
-            console.log(profiles)
+            // console.log(profiles)
         }
     }, [currentUser]);
 

@@ -71,15 +71,15 @@ function ProfileHeader() {
                     <div className="profileHeader">
                         {error && <div>{error}</div>}
                         { currentUser.photoURL ?
-                            <img src={currentUser.photoURL} alt="Profile Photo" className="profileImage" />
+                            <img src={currentUser.photoURL} alt="Profile" className="profileImage" />
                             :
-                            <img src="./assets/images/profile-user.svg" alt="Profile Photo" className="profileImage" />
+                            <img src="./assets/images/profile-user.svg" alt="Profile" className="profileImage" />
                         }
     
                         <div className="profileName">
                             <h5>{profiles?.fullname}</h5>
                             <h6>{profiles?.branch}</h6>
-                           {profiles?.semester != null ?  <h6>{profiles.semester}{suffix} Semester</h6> : null}
+                           {profiles?.semester !== null ?  <h6>{profiles.semester}{suffix} Semester</h6> : null}
                             { memberButton() }
                             <Button onClick={handleLogout}>
                                 <i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out

@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import {useAuth} from '../../contexts/AuthContext';
-import {useHistory, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
@@ -8,21 +8,9 @@ import { db } from '../../firebase';
 import ProfileHeader from './ProfileHeader';
 
 const ProfileComponent = () => {
-    const [error, setError] = useState('');
-    const {currentUser, logout} = useAuth();
+    const {currentUser} = useAuth();
 
     const [profiles, setProfiles] = useState([]);
-
-    const history = useHistory()
-    async function handleLogout() {
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch{
-            setError('Failed to log out')
-        }
-    }
 
     useEffect(() => {
         if(currentUser) {
@@ -30,10 +18,10 @@ const ProfileComponent = () => {
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
                 const data = doc.data();
-                console.log(data)
+                // console.log(data)
                 setProfiles(data);
             });
-            console.log(profiles)
+            // console.log(profiles)
         }
     }, [currentUser]);
 
@@ -70,7 +58,7 @@ const ProfileComponent = () => {
                                             <h5>Blog Posts</h5>
                                             <h3 className="cardCount">0</h3>
                                         </div>
-                                        <img src="./assets/images/profile/posts.png" />
+                                        <img src="./assets/images/profile/posts.png" alt='posts'/>
                                     </div>
                                 </Link>
                                 <Link to="/events">
@@ -79,7 +67,7 @@ const ProfileComponent = () => {
                                             <h5>Events</h5>
                                             <h3 className="cardCount">7+</h3>
                                         </div>
-                                        <img src="./assets/images/profile/events.png" />
+                                        <img src="./assets/images/profile/events.png" alt='events'/>
                                     </div>
                                 </Link>
                                 <Link to="/projects">
@@ -88,7 +76,7 @@ const ProfileComponent = () => {
                                             <h5>Projects</h5>
                                             <h3 className="cardCount">5+</h3>
                                         </div>
-                                        <img src="./assets/images/profile/projects.png" />
+                                        <img src="./assets/images/profile/projects.png" alt='projects'/>
                                     </div>
                                 </Link>
                                 <Link to="/achievements">
@@ -97,7 +85,7 @@ const ProfileComponent = () => {
                                             <h5>Achievements</h5>
                                             <h3 className="cardCount">9+</h3>
                                         </div>
-                                        <img src="./assets/images/profile/achievements.png" />
+                                        <img src="./assets/images/profile/achievements.png" alt='achievements'/>
                                     </div>
                                 </Link>
                             </div>
