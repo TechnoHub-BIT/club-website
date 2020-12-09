@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/npm/v/club-website.svg?orange=blue" /> <img src="https://img.shields.io/badge/Front--end-React.js-orange" /> ![GitHub language count](https://img.shields.io/github/languages/count/NarayanBavisetti/club-website?style=plastic)
+![npm](https://img.shields.io/npm/v/npm) <img src="https://img.shields.io/badge/Front--end-React.js-orange" /> ![GitHub language count](https://img.shields.io/github/languages/count/NarayanBavisetti/club-website?style=plastic)
 
 
 <p align="center">
