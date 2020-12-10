@@ -21,7 +21,7 @@ function Member() {
     if (!user) {
       history.push("/register");
     }
-    db.collection("members").orderByValue("fullname")
+    db.collection("members")
     .get()
     .then((querySnapshot) => {
       const data = querySnapshot.docs.map((doc) => doc.data());
