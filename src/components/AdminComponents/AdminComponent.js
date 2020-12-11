@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
-import "./adminComponent.css";
+import "./AdminComponent.css";
 import { Button, Modal } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -29,7 +29,7 @@ function AdminComponent() {
         setContacts(data);
       });
 
-    db.collection("members")
+    db.collection("members").orderBy("fullname")
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => {

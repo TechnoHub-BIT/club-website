@@ -146,7 +146,7 @@ const Home = () => {
                 <p className="text-justify">
                   For the all-round development of the students and to enrich
                   their technical knowledge the institute provides a platform
-                  for various students’ activities. This club envisages
+                  for various student's activities. This club envisages
                   conducive platform to explore student’s latent talents and
                   also to enable them to come out with their innovative ideas.
                 </p>
