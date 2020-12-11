@@ -75,7 +75,7 @@ function AdminComponent() {
             <th scope="col">Member</th>
             <th scope="col">Payment</th>
             <th scop="col">Action</th>
-            <th scop="col">Delete</th>
+            <th scop="col">Profile</th>
 
           </tr>
         </thead>
@@ -149,25 +149,38 @@ function AdminComponent() {
                   >
                     <Modal.Header closeButton>
                       <Modal.Title id="contained-modal-title-vcenter">
-                        Delete Profile
+                        Full Profile
                       </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-Account will be deleted
+                      <div style={{whiteSpace: 'pre-wrap'}}>
+
+                        Full Name : {selectedProfile?.fullname}
+                        Email : {selectedProfile?.email}
+                        Branch : {selectedProfile?.branch}
+                        Semester : {selectedProfile?.semester}
+                        Member : {selectedProfile?.member}
+                        Skills : {selectedProfile?.skills}
+                        Contact No. : {selectedProfile?.contactNo}
+                        Projects : {selectedProfile?.projects}
+                        Experience : {selectedProfile?.experience}
+                        Workshops : {selectedProfile?.workshops}
+                        Interest : {selectedProfile?.interest}
+
+                      </div >
+
                     </Modal.Body>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleCloseDelete}>
                         Close
                       </Button>
-                      <Button
+                      {/* <Button
                         variant="primary"
                         onClick={() => {
                           // console.log(profile);
                           // db.collection("members")
                           //   .doc(selectedProfile.uid)
                           //   .delete() &&
-console.log(currentUser)
-console.log(selectedProfile.uid)
                             // .then(function () {
                             //   console.log("Payment successfully updated!");
                             //   setShow(false);
@@ -175,11 +188,11 @@ console.log(selectedProfile.uid)
                         }}
                       >
                         Delete Account
-                      </Button>
+                      </Button> */}
                     </Modal.Footer>
                   </Modal>
                   <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
-                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Delete
+                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Profile
                   </Button>
                 </td>
 
