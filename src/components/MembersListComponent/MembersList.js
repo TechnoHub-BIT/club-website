@@ -12,7 +12,7 @@ const OurMembers = (props) => {
 
   useEffect(() => {
     if(currentUser){
-      db.collection("members")
+      db.collection("members").orderBy("fullname")
         .get()
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
@@ -20,6 +20,7 @@ const OurMembers = (props) => {
         });
   }
   }, [currentUser]);
+
 
   return (
     <React.Fragment>    
@@ -46,10 +47,10 @@ const OurMembers = (props) => {
             <tbody>
               {
                 memberList?.map((data, i) => {
-                if(data.payment == true){
+                if(data.payment == true && data.fullname != null) {
                   return (
                     <tr key={i}>
-                      <td data-label="Full Name">{data.fullname}</td>
+                      <td data-label="Full Name" className="memberFname">{data.fullname.toLowerCase()}</td>
                       <td data-label="Branch">{data.branch}</td>
                       <td className="text-center" data-label="Semester">{data.semester}</td>
                       <td data-label="Skills">{data.skills}</td>
