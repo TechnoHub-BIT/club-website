@@ -68,7 +68,7 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <a href="https://technoquiz.herokuapp.com/">Aptitude Test</a>
+              <a href="https://technoquiz.herokuapp.com/" target="blank">Aptitude Test</a>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
@@ -102,18 +102,18 @@ const Footer = () => {
       <div className="row">
         <div className="col-md-12 socialIcons">
           <div className="socialIcon">
-            <a href="https://instagram.com/bit.technohub" target="_blank"><i className="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/bit.technohub" target="blank"><i className="fab fa-instagram"></i></a>
           </div>
           <div className="socialIcon">
-            <a href="https://www.facebook.com/bit.technohub" target="_blank"><i className="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/bit.technohub" target="blank"><i className="fab fa-facebook"></i></a>
           </div>
           <div className="socialIcon">
-            <a href="https://www.linkedin.com/company/technohubbitd/" target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/technohubbitd/" target="blank"><i className="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>
       <div className="row developedBy">
-        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="_blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
+        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="blank">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="blank">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="blank">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank">Bavisetti Narayan</a>
       </div>
     </footer>
   );

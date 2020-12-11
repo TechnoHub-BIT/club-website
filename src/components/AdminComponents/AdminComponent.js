@@ -35,7 +35,7 @@ function AdminComponent() {
         setContacts(data);
       });
 
-    db.collection("members")
+    db.collection("members").orderBy("payment")
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => {

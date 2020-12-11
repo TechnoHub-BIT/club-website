@@ -3,3 +3,6 @@
   margin: 20px;
   min-height: 70vh;
 }
+.memberFname {
+  text-transform: capitalize;
+}

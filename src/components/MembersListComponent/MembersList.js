@@ -47,10 +47,10 @@ const OurMembers = (props) => {
             <tbody>
               {
                 memberList?.map((data, i) => {
-                if(data.payment == true){
+                if(data.payment == true && data.fullname != null && data.branch != null && data.semester != null) {
                   return (
                     <tr key={i}>
-                      <td data-label="Full Name">{data.fullname}</td>
+                      <td data-label="Full Name" className="memberFname">{data.fullname.toLowerCase()}</td>
                       <td data-label="Branch">{data.branch}</td>
                       <td className="text-center" data-label="Semester">{data.semester}</td>
                       <td data-label="Skills">{data.skills}</td>
@@ -59,7 +59,6 @@ const OurMembers = (props) => {
                     </tr>
                   );
                 }
-
               })}
             </tbody>
           </table>

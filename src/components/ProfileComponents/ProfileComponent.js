@@ -77,7 +77,7 @@ const ProfileComponent = () => {
                                     <div className="statCard">
                                         <div className="cardDetails">
                                             <h5>Events</h5>
-                                            <h3 className="cardCount">7+</h3>
+                                            <h3 className="cardCount">10+</h3>
                                         </div>
                                         <img src="./assets/images/profile/events.png" />
                                     </div>
