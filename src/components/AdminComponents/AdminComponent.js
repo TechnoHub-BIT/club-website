@@ -140,7 +140,7 @@ function AdminComponent() {
                   </Button>
                 </td>
                 <td data-label="Action" className="text-center">
-                <Modal
+                  <Modal
                     show={showDelete}
                     onHide={handleCloseDelete}
                     size="lg"
@@ -155,17 +155,17 @@ function AdminComponent() {
                     <Modal.Body>
                       <div style={{whiteSpace: 'pre-wrap'}}>
 
-                        Full Name : {selectedProfile?.fullname}
-                        Email : {selectedProfile?.email}
-                        Branch : {selectedProfile?.branch}
-                        Semester : {selectedProfile?.semester}
-                        Member : {selectedProfile?.member}
-                        Skills : {selectedProfile?.skills}
-                        Contact No. : {selectedProfile?.contactNo}
-                        Projects : {selectedProfile?.projects}
-                        Experience : {selectedProfile?.experience}
-                        Workshops : {selectedProfile?.workshops}
-                        Interest : {selectedProfile?.interest}
+                        <strong>Full Name:</strong> {selectedProfile?.fullname},&nbsp;&nbsp;
+                        <strong>Email:</strong> {selectedProfile?.email},<br />
+                        <strong>Branch:</strong> {selectedProfile?.branch},&nbsp;&nbsp;
+                        <strong>Semester:</strong> {selectedProfile?.semester},<br />
+                        <strong>Member:</strong> {selectedProfile?.member},&nbsp;&nbsp;
+                        <strong>Skills:</strong> {selectedProfile?.skills},<br />
+                        <strong>Contact No.:</strong> {selectedProfile?.contactNo},&nbsp;&nbsp;
+                        <strong>Projects:</strong> {selectedProfile?.projects},<br />
+                        <strong>Experience:</strong> {selectedProfile?.experience},&nbsp;&nbsp;
+                        <strong>Workshops:</strong> {selectedProfile?.workshops},<br />
+                        <strong>Interest:</strong> {selectedProfile?.interest}
 
                       </div >
 
@@ -192,7 +192,7 @@ function AdminComponent() {
                     </Modal.Footer>
                   </Modal>
                   <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
-                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Profile
+                    <i className="fas fa-user"></i>&nbsp;&nbsp;Profile
                   </Button>
                 </td>
 
