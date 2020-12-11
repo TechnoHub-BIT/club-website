@@ -13,6 +13,7 @@ function SignUpComponent() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
+    const fullnameRef = useRef()
     const passwordConfirmRef = useRef()
     const {signup, signupWithGoogle} = useAuth()
     const [error, setError] = useState('')
@@ -28,7 +29,7 @@ function SignUpComponent() {
         try {
           setError('')
           setLoading(true)
-          await signup(emailRef.current.value, passwordRef.current.value)
+          await signup(emailRef.current.value, passwordRef.current.value, fullnameRef.current.value)
 
           history.push("/profile")
 
@@ -101,6 +102,9 @@ function SignUpComponent() {
                   </Nav>
                   {error && <Alert color="danger">{error}</Alert>}
                   <Form onSubmit={handleSubmit} className="signup-form" >
+                  <FormGroup id="fullname" >
+                        <FormControl type="text" ref={fullnameRef} placeholder="Full Name" required />
+                    </FormGroup>
                     <FormGroup id="email" >
                         <FormControl type="email" ref={emailRef} placeholder="Email" required />
                     </FormGroup>

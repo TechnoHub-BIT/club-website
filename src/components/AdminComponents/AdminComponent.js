@@ -13,8 +13,14 @@ function AdminComponent() {
   const [payment, setPayment] = useState("");
 
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+
   const handleClose = () => setShow(false);
+  const handleCloseDelete = () => setShowDelete(false);
+
   const handleShow = () => setShow(true);
+  const handleShowDelete = () => setShowDelete(true);
+
 
   const [currentProfile, setCurrentProfile] = useState('');
   const {currentUser} = useAuth();
@@ -69,6 +75,8 @@ function AdminComponent() {
             <th scope="col">Member</th>
             <th scope="col">Payment</th>
             <th scop="col">Action</th>
+            <th scop="col">Delete</th>
+
           </tr>
         </thead>
         <tbody>
@@ -131,6 +139,50 @@ function AdminComponent() {
                     <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                   </Button>
                 </td>
+                <td data-label="Action" className="text-center">
+                <Modal
+                    show={showDelete}
+                    onHide={handleCloseDelete}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Delete Profile
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+Account will be deleted
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleCloseDelete}>
+                        Close
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          // console.log(profile);
+                          // db.collection("members")
+                          //   .doc(selectedProfile.uid)
+                          //   .delete() &&
+console.log(currentUser)
+console.log(selectedProfile.uid)
+                            // .then(function () {
+                            //   console.log("Payment successfully updated!");
+                            //   setShow(false);
+                            // });
+                        }}
+                      >
+                        Delete Account
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                  <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
+                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Delete
+                  </Button>
+                </td>
+
               </tr>
             );
           })}
