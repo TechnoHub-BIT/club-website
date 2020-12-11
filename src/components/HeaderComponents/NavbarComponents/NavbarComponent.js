@@ -53,12 +53,12 @@ class Header extends Component {
   render() {
     return (
       <React.Fragment>
-        <div class="header">
-          <div class="navbarTop">
-            <div class="hamburger">
-                <div class="line line1"></div>
-                <div class="line line2"></div>
-                <div class="line line3"></div>
+        <div className="header">
+          <div className="navbarTop">
+            <div className="hamburger">
+                <div className="line line1"></div>
+                <div className="line line2"></div>
+                <div className="line line3"></div>
             </div>
             <Link to="/">
               <img src="./assets/images/logowhite.png" className="mobileNavLogo" />

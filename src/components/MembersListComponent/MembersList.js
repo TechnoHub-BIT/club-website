@@ -47,7 +47,7 @@ const OurMembers = (props) => {
             <tbody>
               {
                 memberList?.map((data, i) => {
-                if(data.payment == true && data.fullname != null) {
+                if(data.payment == true && data.fullname != null && data.branch != null && data.semester != null) {
                   return (
                     <tr key={i}>
                       <td data-label="Full Name" className="memberFname">{data.fullname.toLowerCase()}</td>
