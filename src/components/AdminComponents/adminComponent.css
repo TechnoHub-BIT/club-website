@@ -18,9 +18,9 @@
 .membersList .singleMember {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr 1fr)[1];
-      grid-template-columns: repeat(1, 1fr 1fr);
-  grid-gap: 0.3em;
+  -ms-grid-columns: (40% 60%)[1];
+      grid-template-columns: repeat(1, 40% 60%);
+  grid-gap: 0.4em;
   padding: 20px;
 }
 
@@ -79,8 +79,12 @@
   background-color: #f2f2f2;
 }
 
+.membersList .singleMember:hover {
+  background-color: #ececec;
+}
+
 @media only screen and (max-width: 992px) {
-  .members-container {
+  .admin-container {
     margin: 0;
   }
   .membersList {

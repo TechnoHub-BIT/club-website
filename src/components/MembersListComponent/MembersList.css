@@ -14,9 +14,9 @@
 .membersList .singleMember {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr 1fr)[1];
-      grid-template-columns: repeat(1, 1fr 1fr);
-  grid-gap: 0.3em;
+  -ms-grid-columns: (40% 60%)[1];
+      grid-template-columns: repeat(1, 40% 60%);
+  grid-gap: 0.4em;
   padding: 20px;
 }
 
@@ -59,12 +59,12 @@
   margin-top: 0.5em;
 }
 
-.membersList .singleMember:nth-child(4n + 1) {
+.membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
   background-color: #f2f2f2;
 }
 
-.membersList .singleMember:nth-child(4n + 4) {
-  background-color: #f2f2f2;
+.membersList .singleMember:hover {
+  background-color: #ececec;
 }
 
 @media only screen and (max-width: 992px) {
@@ -75,10 +75,7 @@
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
-  .membersList .singleMember:nth-child(4n + 1) {
-    background-color: #fff;
-  }
-  .membersList .singleMember:nth-child(4n + 4) {
+  .membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
     background-color: #fff;
   }
   .membersList .singleMember:nth-child(even) {

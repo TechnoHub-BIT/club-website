@@ -12,8 +12,8 @@
 
   .singleMember {
     display: grid;
-    grid-template-columns: repeat(1, 1fr 1fr);
-    grid-gap: 0.3em;
+    grid-template-columns: repeat(1, 40% 60%);
+    grid-gap: 0.4em;
     padding: 20px;
 
     .leftSide {
@@ -78,11 +78,15 @@
     &:nth-child(4n + 4) {
       background-color: #f2f2f2;
     }
+
+    &:hover {
+      background-color: #ececec;
+    }
   }
 }
 
 @media only screen and (max-width: 992px) {
-  .members-container {
+  .admin-container {
     margin: 0;
   }
 

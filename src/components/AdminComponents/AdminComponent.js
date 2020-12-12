@@ -91,12 +91,12 @@ function AdminComponent() {
                   <div className="singleMember" key={i}>
                     
                     <Modal
-                        show={show}
-                        onHide={handleClose}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                      >
+                      show={show}
+                      onHide={handleClose}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
                         <Modal.Header closeButton>
                           <Modal.Title id="contained-modal-title-vcenter">
                             Updating Profile
@@ -187,15 +187,15 @@ function AdminComponent() {
                         </Modal.Footer>
                       </Modal>
                     <div className="leftSide">
-                      <div className="name">{profile.fullname}</div>
-                      <div className="branch">{profile.branch}</div>
-                      <div className="sem">{profile.semester}{suffix} Semester</div>
-                      <div className="member">{profile.member ? profile.member : "N/A"}</div>
+                      <div className="name">{profile.fullname !== null ? profile.fullname : "N/A"}</div>
+                      <div className="branch">{profile.branch !== null ? profile.branch : "Branch: N/A"}</div>
+                      <div className="sem">{profile.semester !== null ? profile.semester + suffix + " Semester" : "Semester: N/A"}</div>
+                      <div className="member">{profile.member !== null ? profile.member : "N/A"}</div>
                       <div className={classValue}>{profile.payment.toString()}</div>
                     </div>
                     <div className="rightSide">
-                      <div className="email"><span>Email-Id- </span>{profile.email}</div>
-                      <div className="contactno"><span>Contact No.- </span>{profile.contactNo}</div>
+                      <div className="email"><span>Email-Id- </span>{profile.email !== null ? profile.email : "N/A"}</div>
+                      <div className="contactno"><span>Contact No.- </span>{profile.contactNo !== null ? profile.contactNo : "N/A"}</div>
                       <div className="actionBtns">
                         <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
                           <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
@@ -211,62 +211,27 @@ function AdminComponent() {
           </div>
         {
           (currentProfile.id == 1) && <div>
-        <h3 className="h3-text">Profiles</h3>
-        <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
-          <thead className="thead-dark">
-            <tr className="text-center">
-              <th scope="col">Full Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Member</th>
-              <th scope="col">Payment</th>
-              <th scop="col">Action</th>
-              <th scop="col">Profile</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            {profiles?.map((profile, i) => {
-              return (
-                <tr key={i}>
-                  <td data-label="Full Name">{profile.fullname}</td>
-                  <td data-label="Email">{profile.email}</td>
-                  <td data-label="Branch">{profile.member}</td>
-                  <td data-label="Payment" className="text-center">
-                    {profile.payment.toString()}
-                  </td>
-                  <td data-label="Action" className="text-center">
-                    
-                  </td>
-                  <td data-label="Action" className="text-center">
-                    
-                  </td>
-
+            <h3 className="h3-text">Messages</h3>
+            <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
+              <thead className="thead-dark">
+                <tr className="text-center">
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Message</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <h3 className="h3-text">Messages</h3>
-        <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
-          <thead className="thead-dark">
-            <tr className="text-center">
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts?.map((contact, i) => {
-              return (
-                <tr key={i}>
-                  <td data-label="Name">{contact.name}</td>
-                  <td data-label="Email">{contact.email}</td>
-                  <td data-label="Message">{contact.message}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {contacts?.map((contact, i) => {
+                  return (
+                    <tr key={i}>
+                      <td data-label="Name">{contact.name}</td>
+                      <td data-label="Email">{contact.email}</td>
+                      <td data-label="Message">{contact.message}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         }
         
