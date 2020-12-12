@@ -25,7 +25,6 @@ const OurMembers = (props) => {
   return (
     <React.Fragment>    
       <div className="members-container">
-        
         <HeaderTitle heading="MEMBERS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
@@ -38,31 +37,31 @@ const OurMembers = (props) => {
               memberList?.map((data, i) => {
               if(data.payment == true && data.fullname != null && data.branch != null && data.semester != null) {
 
-              //Setting the Suffix for Semester
-                let suffix = "th";
+                //Setting the Suffix for Semester
+                  let suffix = "th";
 
-                if (data.semester == 1)
-                    suffix = "st";
-                else if (data.semester == 2)
-                    suffix = "nd";
-                else if (data.semester == 3)
-                    suffix = "rd";
+                  if (data.semester == 1)
+                      suffix = "st";
+                  else if (data.semester == 2)
+                      suffix = "nd";
+                  else if (data.semester == 3)
+                      suffix = "rd";
 
-                return (
-                  <div className="singleMember" key={i}>
-                    <div className="leftSide">
-                      <div className="name">{data.fullname.toLowerCase()}</div>
-                      <div className="branch">{data.branch}</div>
-                      <div className="sem">{data.semester}{suffix} Semester</div>
-                      <div className="member">{data.member}</div>
+                  return (
+                    <div className="singleMember" key={i}>
+                      <div className="leftSide">
+                        <div className="name">{data.fullname.toLowerCase()}</div>
+                        <div className="branch">{data.branch}</div>
+                        <div className="sem">{data.semester}{suffix} Semester</div>
+                        <div className="member">{data.member}</div>
+                      </div>
+                      <div className="rightSide">
+                        <div className="skills"><span>Skill(s)- </span>{data.skills}</div>
+                        <div className="interests"><span>Interest(s)- </span>{data.interest}</div>
+                        <div className="workshops"><span>Workshop(s) Attended- </span>{data.workshops}</div>
+                      </div>
                     </div>
-                    <div className="rightSide">
-                      <div className="skills"><span>Skills- </span>{data.skills}</div>
-                      <div className="interests"><span>Interest(s)- </span>{data.interest}</div>
-                      <div className="workshops"><span>Workshop(s) Attended- </span>{data.workshops}</div>
-                    </div>
-                  </div>
-                );
+                  );
               }
             })}
           </div>

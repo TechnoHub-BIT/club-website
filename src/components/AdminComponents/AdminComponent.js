@@ -4,6 +4,8 @@ import { db } from "../../firebase";
 import "./adminComponent.css";
 import { Button, Modal } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 
 function AdminComponent() {
 
@@ -60,172 +62,216 @@ function AdminComponent() {
 
  
   return (
+    <div className="admin-container">
+      <HeaderTitle heading="ADMIN PANEL" />
+      <Breadcrumb>
+          <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+          <BreadcrumbItem icon="fas fa-tachometer-alt" title="Admin Panel" status="active" />
+      </Breadcrumb>
 
-    
-    <div className="container-fluid">
-      {/* <Container> */}
-      {
-        (currentProfile.id == 1) && <div>
-      <h3 className="h3-text">Profiles</h3>
-      <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
-        <thead className="thead-dark">
-          <tr className="text-center">
-            <th scope="col">Full Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Member</th>
-            <th scope="col">Payment</th>
-            <th scop="col">Action</th>
-            <th scop="col">Profile</th>
+        <div className="container-fluid">
+          <div className="membersList">
+            {
+              profiles?.map((profile, i) => {
+              //Setting the Suffix for Semester
+                let suffix = "th";
 
-          </tr>
-        </thead>
-        <tbody>
-          {profiles?.map((profile, i) => {
-            return (
-              <tr key={i}>
-                <td data-label="Full Name">{profile.fullname}</td>
-                <td data-label="Email">{profile.email}</td>
-                <td data-label="Branch">{profile.member}</td>
-                <td data-label="Payment" className="text-center">
-                  {profile.payment.toString()}
-                </td>
-                <td data-label="Action" className="text-center">
-                <Modal
-                    show={show}
-                    onHide={handleClose}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                  >
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">
-                        Updating Profile
-                      </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      Payment :
-                      <input
-                        placeholder={profile.payment ? "true" : "false"}
-                        value={payment}
-                        onChange={(event) => setPayment(event.target.value)}
-                        
-                      />
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          console.log(profile);
-                          db.collection("members")
-                            .doc(selectedProfile.uid)
-                            .update({
-                              payment: payment==='true',
-                              registrationApply: false
-                            })
-                            .then(function () {
-                              console.log("Payment successfully updated!");
-                              setShow(false);
-                            });
-                        }}
+                if (profile.semester == 1)
+                    suffix = "st";
+                else if (profile.semester == 2)
+                    suffix = "nd";
+                else if (profile.semester == 3)
+                    suffix = "rd";
+                
+                let classValue = "payment green";
+
+                profile.payment ? classValue = "payment green" : classValue = "payment red";
+
+                return (
+                  <div className="singleMember" key={i}>
+                    
+                    <Modal
+                        show={show}
+                        onHide={handleClose}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
                       >
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                  <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
-                    <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
-                  </Button>
-                </td>
-                <td data-label="Action" className="text-center">
-                  <Modal
-                    show={showDelete}
-                    onHide={handleCloseDelete}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                  >
-                    <Modal.Header closeButton>
-                      <Modal.Title id="contained-modal-title-vcenter">
-                        Full Profile
-                      </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <div style={{whiteSpace: 'pre-wrap'}}>
-
-                        <strong>Full Name:</strong> {selectedProfile?.fullname},&nbsp;&nbsp;
-                        <strong>Email:</strong> {selectedProfile?.email},<br />
-                        <strong>Branch:</strong> {selectedProfile?.branch},&nbsp;&nbsp;
-                        <strong>Semester:</strong> {selectedProfile?.semester},<br />
-                        <strong>Member:</strong> {selectedProfile?.member},&nbsp;&nbsp;
-                        <strong>Skills:</strong> {selectedProfile?.skills},<br />
-                        <strong>Contact No.:</strong> {selectedProfile?.contactNo},&nbsp;&nbsp;
-                        <strong>Projects:</strong> {selectedProfile?.projects},<br />
-                        <strong>Experience:</strong> {selectedProfile?.experience},&nbsp;&nbsp;
-                        <strong>Workshops:</strong> {selectedProfile?.workshops},<br />
-                        <strong>Interest:</strong> {selectedProfile?.interest}
-
-                      </div >
-
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleCloseDelete}>
-                        Close
-                      </Button>
-                      {/* <Button
-                        variant="primary"
-                        onClick={() => {
-                          // console.log(profile);
-                          // db.collection("members")
-                          //   .doc(selectedProfile.uid)
-                          //   .delete() &&
-                            // .then(function () {
-                            //   console.log("Payment successfully updated!");
-                            //   setShow(false);
-                            // });
-                        }}
+                        <Modal.Header closeButton>
+                          <Modal.Title id="contained-modal-title-vcenter">
+                            Updating Profile
+                          </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          Payment :
+                          <input
+                            placeholder={profile.payment ? "true" : "false"}
+                            value={payment}
+                            onChange={(event) => setPayment(event.target.value)}
+                            
+                          />
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                          <Button
+                            variant="primary"
+                            onClick={() => {
+                              console.log(profile);
+                              db.collection("members")
+                                .doc(selectedProfile.uid)
+                                .update({
+                                  payment: payment==='true',
+                                  registrationApply: false
+                                })
+                                .then(function () {
+                                  console.log("Payment successfully updated!");
+                                  setShow(false);
+                                });
+                            }}
+                          >
+                            Save Changes
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                      <Modal
+                        show={showDelete}
+                        onHide={handleCloseDelete}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
                       >
-                        Delete Account
-                      </Button> */}
-                    </Modal.Footer>
-                  </Modal>
-                  <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
-                    <i className="fas fa-user"></i>&nbsp;&nbsp;Profile
-                  </Button>
-                </td>
+                        <Modal.Header closeButton>
+                          <Modal.Title id="contained-modal-title-vcenter">
+                            Full Profile
+                          </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <div style={{whiteSpace: 'pre-wrap'}}>
 
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <h3 className="h3-text">Messages</h3>
-      <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
-        <thead className="thead-dark">
-          <tr className="text-center">
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts?.map((contact, i) => {
-            return (
-              <tr key={i}>
-                <td data-label="Name">{contact.name}</td>
-                <td data-label="Email">{contact.email}</td>
-                <td data-label="Message">{contact.message}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-        </div>
-      }
-      
-      {/* </Container>  */}
+                            <strong>Full Name:</strong> {selectedProfile?.fullname},&nbsp;&nbsp;
+                            <strong>Email:</strong> {selectedProfile?.email},<br />
+                            <strong>Branch:</strong> {selectedProfile?.branch},&nbsp;&nbsp;
+                            <strong>Semester:</strong> {selectedProfile?.semester},<br />
+                            <strong>Member:</strong> {selectedProfile?.member},&nbsp;&nbsp;
+                            <strong>Skills:</strong> {selectedProfile?.skills},<br />
+                            <strong>Contact No.:</strong> {selectedProfile?.contactNo},&nbsp;&nbsp;
+                            <strong>Projects:</strong> {selectedProfile?.projects},<br />
+                            <strong>Experience:</strong> {selectedProfile?.experience},&nbsp;&nbsp;
+                            <strong>Workshops:</strong> {selectedProfile?.workshops},<br />
+                            <strong>Interest:</strong> {selectedProfile?.interest}
+
+                          </div >
+
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleCloseDelete}>
+                            Close
+                          </Button>
+                          {/* <Button
+                            variant="primary"
+                            onClick={() => {
+                              // console.log(profile);
+                              // db.collection("members")
+                              //   .doc(selectedProfile.uid)
+                              //   .delete() &&
+                                // .then(function () {
+                                //   console.log("Payment successfully updated!");
+                                //   setShow(false);
+                                // });
+                            }}
+                          >
+                            Delete Account
+                          </Button> */}
+                        </Modal.Footer>
+                      </Modal>
+                    <div className="leftSide">
+                      <div className="name">{profile.fullname}</div>
+                      <div className="branch">{profile.branch}</div>
+                      <div className="sem">{profile.semester}{suffix} Semester</div>
+                      <div className="member">{profile.member ? profile.member : "N/A"}</div>
+                      <div className={classValue}>{profile.payment.toString()}</div>
+                    </div>
+                    <div className="rightSide">
+                      <div className="email"><span>Email-Id- </span>{profile.email}</div>
+                      <div className="contactno"><span>Contact No.- </span>{profile.contactNo}</div>
+                      <div className="actionBtns">
+                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
+                          <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
+                        </Button>
+                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
+                          <i className="fas fa-user"></i>&nbsp;&nbsp;Full Profile
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                );
+            })}
+          </div>
+        {
+          (currentProfile.id == 1) && <div>
+        <h3 className="h3-text">Profiles</h3>
+        <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
+          <thead className="thead-dark">
+            <tr className="text-center">
+              <th scope="col">Full Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Member</th>
+              <th scope="col">Payment</th>
+              <th scop="col">Action</th>
+              <th scop="col">Profile</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {profiles?.map((profile, i) => {
+              return (
+                <tr key={i}>
+                  <td data-label="Full Name">{profile.fullname}</td>
+                  <td data-label="Email">{profile.email}</td>
+                  <td data-label="Branch">{profile.member}</td>
+                  <td data-label="Payment" className="text-center">
+                    {profile.payment.toString()}
+                  </td>
+                  <td data-label="Action" className="text-center">
+                    
+                  </td>
+                  <td data-label="Action" className="text-center">
+                    
+                  </td>
+
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <h3 className="h3-text">Messages</h3>
+        <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
+          <thead className="thead-dark">
+            <tr className="text-center">
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts?.map((contact, i) => {
+              return (
+                <tr key={i}>
+                  <td data-label="Name">{contact.name}</td>
+                  <td data-label="Email">{contact.email}</td>
+                  <td data-label="Message">{contact.message}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+          </div>
+        }
+        
+        {/* </Container>  */}
+      </div>
     </div>
   );
 }

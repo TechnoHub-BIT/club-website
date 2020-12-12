@@ -1,3 +1,97 @@
 .h3-text {
   text-align: center;
 }
+
+.admin-container {
+  position: relative;
+  margin: 20px;
+  min-height: 70vh;
+}
+
+.membersList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr 1fr)[1];
+      grid-template-columns: repeat(1, 1fr 1fr);
+}
+
+.membersList .singleMember {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr 1fr)[1];
+      grid-template-columns: repeat(1, 1fr 1fr);
+  grid-gap: 0.3em;
+  padding: 20px;
+}
+
+.membersList .singleMember .leftSide .name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.membersList .singleMember .leftSide .branch,
+.membersList .singleMember .leftSide .sem {
+  color: #616161;
+  font-size: 0.85em;
+}
+
+.membersList .singleMember .leftSide .member,
+.membersList .singleMember .leftSide .payment {
+  padding: 3px 12px;
+  font-size: 0.8em;
+  background-color: teal;
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
+  width: 150px;
+  margin-top: 0.4em;
+}
+
+.membersList .singleMember .leftSide .payment.green {
+  background-color: #3cb371;
+}
+
+.membersList .singleMember .leftSide .payment.red {
+  background-color: #f23d5d;
+}
+
+.membersList .singleMember .rightSide .email,
+.membersList .singleMember .rightSide .contactno {
+  font-size: 0.85em;
+}
+
+.membersList .singleMember .rightSide .email span,
+.membersList .singleMember .rightSide .contactno span {
+  font-weight: bold;
+}
+
+.membersList .singleMember .rightSide .interests,
+.membersList .singleMember .rightSide .workshops {
+  margin-top: 0.5em;
+}
+
+.membersList .singleMember .rightSide .actionBtns button {
+  padding: 3px 12px;
+  font-size: 0.8em;
+}
+
+.membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
+  background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 992px) {
+  .members-container {
+    margin: 0;
+  }
+  .membersList {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
+    background-color: #fff;
+  }
+  .membersList .singleMember:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+/*# sourceMappingURL=adminComponent.css.map */
