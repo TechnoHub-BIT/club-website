@@ -137,19 +137,19 @@ function AdminComponent() {
                         <div className="popupBody">
                           <div className="profileDetails">
                             <div>
-                              <div><strong>Full Name:</strong> {selectedProfile?.fullname !== null ? selectedProfile.fullname : "N/A" }</div>
-                              <div><strong>Email:</strong> {selectedProfile?.email !== null ? selectedProfile.email : "N/A" }</div>
-                              <div><strong>Branch:</strong> {selectedProfile?.branch !== null ? selectedProfile.branch : "N/A" }</div>
-                              <div><strong>Semester:</strong> {selectedProfile?.semester !== null ? selectedProfile.semester : "N/A" }</div>
-                              <div><strong>Member:</strong> {selectedProfile?.member !== null ? selectedProfile.member : "N/A" }</div>
-                              <div><strong>Skills:</strong> {selectedProfile?.skills !== null ? selectedProfile.skills : "N/A" }</div>
+                              <div><strong>Full Name:</strong> {selectedProfile?.fullname}</div>
+                              <div><strong>Email:</strong> {selectedProfile?.email}</div>
+                              <div><strong>Branch:</strong> {selectedProfile?.branch}</div>
+                              <div><strong>Semester:</strong> {selectedProfile?.semester}</div>
+                              <div><strong>Member:</strong> {selectedProfile?.member}</div>
+                              <div><strong>Skills:</strong> {selectedProfile?.skills}</div>
                             </div>
                             <div>
-                              <div><strong>Contact No.:</strong> {selectedProfile?.contactNo !== null ? selectedProfile.contactNo : "N/A" }</div>
-                              <div><strong>Projects:</strong> {selectedProfile?.projects !== null ? selectedProfile.projects : "N/A" }</div>
-                              <div><strong>Experience:</strong> {selectedProfile?.experience !== null ? selectedProfile.experience : "N/A" }</div>
-                              <div><strong>Workshops:</strong> {selectedProfile?.workshops !== null ? selectedProfile.workshops : "N/A" }</div>
-                              <div><strong>Interest:</strong> {selectedProfile?.interest !== null ? selectedProfile.interest : "N/A" }</div>
+                              <div><strong>Contact No.:</strong> {selectedProfile?.contactNo}</div>
+                              <div><strong>Projects:</strong> {selectedProfile?.projects}</div>
+                              <div><strong>Experience:</strong> {selectedProfile?.experience}</div>
+                              <div><strong>Workshops:</strong> {selectedProfile?.workshops}</div>
+                              <div><strong>Interest:</strong> {selectedProfile?.interest}</div>
                             </div>
                           </div>
                           {/* <Button
