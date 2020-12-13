@@ -17,6 +17,21 @@
   grid-column-gap: 1em;
 }
 
+.input-group.w75p {
+  width: 90%;
+  margin: 1em auto;
+}
+
+.input-group.w50p {
+  width: 50%;
+  margin: 1em auto;
+}
+
+.input-group.w25p {
+  width: 90%;
+  margin: 1em auto;
+}
+
 .input-group input {
   background-color: inherit;
   color: #000;
@@ -82,4 +97,15 @@
   outline: none;
   padding-bottom: 14px;
   padding-left: 10px;
+}
+
+.input-group button {
+  padding: 5px 45px;
+  background-color: #191d34;
+  border: 1px solid #191d34;
+  border-radius: 4px;
+  color: #fff;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
 }

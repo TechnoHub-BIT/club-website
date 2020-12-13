@@ -98,4 +98,91 @@
     background-color: #f2f2f2;
   }
 }
+
+/* Popup Menus */
+.popupMenus {
+  position: fixed;
+  pointer-events: none;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999999;
+  opacity: 0;
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+}
+
+.popupMenus > div {
+  position: relative;
+  display: none;
+  margin: 50% 5vw 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: #fff;
+  padding: 0 0 15px;
+  border-radius: 10px;
+}
+
+.popupMenus > div .closePopup {
+  position: absolute;
+  color: #fff;
+  background-color: #191d34;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 15px;
+  top: -15px;
+  right: -15px;
+  border: 3px solid #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.popupMenus > div .closePopup i {
+  -webkit-transform: translate(-50%, -75%);
+          transform: translate(-50%, -75%);
+}
+
+.popupMenus > div .popupHeading {
+  background-color: #191d34;
+  font-size: 1.3em;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.popupMenus > div .popupBody {
+  margin: 0 15px;
+  padding: 15px 0 0;
+}
+
+.popupMenus > div .popupBody .profileDetails {
+  font-size: 0.9em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr 1fr)[1];
+      grid-template-columns: repeat(1, 1fr 1fr);
+}
+
+.popupMenus.popupVisible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* End Popup Menus */
+/* Responsive mode for Desktop */
+@media only screen and (min-width: 992px) {
+  .popupMenus > div {
+    margin: 20vh 33vw;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+/* End responsive mode */
 /*# sourceMappingURL=adminComponent.css.map */

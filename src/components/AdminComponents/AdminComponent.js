@@ -6,6 +6,8 @@ import { Button, Modal } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
+import showPopup from "./modal";
+import "../input.css";
 
 function AdminComponent() {
 
@@ -89,86 +91,67 @@ function AdminComponent() {
 
                 return (
                   <div className="singleMember" key={i}>
-                    
-                    <Modal
-                      show={show}
-                      onHide={handleClose}
-                      size="lg"
-                      aria-labelledby="contained-modal-title-vcenter"
-                      centered
-                    >
-                        <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title-vcenter">
-                            Updating Profile
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          Payment :
-                          <input
-                            placeholder={profile.payment ? "true" : "false"}
-                            value={payment}
-                            onChange={(event) => setPayment(event.target.value)}
-                            
-                          />
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={handleClose}>
-                            Close
-                          </Button>
-                          <Button
-                            variant="primary"
-                            onClick={() => {
-                              console.log(profile);
-                              db.collection("members")
-                                .doc(selectedProfile.uid)
-                                .update({
-                                  payment: payment==='true',
-                                  registrationApply: false
-                                })
-                                .then(function () {
-                                  console.log("Payment successfully updated!");
-                                  setShow(false);
-                                });
-                            }}
-                          >
-                            Save Changes
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
-                      <Modal
-                        show={showDelete}
-                        onHide={handleCloseDelete}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                      >
-                        <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title-vcenter">
-                            Full Profile
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <div style={{whiteSpace: 'pre-wrap'}}>
-
-                            <strong>Full Name:</strong> {selectedProfile?.fullname},&nbsp;&nbsp;
-                            <strong>Email:</strong> {selectedProfile?.email},<br />
-                            <strong>Branch:</strong> {selectedProfile?.branch},&nbsp;&nbsp;
-                            <strong>Semester:</strong> {selectedProfile?.semester},<br />
-                            <strong>Member:</strong> {selectedProfile?.member},&nbsp;&nbsp;
-                            <strong>Skills:</strong> {selectedProfile?.skills},<br />
-                            <strong>Contact No.:</strong> {selectedProfile?.contactNo},&nbsp;&nbsp;
-                            <strong>Projects:</strong> {selectedProfile?.projects},<br />
-                            <strong>Experience:</strong> {selectedProfile?.experience},&nbsp;&nbsp;
-                            <strong>Workshops:</strong> {selectedProfile?.workshops},<br />
-                            <strong>Interest:</strong> {selectedProfile?.interest}
-
-                          </div >
-
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={handleCloseDelete}>
-                            Close
-                          </Button>
+                    <main className="popupMenus">
+                      <div className="editPopup">
+                        <div className="closePopup">
+                          <i className="fa fa-times"></i>
+                        </div>
+                        <div className="popupHeading">Edit Payment Status</div>
+                        <div className="popupBody">
+                          <div className="input-group">
+                            <input
+                              placeholder={profile.payment ? "true" : "false"}
+                              value={payment}
+                              onChange={(event) => setPayment(event.target.value)}
+                            />
+                            <label for="name">{profile.payment ? "true" : "false"}</label>
+                          </div>
+                          <div className="input-group w50p">
+                            <button
+                              type="button"
+                              className="closePopupAlternate"
+                              onClick={() => {
+                                console.log(profile);
+                                db.collection("members")
+                                  .doc(selectedProfile.uid)
+                                  .update({
+                                    payment: payment==='true',
+                                    registrationApply: false
+                                  })
+                                  .then(function () {
+                                    console.log("Payment successfully updated!");
+                                    setShow(false);
+                                  });
+                              }}
+                            >
+                              Save Changes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="profilePopup">
+                        <div className="closePopup">
+                          <i className="fa fa-times"></i>
+                        </div>
+                        <div className="popupHeading">Full Profile</div>
+                        <div className="popupBody">
+                          <div className="profileDetails">
+                            <div>
+                              <div><strong>Full Name:</strong> {selectedProfile?.fullname !== null ? selectedProfile.fullname : "N/A" }</div>
+                              <div><strong>Email:</strong> {selectedProfile?.email !== null ? selectedProfile.email : "N/A" }</div>
+                              <div><strong>Branch:</strong> {selectedProfile?.branch !== null ? selectedProfile.branch : "N/A" }</div>
+                              <div><strong>Semester:</strong> {selectedProfile?.semester !== null ? selectedProfile.semester : "N/A" }</div>
+                              <div><strong>Member:</strong> {selectedProfile?.member !== null ? selectedProfile.member : "N/A" }</div>
+                              <div><strong>Skills:</strong> {selectedProfile?.skills !== null ? selectedProfile.skills : "N/A" }</div>
+                            </div>
+                            <div>
+                              <div><strong>Contact No.:</strong> {selectedProfile?.contactNo !== null ? selectedProfile.contactNo : "N/A" }</div>
+                              <div><strong>Projects:</strong> {selectedProfile?.projects !== null ? selectedProfile.projects : "N/A" }</div>
+                              <div><strong>Experience:</strong> {selectedProfile?.experience !== null ? selectedProfile.experience : "N/A" }</div>
+                              <div><strong>Workshops:</strong> {selectedProfile?.workshops !== null ? selectedProfile.workshops : "N/A" }</div>
+                              <div><strong>Interest:</strong> {selectedProfile?.interest !== null ? selectedProfile.interest : "N/A" }</div>
+                            </div>
+                          </div>
                           {/* <Button
                             variant="primary"
                             onClick={() => {
@@ -184,8 +167,9 @@ function AdminComponent() {
                           >
                             Delete Account
                           </Button> */}
-                        </Modal.Footer>
-                      </Modal>
+                        </div>
+                      </div>
+                    </main>
                     <div className="leftSide">
                       <div className="name">{profile.fullname !== null ? profile.fullname : "N/A"}</div>
                       <div className="branch">{profile.branch !== null ? profile.branch : "Branch: N/A"}</div>
@@ -197,10 +181,10 @@ function AdminComponent() {
                       <div className="email"><span>Email-Id- </span>{profile.email !== null ? profile.email : "N/A"}</div>
                       <div className="contactno"><span>Contact No.- </span>{profile.contactNo !== null ? profile.contactNo : "N/A"}</div>
                       <div className="actionBtns">
-                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShow()}} style={{whiteSpace: "nowrap"}}>
+                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; showPopup(i, 'editPopup')}} style={{whiteSpace: "nowrap"}}>
                           <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                         </Button>
-                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; handleShowDelete()}} style={{whiteSpace: "nowrap"}}>
+                        <Button variant="primary" onClick={() => {setSelectedProfile(profile) ; showPopup(i, 'profilePopup')}} style={{whiteSpace: "nowrap"}}>
                           <i className="fas fa-user"></i>&nbsp;&nbsp;Full Profile
                         </Button>
                       </div>
