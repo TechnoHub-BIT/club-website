@@ -83,22 +83,6 @@
   background-color: #ececec;
 }
 
-@media only screen and (max-width: 992px) {
-  .admin-container {
-    margin: 0;
-  }
-  .membersList {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-  }
-  .membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
-    background-color: #fff;
-  }
-  .membersList .singleMember:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-}
-
 /* Popup Menus */
 .popupMenus {
   position: fixed;
@@ -117,7 +101,7 @@
 .popupMenus > div {
   position: relative;
   display: none;
-  margin: 50% 5vw 0;
+  margin: 40vh 5vw;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   background-color: #fff;
@@ -186,4 +170,24 @@
 }
 
 /* End responsive mode */
+@media only screen and (max-width: 992px) {
+  .admin-container {
+    margin: 0;
+  }
+  .membersList {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .membersList .singleMember:nth-child(4n + 1), .membersList .singleMember:nth-child(4n + 4) {
+    background-color: #fff;
+  }
+  .membersList .singleMember:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .popupMenus > div .popupBody .profileDetails {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0;
+  }
+}
 /*# sourceMappingURL=adminComponent.css.map */

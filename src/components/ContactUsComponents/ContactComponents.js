@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import ContactUs from './ContactUsComponents';
 import './ContactUsStyles.css'
 import MapIframe from './MapIFrame';
@@ -18,8 +18,8 @@ class Contact extends Component {
             <div className="contactus-container">
                 <HeaderTitle heading="CONTACT US" />
                 <Breadcrumb>
-                    <BreadcrumbItem title="Home" path="/" />
-                    <BreadcrumbItem title="Contact Us" status="active" />
+                    <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                    <BreadcrumbItem icon="fas fa-phone-alt" title="Contact Us" status="active" />
                 </Breadcrumb>
                 <div className="container" >
                     <div className="row">

@@ -85,27 +85,6 @@
   }
 }
 
-@media only screen and (max-width: 992px) {
-  .admin-container {
-    margin: 0;
-  }
-
-  .membersList {
-    grid-template-columns: repeat(1, 1fr);
-
-    .singleMember {
-      &:nth-child(4n + 1),
-      &:nth-child(4n + 4) {
-        background-color: #fff;
-      }
-
-      &:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-    }
-  }
-}
-
 /* Popup Menus */
 .popupMenus {
   position: fixed;
@@ -122,7 +101,7 @@
   & > div {
     position: relative;
     display: none;
-    margin: 50% 5vw 0;
+    margin: 40vh 5vw;
     transform: translateY(-50%);
     background-color: #fff;
     padding: 0 0 15px;
@@ -188,3 +167,35 @@
   }
 }
 /* End responsive mode */
+
+@media only screen and (max-width: 992px) {
+  .admin-container {
+    margin: 0;
+  }
+
+  .membersList {
+    grid-template-columns: repeat(1, 1fr);
+
+    .singleMember {
+      &:nth-child(4n + 1),
+      &:nth-child(4n + 4) {
+        background-color: #fff;
+      }
+
+      &:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+
+  .popupMenus {
+    & > div {
+      .popupBody {
+        .profileDetails {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 0;
+        }
+      }
+    }
+  }
+}

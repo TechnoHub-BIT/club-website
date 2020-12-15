@@ -17,13 +17,6 @@ function AdminComponent() {
   const [payment, setPayment] = useState("");
 
   const [show, setShow] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleCloseDelete = () => setShowDelete(false);
-
-  const handleShow = () => setShow(true);
-  const handleShowDelete = () => setShowDelete(true);
 
 
   const [currentProfile, setCurrentProfile] = useState('');
