@@ -44,7 +44,7 @@ const addBlog = () => {
                         <label for="author">Blog Author</label>
                     </div>
                     <div className="input-group">
-                        <input type="file" name="image" id="image" placeholder="Blog Image" required />
+                        <input type="url" name="image" id="image" placeholder="Blog Image" required />
                         <label for="image">Blog Image</label>
                     </div>
                     <div className="summernote">

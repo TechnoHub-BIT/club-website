@@ -23,6 +23,7 @@ import Projects from "./ProjectsComponent/ProjectsComponent";
 import Admin from "./AdminComponents/AdminComponent";
 import ScrollToTop from './ScrollToTop';
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
+import Blog from "./BlogComponent/BlogComponent";
 
 class Main extends Component {
   render() {
@@ -53,6 +54,7 @@ class Main extends Component {
               <Route exact path="/gallery" component={Gallery} />
               <Route exact path="/projects" component={Projects} />
               <PrivateRoute exact path ="/addBlog" component={AddBlog} />
+              <Route exact path="/blog" component={Blog} />
 
               <Footer />
               {/* </Switch> */}

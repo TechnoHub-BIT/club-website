@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat&family=Caveat:wght@500&display=swap");
+
+.blogContainer {
+  margin: 20px;
+}
+.blogContents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .blogTitle {
+    text-align: center;
+    font-size: 1.9em;
+  }
+
+  .blogAuthor {
+    font-family: "Caveat", cursive;
+    font-size: 1.55em;
+  }
+
+  .blogImage {
+    margin-top: 2em;
+    width: 100%;
+  }
+
+  .blogDetails {
+    margin-top: 4em;
+    font-family: "Montserrat", sans-serif;
+    text-align: justify;
+    font-size: 0.9em;
+  }
+
+  .shareButtons {
+    margin-top: 1em;
+    align-self: start;
+
+    button {
+      outline: none;
+
+      &:not(:first-child) {
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .blogContents {
+    .blogImage {
+      width: 70%;
+    }
+
+    .blogDetails {
+      padding: 0 15%;
+    }
+
+    .shareButtons {
+      margin: 1em 0 0 15%;
+    }
+  }
+}
