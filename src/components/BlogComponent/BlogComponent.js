@@ -55,8 +55,8 @@ class BlogComponent extends React.Component {
                                         <div className="blogAuthor">  {Blogs.blogauthor}</div>
                                         {/* <img src="./assets/images/blog/difference-between-ux-ui.png" className="blogImage" /> */}
                                         {Blogs.blogimageurl}
-                                        <div className="blogDetails">
-                                            <p>{Blogs.content}
+                                        <div >
+                                            <p>{Blogs.blogcontent}
 
                                             </p>
                                          </div>
