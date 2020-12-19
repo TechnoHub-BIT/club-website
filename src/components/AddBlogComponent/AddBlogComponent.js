@@ -59,9 +59,8 @@ const addBlog = () => {
                                     ['font', ['bold', 'underline', 'clear']],
                                     ['fontname', ['fontname']],
                                     ['para', ['ul', 'ol', 'paragraph']],
-                                    ['table', ['table']],
-                                    ['insert', ['link', 'picture', 'video']],
-                                    ['view', ['fullscreen', 'codeview']]
+                                    ['insert', ['link']],
+                                    ['view', ['codeview']]
                                 ]
                             }}
                             onChange={onChange}

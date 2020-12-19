@@ -16,13 +16,35 @@ import {
 const blog = () => {
     let shareUrl = "https://technohubbit.in";
 
+    const shareIcons = 
+                    <div className="shareButtons">
+                        <h6>Share on:</h6>
+                        <FacebookShareButton url={shareUrl} quote="Check out this amazing Blog from Aaryan Khandelwal">
+                            <FacebookIcon size="32" round={true} />
+                        </FacebookShareButton>
+                        <TwitterShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
+                            <TwitterIcon size="32" round={true} />
+                        </TwitterShareButton>
+                        <WhatsappShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
+                            <WhatsappIcon size="32" round={true} />
+                        </WhatsappShareButton>
+                        <TelegramShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
+                            <TelegramIcon size="32" round={true} />
+                        </TelegramShareButton>
+                        <LinkedinShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
+                            <LinkedinIcon size="32" round={true} />
+                        </LinkedinShareButton>
+                    </div>
+                ;
+
     return(
         <React.Fragment>
             <div className="blogContainer">
                 <div className="blogContents">
                     <div className="blogTitle">Difference Between UI & UX</div>
                     <div className="blogAuthor">by Dhiman Das Gupta</div>
-                    <img src="./assets/images/blog/difference-between-ux-ui.png" className="blogImage" />
+                    <img src="https://drive.google.com/uc?export=view&id=1bavYua5niv8n8DrfWWspwxuNrgdScipG" className="blogImage" />
+                    { shareIcons }
                     <div className="blogDetails">
                         <p>
                             UX and UI: Two terms that are often used interchangeably, but in reality, have very different meanings. So, what exactly is the difference? 
@@ -91,24 +113,7 @@ const blog = () => {
                             3.	UX can apply to any kind of product, service, or experience; UI is specific to digital products and experiences.
                         </p>
                     </div>
-                    <div className="shareButtons">
-                        <h6>Share on:</h6>
-                        <FacebookShareButton url={shareUrl} quote="Check out this amazing Blog from Aaryan Khandelwal">
-                            <FacebookIcon size="32" round={true} />
-                        </FacebookShareButton>
-                        <TwitterShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
-                            <TwitterIcon size="32" round={true} />
-                        </TwitterShareButton>
-                        <WhatsappShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
-                            <WhatsappIcon size="32" round={true} />
-                        </WhatsappShareButton>
-                        <TelegramShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
-                            <TelegramIcon size="32" round={true} />
-                        </TelegramShareButton>
-                        <LinkedinShareButton url={shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
-                            <LinkedinIcon size="32" round={true} />
-                        </LinkedinShareButton>
-                    </div>
+                    { shareIcons }
                 </div>
             </div>
         </React.Fragment>

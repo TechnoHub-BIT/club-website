@@ -2,7 +2,7 @@
 const showPopup = (index, popupName) => {
   const popupMenus = document.querySelectorAll(".popupMenus")[index];
   const closePopups = document.querySelectorAll(".closePopup");
-  const closePopupAlternates = document.querySelectorAll(".closePopupAlternate")
+  const closePopupAlternates = document.querySelectorAll(".closePopupAlternate");
   const popupToShow = popupMenus.querySelector("." + popupName);
 
   popupMenus.classList.toggle("popupVisible");
