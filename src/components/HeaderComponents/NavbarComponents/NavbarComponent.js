@@ -3,34 +3,33 @@ import "./HeaderComponent.css";
 import HeaderButtons from "../HeaderButtons";
 import "./NavbarComponent.css";
 import { Link } from "react-router-dom";
-import showNavbar from "../../common";
 
 class Header extends Component {
   constructor(props) {
     super();
-
-    this.state = {
-      isNavOpen: false,
-      isModalOpen: false,
-      isLoggedIn: false,
-      isAdmin: false,
-    };
-
-    this.toggleNav = this.toggleNav.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  toggleNav() {
-    this.setState({
-      isNavOpen: !this.state.isNavOpen,
-    });
+  state = {
+    navListClasses: "navList",
+    navOpen: false,
   }
 
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
+  toggleNav = () => {
+    const toggleChange = !this.state.navOpen;
+    this.state.navOpen = toggleChange;
+
+    if(toggleChange) {
+      this.setState({
+        navListClasses: "navList open",
+        navOpen: true,
+      });
+    } else {
+      this.setState({
+        navListClasses: "navList",
+        navOpen: false,
+      });
+    }
   }
   
   handleLogin(event) {
@@ -46,16 +45,12 @@ class Header extends Component {
     event.preventDefault();
   }
 
-  componentDidMount() {
-    showNavbar();
-  }
-
   render() {
     return (
       <React.Fragment>
         <div className="header">
           <div className="navbarTop">
-            <div className="hamburger">
+            <div className="hamburger" onClick={(e) => this.toggleNav(e)}>
                 <div className="line line1"></div>
                 <div className="line line2"></div>
                 <div className="line line3"></div>
@@ -63,7 +58,7 @@ class Header extends Component {
             <Link to="/">
               <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
             </Link>
-            <ul className="navList">
+            <ul className={ this.state.navListClasses } onClick={(e) => this.toggleNav(e)}>
               <Link to="/">
                 <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
               </Link>

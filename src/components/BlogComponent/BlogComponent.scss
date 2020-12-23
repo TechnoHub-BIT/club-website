@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat&family=Caveat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .blogContainer {
   margin: 20px;
@@ -8,19 +8,44 @@
   flex-direction: column;
   align-items: center;
 
-  .blogTitle {
-    text-align: center;
-    font-size: 1.9em;
-  }
+  .blogHeader {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
 
-  .blogAuthor {
-    font-family: "Caveat", cursive;
-    font-size: 1.55em;
-  }
+    .blogImage {
+      width: 100%;
+    }
 
-  .blogImage {
-    margin-top: 2em;
-    width: 100%;
+    .headerContent {
+      .blogTitle {
+        font-size: 1.7em;
+        font-weight: bolder;
+      }
+
+      .blogAuthor {
+        font-size: 1.15em;
+      }
+
+      .blogDate {
+        color: #616161;
+        font-size: 0.85em;
+      }
+
+      .blogCategory {
+        margin-top: 1.5em;
+        white-space: nowrap;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 10px 45px;
+        border: none;
+        border-radius: 25px;
+        background-color: #36096d;
+        background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+        outline: none;
+        cursor: default;
+      }
+    }
   }
 
   .blogDetails {
@@ -46,16 +71,15 @@
 
 @media only screen and (min-width: 992px) {
   .blogContents {
-    .blogImage {
-      width: 70%;
-    }
+    width: 70%;
+    margin: auto;
 
-    .blogDetails {
-      padding: 0 15%;
+    .blogHeader {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .shareButtons {
-      margin: 1em 0 0 15%;
+      margin: 1em 0 0 0;
     }
   }
 }

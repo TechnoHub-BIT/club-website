@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import "./AddBlogComponent.css";
@@ -12,25 +12,25 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 
 export default function AddBlogComponent() {
-    
-    const [blogtitle,setTitle] = useState('');
+
+    const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
         setTitle(e.target.value);
     };
 
-    const [blogcategory,setCategory] = useState('');
+    const [blogcategory, setCategory] = useState('');
     const category = (e) => {
         setCategory(e.target.value);
     };
-    const [blogauthor,setAuthor] = useState('');
+    const [blogauthor, setAuthor] = useState('');
     const author = (e) => {
         setAuthor(e.target.value);
     };
-    const [blogimageurl,setImageUrl] = useState('');
+    const [blogimageurl, setImageUrl] = useState('');
     const imageurl = (e) => {
         setImageUrl(e.target.value);
     };
-    const [blogcontent,setContent] = useState('');
+    const [blogcontent, setContent] = useState('');
     const content = (e) => {
         setContent(e.target.value);
     };
@@ -40,20 +40,20 @@ export default function AddBlogComponent() {
         db.collection("Blogs").add({
             blogtitle: blogtitle,
             blogcategory: blogcategory,
-            blogauthor:blogauthor,
-            blogimageurl:blogimageurl,
+            blogauthor: blogauthor,
+            blogimageurl: blogimageurl,
             blogcontent: blogcontent
         })
-        .then(() => {
-            alert("Message submitted");
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
-        
+            .then(() => {
+                alert("Message submitted");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+
     }
 
-    return(
+    return (
         <React.Fragment>
             <div className="addBlogContainer">
                 <HeaderTitle heading="ADD BLOG" />
@@ -61,7 +61,7 @@ export default function AddBlogComponent() {
                     <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                     <BreadcrumbItem icon="fas fa-plus fa-xs" title="Add Blog" status="active" />
                 </Breadcrumb>
-                
+
                 <div className="title">
                     <h3>Fill in all the Details and Post the Blog</h3>
                 </div>
@@ -72,7 +72,7 @@ export default function AddBlogComponent() {
                         <label for="title">Blog Title</label>
                     </div>
                     <div className="input-group">
-                        <select name="category"  onChange={category} value={blogcategory} id="category" required>
+                        <select name="category" onChange={category} value={blogcategory} id="category" required>
                             <option value="">--Select Blog Category--</option>
                             <option value="1">Category 1</option>
                         </select>
