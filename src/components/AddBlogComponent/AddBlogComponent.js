@@ -10,9 +10,9 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
+import queryString from 'query-string';
 
 export default function AddBlogComponent() {
-
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
         setTitle(e.target.value);
@@ -66,51 +66,45 @@ export default function AddBlogComponent() {
                     <h3>Fill in all the Details and Post the Blog</h3>
                 </div>
 
-                <form action="/contactus">
-                    <div className="input-group">
-                        <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
-                        <label for="title">Blog Title</label>
-                    </div>
-                    <div className="input-group">
-                        <select name="category" onChange={category} value={blogcategory} id="category" required>
-                            <option value="">--Select Blog Category--</option>
-                            <option value="1">Category 1</option>
-                        </select>
-                    </div>
-                    <div className="input-group">
-                        <input type="text" name="author" id="author" onChange={author} value={blogauthor} placeholder="Blog Author" required />
-                        <label for="author">Blog Author</label>
-                    </div>
-                    <div className="input-group">
-                        <input type="url" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
-                        <label for="image">Blog Image URL</label>
-                    </div>
-                    <div className="summernote">
-                        {/* <ReactSummernote
-                            value="Default value"
-                            options={{
-                                lang: 'en-US',
-                                height: 350,
-                                dialogsInBody: true,
-                                toolbar: [
-                                    ['style', ['style']],
-                                    ['font', ['bold', 'underline', 'clear']],
-                                    ['fontname', ['fontname']],
-                                    ['para', ['ul', 'ol', 'paragraph']],
-                                    ['insert', ['link']],
-                                    ['view', ['codeview']]
-                                ]
-                            }}
-                            onChange={content} value={blogcontent}
-                        /> */}
-                        <textarea onChange={content} value={blogcontent}>
+                <div className="formsCont">
+                    <form action="/contactus">
+                        <div className="input-group">
+                            <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
+                            <label for="title">Blog Title</label>
+                        </div>
+                        <div className="input-group">
+                            <select name="category" onChange={category} value={blogcategory} id="category" required>
+                                <option value="">--Select Blog Category--</option>
+                                <option value="1">Category 1</option>
+                            </select>
+                        </div>
+                        <div className="input-group">
+                            <input type="text" name="author" id="author" onChange={author} value={blogauthor} placeholder="Blog Author" required />
+                            <label for="author">Blog Author</label>
+                        </div>
+                        <div className="input-group">
+                            <input type="url" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
+                            <label for="image">Blog Image URL</label>
+                        </div>
+                        <div className="summernote">
+                            <textarea onChange={content} value={blogcontent}>
 
-                        </textarea>
-                    </div>
-                    <div className="input-group w50p">
-                        <button type="submit" onClick={firestoremaisave} >Post Blog</button>
-                    </div>
-                </form>
+                            </textarea>
+                        </div>
+                        <div className="input-group w50p">
+                            <button type="submit" onClick={firestoremaisave}>Post Blog</button>
+                        </div>
+                    </form>
+                    <form action="/addblog">
+                        <div className="input-group">
+                            <input type="text" name="cname" id="cname" placeholder="Category Name" required />
+                            <label for="cname">Category Name</label>
+                        </div>
+                        <div className="input-group w50p">
+                            <button type="submit">Add Category</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </React.Fragment>
     );

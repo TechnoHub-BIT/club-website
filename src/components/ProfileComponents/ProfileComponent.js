@@ -13,16 +13,7 @@ const ProfileComponent = () => {
 
     const [profiles, setProfiles] = useState([]);
 
-    const history = useHistory()
-    async function handleLogout() {
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch{
-            setError('Failed to log out')
-        }
-    }
+    const history = useHistory();
 
     useEffect(() => {
         if(currentUser) {

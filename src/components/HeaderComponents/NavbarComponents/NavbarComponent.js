@@ -19,17 +19,16 @@ class Header extends Component {
     const toggleChange = !this.state.navOpen;
     this.state.navOpen = toggleChange;
 
-    if(toggleChange) {
+    if(toggleChange)
       this.setState({
         navListClasses: "navList open",
         navOpen: true,
       });
-    } else {
+    else
       this.setState({
         navListClasses: "navList",
         navOpen: false,
       });
-    }
   }
   
   handleLogin(event) {

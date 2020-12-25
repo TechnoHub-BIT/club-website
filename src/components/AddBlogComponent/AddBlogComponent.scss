@@ -23,11 +23,25 @@
 }
 .summernote {
   margin-top: 1.5em;
+
+  textarea {
+    width: 100%;
+  }
+}
+
+.formsCont {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1em;
 }
 
 @media only screen and (min-width: 992px) {
-  form {
-    width: 80%;
-    margin: 2em auto;
+  .formsCont {
+    grid-template-columns: repeat(1, 3fr 2fr);
+
+    form {
+      width: 90%;
+      margin: 0 auto;
+    }
   }
 }
