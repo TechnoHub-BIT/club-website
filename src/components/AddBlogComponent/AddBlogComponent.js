@@ -45,7 +45,7 @@ export default function AddBlogComponent() {
             blogcontent: blogcontent
         })
             .then(() => {
-                alert("Message submitted");
+                alert("Blog Posted!");
             })
             .catch((error) => {
                 alert(error.message);

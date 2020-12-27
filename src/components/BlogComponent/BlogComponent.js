@@ -50,7 +50,7 @@ class BlogComponent extends React.Component {
                                 return (
                                     <div>
                                         <div className="blogHeader">
-                                            <img src={ Blogs.blogimageurl } className="blogImage" />
+                                            <img src={ "https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl } className="blogImage" />
                                             <div className="headerContent">
                                                 <div className="blogTitle">  {Blogs.blogtitle}</div>
                                                 <div className="blogAuthor">  {Blogs.blogauthor}</div>

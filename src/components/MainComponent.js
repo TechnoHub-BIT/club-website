@@ -24,6 +24,8 @@ import Admin from "./AdminComponents/AdminComponent";
 import ScrollToTop from './ScrollToTop';
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
 import Blog from "./BlogComponent/BlogComponent";
+import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
+import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
 
 class Main extends Component {
   render() {
@@ -55,6 +57,8 @@ class Main extends Component {
               <Route exact path="/projects" component={Projects} />
               <PrivateRoute exact path ="/addBlog" component={AddBlog} />
               <Route exact path="/blog" component={Blog} />
+              <Route exact path="/collabs" component={Collaborations} />
+              <Route exact path="/blogcategories" component={BlogCategories} />
 
               <Footer />
               {/* </Switch> */}
