@@ -34,6 +34,7 @@ export default function AddBlogComponent() {
     const content = (e) => {
         setContent(e.target.value);
     };
+    const blogdate = new Date().toLocaleDateString();
 
     const firestoremaisave = (e) => {
         e.preventDefault();
@@ -41,6 +42,7 @@ export default function AddBlogComponent() {
             blogtitle: blogtitle,
             blogcategory: blogcategory,
             blogauthor: blogauthor,
+            blogdate: blogdate,
             blogimageurl: blogimageurl,
             blogcontent: blogcontent
         })

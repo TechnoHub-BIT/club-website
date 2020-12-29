@@ -54,7 +54,8 @@ class BlogComponent extends React.Component {
                                             <div className="headerContent">
                                                 <div className="blogTitle">  {Blogs.blogtitle}</div>
                                                 <div className="blogAuthor">  {Blogs.blogauthor}</div>
-                                                <div className="blogDate">Posted on: 23/12/2020</div>
+                                               
+                                                <div className="blogDate">{Blogs.blogdate}</div>
                                                 <button className="blogCategory">TECHNICAL</button>
                                             </div>
                                         </div>
