@@ -69,6 +69,7 @@ footer {
   color: #ff7e5f;
 }
 .developedBy a:hover {
+  color: #ff7e5f;
   text-decoration: underline !important;
 }
 .developedBy a:nth-child(3) {

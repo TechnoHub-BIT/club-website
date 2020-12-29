@@ -83,8 +83,8 @@ export default function AddBlogComponent() {
                             <label for="author">Blog Author</label>
                         </div>
                         <div className="input-group">
-                            <input type="url" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
-                            <label for="image">Blog Image URL</label>
+                            <input type="text" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
+                            <label for="image">Blog Image Drive ID</label>
                         </div>
                         <div className="summernote">
                             <textarea onChange={content} value={blogcontent}>

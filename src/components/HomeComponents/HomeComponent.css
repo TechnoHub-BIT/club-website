@@ -13,7 +13,7 @@
 .jumbotron {
   padding: 180px 0 70px;
   margin: 0 auto;
-  background-image: url(../../img/faq.jpg);
+  background-image: url("../../img/faq.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
