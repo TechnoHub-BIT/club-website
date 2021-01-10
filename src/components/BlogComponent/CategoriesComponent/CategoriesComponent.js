@@ -37,20 +37,18 @@ class categoriesComponent extends React.Component {
                     <div className="categoriesCont">
                         <div className="categoriesList">
                             {
-                                this.state.Blogcategorytype && this.state. Blogcategorytype.map( Blogcategorytype => {
+                                this.state.Blogcategorytype && this.state.Blogcategorytype.map( Blogcategorytype => {
                                     return (
-                                        
-                                        <a href="/blog?cat=technical" className="singleCategory">
-                                <div className="categoryTitle">{Blogcategorytype.blogcategorytype} </div>
-                                <div className="categoryimage">{Blogcategorytype.blogcategorynameurl}</div>
-                                <div className="posts">12+</div>
-                            </a>
-
+                                        <a href={"/bloglist?cat=" + Blogcategorytype.blogcategorytype} className="singleCategory">
+                                            <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
+                                            <div className="categoryContent">
+                                                <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>
+                                                <div className="posts">12+</div>
+                                            </div>
+                                        </a>
                                     )
                                 })
                             }
-
-                        
                         </div>
                     </div>
                 </div>

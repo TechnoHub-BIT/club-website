@@ -136,15 +136,13 @@ export default function AddBlogComponent() {
                             <label for="cname">Category Name</label>
                         </div>
                         <div className="input-group">
-                            <input type="text" name="cname" id="cname" onChange={categorynameurl} value={ blogcategorynameurl} placeholder="Category Name" required />
-                            <label for="cname">Category Name url</label>
+                            <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={ blogcategorynameurl} placeholder="Category Image Drive ID" required />
+                            <label for="cimage">Category Image Drive ID</label>
                         </div>
                         <div className="input-group w50p">
-                            <button type="submit" onClick={ blogcategorysave}>Add Category</button>
+                            <button type="submit" onClick={blogcategorysave}>Add Category</button>
                         </div>
                     </form>
-                 
-
                 </div>
             </div>
         </React.Fragment>

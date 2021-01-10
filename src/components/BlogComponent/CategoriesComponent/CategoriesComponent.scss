@@ -1,18 +1,35 @@
 .categoriesCont {
-  margin: 20px;
+  margin: 20px 2em 3em;
 
   .categoriesList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
+    grid-gap: 2em;
 
     .singleCategory {
       color: #000;
       text-align: center;
       border-radius: 10px;
-      padding: 20px 10px;
       box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
       transition: 0.3s all ease;
+
+      .categoryImage {
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .categoryContent {
+        padding: 20px 10px;
+
+        .categoryTitle {
+          font-weight: 600;
+          font-size: 1.5em;
+        }
+
+        .posts {
+        }
+      }
 
       &:hover {
         transform: scale(1.03);

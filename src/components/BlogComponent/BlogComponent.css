@@ -42,7 +42,7 @@
   font-size: 0.85em;
 }
 
-.blogContents .blogHeader .headerContent .blogCategory {
+.blogContents .blogHeader .headerContent div .blogCategory {
   margin-top: 1.5em;
   white-space: nowrap;
   color: #fff;

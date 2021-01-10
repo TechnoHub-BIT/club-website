@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+body {
+  background-color: #fff;
+}
+
+.blogContainer {
+  margin: 20px;
+}
+
+.blogContents {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1.5em;
+  padding: 0;
+}
+
+.blogContents .singleBlog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #000;
+  text-decoration: none;
+  -webkit-box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+          box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+  border-radius: 10px;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.blogContents .singleBlog .blogImage {
+  height: 220px;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.blogContents .singleBlog .blogHeader {
+  width: 100%;
+  padding: 20px;
+}
+
+.blogContents .singleBlog .blogHeader .headerContent .blogTitle {
+  font-size: 1.5em;
+}
+
+.blogContents .singleBlog .blogHeader .headerContent .blogAuthor {
+  margin-top: 0.5em;
+  font-size: 1em;
+}
+
+.blogContents .singleBlog .blogHeader .headerContent .blogCategory {
+  color: #616161;
+  font-size: 0.9em;
+}
+
+.blogContents .singleBlog:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+@media only screen and (min-width: 992px) {
+  .blogContents {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1.5em;
+    padding: 0;
+  }
+  .blogContents .singleBlog {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .blogContents .singleBlog .blogImage {
+    height: 220px;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
+/*# sourceMappingURL=BlogListComponent.css.map */

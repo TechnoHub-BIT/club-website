@@ -1,5 +1,5 @@
 .categoriesCont {
-  margin: 20px;
+  margin: 20px 2em 3em;
 }
 
 .categoriesCont .categoriesList {
@@ -7,18 +7,32 @@
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1em;
+  grid-gap: 2em;
 }
 
 .categoriesCont .categoriesList .singleCategory {
   color: #000;
   text-align: center;
   border-radius: 10px;
-  padding: 20px 10px;
   -webkit-box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
           box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
+}
+
+.categoriesCont .categoriesList .singleCategory .categoryImage {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.categoriesCont .categoriesList .singleCategory .categoryContent {
+  padding: 20px 10px;
+}
+
+.categoriesCont .categoriesList .singleCategory .categoryContent .categoryTitle {
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
 .categoriesCont .categoriesList .singleCategory:hover {

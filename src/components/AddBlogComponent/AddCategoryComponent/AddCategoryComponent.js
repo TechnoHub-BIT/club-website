@@ -26,6 +26,7 @@ class AddCategoryComponent extends React.Component {
     render() {
         return (
             <select name="category" id="category" onChange={this.props.change} value={this.props.value} required>
+                <option value="">--Select Category--</option>
                 {
                     this.state.Blogcategorytype && this.state.Blogcategorytype.map(Blogcategorytype => {
                         return( 

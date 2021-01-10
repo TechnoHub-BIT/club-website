@@ -26,6 +26,7 @@ import AddBlog from "./AddBlogComponent/AddBlogComponent";
 import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
+import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
 
 class Main extends Component {
   render() {
@@ -59,6 +60,7 @@ class Main extends Component {
               <Route exact path="/blog" component={Blog} />
               <Route exact path="/collabs" component={Collaborations} />
               <Route exact path="/blogcategories" component={BlogCategories} />
+              <Route exact path="/bloglist" component={BlogList} />
 
               <Footer />
               {/* </Switch> */}
