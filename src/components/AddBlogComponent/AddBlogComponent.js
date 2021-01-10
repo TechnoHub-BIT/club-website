@@ -72,7 +72,7 @@ export default function AddBlogComponent() {
            
         })
             .then(() => {
-                alert("Blog Posted!");
+                alert("Blog category added");
             })
             .catch((error) => {
                 alert(error.message);
