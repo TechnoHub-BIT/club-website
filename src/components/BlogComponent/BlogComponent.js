@@ -16,7 +16,6 @@ import {
 import { db } from "../../firebase";
 // import { render } from "@testing-library/react";
 
-
 class BlogComponent extends React.Component {
     state = {
         Blogs: null

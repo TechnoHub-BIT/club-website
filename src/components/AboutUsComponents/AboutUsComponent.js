@@ -242,9 +242,11 @@ class About extends Component {
                 <Image path="./assets/images/members/suchi.jpg" name="Suchi Agrawal" post="Public Relations Manager" contact="9893010932">
                   Electronics and Telecommunication
                 </Image>
+
                 <Image path="./assets/images/members/kuldeep.jpg" name="Kuldeep Patel" post="Technical Lead" contact="7000728570">
                   Electronics and Telecommunication
                 </Image>
+                
                 <Image path="./assets/images/members/aditya.jpg" name="Aditya Deshmukh" post="Technical Lead" contact="9584913846">
                   Electrical and Electronics
                 </Image>

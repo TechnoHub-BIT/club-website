@@ -14,7 +14,7 @@ const categoriesComponent = () => {
                 </Breadcrumb>
                 <div className="categoriesCont">
                     <div className="categoriesList">
-                        <a href="/blog" className="singleCategory">
+                        <a href="/blog?cat=technical" className="singleCategory">
                             <div className="categoryTitle">Technical</div>
                             <div className="posts">12+</div>
                         </a>
