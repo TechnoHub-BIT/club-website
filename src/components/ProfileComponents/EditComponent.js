@@ -52,7 +52,7 @@ function EditComponent() {
     }, [currentUser]);
 
     const profileUpdate = () => {
-        if(fullname != "") {
+        if(fullname !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -63,7 +63,7 @@ function EditComponent() {
               
             });
         }
-        if(branch != "") {
+        if(branch !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -74,7 +74,7 @@ function EditComponent() {
               
             });
         }
-        if(semester != "") {
+        if(semester !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -85,7 +85,7 @@ function EditComponent() {
               
             });
         }
-        if(skills != "") {
+        if(skills !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -96,7 +96,7 @@ function EditComponent() {
               
             });
         }
-        if(interest != "") {
+        if(interest !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -107,7 +107,7 @@ function EditComponent() {
               
             });
         }
-        if(workshops != "") {
+        if(workshops !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -118,7 +118,7 @@ function EditComponent() {
               
             });
         }
-        if(projects!=""){
+        if(projects !== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -129,7 +129,7 @@ function EditComponent() {
               
             });
         }
-        if(contactNo!=""){
+        if(contactNo !== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -212,7 +212,7 @@ function EditComponent() {
                                 </div>
                             <div>
                             <h6 className="contentHeading">Field Information</h6>
-                            {(profiles.member == 'Technical' || profiles.member == 'Techno-Management') && 
+                            {(profiles.member === 'Technical' || profiles.member === 'Techno-Management') && 
                                 <div>
                                     <div className="input-group" > 
                                         <input type="text" id="projects" placeholder="Projects Done Till Now" defaultValue={profiles.projects} onChange={(event) => setProjects(event.target.value)}/>
@@ -224,7 +224,7 @@ function EditComponent() {
                                     </div>
                                 </div>
                             }
-                            {(profiles.member == 'Management' || profiles.member == 'Techno-Management') &&
+                            {(profiles.member === 'Management' || profiles.member === 'Techno-Management') &&
                                 <div className="input-group">
                                     <input type="text" id="experience" placeholder="Any Previous Experience?" defaultValue={profiles.experience} onChange={(event) => setExperience(event.target.value)}/>
                                     <label for="experience">Any Previous Experience?</label>

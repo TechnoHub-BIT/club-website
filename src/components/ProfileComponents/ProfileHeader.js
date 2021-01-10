@@ -10,14 +10,6 @@ const ProfileHeader = () => {
     const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
 
-    const [fullname, setFullname] = useState("");
-    const [branch, setBranch] = useState("");
-    const [semester, setSemester] = useState("");
-    const [member, setMember] = useState("");
-    const [skills, setSkills] = useState("");
-    const [workshops, setWorkshops] = useState("");
-    const [interest, setInterest] = useState("");
-
     const [profiles, setProfiles] = useState([]);
 
     const history = useHistory()
@@ -45,10 +37,10 @@ const ProfileHeader = () => {
   }, [currentUser]);
 
   const memberButton = () => {
-    if (profiles.payment == true)
+    if (profiles.payment === true)
         return <Button color="primary"><i className="fas fa-user-check"></i>&nbsp;&nbsp;{profiles.member} Team Member</Button>;
     else { 
-        if(profiles.registrationApply == true)
+        if(profiles.registrationApply === true)
             return <Button color="primary"><i className="fas fa-clock"></i>&nbsp;&nbsp;Payment Verification Pending</Button>;
         else
             return <Link to="/register" target="_blank">
@@ -61,11 +53,11 @@ const ProfileHeader = () => {
   //Setting the Suffix for Semester
     let suffix = "th";
 
-    if (profiles?.semester == 1)
+    if (profiles?.semester === 1)
         suffix = "st";
-    else if (profiles.semester == 2)
+    else if (profiles.semester === 2)
         suffix = "nd";
-    else if (profiles.semester == 3)
+    else if (profiles.semester === 3)
         suffix = "rd";
 
     return (
@@ -74,9 +66,9 @@ const ProfileHeader = () => {
             
                 <div className="profileHeader">
                     { currentUser.photoURL ?
-                        <img src={currentUser.photoURL} className="profileImage" />
+                        <img src={currentUser.photoURL} className="profileImage" alt="Profile" />
                         :
-                        <img src="./assets/images/profile-user.svg" className="profileImage" />
+                        <img src="./assets/images/profile-user.svg" className="profileImage" alt="Profile" />
                     }
 
                     <div className="profileName">

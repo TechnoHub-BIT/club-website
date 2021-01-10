@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { Button } from 'reactstrap';
 import {useAuth} from '../../contexts/AuthContext';
-import {useHistory, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./ProfileComponents.css";
 import "../input.css";
@@ -10,7 +10,6 @@ import showRenderedFields from "../renderFields";
 import { db } from '../../firebase';
 
 const RegisterComponent = () => {
-    const [error, setError] = useState('');
     const {currentUser, logout} = useAuth()
 
     const [experience, setExperience] = useState("");
@@ -21,18 +20,6 @@ const RegisterComponent = () => {
     const [interest, setInterest] = useState("");
 
     const [profiles, setProfiles] = useState([]);
-
-
-    const history = useHistory()
-    async function handleLogout() {
-        setError('')
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError('Failed to log out')
-        }
-    }
 
     useEffect(() => {
         if(currentUser) {
@@ -48,7 +35,7 @@ const RegisterComponent = () => {
     }, [currentUser]);
 
     const registerUpdate = () => {
-        if(member != "") {
+        if(member !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -61,7 +48,7 @@ const RegisterComponent = () => {
         }
 
 
-        if(skills != "") {
+        if(skills !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -72,7 +59,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(interest != "") {
+        if(interest !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -83,7 +70,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(workshops != "") {
+        if(workshops !== "") {
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -94,7 +81,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(projects!=""){
+        if(projects !== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -105,7 +92,7 @@ const RegisterComponent = () => {
               
             });
         }
-        if(experience!=""){
+        if(experience !== ""){
             db.collection("members")
             .doc(currentUser.uid)
             .update({
@@ -147,7 +134,7 @@ const RegisterComponent = () => {
             <div className="profileDetails">
                 <ProfileHeader />
                 {
-                    (profiles.payment == false) && 
+                    (profiles.payment === false) && 
                     <div>
                         <div className="profileBody">
                             <div className="profileNav">

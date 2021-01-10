@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import "./adminComponent.css";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
@@ -17,7 +17,6 @@ function AdminComponent() {
   const [payment, setPayment] = useState("");
 
   const [show, setShow] = useState(false);
-
 
   const [currentProfile, setCurrentProfile] = useState('');
   const {currentUser} = useAuth();
@@ -71,11 +70,11 @@ function AdminComponent() {
               //Setting the Suffix for Semester
                 let suffix = "th";
 
-                if (profile.semester == 1)
+                if (profile.semester === 1)
                     suffix = "st";
-                else if (profile.semester == 2)
+                else if (profile.semester === 2)
                     suffix = "nd";
-                else if (profile.semester == 3)
+                else if (profile.semester === 3)
                     suffix = "rd";
                 
                 let classValue = "payment green";
@@ -187,7 +186,7 @@ function AdminComponent() {
             })}
           </div>
         {
-          (currentProfile.id == 1) && <div>
+          (currentProfile.id === 1) && <div>
             <h3 className="h3-text">Messages</h3>
             <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
               <thead className="thead-dark">

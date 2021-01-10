@@ -17,7 +17,6 @@ class Header extends Component {
 
   toggleNav = () => {
     const toggleChange = !this.state.navOpen;
-    this.state.navOpen = toggleChange;
 
     if(toggleChange)
       this.setState({
@@ -55,11 +54,11 @@ class Header extends Component {
                 <div className="line line3"></div>
             </div>
             <Link to="/">
-              <img src="./assets/images/logowhite.png" className="mobileNavLogo" />
+              <img src="./assets/images/logowhite.png" className="mobileNavLogo" alt="TechnoHub White Logo" />
             </Link>
             <ul className={ this.state.navListClasses } onClick={(e) => this.toggleNav(e)}>
               <Link to="/">
-                <img src="./assets/images/logowhite.png" alt="TechnoHub Logo" />
+                <img src="./assets/images/logowhite.png" alt="TechnoHub White Logo" />
               </Link>
               <Link to="/">
                 <li>HOME</li>

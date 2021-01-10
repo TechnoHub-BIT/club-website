@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStateValue } from "../../StateProvider";
 import { db } from "../../firebase";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function AdminHeader() {
   const [{ user }] = useStateValue();
@@ -13,7 +13,7 @@ function AdminHeader() {
       db.collection("members")
         .doc(user.uid)
         .onSnapshot(function (doc) {
-          doc?.data()?.id == 1 ? setIsAdmin(true) : setIsAdmin(false);
+          doc?.data()?.id === 1 ? setIsAdmin(true) : setIsAdmin(false);
         });
     } else {
       history.push("/register");

@@ -23,7 +23,7 @@ const showPopup = (index, popupName) => {
   });
 
   window.addEventListener("keyup", (e) => {
-    if(e.keyCode == 27) {
+    if(e.keyCode === 27) {
       popupMenus.classList.remove("popupVisible");
       popupToShow.style.display = "none";
     }

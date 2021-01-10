@@ -35,16 +35,16 @@ const OurMembers = (props) => {
           <div className="membersList">
             {
               memberList?.map((data, i) => {
-              if(data.payment == true && data.fullname != null && data.branch != null && data.semester != null) {
+              if(data.payment === true && data.fullname !== null && data.branch !== null && data.semester !== null) {
 
                 //Setting the Suffix for Semester
                   let suffix = "th";
 
-                  if (data.semester == 1)
+                  if (data.semester === 1)
                       suffix = "st";
-                  else if (data.semester == 2)
+                  else if (data.semester === 2)
                       suffix = "nd";
-                  else if (data.semester == 3)
+                  else if (data.semester === 3)
                       suffix = "rd";
 
                   return (

@@ -49,11 +49,12 @@ class BlogComponent extends React.Component {
                                 return (
                                     <div>
                                         <div className="blogHeader">
-                                            <img src={ "https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl } className="blogImage" />
+                                            <img src={ "https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl } className="blogImage" alt={Blogs.blogtitle} />
                                             <div className="headerContent">
                                                 <div className="blogTitle">  {Blogs.blogtitle}</div>
                                                 <div className="blogAuthor">  {Blogs.blogauthor}</div>
-                                                <div className="blogDate">Posted on: 23/12/2020</div>
+                                               
+                                                <div className="blogDate">{Blogs.blogdate}</div>
                                                 <button className="blogCategory">TECHNICAL</button>
                                             </div>
                                         </div>

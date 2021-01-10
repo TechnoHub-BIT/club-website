@@ -12,7 +12,7 @@ const Iframe = ({ source }) => {
         // basic bootstrap classes. you can change with yours.
         <div>
             <div className="emdeb-responsive">
-                <iframe style={{padding: "absolute",width: "100%" , height: "350px", border: "none" }} src={src}></iframe>
+                <iframe style={{padding: "absolute",width: "100%" , height: "350px", border: "none" }} src={src} title="TechnoHub Location"></iframe>
             </div>
         </div>
     );

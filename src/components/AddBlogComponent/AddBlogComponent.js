@@ -62,12 +62,11 @@ export default function AddBlogComponent() {
                     <BreadcrumbItem icon="fas fa-plus fa-xs" title="Add Blog" status="active" />
                 </Breadcrumb>
 
-                <div className="title">
-                    <h3>Fill in all the Details and Post the Blog</h3>
-                </div>
-
                 <div className="formsCont">
                     <form action="/contactus">
+                        <div className="title">
+                            <h3>Post Blog</h3>
+                        </div>
                         <div className="input-group">
                             <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
                             <label for="title">Blog Title</label>
@@ -95,7 +94,11 @@ export default function AddBlogComponent() {
                             <button type="submit" onClick={firestoremaisave}>Post Blog</button>
                         </div>
                     </form>
+
                     <form action="/addblog">
+                        <div className="title">
+                            <h3>Add Category</h3>
+                        </div>
                         <div className="input-group">
                             <input type="text" name="cname" id="cname" placeholder="Category Name" required />
                             <label for="cname">Category Name</label>
