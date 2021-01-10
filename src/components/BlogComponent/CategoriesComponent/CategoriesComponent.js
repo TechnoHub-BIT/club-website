@@ -6,7 +6,7 @@ import { db } from "../../../firebase";
 
 class categoriesComponent extends React.Component {
     state = {
-        Blogcategory: null
+        Blogcategorytype: null
     }
 
     componentDidMount() {
@@ -41,7 +41,7 @@ class categoriesComponent extends React.Component {
                                     return (
                                         
                                         <a href="/blog?cat=technical" className="singleCategory">
-                                <div className="categoryTitle">{Blogcategorytype.Blogcategorytype} </div>
+                                <div className="categoryTitle">{Blogcategorytype.blogcategorytype} </div>
                                 <div className="posts">12+</div>
                             </a>
 

@@ -1,20 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "../../input.css";
+import { db } from "../../../firebase";
 
-export default function AddCategoryComponent() {
-    return (
-        <form action="/addblog">
-            <div className="title">
-                <h3>Add Category</h3>
-            </div>
-            <div className="input-group">
-                <input type="text" name="cname" id="cname" placeholder="Category Name" required />
-                <label for="cname">Category Name</label>
-            </div>
-            <div className="input-group w50p">
-                <button type="submit">Add Category</button>
-            </div>
-        </form>
-    );
-};
+class AddCategoryComponent extends React.Component {
+    state = {
+        Blogcategory: null
+    }
 
+    componentDidMount() {
+        // console.log('mounted')
+        db.collection('Blogcategory')
+            .get()
+            .then(snapshot => {
+
+                const Blogcategorytype = []
+                snapshot.forEach(doc => {
+                    const data = doc.data()
+                    Blogcategorytype.push(data)
+                })
+                this.setState({ Blogcategorytype: Blogcategorytype })
+            })
+            .catch(error => console.log(error))
+    }
+
+    render() {
+        return (
+            <select name="category" id="category" onChange={this.props.change} value={this.props.value} required>
+                {
+                    this.state.Blogcategorytype && this.state.Blogcategorytype.map(Blogcategorytype => {
+                        return( 
+                             <option>{ Blogcategorytype.blogcategorytype }</option>
+                        );
+                    })
+                }
+            </select> 
+        );            
+    }
+    
+}
+
+export default AddCategoryComponent;
