@@ -18,9 +18,11 @@ import { db } from "../../firebase";
 
 class BlogComponent extends React.Component {
     state = {
-        Blogs: null
-    }
+        Blogs: null,
+  
 
+    }
+ 
     componentDidMount() {
         // console.log('mounted')
         db.collection('Blogs')
@@ -35,27 +37,32 @@ class BlogComponent extends React.Component {
                 this.setState({ Blogs: Blogs })
             })
             .catch(error => console.log(error))
+         
     }
 
     shareUrl = "https://technohubbit.in";
 
     render() {
         return (
-             <React.Fragment>
-                 <div className="blogContainer">
-                     <div className="blogContents">
+            <React.Fragment>
+                <div className="blogContainer">
+                    <div className="blogContents">
                         {
                             this.state.Blogs && this.state.Blogs.map(Blogs => {
                                 return (
                                     <div>
                                         <div className="blogHeader">
-                                            <img src={ "https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl } className="blogImage" alt={Blogs.blogtitle} />
+                                            <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
                                             <div className="headerContent">
                                                 <div className="blogTitle">  {Blogs.blogtitle}</div>
                                                 <div className="blogAuthor">  {Blogs.blogauthor}</div>
-                                               
+
                                                 <div className="blogDate">{Blogs.blogdate}</div>
-                                                <button className="blogCategory">TECHNICAL</button>
+                                                <div>
+                                              
+                                                            <button className="blogCategory">{Blogs.blogcategory}</button>
+                                             
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="blogDetails">
@@ -63,7 +70,7 @@ class BlogComponent extends React.Component {
                                                 {Blogs.blogcontent}
                                             </p>
                                         </div>
-                                    </div> 
+                                    </div>
                                 )
                             })
                         }
@@ -85,10 +92,10 @@ class BlogComponent extends React.Component {
                             <LinkedinShareButton url={this.shareUrl} title="Check out this amazing Blog from Aaryan Khandelwal">
                                 <LinkedinIcon size="32" round={true} />
                             </LinkedinShareButton>
-                        </div> 
+                        </div>
                     </div>
                 </div>
-            
+
             </React.Fragment>
         );
 
