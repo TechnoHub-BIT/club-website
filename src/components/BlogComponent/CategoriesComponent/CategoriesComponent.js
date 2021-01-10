@@ -42,6 +42,7 @@ class categoriesComponent extends React.Component {
                                         
                                         <a href="/blog?cat=technical" className="singleCategory">
                                 <div className="categoryTitle">{Blogcategorytype.blogcategorytype} </div>
+                                <div className="categoryimage">{Blogcategorytype.blogcategorynameurl}</div>
                                 <div className="posts">12+</div>
                             </a>
 

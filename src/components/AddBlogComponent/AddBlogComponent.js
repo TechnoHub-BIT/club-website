@@ -63,12 +63,18 @@ export default function AddBlogComponent() {
     const categoryname = (e) => {
         setblogcategortype(e.target.value);
     };
+    const [blogcategorynameurl, setblogcategorynameurl] = useState('');
+    const categorynameurl = (e) => {
+        setblogcategorynameurl(e.target.value);
+    };
 
 
     const blogcategorysave = (e) => {
         e.preventDefault();
         db.collection("Blogcategory").add({
            blogcategorytype : blogcategorytype,
+           blogcategorynameurl :blogcategorynameurl
+
            
         })
             .then(() => {
@@ -129,10 +135,15 @@ export default function AddBlogComponent() {
                             <input type="text" name="cname" id="cname" onChange={categoryname} value={ blogcategorytype} placeholder="Category Name" required />
                             <label for="cname">Category Name</label>
                         </div>
+                        <div className="input-group">
+                            <input type="text" name="cname" id="cname" onChange={categorynameurl} value={ blogcategorynameurl} placeholder="Category Name" required />
+                            <label for="cname">Category Name url</label>
+                        </div>
                         <div className="input-group w50p">
                             <button type="submit" onClick={ blogcategorysave}>Add Category</button>
                         </div>
                     </form>
+                 
 
                 </div>
             </div>
