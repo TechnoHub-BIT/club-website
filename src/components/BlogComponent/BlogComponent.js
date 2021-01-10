@@ -19,8 +19,6 @@ import { db } from "../../firebase";
 class BlogComponent extends React.Component {
     state = {
         Blogs: null,
-  
-
     }
  
     componentDidMount() {
