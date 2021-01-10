@@ -58,7 +58,7 @@ export default function AddBlogComponent() {
         setTitle(e.target.value);
     };
 
-    const [blogcategory, setCategory] = useState('');
+    const [ Blogcategory, setCategory] = useState('');
     const category = (e) => {
         setCategory(e.target.value);
     };
@@ -97,7 +97,7 @@ export default function AddBlogComponent() {
         e.preventDefault();
         db.collection("Blogcategory").add({
         
-            blogcategorytype:blogcategorytype
+            Blogcategorytype: Blogcategorytype
         })
             .then(() => {
                 alert("Blogcategory added!");
@@ -129,7 +129,7 @@ export default function AddBlogComponent() {
                         <div className="input-group">
                        
                        
-                            <select name="category" onChange={category} value={blogcategory} id="category" required>
+                            <select name="category" onChange={category} value={Blogcategory} id="category" required>
                                 {/* {blogcategorytype.map(blogc => (
 
                                     <options>{blogc.blogcategorytype}</options>
@@ -138,9 +138,9 @@ export default function AddBlogComponent() {
                                 <option>select--2--</option> */} */
 
                             {
-                               blogcategorytype ? blogcategorytype.map((Blogcategorytype) =>  
+                                Blogcategorytype ?  Blogcategorytype.map((Blogcategorytype) =>  
                                
-                                <option >{Blogcategorytype.blogcategorytype}</option>
+                                <option >{Blogcategorytype. Blogcategorytype}</option>
                                    
                                        ): ''} 
                             </select>
