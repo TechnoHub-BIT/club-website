@@ -34,6 +34,10 @@ export default function AddBlogComponent() {
     const content = (e) => {
         setContent(e.target.value);
     };
+    const [blogcategorytype, setblogcategortype] = useState('');
+    const categorytype = (e) => {
+        setblogcategortype(e.target.value);
+    };
     const blogdate = new Date().toLocaleDateString();
 
     const firestoremaisave = (e) => {
@@ -48,6 +52,21 @@ export default function AddBlogComponent() {
         })
             .then(() => {
                 alert("Blog Posted!");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+
+    }
+    
+    const blogcategorysave = (e) => {
+        e.preventDefault();
+        db.collection("Blogcategory").add({
+        
+            blogcategorytype: blogcategorytype
+        })
+            .then(() => {
+                alert("Blogcategory added!");
             })
             .catch((error) => {
                 alert(error.message);
@@ -99,11 +118,11 @@ export default function AddBlogComponent() {
                     </form>
                     <form action="/addblog">
                         <div className="input-group">
-                            <input type="text" name="cname" id="cname" placeholder="Category Name" required />
+                            <input type="text" name="cname" id="cname" onChange={categorytype} value={blogcategorytype} placeholder="Category Name" required />
                             <label for="cname">Category Name</label>
                         </div>
                         <div className="input-group w50p">
-                            <button type="submit">Add Category</button>
+                            <button type="submit" onClick={blogcategorysave} >Add Category</button>
                         </div>
                     </form>
                 </div>
