@@ -15,12 +15,12 @@ class categoriesComponent extends React.Component {
             .get()
             .then(snapshot => {
 
-                const  Blogcategory = []
+                const  Blogcategorytype = []
                 snapshot.forEach(doc => {
                     const data = doc.data()
-                    Blogcategory.push(data)
+                    Blogcategorytype.push(data)
                 })
-                this.setState({ Blogcategory: Blogcategory })
+                this.setState({  Blogcategorytype:  Blogcategorytype })
             })
             .catch(error => console.log(error))
     }
@@ -39,11 +39,11 @@ class categoriesComponent extends React.Component {
                     <div className="categoriesCont">
                         <div className="categoriesList">
                             {
-                                this.state.Blogcategory && this.state.Blogcategory.map(Blogcategory => {
+                                this.state.Blogcategorytype && this.state. Blogcategorytype.map( Blogcategorytype => {
                                     return (
                                         
                                         <a href="/blog?cat=technical" className="singleCategory">
-                                <div className="categoryTitle">{Blogcategory.blogcategorytype} </div>
+                                <div className="categoryTitle">{Blogcategorytype.Blogcategorytype} </div>
                                 <div className="posts">12+</div>
                             </a>
 

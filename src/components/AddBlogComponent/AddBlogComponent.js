@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import "./AddBlogComponent.css";
@@ -11,8 +11,49 @@ import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 import queryString from 'query-string';
+import reactSummernote from "react-summernote";
 
 export default function AddBlogComponent() {
+
+//   useEffect(() => {
+//     const bloglist =  db.collection('Blogcategory');
+//     bloglist.onSnapshot('value',(snapshot) =>{
+//         const blogsc = snapshot.val();
+//         const blogcategorytype = [];
+//         for(let id in blogsc){
+//             blogcategorytype.push(blogsc[id]);
+//         }
+//         setblogcategortype(blogcategorytype);
+//     });
+
+//     },[]);
+
+//    const [blogcategorytype, setblogcategortype] = React.useState([])
+
+//  React.useEffect(() => {
+//     const fetchdata = async () =>{
+
+//     const data = await db.collection('Blogcategory')
+//         .get()
+//         setblogcategortype(data.docs.map(doc=> doc.data()))
+//     }
+//     fetchdata()
+// },[])
+ 
+ useEffect(() => {
+    db.collection('Blogcategory')
+    .get()
+    .then(snapshot => {
+
+        const  Blogcategorytype = []
+        snapshot.forEach(doc => {
+            const data = doc.data()
+            Blogcategorytype.push(data)
+        })
+        setblogcategortype(Blogcategorytype)
+    });
+},[]);
+
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
         setTitle(e.target.value);
@@ -63,7 +104,7 @@ export default function AddBlogComponent() {
         e.preventDefault();
         db.collection("Blogcategory").add({
         
-            blogcategorytype: blogcategorytype
+            blogcategorytype:blogcategorytype
         })
             .then(() => {
                 alert("Blogcategory added!");
@@ -94,10 +135,28 @@ export default function AddBlogComponent() {
                             <label for="title">Blog Title</label>
                         </div>
                         <div className="input-group">
+                       
+                       
                             <select name="category" onChange={category} value={blogcategory} id="category" required>
-                                <option value="">--Select Blog Category--</option>
-                                <option value="1">Category 1</option>
+                                {/* {blogcategorytype.map(blogc => (
+
+                                    <options>{blogc.blogcategorytype}</options>
+                                ))}
+                                {/* <option>select--1--</option>
+                                <option>select--2--</option> */} */
+
+                            {
+                               blogcategorytype ? blogcategorytype.map((Blogcategorytype) =>  
+                               
+                                <option >{Blogcategorytype.blogcategorytype}</option>
+                                   
+                                       ): ''} 
                             </select>
+                        
+                                
+                                    
+                                
+    
                         </div>
                         <div className="input-group">
                             <input type="text" name="author" id="author" onChange={author} value={blogauthor} placeholder="Blog Author" required />
