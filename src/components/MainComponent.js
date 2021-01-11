@@ -38,6 +38,7 @@ class Main extends Component {
               {/* <Switch> */}
               <ScrollToTop />
               <Navbar />
+              
               <Route exact path="/" component={Home} />
               <PrivateRoute exact path="/admin" component={Admin} />
               <Route exact path="/home" component={Home} />

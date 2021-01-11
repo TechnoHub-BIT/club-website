@@ -15,7 +15,6 @@ class categoriesComponent extends React.Component {
         db.collection('Blogcategory')
             .get()
             .then(snapshot => {
-
                 const  Blogcategorytype = []
                 snapshot.forEach(doc => {
                     const data = doc.data()
