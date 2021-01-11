@@ -6,6 +6,7 @@ class AddCategoryComponent extends React.Component {
     state = {
         Blogcategory: null
     }
+   
 
     componentDidMount() {
         // console.log('mounted')

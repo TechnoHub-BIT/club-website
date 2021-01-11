@@ -10,18 +10,13 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
-// import { useAuth } from "../../contexts/AuthContext";
-import queryString from 'query-string';
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 
 
 
 export default function AddBlogComponent() {
 
-    // const { currentUser } = useAuth();
-    const [currentProfile, setCurrentProfile] = useState('');
-
-
+  
 
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
@@ -41,17 +36,15 @@ export default function AddBlogComponent() {
         setImageUrl(e.target.value);
     };
     const [blogcontent, setContent] = useState('');
-    const content = (e) => {
-        setContent(e.target.value);
+    const content = (param) => {
+        setContent(param);
     };
     const blogdate = new Date().toLocaleDateString();
 
 
 
     const firestoremaisave = (e) => {
-        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '' &&  blogcontent !== '') {
-        
-        
+        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' && blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
                 blogtitle: blogtitle,
@@ -70,9 +63,8 @@ export default function AddBlogComponent() {
                 });
 
         }
-        else{
-           
-            alert("field unfilled");
+        else {
+            alert("Please fill in all the details!");
         }
 
     }
@@ -88,27 +80,25 @@ export default function AddBlogComponent() {
 
 
     const blogcategorysave = (e) => {
-        if ( blogcategorytype !== '' &&    blogcategorynameurl !== '' ) {
-        e.preventDefault();
-        db.collection("Blogcategory").add({
-            blogcategorytype: blogcategorytype,
-            blogcategorynameurl: blogcategorynameurl
+        if (blogcategorytype !== '' && blogcategorynameurl !== '') {
+            e.preventDefault();
+            db.collection("Blogcategory").add({
+                blogcategorytype: blogcategorytype,
+                blogcategorynameurl: blogcategorynameurl
 
 
-        })
-            .then(() => {
-                alert("Blog category added");
             })
-            .catch((error) => {
-                alert(error.message);
-            });
-
+                .then(() => {
+                    alert("Blog category added");
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+        else {
+            alert("Please fill in all the details");
+        }
     }
-    else{
-           
-        alert("field unfilled");
-    }
-}
     // if (currentUser) {
     //     db.collection("members")
     //         .doc(currentUser.uid)
@@ -117,71 +107,103 @@ export default function AddBlogComponent() {
     //             setCurrentProfile(data);
     //         });
     // }
-   
 
 
-    return (
-        // (currentProfile.id === 1) &&
+    // const [{ user }] = useStateValue();
+    // const [isAdmin, setIsAdmin] = useState(false);
+    // const history = useHistory();
 
-        <React.Fragment>
+
+//     useEffect(() => {
+//         if (user) {
+//             db.collection("members")
+//                 .doc(user.uid)
+//                 .onSnapshot(function (doc) {
+//                     doc?.data()?.id === 1 ? setIsAdmin(true) : setIsAdmin(false);
+//                 });
+//         } else {
+//             history.push("/register");
+//         }
+//     }, [user]);
+//     return (
+//         <span>{isAdmin ? <div className="nav-btn">Admin</div> : <p></p>}</span>
+//     );
+// }
 
 
-            <div className="addBlogContainer">
-                <HeaderTitle heading="ADD BLOG" />
-                <Breadcrumb>
-                    <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
-                    <BreadcrumbItem icon="fas fa-plus fa-xs" title="Add Blog" status="active" />
-                </Breadcrumb>
 
-                <div className="formsCont">
-                    <form  >
-                        <div className="title">
-                            <h3>Post Blog</h3>
-                        </div>
-                        <div className="input-group">
-                            <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
-                            <label for="title">Blog Title</label>
-                        </div>
-                        <div className="input-group">
-                            <AddCategory change={category} value={blogcategory} />
-                        </div>
-                        <div className="input-group">
-                            <input type="text" name="author" id="author" onChange={author} value={blogauthor} placeholder="Blog Author" required />
-                            <label for="author">Blog Author</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="text" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
-                            <label for="image">Blog Image Drive ID</label>
-                        </div>
-                        <div className="summernote">
-                            <textarea onChange={content} value={blogcontent}>
+return (
+    // (currentProfile.id === 1) &&
+    <React.Fragment>
+        <div className="addBlogContainer">
+            <HeaderTitle heading="ADD BLOG" />
+            <Breadcrumb>
+                <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                <BreadcrumbItem icon="fas fa-plus fa-xs" title="Add Blog" status="active" />
+            </Breadcrumb>
 
-                            </textarea>
-                        </div>
-                        <div className="input-group w50p">
-                            <button type="submit" onClick={firestoremaisave}>Post Blog</button>
-                        </div>
-                    </form>
-                    <form action="/addblog">
-                        <div className="title">
-                            <h3>Add Category</h3>
-                        </div>
-                        <div className="input-group">
-                            <input type="text" name="cname" id="cname" onChange={categoryname} value={blogcategorytype} placeholder="Category Name" required />
-                            <label for="cname">Category Name</label>
-                        </div>
-                        <div className="input-group">
-                            <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={blogcategorynameurl} placeholder="Category Image Drive ID" required />
-                            <label for="cimage">Category Image Drive ID</label>
-                        </div>
-                        <div className="input-group w50p">
-                            <button type="submit" onClick={blogcategorysave}  >Add Category</button>
-                        </div>
-                    </form>
-                </div>
+            <div className="formsCont">
+                <form  >
+                    <div className="title">
+                        <h3>Post Blog</h3>
+                    </div>
+                    <div className="input-group">
+                        <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
+                        <label for="title">Blog Title</label>
+                    </div>
+                    <div className="input-group">
+                        <AddCategory change={category} value={blogcategory} />
+                    </div>
+                    <div className="input-group">
+                        <input type="text" name="author" id="author" onChange={author} value={blogauthor} placeholder="Blog Author" required />
+                        <label for="author">Blog Author</label>
+                    </div>
+                    <div className="input-group">
+                        <input type="text" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
+                        <label for="image">Blog Image Drive ID</label>
+                    </div>
+                    <div className="summernote">
+                        <ReactSummernote
+                            value={blogcontent}
+                            options={{
+                                lang: 'en-US',
+                                height: 350,
+                                dialogsInBody: true,
+                                toolbar: [
+                                    ['style', ['style']],
+                                    ['font', ['bold', 'underline', 'clear']],
+                                    ['para', ['ul', 'ol', 'paragraph']],
+                                    ['insert', ['link', 'picture', 'video']],
+                                    ['view', ['fullscreen', 'codeview']]
+                                ]
+                            }}
+                            onChange={content}
+                        />
+                    </div>
+                    <div className="input-group w50p">
+                        <button type="submit" onClick={firestoremaisave}>Post Blog</button>
+                    </div>
+                </form>
+                <form action="/addblog">
+                    <div className="title">
+                        <h3>Add Category</h3>
+                    </div>
+                    <div className="input-group">
+                        <input type="text" name="cname" id="cname" onChange={categoryname} value={blogcategorytype} placeholder="Category Name" required />
+                        <label for="cname">Category Name</label>
+                    </div>
+                    <div className="input-group">
+                        <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={blogcategorynameurl} placeholder="Category Image Drive ID" required />
+                        <label for="cimage">Category Image Drive ID</label>
+                    </div>
+                    <div className="input-group w50p">
+                        <button type="submit" onClick={blogcategorysave}  >Add Category</button>
+                    </div>
+                </form>
             </div>
-        </React.Fragment>
+        </div>
+    </React.Fragment>
 
-    );
+);
 };
 

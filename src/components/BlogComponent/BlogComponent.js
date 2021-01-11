@@ -59,16 +59,18 @@ class BlogComponent extends React.Component {
                                                 <div className="headerContent">
                                                     <div className="blogTitle">{Blogs.blogtitle}</div>
                                                     <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                                                    <div className="blogDate">{Blogs.blogdate}</div>
+                                                    <div className="blogDate">Posted on {Blogs.blogdate}</div>
                                                     <div>
                                                         <button className="blogCategory">{Blogs.blogcategory}</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="blogDetails">
-                                                <p>
-                                                    {Blogs.blogcontent}
-                                                </p>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: Blogs.blogcontent
+                                                }}
+                                                className="blogDetails"
+                                            >
                                             </div>
                                             <div className="shareButtons">
                                                 <h6>Share on:</h6>
