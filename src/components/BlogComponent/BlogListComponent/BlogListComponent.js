@@ -39,8 +39,8 @@ class BlogListComponent extends Component {
                                                 <div className="headerContent">
                                                     <div className="blogTitle">{Blogs.blogtitle}</div>
                                                     <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                                                    <div className="blogDate">{Blogs.blogdate}</div>
                                                     <div className="blogCategory">in {Blogs.blogcategory} Posts</div>
+                                                    <div className="blogDate">Posted on {Blogs.blogdate}</div>
                                                 </div>
                                             </div>
                                             {
