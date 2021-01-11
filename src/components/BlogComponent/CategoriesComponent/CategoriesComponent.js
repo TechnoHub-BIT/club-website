@@ -4,6 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/Breadcrumb
 import HeadingTitle from "../../HeaderComponents/HeaderTitle";
 import { db } from "../../../firebase";
 
+
 class categoriesComponent extends React.Component {
     state = {
         Blogcategorytype: null
@@ -51,6 +52,7 @@ class categoriesComponent extends React.Component {
                             }
                         </div>
                     </div>
+                
                 </div>
             </React.Fragment>
         );
