@@ -52,8 +52,11 @@ class BlogComponent extends React.Component {
                                 if(Blogs.blogtitle === this.state.queryString[0] && Blogs.blogauthor === this.state.queryString[1]) {
                                     counter++;
 
-                                    const shareUrl = "http://technohubbit.in/blog/title=" + Blogs.blogtitle + "&author=" + Blogs.blogauthor;
-                                    const shareText = "\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n";
+                                    const newTitle = Blogs.blogtitle.replace(/ /g, "%20");
+                                    const newAuthor = Blogs.blogauthor.replace(/ /g, "%20");
+
+                                    const shareUrl = "http://technohubbit.in/blog?title=" + newTitle + "&author=" + newAuthor;
+                                    const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
 
                                     return (
                                         <div>

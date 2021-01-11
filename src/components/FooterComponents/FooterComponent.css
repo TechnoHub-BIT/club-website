@@ -54,6 +54,9 @@ footer {
 .socialIcon a {
   color: #fff;
 }
+.socialIcon a:hover {
+  color: #ff7e5f;
+}
 .socialIcon i {
   font-size: 1.4em;
 }

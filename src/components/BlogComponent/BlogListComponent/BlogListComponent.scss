@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-body {
-  background-color: #fff;
-}
-
 .blogContainer {
   margin: 20px;
 }
@@ -11,7 +7,6 @@ body {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1.5em;
-  padding: 0;
 
   .singleBlog {
     display: flex;

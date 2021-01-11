@@ -51,7 +51,7 @@ function AdminComponent() {
             const data = doc.data();
             setCurrentProfile(data);
         });
-    }
+      }
   }, []);
 
  
@@ -145,21 +145,6 @@ function AdminComponent() {
                               <div><strong>Interest:</strong> {selectedProfile?.interest}</div>
                             </div>
                           </div>
-                          {/* <Button
-                            variant="primary"
-                            onClick={() => {
-                              // console.log(profile);
-                              // db.collection("members")
-                              //   .doc(selectedProfile.uid)
-                              //   .delete() &&
-                                // .then(function () {
-                                //   console.log("Payment successfully updated!");
-                                //   setShow(false);
-                                // });
-                            }}
-                          >
-                            Delete Account
-                          </Button> */}
                         </div>
                       </div>
                     </main>

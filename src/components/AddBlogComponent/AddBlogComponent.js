@@ -11,12 +11,13 @@ import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 
 export default function AddBlogComponent() {
 
-    // const { currentUser } = useAuth();
+    const {currentUser} = useAuth();
     const [currentProfile, setCurrentProfile] = useState('');
 
     const [blogtitle, setTitle] = useState('');
@@ -81,13 +82,11 @@ export default function AddBlogComponent() {
 
 
     const blogcategorysave = (e) => {
-        if ( blogcategorytype !== '' &&    blogcategorynameurl !== '' ) {
+        if ( blogcategorytype !== '' && blogcategorynameurl !== '' ) {
         e.preventDefault();
         db.collection("Blogcategory").add({
             blogcategorytype: blogcategorytype,
             blogcategorynameurl: blogcategorynameurl
-
-
         })
             .then(() => {
                 alert("Blog category added");
@@ -100,21 +99,21 @@ export default function AddBlogComponent() {
         alert("Please fill in all the details");
     }
 }
-    // if (currentUser) {
-    //     db.collection("members")
-    //         .doc(currentUser.uid)
-    //         .onSnapshot(function (doc) {
-    //             const data = doc.data();
-    //             setCurrentProfile(data);
-    //         });
-    // }
+    if (currentUser) {
+        db.collection("members")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+                const data = doc.data();
+                setCurrentProfile(data);
+            });
+    }
 
     const onChange = (value) => {
         content(value);
     }
 
     return (
-        // (currentProfile.id === 1) &&
+        (currentProfile.id === 1 || currentProfile.id === 3) &&
         <React.Fragment>
             <div className="addBlogContainer">
                 <HeaderTitle heading="ADD BLOG" />
@@ -183,6 +182,5 @@ export default function AddBlogComponent() {
                 </div>
             </div>
         </React.Fragment>
-
     );
 };
