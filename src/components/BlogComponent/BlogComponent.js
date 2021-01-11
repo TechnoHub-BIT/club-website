@@ -16,6 +16,7 @@ import {
 import { db } from "../../firebase";
 import queryString from "./query";
 import { Alert, ButtonToggle } from 'reactstrap';
+import Moment from 'moment';
 // import { render } from "@testing-library/react";
 
 class BlogComponent extends React.Component {
@@ -65,7 +66,7 @@ class BlogComponent extends React.Component {
                                                 <div className="headerContent">
                                                     <div className="blogTitle">{Blogs.blogtitle}</div>
                                                     <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                                                    <div className="blogDate">Posted on {Blogs.blogdate}</div>
+                                                    <div className="blogDate">Posted on {Moment(Blogs.blogdate).format('ll')}</div>
                                                     <div>
                                                         <button className="blogCategory">{Blogs.blogcategory}</button>
                                                     </div>

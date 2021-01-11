@@ -25,7 +25,7 @@
 }
 
 .blogContents .blogHeader .blogImage {
-  width: 100%;
+  width: 100% !important;
 }
 
 .blogContents .blogHeader .headerContent .blogTitle {
