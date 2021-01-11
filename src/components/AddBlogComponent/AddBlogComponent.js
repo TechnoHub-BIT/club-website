@@ -141,7 +141,7 @@ export default function AddBlogComponent() {
                         </div>
                         <div className="input-group">
                             <input type="text" name="image" id="image" onChange={imageurl} value={blogimageurl} placeholder="Blog Image" required />
-                            <label for="image">Blog Image Drive ID</label>
+                            <label for="image">Blog Image Drive ID(1920x1080)</label>
                         </div>
                         <div className="summernote">
                             <ReactSummernote
@@ -151,11 +151,10 @@ export default function AddBlogComponent() {
                                 height: 350,
                                 dialogsInBody: true,
                                 toolbar: [
-                                    ['style', ['style']],
-                                    ['font', ['bold', 'underline', 'clear']],
+                                    ['font', ['bold', 'underline']],
                                     ['para', ['ul', 'ol', 'paragraph']],
-                                    ['insert', ['link', 'picture', 'video']],
-                                    ['view', ['fullscreen', 'codeview']]
+                                    ['insert', ['link', 'picture']],
+                                    ['view', ['codeview']]
                                 ]
                                 }}
                                 onChange={onChange}
@@ -175,7 +174,7 @@ export default function AddBlogComponent() {
                         </div>
                         <div className="input-group">
                             <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={blogcategorynameurl} placeholder="Category Image Drive ID" required />
-                            <label for="cimage">Category Image Drive ID</label>
+                            <label for="cimage">Category Image Drive ID(1920x1080)</label>
                         </div>
                         <div className="input-group w50p">
                             <button type="submit" onClick={blogcategorysave}>Add Category</button>
