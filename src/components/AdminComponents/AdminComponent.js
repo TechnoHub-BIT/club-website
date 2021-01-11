@@ -56,7 +56,7 @@ function AdminComponent() {
 
  
   return (
-    (currentProfile.id === 1) && 
+    (currentProfile.id === 1) &&
     <div className="admin-container">
       <HeaderTitle heading="ADMIN PANEL" />
       <Breadcrumb>

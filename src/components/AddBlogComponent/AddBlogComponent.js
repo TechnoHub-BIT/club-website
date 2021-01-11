@@ -10,13 +10,18 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
+// import { useAuth } from "../../contexts/AuthContext";
 import queryString from 'query-string';
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 
 
 
 export default function AddBlogComponent() {
-  
+
+    // const { currentUser } = useAuth();
+    const [currentProfile, setCurrentProfile] = useState('');
+
+
 
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
@@ -40,25 +45,35 @@ export default function AddBlogComponent() {
         setContent(e.target.value);
     };
     const blogdate = new Date().toLocaleDateString();
-   
-   
+
+
 
     const firestoremaisave = (e) => {
-        e.preventDefault();
-        db.collection("Blogs").add({
-            blogtitle: blogtitle,
-            blogcategory: blogcategory,
-            blogauthor: blogauthor,
-            blogimageurl: blogimageurl,
-            blogdate: blogdate,
-            blogcontent: blogcontent
-        })
-            .then(() => {
-                alert("Blog Posted!");
+        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '' &&  blogcontent !== '') {
+        
+        
+            e.preventDefault();
+            db.collection("Blogs").add({
+                blogtitle: blogtitle,
+                blogcategory: blogcategory,
+                blogauthor: blogauthor,
+                blogimageurl: blogimageurl,
+                blogdate: blogdate,
+                blogcontent: blogcontent
+
             })
-            .catch((error) => {
-                alert(error.message);
-            });
+                .then(() => {
+                    alert("Blog Posted!");
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+
+        }
+        else{
+           
+            alert("field unfilled");
+        }
 
     }
 
@@ -73,12 +88,13 @@ export default function AddBlogComponent() {
 
 
     const blogcategorysave = (e) => {
+        if ( blogcategorytype !== '' &&    blogcategorynameurl !== '' ) {
         e.preventDefault();
         db.collection("Blogcategory").add({
-           blogcategorytype : blogcategorytype,
-           blogcategorynameurl :blogcategorynameurl
+            blogcategorytype: blogcategorytype,
+            blogcategorynameurl: blogcategorynameurl
 
-           
+
         })
             .then(() => {
                 alert("Blog category added");
@@ -88,12 +104,29 @@ export default function AddBlogComponent() {
             });
 
     }
-    
-  
+    else{
+           
+        alert("field unfilled");
+    }
+}
+    // if (currentUser) {
+    //     db.collection("members")
+    //         .doc(currentUser.uid)
+    //         .onSnapshot(function (doc) {
+    //             const data = doc.data();
+    //             setCurrentProfile(data);
+    //         });
+    // }
+
+
 
 
     return (
+        // (currentProfile.id === 1) &&
+
         <React.Fragment>
+
+
             <div className="addBlogContainer">
                 <HeaderTitle heading="ADD BLOG" />
                 <Breadcrumb>
@@ -102,7 +135,7 @@ export default function AddBlogComponent() {
                 </Breadcrumb>
 
                 <div className="formsCont">
-                    <form action="/contactus">
+                    <form  >
                         <div className="title">
                             <h3>Post Blog</h3>
                         </div>
@@ -135,11 +168,11 @@ export default function AddBlogComponent() {
                             <h3>Add Category</h3>
                         </div>
                         <div className="input-group">
-                            <input type="text" name="cname" id="cname" onChange={categoryname} value={ blogcategorytype} placeholder="Category Name" required />
+                            <input type="text" name="cname" id="cname" onChange={categoryname} value={blogcategorytype} placeholder="Category Name" required />
                             <label for="cname">Category Name</label>
                         </div>
                         <div className="input-group">
-                            <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={ blogcategorynameurl} placeholder="Category Image Drive ID" required />
+                            <input type="text" name="cimage" id="cimage" onChange={categorynameurl} value={blogcategorynameurl} placeholder="Category Image Drive ID" required />
                             <label for="cimage">Category Image Drive ID</label>
                         </div>
                         <div className="input-group w50p">
@@ -149,6 +182,7 @@ export default function AddBlogComponent() {
                 </div>
             </div>
         </React.Fragment>
+
     );
 };
 
