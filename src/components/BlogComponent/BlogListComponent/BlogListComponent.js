@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./BlogListComponent.css";
 import { db } from "../../../firebase";
 import queryString from "../query";
+import { Alert, ButtonToggle } from 'reactstrap';
 
 class BlogListComponent extends Component {
     state = {
@@ -25,13 +26,18 @@ class BlogListComponent extends Component {
     }
 
     render() {
+        let counter = 0;
         return (
             <React.Fragment>
                 <div className="blogContainer">
                     <div className="blogContents">
+                        <div className="alertMessage">
+                            <h4>{this.state.queryString} Blogs</h4>
+                        </div>
                         {
                             this.state.Blogs && this.state.Blogs.map(Blogs => {
                                 if(Blogs.blogcategory === this.state.queryString) {
+                                    counter++;
                                     return (
                                         <a href={"/blog?title=" + Blogs.blogtitle + "&author=" + Blogs.blogauthor} className="singleBlog">
                                             <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
@@ -43,19 +49,20 @@ class BlogListComponent extends Component {
                                                     <div className="blogDate">Posted on {Blogs.blogdate}</div>
                                                 </div>
                                             </div>
-                                            {
-                                                /*
-                                                <div className="blogDetails">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi vitae praesentium ipsa optio architecto dolore repellendus expedita eaque perspiciatis!
-                                                    </p>
-                                                </div>
-                                                */
-                                            }
                                         </a>
                                     )
                                 }
                             })
+                        }
+                        {
+                            counter === 0 ? 
+                                <div>
+                                    <Alert color="danger" style={{textAlign: "center"}}>
+                                        Oops! Looks like this category does not have any blogs.
+                                        <br />
+                                        <a href="/blogcategories"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
+                                    </Alert>
+                                </div> : null
                         }
                     </div>
                 </div>

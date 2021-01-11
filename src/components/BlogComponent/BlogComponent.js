@@ -15,6 +15,7 @@ import {
 
 import { db } from "../../firebase";
 import queryString from "./query";
+import { Alert, ButtonToggle } from 'reactstrap';
 // import { render } from "@testing-library/react";
 
 class BlogComponent extends React.Component {
@@ -41,6 +42,7 @@ class BlogComponent extends React.Component {
     }
 
     render() {
+        let counter = 0;
         return (
             <React.Fragment>
                 <div className="blogContainer">
@@ -48,6 +50,7 @@ class BlogComponent extends React.Component {
                         {
                             this.state.Blogs && this.state.Blogs.map(Blogs => {
                                 if(Blogs.blogtitle === this.state.queryString[0] && Blogs.blogauthor === this.state.queryString[1]) {
+                                    counter++;
 
                                     const shareUrl = "http://technohubbit.in/blog/title=" + Blogs.blogtitle + "&author=" + Blogs.blogauthor;
                                     const shareText = "\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n";
@@ -94,6 +97,16 @@ class BlogComponent extends React.Component {
                                     )
                                 }
                             })
+                        }
+                        {
+                            counter === 0 ? 
+                                <div>
+                                    <Alert color="danger" style={{textAlign: "center"}}>
+                                        Oops! Looks like this blog does not exist.
+                                        <br />
+                                        <a href="/blogcategories"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
+                                    </Alert>
+                                </div> : null
                         }
                     </div>
                 </div>

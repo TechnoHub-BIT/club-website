@@ -69,6 +69,15 @@ body {
           transform: scale(1.03);
 }
 
+.alertMessage {
+  text-align: center;
+}
+
+.alertMessage h4 {
+  margin: 1em 0;
+  font-size: 2em;
+}
+
 @media only screen and (min-width: 992px) {
   .blogContents {
     display: -ms-grid;
