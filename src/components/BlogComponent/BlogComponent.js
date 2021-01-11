@@ -65,10 +65,12 @@ class BlogComponent extends React.Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="blogDetails">
-                                                <p>
-                                                    {Blogs.blogcontent}
-                                                </p>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: Blogs.blogcontent
+                                                }}
+                                                className="blogDetails"
+                                            >
                                             </div>
                                             <div className="shareButtons">
                                                 <h6>Share on:</h6>

@@ -10,8 +10,6 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
-// import { useAuth } from "../../contexts/AuthContext";
-import queryString from 'query-string';
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 
 
@@ -20,8 +18,6 @@ export default function AddBlogComponent() {
 
     // const { currentUser } = useAuth();
     const [currentProfile, setCurrentProfile] = useState('');
-
-
 
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
@@ -41,17 +37,15 @@ export default function AddBlogComponent() {
         setImageUrl(e.target.value);
     };
     const [blogcontent, setContent] = useState('');
-    const content = (e) => {
-        setContent(e.target.value);
+    const content = (param) => {
+        setContent(param);
     };
     const blogdate = new Date().toLocaleDateString();
 
 
 
     const firestoremaisave = (e) => {
-        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '' &&  blogcontent !== '') {
-        
-        
+        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
                 blogtitle: blogtitle,
@@ -70,9 +64,8 @@ export default function AddBlogComponent() {
                 });
 
         }
-        else{
-           
-            alert("field unfilled");
+        else {
+            alert("Please fill in all the details!");
         }
 
     }
@@ -102,11 +95,9 @@ export default function AddBlogComponent() {
             .catch((error) => {
                 alert(error.message);
             });
-
     }
-    else{
-           
-        alert("field unfilled");
+    else {
+        alert("Please fill in all the details");
     }
 }
     // if (currentUser) {
@@ -118,15 +109,13 @@ export default function AddBlogComponent() {
     //         });
     // }
 
-
-
+    const onChange = (value) => {
+        content(value);
+    }
 
     return (
         // (currentProfile.id === 1) &&
-
         <React.Fragment>
-
-
             <div className="addBlogContainer">
                 <HeaderTitle heading="ADD BLOG" />
                 <Breadcrumb>
@@ -155,9 +144,22 @@ export default function AddBlogComponent() {
                             <label for="image">Blog Image Drive ID</label>
                         </div>
                         <div className="summernote">
-                            <textarea onChange={content} value={blogcontent}>
-
-                            </textarea>
+                            <ReactSummernote
+                                value={blogcontent}
+                                options={{
+                                lang: 'en-US',
+                                height: 350,
+                                dialogsInBody: true,
+                                toolbar: [
+                                    ['style', ['style']],
+                                    ['font', ['bold', 'underline', 'clear']],
+                                    ['para', ['ul', 'ol', 'paragraph']],
+                                    ['insert', ['link', 'picture', 'video']],
+                                    ['view', ['fullscreen', 'codeview']]
+                                ]
+                                }}
+                                onChange={onChange}
+                            />
                         </div>
                         <div className="input-group w50p">
                             <button type="submit" onClick={firestoremaisave}>Post Blog</button>
