@@ -16,7 +16,8 @@ import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 
 export default function AddBlogComponent() {
 
-  
+    // const { currentUser } = useAuth();
+    const [currentProfile, setCurrentProfile] = useState('');
 
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
@@ -44,7 +45,7 @@ export default function AddBlogComponent() {
 
 
     const firestoremaisave = (e) => {
-        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' && blogimageurl !== '') {
+        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
                 blogtitle: blogtitle,
@@ -80,25 +81,25 @@ export default function AddBlogComponent() {
 
 
     const blogcategorysave = (e) => {
-        if (blogcategorytype !== '' && blogcategorynameurl !== '') {
-            e.preventDefault();
-            db.collection("Blogcategory").add({
-                blogcategorytype: blogcategorytype,
-                blogcategorynameurl: blogcategorynameurl
+        if ( blogcategorytype !== '' &&    blogcategorynameurl !== '' ) {
+        e.preventDefault();
+        db.collection("Blogcategory").add({
+            blogcategorytype: blogcategorytype,
+            blogcategorynameurl: blogcategorynameurl
 
 
+        })
+            .then(() => {
+                alert("Blog category added");
             })
-                .then(() => {
-                    alert("Blog category added");
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        }
-        else {
-            alert("Please fill in all the details");
-        }
+            .catch((error) => {
+                alert(error.message);
+            });
     }
+    else {
+        alert("Please fill in all the details");
+    }
+}
     // if (currentUser) {
     //     db.collection("members")
     //         .doc(currentUser.uid)
@@ -108,6 +109,9 @@ export default function AddBlogComponent() {
     //         });
     // }
 
+    const onChange = (value) => {
+        content(value);
+    }
 
     return (
         // (currentProfile.id === 1) &&
@@ -178,9 +182,7 @@ export default function AddBlogComponent() {
                     </form>
                 </div>
             </div>
-       
-    </React.Fragment>
+        </React.Fragment>
 
-);
+    );
 };
-
