@@ -117,8 +117,7 @@ export default function AddBlogComponent() {
     //             setCurrentProfile(data);
     //         });
     // }
-
-
+   
 
 
     return (
@@ -176,7 +175,7 @@ export default function AddBlogComponent() {
                             <label for="cimage">Category Image Drive ID</label>
                         </div>
                         <div className="input-group w50p">
-                            <button type="submit" onClick={blogcategorysave}>Add Category</button>
+                            <button type="submit" onClick={blogcategorysave}  >Add Category</button>
                         </div>
                     </form>
                 </div>
