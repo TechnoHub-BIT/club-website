@@ -41,6 +41,7 @@ export default function AddBlogComponent() {
     };
     const blogdate = new Date().toLocaleDateString();
    
+   
 
     const firestoremaisave = (e) => {
         e.preventDefault();

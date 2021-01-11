@@ -56,6 +56,7 @@ function AdminComponent() {
 
  
   return (
+    (currentProfile.id === 1) && 
     <div className="admin-container">
       <HeaderTitle heading="ADMIN PANEL" />
       <Breadcrumb>
@@ -186,7 +187,7 @@ function AdminComponent() {
             })}
           </div>
         {
-          (currentProfile.id === 1) && <div>
+          <div>
             <h3 className="h3-text">Messages</h3>
             <table id="example" className="display table table-responsive-sm table-responsive-md table-striped table-hover table-bordered table-sm">
               <thead className="thead-dark">
