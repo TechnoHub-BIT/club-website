@@ -3,6 +3,7 @@ import "./BlogListComponent.css";
 import { db } from "../../../firebase";
 import queryString from "../query";
 import { Alert, ButtonToggle } from 'reactstrap';
+import Moment from 'moment';
 
 class BlogListComponent extends Component {
     state = {
@@ -46,7 +47,7 @@ class BlogListComponent extends Component {
                                                     <div className="blogTitle">{Blogs.blogtitle}</div>
                                                     <div className="blogAuthor">by {Blogs.blogauthor}</div>
                                                     <div className="blogCategory">in {Blogs.blogcategory} Posts</div>
-                                                    <div className="blogDate">Posted on {Blogs.blogdate}</div>
+                                                    <div className="blogDate">Posted on {Moment(Blogs.blogdate).format('ll')}</div>
                                                 </div>
                                             </div>
                                         </a>

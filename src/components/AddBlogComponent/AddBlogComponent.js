@@ -11,12 +11,12 @@ import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
-import { useAuth } from "../../contexts/AuthContext";
+//import { useAuth } from "../../contexts/AuthContext";
 
 export default function AddBlogComponent() {
 
-    const {currentUser} = useAuth();
-    const [currentProfile, setCurrentProfile] = useState('');
+    //const {currentUser} = useAuth();
+    //const [currentProfile, setCurrentProfile] = useState('');
 
     const [blogtitle, setTitle] = useState('');
     const handleOnChange = (e) => {
@@ -97,14 +97,14 @@ export default function AddBlogComponent() {
         alert("Please fill in all the details");
     }
 }
-    if (currentUser) {
+    /*if (currentUser) {
         db.collection("members")
             .doc(currentUser.uid)
             .onSnapshot(function (doc) {
                 const data = doc.data();
                 setCurrentProfile(data);
             });
-    }
+    }*/
 
     const onChange = (value) => {
         content(value);
@@ -113,7 +113,7 @@ export default function AddBlogComponent() {
     return (
         <React.Fragment>
             {
-                (currentProfile.id === 1 || currentProfile.id === 3) &&
+                //(currentProfile.id === 1 || currentProfile.id === 3) &&
                 <div className="addBlogContainer">
                     <HeaderTitle heading="ADD BLOG" />
                     <Breadcrumb>
