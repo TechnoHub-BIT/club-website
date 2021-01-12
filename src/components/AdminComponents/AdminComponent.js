@@ -21,6 +21,8 @@ function AdminComponent() {
   const [currentProfile, setCurrentProfile] = useState('');
   const {currentUser} = useAuth();
 
+ 
+
   useEffect(() => {
     
     db.collection("contacts")

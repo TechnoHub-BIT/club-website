@@ -17,40 +17,51 @@ import { db } from "../../firebase";
 import queryString from "./query";
 import { Alert, ButtonToggle } from 'reactstrap';
 import Moment from 'moment';
+import { Link } from 'react-router-dom'
+
+import Card from "reactstrap/lib/Card";
 // import { render } from "@testing-library/react";
 
-class BlogComponent extends React.Component {
-    state = {
-        Blogs: null,
-        queryString: queryString("blog"),
-    }
- 
-    componentDidMount() {
-        // console.log('mounted')
-        db.collection('Blogs')
-            .get()
-            .then(snapshot => {
 
-                const Blogs = []
-                snapshot.forEach(doc => {
-                    const data = doc.data()
-                    Blogs.push(data)
+function BlogComponent() {
+
+    const qur = queryString("blog");
+
+    const [blogedit, setblogs] = React.useState([]);
+
+
+    React.useEffect(() => {
+        const fetchdata = async () => {
+            db.collection("Blogs")
+                .onSnapshot(function (data) {
+                    setblogs(data.docs.map(doc => ({
+                        ...doc.data(), id: doc.id
+                    })));
                 })
-                this.setState({ Blogs: Blogs })
+        }
+        fetchdata();
+    }, []);
+
+
+    function onDelete (id) {
+       
+        db.collection('Blogs').doc(id).delete()
+            .catch((err) => {
+                console.error(err);
             })
-            .catch(error => console.log(error))
-         
+        
     }
 
-    render() {
+
+  
         let counter = 0;
         return (
             <React.Fragment>
+
                 <div className="blogContainer">
                     <div className="blogContents">
-                        {
-                            this.state.Blogs && this.state.Blogs.map(Blogs => {
-                                if(Blogs.blogtitle === this.state.queryString[0] && Blogs.blogauthor === this.state.queryString[1]) {
+                    {blogedit.map(Blogs => {
+                                if (Blogs.blogtitle === qur[0] && Blogs.blogauthor === qur[1]) {
                                     counter++;
 
                                     const newTitle = Blogs.blogtitle.replace(/ /g, "%20");
@@ -79,6 +90,11 @@ class BlogComponent extends React.Component {
                                                 className="blogDetails"
                                             >
                                             </div>
+
+                                            <Link to={`/editblog`}>Edit</Link>
+                                            <button onClick={() => onDelete(Blogs.id)}>Delete</button>
+
+
                                             <div className="shareButtons">
                                                 <h6>Share on:</h6>
                                                 <FacebookShareButton url={shareUrl} quote={shareText}>
@@ -103,9 +119,9 @@ class BlogComponent extends React.Component {
                             })
                         }
                         {
-                            counter === 0 ? 
+                            counter === 0 ?
                                 <div>
-                                    <Alert color="danger" style={{textAlign: "center"}}>
+                                    <Alert color="danger" style={{ textAlign: "center" }}>
                                         Oops! Looks like this blog does not exist.
                                         <br />
                                         <a href="/blogcategories"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
@@ -120,6 +136,6 @@ class BlogComponent extends React.Component {
 
     }
 
-};
+
 
 export default BlogComponent;

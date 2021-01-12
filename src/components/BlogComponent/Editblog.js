@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
+import "../AddBlogComponent/AddBlogComponent.css";
 import "../input.css";
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/dist/react-summernote.css';
@@ -9,10 +10,11 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
-import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
+import AddCategory from "../AddBlogComponent/AddCategoryComponent/AddCategoryComponent";
+
 //import { useAuth } from "../../contexts/AuthContext";
 
-export default function AddBlogComponent() {
+export default function Editblog() {
 
     //const {currentUser} = useAuth();
     //const [currentProfile, setCurrentProfile] = useState('');
@@ -46,8 +48,6 @@ export default function AddBlogComponent() {
         if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
-             
-               
                 blogtitle: blogtitle,
                 blogcategory: blogcategory,
                 blogauthor: blogauthor,
@@ -70,34 +70,65 @@ export default function AddBlogComponent() {
 
     }
 
-    const [blogcategorytype, setblogcategortype] = useState('');
-    const categoryname = (e) => {
-        setblogcategortype(e.target.value);
-    };
-    const [blogcategorynameurl, setblogcategorynameurl] = useState('');
-    const categorynameurl = (e) => {
-        setblogcategorynameurl(e.target.value);
-    };
+//     const [blogs,setedit] = useState([]);
+//     const ref = db.collection('Blogs');
+
+//     function getdata() {
+//     ref.onSnapshot((querySnapshot) => {
+//         const items = [];
+//         querySnapshot.forEach((doc) => {
+//             items.push(doc.data());
+//         });
+//         setedit(items);
+//     })
+//     }
+// useEffect(() => {
+//   getdata();
+  
+// }, [])
+
+// function deleteblog(){
+//     ref.doc().delete()
+//     .catch((err) => {
+//         console.error(err);
+//     })
+// }
+
+// function editblog(updateblog){
+//     ref.doc().update(updateblog)
+//     .catch((err) => {
+//         console.error(err);
+//     })
+// }
+
+    // const [blogcategorytype, setblogcategortype] = useState('');
+    // const categoryname = (e) => {
+    //     setblogcategortype(e.target.value);
+    // };
+    // const [blogcategorynameurl, setblogcategorynameurl] = useState('');
+    // const categorynameurl = (e) => {
+    //     setblogcategorynameurl(e.target.value);
+    // };
 
 
-    const blogcategorysave = (e) => {
-        if ( blogcategorytype !== '' && blogcategorynameurl !== '' ) {
-        e.preventDefault();
-        db.collection("Blogcategory").add({
-            blogcategorytype: blogcategorytype,
-            blogcategorynameurl: blogcategorynameurl
-        })
-            .then(() => {
-                alert("Blog category added");
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-    }
-    else {
-        alert("Please fill in all the details");
-    }
-}
+//     const blogcategorysave = (e) => {
+//         if ( blogcategorytype !== '' && blogcategorynameurl !== '' ) {
+//         e.preventDefault();
+//         db.collection("Blogcategory").add({
+//             blogcategorytype: blogcategorytype,
+//             blogcategorynameurl: blogcategorynameurl
+//         })
+//             .then(() => {
+//                 alert("Blog category added");
+//             })
+//             .catch((error) => {
+//                 alert(error.message);
+//             });
+//     }
+//     else {
+//         alert("Please fill in all the details");
+//     }
+// }
     /*if (currentUser) {
         db.collection("members")
             .doc(currentUser.uid)
@@ -116,7 +147,7 @@ export default function AddBlogComponent() {
             {
                 //(currentProfile.id === 1 || currentProfile.id === 3) &&
                 <div className="addBlogContainer">
-                    <HeaderTitle heading="ADD BLOG" />
+                    <HeaderTitle heading="EDIT BLOG" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-plus fa-xs" title="Add Blog" status="active" />
@@ -125,10 +156,14 @@ export default function AddBlogComponent() {
                     <div className="formsCont">
                         <form  >
                             <div className="title">
-                                <h3>Post Blog</h3>
+                                <h3>Edit Blog</h3>
                             </div>
                             <div className="input-group">
+                                {/* {blogs.map((blog) => ( */}
+
+                               
                                 <input type="text" name="title" id="title" onChange={handleOnChange} value={blogtitle} placeholder="Blog Title" required />
+                                {/* ))} */}
                                 <label for="title">Blog Title</label>
                             </div>
                             <div className="input-group">
@@ -163,7 +198,7 @@ export default function AddBlogComponent() {
                                 <button type="submit" onClick={firestoremaisave}>Post Blog</button>
                             </div>
                         </form>
-                        <form action="/addblog">
+                        {/* <form action="/addblog">
                             <div className="title">
                                 <h3>Add Category</h3>
                             </div>
@@ -178,7 +213,7 @@ export default function AddBlogComponent() {
                             <div className="input-group w50p">
                                 <button type="submit" onClick={blogcategorysave}>Add Category</button>
                             </div>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             }
