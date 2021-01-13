@@ -32,6 +32,7 @@ class AddCategoryComponent extends React.Component {
                     this.state.Blogcategorytype && this.state.Blogcategorytype.map(Blogcategorytype => {
                         return( 
                              <option>{ Blogcategorytype.blogcategorytype }</option>
+                            
                         );
                     })
                 }
