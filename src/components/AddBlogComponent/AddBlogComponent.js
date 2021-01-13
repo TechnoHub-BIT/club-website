@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import "./AddBlogComponent.css";
 import "../input.css";
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/dist/react-summernote.css';
@@ -47,6 +46,8 @@ export default function AddBlogComponent() {
         if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
+             
+               
                 blogtitle: blogtitle,
                 blogcategory: blogcategory,
                 blogauthor: blogauthor,

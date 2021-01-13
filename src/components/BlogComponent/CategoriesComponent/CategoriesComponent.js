@@ -4,6 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/Breadcrumb
 import HeadingTitle from "../../HeaderComponents/HeaderTitle";
 import { db } from "../../../firebase";
 
+
 class categoriesComponent extends React.Component {
     state = {
         Blogcategorytype: null
@@ -42,7 +43,6 @@ class categoriesComponent extends React.Component {
                                             <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
                                             <div className="categoryContent">
                                                 <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>
-                                                <div className="posts">12+</div>
                                             </div>
                                         </a>
                                     )
@@ -50,6 +50,7 @@ class categoriesComponent extends React.Component {
                             }
                         </div>
                     </div>
+                
                 </div>
             </React.Fragment>
         );

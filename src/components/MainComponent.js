@@ -23,6 +23,7 @@ import Projects from "./ProjectsComponent/ProjectsComponent";
 import Admin from "./AdminComponents/AdminComponent";
 import ScrollToTop from './ScrollToTop';
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
+import Editblog from "./BlogComponent/Editblog";
 import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
@@ -62,6 +63,7 @@ class Main extends Component {
               <Route exact path="/collabs" component={Collaborations} />
               <Route exact path="/blogcategories" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
+              {/* <PrivateRoute exact path="/editblog" component={Editblog} /> */}
 
               <Footer />
               {/* </Switch> */}
