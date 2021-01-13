@@ -42,7 +42,6 @@ class categoriesComponent extends React.Component {
                                             <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
                                             <div className="categoryContent">
                                                 <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>
-                                                <div className="posts">12+</div>
                                             </div>
                                         </a>
                                     )

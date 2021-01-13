@@ -39,7 +39,6 @@ class BlogComponent extends React.Component {
                 this.setState({ Blogs: Blogs })
             })
             .catch(error => console.log(error))
-         
     }
 
     render() {
