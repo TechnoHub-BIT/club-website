@@ -10,6 +10,7 @@ import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
+import { Helmet } from "react-helmet";
 //import { useAuth } from "../../contexts/AuthContext";
 
 export default function AddBlogComponent() {
@@ -113,6 +114,9 @@ export default function AddBlogComponent() {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>Add Blog | TechnoHub BITD</title>
+            </Helmet>
             {
                 //(currentProfile.id === 1 || currentProfile.id === 3) &&
                 <div className="addBlogContainer">
@@ -123,7 +127,7 @@ export default function AddBlogComponent() {
                     </Breadcrumb>
 
                     <div className="formsCont">
-                        <form  >
+                        <form>
                             <div className="title">
                                 <h3>Post Blog</h3>
                             </div>

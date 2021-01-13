@@ -3,12 +3,16 @@ import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbCom
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import "./ProjectsComponent.css";
 import SingleProject from "./SingleProjectComponent/SingleProject";
+import { Helmet } from "react-helmet";
 
 const Projects = () => {
   return(
-    <React.Fragment>    
+    <React.Fragment>
+      <Helmet>
+        <title>Projects | TechnoHub BITD</title>
+      </Helmet>
+      <HeadingTitle heading="OUR PROJECTS" image="projects.jpg" />
       <div className="gallery-container">
-        <HeadingTitle heading="OUR PROJECTS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-microchip" title="Our Projects" status="active" />

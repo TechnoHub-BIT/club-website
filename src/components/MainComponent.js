@@ -14,7 +14,7 @@ import {AuthProvider} from '../contexts/AuthContext';
 import PrivateRoute from "../PrivateRoute";
 import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
 import Achievements from "./AchievementsComponent/AchievementsComponent";
-import Gallery from "./Gallery/gallery";
+import Gallery from "./GalleryComponent/GalleryComponent";
 import Settings from "./ProfileComponents/SettingsComponent";
 import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
@@ -23,7 +23,7 @@ import Projects from "./ProjectsComponent/ProjectsComponent";
 import Admin from "./AdminComponents/AdminComponent";
 import ScrollToTop from './ScrollToTop';
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
-import Editblog from "./BlogComponent/Editblog";
+import EditBlog from "./BlogComponent/EditBlogComponent/EditBlogComponent";
 import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
@@ -59,11 +59,11 @@ class Main extends Component {
               <Route exact path="/gallery" component={Gallery} />
               <Route exact path="/projects" component={Projects} />
               <PrivateRoute exact path ="/addBlog" component={AddBlog} />
-              <Route exact path="/blog" component={Blog} />
+              <Route exact path="/blogpost" component={Blog} />
               <Route exact path="/collabs" component={Collaborations} />
-              <Route exact path="/blogcategories" component={BlogCategories} />
+              <Route exact path="/blog" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
-              {/* <PrivateRoute exact path="/editblog" component={Editblog} /> */}
+              <PrivateRoute exact path="/editblog" component={EditBlog} />
 
               <Footer />
               {/* </Switch> */}

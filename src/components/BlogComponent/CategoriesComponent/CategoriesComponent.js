@@ -3,6 +3,7 @@ import "./CategoriesComponent.css";
 import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/BreadcrumbComponent";
 import HeadingTitle from "../../HeaderComponents/HeaderTitle";
 import { db } from "../../../firebase";
+import { Helmet } from "react-helmet";
 
 
 class categoriesComponent extends React.Component {
@@ -28,8 +29,11 @@ class categoriesComponent extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <Helmet>
+                    <title>Blog Categories | TechnoHub BITD</title>
+                </Helmet>
                 <div>
-                    <HeadingTitle heading="BLOG CATEGORIES" />
+                    <HeadingTitle heading="Blog Categories" image="blog-categories.jpg" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-th-large" title="Blog Categories" status="active" />

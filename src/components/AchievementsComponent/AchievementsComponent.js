@@ -2,14 +2,18 @@ import React from "react";
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import SingleAchievement from "./SingleAchievementComponent/SingleAchievement";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Helmet } from "react-helmet";
 
 import "./Achievements.css";
 
 const achievements = (props) => {
     return(
         <React.Fragment>    
+            <Helmet>
+                <title>Achievements | TechnoHub BITD</title>
+            </Helmet>
+            <HeaderTitle heading="ACHIEVEMENTS" image="achievements.jpg" />
             <div className="achievementsCont">
-                <HeaderTitle heading="ACHIEVEMENTS" />
                 <Breadcrumb>
                     <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                     <BreadcrumbItem icon="fas fa-award" title="Achievements" status="active" />

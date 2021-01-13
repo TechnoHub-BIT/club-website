@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import './LogInStyles.css'
 import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
+import { Helmet } from "react-helmet";
 
 function LogInComponent() {
 
@@ -59,9 +60,12 @@ function LogInComponent() {
     }
 
     return (
-        <>
+        <React.Fragment>
+          <Helmet>
+            <title>Log In | TechnoHub BITD</title>
+          </Helmet>
+          <HeadingTitle heading="Log In" image="login.jpg" />
           <div className="login-container">
-            <HeadingTitle heading="LOG IN" />
             <Breadcrumb>
                 <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                 <BreadcrumbItem icon="fas fa-sign-in-alt" title="Log In" status="active" />
@@ -132,7 +136,7 @@ function LogInComponent() {
             </div>
             {/* </div> */}
           </div>
-        </>
+        </React.Fragment>
     )
 }
 

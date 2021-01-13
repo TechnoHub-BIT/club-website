@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import "./gallery.css";
+import "./GalleryComponent.css";
 import HeadingTitle from "../HeaderComponents/HeaderTitle";
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { Helmet } from "react-helmet";
 
 class gallery extends Component {
   
@@ -27,9 +28,12 @@ class gallery extends Component {
 
     render() {
         return(
-            <React.Fragment>    
+            <React.Fragment>
+                <Helmet>
+                    <title>Gallery | TechnoHub BITD</title>
+                </Helmet>
+                <HeadingTitle heading="GALLERY" image="gallery.jpg" />
                 <div className="gallery-container">
-                    <HeadingTitle heading="GALLERY" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-images" title="Gallery" status="active" />

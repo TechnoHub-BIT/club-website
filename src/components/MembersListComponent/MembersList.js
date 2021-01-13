@@ -4,6 +4,7 @@ import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
 import { db } from "../../firebase";
+import { Helmet } from "react-helmet";
 
 const OurMembers = (props) => {
 
@@ -23,9 +24,12 @@ const OurMembers = (props) => {
 
 
   return (
-    <React.Fragment>    
+    <React.Fragment>
+      <Helmet>
+        <title>Club Members | TechnoHub BITD</title>
+      </Helmet>
+      <HeaderTitle heading="MEMBERS" image="members.jpg" />
       <div className="members-container">
-        <HeaderTitle heading="MEMBERS" />
         <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-user-friends" title="Members" status="active" />

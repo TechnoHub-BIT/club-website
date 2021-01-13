@@ -15,40 +15,42 @@ class Contact extends Component {
 
     render() {
         return(
-            <div className="contactus-container">
-                <HeaderTitle heading="CONTACT US" />
-                <Breadcrumb>
-                    <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
-                    <BreadcrumbItem icon="fas fa-phone-alt" title="Contact Us" status="active" />
-                </Breadcrumb>
-                <div className="container" >
-                    <div className="row">
-                        <div className="col-12 col-md-12">
-                            <h3>Reach Us Here</h3>
-                            <address>
-                                TechnoHub<br />
-                                Bhilai Institute of Technology, Durg<br />
-                                Chhattisgarh 491001<br />
-                                <i className="fas fa-phone-alt"></i> <a href="tel:+916261731565">+91-6261731565</a><br />
-                                <i className="fas fa-envelope"></i> <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
-                            </address>
-                            <div>
-                                <a role="button" className="btn btn-primary" href="tel:+916261731565"><i className="fas fa-phone-alt"></i> Call</a>
-                                {/* <a role="button" className="btn btn-info" href="http://skype.com/"><i className="fa fa-skype"></i> Skype</a> */}
-                                <a role="button" className="btn btn-success" href="mailto:bit.technohub@gmail.com"><i className="fas fa-envelope"></i> Email</a>
+            <React.Fragment>
+                <HeaderTitle heading="CONTACT US" image="contact-us.jpg" />
+                <div className="contactus-container">
+                    <Breadcrumb>
+                        <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                        <BreadcrumbItem icon="fas fa-phone-alt" title="Contact Us" status="active" />
+                    </Breadcrumb>
+                    <div className="container" >
+                        <div className="row">
+                            <div className="col-12 col-md-12">
+                                <h3>Reach Us Here</h3>
+                                <address>
+                                    TechnoHub<br />
+                                    Bhilai Institute of Technology, Durg<br />
+                                    Chhattisgarh 491001<br />
+                                    <i className="fas fa-phone-alt"></i> <a href="tel:+916261731565">+91-6261731565</a><br />
+                                    <i className="fas fa-envelope"></i> <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
+                                </address>
+                                <div>
+                                    <a role="button" className="btn btn-primary" href="tel:+916261731565"><i className="fas fa-phone-alt"></i> Call</a>
+                                    {/* <a role="button" className="btn btn-info" href="http://skype.com/"><i className="fa fa-skype"></i> Skype</a> */}
+                                    <a role="button" className="btn btn-success" href="mailto:bit.technohub@gmail.com"><i className="fas fa-envelope"></i> Email</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="row mt-5">
-                        <div className="col-12 col-md-12">
-                            <div>
-                                <MapIframe source={this.state.src} />
+                        <div className="row mt-5">
+                            <div className="col-12 col-md-12">
+                                <div>
+                                    <MapIframe source={this.state.src} />
+                                </div>
                             </div>
                         </div>
+                        <ContactUs />
                     </div>
-                    <ContactUs />
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

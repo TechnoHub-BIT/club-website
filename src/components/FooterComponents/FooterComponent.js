@@ -56,7 +56,7 @@ const Footer = () => {
           <ul className="list">
             <li>
               <i className="fas fa-angle-right"></i>
-              <Link to="/blogcategories">Blog</Link>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>

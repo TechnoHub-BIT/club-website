@@ -5,6 +5,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Helmet } from "react-helmet";
 
 import "./AboutUsStyles.css";
 
@@ -48,9 +49,11 @@ class About extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* <NavbarPage/> */}
+        <HeaderTitle heading="ABOUT THE CLUB" image="about-us.jpg" />
+        <Helmet>
+          <title>About The Club | TechnoHub BITD</title>
+        </Helmet>
         <div className="aboutus-container">
-          <HeaderTitle heading="ABOUT THE CLUB" />
           <Breadcrumb>
             <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
             <BreadcrumbItem icon="fas fa-info-circle" title="About Us" status="active" />
@@ -250,6 +253,10 @@ class About extends Component {
                 <Image path="./assets/images/members/aditya.jpg" name="Aditya Deshmukh" post="Technical Lead" contact="9584913846">
                   Electrical and Electronics
                 </Image>
+                
+                <Image path="./assets/images/members/navya.jpg" name="Navya Singh" contact="6264365144" >
+                  Information Technology
+                </Image>
 
               </OwlCarousel>
             </div>
@@ -286,10 +293,6 @@ class About extends Component {
                 <Image path="./assets/images/members/abhishek.jpg" name="Abhishek Agrawal" contact="8871637776">
                   Computer Science
                 </Image>
-                
-                <Image path="./assets/images/members/navya.jpg" name="Navya Singh" contact="6264365144" >
-                  Information Technology
-                  </Image>
                   
                 <Image path="./assets/images/members/tanmay.jpg" name="Tanmay Soni" contact="9329847520">
                   Electronics and Telecommunication

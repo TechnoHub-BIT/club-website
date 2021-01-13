@@ -1,13 +1,14 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import {  FormControl } from 'react-bootstrap'
-import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Col} from 'reactstrap'
-import {useAuth} from '../../contexts/AuthContext'
-import {Link, useHistory} from 'react-router-dom';
+import { Button, Card, Form, CardBody, FormGroup, Alert,  Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
+import { useAuth } from '../../contexts/AuthContext'
+import { Link, useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 import './SignUpStyles.css';
-import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Helmet } from "react-helmet";
 
 function SignUpComponent() {
 
@@ -63,9 +64,12 @@ function SignUpComponent() {
     }
 
     return (
-        <>
+        <React.Fragment>
+          <HeaderTitle heading="Sign Up" image="login.jpg" />
           <div className="signup-container">
-            <HeaderTitle heading="SIGN UP" />
+            <Helmet>
+              <title>Sign Up | TechnoHub BITD</title>
+            </Helmet>
             <Breadcrumb>
                 <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                 <BreadcrumbItem icon="fas fa-user-plus" title="Sign Up" status="active" />
@@ -134,7 +138,7 @@ function SignUpComponent() {
             </div>
             {/* </div> */}
           </div>
-        </>
+        </React.Fragment>
     )
 }
 
