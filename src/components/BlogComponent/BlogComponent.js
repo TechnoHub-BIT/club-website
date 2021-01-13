@@ -154,6 +154,7 @@ function BlogComponent() {
                             : 
                     <Helmet>
                         <title>Blog post by { checkAuthor } | TechnoHub BITD</title>
+                        <meta name="title" content={ checkTitle } />
                     </Helmet>
             }
         </React.Fragment>
