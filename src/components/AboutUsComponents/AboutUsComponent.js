@@ -6,8 +6,8 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Helmet } from "react-helmet";
-
 import "./AboutUsStyles.css";
+import { Zoom, Fade } from "react-reveal";
 
 class About extends Component {
   
@@ -60,27 +60,31 @@ class About extends Component {
           </Breadcrumb>
           <div className="container">
             <div className="row row-content align-items-center justify-content-center">
-              <div className="col-12 col-md-4">
-                <img
-                  src="./assets/images/logo.png"
-                  height="150"
-                  width="260"
-                  alt="Technohub"
-                />
-              </div>
-              <div className="col-12 col-md-8">
-                <h2>TechnoHub</h2>
-                <br />
-                <p className="aboutText">
-                  The club provides an ambiance for students to prepare and to
-                  showcase their skills at technical events and entrepreneurship
-                  held all across India and Asia in various colleges with the aim
-                  to add more feathers in the cap. The ultimate goal of the
-                  TechnoHub club is to educate more students and make robotics and
-                  entrepreneurship an everyday phenomenon.
-                  The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge. The Journey started with a mere some 4 members and today it is a colossal family of 225+ members.
-                </p>
-              </div>
+              <Fade>
+                <div className="col-12 col-md-4">
+                  <img
+                    src="./assets/images/logo.png"
+                    height="150"
+                    width="260"
+                    alt="Technohub"
+                  />
+                </div>
+              </Fade>
+              <Zoom>
+                <div className="col-12 col-md-8">
+                  <h2>TechnoHub</h2>
+                  <br />
+                  <p className="aboutText">
+                    The club provides an ambiance for students to prepare and to
+                    showcase their skills at technical events and entrepreneurship
+                    held all across India and Asia in various colleges with the aim
+                    to add more feathers in the cap. The ultimate goal of the
+                    TechnoHub club is to educate more students and make robotics and
+                    entrepreneurship an everyday phenomenon.
+                    The focus of the TechnoHub club primarily is to help the students gain practical as well as theoretical technical knowledge. The Journey started with a mere some 4 members and today it is a colossal family of 225+ members.
+                  </p>
+                </div>
+              </Zoom>
             </div>
           </div>
           

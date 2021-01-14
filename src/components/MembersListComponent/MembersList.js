@@ -5,6 +5,7 @@ import "./MembersList.css"
 import {useAuth} from '../../contexts/AuthContext';
 import { db } from "../../firebase";
 import { Helmet } from "react-helmet";
+import { Zoom } from "react-reveal";
 
 const OurMembers = (props) => {
 
@@ -52,19 +53,21 @@ const OurMembers = (props) => {
                       suffix = "rd";
 
                   return (
-                    <div className="singleMember" key={i}>
-                      <div className="leftSide">
-                        <div className="name">{data.fullname.toLowerCase()}</div>
-                        <div className="branch">{data.branch}</div>
-                        <div className="sem">{data.semester}{suffix} Semester</div>
-                        <div className="member">{data.member !== null ? data.member : "N/A"}</div>
+                    <Zoom>
+                      <div className="singleMember" key={i}>
+                        <div className="leftSide">
+                          <div className="name">{data.fullname.toLowerCase()}</div>
+                          <div className="branch">{data.branch}</div>
+                          <div className="sem">{data.semester}{suffix} Semester</div>
+                          <div className="member">{data.member !== null ? data.member : "N/A"}</div>
+                        </div>
+                        <div className="rightSide">
+                          <div className="skills"><span>Skill(s)- </span>{data.skills !== null ? data.skills : "N/A"}</div>
+                          <div className="interests"><span>Interest(s)- </span>{data.interest !== null ? data.interest : "N/A"}</div>
+                          <div className="workshops"><span>Workshop(s) Attended- </span>{data.workshops !== null ? data.workshops : "N/A"}</div>
+                        </div>
                       </div>
-                      <div className="rightSide">
-                        <div className="skills"><span>Skill(s)- </span>{data.skills !== null ? data.skills : "N/A"}</div>
-                        <div className="interests"><span>Interest(s)- </span>{data.interest !== null ? data.interest : "N/A"}</div>
-                        <div className="workshops"><span>Workshop(s) Attended- </span>{data.workshops !== null ? data.workshops : "N/A"}</div>
-                      </div>
-                    </div>
+                    </Zoom>
                   );
               }
             })}
