@@ -6,7 +6,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Helmet } from "react-helmet";
-import { Zoom } from 'react-reveal';
+import { Fade } from 'react-reveal';
 
 class gallery extends Component {
   
@@ -40,7 +40,7 @@ class gallery extends Component {
                         <BreadcrumbItem icon="fas fa-images" title="Gallery" status="active" />
                     </Breadcrumb>
                     <div className="container">
-                        <Zoom>
+                        <Fade>
                             <div className="row">
                                 <div className="title">
                                     <h2>Tech-Expo @ Ojas2019</h2>
@@ -233,7 +233,7 @@ class gallery extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </Zoom>
+                        </Fade>
                     </div>
                 </div>
             </React.Fragment>

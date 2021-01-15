@@ -21,6 +21,7 @@
   text-align: center;
   margin-bottom: 15px;
   color: #fff;
+  padding: 0 15px;
 }
 
 .headerTitleCont::after {
@@ -77,7 +78,6 @@
 
 @media only screen and (min-width: 992px) {
   .headerTitleCont {
-    padding: 0 15px;
     height: 60vh;
   }
   .headerTitleCont .headerTitle {

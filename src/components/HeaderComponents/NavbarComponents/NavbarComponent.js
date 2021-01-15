@@ -60,9 +60,6 @@ class Header extends Component {
               <Link to="/">
                 <img src="./assets/images/logowhite.png" alt="TechnoHub White Logo" />
               </Link>
-              <Link to="/">
-                <li>HOME</li>
-              </Link>
               <Link to="/blog">
                 <li>BLOG</li>
               </Link>
