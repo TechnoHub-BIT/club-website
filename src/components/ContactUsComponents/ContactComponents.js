@@ -4,7 +4,8 @@ import ContactUs from './ContactUsComponents';
 import './ContactUsStyles.css'
 import MapIframe from './MapIFrame';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
-// import NavbarPage from '../HeaderComponents/NavbarComponents/NavbarComponent'
+import { Fade } from "react-reveal";
+
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -22,32 +23,38 @@ class Contact extends Component {
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-phone-alt" title="Contact Us" status="active" />
                     </Breadcrumb>
-                    <div className="container" >
-                        <div className="row">
-                            <div className="col-12 col-md-12">
-                                <h3>Reach Us Here</h3>
-                                <address>
-                                    TechnoHub<br />
-                                    Bhilai Institute of Technology, Durg<br />
-                                    Chhattisgarh 491001<br />
-                                    <i className="fas fa-phone-alt"></i> <a href="tel:+916261731565">+91-6261731565</a><br />
-                                    <i className="fas fa-envelope"></i> <a href="mailto:bit.technohub@gmail.com">bit.technohub@gmail.com</a>
-                                </address>
-                                <div>
-                                    <a role="button" className="btn btn-primary" href="tel:+916261731565"><i className="fas fa-phone-alt"></i> Call</a>
-                                    {/* <a role="button" className="btn btn-info" href="http://skype.com/"><i className="fa fa-skype"></i> Skype</a> */}
-                                    <a role="button" className="btn btn-success" href="mailto:bit.technohub@gmail.com"><i className="fas fa-envelope"></i> Email</a>
+                    <div>
+                        <div className="landing">
+                            <Fade up>
+                                <div className="content">
+                                    <div className="heading">Reach Us At</div>
+                                    <p className="text">
+                                        TechnoHub<br />
+                                        Bhila Institute of Technology, Durg<br />
+                                        Chhattisgarh- 491001<br /><br />
+                                        <a href="tel:+916261731565">
+                                            <button type="button"><i className="fas fa-phone-alt"></i>&nbsp;&nbsp;Call Now</button>
+                                        </a>
+                                        <a href="mailto:bit.technohub@gmail.com">
+                                            <button type="button"><i className="fas fa-envelope"></i>&nbsp;&nbsp;Mail Us</button>
+                                        </a>
+                                    </p>
+                                </div>
+                                <img src="./assets/images/contact-us/background.jpg" alt="Contact Us" />
+                            </Fade>
+                        </div>
+                        <Fade up>
+                            <div className="row mt-5">
+                                <div className="col-12 col-md-12">
+                                    <div>
+                                        <MapIframe source={this.state.src} />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row mt-5">
-                            <div className="col-12 col-md-12">
-                                <div>
-                                    <MapIframe source={this.state.src} />
-                                </div>
+                            <div className="container">
+                                <ContactUs />
                             </div>
-                        </div>
-                        <ContactUs />
+                        </Fade>
                     </div>
                 </div>
             </React.Fragment>
