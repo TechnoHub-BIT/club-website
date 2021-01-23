@@ -178,7 +178,7 @@ const RegisterComponent = () => {
                                             <label for="workshop">Workshops Attended</label>
                                         </div>
                                         <p className="infoText">
-                                            After applying, submit registration charge(₹ 150) by calling on
+                                            After applying, submit registration charge(₹ 100) by calling on
                                             <br /><a href="tel:+918319560199">+91-8319560199</a> and get your registration approved.
                                         </p>
                                         <Link style={{color: 'inherit'}} to="/profile">

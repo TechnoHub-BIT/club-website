@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BlogComponent.css";
 import {
     FacebookShareButton,
@@ -20,6 +20,7 @@ import Moment from 'moment';
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Zoom, Fade } from 'react-reveal';
 
 
 function BlogComponent() {
@@ -28,8 +29,7 @@ function BlogComponent() {
 
     const [blogedit, setblogs] = useState([]);
 
-
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchdata = async () => {
             db.collection("Blogs")
                 .onSnapshot(function (data) {
@@ -75,6 +75,22 @@ function BlogComponent() {
     const checkAuthor = qur[1].replace(/-/g, " ");
 
     let counter = 0;
+    /*let bitlyURL;
+    
+    async function shortenURL(url) {
+        const { BitlyClient } = require('bitly-react');
+        const bitly = new BitlyClient('b59f838b3679e007289c4d954d190df966316c19', {});
+
+        let result;
+        try {
+            result = await bitly.shorten(url);
+        } catch(e) {
+            throw e;
+        }
+        alert(result.url);
+    };
+    shortenURL("https://youtube.com/codegrind")*/
+
     return (
         <React.Fragment>
             {
@@ -97,39 +113,41 @@ function BlogComponent() {
                                 <div className="blogContainer">
                                     <div className="blogContents">
                                         <div>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: Blogs.blogcontent
-                                                }}
-                                                className="blogDetails"
-                                            >
-                                            </div>
+                                            <Fade>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: Blogs.blogcontent
+                                                    }}
+                                                    className="blogDetails"
+                                                >
+                                                </div>
 
-                                            {
-                                                /* Edit and Delete Blog Buttons
-                                                    <Link to="/editblog">Edit</Link>
-                                                    <button onClick={() => onDelete(Blogs.id)}>Delete</button>
-                                                */
-                                            }
+                                                {
+                                                    /* Edit and Delete Blog Buttons
+                                                        <Link to="/editblog">Edit</Link>
+                                                        <button onClick={() => onDelete(Blogs.id)}>Delete</button>
+                                                    */
+                                                }
 
-                                            <div className="shareButtons">
-                                                <h6>Share on:</h6>
-                                                <FacebookShareButton url={shareUrl} quote={shareText}>
-                                                    <FacebookIcon size="32" round={true} />
-                                                </FacebookShareButton>
-                                                <TwitterShareButton url={shareUrl} title={shareText}>
-                                                    <TwitterIcon size="32" round={true} />
-                                                </TwitterShareButton>
-                                                <WhatsappShareButton url={shareUrl} title={shareText}>
-                                                    <WhatsappIcon size="32" round={true} />
-                                                </WhatsappShareButton>
-                                                <TelegramShareButton url={shareUrl} title={shareText}>
-                                                    <TelegramIcon size="32" round={true} />
-                                                </TelegramShareButton>
-                                                <LinkedinShareButton url={shareUrl} title={shareText}>
-                                                    <LinkedinIcon size="32" round={true} />
-                                                </LinkedinShareButton>
-                                            </div>
+                                                <div className="shareButtons">
+                                                    <h6>Share on:</h6>
+                                                    <FacebookShareButton url={shareUrl} quote={shareText}>
+                                                        <FacebookIcon size="32" round={true} />
+                                                    </FacebookShareButton>
+                                                    <TwitterShareButton url={shareUrl} title={shareText}>
+                                                        <TwitterIcon size="32" round={true} />
+                                                    </TwitterShareButton>
+                                                    <WhatsappShareButton url={shareUrl} title={shareText}>
+                                                        <WhatsappIcon size="32" round={true} />
+                                                    </WhatsappShareButton>
+                                                    <TelegramShareButton url={shareUrl} title={shareText}>
+                                                        <TelegramIcon size="32" round={true} />
+                                                    </TelegramShareButton>
+                                                    <LinkedinShareButton url={shareUrl} title={shareText}>
+                                                        <LinkedinIcon size="32" round={true} />
+                                                    </LinkedinShareButton>
+                                                </div>
+                                            </Fade>
                                         </div>
                                     </div>
                                 </div>
@@ -144,16 +162,18 @@ function BlogComponent() {
                         <Helmet>
                             <title>Blogs | TechnoHub BITD</title>
                         </Helmet>
-
-                        <Alert color="danger" style={{ textAlign: "center" }}>
-                            Oops! Looks like this blog does not exist.
-                            <br />
-                            <a href="/blog"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
-                        </Alert>
+                        <Zoom>
+                            <Alert color="danger" style={{ textAlign: "center" }}>
+                                Oops! Looks like this blog does not exist.
+                                <br />
+                                <a href="/blog"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
+                            </Alert>
+                        </Zoom>
                     </div>
                             : 
                     <Helmet>
                         <title>Blog post by { checkAuthor } | TechnoHub BITD</title>
+                        <meta name="title" content={ checkTitle } />
                     </Helmet>
             }
         </React.Fragment>

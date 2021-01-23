@@ -1,3 +1,89 @@
 .contactus-container {
   margin: 20px;
 }
+
+.contactus-container div .landing {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contactus-container div .landing .content {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+.contactus-container div .landing .content .heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2.5em;
+}
+
+.contactus-container div .landing .content .text {
+  font-size: 1em;
+  color: #616161;
+  margin: 7px 0 0 15px;
+  text-align: justify;
+}
+
+.contactus-container div .landing .content .text a button {
+  padding: 7px 30px;
+  background-color: #626fbb8f;
+  color: #191d34;
+  border: 1px solid #626fbb8f;
+  border-radius: 5px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.contactus-container div .landing .content .text a:hover button {
+  background-color: #fff;
+  border: 1px solid #191d34;
+}
+
+.contactus-container div .landing .content .text a:last-child {
+  margin-left: 1em;
+}
+
+.contactus-container div .landing img {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .contactus-container div .landing {
+    margin: 0 5vw;
+    height: 90vh;
+    -ms-grid-columns: (45% 55%)[1];
+        grid-template-columns: repeat(1, 45% 55%);
+  }
+  .contactus-container div .landing .content {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .contactus-container div .landing img {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .contactus-container div .partners {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+/*# sourceMappingURL=ContactUsStyles.css.map */

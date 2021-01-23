@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/Breadcrumb
 import HeadingTitle from "../../HeaderComponents/HeaderTitle";
 import { db } from "../../../firebase";
 import { Helmet } from "react-helmet";
-
+import { Zoom } from 'react-reveal';
 
 class categoriesComponent extends React.Component {
     state = {
@@ -12,7 +12,6 @@ class categoriesComponent extends React.Component {
     }
 
     componentDidMount() {
-        // console.log('mounted')
         db.collection('Blogcategory')
             .get()
             .then(snapshot => {
@@ -27,13 +26,14 @@ class categoriesComponent extends React.Component {
     }
 
     render() {
+
         return (
             <React.Fragment>
                 <Helmet>
                     <title>Blog Categories | TechnoHub BITD</title>
                 </Helmet>
                 <div>
-                    <HeadingTitle heading="Blog Categories" image="blog-categories.jpg" />
+                    <HeadingTitle heading="BLOG CATEGORIES" image="blog-categories.jpg" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-th-large" title="Blog Categories" status="active" />
@@ -43,18 +43,19 @@ class categoriesComponent extends React.Component {
                             {
                                 this.state.Blogcategorytype && this.state.Blogcategorytype.map( Blogcategorytype => {
                                     return (
-                                        <a href={"/bloglist?cat=" + Blogcategorytype.blogcategorytype} className="singleCategory">
-                                            <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
-                                            <div className="categoryContent">
-                                                <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>
-                                            </div>
-                                        </a>
+                                        <Zoom>
+                                            <a href={"/bloglist?cat=" + Blogcategorytype.blogcategorytype} className="singleCategory">
+                                                <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
+                                                <div className="categoryContent">
+                                                    <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>
+                                                </div>
+                                            </a>
+                                        </Zoom>
                                     )
                                 })
                             }
                         </div>
                     </div>
-                
                 </div>
             </React.Fragment>
         );

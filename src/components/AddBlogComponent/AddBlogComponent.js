@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../firebase";
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 import { Helmet } from "react-helmet";
-//import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function AddBlogComponent() {
 
