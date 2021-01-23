@@ -15,6 +15,8 @@ function SignUpComponent() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const fullnameRef = useRef()
+    const semesterRef = useRef();
+    const branchRef = useRef();
     const passwordConfirmRef = useRef()
     const {signup, signupWithGoogle} = useAuth()
     const [error, setError] = useState('')
@@ -30,7 +32,7 @@ function SignUpComponent() {
         try {
           setError('')
           setLoading(true)
-          await signup(emailRef.current.value, passwordRef.current.value, fullnameRef.current.value)
+          await signup(emailRef.current.value, passwordRef.current.value, fullnameRef.current.value, semesterRef.current.value, branchRef.current.value)
 
           history.push("/profile")
 
@@ -74,7 +76,7 @@ function SignUpComponent() {
                 <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                 <BreadcrumbItem icon="fas fa-user-plus" title="Sign Up" status="active" />
             </Breadcrumb>
-            <div className="container">
+            <div className="container-fluid">
               <Card className="signup-card">
                 <CardBody>
                   <Nav tabs className="nav-fill">
@@ -107,7 +109,32 @@ function SignUpComponent() {
                   {error && <Alert color="danger">{error}</Alert>}
                   <Form onSubmit={handleSubmit} className="signup-form" >
                   <FormGroup id="fullname" >
-                        <FormControl type="text" ref={fullnameRef} placeholder="Full Name" required />
+                    <FormControl type="text" ref={fullnameRef} placeholder="Full Name" required />
+                  </FormGroup>
+                    <FormGroup>
+                      <FormControl as="select" ref={branchRef} required>
+                        <option value="">Select Branch</option>
+                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+                        <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Electrical and Electronics">Electrical and Electronics</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Others">Others</option>
+                      </FormControl>
+                    </FormGroup>
+                    <FormGroup>
+                      <FormControl as="select" ref={semesterRef} required>
+                        <option value="">Select Semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                      </FormControl>
                     </FormGroup>
                     <FormGroup id="email" >
                         <FormControl type="email" ref={emailRef} placeholder="Email" required />

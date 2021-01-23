@@ -54,11 +54,11 @@ const ProfileHeader = () => {
   //Setting the Suffix for Semester
     let suffix = "th";
 
-    if (profiles?.semester === 1)
+    if (profiles?.semester == 1)
         suffix = "st";
-    else if (profiles.semester === 2)
+    else if (profiles.semester == 2)
         suffix = "nd";
-    else if (profiles.semester === 3)
+    else if (profiles.semester == 3)
         suffix = "rd";
 
     return (
