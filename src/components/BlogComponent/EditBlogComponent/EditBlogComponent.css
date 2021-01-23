@@ -1,0 +1,51 @@
+.editBlogContainer {
+  margin: 20px;
+}
+
+.title {
+  font-family: "Barlow Condensed", sans-serif;
+  margin-top: 1em;
+}
+
+.title h3 {
+  position: relative;
+  font-size: 2em;
+}
+
+.title h3::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 50%;
+  background-color: #ff7e5f;
+  bottom: -0.1em;
+  left: 0;
+}
+
+.summernote {
+  margin-top: 1.5em;
+}
+
+.summernote textarea {
+  width: 100%;
+}
+
+.formsCont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1em;
+}
+
+@media only screen and (min-width: 992px) {
+  .formsCont {
+    -ms-grid-columns: (3fr 2fr)[1];
+        grid-template-columns: repeat(1, 3fr 2fr);
+  }
+  .formsCont form {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=EditBlogComponent.css.map */

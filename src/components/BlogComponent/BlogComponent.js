@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BlogComponent.css";
 import {
     FacebookShareButton,
@@ -17,14 +17,16 @@ import { db } from "../../firebase";
 import queryString from "./query";
 import { Alert, ButtonToggle } from 'reactstrap';
 import Moment from 'moment';
+import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
 
 
 function BlogComponent() {
 
     const qur = queryString("blog");
 
-    const [blogedit, setblogs] = React.useState([]);
+    const [blogedit, setblogs] = useState([]);
 
 
     React.useEffect(() => {
@@ -41,45 +43,60 @@ function BlogComponent() {
 
 
     function onDelete (id) {
-       
         db.collection('Blogs').doc(id).delete()
             .catch((err) => {
                 console.error(err);
             })
-        
     }
 
+    const setCharAt = (str, index, chr) => {
+        if(index > str.length-1) return str;
+        return (str.substring(0, index) + chr + str.substring(index + 1));
+    }
 
-  
-        let counter = 0;
-        return (
-            <React.Fragment>
+    const getIndices = (str) => {
+        let indices = [];
 
-                <div className="blogContainer">
-                    <div className="blogContents">
-                        {blogedit.map(Blogs => {
-                                if (Blogs.blogtitle === qur[0] && Blogs.blogauthor === qur[1]) {
-                                    counter++;
+        for(let i = 0; i < str.length; i++) {
+            let char = str.charAt(i);
+            
+            if(char === " ")
+                indices.push(i);
+        }
+        return indices;
+    }
 
-                                    const newTitle = Blogs.blogtitle.replace(/ /g, "%20");
-                                    const newAuthor = Blogs.blogauthor.replace(/ /g, "%20");
+    let checkTitle = qur[0].replace(/-/g, " ");
 
-                                    const shareUrl = "http://technohubbit.in/blog?title=" + newTitle + "&author=" + newAuthor;
-                                    const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
+    for(let i = 0; i < getIndices(qur[0]).length; i++) {
+        checkTitle = setCharAt(checkTitle, getIndices(qur[0])[i], "-");
+    }
 
-                                    return (
+    const checkAuthor = qur[1].replace(/-/g, " ");
+
+    let counter = 0;
+    return (
+        <React.Fragment>
+            {
+                blogedit.map(Blogs => {
+                    if (Blogs.blogtitle === checkTitle && Blogs.blogauthor === checkAuthor) {
+                        counter++;
+
+                        const blogTitle = Blogs.blogtitle.replace(/-/g, "%20");
+                        const newTitle = blogTitle.replace(/ /g, "-");
+
+                        const blogAuthor = Blogs.blogauthor.replace(/-/g, "%20");
+                        const newAuthor = blogAuthor.replace(/ /g, "-");
+
+                        const shareUrl = "http://technohubbit.in/blogpost?title=" + newTitle + "&author=" + newAuthor;
+                        const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
+
+                        return (
+                            <div>
+                                <HeaderTitle heading={Blogs.blogtitle} blogImage={Blogs.blogimageurl} author={Blogs.blogauthor} date={Moment(Blogs.blogdate).format('ll')} />
+                                <div className="blogContainer">
+                                    <div className="blogContents">
                                         <div>
-                                            <div className="blogHeader">
-                                                <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
-                                                <div className="headerContent">
-                                                    <div className="blogTitle">{Blogs.blogtitle}</div>
-                                                    <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                                                    <div className="blogDate">Posted on {Moment(Blogs.blogdate).format('ll')}</div>
-                                                    <div>
-                                                        <button className="blogCategory">{Blogs.blogcategory}</button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div
                                                 dangerouslySetInnerHTML={{
                                                     __html: Blogs.blogcontent
@@ -94,7 +111,6 @@ function BlogComponent() {
                                                     <button onClick={() => onDelete(Blogs.id)}>Delete</button>
                                                 */
                                             }
-
 
                                             <div className="shareButtons">
                                                 <h6>Share on:</h6>
@@ -115,25 +131,33 @@ function BlogComponent() {
                                                 </LinkedinShareButton>
                                             </div>
                                         </div>
-                                    )
-                                }
-                            })
-                        }
-                        {
-                            counter === 0 ?
-                                <div>
-                                    <Alert color="danger" style={{ textAlign: "center" }}>
-                                        Oops! Looks like this blog does not exist.
-                                        <br />
-                                        <a href="/blogcategories"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
-                                    </Alert>
-                                </div> : null
-                        }
-                    </div>
-                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                })
+            }
+            {
+                counter === 0 ?
+                    <div className="errorMessage">
+                        <Helmet>
+                            <title>Blogs | TechnoHub BITD</title>
+                        </Helmet>
 
-            </React.Fragment>
-        );
-    }
+                        <Alert color="danger" style={{ textAlign: "center" }}>
+                            Oops! Looks like this blog does not exist.
+                            <br />
+                            <a href="/blog"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
+                        </Alert>
+                    </div>
+                            : 
+                    <Helmet>
+                        <title>Blog post by { checkAuthor } | TechnoHub BITD</title>
+                    </Helmet>
+            }
+        </React.Fragment>
+    );
+}
 
 export default BlogComponent;

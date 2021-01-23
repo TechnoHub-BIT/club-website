@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';
+import { Helmet } from "react-helmet";
 
 const ProfileHeader = () => {
     const [error, setError] = useState('');
@@ -62,6 +63,9 @@ const ProfileHeader = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>{ profiles?.fullname + " | TechnoHub BITD" }</title>
+            </Helmet>
             { currentUser && (
             
                 <div className="profileHeader">

@@ -3,6 +3,7 @@ import FAQ from "./FAQ";
 import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [faqs, setfaqs] = useState([
@@ -61,6 +62,9 @@ const Home = () => {
   return (
     <Fragment>
       <Header />
+      <Helmet>
+        <title>Home | TechnoHub BITD</title>
+      </Helmet>
       <section className="servicesSection">
         <div className="container">
           <div className="serviceCont">

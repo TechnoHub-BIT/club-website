@@ -3,6 +3,11 @@
   margin: 20px;
 }
 
+.errorMessage {
+  width: 65vw;
+  margin: 6em auto;
+}
+
 .blogContents {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,52 +21,16 @@
           align-items: center;
 }
 
-.blogContents .blogHeader {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[1];
-      grid-template-columns: repeat(1, 1fr);
-  grid-gap: 1em;
-}
-
-.blogContents .blogHeader .blogImage {
-  width: 100% !important;
-}
-
-.blogContents .blogHeader .headerContent .blogTitle {
-  font-size: 1.7em;
-  font-weight: bolder;
-}
-
-.blogContents .blogHeader .headerContent .blogAuthor {
-  font-size: 1.15em;
-}
-
-.blogContents .blogHeader .headerContent .blogDate {
-  color: #616161;
-  font-size: 0.85em;
-}
-
-.blogContents .blogHeader .headerContent div .blogCategory {
-  margin-top: 1.5em;
-  white-space: nowrap;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 10px 45px;
-  border: none;
-  border-radius: 25px;
-  background-color: #36096d;
-  background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
-  outline: none;
-  cursor: default;
-}
-
 .blogContents .blogDetails {
-  padding: 15px;
-  margin-top: 2em;
+  padding: 0 15px 15px;
   font-family: "Montserrat", sans-serif;
   text-align: justify;
   font-size: 0.9em;
+}
+
+.blogContents .blogDetails p span {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.05em !important;
 }
 
 .blogContents .shareButtons {
@@ -83,10 +52,6 @@
   .blogContents {
     width: 70%;
     margin: auto;
-  }
-  .blogContents .blogHeader {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
   }
   .blogContents .shareButtons {
     margin: 2em 0 0 0;
