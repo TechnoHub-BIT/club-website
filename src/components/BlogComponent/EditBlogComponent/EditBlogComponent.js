@@ -47,30 +47,29 @@ class Editblog extends React.Component {
     handleOnChange  = (e) => {
     const state = this.state;
     state[e.target.blogtitle] = e.target.value;
-    this.setState(state);
+    this.setState({document:state});
 }
 
 handleOnChange  = (e) => {
     const state = this.state;
     state[e.target.blogauthor] = e.target.value;
-    this.setState(state);
+    this.setState({document:state});
 }
 handleOnChange  = (e) => {
     const state = this.state;
     state[e.target.blogcategory] = e.target.value;
-    this.setState(state);
+    this.setState({document:state});
 }
 handleOnChange  = (e) => {
     const state = this.state;
     state[e.target.imageurl] = e.target.value;
-    this.setState(state);
+    this.setState({document:state});
 }
 handleOnChange  = (e) => {
     const state = this.state;
     state[e.target.content] = e.target.value;
-    this.setState(state);
+    this.setState({document:state});
 }
-
 onSubmit = (e)=>{
     e.preventDefault();
     const {blogtitle ,blogauthor,blogcategory,blogcontent,blogimageurl} = this.state;
