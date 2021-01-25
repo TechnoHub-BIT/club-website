@@ -4,11 +4,15 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Col,Table, Row
   } from 'reactstrap';
+import { Helmet } from "react-helmet";
 
 class EventHackathonComponents extends Component {
   render() {
     return (
-      <div className="hackathon" > 
+      <div className="hackathon">
+        <Helmet>
+          <title>Hackathon 2020 | TechnoHub BITD</title>
+        </Helmet>
         <Card className="events-card-hackathon">
           <CardImg style={{alignSelf:"center"}} className="card_img" top width="100%" src="assets/images/events_img/hackathonlogo.jpeg" alt="hackathon" />
           <Col>

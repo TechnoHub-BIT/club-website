@@ -12,14 +12,14 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password, fullname){
+    function signup(email, password, fullname, semester, branch){
         return auth.createUserWithEmailAndPassword(email, password).then((auth) => {
             db.collection("members").doc(auth.user.uid).set({
                 fullname: fullname,
                 email: auth.user.email,
                 id: 2,
-                branch: null,
-                semester: null,
+                branch: branch,
+                semester: semester,
                 member: null,
                 skills: null,
                 contactNo: null,

@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import HeaderTitle from "../HeaderComponents/HeaderTitle";
-import { Breadcrumb, BreadcrumbItem } from "../BreadcrumbComponent/BreadcrumbComponent";
-import "../AddBlogComponent/AddBlogComponent.css";
-import "../input.css";
+import React from "react";
+import "./EditBlogComponent.css";
+import HeaderTitle from "../../HeaderComponents/HeaderTitle";
+import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/BreadcrumbComponent";
+import "../../input.css";
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/dist/react-summernote.css';
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
-import { db } from "../../firebase";
-import AddCategory from "../AddBlogComponent/AddCategoryComponent/AddCategoryComponent";
+import { db } from "../../../firebase";
+import AddCategory from "../../AddBlogComponent/AddCategoryComponent/AddCategoryComponent";
+import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 
 
@@ -98,67 +99,60 @@ onSubmit = (e)=>{
 
     render() {
         return (
-            <>
-{/* <div>
-    <div>
-        {this.state.blogs.blogtitle}
-    </div>
-    <div>
-        {this.state.blogs.blogcategory}
-    </div>
-    <div>
-        {this.state.blogs.blogauthor}
-    </div>
-    <div>
-        {this.state.blogs.blogimageurl}
-    </div>
-    <div>
-        {this.state.blogs.blogcontent}
-    </div>
-    
-</div> */}
-                <form  >
-                    <div className="title">
-                        <h3>Edit Blog</h3>
+            <React.Fragment>
+                <Helmet>
+                    <title>Edit Blog | TechnoHub BITD</title>
+                </Helmet>
+                <div class="editBlogContainer">
+                    <HeaderTitle heading="EDIT BLOG" />
+                    <Breadcrumb>
+                        <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+                        <BreadcrumbItem icon="fas fa-pencil-alt" title="Edit Blog" status="active" />
+                    </Breadcrumb>
+                    <div className="formsCont">
+                        <form>
+                            <div className="title">
+                                <h3>Edit Blog</h3>
+                            </div>
+                            <div className="input-group">
+                                <input type="text" name="title" id="title" onChange={this.handleOnChange} value={this.state.blogtitle} placeholder="Blog Title" required />
+                                <label for="title">Blog Title</label>
+                            </div>
+                            <div className="input-group">
+                                <AddCategory onChange={this.category} value={this.state.blogcategory} />
+                            </div>
+                            <div className="input-group">
+                                <input type="text" name="author" id="author" onChange={this.author} value={this.state.blogauthor} placeholder="Blog Author" required />
+                                <label for="author">Blog Author</label>
+                            </div>
+                            <div className="input-group">
+                                <input type="text" name="image" id="image" onChange={this.imageurl} value={this.state.blogimageurl} placeholder="Blog Image" required />
+                                <label for="image">Blog Image Drive ID(1920x1080)</label>
+                            </div>
+                            <div className="summernote">
+                                <ReactSummernote
+                                    value={this.state.blogcontent}
+                                    options={{
+                                        lang: 'en-US',
+                                        height: 350,
+                                        dialogsInBody: true,
+                                        toolbar: [
+                                            ['font', ['bold', 'underline']],
+                                            ['para', ['ul', 'ol', 'paragraph']],
+                                            ['insert', ['link', 'picture']],
+                                            ['view', ['codeview']]
+                                        ]
+                                    }}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            <div className="input-group w50p">
+                                <button type="submit" onClick={this.onSubmit} >Update Blog</button>
+                            </div>
+                        </form>
                     </div>
-                    <div className="input-group">
-                        <input type="text" name="title" id="title" onChange={this.handleOnChange} value={this.state.blogtitle} placeholder="Blog Title" required />
-                        <label for="title">Blog Title</label>
-                    </div>
-                    <div className="input-group">
-                        <AddCategory onChange={this.category} value={this.state.blogcategory} />
-                    </div>
-                    <div className="input-group">
-                        <input type="text" name="author" id="author" onChange={this.author} value={this.state.blogauthor} placeholder="Blog Author" required />
-                        <label for="author">Blog Author</label>
-                    </div>
-                    <div className="input-group">
-                        <input type="text" name="image" id="image" onChange={this.imageurl} value={this.state.blogimageurl} placeholder="Blog Image" required />
-                        <label for="image">Blog Image Drive ID(1920x1080)</label>
-                    </div>
-                    <div className="summernote">
-                        <ReactSummernote
-                            value={this.state.blogcontent}
-                            options={{
-                                lang: 'en-US',
-                                height: 350,
-                                dialogsInBody: true,
-                                toolbar: [
-                                    ['font', ['bold', 'underline']],
-                                    ['para', ['ul', 'ol', 'paragraph']],
-                                    ['insert', ['link', 'picture']],
-                                    ['view', ['codeview']]
-                                ]
-                            }}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="input-group w50p">
-                        <button type="submit" onClick={this.onSubmit} >Update Blog</button>
-                    </div>
-                </form>
-
-            </>
+                </div>
+            </React.Fragment>
         )
     }
 }

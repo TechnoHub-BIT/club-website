@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./BlogComponent.css";
 import {
     FacebookShareButton,
@@ -17,20 +17,19 @@ import { db } from "../../firebase";
 import queryString from "./query";
 import { Alert, ButtonToggle } from 'reactstrap';
 import Moment from 'moment';
-import { Link } from 'react-router-dom'
-
-import Card from "reactstrap/lib/Card";
-// import { render } from "@testing-library/react";
+import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom';
+import HeaderTitle from "../HeaderComponents/HeaderTitle";
+import { Zoom, Fade } from 'react-reveal';
 
 
 function BlogComponent() {
 
     const qur = queryString("blog");
 
-    const [blogedit, setblogs] = React.useState([]);
+    const [blogedit, setblogs] = useState([]);
 
-
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchdata = async () => {
             db.collection("Blogs")
                 .onSnapshot(function (data) {
@@ -44,98 +43,141 @@ function BlogComponent() {
 
 
     function onDelete (id) {
-       
         db.collection('Blogs').doc(id).delete()
             .catch((err) => {
                 console.error(err);
             })
-        
     }
 
+    const setCharAt = (str, index, chr) => {
+        if(index > str.length-1) return str;
+        return (str.substring(0, index) + chr + str.substring(index + 1));
+    }
 
-  
-        let counter = 0;
-        return (
-            <React.Fragment>
+    const getIndices = (str) => {
+        let indices = [];
 
-                <div className="blogContainer">
-                    <div className="blogContents">
-                    {blogedit.map(Blogs => {
-                                if (Blogs.blogtitle === qur[0] && Blogs.blogauthor === qur[1]) {
-                                    counter++;
+        for(let i = 0; i < str.length; i++) {
+            let char = str.charAt(i);
+            
+            if(char === " ")
+                indices.push(i);
+        }
+        return indices;
+    }
 
-                                    const newTitle = Blogs.blogtitle.replace(/ /g, "%20");
-                                    const newAuthor = Blogs.blogauthor.replace(/ /g, "%20");
+    let checkTitle = qur[0].replace(/-/g, " ");
 
-                                    const shareUrl = "http://technohubbit.in/blog?title=" + newTitle + "&author=" + newAuthor;
-                                    const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
+    for(let i = 0; i < getIndices(qur[0]).length; i++) {
+        checkTitle = setCharAt(checkTitle, getIndices(qur[0])[i], "-");
+    }
 
-                                    return (
+    const checkAuthor = qur[1].replace(/-/g, " ");
+
+    let counter = 0;
+    /*let bitlyURL;
+    
+    async function shortenURL(url) {
+        const { BitlyClient } = require('bitly-react');
+        const bitly = new BitlyClient('b59f838b3679e007289c4d954d190df966316c19', {});
+
+        let result;
+        try {
+            result = await bitly.shorten(url);
+        } catch(e) {
+            throw e;
+        }
+        alert(result.url);
+    };
+    shortenURL("https://youtube.com/codegrind")*/
+
+    return (
+        <React.Fragment>
+            {
+                blogedit.map(Blogs => {
+                    if (Blogs.blogtitle === checkTitle && Blogs.blogauthor === checkAuthor) {
+                        counter++;
+
+                        const blogTitle = Blogs.blogtitle.replace(/-/g, "%20");
+                        const newTitle = blogTitle.replace(/ /g, "-");
+
+                        const blogAuthor = Blogs.blogauthor.replace(/-/g, "%20");
+                        const newAuthor = blogAuthor.replace(/ /g, "-");
+
+                        const shareUrl = "http://technohubbit.in/blogpost?title=" + newTitle + "&author=" + newAuthor;
+                        const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
+
+                        return (
+                            <div>
+                                <HeaderTitle heading={Blogs.blogtitle} blogImage={Blogs.blogimageurl} author={Blogs.blogauthor} date={Moment(Blogs.blogdate).format('ll')} />
+                                <div className="blogContainer">
+                                    <div className="blogContents">
                                         <div>
-                                            <div className="blogHeader">
-                                                <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
-                                                <div className="headerContent">
-                                                    <div className="blogTitle">{Blogs.blogtitle}</div>
-                                                    <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                                                    <div className="blogDate">Posted on {Moment(Blogs.blogdate).format('ll')}</div>
-                                                    <div>
-                                                        <button className="blogCategory">{Blogs.blogcategory}</button>
-                                                    </div>
+                                            <Fade>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: Blogs.blogcontent
+                                                    }}
+                                                    className="blogDetails"
+                                                >
                                                 </div>
-                                            </div>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: Blogs.blogcontent
-                                                }}
-                                                className="blogDetails"
-                                            >
-                                            </div>
 
-                                            <Link to={`/editblog`}>Edit</Link>
-                                            <button onClick={() => onDelete(Blogs.id)}>Delete</button>
+                                                {
+                                                    /* Edit and Delete Blog Buttons
+                                                        <Link to="/editblog">Edit</Link>
+                                                        <button onClick={() => onDelete(Blogs.id)}>Delete</button>
+                                                    */
+                                                }
 
-
-                                            <div className="shareButtons">
-                                                <h6>Share on:</h6>
-                                                <FacebookShareButton url={shareUrl} quote={shareText}>
-                                                    <FacebookIcon size="32" round={true} />
-                                                </FacebookShareButton>
-                                                <TwitterShareButton url={shareUrl} title={shareText}>
-                                                    <TwitterIcon size="32" round={true} />
-                                                </TwitterShareButton>
-                                                <WhatsappShareButton url={shareUrl} title={shareText}>
-                                                    <WhatsappIcon size="32" round={true} />
-                                                </WhatsappShareButton>
-                                                <TelegramShareButton url={shareUrl} title={shareText}>
-                                                    <TelegramIcon size="32" round={true} />
-                                                </TelegramShareButton>
-                                                <LinkedinShareButton url={shareUrl} title={shareText}>
-                                                    <LinkedinIcon size="32" round={true} />
-                                                </LinkedinShareButton>
-                                            </div>
+                                                <div className="shareButtons">
+                                                    <h6>Share on:</h6>
+                                                    <FacebookShareButton url={shareUrl} quote={shareText}>
+                                                        <FacebookIcon size="32" round={true} />
+                                                    </FacebookShareButton>
+                                                    <TwitterShareButton url={shareUrl} title={shareText}>
+                                                        <TwitterIcon size="32" round={true} />
+                                                    </TwitterShareButton>
+                                                    <WhatsappShareButton url={shareUrl} title={shareText}>
+                                                        <WhatsappIcon size="32" round={true} />
+                                                    </WhatsappShareButton>
+                                                    <TelegramShareButton url={shareUrl} title={shareText}>
+                                                        <TelegramIcon size="32" round={true} />
+                                                    </TelegramShareButton>
+                                                    <LinkedinShareButton url={shareUrl} title={shareText}>
+                                                        <LinkedinIcon size="32" round={true} />
+                                                    </LinkedinShareButton>
+                                                </div>
+                                            </Fade>
                                         </div>
-                                    )
-                                }
-                            })
-                        }
-                        {
-                            counter === 0 ?
-                                <div>
-                                    <Alert color="danger" style={{ textAlign: "center" }}>
-                                        Oops! Looks like this blog does not exist.
-                                        <br />
-                                        <a href="/blogcategories"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
-                                    </Alert>
-                                </div> : null
-                        }
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                })
+            }
+            {
+                counter === 0 ?
+                    <div className="errorMessage">
+                        <Helmet>
+                            <title>Blogs | TechnoHub BITD</title>
+                        </Helmet>
+                        <Zoom>
+                            <Alert color="danger" style={{ textAlign: "center" }}>
+                                Oops! Looks like this blog does not exist.
+                                <br />
+                                <a href="/blog"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
+                            </Alert>
+                        </Zoom>
                     </div>
-                </div>
-
-            </React.Fragment>
-        );
-
-    }
-
-
+                            : 
+                    <Helmet>
+                        <title>Blog post by { checkAuthor } | TechnoHub BITD</title>
+                        <meta name="title" content={ checkTitle } />
+                    </Helmet>
+            }
+        </React.Fragment>
+    );
+}
 
 export default BlogComponent;

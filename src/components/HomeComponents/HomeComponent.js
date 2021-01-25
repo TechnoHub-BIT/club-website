@@ -3,6 +3,8 @@ import FAQ from "./FAQ";
 import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Zoom, Fade } from 'react-reveal';
 
 const Home = () => {
   const [faqs, setfaqs] = useState([
@@ -61,60 +63,65 @@ const Home = () => {
   return (
     <Fragment>
       <Header />
+      <Helmet>
+        <title>Home | TechnoHub BITD</title>
+      </Helmet>
       <section className="servicesSection">
         <div className="container">
           <div className="serviceCont">
-            <div className="services">
-              <i className="fa fa-microchip"></i>
-              <div className="line"></div>
-              <h4>Project Development</h4>
-              <div className="entinner">
-              <p>
-                The focus of the TechnoHub club primarily is to help the
-                students gain practical as well as theoretical technical knowledge.
-              </p>
-              </div>
-            </div>
-
-            <div className="services">
-              <i className="fa fa-wrench"></i>
-              <div className="line"></div>
-              <h4>Learn and Develop</h4>
-              <div className="entinner">
-                <p>
-                  Learn through exclusive capacity building programs,
-                  preferential internship and job opportunities. Develop the Team
-                  by participating in projects that create a huge impact.
-                </p>
-              </div>
-            </div>
-
-            <div className="services">
-              <i className="fa fa-users"></i>
-              <div className="line"></div>
-                <h4>Leadership Skills </h4>
+            <Zoom>
+              <div className="services">
+                <i className="fa fa-microchip"></i>
+                <div className="line"></div>
+                <h4>Project Development</h4>
                 <div className="entinner">
                 <p>
-                  Enhance your leadership skills and competencies in learning by
-                  doing approach. Become equipped to inspire, build and manage
-                  strong teams.
+                  The focus of the TechnoHub club primarily is to help the
+                  students gain practical as well as theoretical technical knowledge.
                 </p>
+                </div>
               </div>
-            </div>
-          
-            <div className="services">
-              <i className="fa fa-graduation-cap"></i>
-              <div className="line"></div>
-              <h4>Entrepreneurship</h4>
-              <div className="entinner">
-                <p>
-                  Develop an entrepreneurial mindset to innovate and create new
-                  value with hands-on training and workshops Get support and
-                  mentorship from the TechnoHub network for your ideas and
-                  innovations.
-                </p>
+
+              <div className="services">
+                <i className="fa fa-wrench"></i>
+                <div className="line"></div>
+                <h4>Learn and Develop</h4>
+                <div className="entinner">
+                  <p>
+                    Learn through exclusive capacity building programs,
+                    preferential internship and job opportunities. Develop the Team
+                    by participating in projects that create a huge impact.
+                  </p>
+                </div>
               </div>
-            </div>
+
+              <div className="services">
+                <i className="fa fa-users"></i>
+                <div className="line"></div>
+                  <h4>Leadership Skills </h4>
+                  <div className="entinner">
+                  <p>
+                    Enhance your leadership skills and competencies in learning by
+                    doing approach. Become equipped to inspire, build and manage
+                    strong teams.
+                  </p>
+                </div>
+              </div>
+            
+              <div className="services">
+                <i className="fa fa-graduation-cap"></i>
+                <div className="line"></div>
+                <h4>Entrepreneurship</h4>
+                <div className="entinner">
+                  <p>
+                    Develop an entrepreneurial mindset to innovate and create new
+                    value with hands-on training and workshops Get support and
+                    mentorship from the TechnoHub network for your ideas and
+                    innovations.
+                  </p>
+                </div>
+              </div>
+            </Zoom>
           </div>
         </div>
       </section>
@@ -130,31 +137,35 @@ const Home = () => {
       <section className="about_part section_bg section_padding">
         <div className="container">
           <div className="row align-items-center justify-content-center">
-            <div className="col-md-6 col-lg-6">
-              <div className="about_img">
-                <img
-                  src="assets/images/technology.jpg"
-                  className="img-fluid"
-                  alt="Technology"
-                />
+            <Fade>
+              <div className="col-md-6 col-lg-6">
+                <div className="about_img">
+                  <img
+                    src="assets/images/technology.jpg"
+                    className="img-fluid"
+                    alt="Technology"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-6">
-              <div className="about_text1">
-                <h2>Technical Activities</h2>
-                <br />
-                <p className="text-justify">
-                  For the all-round development of the students and to enrich
-                  their technical knowledge the institute provides a platform
-                  for various student's activities. This club envisages
-                  conducive platform to explore student’s latent talents and
-                  also to enable them to come out with their innovative ideas.
-                </p>
-                <Link to="/events" className="btn_2">
-                  Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
-                </Link>
+            </Fade>
+            <Zoom>
+              <div className="col-md-6 col-lg-6">
+                <div className="about_text1">
+                  <h2>Technical Activities</h2>
+                  <br />
+                  <p className="text-justify">
+                    For the all-round development of the students and to enrich
+                    their technical knowledge the institute provides a platform
+                    for various student's activities. This club envisages
+                    conducive platform to explore student’s latent talents and
+                    also to enable them to come out with their innovative ideas.
+                  </p>
+                  <Link to="/events" className="btn_2">
+                    Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </Zoom>
           </div>
         </div>
       </section>
@@ -163,35 +174,39 @@ const Home = () => {
         <div className="about_part1">
           <div className="container">
             <div className="row align-items-center justify-content-between">
-              <div className="col-md-6 col-lg-6">
-                <div className="about_text">
-                  <h2>Management</h2>
-                  <br />
-                  <p className="text-justify">
-                    The aim of this club is to offer the ability to plan and
-                    execute events throughout the college. Event Management for
-                    students have the opportunity to gain experience in
-                    Management and create important contacts that they can use
-                    once they have completed the course. The club also aims to
-                    create leadership skills, team building skills,
-                    interpersonal skills and social atmosphere which will
-                    encourage members to get involved in activities outside
-                    their academic timetables.
-                  </p>
-                  <Link to="/aboutus" className="btn_2">
-                    Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
-                  </Link>
+              <Zoom>
+                <div className="col-md-6 col-lg-6">
+                  <div className="about_text">
+                    <h2>Management</h2>
+                    <br />
+                    <p className="text-justify">
+                      The aim of this club is to offer the ability to plan and
+                      execute events throughout the college. Event Management for
+                      students have the opportunity to gain experience in
+                      Management and create important contacts that they can use
+                      once they have completed the course. The club also aims to
+                      create leadership skills, team building skills,
+                      interpersonal skills and social atmosphere which will
+                      encourage members to get involved in activities outside
+                      their academic timetables.
+                    </p>
+                    <Link to="/aboutus" className="btn_2">
+                      Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-5 col-lg-5">
-                <div className="about_img">
-                  <img
-                    src="assets/images/management1.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
+              </Zoom>
+              <Fade>
+                <div className="col-md-5 col-lg-5">
+                  <div className="about_img">
+                    <img
+                      src="assets/images/management1.jpg"
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </Fade>
             </div>
           </div>
         </div>
@@ -205,9 +220,11 @@ const Home = () => {
           </div>
           <div className="container-fluid">
             <div className="faqs">
-              {faqs.map((faq, i) => (
-                <FAQ faq={faq} key={i} index={i} toggleFAQ={toggleFAQ} />
-              ))}
+              <Zoom>
+                {faqs.map((faq, i) => (
+                  <FAQ faq={faq} key={i} index={i} toggleFAQ={toggleFAQ} />
+                ))}
+              </Zoom>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 import "./ProfileComponents.css";
 import "../input.css";
 import { db } from '../../firebase';
+import { Helmet } from "react-helmet";
 
 const ProfileHeader = () => {
     const [error, setError] = useState('');
@@ -53,15 +54,18 @@ const ProfileHeader = () => {
   //Setting the Suffix for Semester
     let suffix = "th";
 
-    if (profiles?.semester === 1)
+    if (profiles?.semester == 1)
         suffix = "st";
-    else if (profiles.semester === 2)
+    else if (profiles.semester == 2)
         suffix = "nd";
-    else if (profiles.semester === 3)
+    else if (profiles.semester == 3)
         suffix = "rd";
 
     return (
         <div>
+            <Helmet>
+                <title>{ profiles?.fullname + " | TechnoHub BITD" }</title>
+            </Helmet>
             { currentUser && (
             
                 <div className="profileHeader">

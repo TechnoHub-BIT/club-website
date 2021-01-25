@@ -1,13 +1,93 @@
-.headerTitle {
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: bold;
-  font-size: 3.5em;
+.headerTitleCont {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
-  color: #191d34;
+  margin-bottom: 15px;
+  color: #fff;
+  padding: 0 15px;
 }
 
-@media only screen and (max-width: 992px) {
-  .heading {
-    margin-bottom: 20px;
+.headerTitleCont::after {
+  position: absolute;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.headerTitleCont .animation {
+  -webkit-animation: appear 0.4s linear;
+          animation: appear 0.4s linear;
+  z-index: 2;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+    margin-top: 5em;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
   }
 }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    margin-top: 5em;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+.headerTitleCont .headerTitle {
+  font-size: 2.5em;
+}
+
+.headerTitleCont .headerAuthor {
+  font-weight: 200;
+  font-size: 1.3em;
+}
+
+.headerTitleCont .headerDate {
+  font-size: 1em;
+  font-weight: 200;
+}
+
+@media only screen and (min-width: 992px) {
+  .headerTitleCont {
+    height: 60vh;
+  }
+  .headerTitleCont .headerTitle {
+    font-size: 3.5em;
+  }
+  .headerTitleCont .headerAuthor {
+    font-size: 2em;
+  }
+  .headerTitleCont .headerDate {
+    font-size: 1.1em;
+  }
+}
+/*# sourceMappingURL=HeaderTitle.css.map */
