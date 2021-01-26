@@ -10,7 +10,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../../firebase";
-import AddCategory from "../../AddBlogComponent/AddCategoryComponent/AddCategoryComponent";
+import EditAdd from "./EditAddCategory";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 import queryString from "../query";
@@ -239,7 +239,7 @@ class Editblog extends React.Component {
                                 <label for="title">Blog Title</label>
                             </div>
                             <div className="input-group">
-                                <AddCategory onChange={this.onChange} name="blogcategory" value={this.state.blogcategory} />
+                                <EditAdd onChange={this.onChange}  value={this.state.blogcategory} />
                             </div>
                             <div className="input-group">
                                 <input type="text" name="author" id="author" onChange={this.onChange} name="blogauthor" value={this.state.blogauthor} placeholder="Blog Author" required />

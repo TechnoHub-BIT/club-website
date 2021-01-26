@@ -2,7 +2,7 @@ import React from "react";
 import "../../input.css";
 import { db } from "../../../firebase";
 
-class AddCategoryComponent extends React.Component {
+class EditAddComponent extends React.Component {
     state = {
         Blogcategory: null
     }
@@ -27,7 +27,7 @@ class AddCategoryComponent extends React.Component {
     render() {
        
         return (
-            <select name="category" id="category"   onChange={this.props.change}  value={this.props.value} required>
+            <select name="category" id="category" name="blogcategory"  onChange={this.props.onChange}  value={this.props.blogcategory} required>
                 <option value="">--Select Category--</option>
                 {
                     this.state.Blogcategorytype && this.state.Blogcategorytype.map(Blogcategorytype => {
@@ -43,4 +43,4 @@ class AddCategoryComponent extends React.Component {
     
 }
 
-export default AddCategoryComponent;
+export default EditAddComponent;
