@@ -42,7 +42,7 @@ function BlogComponent() {
     }, []);
 
 
-    function onDelete (id) {
+    function onDelete(id) {
         db.collection('Blogs').doc(id).delete()
             .catch((err) => {
                 console.error(err);
@@ -50,17 +50,17 @@ function BlogComponent() {
     }
 
     const setCharAt = (str, index, chr) => {
-        if(index > str.length-1) return str;
+        if (index > str.length - 1) return str;
         return (str.substring(0, index) + chr + str.substring(index + 1));
     }
 
     const getIndices = (str) => {
         let indices = [];
 
-        for(let i = 0; i < str.length; i++) {
+        for (let i = 0; i < str.length; i++) {
             let char = str.charAt(i);
-            
-            if(char === " ")
+
+            if (char === " ")
                 indices.push(i);
         }
         return indices;
@@ -68,7 +68,7 @@ function BlogComponent() {
 
     let checkTitle = qur[0].replace(/-/g, " ");
 
-    for(let i = 0; i < getIndices(qur[0]).length; i++) {
+    for (let i = 0; i < getIndices(qur[0]).length; i++) {
         checkTitle = setCharAt(checkTitle, getIndices(qur[0])[i], "-");
     }
 
@@ -122,12 +122,14 @@ function BlogComponent() {
                                                 >
                                                 </div>
 
-                                                {
-                                                    /* Edit and Delete Blog Buttons
-                                                        <Link to="/editblog">Edit</Link>
-                                                        <button onClick={() => onDelete(Blogs.id)}>Delete</button>
-                                                    */
-                                                }
+
+                                                {/* //  Edit and Delete Blog Buttons */}
+                                                {/* <Link to="/editblog">Edit</Link> */}
+                                                <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
+                                                {/* <link to={`/editblog/${Blogs.id}`}>Edit</link> */}
+                                                <button onClick={() => onDelete(Blogs.id)}>Delete</button>
+
+
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>
@@ -170,10 +172,10 @@ function BlogComponent() {
                             </Alert>
                         </Zoom>
                     </div>
-                            : 
+                    :
                     <Helmet>
-                        <title>Blog post by { checkAuthor } | TechnoHub BITD</title>
-                        <meta name="title" content={ checkTitle } />
+                        <title>Blog post by {checkAuthor} | TechnoHub BITD</title>
+                        <meta name="title" content={checkTitle} />
                     </Helmet>
             }
         </React.Fragment>

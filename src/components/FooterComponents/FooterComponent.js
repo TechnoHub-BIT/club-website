@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="row developedBy">
-        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="_blank" rel="noreferrer">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank" rel="noreferrer">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank" rel="noreferrer">Aaryan Khandelwal</a>&<a href="https://www.linkedin.com/in/bavisetti-narayan-a94b5918b" target="_blank" rel="noreferrer">Bavisetti Narayan</a>
+        Site Developed by - <a href="https://instagram.com/kuldeeppatel0001" target="_blank" rel="noreferrer">Kuldeep Patel</a>,<a href="https://instagram.com/aditya0genius" target="_blank" rel="noreferrer">Aditya Deshmukh</a>,<a href="https://instagram.com/aaryan610" target="_blank" rel="noreferrer">Aaryan Khandelwal</a>&<a href="https://instagram.com/bavisettinarayan" target="_blank" rel="noreferrer">Bavisetti Narayan</a>
       </div>
     </footer>
   );
