@@ -17,15 +17,6 @@ import queryString from "../query";
 import { resetWarningCache } from "prop-types";
 
 
-
-
-
-
-
-
-
-//this oone new one
-
 class Editblog extends React.Component {
     constructor(props) {
         super(props);
@@ -39,11 +30,10 @@ class Editblog extends React.Component {
             qur: queryString("editBlog"),
         };
     }
-    // this.props.match.params.id
     componentDidMount() {
         const ref = db.collection("Blogs").doc(this.state.qur);
         ref.get().then((doc) => {
-            // if (doc.exists) {
+            
                 const Blogs = doc.data();
                 this.setState({
                     key: doc.id,
@@ -53,9 +43,6 @@ class Editblog extends React.Component {
                     blogimageurl: Blogs.blogimageurl,
                     blogcontent: Blogs.blogcontent
                 });
-            // } else {
-            //     console.log("No such document!");
-            // }
         });
     }
 
@@ -65,21 +52,6 @@ class Editblog extends React.Component {
         state[e.target.name] = e.target.value;
         this.setState({ Blogs: state });
     }
-
-
-
-
-
-    // contentChange = (params) => {
-    //     // const state = this.state
-    //     // state[params] = params;
-    //     // this.setState({ Blogs: state });
-    //     const state = this.state
-    //     state[params] = params;
-    //         this.setState({ Blogs:params});
-       
-    // }
-
 
     onSubmit = (e) => {
         e.preventDefault();
