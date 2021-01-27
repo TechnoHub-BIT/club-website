@@ -83,6 +83,12 @@ const achievements = (props) => {
                                     Team Barleyn led by Anubhav Bhatt won the Hult Prize 2021 On Campus Challenge.
                                 </SingleAchievement>
                             </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/hult-prize-2021.jpeg">
+                                    Hero App Designing Champ!
+                                    Hero Motor Corp organized a competition to design a UI for their existing customer app. Technohub congratulates AKSHAY SHARMA On clearing round one. He was selected in the top 40 among 3800+ participants!
+                                </SingleAchievement>
+                            </div>
                         </Zoom>
                     </div>
                 </div>
