@@ -97,7 +97,7 @@ class EditCategory extends Component {
                             </div>
                             <div className="input-group">
                                 <input type="text" name="title" id="title" name="blogcategorynameurl" onChange={this.onChange} value={this.state.blogcategorynameurl} placeholder="Blog Title" required />
-                                <label for="title">Blog Title</label>
+                                <label for="title">Blog Image url</label>
                             </div>
 
                             <div className="input-group">

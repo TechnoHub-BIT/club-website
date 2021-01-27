@@ -7,44 +7,7 @@ import Moment from 'moment';
 import { Helmet } from "react-helmet";
 import { Zoom } from 'react-reveal';
 
-// class BlogListComponent extends Component {
-//     state = {
-//         // Blogs: [],
-//         Blogs: null,
-//         queryString: queryString("blogList"),
-//         key: ''
-//     }
 
-
-//     componentDidMount() {
-//         db.collection('Blogs')
-//             .get()
-//             .then(snapshot => {
-
-//                 const Blogs = []
-//                 snapshot.forEach(doc => {
-//                     const data = doc.data()
-//                     Blogs.push({
-//                         key: doc.id
-//                     }, data)
-//                 })
-//                 this.setState({ Blogs: Blogs })
-//             })
-//             // .then((doc)=> {
-//             //     this.setState({
-//             //         Blogs : doc.data(),
-//             //         key: doc.id,
-//             //     })
-//             // })
-//             .catch(error => console.log(error))
-//     }
-
-//     delete(id) {
-//         db.collection('Blogs').doc(id).delete()
-//             .catch((err) => {
-//                 console.error(err);
-//             })
-//     }
 
 
 
@@ -66,12 +29,7 @@ function BlogListComponent() {
         fetchdata();
     }, []);
 
-    function onDelete(id) {
-        db.collection('Blogs').doc(id).delete()
-            .catch((err) => {
-                console.error(err);
-            })
-    }
+  
 
     let counter = 0;
     return (
