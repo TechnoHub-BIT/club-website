@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./EditBlogComponent.css";
 import HeaderTitle from "../../HeaderComponents/HeaderTitle";
 import { Breadcrumb, BreadcrumbItem } from "../../BreadcrumbComponent/BreadcrumbComponent";
@@ -10,93 +10,212 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../../firebase";
-import AddCategory from "../../AddBlogComponent/AddCategoryComponent/AddCategoryComponent";
+import EditAdd from "./EditAddCategory";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
+import queryString from "../query";
 
+
+
+
+
+
+
+
+
+//this oone new one
 
 class Editblog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            key: '',
             blogtitle: '',
             blogcategory: '',
             blogauthor: '',
             blogimageurl: '',
-            blogdate: '',
-            blogcontent: ''
-        }
+            blogcontent: '',
+            qur: queryString("editBlog"),
+        };
+    }
+    // this.props.match.params.id
+    componentDidMount() {
+        const ref = db.collection("Blogs").doc(this.state.qur);
+        ref.get().then((doc) => {
+            // if (doc.exists) {
+                const Blogs = doc.data();
+                this.setState({
+                    key: doc.id,
+                    blogtitle: Blogs.blogtitle,
+                    blogcategory: Blogs.blogcategory,
+                    blogauthor: Blogs.blogauthor,
+                    blogimageurl: Blogs.blogimageurl,
+                    blogcontent: Blogs.blogcontent
+                });
+            // } else {
+            //     console.log("No such document!");
+            // }
+        });
     }
 
-    componentDidCatch() {
-        db.collection('Blogs').get().then((doc) => {
-            const document = doc.data();
+    onChange = (e) => {
+        const state = this.state
+        state[e.target.name] = e.target.value;
+        this.setState({ Blogs: state });
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const { blogtitle, blogcategory, blogauthor, blogimageurl, blogcontent } = this.state;
+
+        const updateRef = db.collection('Blogs').doc(this.state.qur);
+        updateRef.set({
+
+            blogtitle,
+            blogcategory,
+            blogauthor,
+            blogimageurl,
+            blogcontent
+        }).then((docRef) => {
             this.setState({
-                id: doc.id,
-                blogtitle: document.blogtitle,
-                blogcategory: document.blogcategory,
-                blogauthor: document.blogauthor,
-                blogimageurl: document.blogimageurl,
-                blogdate: document.blogdate,
-                blogcontent: document.blogcontent
-            })
-        })
-    }
- 
+               key:'',
+                blogtitle: '',
+                blogcategory: '',
+                blogauthor: '',
+                blogimageurl: '',
+                blogcontent: ''
+            });
 
-    handleOnChange  = (e) => {
-    const state = this.state;
-    state[e.target.blogtitle] = e.target.value;
-    this.setState({document:state});
-}
-
-handleOnChange  = (e) => {
-    const state = this.state;
-    state[e.target.blogauthor] = e.target.value;
-    this.setState({document:state});
-}
-handleOnChange  = (e) => {
-    const state = this.state;
-    state[e.target.blogcategory] = e.target.value;
-    this.setState({document:state});
-}
-handleOnChange  = (e) => {
-    const state = this.state;
-    state[e.target.imageurl] = e.target.value;
-    this.setState({document:state});
-}
-handleOnChange  = (e) => {
-    const state = this.state;
-    state[e.target.content] = e.target.value;
-    this.setState({document:state});
-}
-onSubmit = (e)=>{
-    e.preventDefault();
-    const {blogtitle ,blogauthor,blogcategory,blogcontent,blogimageurl} = this.state;
-    const updateref = db.collection('Blogs').doc(this.state.id);
-    updateref.set({
-        blogtitle ,
-        blogauthor,
-        blogcategory,
-       
-        blogimageurl,
-        blogcontent
-
-
-    }).then((docref) => {
-        this.setState({
-          
-            blogtitle: '' ,
-            blogauthor: '',
-            blogcategory: '',
            
-            blogimageurl: '',
-            blogcontent: ''
+            this.props.history.push("/editblogpost/" +this.state.qur)
+            .then(() => {
+                alert("Blog category added");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
         })
-    })
-}
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     constructor(props) {
+    //         super(props);
+    //         this.state = {
+    //             id: '',
+    //             blogtitle: '',
+    //             blogcategory: '',
+    //             blogauthor: '',
+    //             blogimageurl: '',
+    //             blogdate: '',
+    //             blogcontent: ''
+    //         }
+    //     }
+
+    //     componentDidCatch() {
+    //         db.collection('Blogs').get().then((doc) => {
+    //             const document = doc.data();
+    //             this.setState({
+    //                 id: doc.id,
+    //                 blogtitle: document.blogtitle,
+    //                 blogcategory: document.blogcategory,
+    //                 blogauthor: document.blogauthor,
+    //                 blogimageurl: document.blogimageurl,
+    //                 blogdate: document.blogdate,
+    //                 blogcontent: document.blogcontent
+    //             })
+    //         })
+    //     }
+
+
+    //     handleOnChange  = (e) => {
+    //     const state = this.state;
+    //     state[e.target.name] = e.target.value;
+    //     this.setState({document:state});
+    // }
+
+    // // handleOnChange  = (e) => {
+    // //     const state = this.state;
+    // //     state[e.target.blogauthor] = e.target.value;
+    // //     this.setState({document:state});
+    // // }
+    // // handleOnChange  = (e) => {
+    // //     const state = this.state;
+    // //     state[e.target.blogcategory] = e.target.value;
+    // //     this.setState({document:state});
+    // // }
+    // // handleOnChange  = (e) => {
+    // //     const state = this.state;
+    // //     state[e.target.imageurl] = e.target.value;
+    // //     this.setState({document:state});
+    // // }
+    // // handleOnChange  = (e) => {
+    // //     const state = this.state;
+    // //     state[e.target.content] = e.target.value;
+    // //     this.setState({document:state});
+    // // }
+    // onSubmit = (e)=>{
+    //     e.preventDefault();
+    //     const {blogtitle ,blogauthor,blogcategory,blogcontent,blogimageurl} = this.state;
+    //     const updateref = db.collection('Blogs').doc();
+    //     updateref.set({
+    //         blogtitle ,
+    //         blogauthor,
+    //         blogcategory,
+
+    //         blogimageurl,
+    //         blogcontent
+
+
+    //     }).then((docref) => {
+    //         this.setState({
+
+    //             blogtitle: '' ,
+    //             blogauthor: '',
+    //             blogcategory: '',
+
+    //             blogimageurl: '',
+    //             blogcontent: ''
+    //         })
+    //     })
+    // }
+
+
+
+
+    //this one new one
     render() {
         return (
             <React.Fragment>
@@ -104,6 +223,7 @@ onSubmit = (e)=>{
                     <title>Edit Blog | TechnoHub BITD</title>
                 </Helmet>
                 <div class="editBlogContainer">
+
                     <HeaderTitle heading="EDIT BLOG" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
@@ -112,25 +232,25 @@ onSubmit = (e)=>{
                     <div className="formsCont">
                         <form>
                             <div className="title">
-                                <h3>Edit Blog</h3>
+                                <h3  >Edit Blog</h3>
                             </div>
                             <div className="input-group">
-                                <input type="text" name="title" id="title" onChange={this.handleOnChange} value={this.state.blogtitle} placeholder="Blog Title" required />
+                                <input type="text" name="title" id="title" name="blogtitle" onChange={this.onChange} value={this.state.blogtitle} placeholder="Blog Title" required />
                                 <label for="title">Blog Title</label>
                             </div>
                             <div className="input-group">
-                                <AddCategory onChange={this.category} value={this.state.blogcategory} />
+                                <EditAdd onChange={this.onChange}  value={this.state.blogcategory} />
                             </div>
                             <div className="input-group">
-                                <input type="text" name="author" id="author" onChange={this.author} value={this.state.blogauthor} placeholder="Blog Author" required />
+                                <input type="text" name="author" id="author" onChange={this.onChange} name="blogauthor" value={this.state.blogauthor} placeholder="Blog Author" required />
                                 <label for="author">Blog Author</label>
                             </div>
                             <div className="input-group">
-                                <input type="text" name="image" id="image" onChange={this.imageurl} value={this.state.blogimageurl} placeholder="Blog Image" required />
+                                <input type="text" name="image" id="image" onChange={this.onChange} name="blogimageurl" value={this.state.blogimageurl} placeholder="Blog Image" required />
                                 <label for="image">Blog Image Drive ID(1920x1080)</label>
                             </div>
                             <div className="summernote">
-                                <ReactSummernote
+                                <ReactSummernote 
                                     value={this.state.blogcontent}
                                     options={{
                                         lang: 'en-US',
@@ -143,6 +263,7 @@ onSubmit = (e)=>{
                                             ['view', ['codeview']]
                                         ]
                                     }}
+                                    name="blogcontent"
                                     onChange={this.onChange}
                                 />
                             </div>
@@ -156,6 +277,7 @@ onSubmit = (e)=>{
         )
     }
 }
+
 export default Editblog;
 
 
@@ -471,3 +593,114 @@ export default Editblog;
 //         </React.Fragment>
 //     );
 // };
+
+
+
+
+
+
+// class EditBlogComponent extends React.Component {
+//     state = {
+//         Blogs: null
+//     }
+
+
+//     componentDidMount() {
+//         // console.log('mounted')
+//         db.collection('Blogs')
+//             .get()
+//             .then(snapshot => {
+
+//                 const Blogs = []
+//                 snapshot.forEach(doc => {
+//                     const data = doc.data()
+//                     Blogs.push(data)
+//                 })
+//                 this.setState({ Blogs: Blogs })
+//             })
+//             .catch(error => console.log(error))
+//     }
+
+//     render() {
+//         // return (
+//         //     <select name="category" id="category" onChange={this.props.change} value={this.props.value} required>
+//         //         <option value="">--Select Category--</option>
+//         //         {
+//         //             this.state.Blogs && this.state.Blogs.map(Blogs => {
+//         //                 return( 
+//         //                      <option>{ Blogs.blogtitle }</option>
+
+//         //                 );
+//         //             })
+//         //         }
+//         //     </select> 
+//         // );   
+//         return (
+//             <React.Fragment>
+//                 <Helmet>
+//                     <title>Edit Blog | TechnoHub BITD</title>
+//                 </Helmet>
+//                 <div class="editBlogContainer">
+
+//                     <HeaderTitle heading="EDIT BLOG" />
+//                     <Breadcrumb>
+//                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+//                         <BreadcrumbItem icon="fas fa-pencil-alt" title="Edit Blog" status="active" />
+//                     </Breadcrumb>
+//                     <div className="formsCont">
+//                         {
+//                             this.state.Blogs && this.state.Blogs.map(Blogs => {
+//                                 return (
+//                                     <form>
+//                                         <div className="title">
+//                                             <h3  >Edit Blog</h3>
+//                                         </div>
+//                                         <div className="input-group">
+//                                             <input  >{Blogs.blogtitle} </input>
+//                                             <label for="title">Blog Title</label>
+//                                         </div>
+//                                         <div className="input-group">
+//                                             <AddCategory onChange={this.onChange} name="blogcategory" value={this.state.blogcategory} />
+//                                         </div>
+//                                         <div className="input-group">
+//                                             <input> {this.state.blogauthor} </input>
+//                                             <label for="author">Blog Author</label>
+//                                         </div>
+//                                         <div className="input-group">
+//                                             <input >{this.state.blogimageurl} </input>
+//                                             <label for="image">Blog Image Drive ID(1920x1080)</label>
+//                                         </div>
+//                                         <div className="summernote">
+//                                             <ReactSummernote name="blogcontent"
+//                                                 value={this.state.blogcontent}
+//                                                 options={{
+//                                                     lang: 'en-US',
+//                                                     height: 350,
+//                                                     dialogsInBody: true,
+//                                                     toolbar: [
+//                                                         ['font', ['bold', 'underline']],
+//                                                         ['para', ['ul', 'ol', 'paragraph']],
+//                                                         ['insert', ['link', 'picture']],
+//                                                         ['view', ['codeview']]
+//                                                     ]
+//                                                 }}
+//                                                 onChange={this.onChange}
+//                                             />
+
+//                             </div>
+//                                         <div className="input-group w50p">
+//                                             {/* <button type="submit" onClick={onSubmit} >Update Blog</button> */}
+//                                         </div>
+//                                     </form>
+//                                      );
+//                                     })
+//                                     }
+//                     </div>
+//                 </div>
+//             </React.Fragment>
+//         )
+//     }
+
+// }
+
+// export default EditBlogComponent;

@@ -24,6 +24,8 @@ import Admin from "./AdminComponents/AdminComponent";
 import ScrollToTop from './ScrollToTop';
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
 import EditBlog from "./BlogComponent/EditBlogComponent/EditBlogComponent";
+import EditBlogCategory from "./BlogComponent/EditCategoryComponent/EditCategoryComponent"
+import EditCategory from "./BlogComponent/EditCategoryComponent/EditCategory"
 import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
@@ -64,6 +66,8 @@ class Main extends Component {
               <Route exact path="/blog" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
               <PrivateRoute exact path="/editblog" component={EditBlog} />
+              <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
+              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
 
               <Footer />
               {/* </Switch> */}

@@ -66,7 +66,7 @@ function BlogListComponent() {
         fetchdata();
     }, []);
 
-    function onDelete (id) {
+    function onDelete(id) {
         db.collection('Blogs').doc(id).delete()
             .catch((err) => {
                 console.error(err);
@@ -94,6 +94,7 @@ function BlogListComponent() {
                             return (
                                 <Zoom>
                                     <a href={"/blogpost?title=" + newTitle + "&author=" + newAuthor} className="singleBlog">
+
                                         <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
                                         <div className="blogHeader">
                                             <div className="headerContent">
@@ -122,9 +123,9 @@ function BlogListComponent() {
                                     </Alert>
                                 </Zoom>
                             </div>
-                                    :
+                            :
                             <Helmet>
-                                <title>{ qur } Blogs | TechnoHub BITD</title>
+                                <title>{qur} Blogs | TechnoHub BITD</title>
                             </Helmet>
                     }
                 </div>
