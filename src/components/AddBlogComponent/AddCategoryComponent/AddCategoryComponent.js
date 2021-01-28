@@ -9,7 +9,7 @@ class AddCategoryComponent extends React.Component {
    
 
     componentDidMount() {
-        // console.log('mounted')
+     
         db.collection('Blogcategory')
             .get()
             .then(snapshot => {

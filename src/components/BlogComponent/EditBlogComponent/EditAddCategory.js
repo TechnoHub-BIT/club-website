@@ -6,10 +6,8 @@ class EditAddComponent extends React.Component {
     state = {
         Blogcategory: null
     }
-   
-
     componentDidMount() {
-        // console.log('mounted')
+    
         db.collection('Blogcategory')
             .get()
             .then(snapshot => {

@@ -17,13 +17,6 @@ import queryString from "../query";
 
 import editcategory from "./EditCategory"
 
-
-
-
-
-
-
-//this oone new one
 class EditCategoryComponent extends Component {
     constructor(props) {
       super(props);

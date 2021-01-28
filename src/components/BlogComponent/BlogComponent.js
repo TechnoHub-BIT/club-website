@@ -124,9 +124,9 @@ function BlogComponent() {
 
 
                                                 {/* //  Edit and Delete Blog Buttons */}
-                                                {/* <Link to="/editblog">Edit</Link> */}
+                                             
                                                 <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
-                                                {/* <link to={`/editblog/${Blogs.id}`}>Edit</link> */}
+                                               
                                                 <button onClick={() => onDelete(Blogs.id)}>Delete</button>
 
 

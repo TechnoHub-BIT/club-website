@@ -39,6 +39,7 @@ export default function AddBlogComponent() {
     const content = (param) => {
         setContent(param);
     };
+    
     const blogdate = new Date().toLocaleDateString();
 
 
