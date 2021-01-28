@@ -122,14 +122,11 @@ function BlogComponent() {
                                                 >
                                                 </div>
 
-
                                                 {/* //  Edit and Delete Blog Buttons */}
                                              
-                                                <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
+                                                {/* <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
                                                
-                                                <button onClick={() => onDelete(Blogs.id)}>Delete</button>
-
-
+                                                <button onClick={() => onDelete(Blogs.id)}>Delete</button> */}
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>

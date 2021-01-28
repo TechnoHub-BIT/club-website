@@ -84,9 +84,14 @@ const achievements = (props) => {
                                 </SingleAchievement>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12">
-                                <SingleAchievement path="./assets/images/achievements/hult-prize-2021.jpeg">
+                                <SingleAchievement path="./assets/images/achievements/akshay-sharma.jpeg">
                                     Hero App Designing Champ!
                                     Hero Motor Corp organized a competition to design a UI for their existing customer app. Technohub congratulates AKSHAY SHARMA On clearing round one. He was selected in the top 40 among 3800+ participants!
+                                </SingleAchievement>
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/anurag-sharma.png">
+                                    IEEE Bombay along with IEEE BIT-Durg and others conducted an online Electric Circuit Designing Competition. Participants had to design in TinkerCAD, while staying online in the meet, in the span of an hour. Amongst 48 Participants, Anurag Sharma, secured 3rd position! He was also awarded a cash prize of 2000 Rupees!
                                 </SingleAchievement>
                             </div>
                         </Zoom>

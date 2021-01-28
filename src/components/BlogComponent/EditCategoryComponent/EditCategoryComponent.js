@@ -57,29 +57,27 @@ class EditCategoryComponent extends Component {
   
     render() {
       return (
-        <div class="container">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
+        <div className="container" style={{margin: "3em auto"}}>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h2 className="panel-title text-center mb-4">
                 Blog Category Component
-              </h3>
+              </h2>
             </div>
-            <div class="panel-body">
-         
-              <table class="table table-stripe">
-                <thead>
+            <div className="panel-body">
+              <table className="table table-striped table-hover text-center">
+                <thead className="thead-dark">
                   <tr>
-                    <th> Blogcategorynameurl</th>
-                    <th>Blogcategorytype</th>
+                    <th>Category Name</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {this.state.Blogs.map(Blog=>
                     <tr>
-                      <td>{Blog.blogcategorynameurl}</td>
-                      <td>{Blog.blogcategorytype}</td>
-                      <td><Link to={`/Editcategory/${Blog.key}`}>Edit</Link></td>
-                      <td> <button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td>
+                      <td style={{verticalAlign: "middle"}}>{Blog.blogcategorytype}</td>
+                      <td><Link to={`/Editcategory/${Blog.key}`}><button className="btn btn-info"><i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit</button></Link></td>
+                      {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
                     </tr>
                   )}
                 </tbody>
