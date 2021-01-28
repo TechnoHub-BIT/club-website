@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './EventHackathonStyles.css';    
+import './HackathonComponent.css';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Col,Table, Row

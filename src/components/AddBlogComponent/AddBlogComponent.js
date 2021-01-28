@@ -110,7 +110,7 @@ export default function AddBlogComponent() {
 
     const onChange = (value) => {
         content(value);
-    }
+    };
 
     return (
         <React.Fragment>
@@ -150,15 +150,15 @@ export default function AddBlogComponent() {
                                 <ReactSummernote
                                     value={blogcontent}
                                     options={{
-                                    lang: 'en-US',
-                                    height: 350,
-                                    dialogsInBody: true,
-                                    toolbar: [
-                                        ['font', ['bold', 'underline']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['insert', ['link', 'picture']],
-                                        ['view', ['codeview']]
-                                    ]
+                                        lang: 'en-US',
+                                        height: 350,
+                                        dialogsInBody: true,
+                                        toolbar: [
+                                            ['font', ['bold', 'underline']],
+                                            ['para', ['ul', 'ol', 'paragraph']],
+                                            ['insert', ['link', 'picture']],
+                                            ['view', ['codeview']]
+                                        ]
                                     }}
                                     onChange={onChange}
                                 />

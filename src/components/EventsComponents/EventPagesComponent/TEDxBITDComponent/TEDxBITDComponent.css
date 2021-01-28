@@ -1,0 +1,72 @@
+.socialMedia {
+  margin: 1em 0 2em;
+}
+
+.socialMedia a {
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.socialMedia a i {
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  -webkit-box-shadow: 6px 6px 13px #d9d9d9, -6px -6px 13px #ffffff;
+  box-shadow: 6px 6px 13px #d9d9d9, -6px -6px 13px #ffffff;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.socialMedia a i.fa-globe-asia {
+  color: #007bff;
+}
+
+.socialMedia a i.fa-globe-asia:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.socialMedia a i.fa-facebook {
+  color: #4267b2;
+}
+
+.socialMedia a i.fa-facebook:hover {
+  background-color: #4267b2;
+  color: #fff;
+}
+
+.socialMedia a i.fa-instagram {
+  color: #f14164;
+}
+
+.socialMedia a i.fa-instagram:hover {
+  background-color: #f14164;
+  color: #fff;
+}
+
+.socialMedia a i.fa-linkedin {
+  color: #0077b5;
+}
+
+.socialMedia a i.fa-linkedin:hover {
+  background-color: #0077b5;
+  color: #fff;
+}
+
+.socialMedia a i.fa-twitter {
+  color: #00acee;
+}
+
+.socialMedia a i.fa-twitter:hover {
+  background-color: #00acee;
+  color: #fff;
+}
+
+.socialMedia a:hover {
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+.socialMedia a:not(:first-child) {
+  margin-left: 1em;
+}

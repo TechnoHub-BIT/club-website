@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Home from "./HomeComponents/HomeComponent";
 import About from "./AboutUsComponents/AboutUsComponent";
 import EventPage from './EventsComponents/EventsComponent';
-import HackathonPage from './EventsComponents/EventHackathonComponents';
 import Navbar from './HeaderComponents/NavbarComponents/NavbarComponent'
 import Contact from "./ContactUsComponents/ContactComponents";
 import Footer from "./FooterComponents/FooterComponent";
@@ -31,6 +30,10 @@ import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
 import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
 
+//Events Pages
+import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
+import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/TEDxBITDComponent";
+
 class Main extends Component {
   render() {
 
@@ -56,7 +59,6 @@ class Main extends Component {
               <PrivateRoute exact path="/settings" component={Settings}/>
               <Route exact path="/login" component={Login}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
-              <Route exact path="/hackathon2020" component={HackathonPage} />
               <Route exact path="/achievements" component={Achievements} />
               <Route exact path="/gallery" component={Gallery} />
               <Route exact path="/projects" component={Projects} />
@@ -65,9 +67,14 @@ class Main extends Component {
               <Route exact path="/collabs" component={Collaborations} />
               <Route exact path="/blog" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
-              <PrivateRoute exact path="/editblog" component={EditBlog} />
+              
+              {/* <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
-              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
+              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
+
+              {/* Event Pages */}
+              <Route exact path="/hackathon2020" component={Hackathon2020} />
+              <Route exact path="/tedxbitd" component={Tedxbitd} />
 
               <Footer />
               {/* </Switch> */}

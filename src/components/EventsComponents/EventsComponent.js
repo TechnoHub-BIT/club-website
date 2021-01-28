@@ -20,16 +20,19 @@ class EventsComponent extends Component {
               <BreadcrumbItem icon="far fa-calendar-alt" title="Events" status="active" />
           </Breadcrumb>
           <div className="container">
-            <Zoom>
-              <h1 className="sectionTitle">Upcoming Events</h1>
-              <div className="eventsCard comingSoon">
-                <div className="cardBody">
-                  <h2 className="cardTitle">Coming Soon</h2>
-                  <h5 className="cardSubtitle">Stay Tuned with Us</h5>
-                </div>
+            <h1 className="sectionTitle">Upcoming Events</h1>
+            {/* <div className="eventsCard comingSoon">
+              <div className="cardBody">
+                <h2 className="cardTitle">Coming Soon</h2>
+                <h5 className="cardSubtitle">Stay Tuned with Us</h5>
               </div>
-              <h1 className="sectionTitle">Past Events</h1>
-            </Zoom>
+            </div> */}
+            <div className="eventsCardCont">
+              <Zoom>
+                <SingleEvent to="/tedxbitd" img="./assets/images/events_img/tedxbitd.jpg" title="TEDxBITD" subtitle="APR 17 2021" />
+              </Zoom>
+            </div>
+            <h1 className="sectionTitle">Past Events</h1>
             <div className="eventsCardCont">
               <Zoom>
                 <SingleEvent to="/hackathon2020" img="./assets/images/events_img/hackathonlogo.jpeg" title="Hackathon" subtitle="OCT 17 - 18 2020" />

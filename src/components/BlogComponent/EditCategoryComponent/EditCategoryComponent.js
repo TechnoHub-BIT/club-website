@@ -78,7 +78,6 @@ class EditCategoryComponent extends Component {
                   <tr>
                     <th> Blogcategorynameurl</th>
                     <th>Blogcategorytype</th>
-                   
                   </tr>
                 </thead>
                 <tbody>
@@ -86,7 +85,6 @@ class EditCategoryComponent extends Component {
                     <tr>
                       <td>{Blog.blogcategorynameurl}</td>
                       <td>{Blog.blogcategorytype}</td>
-                      
                       <td><Link to={`/Editcategory/${Blog.key}`}>Edit</Link></td>
                       <td> <button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td>
                     </tr>
