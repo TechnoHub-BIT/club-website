@@ -145,7 +145,6 @@ class About extends Component {
             <div className="row">
               <OwlCarousel
                 className="owl-theme"
-                loop
                 autoplay
                 autoplayTimeout={2000}
                 autoplayHoverPause
@@ -176,7 +175,6 @@ class About extends Component {
             <div className="row">
               <OwlCarousel
                 className="owl-theme"
-                loop
                 autoplay
                 autoplayTimeout={2000}
                 autoplayHoverPause
@@ -241,7 +239,6 @@ class About extends Component {
             <div className="row">
               <OwlCarousel
                 className="owl-theme"
-                loop
                 autoplay
                 autoplayTimeout={2000}
                 autoplayHoverPause
@@ -289,7 +286,6 @@ class About extends Component {
             <div className="row">
               <OwlCarousel
                 className="owl-theme"
-                loop
                 autoplay
                 autoplayTimeout={2000}
                 autoplayHoverPause
@@ -337,7 +333,6 @@ class About extends Component {
             <div className="row">
               <OwlCarousel
                 className="owl-theme"
-                loop
                 autoplay
                 autoplayTimeout={2000}
                 autoplayHoverPause

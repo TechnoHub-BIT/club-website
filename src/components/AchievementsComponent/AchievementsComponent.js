@@ -57,6 +57,11 @@ const achievements = (props) => {
                                 </SingleAchievement>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/hult-prize.jpg">
+                                    Sachet Sabarad got selected as the Campus Director of the Hult Prize for the BIT, Durg campus for the 2021 On-Campus Round  competing among 44 engineering colleges.
+                                </SingleAchievement>
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
                                 <SingleAchievement path="./assets/images/achievements/kuldeep-mit.jpg">
                                     One of our members, Kuldeep Patel of 5th Semester from Electronics 
                                     and Telecommunications Department, has won the MIT COVID-19 Challenge,
@@ -76,6 +81,16 @@ const achievements = (props) => {
                             <div className="col-lg-4 col-md-6 col-sm-12">
                                 <SingleAchievement path="./assets/images/achievements/thagda-dam.jpg">
                                     Akshay Sharma’s 3D modeling of Thagda Dam park and recreation got approved by the CMO of Chhattisgarh for use in the upcoming project.
+                                </SingleAchievement>
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement>
+                                    Sachet Sabarad got selected for the GGMUN 3.0 Malaysia 2020 summit.
+                                </SingleAchievement>
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/hult-prize.jpg">
+                                    Agney Deshkar got selected as the Campus Director of the Hult Prize for the BIT, Durg campus for the 2021 On-campus Round competing among 44 engineering colleges.
                                 </SingleAchievement>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12">
