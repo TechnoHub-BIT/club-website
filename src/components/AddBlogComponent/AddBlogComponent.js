@@ -42,8 +42,6 @@ export default function AddBlogComponent() {
     
     const blogdate = new Date().toLocaleDateString();
 
-
-
     const firestoremaisave = (e) => {
         if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();

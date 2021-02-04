@@ -15,15 +15,26 @@ import {
 
 import { db } from "../../firebase";
 import queryString from "./query";
-import { Alert, ButtonToggle } from 'reactstrap';
+import { Alert, Button, ButtonToggle } from 'reactstrap';
 import Moment from 'moment';
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Zoom, Fade } from 'react-reveal';
-
+import { useAuth } from "../../contexts/AuthContext";
 
 function BlogComponent() {
+
+    const {currentUser} = useAuth();
+    const [currentProfile, setCurrentProfile] = useState('');
+    if (currentUser) {
+        db.collection("members")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+                const data = doc.data();
+                setCurrentProfile(data);
+            });
+    }
 
     const qur = queryString("blog");
 
@@ -124,9 +135,12 @@ function BlogComponent() {
 
                                                 {/* //  Edit and Delete Blog Buttons */}
                                              
-                                                {/* <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
-                                               
-                                                <button onClick={() => onDelete(Blogs.id)}>Delete</button> */}
+                                                {/* <Link to={"/editblog?id=" + Blogs.id}>Edit</Link> */}
+
+                                                {
+                                                    (currentProfile.id === 1 || currentProfile.id === 3) &&
+                                                        <Button color="danger" onClick={() => onDelete(Blogs.id)}>Delete Blog Permanently</Button>
+                                                }
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>
