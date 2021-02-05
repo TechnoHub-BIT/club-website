@@ -30,24 +30,23 @@ class Editblog extends React.Component {
             qur: queryString("editBlog"),
         };
     }
+
     componentDidMount() {
         const ref = db.collection("Blogs").doc(this.state.qur);
         ref.get().then((doc) => {
-            
-                const Blogs = doc.data();
-                this.setState({
-                    key: doc.id,
-                    blogtitle: Blogs.blogtitle,
-                    blogcategory: Blogs.blogcategory,
-                    blogauthor: Blogs.blogauthor,
-                    blogimageurl: Blogs.blogimageurl,
-                    blogcontent: Blogs.blogcontent
-                });
+            const Blogs = doc.data();
+            this.setState({
+                key: doc.id,
+                blogtitle: Blogs.blogtitle,
+                blogcategory: Blogs.blogcategory,
+                blogauthor: Blogs.blogauthor,
+                blogimageurl: Blogs.blogimageurl,
+                blogcontent: Blogs.blogcontent
+            });
         });
     }
 
     onChange = (e) => {
-
         const state = this.state
         state[e.target.name] = e.target.value;
         this.setState({ Blogs: state });
@@ -60,7 +59,6 @@ class Editblog extends React.Component {
 
         const updateRef = db.collection('Blogs').doc(this.state.qur);
         updateRef.set({
-
             blogtitle,
             blogcategory,
             blogauthor,
@@ -90,18 +88,23 @@ class Editblog extends React.Component {
             });
     }
 
+    contentChange = (value) => {
+        const currentState = this.state;
+        currentState.blogcontent = value;
+
+        this.setState(currentState);
+        
+        console.log(this.state.blogcontent);
+    };
 
     render() {
-    //    ReactSummernote.insertText("param");
-        // ReactSummernote.insertText("param");
         return (
             <React.Fragment>
                 <Helmet>
                     <title>Edit Blog | TechnoHub BITD</title>
                 </Helmet>
+                <HeaderTitle heading="EDIT BLOG" />
                 <div class="editBlogContainer">
-
-                    <HeaderTitle heading="EDIT BLOG" />
                     <Breadcrumb>
                         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
                         <BreadcrumbItem icon="fas fa-pencil-alt" title="Edit Blog" status="active" />
@@ -151,7 +154,7 @@ class Editblog extends React.Component {
                     </div>
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
 
