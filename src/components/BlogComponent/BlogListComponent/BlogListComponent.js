@@ -29,8 +29,6 @@ function BlogListComponent() {
         fetchdata();
     }, []);
 
-  
-
     let counter = 0;
     return (
         <React.Fragment>
@@ -52,7 +50,6 @@ function BlogListComponent() {
                             return (
                                 <Zoom>
                                     <a href={"/blogpost?title=" + newTitle + "&author=" + newAuthor} className="singleBlog">
-
                                         <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
                                         <div className="blogHeader">
                                             <div className="headerContent">
