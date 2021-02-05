@@ -8,7 +8,8 @@ import { Zoom } from 'react-reveal';
 
 class categoriesComponent extends React.Component {
     state = {
-        Blogcategorytype: null
+        Blogcategorytype: null,
+        
     }
 
     componentDidMount() {
@@ -24,7 +25,7 @@ class categoriesComponent extends React.Component {
             })
             .catch(error => console.log(error))
     }
-
+ 
     render() {
 
         return (
@@ -41,10 +42,13 @@ class categoriesComponent extends React.Component {
                     <div className="categoriesCont">
                         <div className="categoriesList">
                             {
-                                this.state.Blogcategorytype && this.state.Blogcategorytype.map( Blogcategorytype => {
+                                this.state.Blogcategorytype  && this.state.Blogcategorytype.map( Blogcategorytype => {
                                     return (
+                                        
                                         <Zoom>
+                                            
                                             <a href={"/bloglist?cat=" + Blogcategorytype.blogcategorytype} className="singleCategory">
+                                               
                                                 <img src={"https://drive.google.com/uc?export=view&id=" + Blogcategorytype.blogcategorynameurl} className="categoryImage" />
                                                 <div className="categoryContent">
                                                     <div className="categoryTitle">{ Blogcategorytype.blogcategorytype } Blogs</div>

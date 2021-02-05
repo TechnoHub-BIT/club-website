@@ -45,12 +45,13 @@ class EditCategory extends Component {
         this.setState({ Blogcategory: state });
     }
 
+
     onSubmit = (e) => {
         e.preventDefault();
 
         const { blogcategorynameurl, blogcategorytype } = this.state;
 
-        const updateRef = db.collection('Blogs').doc(this.state.key);
+        const updateRef = db.collection('Blogcategory').doc(this.state.key);
         updateRef.set({
             blogcategorynameurl,
             blogcategorytype
@@ -69,7 +70,8 @@ class EditCategory extends Component {
             .catch((error) => {
                 console.error("Error adding document: ", error);
             });
-    }
+        }
+
 
 
     render() {
