@@ -1,26 +1,31 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {AuthProvider} from '../contexts/AuthContext';
+import PrivateRoute from "../PrivateRoute";
+import ScrollToTop from './ScrollToTop';
+
+//Pages
 import Home from "./HomeComponents/HomeComponent";
 import About from "./AboutUsComponents/AboutUsComponent";
 import EventPage from './EventsComponents/EventsComponent';
 import Navbar from './HeaderComponents/NavbarComponents/NavbarComponent'
 import Contact from "./ContactUsComponents/ContactComponents";
-import Footer from "./FooterComponents/FooterComponent";
-import SignUpComponent from './SignUpComponents/SignUpComponent'
-import Login from './LogInComponents/LogInComponent';
-import Profile from './ProfileComponents/ProfileComponent';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {AuthProvider} from '../contexts/AuthContext';
-import PrivateRoute from "../PrivateRoute";
-import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
+import OurMembers from "./MembersListComponent/MembersList";
 import Achievements from "./AchievementsComponent/AchievementsComponent";
+import Projects from "./ProjectsComponent/ProjectsComponent";
 import Gallery from "./GalleryComponent/GalleryComponent";
+import Footer from "./FooterComponents/FooterComponent";
+
+//Profile Pages
 import Settings from "./ProfileComponents/SettingsComponent";
 import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
-import OurMembers from "./MembersListComponent/MembersList";
-import Projects from "./ProjectsComponent/ProjectsComponent";
-import Admin from "./AdminComponents/AdminComponent";
-import ScrollToTop from './ScrollToTop';
+import SignUpComponent from './SignUpComponents/SignUpComponent'
+import Login from './LogInComponents/LogInComponent';
+import Profile from './ProfileComponents/ProfileComponent';
+import ForgotPassword from './LogInComponents/ForgotPasswordComponent';
+
+//Blog Pages
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
 import EditBlog from "./BlogComponent/EditBlogComponent/EditBlogComponent";
 import EditBlogCategory from "./BlogComponent/EditCategoryComponent/EditCategoryComponent"
@@ -29,6 +34,9 @@ import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
 import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
+
+//Admin Pages
+import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponent";
 
 //Events Pages
 import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
@@ -55,28 +63,33 @@ class Main extends Component {
               <Navbar />
               
               <Route exact path="/" component={Home} />
-              <PrivateRoute exact path="/admin" component={Admin} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/aboutus" component={About} />
               <Route exact path="/contactus" component={Contact} />
               <Route exact path="/events" component={EventPage} />
-              <Route exact path="/signup" component={SignUpComponent} />
-              <PrivateRoute exact path="/register" component={Register} />
-              <PrivateRoute exact path="/edit" component={EditProfile} />
               <PrivateRoute exact path="/ourmembers" component={OurMembers} />
-              <PrivateRoute exact path="/profile" component={Profile}/>
-              <PrivateRoute exact path="/settings" component={Settings}/>
-              <Route exact path="/login" component={Login}/>
-              <Route exact path="/forgot-password" component={ForgotPassword}/>
               <Route exact path="/achievements" component={Achievements} />
               <Route exact path="/gallery" component={Gallery} />
               <Route exact path="/projects" component={Projects} />
-              <PrivateRoute exact path ="/addBlog" component={AddBlog} />
-              <Route exact path="/blogpost" component={Blog} />
               <Route exact path="/collabs" component={Collaborations} />
+
+              {/* Profile Pages */}
+              <Route exact path="/signup" component={SignUpComponent} />
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/forgot-password" component={ForgotPassword}/>
+              <PrivateRoute exact path="/profile" component={Profile}/>
+              <PrivateRoute exact path="/edit" component={EditProfile} />
+              <PrivateRoute exact path="/settings" component={Settings}/>
+              <PrivateRoute exact path="/register" component={Register} />
+
+              {/* Admin Pages */}
+              <PrivateRoute exact path="/admin" component={NewMembers} />
+
+              {/* Blog Pages */}
               <Route exact path="/blog" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
-              
+              <PrivateRoute exact path ="/addBlog" component={AddBlog} />
+              <Route exact path="/blogpost" component={Blog} />
               {/* <PrivateRoute exact path="/editblog" component={EditBlog} /> 
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
               <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
