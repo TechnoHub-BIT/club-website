@@ -89,7 +89,6 @@ function BlogComponent() {
     const checkAuthor = qur[1].replace(/-/g, " ");
 
     let counter = 0;
-    let checkImage = "1aQ-CNfTMTdWRnTsPzNtR_nyFjOMI21-2";
     /*let bitlyURL;
     
     async function shortenURL(url) {
@@ -121,8 +120,6 @@ function BlogComponent() {
 
                         const shareUrl = "http://technohubbit.in/blogpost?title=" + newTitle + "&author=" + newAuthor;
                         const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
-
-                        checkImage = Blogs.blogimageurl;
 
                         return (
                             <div>
@@ -195,38 +192,8 @@ function BlogComponent() {
                     </div>
                     :
                     <Helmet>
-                        <title>Blog by { checkAuthor } | TechnoHub BITD</title>
-                        <meta name="title" content={ "TechnoHub Blogs- " + checkTitle } />
-
-                        {/* Facebook Share */}
-                        <meta
-                            property="og:title"
-                            content={ "TechnoHub Blogs- " + checkTitle }
-                        />
-                        <meta
-                            property="og:description"
-                            content="TechnoHub Blogs are a great way to increase your knowldge from every field."
-                        />
-                        <meta
-                            property="og:image:secure_url"
-                            itemprop="image"
-                            content={ "https://drive.google.com/uc?export=view&id=" + checkImage }
-                        />
-                        
-
-                        {/* Twitter Share */}
-                        <meta
-                            name="twitter:title"
-                            content={ "TechnoHub Blogs- " + checkTitle }
-                        />
-                        <meta
-                            name="twitter:description"
-                            content="TechnoHub Blogs are a great way to increase your knowldge from every field."
-                        />
-                        <meta
-                            name="twitter:image"
-                            content={ "https://drive.google.com/uc?export=view&id=" + checkImage }
-                        />
+                        <title>Blog post by {checkAuthor} | TechnoHub BITD</title>
+                        <meta name="title" content={checkTitle} />
                     </Helmet>
             }
         </React.Fragment>
