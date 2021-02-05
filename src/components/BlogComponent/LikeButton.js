@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 class LikeButton extends Component {
 
     state = {
-        clapCount: 0
+        clapCount:''
     }
 
     incrementLike = () => {

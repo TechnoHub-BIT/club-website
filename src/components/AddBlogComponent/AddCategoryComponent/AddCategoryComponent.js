@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "../../input.css";
 import { db } from "../../../firebase";
 
-class AddCategoryComponent extends React.Component {
+class AddCategoryComponent extends Component {
     state = {
         Blogcategory: null
     }
