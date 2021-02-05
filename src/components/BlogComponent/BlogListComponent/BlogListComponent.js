@@ -8,9 +8,6 @@ import { Helmet } from "react-helmet";
 import { Zoom } from 'react-reveal';
 
 
-
-
-
 function BlogListComponent() {
 
     const qur = queryString("blogList");

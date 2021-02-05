@@ -12,7 +12,7 @@ import { db } from "../../firebase";
 import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../contexts/AuthContext";
-import AddAuthorComponent from './AddAuthorComponent/AddAuthorComponent';
+// import AddAuthorComponent from './AddAuthorComponent/AddAuthorComponent';
 
 export default function AddBlogComponent() {
 
@@ -51,7 +51,7 @@ export default function AddBlogComponent() {
                
                 blogtitle: blogtitle,
                 blogcategory: blogcategory,
-                blogauthor: blogauthor,
+               blogauthor:blogauthor,
                 blogimageurl: blogimageurl,
                 blogdate: blogdate,
                 blogcontent: blogcontent
@@ -139,8 +139,9 @@ export default function AddBlogComponent() {
                                 <AddCategory change={category} value={blogcategory} />
                             </div>
                             <div className="input-group">
-                               
-                                <AddAuthorComponent change={author} value={blogauthor} />
+                            <input type="text" name="title" id="title" change={author} value={blogauthor} placeholder="Blog Title" required />
+                            <label for="title">Blog Author</label>
+                                {/* <AddAuthorComponent change={author} value={blogauthor} /> */}
                              
                             </div>
                             <div className="input-group">
