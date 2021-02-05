@@ -19,6 +19,7 @@ class EditCategory extends Component {
             key: '',
             blogcategorynameurl: '',
             blogcategorytype: ''
+
         };
     }
 
@@ -49,21 +50,25 @@ class EditCategory extends Component {
 
         const { blogcategorynameurl, blogcategorytype } = this.state;
 
-        const updateRef = db.collection('Blogcategory').doc(this.state.key);
+        const updateRef = db.collection('Blogs').doc(this.state.key);
         updateRef.set({
             blogcategorynameurl,
             blogcategorytype
+
+
         }).then((docRef) => {
             this.setState({
                 key: '',
                 blogcategorynameurl: '',
                 blogcategorytype: ''
+
+
             });
-            this.props.history.push("/editblogcategory/" + this.props.match.params.id)
+            this.props.history.push("/editblogcategory/" + this.props.match.params.blogcategory)
         })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
     }
 
 

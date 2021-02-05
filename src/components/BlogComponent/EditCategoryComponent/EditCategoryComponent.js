@@ -30,11 +30,12 @@ class EditCategoryComponent extends Component {
     onCollectionUpdate = (querySnapshot) => {
       const Blogs = [];
       querySnapshot.forEach((doc) => {
-        const {blogcategorynameurl,blogcategorytype } = doc.data();
+        const {  blogcategorynameurl, blogcategorytype } = doc.data();
         Blogs.push({
           key: doc.id,
          blogcategorynameurl,
          blogcategorytype
+       
         });
       });
       this.setState({

@@ -15,7 +15,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 export default function AddBlogComponent() {
 
-    const {currentUser} = useAuth();
+    const { currentUser } = useAuth();
     const [currentProfile, setCurrentProfile] = useState('');
 
     const [blogtitle, setTitle] = useState('');
@@ -39,17 +39,21 @@ export default function AddBlogComponent() {
     const content = (param) => {
         setContent(param);
     };
-    
+
+    const onChange = (value) => {
+        content(value);
+    };
+
     const blogdate = new Date().toLocaleDateString();
 
 
 
     const firestoremaisave = (e) => {
-        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
+        if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' && blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
-             
-               
+
+
                 blogtitle: blogtitle,
                 blogcategory: blogcategory,
                 blogauthor: blogauthor,
@@ -83,23 +87,23 @@ export default function AddBlogComponent() {
 
 
     const blogcategorysave = (e) => {
-        if ( blogcategorytype !== '' && blogcategorynameurl !== '' ) {
-        e.preventDefault();
-        db.collection("Blogcategory").add({
-            blogcategorytype: blogcategorytype,
-            blogcategorynameurl: blogcategorynameurl
-        })
-            .then(() => {
-                alert("Blog category added");
+        if (blogcategorytype !== '' && blogcategorynameurl !== '') {
+            e.preventDefault();
+            db.collection("Blogcategory").add({
+                blogcategorytype: blogcategorytype,
+                blogcategorynameurl: blogcategorynameurl
             })
-            .catch((error) => {
-                alert(error.message);
-            });
+                .then(() => {
+                    alert("Blog category added");
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+        else {
+            alert("Please fill in all the details");
+        }
     }
-    else {
-        alert("Please fill in all the details");
-    }
-}
     if (currentUser) {
         db.collection("members")
             .doc(currentUser.uid)
@@ -109,9 +113,7 @@ export default function AddBlogComponent() {
             });
     }
 
-    const onChange = (value) => {
-        content(value);
-    };
+
 
     return (
         <React.Fragment>
