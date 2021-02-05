@@ -25,7 +25,7 @@
 }
 
 .membersList .singleMember .leftSide .name {
-  font-weight: bold;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -190,4 +190,4 @@
     grid-gap: 0;
   }
 }
-/*# sourceMappingURL=adminComponent.css.map */
+/*# sourceMappingURL=NewMembersComponent.css.map */
