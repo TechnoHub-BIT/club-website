@@ -4,24 +4,21 @@
 
 // class AddAuthorComponent extends Component {
 //     state = {
-//         fullname: ''
+//         fullname : null
 //     }
 
 //     componentDidMount() {
-//         // db.collection('members')
-//         //     .get()
-//         //     .then(snapshot => {
-//                 db.collection("members").orderBy("fullname")
-//                 .get()
-//                 .then((querySnapshot) => {
-//                   const data = querySnapshot.docs.map((doc) => doc.data());
+//         db.collection('members')
+//             .get()
+//             .then(snapshot => {
+       
 
-//                 // const Blogcategorytype = []
-//                 // snapshot.forEach(doc => {
-//                 //     const data = doc.data()
-//                 //     Blogcategorytype.push(data)
-              
-//                 this.setState({ blogauthor : fullname })
+//                 const Blogauthors = []
+//                 snapshot.forEach(doc => {
+//                     const data = doc.data()
+//                     Blogauthors.push(data)
+//                 })
+//                 this.setState({ fullname: Blogauthors })
 //             })
 //             .catch(error => console.log(error))
 //     }
@@ -31,7 +28,7 @@
 
 //         return (
 //             <React.Fragment>
-//                 <input list="authors" name="author" id="author" onChange={this.props.author} value={this.props.blogauthor} />
+//                 <input list="authors" name="author" id="author" onChange={this.props.author} value={this.props.fullname} />
 //                 <datalist id="authors">
 //                     <option value="">--Select Category--</option>
 //                     {
