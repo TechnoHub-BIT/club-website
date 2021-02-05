@@ -144,7 +144,7 @@ function BlogComponent() {
                                                 <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
 
                                                 {
-                                                    (currentProfile.id === 1 || currentProfile.id === 3) &&
+                                                    (currentProfile.id === 1) &&
                                                     <Button color="danger" onClick={() => onDelete(Blogs.id)}>Delete Blog Permanently</Button>
                                                 }
 

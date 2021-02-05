@@ -83,6 +83,7 @@ function BlogListComponent() {
                             </div>
                             :
                             <Helmet>
+                                {console.log(counter)}
                                 <title>{qur} Blogs | TechnoHub BITD</title>
                             </Helmet>
                     }

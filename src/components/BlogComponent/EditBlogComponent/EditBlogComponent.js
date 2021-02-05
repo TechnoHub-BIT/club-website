@@ -93,8 +93,6 @@ class Editblog extends React.Component {
         currentState.blogcontent = value;
 
         this.setState(currentState);
-        
-        console.log(this.state.blogcontent);
     };
 
     render() {
