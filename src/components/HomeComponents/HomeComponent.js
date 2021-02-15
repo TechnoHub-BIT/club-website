@@ -11,37 +11,35 @@ const Home = () => {
     {
       question: "Why TechnoHub?",
       answer:
-        "In its attempt to provide a national platform for the youth to showcase their talents and skills in aggressive competitions, displaying latest technology and having renowned personalities motivate the youth and providing solutions to various significant problems, TechnoHub endeavors for one and all to get inspired and look up to.",
+        "TechnoHub is the technical club of BIT Durg and hence center of technical activities. It gives a lot of area for being creative with any technical activities that interests the students. It is the kind of college club that will help you advance your knowledge by indulging in a community of like minded people.",
       open: true,
     },
     {
-      question: "How do I start a new project?",
+      question: "How can I become a member of TechnoHub?",
       answer:
-        "If you don't like any of the current projects that are being worked on in the Club, you can start your own! That is the beauty of TechnoHub, we are here for you. Just approach any coordinator and tell them about your idea. They will help you get funding and publicity so you can recruit others into your crazy robot plot.",
+        "All you need to reach out to any of the Manager or Secretary of TechnoHub and get yourself signed up. There is registration fees involved which is a One Time Investment. After that, your college club's journey begins and you will learn and participate in various technical activities and projects throughout your college life.",
       open: false,
     },
     {
       question: "What if I don't know anything about robots?",
-      answer:
-        "That's fine! There is no entrance exam or prerequisites. No experience is required.",
+      answer: "Its absolutely Fine! At TechnoHub, we can learn first and then work on the project.",
       open: false,
     },
     {
       question: "How many of the robots are built by faculty?",
       answer:
-        "Absolutely none of the robots are built by faculty. They are built by a majority of undergraduate students, as well as some graduate students.",
+        "None of the Projects are built by Faculty. Technical projects built by graduate and undergraduate students under the guidance of faculty remains this club's achievement.",
       open: false,
     },
     {
-      question: "How can I become a member?",
-      answer:
-        "Even if you don't know much to begin with, you'll learn a lot throughout the year till your graduation. Just come down to the club and any current manager can sign you up and take your dues. Note: If you pay dues that cover only one time investment. ",
+      question: "How do I start a new project?",
+      answer: "If you have an idea that doesn’t align with projects already going on in the club, all you have to do is- bring your project idea to one of the coordinator or manger at technohub and they will help you fund it and also to find people who will be interested in the same field and want to work together. This way you can bring your project idea to life and contribute to the club achievements along with your own!",
       open: false,
     },
     {
       question: "How is TechnoHub put up?",
       answer:
-        "Complete planning and execution of TechnoHub are done by the students of BIT Durg in a five-layer team structure. We greatly rely upon the perception of “Together everyone achieves more”. Every success and failure is shared equally by all of us.Although every facet of TechnoHub is no dear to one coordinator than the other for proper functioning, certain assortments are made within the team. The assortments can be broadly categorised into six sections. Each domain is specialised in its own task. The various groups are Tech Team, Documentation Team, Design Team and Marketing Team. They collaboratively take care of the various happenings and initiatives of TechnoHub. ",
+        "TechnoHub is a student-run college club. Complete planning and execution of TechnoHub are done by the scholars of BIT Durg by an efficient hardworking team. We greatly rely on the perception of “Together everyone achieves more” and \"Imagine Invent Inspire\". Every success and failure is shared equally by all people. Although every facet of TechnoHub is not any dear to one coordinator than the opposite for correct functioning, certain assortments are made within the team. Each division is run by a team for a structured and well-planned club activity. Each assortment is specialised in its own task.",
       open: false,
     },
   ]);

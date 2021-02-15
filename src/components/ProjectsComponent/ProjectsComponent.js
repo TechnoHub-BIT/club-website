@@ -11,6 +11,7 @@ const Projects = () => {
     <React.Fragment>
       <Helmet>
         <title>Projects | TechnoHub BITD</title>
+        <meta name="description" content="TechnoHub project section inspires you to imagine and invent. It gives you an idea of what the club members are working on and to start your own project by collaborating with the likeminded people." />
       </Helmet>
       <HeadingTitle heading="OUR PROJECTS" image="projects.jpg" />
       <div className="gallery-container">

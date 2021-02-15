@@ -14,6 +14,7 @@ class EventsComponent extends Component {
         <div className="events-container">
           <Helmet>
             <title>Events | TechnoHub BITD</title>
+            <meta name="description" content="Shows TechnoHub's various successful events and associate programs briefly, which provide opportunities to the students and also foresee a glimpse of our upcoming events." />
           </Helmet>
           <Breadcrumb>
               <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />

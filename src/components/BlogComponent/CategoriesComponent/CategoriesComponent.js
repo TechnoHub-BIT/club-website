@@ -32,6 +32,7 @@ class categoriesComponent extends React.Component {
             <React.Fragment>
                 <Helmet>
                     <title>Blog Categories | TechnoHub BITD</title>
+                    <meta name="description" content="BIT Durg’s TechnoHub blog section bestows you with technical, Technical - Non Computer Science and career blogs. As our club’s motto is to Imagine, Invent and Inspire so with our blogs we keep you up to date about all the technical and career related changes around the world." />
                 </Helmet>
                 <div>
                     <HeadingTitle heading="BLOG CATEGORIES" image="blog-categories.jpg" />

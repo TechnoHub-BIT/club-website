@@ -138,14 +138,14 @@ function BlogComponent() {
 
                                                 {/* //  Edit and Delete Blog Buttons */}
 
-                                                <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
+                                                {/* <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
 
                                                 {
                                                     (currentProfile.id === 1) &&
                                                     <Button color="danger" onClick={() => onDelete(Blogs.id)}>Delete Blog Permanently</Button>
                                                 }
 
-                                                <LikeButton like={Blogs} />
+                                                <LikeButton like={Blogs} /> */}
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>

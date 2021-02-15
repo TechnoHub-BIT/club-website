@@ -11,6 +11,7 @@ const achievements = (props) => {
         <React.Fragment>    
             <Helmet>
                 <title>Achievements | TechnoHub BITD</title>
+                <meta name="description" content="Features accomplishments of our peers from TechnoHub BITD to acknowledge their attainment in countless states. This also serves a purpose of setting up an example to the enthusiasts." />
             </Helmet>
             <HeaderTitle heading="ACHIEVEMENTS" image="achievements.jpg" />
             <div className="achievementsCont">
