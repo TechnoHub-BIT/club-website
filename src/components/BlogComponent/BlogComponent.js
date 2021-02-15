@@ -53,8 +53,8 @@ function BlogComponent() {
         fetchdata();
     }, []);
 
-  
-    
+
+
 
     function onDelete(id) {
         db.collection('Blogs').doc(id).delete()
@@ -145,9 +145,7 @@ function BlogComponent() {
                                                     <Button color="danger" onClick={() => onDelete(Blogs.id)}>Delete Blog Permanently</Button>
                                                 }
 
-
                                                 <LikeButton like={Blogs} />
-
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>

@@ -90,9 +90,9 @@ class Main extends Component {
               <Route exact path="/bloglist" component={BlogList} />
               <PrivateRoute exact path ="/addBlog" component={AddBlog} />
               <Route exact path="/blogpost" component={Blog} />
-              <PrivateRoute exact path="/editblog" component={EditBlog} /> 
+              {/* <PrivateRoute exact path="/editblog" component={EditBlog} /> 
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
-              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
+              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
 
               {/* Event Pages */}
               <Route exact path="/hackathon2020" component={Hackathon2020} />

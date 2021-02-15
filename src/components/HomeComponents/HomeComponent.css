@@ -85,18 +85,12 @@ address {
   padding: 0 0 30px 80px;
 }
 
-.about_img {
-  margin: 10px;
+.homeSection {
+  margin: 6em 2em;
 }
 
-.about_part {
-  margin-bottom: 2em;
-}
-.about_part1 {
-  background-color: rgb(248, 208, 74);
-  margin: 0 10px;
-  padding-bottom: 20px;
-  border-radius: 25px;
+.sectionImage {
+  margin: 10px;
 }
 
 .faqs {
@@ -160,7 +154,7 @@ address {
 }
 
 .servicesSection {
-  margin: 2em 0;
+  margin: 5em 2em 2em;
 }
 .serviceCont {
   display: grid;
@@ -213,19 +207,21 @@ address {
   text-align: justify;
 }
 
-.about_text {
-  text-align: center;
-}
-
-.about_text1 {
-  text-align: center;
-}
-
 @media only screen and (max-width: 992px) {
   .serviceCont {
     grid-template-columns: repeat(1, 1fr);
   }
   .services {
     min-height: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .homeSection {
+    margin: 3em 1.5em;
+  }
+
+  .servicesSection {
+    margin: 5em 1.5em 2em;
   }
 }

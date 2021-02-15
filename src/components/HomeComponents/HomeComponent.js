@@ -4,7 +4,7 @@ import "./HomeComponent.css";
 import Header from "../HeaderComponents/HeaderComponent";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Zoom, Fade } from 'react-reveal';
+import { Fade } from 'react-reveal';
 
 const Home = () => {
   const [faqs, setfaqs] = useState([
@@ -39,7 +39,7 @@ const Home = () => {
       open: false,
     },
     {
-      question: "How is TechnoHub put up ?",
+      question: "How is TechnoHub put up?",
       answer:
         "Complete planning and execution of TechnoHub are done by the students of BIT Durg in a five-layer team structure. We greatly rely upon the perception of “Together everyone achieves more”. Every success and failure is shared equally by all of us.Although every facet of TechnoHub is no dear to one coordinator than the other for proper functioning, certain assortments are made within the team. The assortments can be broadly categorised into six sections. Each domain is specialised in its own task. The various groups are Tech Team, Documentation Team, Design Team and Marketing Team. They collaboratively take care of the various happenings and initiatives of TechnoHub. ",
       open: false,
@@ -67,9 +67,9 @@ const Home = () => {
         <title>Home | TechnoHub BITD</title>
       </Helmet>
       <section className="servicesSection">
-        <div className="container">
+        <div className="container-fluid">
           <div className="serviceCont">
-            <Zoom>
+            <Fade up>
               <div className="services">
                 <i className="fa fa-microchip"></i>
                 <div className="line"></div>
@@ -121,36 +121,28 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-            </Zoom>
+            </Fade>
           </div>
         </div>
       </section>
 
-      <div className="container">
-        <div className="allign">
-          <h2>Our Club Supports</h2>
-          <hr />
-        </div>
-        <div className="row"></div>
-      </div>
-      {/* <!-- about part start--> */}
-      <section className="about_part section_bg section_padding">
-        <div className="container">
+      <section className="homeSection">
+        <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
-            <Fade>
+            <Fade left>
               <div className="col-md-6 col-lg-6">
-                <div className="about_img">
+                <div className="sectionImage">
                   <img
-                    src="assets/images/technology.jpg"
+                    src="./assets/images/home/our-club-supports.jpg"
                     className="img-fluid"
-                    alt="Technology"
+                    alt="People Standing in Stairs Illustration"
                   />
                 </div>
               </div>
             </Fade>
-            <Zoom>
+            <Fade right>
               <div className="col-md-6 col-lg-6">
-                <div className="about_text1">
+                <div className="sectionText">
                   <h2>Technical Activities</h2>
                   <br />
                   <p className="text-justify">
@@ -165,49 +157,47 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-            </Zoom>
+            </Fade>
           </div>
         </div>
       </section>
 
-      <section className="section_bg section_padding">
-        <div className="about_part1">
-          <div className="container">
-            <div className="row align-items-center justify-content-between">
-              <Zoom>
-                <div className="col-md-6 col-lg-6">
-                  <div className="about_text">
-                    <h2>Management</h2>
-                    <br />
-                    <p className="text-justify">
-                      The aim of this club is to offer the ability to plan and
-                      execute events throughout the college. Event Management for
-                      students have the opportunity to gain experience in
-                      Management and create important contacts that they can use
-                      once they have completed the course. The club also aims to
-                      create leadership skills, team building skills,
-                      interpersonal skills and social atmosphere which will
-                      encourage members to get involved in activities outside
-                      their academic timetables.
-                    </p>
-                    <Link to="/aboutus" className="btn_2">
-                      Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
-                    </Link>
-                  </div>
+      <section className="homeSection">
+        <div className="container-fluid">
+          <div className="row align-items-center justify-content-between">
+            <Fade left>
+              <div className="col-md-6 col-lg-6">
+                <div className="sectionText text-right">
+                  <h2>Management</h2>
+                  <br />
+                  <p className="text-justify">
+                    The aim of this club is to offer the ability to plan and
+                    execute events throughout the college. Event Management for
+                    students have the opportunity to gain experience in
+                    Management and create important contacts that they can use
+                    once they have completed the course. The club also aims to
+                    create leadership skills, team building skills,
+                    interpersonal skills and social atmosphere which will
+                    encourage members to get involved in activities outside
+                    their academic timetables.
+                  </p>
+                  <Link to="/aboutus" className="btn_2">
+                    Read More&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
+                  </Link>
                 </div>
-              </Zoom>
-              <Fade>
-                <div className="col-md-5 col-lg-5">
-                  <div className="about_img">
-                    <img
-                      src="assets/images/management1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </div>
+              </div>
+            </Fade>
+            <Fade right>
+              <div className="col-md-5 col-lg-5">
+                <div className="sectionImage">
+                  <img
+                    src="./assets/images/home/management.jpg"
+                    className="img-fluid"
+                    alt="Club Management"
+                  />
                 </div>
-              </Fade>
-            </div>
+              </div>
+            </Fade>
           </div>
         </div>
       </section>
@@ -215,16 +205,16 @@ const Home = () => {
       <section className="faq_part">
         <div className="container">
           <div className="allign">
-            <h2>Frequently Asked Questions</h2>
+            <h2 className="text-center">Frequently Asked Questions</h2>
             <hr />
           </div>
           <div className="container-fluid">
             <div className="faqs">
-              <Zoom>
+              <Fade up>
                 {faqs.map((faq, i) => (
                   <FAQ faq={faq} key={i} index={i} toggleFAQ={toggleFAQ} />
                 ))}
-              </Zoom>
+              </Fade>
             </div>
           </div>
         </div>

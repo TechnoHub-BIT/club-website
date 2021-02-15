@@ -75,7 +75,7 @@ class Editblog extends React.Component {
             });
 
            
-            this.props.history.push("/editblogpost/" +this.state.qur)
+            this.props.history.push("/editblogpost/" + this.state.qur)
             .then(() => {
                 alert("Blog category added");
             })
