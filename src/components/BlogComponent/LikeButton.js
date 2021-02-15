@@ -15,6 +15,7 @@ class LikeButton extends Component {
                 let updatedLike = this.state;
                 updatedLike.clapCount = updatedLike.clapCount + 1;
                 blogRef.update(updatedLike);
+                this.setState(updatedLike);
             });
     }
 
