@@ -139,7 +139,7 @@ export default function AddBlogComponent() {
                                 <AddCategory change={category} value={blogcategory} />
                             </div>
                             <div className="input-group">
-                            <input type="text" name="title" id="title" change={author} value={blogauthor} placeholder="Blog Title" required />
+                            <input type="text" name="title" id="title" onChange={author} value={blogauthor} placeholder="Blog Title" required />
                             <label for="title">Blog Author</label>
                                 {/* <AddAuthorComponent change={author} value={blogauthor} /> */}
                              
