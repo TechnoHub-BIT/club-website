@@ -56,7 +56,7 @@ const ProfileComponent = () => {
                                     <div className="statCard">
                                         <div className="cardDetails">
                                             <h5>Blog Posts</h5>
-                                            <h3 className="cardCount">0</h3>
+                                            <h3 className="cardCount">14+</h3>
                                         </div>
                                         <img src="./assets/images/profile/posts.png" alt="Total Blog Posts" />
                                     </div>
@@ -83,7 +83,7 @@ const ProfileComponent = () => {
                                     <div className="statCard">
                                         <div className="cardDetails">
                                             <h5>Achievements</h5>
-                                            <h3 className="cardCount">11+</h3>
+                                            <h3 className="cardCount">13+</h3>
                                         </div>
                                         <img src="./assets/images/profile/achievements.png" alt="Total Achievements" />
                                     </div>

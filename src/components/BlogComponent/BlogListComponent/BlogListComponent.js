@@ -16,7 +16,7 @@ function BlogListComponent() {
 
     React.useEffect(() => {
         const fetchdata = async () => {
-            db.collection("Blogs").orderBy("blogdate", "desc")
+            db.collection("Blogs").orderBy("blogdate", "asc")
                 .onSnapshot(function (data) {
                     setblogs(data.docs.map(doc => ({
                         ...doc.data(), id: doc.id

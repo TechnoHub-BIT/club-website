@@ -89,21 +89,6 @@ function BlogComponent() {
     const checkAuthor = qur[1].replace(/-/g, " ");
 
     let counter = 0;
-    /*let bitlyURL;
-    
-    async function shortenURL(url) {
-        const { BitlyClient } = require('bitly-react');
-        const bitly = new BitlyClient('b59f838b3679e007289c4d954d190df966316c19', {});
-
-        let result;
-        try {
-            result = await bitly.shorten(url);
-        } catch(e) {
-            throw e;
-        }
-        alert(result.url);
-    };
-    shortenURL("https://youtube.com/codegrind")*/
 
     return (
         <React.Fragment>

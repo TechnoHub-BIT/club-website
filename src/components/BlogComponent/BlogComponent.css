@@ -23,7 +23,7 @@
 
 .blogContents .blogDetails {
   padding: 0 15px 15px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   text-align: justify;
   font-size: 0.9em;
 }
