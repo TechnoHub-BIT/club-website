@@ -40,7 +40,7 @@ class EditCategoryComponent extends Component {
       });
       this.setState({
       Blogs
-     });
+     }); 
     }
   
     componentDidMount() {

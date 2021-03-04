@@ -36,7 +36,7 @@ function BlogListComponent() {
                     </div>
                     {blogedit.map(Blogs => {
                         if (Blogs.blogcategory === qur) {
-                            counter++;
+                            counter++; 
 
                             const blogTitle = Blogs.blogtitle.replace(/-/g, "%20");
                             const newTitle = blogTitle.replace(/ /g, "-");
