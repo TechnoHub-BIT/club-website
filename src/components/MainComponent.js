@@ -51,6 +51,9 @@ import ArmedForces from "./EventsComponents/EventPagesComponent/ArmedForceCompon
 import TechExpo2019 from "./EventsComponents/EventPagesComponent/Tech-ExpoComponent/Tech-ExpoComponent";
 import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/TEDxBITDComponent";
 
+//Aptitude Test Pages
+import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
+
 class Main extends Component {
   render() {
 
@@ -88,7 +91,7 @@ class Main extends Component {
               {/* Blog Pages */}
               <Route exact path="/blog" component={BlogCategories} />
               <Route exact path="/bloglist" component={BlogList} />
-              <PrivateRoute exact path ="/addBlog" component={AddBlog} />
+              <PrivateRoute exact path="/addBlog" component={AddBlog} />
               <Route exact path="/blogpost" component={Blog} />
               {/* <PrivateRoute exact path="/editblog" component={EditBlog} /> 
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
@@ -106,6 +109,9 @@ class Main extends Component {
               <Route exact path="/armedforces" component={ArmedForces} />
               <Route exact path="/techexpo2019" component={TechExpo2019} />
               <Route exact path="/tedxbitd" component={Tedxbitd} />
+
+              {/* Aptitude Test Pages */}
+              <PrivateRoute exact path="/createtest" component={CreateTest} />
 
               <Footer />
               {/* </Switch> */}

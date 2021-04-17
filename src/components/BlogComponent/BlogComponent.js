@@ -53,9 +53,6 @@ function BlogComponent() {
         fetchdata();
     }, []);
 
-
-
-
     function onDelete(id) {
         db.collection('Blogs').doc(id).delete()
             .catch((err) => {
