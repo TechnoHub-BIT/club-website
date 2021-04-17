@@ -33,7 +33,7 @@ class EditCategory extends Component {
                     blogcategorynameurl: Blogcategory.blogcategorynameurl,
                     blogcategorytype: Blogcategory.blogcategorytype
                 });
-            } else {
+            } else { 
                 console.log("No such document!");
             }
         });
