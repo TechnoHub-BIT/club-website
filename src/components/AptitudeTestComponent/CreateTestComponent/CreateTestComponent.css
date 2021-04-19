@@ -1,6 +1,34 @@
 .createTestCont .title {
   text-align: center;
   font-family: "Poppins", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15vw;
+}
+
+.createTestCont .title button {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #33b5e5;
+  border: 2px solid #33b5e5;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.createTestCont .title button:hover {
+  background-color: #0099cc;
+  border-color: #0099cc;
 }
 
 .createTestCont .centreCard {
@@ -12,7 +40,13 @@
 }
 
 .createTestCont .centreCard .createForm {
-  padding: 50px 30px;
+  padding: 10px 30px 30px;
+}
+
+.createTestCont .centreCard .createForm form .smallTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1.5em;
 }
 
 .createTestCont .centreCard .createForm form .inputGroup {
@@ -33,6 +67,11 @@
       grid-template-columns: repeat(3, 1fr);
 }
 
+.createTestCont .centreCard .createForm form .inputGroup.w50p {
+  width: 50%;
+  margin: auto;
+}
+
 .createTestCont .centreCard .createForm form .inputGroup .input {
   position: relative;
   display: -webkit-box;
@@ -48,6 +87,7 @@
 .createTestCont .centreCard .createForm form .inputGroup .input select,
 .createTestCont .centreCard .createForm form .inputGroup .input textarea {
   padding: 10px 20px;
+  color: #191d34;
   border: 2px solid #191d34;
   border-radius: 5px;
   outline: none;
@@ -109,26 +149,103 @@
 }
 
 .createTestCont .centreCard .createForm button {
-  color: #191d34;
-  border: 2px solid #191d34;
-  background-color: #fff;
   border-radius: 5px;
   padding: 10px 30px;
+  color: #fff;
   outline: none;
   cursor: pointer;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
 }
 
-.createTestCont .centreCard .createForm button:hover {
-  color: #fff;
-  background-color: #191d34;
+.createTestCont .centreCard .createForm button.addBtn {
+  background-color: #33b5e5;
+  border: 2px solid #33b5e5;
+}
+
+.createTestCont .centreCard .createForm button.addBtn:hover {
+  background-color: #0099cc;
+  border: 2px solid #0099cc;
+}
+
+.createTestCont .centreCard .createForm button.createBtn {
+  background-color: #00c851;
+  border: 2px solid #00c851;
+}
+
+.createTestCont .centreCard .createForm button.createBtn:hover {
+  background-color: #007e33;
+  border: 2px solid #007e33;
 }
 
 @media only screen and (max-width: 992px) {
+  .createTestCont .title {
+    padding: 0 20px;
+    font-size: 1.7rem;
+  }
+  .createTestCont .title button {
+    padding: 7px 10px;
+    font-size: 0.9rem;
+  }
   .createTestCont .centreCard {
-    margin: 3em 20px;
+    margin: 2em 20px 3em;
     border-radius: 10px;
+  }
+  .createTestCont .centreCard .createForm {
+    padding: 10px 20px 30px;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup.twoInputs {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .createTestCont .centreCard .createForm form .inputGroup.threeInputs {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .createTestCont .centreCard .createForm form .inputGroup.w50p {
+    width: 100%;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input,
+  .createTestCont .centreCard .createForm form .inputGroup .input select,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea {
+    padding: 7px 15px;
+    border: 2px solid #191d34;
+    border-radius: 5px;
+    outline: none;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input::-webkit-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input select::-webkit-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea::-webkit-input-placeholder {
+    opacity: 0;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input:-ms-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input select:-ms-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea:-ms-input-placeholder {
+    opacity: 0;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input::-ms-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input select::-ms-input-placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea::-ms-input-placeholder {
+    opacity: 0;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input::placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input select::placeholder,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea::placeholder {
+    opacity: 0;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input input:focus ~ label, .createTestCont .centreCard .createForm form .inputGroup .input input:not(:placeholder-shown) ~ label,
+  .createTestCont .centreCard .createForm form .inputGroup .input select:focus ~ label,
+  .createTestCont .centreCard .createForm form .inputGroup .input select:not(:placeholder-shown) ~ label,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea:focus ~ label,
+  .createTestCont .centreCard .createForm form .inputGroup .input textarea:not(:placeholder-shown) ~ label {
+    font-size: 0.75rem;
+  }
+  .createTestCont .centreCard .createForm form .inputGroup .input label {
+    left: 15px;
+    font-size: 0.9rem;
+  }
+  .createTestCont .centreCard .createForm button {
+    padding: 7px 15px;
   }
 }
 /*# sourceMappingURL=CreateTestComponent.css.map */

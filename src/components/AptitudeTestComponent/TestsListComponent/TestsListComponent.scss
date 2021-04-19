@@ -2,6 +2,27 @@
   .title {
     text-align: center;
     font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15vw;
+
+    button {
+      font-size: 1rem;
+      padding: 10px 30px;
+      background-color: #00c851;
+      border: 2px solid #00c851;
+      color: #fff;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        background-color: #007e33;
+        border-color: #007e33;
+      }
+    }
   }
 
   .centreCard {
@@ -25,15 +46,23 @@
         & > div {
           width: 100%;
           text-align: center;
+
+          strong {
+            font-weight: 500;
+          }
         }
 
         .index {
           text-align: left;
         }
 
-        .title {
+        .testTitle {
           text-align: left;
           font-weight: 500;
+
+          a {
+            text-decoration: underline !important;
+          }
 
           .date {
             font-size: 0.9rem;
@@ -80,7 +109,7 @@
               }
             }
 
-            &:last-child {
+            &:nth-child(2) {
               margin-left: 1em;
 
               button {
@@ -94,6 +123,28 @@
               &:hover {
                 button {
                   background-color: #ff4444;
+
+                  i {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+
+            &:last-child {
+              margin-left: 1em;
+
+              button {
+                border: 1px solid #ffbb33;
+
+                i {
+                  color: #ffbb33;
+                }
+              }
+
+              &:hover {
+                button {
+                  background-color: #ffbb33;
 
                   i {
                     color: #fff;
@@ -124,8 +175,18 @@
 
 @media only screen and (max-width: 992px) {
   .testsListCont {
+    .title {
+      padding: 0 20px;
+      font-size: 1.7rem;
+
+      button {
+        padding: 7px 10px;
+        font-size: 0.9rem;
+      }
+    }
+
     .centreCard {
-      margin: 3em 20px;
+      margin: 2em 20px 3em;
       border-radius: 10px;
 
       .testsList {
@@ -141,7 +202,7 @@
             text-align: center;
           }
 
-          .title {
+          .testTitle {
             text-align: center;
           }
 

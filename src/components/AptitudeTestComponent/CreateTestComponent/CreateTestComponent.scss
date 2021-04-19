@@ -2,6 +2,27 @@
   .title {
     text-align: center;
     font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15vw;
+
+    button {
+      font-size: 1rem;
+      padding: 10px 30px;
+      background-color: #33b5e5;
+      border: 2px solid #33b5e5;
+      color: #fff;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        background-color: #0099cc;
+        border-color: #0099cc;
+      }
+    }
   }
 
   .centreCard {
@@ -11,9 +32,15 @@
     border-radius: 20px;
 
     .createForm {
-      padding: 50px 30px;
+      padding: 10px 30px 30px;
 
       form {
+        .smallTitle {
+          font-size: 1.3rem;
+          font-weight: 500;
+          margin-top: 1.5em;
+        }
+
         .inputGroup {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
@@ -27,6 +54,11 @@
             grid-template-columns: repeat(3, 1fr);
           }
 
+          &.w50p {
+            width: 50%;
+            margin: auto;
+          }
+
           .input {
             position: relative;
             display: flex;
@@ -36,6 +68,7 @@
             select,
             textarea {
               padding: 10px 20px;
+              color: #191d34;
               border: 2px solid #191d34;
               border-radius: 5px;
               outline: none;
@@ -77,18 +110,31 @@
       }
 
       button {
-        color: #191d34;
-        border: 2px solid #191d34;
-        background-color: #fff;
         border-radius: 5px;
         padding: 10px 30px;
+        color: #fff;
         outline: none;
         cursor: pointer;
         transition: 0.3s all ease;
 
-        &:hover {
-          color: #fff;
-          background-color: #191d34;
+        &.addBtn {
+          background-color: #33b5e5;
+          border: 2px solid #33b5e5;
+
+          &:hover {
+            background-color: #0099cc;
+            border: 2px solid #0099cc;
+          }
+        }
+
+        &.createBtn {
+          background-color: #00c851;
+          border: 2px solid #00c851;
+
+          &:hover {
+            background-color: #007e33;
+            border: 2px solid #007e33;
+          }
         }
       }
     }
@@ -97,9 +143,70 @@
 
 @media only screen and (max-width: 992px) {
   .createTestCont {
+    .title {
+      padding: 0 20px;
+      font-size: 1.7rem;
+
+      button {
+        padding: 7px 10px;
+        font-size: 0.9rem;
+      }
+    }
+
     .centreCard {
-      margin: 3em 20px;
+      margin: 2em 20px 3em;
       border-radius: 10px;
+
+      .createForm {
+        padding: 10px 20px 30px;
+
+        form {
+          .inputGroup {
+            &.twoInputs {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
+            &.threeInputs {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
+            &.w50p {
+              width: 100%;
+            }
+
+            .input {
+              input,
+              select,
+              textarea {
+                padding: 7px 15px;
+                border: 2px solid #191d34;
+                border-radius: 5px;
+                outline: none;
+
+                &::placeholder {
+                  opacity: 0;
+                }
+
+                &:focus,
+                &:not(:placeholder-shown) {
+                  & ~ label {
+                    font-size: 0.75rem;
+                  }
+                }
+              }
+
+              label {
+                left: 15px;
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+
+        button {
+          padding: 7px 15px;
+        }
+      }
     }
   }
 }

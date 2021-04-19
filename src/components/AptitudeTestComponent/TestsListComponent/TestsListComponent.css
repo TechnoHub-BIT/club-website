@@ -1,6 +1,34 @@
 .testsListCont .title {
   text-align: center;
   font-family: "Poppins", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15vw;
+}
+
+.testsListCont .title button {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #00c851;
+  border: 2px solid #00c851;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.testsListCont .title button:hover {
+  background-color: #007e33;
+  border-color: #007e33;
 }
 
 .testsListCont .centreCard {
@@ -39,16 +67,24 @@
   text-align: center;
 }
 
+.testsListCont .centreCard .testsList .test > div strong {
+  font-weight: 500;
+}
+
 .testsListCont .centreCard .testsList .test .index {
   text-align: left;
 }
 
-.testsListCont .centreCard .testsList .test .title {
+.testsListCont .centreCard .testsList .test .testTitle {
   text-align: left;
   font-weight: 500;
 }
 
-.testsListCont .centreCard .testsList .test .title .date {
+.testsListCont .centreCard .testsList .test .testTitle a {
+  text-decoration: underline !important;
+}
+
+.testsListCont .centreCard .testsList .test .testTitle .date {
   font-size: 0.9rem;
   font-weight: 400;
 }
@@ -90,20 +126,40 @@
   color: #fff;
 }
 
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(2) {
+  margin-left: 1em;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(2) button {
+  border: 1px solid #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(2) button i {
+  color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(2):hover button {
+  background-color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(2):hover button i {
+  color: #fff;
+}
+
 .testsListCont .centreCard .testsList .test .buttons a:last-child {
   margin-left: 1em;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:last-child button {
-  border: 1px solid #ff4444;
+  border: 1px solid #ffbb33;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:last-child button i {
-  color: #ff4444;
+  color: #ffbb33;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:last-child:hover button {
-  background-color: #ff4444;
+  background-color: #ffbb33;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:last-child:hover button i {
@@ -125,8 +181,16 @@
 }
 
 @media only screen and (max-width: 992px) {
+  .testsListCont .title {
+    padding: 0 20px;
+    font-size: 1.7rem;
+  }
+  .testsListCont .title button {
+    padding: 7px 10px;
+    font-size: 0.9rem;
+  }
   .testsListCont .centreCard {
-    margin: 3em 20px;
+    margin: 2em 20px 3em;
     border-radius: 10px;
   }
   .testsListCont .centreCard .testsList {
@@ -147,7 +211,7 @@
   .testsListCont .centreCard .testsList .test .index {
     text-align: center;
   }
-  .testsListCont .centreCard .testsList .test .title {
+  .testsListCont .centreCard .testsList .test .testTitle {
     text-align: center;
   }
   .testsListCont .centreCard .testsList .test .buttons {
