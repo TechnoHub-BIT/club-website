@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase";
+import ApptitudeTest from "../SingleTestComponent/SingleTestComponent";
 import "./TestsListComponent.css";
 
 const TestsList = () => {
@@ -26,17 +27,26 @@ const TestsList = () => {
         <div className="centreCard">
           <div className="testsList">
             {tests.map((test, i) => {
+              
               return (
                 <div className="test">
                   <div>
                     <div className="index">{i + 1}</div>
                     <div className="title">
-                     <a href="#" >{test.title}</a>
+                     {test.title}  
 
                       <div className="date">{test.testdate}</div>
+                    
                     </div>
                     <div className="duration">{test.duration}</div>
                     <div className="buttons">
+                        <a href= {"/apptitudetest/" + test.id} >
+                        <button type="button">
+                         Give test
+                        </button> 
+                        </a>
+                        {/* </ApptitudeTest> */}
+                       
                       <a href="#">
                         <button type="button">
                           <i className="fas fa-pencil-alt"></i>
