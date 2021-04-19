@@ -53,6 +53,7 @@ import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/T
 
 //Aptitude Test Pages
 import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
+import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListComponent";
 
 class Main extends Component {
   render() {
@@ -112,6 +113,7 @@ class Main extends Component {
 
               {/* Aptitude Test Pages */}
               <PrivateRoute exact path="/createtest" component={CreateTest} />
+              <PrivateRoute exact path="/tests" component={TestsList} />
 
               <Footer />
               {/* </Switch> */}
