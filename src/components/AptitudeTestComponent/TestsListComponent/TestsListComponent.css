@@ -1,0 +1,166 @@
+.testsListCont .title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.testsListCont .centreCard {
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  margin: 3em 15vw;
+  border-radius: 20px;
+}
+
+.testsListCont .centreCard .testsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+}
+
+.testsListCont .centreCard .testsList .test {
+  padding: 20px 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr 3fr 1fr 2fr)[1];
+      grid-template-columns: repeat(1, 1fr 3fr 1fr 2fr);
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.testsListCont .centreCard .testsList .test > div {
+  width: 100%;
+  text-align: center;
+}
+
+.testsListCont .centreCard .testsList .test .index {
+  text-align: left;
+}
+
+.testsListCont .centreCard .testsList .test .title {
+  text-align: left;
+  font-weight: 500;
+}
+
+.testsListCont .centreCard .testsList .test .title .date {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.testsListCont .centreCard .testsList .test .buttons {
+  text-align: right;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a button {
+  background: transparent;
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a button i {
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:first-child button {
+  border: 1px solid #33b5e5;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:first-child button i {
+  color: #33b5e5;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:first-child:hover button {
+  background-color: #33b5e5;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:first-child:hover button i {
+  color: #fff;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:last-child {
+  margin-left: 1em;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:last-child button {
+  border: 1px solid #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:last-child button i {
+  color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:last-child:hover button {
+  background-color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:last-child:hover button i {
+  color: #fff;
+}
+
+.testsListCont .centreCard .testsList .test:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.testsListCont .centreCard .testsList .test:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.testsListCont .centreCard .testsList .test:last-child {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+  .testsListCont .centreCard {
+    margin: 3em 20px;
+    border-radius: 10px;
+  }
+  .testsListCont .centreCard .testsList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: left;
+  }
+  .testsListCont .centreCard .testsList .test {
+    padding: 20px;
+    -ms-grid-columns: (1fr 3fr)[1];
+        grid-template-columns: repeat(1, 1fr 3fr);
+  }
+  .testsListCont .centreCard .testsList .test .index {
+    text-align: center;
+  }
+  .testsListCont .centreCard .testsList .test .title {
+    text-align: center;
+  }
+  .testsListCont .centreCard .testsList .test .buttons {
+    margin-top: 1.5em;
+    text-align: center;
+  }
+  .testsListCont .centreCard .testsList .test:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .testsListCont .centreCard .testsList .test:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+/*# sourceMappingURL=TestsListComponent.css.map */
