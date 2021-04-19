@@ -111,15 +111,15 @@
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:first-child button {
-  border: 1px solid #33b5e5;
+  border: 1px solid #00c851;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:first-child button i {
-  color: #33b5e5;
+  color: #00c851;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:first-child:hover button {
-  background-color: #33b5e5;
+  background-color: #00c851;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:first-child:hover button i {
@@ -131,18 +131,38 @@
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:nth-child(2) button {
-  border: 1px solid #ff4444;
+  border: 1px solid #33b5e5;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:nth-child(2) button i {
-  color: #ff4444;
+  color: #33b5e5;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:nth-child(2):hover button {
-  background-color: #ff4444;
+  background-color: #33b5e5;
 }
 
 .testsListCont .centreCard .testsList .test .buttons a:nth-child(2):hover button i {
+  color: #fff;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(3) {
+  margin-left: 1em;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(3) button {
+  border: 1px solid #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(3) button i {
+  color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(3):hover button {
+  background-color: #ff4444;
+}
+
+.testsListCont .centreCard .testsList .test .buttons a:nth-child(3):hover button i {
   color: #fff;
 }
 

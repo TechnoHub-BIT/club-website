@@ -91,6 +91,28 @@
 
             &:first-child {
               button {
+                border: 1px solid #00c851;
+
+                i {
+                  color: #00c851;
+                }
+              }
+
+              &:hover {
+                button {
+                  background-color: #00c851;
+
+                  i {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+
+            &:nth-child(2) {
+              margin-left: 1em;
+
+              button {
                 border: 1px solid #33b5e5;
 
                 i {
@@ -109,7 +131,7 @@
               }
             }
 
-            &:nth-child(2) {
+            &:nth-child(3) {
               margin-left: 1em;
 
               button {
