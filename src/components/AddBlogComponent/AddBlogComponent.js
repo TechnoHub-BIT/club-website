@@ -47,8 +47,6 @@ export default function AddBlogComponent() {
         if (blogtitle !== '' && blogauthor !== '' && blogcategory !== '' &&  blogimageurl !== '') {
             e.preventDefault();
             db.collection("Blogs").add({
-             
-               
                 blogtitle: blogtitle,
                 blogcategory: blogcategory,
                blogauthor:blogauthor,
