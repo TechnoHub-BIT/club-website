@@ -32,6 +32,16 @@ const CreateTest = () => {
     const eTime = (e) => {
         setEndtime(e.target.value);
     };
+
+    const [positivemarks, setPositivemarks] = useState('');
+    const pMarks = (e) => {
+        setPositivemarks(e.target.value);
+    };
+
+    const [negativemarks, setNegativemarks] = useState('');
+    const nMarks = (e) => {
+        setNegativemarks(e.target.value);
+    };
    
     const [questions, setQuestion] = useState([
         {  question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
@@ -60,6 +70,8 @@ const CreateTest = () => {
                 testdate: testdate,
                 starttime: starttime,
                 endtime:endtime,
+                positivemarks:positivemarks,
+                negativemarks:negativemarks,
                questions:questions
             })
                 .then(() => {
@@ -115,11 +127,11 @@ const CreateTest = () => {
                             </div>
                             <div className="inputGroup twoInputs">
                                 <div className="input">
-                                    <input type="number" name="pmarks" id="pmarks" placeholder="Positive Marks" required />
+                                    <input type="number" name="pmarks" id="pmarks" placeholder="Positive Marks" onChange={pMarks} value={positivemarks} required />
                                     <label htmlFor="stime">Positive Marks</label>
                                 </div>
                                 <div className="input">
-                                    <input type="number" name="nmarks" id="nmarks" placeholder="Negative Marks"  required />
+                                    <input type="number" name="nmarks" id="nmarks" placeholder="Negative Marks" onChange={nMarks} value={negativemarks} required />
                                     <label htmlFor="nmarks">Negative Marks</label>
                                 </div>
                             </div>
