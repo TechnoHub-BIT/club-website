@@ -99,7 +99,11 @@ const CreateTest = () => {
                                     <label htmlFor="marks">Total Marks</label>
                                 </div>
                             </div>
-                            <div className="inputGroup twoInputs">
+                            <div className="inputGroup threeInputs">
+                                <div className="input">
+                                    <input type="date" name="date" id="date" placeholder="Test Date" onChange={date} value={testdate} required />
+                                    <label htmlFor="date">Test Date</label>
+                                </div>
                                 <div className="input">
                                     <input type="time" name="stime" id="stime" placeholder="Starting Time" onChange={sTime} value={starttime} required />
                                     <label htmlFor="stime">Starting Time</label>
@@ -109,10 +113,14 @@ const CreateTest = () => {
                                     <label htmlFor="etime">Ending Time</label>
                                 </div>
                             </div>
-                            <div className="inputGroup">
+                            <div className="inputGroup twoInputs">
                                 <div className="input">
-                                    <input type="date" name="date" id="date" placeholder="Test Date" onChange={date} value={testdate} required />
-                                    <label htmlFor="date">Test Date</label>
+                                    <input type="number" name="pmarks" id="pmarks" placeholder="Positive Marks" required />
+                                    <label htmlFor="stime">Positive Marks</label>
+                                </div>
+                                <div className="input">
+                                    <input type="number" name="nmarks" id="nmarks" placeholder="Negative Marks"  required />
+                                    <label htmlFor="nmarks">Negative Marks</label>
                                 </div>
                             </div>
                         </form>

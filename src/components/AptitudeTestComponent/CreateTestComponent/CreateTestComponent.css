@@ -28,6 +28,11 @@
       grid-template-columns: repeat(2, 1fr);
 }
 
+.createTestCont .centreCard .createForm form .inputGroup.threeInputs {
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
 .createTestCont .centreCard .createForm form .inputGroup .input {
   position: relative;
   display: -webkit-box;

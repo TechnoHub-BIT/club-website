@@ -23,6 +23,10 @@
             grid-template-columns: repeat(2, 1fr);
           }
 
+          &.threeInputs {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
           .input {
             position: relative;
             display: flex;
