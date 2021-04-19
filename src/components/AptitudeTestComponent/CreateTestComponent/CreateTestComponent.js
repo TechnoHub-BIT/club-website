@@ -162,9 +162,8 @@ const CreateTest = () => {
                                  
                                 </div>
                             ))}
-                               
                         </form>
-                        <button type="submit" onClick={addMore}>Add question</button>
+                        <button type="button" onClick={addMore}>Add question</button>
                         <button type="submit" onClick={firestoremaisave}>Create Test</button>
                     </div>
                 </div>
