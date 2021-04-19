@@ -1,0 +1,101 @@
+.createTestCont {
+  .title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .centreCard {
+    background-color: #fff;
+    box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+    margin: 3em 15vw;
+    border-radius: 20px;
+
+    .createForm {
+      padding: 50px 30px;
+
+      form {
+        .inputGroup {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1.5em;
+
+          &.twoInputs {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .input {
+            position: relative;
+            display: flex;
+            flex-direction: column-reverse;
+
+            input,
+            select,
+            textarea {
+              padding: 10px 20px;
+              border: 2px solid #191d34;
+              border-radius: 5px;
+              outline: none;
+
+              &::placeholder {
+                opacity: 0;
+              }
+
+              &:focus,
+              &:not(:placeholder-shown) {
+                & ~ label {
+                  top: 0;
+                  left: 7px;
+                  font-size: 0.9rem;
+                }
+              }
+            }
+
+            label {
+              position: absolute;
+              left: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: #fff;
+              padding: 5px;
+              font-size: 1rem;
+              transition: 0.3s all ease;
+            }
+          }
+
+          &:not(:first-child) {
+            margin-top: 1.5em;
+          }
+        }
+
+        &:not(:first-child) {
+          margin-top: 1.5em;
+        }
+      }
+
+      button {
+        color: #191d34;
+        border: 2px solid #191d34;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px 30px;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s all ease;
+
+        &:hover {
+          color: #fff;
+          background-color: #191d34;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .createTestCont {
+    .centreCard {
+      margin: 3em 20px;
+      border-radius: 10px;
+    }
+  }
+}

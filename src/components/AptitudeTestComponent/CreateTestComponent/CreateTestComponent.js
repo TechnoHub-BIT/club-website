@@ -1,37 +1,37 @@
-import React,{useState} from "react";
-import { db } from '../../../firebase'
+import React, { useState } from "react";
+import "./CreateTestComponent.css";
+import { db } from '../../../firebase';
 
 const CreateTest = () => {
     const [title, setTitle] = useState('');
     const handleOnChange = (e) => {
         setTitle(e.target.value);
     };
+
     const [duration, setDuration] = useState('');
     const testduration = (e) => {
         setDuration(e.target.value);
     };
+
     const [totalmarks, setTotalmarks] = useState('');
     const marks = (e) => {
         setTotalmarks(e.target.value);
     };
+
     const [testdate, setTestdate] = useState('');
     const date = (e) => {
         setTestdate(e.target.value);
     };
+
     const [starttime, setStarttime] = useState('');
     const sTime = (e) => {
         setStarttime(e.target.value);
     };
+
     const [endtime, setEndtime] = useState('');
     const eTime = (e) => {
         setEndtime(e.target.value);
     };
-
-
-
-
-
-
    
     //   const [question, setQuestion] = useState("");
     //   const handleChange = (index,e) => {
@@ -59,25 +59,19 @@ const CreateTest = () => {
     //   };
     const [questions, setQuestions] = useState([
         { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-      ]);
+    ]);
     const handleChangeInput = (index,e) =>{
         const values = [...questions];
         values[index][e.target.name] = e.target.value;
         setQuestions(values);
     } 
     
-      const newQuestion = () => {
+    const newQuestion = () => {
         setQuestions([
-          ...questions,
-          { question:'', op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+            ...questions,
+            { question:'', op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
         ]);
-      };
-
-
-
-
-
-
+    };
 
     const firestoremaisave = (e) => {
         if (title !== '' && duration !== '' && totalmarks !== '' && testdate !== '' && starttime !== '' && endtime !== '')
@@ -114,38 +108,85 @@ const CreateTest = () => {
     return(
         <React.Fragment>
             <div className="createTestCont">
-                <form>
-                    <input type="text" name="name" placeholder="Test Name" onChange={handleOnChange} value={title} required/><br /><br />
-                    <input type="number" name="duration" placeholder="Test Duration(In mins)" onChange={testduration} value={duration} required/><br /><br />
-                    <input type="marks" name="marks" placeholder="Total marks" onChange={marks} value={totalmarks} required /><br /><br />
-                    <input type="date" name="date" placeholder="Test Date" onChange={date} value={testdate} required /><br /><br />
-                    <input type="time" name="stime" placeholder="Starting Time" onChange={sTime} value={starttime} required/><br /><br />
-                    <input type="time" name="etime" placeholder="Ending TIme" onChange={eTime} value={endtime} required /><br /><br />
-                </form>
-                <form>
-        {questions.map((create, index) => (
-          <div key={index}>
-            <input type="text" value={create.question} onChange={ e => handleChangeInput(index,e)} placeholder="question"/><br /><br />
-          
-         
-            <input type="text" value={create.op1} onChange={ e => handleChangeInput(index,e)} placeholder="option1" /><br /><br />
-           
-            <input type="text" value={create.op2} onChange={ e => handleChangeInput(index,e)} placeholder="option2" /><br /><br />
-           
-            <input type="text" value={create.op3} onChange={ e => handleChangeInput(index,e)} placeholder="option3" /><br /><br />
-          
-            <input type="text" value={create.op4} onChange={ e => handleChangeInput(index,e)} placeholder="option4" /><br /><br />
-            
-            <input
-              type="text"
-             value={create.correctAnswer}
-             onChange={ e => handleChangeInput(index,e)} placeholder="correct option"
-            /><br /><br />
-            <button type="submi" onClick={newQuestion}>Add question</button>
-          </div>
-        ))}
-      </form>
-                <button type="submit" onClick={firestoremaisave}>Create Test</button>
+                <h1 className="title">Create Test</h1>
+                <div className="centreCard">
+                    <div className="createForm">        
+                        <form>
+                            <div className="inputGroup">
+                                <div className="input">
+                                    <input type="text" name="name" id="name" placeholder="Test Name" onChange={handleOnChange} value={title} required />
+                                    <label htmlFor="name">Test Name</label>
+                                </div>
+                            </div>
+                            <div className="inputGroup twoInputs">
+                                <div className="input">
+                                    <input type="number" name="duration" id="duration" placeholder="Test Duration(In mins)" onChange={testduration} value={duration} required />
+                                    <label htmlFor="duration">Test Duration</label>
+                                </div>
+                                <div className="input">
+                                    <input type="marks" name="marks" id="marks" placeholder="Total marks" onChange={marks} value={totalmarks} required />
+                                    <label htmlFor="marks">Total Marks</label>
+                                </div>
+                            </div>
+                            <div className="inputGroup twoInputs">
+                                <div className="input">
+                                    <input type="time" name="stime" id="stime" placeholder="Starting Time" onChange={sTime} value={starttime} required />
+                                    <label htmlFor="stime">Starting Time</label>
+                                </div>
+                                <div className="input">
+                                    <input type="time" name="etime" id="etime" placeholder="Ending TIme" onChange={eTime} value={endtime} required />
+                                    <label htmlFor="etime">Ending Time</label>
+                                </div>
+                            </div>
+                            <div className="inputGroup">
+                                <div className="input">
+                                    <input type="date" name="date" id="date" placeholder="Test Date" onChange={date} value={testdate} required />
+                                    <label htmlFor="date">Test Date</label>
+                                </div>
+                            </div>
+                        </form>
+                        <form>
+                            {questions.map((create, index) => (
+                                <div class="inputGroup twoInputs" key={index}>
+                                    <div className="input">
+                                        <input type="text" id={ "question" + index } value={create.question} onChange={ e => handleChangeInput(index,e)} placeholder="Question" />
+                                        <label htmlFor={ "question" + index }>Question</label>
+                                    </div>
+                                    <div className="input">
+                                        <input type="text" id={ "optiona" + index } value={create.op1} onChange={ e => handleChangeInput(index,e)} placeholder="Option A" />
+                                        <label htmlFor={ "optiona" + index }>Option A</label>
+                                    </div>
+                                    <div className="input">
+                                        <input type="text" id={ "optionb" + index } value={create.op2} onChange={ e => handleChangeInput(index,e)} placeholder="Option B" />
+                                        <label htmlFor={ "optionb" + index }>Option B</label>
+                                    </div>
+                                    <div className="input">
+                                        <input type="text" id={ "optionc" + index } value={create.op3} onChange={ e => handleChangeInput(index,e)} placeholder="Option C" />
+                                        <label htmlFor={ "optionc" + index }>Option C</label>
+                                    </div>
+                                    <div className="input">
+                                        <input type="text" id={ "optiond" + index } value={create.op4} onChange={ e => handleChangeInput(index,e)} placeholder="Option D" />
+                                        <label htmlFor={ "optiond" + index }>Option D</label>
+                                    </div>
+                                    <div className="input">
+                                        <select
+                                            value={create.correctAnswer}
+                                            onChange={ e => handleChangeInput(index,e)} placeholder="Correct Option"
+                                        >
+                                            <option value="">--Select Correct Option--</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                        </select>
+                                    </div>
+                                    <button type="submi" onClick={newQuestion}>Add question</button>
+                                </div>
+                            ))}
+                        </form>
+                        <button type="submit" onClick={firestoremaisave}>Create Test</button>
+                    </div>
+                </div>
             </div>
         </React.Fragment>
     );

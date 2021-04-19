@@ -1,0 +1,129 @@
+.createTestCont .title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.createTestCont .centreCard {
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  margin: 3em 15vw;
+  border-radius: 20px;
+}
+
+.createTestCont .centreCard .createForm {
+  padding: 50px 30px;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1.5em;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup.twoInputs {
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input,
+.createTestCont .centreCard .createForm form .inputGroup .input select,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea {
+  padding: 10px 20px;
+  border: 2px solid #191d34;
+  border-radius: 5px;
+  outline: none;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input::-webkit-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input select::-webkit-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input:-ms-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input select:-ms-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input::-ms-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input select::-ms-input-placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input::placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input select::placeholder,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea::placeholder {
+  opacity: 0;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input input:focus ~ label, .createTestCont .centreCard .createForm form .inputGroup .input input:not(:placeholder-shown) ~ label,
+.createTestCont .centreCard .createForm form .inputGroup .input select:focus ~ label,
+.createTestCont .centreCard .createForm form .inputGroup .input select:not(:placeholder-shown) ~ label,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea:focus ~ label,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  left: 7px;
+  font-size: 0.9rem;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup .input label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: #fff;
+  padding: 5px;
+  font-size: 1rem;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.createTestCont .centreCard .createForm form .inputGroup:not(:first-child) {
+  margin-top: 1.5em;
+}
+
+.createTestCont .centreCard .createForm form:not(:first-child) {
+  margin-top: 1.5em;
+}
+
+.createTestCont .centreCard .createForm button {
+  color: #191d34;
+  border: 2px solid #191d34;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px 30px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.createTestCont .centreCard .createForm button:hover {
+  color: #fff;
+  background-color: #191d34;
+}
+
+@media only screen and (max-width: 992px) {
+  .createTestCont .centreCard {
+    margin: 3em 20px;
+    border-radius: 10px;
+  }
+}
+/*# sourceMappingURL=CreateTestComponent.css.map */

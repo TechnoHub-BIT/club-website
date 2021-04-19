@@ -111,7 +111,7 @@
 }
 
 .testsListCont .centreCard .testsList .test:nth-child(odd) {
-  background-color: #e0e0e0;
+  background-color: #f2f2f2;
 }
 
 .testsListCont .centreCard .testsList .test:first-child {
