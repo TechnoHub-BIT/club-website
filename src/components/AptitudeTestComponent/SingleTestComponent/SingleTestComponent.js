@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase";
 import "./SingleTestComponent.css";
 
-const ApptitudeTest = (props) => {
+const SingleTest = (props) => {
   const [tests, setTest] = useState([]);
   const [questions, setQuestion] = useState([
     {  question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
@@ -58,4 +58,4 @@ const ApptitudeTest = (props) => {
     </div>
   );
 };
-export default ApptitudeTest;
+export default SingleTest;
