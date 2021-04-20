@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import "./SingleTestComponent.css";
 
 const ApptitudeTest = (props) => {
   const [tests, setTest] = useState([]);
-  const [questions, setQuestion] = useState([
-    {  question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-  ]);
-
 
   const ref = db.collection("Tests").doc(props.match.params.id);
   ref.get().then((doc) => {
@@ -23,12 +19,29 @@ const ApptitudeTest = (props) => {
         endtime: Test.endtime,
         positivemarks: Test.positivemarks,
         negativemarks: Test.negativemarks,
-        questions: Test.questions,
       });
     } else {
       console.log("No such test found!");
     }
   });
+
+  const [questions, setQuestion] = useState(null);
+
+  useEffect(() => {
+    const fetchOrder = async () => {
+      const doc = await db.collection("Tests");
+      const snapshot = await doc.where("questions", "!=", []).get();
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        return <h1>No questions</h1>;
+      }
+      snapshot.forEach((doc) => {
+        setQuestion(doc.data().questions);
+      });
+    };
+
+    fetchOrder();
+  }, [props]);
 
   return (
     <div>
@@ -42,18 +55,23 @@ const ApptitudeTest = (props) => {
       <div>{tests.endtime}</div>
       <div>{tests.positivemarks}</div>
       <div>{tests.negativemarks}</div>
+
       <div>
-        {questions.map((item) => {
-          return (
-            <div>
-              <div>{item.question}</div>
-              <div>{item.op1}</div>
-              <div>{item.op2}</div>
-              <div>{item.op3}</div>
-              <div>{item.op4}</div>
-            </div>
-          );
-        })}
+        {questions &&
+          questions.length > 0 &&
+          questions.map((item, index) => {
+            return (
+              <div>
+                <div>
+                  question no.{index + 1} {item.question}
+                </div>
+                <div>(A). {item.op1}</div>
+                <div>(B). {item.op2}</div>
+                <div>(C). {item.op3}</div>
+                <div>(D). {item.op4}</div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
