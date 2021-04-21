@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import "./SingleTestComponent.css";
 import Moment from 'moment';
+import useCountDown from 'react-countdown-hook';
 
 const SingleTest = (props) => {
   const [tests, setTest] = useState([]);
@@ -44,6 +45,7 @@ const SingleTest = (props) => {
     fetchquestions();
   }, [props]);
 
+  //Next and Previous Buttons
   const sectionChanger = (action, index) => {
     document.querySelector("section.active").classList.remove("active");
 
@@ -55,6 +57,7 @@ const SingleTest = (props) => {
       sections[index - 1].classList.add("active");
   };
 
+  //CLear Selection Button
   const clearSelection = (name) => {
     const radioBtns = document.querySelectorAll("input[type='radio'][name='" + name + "']")
 
@@ -65,6 +68,34 @@ const SingleTest = (props) => {
         radioBtn.checked = false;
     });
   };
+
+  //Form Start Check
+  const [form, setForm] = useState(false);
+  
+  //Countdown Timer
+  const initialTime =  0.5 * 60 * 1000;
+  const interval = 1000;
+
+  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+
+  let hours = parseInt(timeLeft / 3600000);
+  let minutes = parseInt(timeLeft / 60000);
+  let seconds = parseInt(timeLeft / 1000);
+
+  useEffect(() => {
+    start();
+    pause();
+  }, []);
+
+  if(timeLeft === 0 && form) {
+    setForm(false);
+    console.warn("Time up!");
+  }
+  
+  const restart = React.useCallback(() => {
+    const newTime = 0.2 * 60 * 1000;
+    start(newTime);
+  }, []);
 
   return (
     <React.Fragment>
@@ -89,7 +120,7 @@ const SingleTest = (props) => {
                   </ul>
                 </div>
                 <div className="navigation">
-                  <button type="button" className="startBtn" onClick={() => sectionChanger("next", 0)}>Start Test&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i></button>
+                  <button type="button" className="startBtn" onClick={() => {setForm(true); sectionChanger("next", 0); restart();}}>Start Test&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i></button>
                 </div>
               </section>
               {
@@ -97,7 +128,7 @@ const SingleTest = (props) => {
                 questions.length > 0 &&
                 questions.map((item, index) => {
                   return (
-                    <section ques-no={ index + 1 }>
+                    <section ques-no={ index + 1 } key={index}>
                       <h3 className="smallTitle">Question No. { index + 1 }</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
@@ -144,7 +175,7 @@ const SingleTest = (props) => {
           </div>
           <div className="right">
             <div className="timer">
-              00:30:00
+              <p>Time left: {hours + ":" + minutes + ":" + seconds}</p>
             </div>
             <div className="questionBtns">
               <button type="button" className="question">1</button>
