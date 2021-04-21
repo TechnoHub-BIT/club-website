@@ -20,6 +20,17 @@ const TestsList = () => {
     fetchdata();
   }, []);
 
+  const deleteBlog = (id) => {
+    db.collection('Tests').doc(id).delete()
+
+    .then(() => {
+      alert("Test Deleted!");
+  })
+  .catch((error) => {
+      alert(error.message);
+  });
+   }
+
   return (
     <React.Fragment>
       <div className="testsListCont">
@@ -53,13 +64,14 @@ const TestsList = () => {
                         <i className="fas fa-book"></i>
                       </button> 
                     </a>
-                    <a href="#">
+                    <a href={ "/edittest/" + test.id }>
                       <button type="button">
                         <i className="fas fa-pencil-alt"></i>
                       </button>
                     </a>
-                    <a href="#">
-                      <button type="button">
+                    <a >
+                      {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
+                      <button onClick={() => deleteBlog(test.id)} type="button">
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>

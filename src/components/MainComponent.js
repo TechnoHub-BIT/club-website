@@ -55,6 +55,7 @@ import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/T
 import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
 import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListComponent";
 import SingleTest from "./AptitudeTestComponent/SingleTestComponent/SingleTestComponent";
+import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestComponent";
 
 
 class Main extends Component {
@@ -114,7 +115,8 @@ class Main extends Component {
               <Route exact path="/tedxbitd" component={Tedxbitd} />
 
               {/* Aptitude Test Pages */}
-              <Route exact path="/test/:id" component={SingleTest} />
+              <Route exact path="/apptitudetest/:id" component={SingleTest} />
+              <Route exact path="/edittest/:id" component={EditTest} />
               <PrivateRoute exact path="/createtest" component={CreateTest} />
               <PrivateRoute exact path="/tests" component={TestsList} />
 

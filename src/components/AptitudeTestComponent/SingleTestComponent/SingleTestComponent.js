@@ -29,11 +29,11 @@ const SingleTest = (props) => {
   const [questions, setQuestion] = useState(null);
 
   useEffect(() => {
-    const fetchOrder = async () => {
+    const fetchquestions = async () => {
       const doc = await db.collection("Tests");
       const snapshot = await doc.where("questions", "!=", []).get();
       if (snapshot.empty) {
-        console.log("No matching documents.");
+      
         return <h1>No questions</h1>;
       }
       snapshot.forEach((doc) => {
@@ -41,7 +41,7 @@ const SingleTest = (props) => {
       });
     };
 
-    fetchOrder();
+    fetchquestions();
   }, [props]);
 
   const sectionChanger = (action, index) => {
