@@ -81,7 +81,7 @@ const CreateTest = () => {
                questions:questions
             })
                 .then(() => {
-                    alert("Account Created!");
+                    alert("Test created!");
                 })
                 .catch((error) => {
                     alert(error.message);

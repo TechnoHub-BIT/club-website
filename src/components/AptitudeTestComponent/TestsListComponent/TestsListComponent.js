@@ -21,12 +21,14 @@ const TestsList = () => {
   }, []);
 
   const deleteBlog = (id) => {
-    db.collection('Blogcategory').doc(id).delete().then(() => {
-       console.log("Document successfully deleted!");
-      //  this.props.history.push("/")
-     }).catch((error) => {
-       console.error("Error removing document: ", error);
-     });
+    db.collection('Tests').doc(id).delete()
+
+    .then(() => {
+      alert("Test Deleted!");
+  })
+  .catch((error) => {
+      alert(error.message);
+  });
    }
 
   return (
@@ -68,9 +70,9 @@ const TestsList = () => {
                         <i className="fas fa-pencil-alt"></i>
                       </button>
                     </a>
-                    <a href="/tests">
+                    <a >
                       {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
-                      <button onClick={(id) => deleteBlog} type="button">
+                      <button onClick={() => deleteBlog(test.id)} type="button">
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>
