@@ -5,9 +5,7 @@ import { db } from '../../../firebase';
 const EditTest = (props) => {
  
 
-    const [questions, setQuestion] = useState([
-        {  question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-      ]);
+
 
     const [tests , setTest] = useState([''])
 
@@ -104,6 +102,9 @@ const ref = db.collection("Tests").doc(props.match.params.id);
     // };
    
  
+    const [questions, setQuestion] = useState([
+        {  question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+      ]);
 
     const handleChange = (e, index) => {
         const { name, value } = e.target;
@@ -112,15 +113,15 @@ const ref = db.collection("Tests").doc(props.match.params.id);
         setQuestion(list);
       };
     
-    //   const addMore = () => {
-    //     setQuestion([...questions,  { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }]);
-    //   };
+      const addMore = () => {
+        setQuestion([...questions,  { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }]);
+      };
 
-    //   const handleRemoveQuestion = index => {
-    //     const list = [...questions];
-    //     list.splice(index, 1);
-    //     setQuestion(list);
-    //   };
+      const handleRemoveQuestion = index => {
+        const list = [...questions];
+        list.splice(index, 1);
+        setQuestion(list);
+      };
 
 
     // const firestoremaisave = (e) => {
@@ -283,6 +284,8 @@ const ref = db.collection("Tests").doc(props.match.params.id);
                                             <input type="text" name="op4" id={ "optiond" + index } value={create.op4} onChange={(e) => handleChange(e, index)} placeholder="Option D" />
                                             <label htmlFor={ "optiond" + index }>Option D</label>
                                         </div>
+                                        <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
+                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
                                     </div>
                                 </div>
                             ))}
