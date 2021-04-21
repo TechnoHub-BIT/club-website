@@ -45,13 +45,25 @@ const SingleTest = (props) => {
   }, [props]);
 
   const sectionChanger = (action, index) => {
-    const sections = document.querySelectorAll("section");
     document.querySelector("section.active").classList.remove("active");
+
+    const sections = document.querySelectorAll("section");
 
     if(action === "next")
       sections[index + 1].classList.add("active");
     else
       sections[index - 1].classList.add("active");
+  };
+
+  const clearSelection = (name) => {
+    const radioBtns = document.querySelectorAll("input[type='radio'][name='" + name + "']")
+
+    radioBtns.forEach(radioBtn => {
+      if(radioBtn.value === "Unanswered")
+        radioBtn.checked = true;
+      else
+        radioBtn.checked = false;
+    });
   };
 
   return (
@@ -62,39 +74,37 @@ const SingleTest = (props) => {
           <button type="button"><i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test</button>
         </h1>
         <div className="centreCard">
-          <form>
-            <section className="active">
-              <div className="testInstructions">
-                <h3 className="smallTitle">Test Instructions</h3>
-                <ul>
-                  <li><strong>Test Date:</strong> {Moment(tests.testdate).format('ll')}.</li>
-                  <li><strong>You can give the test between:</strong> {tests.starttime} to {tests.endtime}.</li>
-                  <li><strong>Test Duration:</strong> {tests.duration} minutes.</li>
-                  <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
-                  <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
-                  <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.positivemarks}.</li>
-                </ul>
-              </div>
-              <div className="navigation">
-                <button type="button" className="startBtn" onClick={(e) => sectionChanger("next", 0)}>Start Test&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i></button>
-              </div>
-            </section>
-            {
-              questions &&
-              questions.length > 0 &&
-              questions.map((item, index) => {
-                if(item.question !== "") {
+          <div className="left">
+            <form>
+              <section className="active">
+                <div className="testInstructions">
+                  <h3 className="smallTitle">Test Instructions</h3>
+                  <ul>
+                    <li><strong>Test Date:</strong> {Moment(tests.testdate).format('ll')}.</li>
+                    <li><strong>You can give the test between:</strong> {tests.starttime} to {tests.endtime}.</li>
+                    <li><strong>Test Duration:</strong> {tests.duration} minutes.</li>
+                    <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
+                    <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
+                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.positivemarks}.</li>
+                  </ul>
+                </div>
+                <div className="navigation">
+                  <button type="button" className="startBtn" onClick={() => sectionChanger("next", 0)}>Start Test&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i></button>
+                </div>
+              </section>
+              {
+                questions &&
+                questions.length > 0 &&
+                questions.map((item, index) => {
                   return (
                     <section ques-no={ index + 1 }>
                       <h3 className="smallTitle">Question No. { index + 1 }</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
-                        <button type="button">Clear Selection</button>
+                        <button type="button" onClick={() => clearSelection(("option" + (index + 1)))}>Clear Selection</button>
                       </div>
                       <div className="options">
-                        <div style={{display: "none"}}>
-                          <input type="radio" name={ "option" + (index + 1) } value="Unanswered" checked="true" />
-                        </div>
+                        <input type="radio" name={ "option" + (index + 1) } value="Unanswered" defaultChecked hidden />
                         <div>
                           <input type="radio" name={ "option" + (index + 1) } id={ "optiona" + (index + 1) } value={item.op4} />&nbsp;&nbsp;
                           (A) <label htmlFor={ "optiona" + (index + 1) }>{item.op1}</label>
@@ -113,18 +123,40 @@ const SingleTest = (props) => {
                         </div>
                       </div>
                       <div className="navigation">
-                        <button type="button" className="prevBtn" onClick={(e) => sectionChanger("prev", index + 1)}>
-                          <i className="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Previous
-                        </button>
-                        <button type="button" className="nextBtn" onClick={(e) => sectionChanger("next", index + 1)}>
+                        {
+                          index === 0 ?
+                            <button type="button" className="prevBtn" disabled onClick={() => sectionChanger("next", (index + 1))}>
+                              <i className="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Previous
+                            </button>
+                                      :
+                            <button type="button" className="prevBtn" onClick={() => sectionChanger("prev", (index + 1))}>
+                              <i className="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Previous
+                            </button>
+                        }
+                        <button type="button" className="nextBtn" onClick={() => sectionChanger("next", (index + 1))}>
                           Save & Next&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
                         </button>
                       </div>
                     </section>
                   );
-                }
-            })}
-          </form>
+              })}
+            </form>
+          </div>
+          <div className="right">
+            <div className="timer">
+              00:30:00
+            </div>
+            <div className="questionBtns">
+              <button type="button" className="question">1</button>
+              <button type="button" className="question">2</button>
+              <button type="button" className="question">3</button>
+              <button type="button" className="question">4</button>
+              <button type="button" className="question">5</button>
+              <button type="button" className="question">6</button>
+              <button type="button" className="question">7</button>
+              <button type="button" className="question">8</button>
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

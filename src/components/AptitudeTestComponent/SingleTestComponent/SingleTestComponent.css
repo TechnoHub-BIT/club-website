@@ -10,7 +10,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 15vw;
+  padding: 0 10vw;
 }
 
 .singleTestCont .title button {
@@ -32,48 +32,49 @@
 }
 
 .singleTestCont .centreCard {
-  background-color: #fff;
+  margin: 3em 10vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (2fr 1fr)[1];
+      grid-template-columns: repeat(1, 2fr 1fr);
+  grid-gap: 2em;
+}
+
+.singleTestCont .centreCard .left {
   -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
           box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
-  margin: 3em 15vw;
   border-radius: 20px;
 }
 
-.singleTestCont .centreCard .smallTitle {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-top: 1.5em;
-}
-
-.singleTestCont .centreCard section {
+.singleTestCont .centreCard .left section {
   padding: 20px 30px 0;
   display: none;
 }
 
-.singleTestCont .centreCard section ul {
+.singleTestCont .centreCard .left section ul {
   margin: 2em 0 0 1.5em;
   list-style-type: none;
 }
 
-.singleTestCont .centreCard section ul li strong {
+.singleTestCont .centreCard .left section ul li strong {
   font-weight: 500;
 }
 
-.singleTestCont .centreCard section ul li::before {
+.singleTestCont .centreCard .left section ul li::before {
   content: "\f105";
   font-family: "FontAwesome";
   margin-right: 0.5em;
 }
 
-.singleTestCont .centreCard section ul li:not(:first-child) {
+.singleTestCont .centreCard .left section ul li:not(:first-child) {
   margin-top: 0.5em;
 }
 
-.singleTestCont .centreCard section.active {
+.singleTestCont .centreCard .left section.active {
   display: block;
 }
 
-.singleTestCont .centreCard section .clearSelection button {
+.singleTestCont .centreCard .left section .clearSelection button {
   border-radius: 5px;
   padding: 7px 10px;
   font-size: 0.8rem;
@@ -87,12 +88,12 @@
   transition: 0.3s all ease;
 }
 
-.singleTestCont .centreCard section .clearSelection button:hover {
+.singleTestCont .centreCard .left section .clearSelection button:hover {
   color: #fff;
   background-color: #191d34;
 }
 
-.singleTestCont .centreCard section .options {
+.singleTestCont .centreCard .left section .options {
   margin-top: 1.5em;
   display: -ms-grid;
   display: grid;
@@ -101,13 +102,13 @@
   grid-row-gap: 1em;
 }
 
-.singleTestCont .centreCard section .navigation {
+.singleTestCont .centreCard .left section .navigation {
   margin: 1.5em auto 0;
   padding-bottom: 30px;
   text-align: center;
 }
 
-.singleTestCont .centreCard section .navigation button {
+.singleTestCont .centreCard .left section .navigation button {
   border-radius: 5px;
   padding: 10px 30px;
   color: #fff;
@@ -117,32 +118,86 @@
   transition: 0.3s all ease;
 }
 
-.singleTestCont .centreCard section .navigation button.startBtn {
+.singleTestCont .centreCard .left section .navigation button.startBtn {
   background-color: #00c851;
   border: 2px solid #00c851;
 }
 
-.singleTestCont .centreCard section .navigation button.startBtn:hover {
+.singleTestCont .centreCard .left section .navigation button.startBtn:hover {
   background-color: #007e33;
   border: 2px solid #007e33;
 }
 
-.singleTestCont .centreCard section .navigation button.prevBtn, .singleTestCont .centreCard section .navigation button.nextBtn {
+.singleTestCont .centreCard .left section .navigation button.prevBtn, .singleTestCont .centreCard .left section .navigation button.nextBtn {
   background-color: #33b5e5;
   border: 2px solid #33b5e5;
 }
 
-.singleTestCont .centreCard section .navigation button.prevBtn:hover, .singleTestCont .centreCard section .navigation button.nextBtn:hover {
+.singleTestCont .centreCard .left section .navigation button.prevBtn:hover, .singleTestCont .centreCard .left section .navigation button.nextBtn:hover {
   background-color: #0099cc;
   border: 2px solid #0099cc;
 }
 
-.singleTestCont .centreCard section .navigation button.nextBtn {
+.singleTestCont .centreCard .left section .navigation button.nextBtn {
   margin-left: 1em;
 }
 
-.singleTestCont .centreCard section .navigation button:disabled {
+.singleTestCont .centreCard .left section .navigation button:disabled {
   cursor: not-allowed;
+}
+
+.singleTestCont .centreCard .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.singleTestCont .centreCard .right .timer {
+  padding: 30px 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  border-radius: 20px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.singleTestCont .centreCard .right .questionBtns {
+  padding: 30px 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  border-radius: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1em;
+  margin-top: 2em;
+}
+
+.singleTestCont .centreCard .right .questionBtns .question {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.singleTestCont .centreCard .smallTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1.5em;
 }
 
 @media only screen and (max-width: 992px) {
@@ -156,6 +211,11 @@
   }
   .singleTestCont .centreCard {
     margin: 2em 20px 3em;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 3em;
+  }
+  .singleTestCont .centreCard .left {
     border-radius: 10px;
   }
 }
