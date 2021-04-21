@@ -183,12 +183,13 @@ const CreateTest = () => {
                                             <input type="text" name="op4" id={ "optiond" + index } value={create.op4} onChange={(e) => handleChange(e, index)} placeholder="Option D" />
                                             <label htmlFor={ "optiond" + index }>Option D</label>
                                         </div>
+                                        <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
+                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
                                     </div>
                                 </div>
                             ))}
                             <div className="inputGroup twoInputs w50p">
-                                <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
-                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
+
                                 <button type="button" className="createBtn" onClick={firestoremaisave}><i className="fas fa-check"></i>&nbsp;&nbsp;Create Test</button>
                             </div>
                         </form>
