@@ -126,6 +126,15 @@
             border: 2px solid #0099cc;
           }
         }
+        &.cancelBtn {
+          background-color: #eb0808;
+          border: 2px solid #eb0808;
+
+          &:hover {
+            background-color: #ce0909;
+            border: 2px solid #ce0909;
+          }
+        }
 
         &.createBtn {
           background-color: #00c851;

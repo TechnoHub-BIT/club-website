@@ -58,8 +58,14 @@ const CreateTest = () => {
         setQuestion([...questions,  { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }]);
       };
 
+      const handleRemoveQuestion = index => {
+        const list = [...questions];
+        list.splice(index, 1);
+        setQuestion(list);
+      };
+
     const firestoremaisave = (e) => {
-        if (title !== '' && duration !== '' && totalmarks !== '' && testdate !== '' && starttime !== '' && endtime !== '' ) 
+        if (title !== '' && duration !== '' && totalmarks !== '' && testdate !== '' && starttime !== '' && endtime !== '' && negativemarks !== '' && positivemarks !=='' ) 
         // && question !== "" || op1 !== "" || op2 !== "" || op3 !=="" || op4 !== "" || correctAnswer !== "")
         {
             e.preventDefault();
@@ -182,6 +188,7 @@ const CreateTest = () => {
                             ))}
                             <div className="inputGroup twoInputs w50p">
                                 <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
+                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
                                 <button type="button" className="createBtn" onClick={firestoremaisave}><i className="fas fa-check"></i>&nbsp;&nbsp;Create Test</button>
                             </div>
                         </form>

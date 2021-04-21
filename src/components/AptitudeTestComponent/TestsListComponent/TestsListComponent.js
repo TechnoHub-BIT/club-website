@@ -20,6 +20,15 @@ const TestsList = () => {
     fetchdata();
   }, []);
 
+  const deleteBlog = (id) => {
+    db.collection('Blogcategory').doc(id).delete().then(() => {
+       console.log("Document successfully deleted!");
+      //  this.props.history.push("/")
+     }).catch((error) => {
+       console.error("Error removing document: ", error);
+     });
+   }
+
   return (
     <React.Fragment>
       <div className="testsListCont">
@@ -54,13 +63,14 @@ const TestsList = () => {
                         <i className="fas fa-book"></i>
                       </button> 
                     </a>
-                    <a href="#">
+                    <a href={ "/test/" + test.id }>
                       <button type="button">
                         <i className="fas fa-pencil-alt"></i>
                       </button>
                     </a>
-                    <a href="#">
-                      <button type="button">
+                    <a href="/tests">
+                      {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
+                      <button onClick={(id) => deleteBlog} type="button">
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>
