@@ -65,7 +65,7 @@ const TestsList = () => {
                         <i className="fas fa-book"></i>
                       </button> 
                     </a>
-                    <a href={ "/test/" + test.id }>
+                    <a href={ "/edittest/" + test.id }>
                       <button type="button">
                         <i className="fas fa-pencil-alt"></i>
                       </button>
