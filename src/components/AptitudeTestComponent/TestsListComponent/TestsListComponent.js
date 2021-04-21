@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase";
-import ApptitudeTest from "../SingleTestComponent/SingleTestComponent";
 import "./TestsListComponent.css";
+import Moment from 'moment';
 
 const TestsList = () => {
   const [tests, setTest] = useState([]);
@@ -43,8 +43,8 @@ const TestsList = () => {
                 <div className="test">
                   <div className="index">{i + 1}</div>
                   <div className="testTitle">
-                    <a href={ "/test/" + test.id }>{test.title}{test.title}&nbsp;&nbsp;<i className="fas fa-external-link-alt"></i></a>
-                    <div className="date">{test.testdate}</div>
+                    <a href={ "/test/" + test.id }>{test.title}&nbsp;&nbsp;<i className="fas fa-external-link-alt"></i></a>
+                    <div className="date">{Moment(test.testdate).format('ll')}</div>
                   </div>
                   <div className="duration">{test.duration} mins.</div>
                   <div className="buttons">

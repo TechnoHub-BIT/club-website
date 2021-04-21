@@ -136,6 +136,7 @@
   background-color: #fff;
   padding: 5px;
   font-size: 1rem;
+  cursor: pointer;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
 }

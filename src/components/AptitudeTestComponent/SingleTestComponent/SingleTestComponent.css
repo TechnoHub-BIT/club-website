@@ -1,1 +1,162 @@
-/* No CSS *//*# sourceMappingURL=SingleTestComponent.css.map */
+.singleTestCont .title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15vw;
+}
+
+.singleTestCont .title button {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #00c851;
+  border: 2px solid #00c851;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.singleTestCont .title button:hover {
+  background-color: #007e33;
+  border-color: #007e33;
+}
+
+.singleTestCont .centreCard {
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  margin: 3em 15vw;
+  border-radius: 20px;
+}
+
+.singleTestCont .centreCard .smallTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1.5em;
+}
+
+.singleTestCont .centreCard section {
+  padding: 20px 30px 0;
+  display: none;
+}
+
+.singleTestCont .centreCard section ul {
+  margin: 2em 0 0 1.5em;
+  list-style-type: none;
+}
+
+.singleTestCont .centreCard section ul li strong {
+  font-weight: 500;
+}
+
+.singleTestCont .centreCard section ul li::before {
+  content: "\f105";
+  font-family: "FontAwesome";
+  margin-right: 0.5em;
+}
+
+.singleTestCont .centreCard section ul li:not(:first-child) {
+  margin-top: 0.5em;
+}
+
+.singleTestCont .centreCard section.active {
+  display: block;
+}
+
+.singleTestCont .centreCard section .clearSelection button {
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 0.8rem;
+  margin-top: 1em;
+  color: #191d34;
+  border: 2px solid #191d34;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.singleTestCont .centreCard section .clearSelection button:hover {
+  color: #fff;
+  background-color: #191d34;
+}
+
+.singleTestCont .centreCard section .options {
+  margin-top: 1.5em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 1em;
+}
+
+.singleTestCont .centreCard section .navigation {
+  margin: 1.5em auto 0;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.singleTestCont .centreCard section .navigation button {
+  border-radius: 5px;
+  padding: 10px 30px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.singleTestCont .centreCard section .navigation button.startBtn {
+  background-color: #00c851;
+  border: 2px solid #00c851;
+}
+
+.singleTestCont .centreCard section .navigation button.startBtn:hover {
+  background-color: #007e33;
+  border: 2px solid #007e33;
+}
+
+.singleTestCont .centreCard section .navigation button.prevBtn, .singleTestCont .centreCard section .navigation button.nextBtn {
+  background-color: #33b5e5;
+  border: 2px solid #33b5e5;
+}
+
+.singleTestCont .centreCard section .navigation button.prevBtn:hover, .singleTestCont .centreCard section .navigation button.nextBtn:hover {
+  background-color: #0099cc;
+  border: 2px solid #0099cc;
+}
+
+.singleTestCont .centreCard section .navigation button.nextBtn {
+  margin-left: 1em;
+}
+
+.singleTestCont .centreCard section .navigation button:disabled {
+  cursor: not-allowed;
+}
+
+@media only screen and (max-width: 992px) {
+  .singleTestCont .title {
+    padding: 0 20px;
+    font-size: 1.7rem;
+  }
+  .singleTestCont .title button {
+    padding: 7px 10px;
+    font-size: 0.9rem;
+  }
+  .singleTestCont .centreCard {
+    margin: 2em 20px 3em;
+    border-radius: 10px;
+  }
+}
+/*# sourceMappingURL=SingleTestComponent.css.map */

@@ -1,0 +1,160 @@
+.singleTestCont {
+  .title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15vw;
+
+    button {
+      font-size: 1rem;
+      padding: 10px 30px;
+      background-color: #00c851;
+      border: 2px solid #00c851;
+      color: #fff;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        background-color: #007e33;
+        border-color: #007e33;
+      }
+    }
+  }
+
+  .centreCard {
+    background-color: #fff;
+    box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+    margin: 3em 15vw;
+    border-radius: 20px;
+
+    .smallTitle {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-top: 1.5em;
+    }
+
+    section {
+      padding: 20px 30px 0;
+      display: none;
+
+      ul {
+        margin: 2em 0 0 1.5em;
+        list-style-type: none;
+
+        li {
+          strong {
+            font-weight: 500;
+          }
+
+          &::before {
+            content: "\f105";
+            font-family: "FontAwesome";
+            margin-right: 0.5em;
+          }
+
+          &:not(:first-child) {
+            margin-top: 0.5em;
+          }
+        }
+      }
+
+      &.active {
+        display: block;
+      }
+
+      .clearSelection {
+        button {
+          border-radius: 5px;
+          padding: 7px 10px;
+          font-size: 0.8rem;
+          margin-top: 1em;
+          color: #191d34;
+          border: 2px solid #191d34;
+          background-color: #fff;
+          outline: none;
+          cursor: pointer;
+          transition: 0.3s all ease;
+
+          &:hover {
+            color: #fff;
+            background-color: #191d34;
+          }
+        }
+      }
+
+      .options {
+        margin-top: 1.5em;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 1em;
+      }
+
+      .navigation {
+        margin: 1.5em auto 0;
+        padding-bottom: 30px;
+        text-align: center;
+
+        button {
+          border-radius: 5px;
+          padding: 10px 30px;
+          color: #fff;
+          outline: none;
+          cursor: pointer;
+          transition: 0.3s all ease;
+
+          &.startBtn {
+            background-color: #00c851;
+            border: 2px solid #00c851;
+
+            &:hover {
+              background-color: #007e33;
+              border: 2px solid #007e33;
+            }
+          }
+
+          &.prevBtn,
+          &.nextBtn {
+            background-color: #33b5e5;
+            border: 2px solid #33b5e5;
+
+            &:hover {
+              background-color: #0099cc;
+              border: 2px solid #0099cc;
+            }
+          }
+
+          &.nextBtn {
+            margin-left: 1em;
+          }
+
+          &:disabled {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .singleTestCont {
+    .title {
+      padding: 0 20px;
+      font-size: 1.7rem;
+
+      button {
+        padding: 7px 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .centreCard {
+      margin: 2em 20px 3em;
+      border-radius: 10px;
+    }
+  }
+}

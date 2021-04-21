@@ -130,7 +130,7 @@ const CreateTest = () => {
                                 </div>
                                 <div className="input">
                                     <input type="number" name="pmarks" id="pmarks" placeholder="Positive Marks" onChange={pMarks} value={positivemarks} required />
-                                    <label htmlFor="stime">Positive Marks*</label>
+                                    <label htmlFor="pmarks">Positive Marks*</label>
                                 </div>
                                 <div className="input">
                                     <input type="number" name="nmarks" id="nmarks" min="0" placeholder="Negative Marks" onChange={nMarks} value={negativemarks} required />
