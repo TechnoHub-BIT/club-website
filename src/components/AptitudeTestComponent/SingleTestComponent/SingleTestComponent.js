@@ -31,8 +31,8 @@ const SingleTest = (props) => {
 
   useEffect(() => {
     const fetchquestions = async () => {
-      const doc = await db.collection("Tests");
-      const snapshot = await doc.where("questions", "!=", []).get();
+      // const foo = await db.collection("Tests").doc(props.match.params.id);
+      const snapshot = await db.collection("Tests"). where('Tests', '==' ,props.match.params.id).where("questions", "!=", []).get();
       if (snapshot.empty) {
       
         return <h1>No questions</h1>;
