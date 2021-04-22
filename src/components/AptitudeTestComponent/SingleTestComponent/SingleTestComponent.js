@@ -137,11 +137,11 @@ const SingleTest = (props) => {
                       <strong>Total Marks:</strong> {tests.totalmarks}.
                     </li>
                     <li>
-                      <strong>Marks for each Correct answer:</strong> +
+                      <strong>Marks for each Correct answer:</strong>{" "}
                       {tests.positivemarks}.
                     </li>
                     <li>
-                      <strong>Marks for each Wrong answer:</strong> -
+                      <strong>Negative Marks for each Wrong answer:</strong> -
                       {tests.negativemarks}.
                     </li>
                   </ul>
@@ -161,7 +161,6 @@ const SingleTest = (props) => {
                 </div>
               </section>
               {tests.questions &&
-                tests.questions.length > 0 &&
                 tests.questions.map((item, index) => {
                   return (
                     <section className="active" ques-no={index + 1} key={index}>
