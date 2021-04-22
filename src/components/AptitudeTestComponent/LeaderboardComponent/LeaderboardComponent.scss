@@ -1,0 +1,125 @@
+.leaderboardCont {
+  .title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .centreCard {
+    background-color: #fff;
+    box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+    margin: 3em 15vw;
+    border-radius: 20px;
+
+    .leadersList {
+      display: flex;
+      flex-direction: column;
+
+      .header {
+        position: static;
+        padding: 30px;
+        color: #fff;
+        background-color: #eb0808;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: inherit;
+
+        .left {
+          display: flex;
+          align-items: center;
+
+          i {
+            font-size: 2rem;
+          }
+
+          .testDetails {
+            margin-left: 1.5em;
+
+            .name {
+              font-size: 1.3rem;
+              font-weight: 500;
+            }
+
+            .marks {
+              font-size: 0.85rem;
+            }
+          }
+        }
+
+        .right {
+          .date {
+            font-size: 1.3rem;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .leader {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr 2fr 1fr 1fr);
+        align-items: center;
+        padding: 30px;
+
+        .leaderDetails {
+          display: flex;
+          align-items: center;
+
+          .badge {
+            margin-right: 1em;
+
+            i {
+              font-size: 2rem;
+            }
+
+            &.gold {
+              color: #ffd700;
+            }
+
+            &.silver {
+              color: #aaa9ad;
+            }
+
+            &.bronze {
+              color: #a97142;
+            }
+          }
+
+          .details {
+            .name {
+              font-size: 1.1rem;
+              font-weight: 500;
+            }
+
+            .branch {
+              font-size: 0.9rem;
+            }
+          }
+        }
+
+        .score {
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .leaderboardCont {
+    .title {
+      font-size: 1.7rem;
+    }
+  }
+}

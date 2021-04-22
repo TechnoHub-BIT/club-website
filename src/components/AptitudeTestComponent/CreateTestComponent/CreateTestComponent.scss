@@ -127,9 +127,14 @@
             border: 2px solid #0099cc;
           }
         }
-        &.cancelBtn {
+
+        &.removeBtn {
+          height: 30px;
+          width: 30px;
+          padding: 0;
           background-color: #eb0808;
           border: 2px solid #eb0808;
+          font-size: 0.9rem;
 
           &:hover {
             background-color: #ce0909;
