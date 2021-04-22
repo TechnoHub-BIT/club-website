@@ -118,8 +118,8 @@ const SingleTest = (props) => {
                     <li><strong>You can give the test between:</strong> {tests.starttime} to {tests.endtime}.</li>
                     <li><strong>Test Duration:</strong> {tests.duration} minutes.</li>
                     <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
-                    <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
-                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.negativemarks}.</li>
+                    <li><strong>Marks for each Correct answer:</strong> +{tests.positivemarks}.</li>
+                    <li><strong>Marks for each Wrong answer:</strong> -{tests.negativemarks}.</li>
                   </ul>
                 </div>
                 <div className="navigation">
