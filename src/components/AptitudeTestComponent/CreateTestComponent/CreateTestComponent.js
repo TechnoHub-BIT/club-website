@@ -58,11 +58,12 @@ const CreateTest = () => {
         setQuestion([...questions,  { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }]);
       };
 
-      const handleRemoveQuestion = index => {
+      const handleRemoveQuestion = (index) => {
         const list = [...questions];
         list.splice(index, 1);
         setQuestion(list);
       };
+
 
     const firestoremaisave = (e) => {
         if (title !== '' && duration !== '' && totalmarks !== '' && testdate !== '' && starttime !== '' && endtime !== '' && negativemarks !== '' && positivemarks !=='' ) 
@@ -145,7 +146,7 @@ const CreateTest = () => {
                             </div>
                         </form>
                         <form>
-                            {questions.map((create, index) => (
+                            {questions.map((create, index,val) => (
                                 <div>
                                     <h3 className="smallTitle">Question No. { index + 1} Details</h3>
                                     <div class="inputGroup twoInputs" key={index}>
@@ -183,8 +184,8 @@ const CreateTest = () => {
                                             <input type="text" name="op4" id={ "optiond" + index } value={create.op4} onChange={(e) => handleChange(e, index)} placeholder="Option D" />
                                             <label htmlFor={ "optiond" + index }>Option D</label>
                                         </div>
-                                        <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
-                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
+                                        <button type="button" className="addBtn" onClick={() => addMore(create)}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
+                                <button type="button" className="cancelBtn" onClick={() => handleRemoveQuestion(create)}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
                                     </div>
                                 </div>
                             ))}

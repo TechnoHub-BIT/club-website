@@ -102,7 +102,7 @@ const SingleTest = (props) => {
                     <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
                     <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
                     <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.negativemarks}.</li>
-                   
+                    
                   </ul>
                 </div>
                 <div className="navigation">
@@ -111,7 +111,7 @@ const SingleTest = (props) => {
               </section>
               {
                 tests.questions &&
-                tests.questions.length > 0 &&
+                
                 tests.questions.map((item, index) => {
                   return (
                   
