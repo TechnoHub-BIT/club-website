@@ -21,29 +21,14 @@ const SingleTest = (props) => {
         endtime: Test.endtime,
         positivemarks: Test.positivemarks,
         negativemarks: Test.negativemarks,
+      questions:Test.questions
       });
     } else {
       console.log("No such test found!");
     }
   });
 
-  const [questions, setQuestion] = useState(null);
-
-  useEffect(() => {
-    const fetchquestions = async () => {
-      // const foo = await db.collection("Tests").doc(props.match.params.id);
-      const snapshot = await db.collection("Tests"). where('Tests', '==' ,props.match.params.id).where("questions", "!=", []).get();
-      if (snapshot.empty) {
-      
-        return <h1>No questions</h1>;
-      }
-      snapshot.forEach((doc) => {
-        setQuestion(doc.data().questions);
-      });
-    };
-
-    fetchquestions();
-  }, [props]);
+ 
 
   //Next and Previous Buttons
   const sectionChanger = (action, index) => {
@@ -116,7 +101,8 @@ const SingleTest = (props) => {
                     <li><strong>Test Duration:</strong> {tests.duration} minutes.</li>
                     <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
                     <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
-                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.positivemarks}.</li>
+                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.negativemarks}.</li>
+                   
                   </ul>
                 </div>
                 <div className="navigation">
@@ -124,10 +110,11 @@ const SingleTest = (props) => {
                 </div>
               </section>
               {
-                questions &&
-                questions.length > 0 &&
-                questions.map((item, index) => {
+                tests.questions &&
+                tests.questions.length > 0 &&
+                tests.questions.map((item, index) => {
                   return (
+                  
                     <section ques-no={ index + 1 } key={index}>
                       <h3 className="smallTitle">Question No. { index + 1 }</h3>
                       <div className="question">{item.question}</div>
