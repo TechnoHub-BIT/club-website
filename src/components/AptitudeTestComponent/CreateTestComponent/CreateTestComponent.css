@@ -169,10 +169,14 @@
   border: 2px solid #0099cc;
 }
 
+<<<<<<< HEAD
 .createTestCont .centreCard .createForm button.removeBtn {
   height: 30px;
   width: 30px;
   padding: 0;
+=======
+.createTestCont .centreCard .createForm button.cancelBtn {
+>>>>>>> 20e640f434799d59abb94e8707f15634434f9dab
   background-color: #eb0808;
   border: 2px solid #eb0808;
   font-size: 0.9rem;
