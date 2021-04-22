@@ -168,15 +168,21 @@
   background-color: #0099cc;
   border: 2px solid #0099cc;
 }
-.createTestCont .centreCard .createForm button.cancelBtn {
+
+.createTestCont .centreCard .createForm button.removeBtn {
+  height: 30px;
+  width: 30px;
+  padding: 0;
   background-color: #eb0808;
   border: 2px solid #eb0808;
+  font-size: 0.9rem;
 }
 
-.createTestCont .centreCard .createForm button.cancelBtn:hover {
+.createTestCont .centreCard .createForm button.removeBtn:hover {
   background-color: #ce0909;
   border: 2px solid #ce0909;
 }
+
 .createTestCont .centreCard .createForm button.createBtn {
   background-color: #00c851;
   border: 2px solid #00c851;

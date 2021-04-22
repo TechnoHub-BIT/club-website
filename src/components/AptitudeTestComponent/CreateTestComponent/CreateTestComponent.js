@@ -147,7 +147,12 @@ const CreateTest = () => {
                         <form>
                             {questions.map((create, index) => (
                                 <div>
-                                    <h3 className="smallTitle">Question No. { index + 1} Details</h3>
+                                    <h3 className="smallTitle">
+                                        Question No. { index + 1} Details&nbsp;&nbsp;
+                                        <button type="button" className="removeBtn" onClick={handleRemoveQuestion}>
+                                            <i className="fas fa-times"></i>
+                                        </button>
+                                    </h3>
                                     <div class="inputGroup twoInputs" key={index}>
                                         <div className="input">
                                             <input type="text" name="question" id={ "question" + index } value={create.question} onChange={(e) => handleChange(e, index)} placeholder="Question" />
@@ -183,14 +188,12 @@ const CreateTest = () => {
                                             <input type="text" name="op4" id={ "optiond" + index } value={create.op4} onChange={(e) => handleChange(e, index)} placeholder="Option D" />
                                             <label htmlFor={ "optiond" + index }>Option D</label>
                                         </div>
-                                        <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
-                                <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button>
                                     </div>
                                 </div>
                             ))}
                             <div className="inputGroup twoInputs w50p">
-
-                                <button type="button" className="createBtn" onClick={firestoremaisave}><i className="fas fa-check"></i>&nbsp;&nbsp;Create Test</button>
+                                <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
+                                <button type="submit" className="createBtn" onClick={firestoremaisave}><i className="fas fa-check"></i>&nbsp;&nbsp;Create Test</button>
                             </div>
                         </form>
                     </div>

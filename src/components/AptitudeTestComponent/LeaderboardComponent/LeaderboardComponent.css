@@ -1,0 +1,142 @@
+.leaderboardCont .title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.leaderboardCont .centreCard {
+  background-color: #fff;
+  -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+          box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+  margin: 3em 15vw;
+  border-radius: 20px;
+}
+
+.leaderboardCont .centreCard .leadersList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.leaderboardCont .centreCard .leadersList .header {
+  position: static;
+  padding: 30px;
+  color: #fff;
+  background-color: #eb0808;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: inherit;
+}
+
+.leaderboardCont .centreCard .leadersList .header .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.leaderboardCont .centreCard .leadersList .header .left i {
+  font-size: 2rem;
+}
+
+.leaderboardCont .centreCard .leadersList .header .left .testDetails {
+  margin-left: 1.5em;
+}
+
+.leaderboardCont .centreCard .leadersList .header .left .testDetails .name {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.leaderboardCont .centreCard .leadersList .header .left .testDetails .marks {
+  font-size: 0.85rem;
+}
+
+.leaderboardCont .centreCard .leadersList .header .right .date {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.leaderboardCont .centreCard .leadersList .leader {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr 2fr 1fr 1fr)[1];
+      grid-template-columns: repeat(1, 1fr 2fr 1fr 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge {
+  margin-right: 1em;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge i {
+  font-size: 2rem;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge.gold {
+  color: #ffd700;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge.silver {
+  color: #aaa9ad;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge.bronze {
+  color: #a97142;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .details .name {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .leaderDetails .details .branch {
+  font-size: 0.9rem;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .score {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.leaderboardCont .centreCard .leadersList .leader:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.leaderboardCont .centreCard .leadersList .leader:last-child {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+  .leaderboardCont .title {
+    font-size: 1.7rem;
+  }
+}
+/*# sourceMappingURL=LeaderboardComponent.css.map */

@@ -82,6 +82,9 @@ const SingleTest = (props) => {
   let minutes = parseInt(timeLeft / 60000);
   let seconds = parseInt(timeLeft / 1000);
 
+  if(minutes === 60)
+    minutes = 0;
+
   useEffect(() => {
     start();
     pause();
@@ -93,7 +96,7 @@ const SingleTest = (props) => {
   }
   
   const restart = React.useCallback(() => {
-    const newTime = 0.2 * 60 * 1000;
+    const newTime = 60.2 * 60 * 1000;
     start(newTime);
   }, []);
 
@@ -116,7 +119,7 @@ const SingleTest = (props) => {
                     <li><strong>Test Duration:</strong> {tests.duration} minutes.</li>
                     <li><strong>Total Marks:</strong> {tests.totalmarks}.</li>
                     <li><strong>Marks for each Correct answer:</strong> {tests.positivemarks}.</li>
-                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.positivemarks}.</li>
+                    <li><strong>Negative Marks for each Wrong answer:</strong> -{tests.negativemarks}.</li>
                   </ul>
                 </div>
                 <div className="navigation">
