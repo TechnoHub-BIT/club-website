@@ -163,7 +163,7 @@ const SingleTest = (props) => {
               {tests.questions &&
                 tests.questions.map((item, index) => {
                   return (
-                    <section className="active" ques-no={index + 1} key={index}>
+                    <section ques-no={index + 1} key={index}>
                       <h3 className="smallTitle">Question No. {index + 1}</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
