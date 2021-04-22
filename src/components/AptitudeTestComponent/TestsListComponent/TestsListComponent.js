@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase";
 import "./TestsListComponent.css";
 import Moment from "moment";
+import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 
 const TestsList = () => {
   const [tests, setTest] = useState([]);
@@ -26,15 +27,37 @@ const TestsList = () => {
       .delete()
 
       .then(() => {
-        alert("Test Deleted!");
+        showModal("");
       })
       .catch((error) => {
+        showModal("");
         alert(error.message);
       });
   };
 
+  const closeModal = () => {
+    showModal("");
+  };
+
+  //Modal
+  const [modal, showModal] = useState("");
+  const deleteBlogModal = (testId) => {
+    showModal(
+      <AlertModal
+        message="Are you sure you want to delete the Test?"
+        icon="delete"
+        leftBtn="Delete"
+        rightBtn="Cancel"
+        actionParam={testId}
+        action={deleteBlog}
+        close={closeModal}
+      />
+    );
+  };
+
   return (
     <React.Fragment>
+      {modal}
       <div className="testsListCont">
         <h1 className="title">
           All Tests
@@ -89,8 +112,11 @@ const TestsList = () => {
                       </button>
                     </a>
                     <a>
-                      {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
-                      <button onClick={() => deleteBlog(test.id)} type="button">
+                      {/* deleteBlog(test.id) */}
+                      <button
+                        onClick={() => deleteBlogModal(test.id)}
+                        type="button"
+                      >
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>
