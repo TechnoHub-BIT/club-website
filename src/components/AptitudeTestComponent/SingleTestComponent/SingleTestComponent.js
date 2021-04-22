@@ -80,10 +80,7 @@ const SingleTest = (props) => {
   const initialTime = 0.5 * 60 * 1000;
   const interval = 1000;
 
-  const [timeLeft, { start, pause, resume, reset }] = useCountDown(
-    initialTime,
-    interval
-  );
+  const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
 
   let hours = parseInt(timeLeft / 3600000);
   let minutes = parseInt(timeLeft / 60000);

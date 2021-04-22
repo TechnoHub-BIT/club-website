@@ -220,112 +220,33 @@
     margin: 2em 20px 3em;
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
-    grid-gap: 3em;
+    font-size: 0.9rem;
   }
   .singleTestCont .centreCard .left {
-    -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
-            box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
-    border-radius: 20px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    border-radius: 10px;
   }
   .singleTestCont .centreCard .left section {
-    padding: 20px 30px 0;
-    display: none;
-  }
-  .singleTestCont .centreCard .left section ul {
-    margin: 2em 0 0 1.5em;
-    list-style-type: none;
-  }
-  .singleTestCont .centreCard .left section ul li strong {
-    font-weight: 500;
-  }
-  .singleTestCont .centreCard .left section ul li::before {
-    content: "\f105";
-    font-family: "FontAwesome";
-    margin-right: 0.5em;
-  }
-  .singleTestCont .centreCard .left section ul li:not(:first-child) {
-    margin-top: 0.5em;
-  }
-  .singleTestCont .centreCard .left section.active {
-    display: block;
-  }
-  .singleTestCont .centreCard .left section .clearSelection button {
-    border-radius: 5px;
-    padding: 7px 10px;
-    font-size: 0.8rem;
-    margin-top: 1em;
-    color: #191d34;
-    border: 2px solid #191d34;
-    background-color: #fff;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: 0.3s all ease;
-    transition: 0.3s all ease;
-  }
-  .singleTestCont .centreCard .left section .clearSelection button:hover {
-    color: #fff;
-    background-color: #191d34;
-  }
-  .singleTestCont .centreCard .left section .options {
-    margin-top: 1.5em;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 1em;
+    padding: 10px 30px 0;
   }
   .singleTestCont .centreCard .left section .navigation {
     margin: 1.5em auto 0;
     padding-bottom: 30px;
-    text-align: center;
   }
   .singleTestCont .centreCard .left section .navigation button {
-    border-radius: 5px;
-    padding: 10px 30px;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: 0.3s all ease;
-    transition: 0.3s all ease;
+    padding: 7px 10px;
+    font-size: 0.8rem;
   }
-  .singleTestCont .centreCard .left section .navigation button.startBtn {
-    background-color: #00c851;
-    border: 2px solid #00c851;
-  }
-  .singleTestCont .centreCard .left section .navigation button.startBtn:hover {
-    background-color: #007e33;
-    border: 2px solid #007e33;
-  }
-  .singleTestCont .centreCard .left section .navigation button.prevBtn, .singleTestCont .centreCard .left section .navigation button.nextBtn {
-    background-color: #33b5e5;
-    border: 2px solid #33b5e5;
-  }
-  .singleTestCont .centreCard .left section .navigation button.prevBtn:hover, .singleTestCont .centreCard .left section .navigation button.nextBtn:hover {
-    background-color: #0099cc;
-    border: 2px solid #0099cc;
-  }
-  .singleTestCont .centreCard .left section .navigation button.nextBtn {
-    margin-left: 1em;
-  }
-  .singleTestCont .centreCard .left section .navigation button:disabled {
-    cursor: not-allowed;
+  .singleTestCont .centreCard .right {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
   .singleTestCont .centreCard .right .timer {
-    padding: 30px 30px;
     border-radius: 10px;
-    font-size: 1.5rem;
-  }
-  .singleTestCont .centreCard .right .questionBtns {
-    padding: 30px 30px;
-    border-radius: 10px;
-    -ms-grid-columns: (1fr)[6];
-        grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1em;
-    margin-top: 2em;
-  }
-  .singleTestCont .centreCard .right .questionBtns .question {
-    height: 40px;
-    width: 40px;
+    font-size: 1.3rem;
   }
 }
 /*# sourceMappingURL=SingleTestComponent.css.map */
