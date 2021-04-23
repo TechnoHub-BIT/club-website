@@ -9,26 +9,32 @@ const SingleTest = (props) => {
   const [tests, setTest] = useState([]);
 
   const [quesLength, setLength] = useState();
+  const [duration, setDuration] = useState();
 
   const ref = db.collection("Tests").doc(props.match.params.id);
-  ref.get().then((doc) => {
-    if (doc.exists) {
-      const Test = doc.data();
-      setLength(doc.data().questions.length);
-      setTest({
-        id: doc.id,
-        title: Test.title,
-        duration: Test.duration,
-        totalmarks: Test.totalmarks,
-        testdate: Test.testdate,
-        starttime: Test.starttime,
-        endtime: Test.endtime,
-        positivemarks: Test.positivemarks,
-        negativemarks: Test.negativemarks,
-        questions: Test.questions,
-      });
-    } else console.log("No such test found!");
-  });
+  useEffect(() => {
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Test = doc.data();
+        setLength(doc.data().questions.length);
+        setDuration(doc.data().duration);
+        setTest({
+          id: doc.id,
+          title: Test.title,
+          duration: Test.duration,
+          totalmarks: Test.totalmarks,
+          testdate: Test.testdate,
+          starttime: Test.starttime,
+          endtime: Test.endtime,
+          positivemarks: Test.positivemarks,
+          negativemarks: Test.negativemarks,
+          questions: Test.questions,
+        });
+      } else console.log("No such test found!");
+    });
+  }, []);
+
+  console.log(duration);
 
   //Form Start Check
   const [form, setForm] = useState(false);
@@ -78,7 +84,7 @@ const SingleTest = (props) => {
   };
 
   //Countdown Timer
-  const initialTime = 0.5 * 60 * 1000;
+  const initialTime = duration * 60 * 1000;
   const interval = 1000;
 
   const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
@@ -96,15 +102,15 @@ const SingleTest = (props) => {
 
   if (timeLeft === 0 && form) {
     setForm(false);
-    console.warn("Time up!");
   }
 
   const restart = React.useCallback(() => {
     setForm(true);
-    const newTime = 60.2 * 60 * 1000;
+    const newTime = duration * 60 * 1000;
     start(newTime);
   }, []);
 
+  //Current User Details
   const { currentUser, logout } = useAuth();
 
   const [profiles, setProfiles] = useState([]);
@@ -213,13 +219,13 @@ const SingleTest = (props) => {
                       <strong>Test Duration:</strong> {tests.duration} minutes.
                     </li>
                     <li>
-                      <strong>Total Questions:</strong> {quesLength}
+                      <strong>Total Questions:</strong> {quesLength}.
                     </li>
                     <li>
                       <strong>Total Marks:</strong> {tests.totalmarks}.
                     </li>
                     <li>
-                      <strong>Marks for each Correct answer:</strong>
+                      <strong>Marks for each Correct answer:</strong>{" "}
                       {tests.positivemarks}.
                     </li>
                     <li>
