@@ -44,8 +44,8 @@ const CreateTest = () => {
   };
 
   const [questions, setQuestion] = useState([
-    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-  ]);
+    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }],
+  );
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
@@ -90,7 +90,7 @@ const CreateTest = () => {
           endtime: endtime,
           positivemarks: positivemarks,
           negativemarks: negativemarks,
-          questions: questions,
+          questions: questions
         })
         .then(() => {
           alert("Test created!");
@@ -223,7 +223,7 @@ const CreateTest = () => {
               </div>
             </form>
             <form>
-              {questions.map((create, index, val) => (
+              { questions && questions.map((create, index, val) => (
                 <div>
                   <h3 className="smallTitle">
                     Question No. {index + 1} Details

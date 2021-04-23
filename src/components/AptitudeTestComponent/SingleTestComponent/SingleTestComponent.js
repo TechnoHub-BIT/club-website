@@ -12,6 +12,8 @@ const SingleTest = (props) => {
   ref.get().then((doc) => {
     if (doc.exists) {
       const Test = doc.data();
+      const bol = doc.data().questions.length;
+      console.log(bol)
       setTest({
         id: doc.id,
         title: Test.title,
@@ -145,11 +147,9 @@ const SingleTest = (props) => {
           });
       } 
     };
-    const [questions, setQuestion] = useState([
-      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-
-    
-    ]);
+    const [questions, setQuestion] = useState([{
+       question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" ,
+    }]);
 
     // const [score, setScore] = useState("")
     // if(userAnswer == correctAnswer){
@@ -171,10 +171,7 @@ const SingleTest = (props) => {
     <React.Fragment>
       <div className="singleTestCont">
         <h1 className="title">
-          {tests.title} <br></br>
-          welcome{profiles.fullname}<br></br>
-          {profiles.email}<br></br>
-          {profiles.branch}
+          {tests.title}
           <button type="button"  onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>
@@ -210,7 +207,7 @@ const SingleTest = (props) => {
                     </li>
                     <li>
                       <strong>total questions</strong> :
-                      {questions.length}
+                      {/* {tests.questions.length} */}
                     </li>
                   </ul>
                 </div>
