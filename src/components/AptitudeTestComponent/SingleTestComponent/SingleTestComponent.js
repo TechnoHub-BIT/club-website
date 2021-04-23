@@ -13,6 +13,8 @@ const SingleTest = (props) => {
   ref.get().then((doc) => {
     if (doc.exists) {
       const Test = doc.data();
+      const bol = doc.data().questions.length;
+      console.log(bol);
       setTest({
         id: doc.id,
         title: Test.title,
@@ -147,19 +149,40 @@ const SingleTest = (props) => {
     { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
   ]);
 
-  // const [score, setScore] = useState("")
-  // if(userAnswer == correctAnswer){
-  //     setScore({
-  //            score :score+1
-  //     })
-  // }
-
-  const handleAnswer = (e, index) => {};
-  //   const { name, value } = e.target;
-  //   const list = [...questions];
-  //   list[index][name] = value;
-  //   setQuestion(list);
-  // };
+  const fullname = profiles.fullname;
+  const branch = profiles.branch;
+  const email = profiles.email;
+  const title = tests.title;
+  const onSubmit = (e) => {
+    {
+      e.preventDefault();
+      db.collection("Test-Results")
+        .add({
+          fullname: fullname,
+          testname: title,
+          email: email,
+          // timeleft: timeLeft,
+          branch: branch,
+          // score: score,
+        })
+        .then(() => {
+          alert("Test submited!");
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    }
+  };
+  const [questions, setQuestion] = useState([
+    {
+      question: "",
+      op1: "",
+      op2: "",
+      op3: "",
+      op4: "",
+      correctAnswer: "",
+    },
+  ]);
 
   const closeModal = () => {
     showModal("");
@@ -172,12 +195,7 @@ const SingleTest = (props) => {
       {modal}
       <div className="singleTestCont">
         <h1 className="title">
-          {tests.title} <br></br>
-          welcome{profiles.fullname}
-          <br></br>
-          {profiles.email}
-          <br></br>
-          {profiles.branch}
+          {tests.title}
           <button type="button" onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>
@@ -213,6 +231,8 @@ const SingleTest = (props) => {
                     </li>
                     <li>
                       <strong>Total questions:</strong> {}
+                      <strong>total questions</strong> :
+                      {/* {tests.questions.length} */}
                     </li>
                   </ul>
                 </div>
