@@ -26,9 +26,7 @@ const SingleTest = (props) => {
         negativemarks: Test.negativemarks,
         questions: Test.questions,
       });
-    } else {
-      console.log("No such test found!");
-    }
+    } else console.log("No such test found!");
   });
 
   //Form Start Check

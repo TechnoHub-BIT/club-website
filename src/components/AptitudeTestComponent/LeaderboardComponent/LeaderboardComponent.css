@@ -79,7 +79,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 30px;
+  text-align: center;
+  padding: 30px 50px;
+}
+
+.leaderboardCont .centreCard .leadersList .leader .sno {
+  text-align: left;
 }
 
 .leaderboardCont .centreCard .leadersList .leader .leaderDetails {
@@ -89,6 +94,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: left;
 }
 
 .leaderboardCont .centreCard .leadersList .leader .leaderDetails .badge {
@@ -123,6 +129,7 @@
 .leaderboardCont .centreCard .leadersList .leader .score {
   font-size: 1.3rem;
   font-weight: 500;
+  text-align: right;
 }
 
 .leaderboardCont .centreCard .leadersList .leader:nth-child(even) {

@@ -21,53 +21,61 @@ const leaderboard = () => {
               </div>
             </div>
             <div className="leader">
-              <div>1.</div>
+              <div className="sno">1.</div>
               <div className="leaderDetails">
                 <div className="badge gold">
                   <i className="fas fa-award"></i>
                 </div>
                 <div className="details">
                   <div className="name">Aaryan Khandelwal</div>
-                  <div className="branch">4th Sem, ETC</div>
+                  <div className="branch">
+                    Electronics and Telecommunication
+                  </div>
                 </div>
               </div>
               <div className="time">29:20</div>
               <div className="score">30/30</div>
             </div>
             <div className="leader">
-              <div>2.</div>
+              <div className="sno">2.</div>
               <div className="leaderDetails">
                 <div className="badge silver">
                   <i className="fas fa-award"></i>
                 </div>
                 <div className="details">
                   <div className="name">Aaryan Khandelwal</div>
-                  <div className="branch">4th Sem, ETC</div>
+                  <div className="branch">
+                    Electronics and Telecommunication
+                  </div>
                 </div>
               </div>
               <div className="time">29:20</div>
               <div className="score">30/30</div>
             </div>
             <div className="leader">
-              <div>3.</div>
+              <div className="sno">3.</div>
               <div className="leaderDetails">
                 <div className="badge bronze">
                   <i className="fas fa-award"></i>
                 </div>
                 <div className="details">
                   <div className="name">Aaryan Khandelwal</div>
-                  <div className="branch">4th Sem, ETC</div>
+                  <div className="branch">
+                    Electronics and Telecommunication
+                  </div>
                 </div>
               </div>
               <div className="time">29:20</div>
               <div className="score">30/30</div>
             </div>
             <div className="leader">
-              <div>4.</div>
+              <div className="sno">4.</div>
               <div className="leaderDetails">
                 <div className="details">
                   <div className="name">Aaryan Khandelwal</div>
-                  <div className="branch">4th Sem, ETC</div>
+                  <div className="branch">
+                    Electronics and Telecommunication
+                  </div>
                 </div>
               </div>
               <div className="time">29:20</div>

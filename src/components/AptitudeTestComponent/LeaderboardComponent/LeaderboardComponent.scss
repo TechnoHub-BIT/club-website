@@ -60,11 +60,17 @@
         display: grid;
         grid-template-columns: repeat(1, 1fr 2fr 1fr 1fr);
         align-items: center;
-        padding: 30px;
+        text-align: center;
+        padding: 30px 50px;
+
+        .sno {
+          text-align: left;
+        }
 
         .leaderDetails {
           display: flex;
           align-items: center;
+          text-align: left;
 
           .badge {
             margin-right: 1em;
@@ -101,6 +107,7 @@
         .score {
           font-size: 1.3rem;
           font-weight: 500;
+          text-align: right;
         }
 
         &:nth-child(even) {
