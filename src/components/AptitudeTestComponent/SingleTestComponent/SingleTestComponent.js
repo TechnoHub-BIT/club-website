@@ -4,17 +4,17 @@ import "./SingleTestComponent.css";
 import Moment from "moment";
 import { useAuth } from "../../../contexts/AuthContext";
 import useCountDown from "react-countdown-hook";
-import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 
 const SingleTest = (props) => {
   const [tests, setTest] = useState([]);
+
+  const [quesLength, setLength] = useState();
 
   const ref = db.collection("Tests").doc(props.match.params.id);
   ref.get().then((doc) => {
     if (doc.exists) {
       const Test = doc.data();
-      const bol = doc.data().questions.length;
-      console.log(bol);
+      setLength(doc.data().questions.length);
       setTest({
         id: doc.id,
         title: Test.title,
@@ -124,35 +124,6 @@ const SingleTest = (props) => {
   const branch = profiles.branch;
   const email = profiles.email;
   const title = tests.title;
-
-  const onSubmit = (e) => {
-    {
-      e.preventDefault();
-      db.collection("Test-Results")
-        .add({
-          fullname: fullname,
-          testname: title,
-          email: email,
-          // timeleft: timeLeft,
-          branch: branch,
-          // score: score,
-        })
-        .then(() => {
-          alert("Test submited!");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    }
-  };
-  const [questions, setQuestion] = useState([
-    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
-  ]);
-
-  const fullname = profiles.fullname;
-  const branch = profiles.branch;
-  const email = profiles.email;
-  const title = tests.title;
   const onSubmit = (e) => {
     {
       e.preventDefault();
@@ -184,15 +155,38 @@ const SingleTest = (props) => {
     },
   ]);
 
-  const closeModal = () => {
-    showModal("");
-  };
+  // const [score, setScore] = useState("")
+  // if(userAnswer == correctAnswer){
+  //     setScore({
+  //            score :score+1
+  //     })
+  // }
 
-  const [modal, showModal] = useState("");
+  const handleAnswer = (e, index) => {};
+  //   const { name, value } = e.target;
+  //   const list = [...questions];
+  //   list[index][name] = value;
+  //   setQuestion(list);
+  // };
+
+  //Question Button Navigations
+  const questionBtns = [];
+
+  for (let i = 0; i < quesLength; i++) {
+    questionBtns.push(
+      <button
+        type="button"
+        className="question"
+        onClick={() => sectionChanger("direct", i + 1)}
+        key={i}
+      >
+        {i + 1}
+      </button>
+    );
+  }
 
   return (
     <React.Fragment>
-      {modal}
       <div className="singleTestCont">
         <h1 className="title">
           {tests.title}
@@ -219,20 +213,18 @@ const SingleTest = (props) => {
                       <strong>Test Duration:</strong> {tests.duration} minutes.
                     </li>
                     <li>
+                      <strong>Total Questions:</strong> {quesLength}
+                    </li>
+                    <li>
                       <strong>Total Marks:</strong> {tests.totalmarks}.
                     </li>
                     <li>
-                      <strong>Marks for each Correct answer:</strong>{" "}
+                      <strong>Marks for each Correct answer:</strong>
                       {tests.positivemarks}.
                     </li>
                     <li>
                       <strong>Marks for each Wrong answer:</strong> -
                       {tests.negativemarks}
-                    </li>
-                    <li>
-                      <strong>Total questions:</strong> {}
-                      <strong>total questions</strong> :
-                      {/* {tests.questions.length} */}
                     </li>
                   </ul>
                 </div>
@@ -254,9 +246,7 @@ const SingleTest = (props) => {
                 tests.questions.map((item, index) => {
                   return (
                     <section ques-no={index + 1} key={index}>
-                      <h3 className="smallTitle">
-                        Question No. {index + 1}/{questions.length}
-                      </h3>
+                      <h3 className="smallTitle">Question No. {index + 1}</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
                         <button
@@ -348,14 +338,26 @@ const SingleTest = (props) => {
                             &nbsp;&nbsp;Previous
                           </button>
                         )}
-                        <button
-                          type="button"
-                          className="nextBtn"
-                          onClick={() => sectionChanger("next", index + 1)}
-                        >
-                          Save & Next&nbsp;&nbsp;
-                          <i className="fas fa-long-arrow-alt-right"></i>
-                        </button>
+                        {index === quesLength - 1 ? (
+                          <button
+                            type="button"
+                            className="nextBtn"
+                            disabled
+                            onClick={() => sectionChanger("next", index + 1)}
+                          >
+                            Save & Next&nbsp;&nbsp;
+                            <i className="fas fa-long-arrow-alt-right"></i>
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="nextBtn"
+                            onClick={() => sectionChanger("next", index + 1)}
+                          >
+                            Save & Next&nbsp;&nbsp;
+                            <i className="fas fa-long-arrow-alt-right"></i>
+                          </button>
+                        )}
                       </div>
                     </section>
                   );
@@ -366,36 +368,7 @@ const SingleTest = (props) => {
             <div className="timer">
               <p>Time left: {hours + ":" + minutes + ":" + seconds}</p>
             </div>
-            <div className="questionBtns">
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 1)}
-              >
-                1
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 2)}
-              >
-                2
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 3)}
-              >
-                3
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 4)}
-              >
-                4
-              </button>
-            </div>
+            <div className="questionBtns">{questionBtns}</div>
           </div>
         </div>
       </div>
