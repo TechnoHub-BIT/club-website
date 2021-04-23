@@ -79,6 +79,8 @@
 
               &:focus,
               &:not(:placeholder-shown) {
+                border-color: #191d34;
+
                 & ~ label {
                   top: 0;
                   left: 7px;

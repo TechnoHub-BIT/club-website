@@ -117,6 +117,14 @@
   opacity: 0;
 }
 
+.createTestCont .centreCard .createForm form .inputGroup .input input:focus, .createTestCont .centreCard .createForm form .inputGroup .input input:not(:placeholder-shown),
+.createTestCont .centreCard .createForm form .inputGroup .input select:focus,
+.createTestCont .centreCard .createForm form .inputGroup .input select:not(:placeholder-shown),
+.createTestCont .centreCard .createForm form .inputGroup .input textarea:focus,
+.createTestCont .centreCard .createForm form .inputGroup .input textarea:not(:placeholder-shown) {
+  border-color: #191d34;
+}
+
 .createTestCont .centreCard .createForm form .inputGroup .input input:focus ~ label, .createTestCont .centreCard .createForm form .inputGroup .input input:not(:placeholder-shown) ~ label,
 .createTestCont .centreCard .createForm form .inputGroup .input select:focus ~ label,
 .createTestCont .centreCard .createForm form .inputGroup .input select:not(:placeholder-shown) ~ label,

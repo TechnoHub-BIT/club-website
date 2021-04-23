@@ -120,7 +120,7 @@ const TestsList = () => {
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>
-                    <a href="#">
+                    <a href="/leaderboard">
                       <button type="button">
                         <i className="fas fa-trophy"></i>
                       </button>

@@ -3,6 +3,7 @@ import "./HeaderComponent.css";
 import HeaderButtons from "../HeaderButtons";
 import "./NavbarComponent.css";
 import { Link } from "react-router-dom";
+import logoWhite from "../../../img/logos/logowhite.png";
 
 class Header extends Component {
   constructor(props) {
@@ -13,12 +14,12 @@ class Header extends Component {
   state = {
     navListClasses: "navList",
     navOpen: false,
-  }
+  };
 
   toggleNav = () => {
     const toggleChange = !this.state.navOpen;
 
-    if(toggleChange)
+    if (toggleChange)
       this.setState({
         navListClasses: "navList open",
         navOpen: true,
@@ -28,8 +29,8 @@ class Header extends Component {
         navListClasses: "navList",
         navOpen: false,
       });
-  }
-  
+  };
+
   handleLogin(event) {
     this.toggleModal();
     alert(
@@ -49,16 +50,23 @@ class Header extends Component {
         <div className="header">
           <div className="navbarTop">
             <div className="hamburger" onClick={(e) => this.toggleNav(e)}>
-                <div className="line line1"></div>
-                <div className="line line2"></div>
-                <div className="line line3"></div>
+              <div className="line line1"></div>
+              <div className="line line2"></div>
+              <div className="line line3"></div>
             </div>
             <Link to="/">
-              <img src="./assets/images/logowhite.png" className="mobileNavLogo" alt="TechnoHub White Logo" />
+              <img
+                src={logoWhite}
+                className="mobileNavLogo"
+                alt="TechnoHub White Logo"
+              />
             </Link>
-            <ul className={ this.state.navListClasses } onClick={(e) => this.toggleNav(e)}>
+            <ul
+              className={this.state.navListClasses}
+              onClick={(e) => this.toggleNav(e)}
+            >
               <Link to="/">
-                <img src="./assets/images/logowhite.png" alt="TechnoHub White Logo" />
+                <img src={logoWhite} alt="TechnoHub White Logo" />
               </Link>
               <Link to="/blog">
                 <li>BLOG</li>
@@ -78,7 +86,7 @@ class Header extends Component {
               <Link to="/ourmembers">
                 <li>CLUB MEMBERS</li>
               </Link>
-              <a href="https://technoquiz.herokuapp.com" target="_blank" rel="noopener noreferrer">APTITUDE</a>
+              <Link to="/tests">APTITUDE</Link>
               <HeaderButtons />
             </ul>
           </div>
