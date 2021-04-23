@@ -4,8 +4,19 @@ import "./SingleTestComponent.css";
 import Moment from "moment";
 import { useAuth } from "../../../contexts/AuthContext";
 import useCountDown from "react-countdown-hook";
+import AlertModal from "../../AlertModalComponent/AlertModalComponent";
+import { useHistory } from "react-router-dom";
 
 const SingleTest = (props) => {
+  let history = useHistory();
+
+  //Modal
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const [tests, setTest] = useState([]);
 
   const [quesLength, setLength] = useState();
@@ -16,8 +27,7 @@ const SingleTest = (props) => {
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
-        setLength(doc.data().questions.length);
-        setDuration(doc.data().duration);
+        setLength(Test.questions.length);
         setTest({
           id: doc.id,
           title: Test.title,
@@ -33,8 +43,6 @@ const SingleTest = (props) => {
       } else console.log("No such test found!");
     });
   }, []);
-
-  console.log(duration);
 
   //Form Start Check
   const [form, setForm] = useState(false);
@@ -83,33 +91,6 @@ const SingleTest = (props) => {
     });
   };
 
-  //Countdown Timer
-  const initialTime = duration * 60 * 1000;
-  const interval = 1000;
-
-  const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
-
-  let hours = parseInt(timeLeft / 3600000);
-  let minutes = parseInt(timeLeft / 60000);
-  let seconds = parseInt(timeLeft / 1000);
-
-  if (minutes === 60) minutes = 0;
-
-  useEffect(() => {
-    start();
-    pause();
-  }, []);
-
-  if (timeLeft === 0 && form) {
-    setForm(false);
-  }
-
-  const restart = React.useCallback(() => {
-    setForm(true);
-    const newTime = duration * 60 * 1000;
-    start(newTime);
-  }, []);
-
   //Current User Details
   const { currentUser, logout } = useAuth();
 
@@ -130,26 +111,121 @@ const SingleTest = (props) => {
   const branch = profiles.branch;
   const email = profiles.email;
   const title = tests.title;
+
+  //Submit Function
+  const confirmSubmit = () => {
+    pause();
+    db.collection("Test-Results")
+      .add({
+        fullname: fullname,
+        testname: title,
+        email: email,
+        // timeleft: timeLeft,
+        branch: branch,
+        // score: score,
+      })
+      .then(() => {
+        showModal(
+          <AlertModal
+            message="Your test has been submitted"
+            icon="successful"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  //Countdown Timer
+  const initialTime = 50 * 60 * 1000;
+  const interval = 1000;
+
+  const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
+
+  let hours = parseInt(timeLeft / 3600000);
+  let minutes = parseInt(timeLeft / 60000);
+  let seconds = parseInt(timeLeft / 1000) % 60;
+
+  if (minutes === 60) minutes = 0;
+
+  let hoursDisplay = hours;
+  let minutesDisplay = minutes;
+  let secondsDisplay = seconds;
+
+  if (hours <= 9) hoursDisplay = "0" + hours;
+  if (minutes <= 9) minutesDisplay = "0" + minutes;
+  if (seconds <= 9) secondsDisplay = "0" + seconds;
+
+  useEffect(() => {
+    start();
+    pause();
+  }, []);
+
+  if (timeLeft === 0 && form) {
+    setForm(false);
+    showModal(
+      <AlertModal
+        message="Time's Up!"
+        icon="exclamation"
+        leftBtn="Okay"
+        action={confirmSubmit}
+        close={closeModal}
+      />
+    );
+  }
+
+  const restart = React.useCallback(() => {
+    setForm(true);
+    const newTime = 0.2 * 60 * 1000;
+    start(newTime);
+  }, []);
+
+  //Start Test Function
+  const startTest = () => {
+    closeModal();
+    restart();
+    sectionChanger("start", 0);
+  };
+
   const onSubmit = (e) => {
-    {
-      e.preventDefault();
-      db.collection("Test-Results")
-        .add({
-          fullname: fullname,
-          testname: title,
-          email: email,
-          // timeleft: timeLeft,
-          branch: branch,
-          // score: score,
-        })
-        .then(() => {
-          alert("Test submited!");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
+    e.preventDefault();
+
+    if (!form) {
+      showModal(
+        <AlertModal
+          message="Start the test before submitting it!"
+          icon="exclamation"
+          leftBtn="Start Test"
+          rightBtn="Cancel"
+          action={startTest}
+          close={closeModal}
+        />
+      );
+    } else {
+      if (timeLeft > 0) {
+        showModal(
+          <AlertModal
+            message="Are you sure you want to submit the Test?"
+            icon="question"
+            leftBtn="Submit"
+            rightBtn="Cancel"
+            action={confirmSubmit}
+            close={closeModal}
+          />
+        );
+      }
     }
   };
+
   const [questions, setQuestion] = useState([
     {
       question: "",
@@ -193,6 +269,7 @@ const SingleTest = (props) => {
 
   return (
     <React.Fragment>
+      {modal}
       <div className="singleTestCont">
         <h1 className="title">
           {tests.title}
@@ -239,8 +316,7 @@ const SingleTest = (props) => {
                     type="button"
                     className="startBtn"
                     onClick={() => {
-                      restart();
-                      sectionChanger("start", 0);
+                      startTest();
                     }}
                   >
                     Start Test&nbsp;&nbsp;
@@ -372,7 +448,11 @@ const SingleTest = (props) => {
           </div>
           <div className="right">
             <div className="timer">
-              <p>Time left: {hours + ":" + minutes + ":" + seconds}</p>
+              <p>
+                Time left
+                <br />
+                {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
+              </p>
             </div>
             <div className="questionBtns">{questionBtns}</div>
           </div>

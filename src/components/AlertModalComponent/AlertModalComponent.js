@@ -3,6 +3,8 @@ import "./AlertModalComponent.css";
 import Successful from "../../img/successful.png";
 import Failed from "../../img/failed.png";
 import Delete from "../../img/delete.png";
+import Question from "../../img/question.png";
+import Exclamation from "../../img/exclamation.png";
 
 class AlertModalComponent extends Component {
   state = {
@@ -23,6 +25,8 @@ class AlertModalComponent extends Component {
     if (icon === "successful") icon = Successful;
     else if (icon === "failed") icon = Failed;
     else if (icon === "delete") icon = Delete;
+    else if (icon === "question") icon = Question;
+    else if (icon === "exclamation") icon = Exclamation;
     else icon = null;
 
     return (
@@ -36,22 +40,26 @@ class AlertModalComponent extends Component {
                 <button
                   type="button"
                   onClick={() => {
+                    this.props.close();
                     this.props.action(this.props.actionParam);
                     if (this.props.reload != null) window.location.reload();
+                    this.closeModal();
                   }}
                 >
                   {this.props.leftBtn}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    this.closeModal();
-                    this.props.close();
-                  }}
-                  style={{ marginLeft: "1em" }}
-                >
-                  {this.props.rightBtn}
-                </button>
+                {this.props.rightBtn != null ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.closeModal();
+                      this.props.close();
+                    }}
+                    style={{ marginLeft: "1em" }}
+                  >
+                    {this.props.rightBtn}
+                  </button>
+                ) : null}
               </div>
             </div>
           </div>
