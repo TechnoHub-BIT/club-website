@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import "./SingleTestComponent.css";
 import Moment from "moment";
+import { useAuth } from '../../../contexts/AuthContext'
 import useCountDown from "react-countdown-hook";
 
 const SingleTest = (props) => {
@@ -101,12 +102,78 @@ const SingleTest = (props) => {
     start(newTime);
   }, []);
 
+
+
+  const {currentUser, logout} = useAuth();
+
+    const [profiles, setProfiles] = useState([]);
+
+    useEffect(() => {
+        if(currentUser) {
+            db.collection("members")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+                const data = doc.data();
+                setProfiles(data);
+            });
+        }
+    }, [currentUser]);
+
+    const fullname = profiles.fullname;
+    const branch = profiles.branch;
+    const email = profiles.email;
+    const title = tests.title
+    const onSubmit = (e) => {{
+        e.preventDefault();
+        db.collection("Test-Results")
+          .add({
+            fullname: fullname,
+            testname:title,
+            email: email,
+            // timeleft: timeLeft,
+            branch: branch,
+            // score: score,
+        
+          })
+          .then(() => {
+            alert("Test submited!");
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      } 
+    };
+    const [questions, setQuestion] = useState([
+      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+
+    
+    ]);
+
+    // const [score, setScore] = useState("")
+    // if(userAnswer == correctAnswer){
+    //     setScore({
+    //            score :score+1
+    //     })
+    // }
+
+    const handleAnswer = (e, index) => {
+
+    }
+    //   const { name, value } = e.target;
+    //   const list = [...questions];
+    //   list[index][name] = value;
+    //   setQuestion(list);
+    // };
+    
   return (
     <React.Fragment>
       <div className="singleTestCont">
         <h1 className="title">
-          {tests.title}
-          <button type="button">
+          {tests.title} <br></br>
+          welcome{profiles.fullname}<br></br>
+          {profiles.email}<br></br>
+          {profiles.branch}
+          <button type="button"  onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>
         </h1>
@@ -137,7 +204,11 @@ const SingleTest = (props) => {
                     </li>
                     <li>
                       <strong>Negative Marks for each Wrong answer:</strong> -
-                      {tests.negativemarks}.
+                      {tests.negativemarks}
+                    </li>
+                    <li>
+                      <strong>total questions</strong> :
+                      {questions.length}
                     </li>
                   </ul>
                 </div>
@@ -159,7 +230,7 @@ const SingleTest = (props) => {
                 tests.questions.map((item, index) => {
                   return (
                     <section ques-no={index + 1} key={index}>
-                      <h3 className="smallTitle">Question No. {index + 1}</h3>
+                      <h3 className="smallTitle">Question No. {index + 1}/{questions.length}</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
                         <button
@@ -171,7 +242,7 @@ const SingleTest = (props) => {
                       </div>
                       <div className="options">
                         <input
-                          type="radio"
+                          type="radio" 
                           name={"option" + (index + 1)}
                           value="Unanswered"
                           defaultChecked
@@ -179,7 +250,7 @@ const SingleTest = (props) => {
                         />
                         <div>
                           <input
-                            type="radio"
+                            type="radio" onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optiona" + (index + 1)}
                             value={item.op4}
@@ -191,7 +262,7 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio"
+                            type="radio" onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optionb" + (index + 1)}
                             value={item.op4}
@@ -203,7 +274,7 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio"
+                            type="radio" onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optionc" + (index + 1)}
                             value={item.op4}
@@ -215,7 +286,7 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio"
+                            type="radio" onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optiond" + (index + 1)}
                             value={item.op4}
