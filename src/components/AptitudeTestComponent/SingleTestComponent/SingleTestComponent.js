@@ -123,6 +123,18 @@ const SingleTest = (props) => {
         score += parseInt(tests.positivemarks, 10);
       else score -= parseInt(tests.negativemarks, 10);
     }
+    // useEffect(() => {
+    //   if(currentUser) {
+          db.collection("members")
+          .doc(currentUser.uid)
+          .collection("tests").doc(title)
+      .set({
+        testname: title,
+        timeleft: timeLeft,
+        score: score
+      })
+      // }
+  // }, [currentUser]);
 
     db.collection("Tests")
       .doc(props.match.params.id)
@@ -136,6 +148,7 @@ const SingleTest = (props) => {
         score: score
       })
       .then(() => {
+        console.log(currentUser.uid)
         showModal(
           <AlertModal
             message="Your test has been submitted"
@@ -201,23 +214,23 @@ const SingleTest = (props) => {
   }, []);
 
 
-  const [result, setResult] = useState([]);
-  useEffect(() => {
-    db.collection('Tests').doc(props.match.params.id).collection('results').get()
-      .then(response => {
-        const fetchResults = [];
-        response.forEach(document => {
-          const fetchResult = {
-            id: document.id,
-            ...document.data()
-          };
-          fetchResults.push(fetchResult);
-        });
-        setResult(fetchResults);
-      })
+  // const [result, setResult] = useState([]);
+  // useEffect(() => {
+  //   db.collection('Tests').doc(props.match.params.id).collection('results').get()
+  //     .then(response => {
+  //       const fetchResults = [];
+  //       response.forEach(document => {
+  //         const fetchResult = {
+  //           id: document.id,
+  //           ...document.data()
+  //         };
+  //         fetchResults.push(fetchResult);
+  //       });
+  //       setResult(fetchResults);
+  //     })
     
   
-   }, []);
+  //  }, []);
 
 
   const startTest = () => {

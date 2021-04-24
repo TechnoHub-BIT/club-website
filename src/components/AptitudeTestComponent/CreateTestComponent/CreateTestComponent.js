@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./CreateTestComponent.css";
 import { db } from "../../../firebase";
+import { useAuth } from "../../../contexts/AuthContext";
+
 
 const CreateTest = () => {
   const [title, setTitle] = useState("");
@@ -70,6 +72,21 @@ const CreateTest = () => {
     list.splice(index, 1);
     setQuestion(list);
   };
+
+  const { currentUser, logout } = useAuth();
+
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
 
   const firestoremaisave = (e) => {
     if (
