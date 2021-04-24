@@ -124,7 +124,9 @@ const SingleTest = (props) => {
       else score -= parseInt(tests.negativemarks, 10);
     }
 
-    db.collection("Test-Results")
+    db.collection("Tests")
+      .doc(props.match.params.id)
+      .collection("results")
       .add({
         fullname: fullname,
         testname: title,
