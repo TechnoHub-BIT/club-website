@@ -131,6 +131,7 @@ const SingleTest = (props) => {
       .set({
         testname: title,
         timeleft: timeLeft,
+        answers:answers,
         score: score
       })
       // }
