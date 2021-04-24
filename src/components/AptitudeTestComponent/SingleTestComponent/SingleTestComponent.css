@@ -93,6 +93,36 @@
   background-color: #191d34;
 }
 
+.singleTestCont .centreCard .left section .hiddenRadio {
+  position: relative;
+  margin: 1em 0 1.5em;
+}
+
+.singleTestCont .centreCard .left section .hiddenRadio::after {
+  position: absolute;
+  content: "Clear Selection";
+  top: -100%;
+  left: -50%;
+  white-space: nowrap;
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 0.8rem;
+  margin-top: 1em;
+  color: #191d34;
+  border: 2px solid #191d34;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  z-index: 1;
+}
+
+.singleTestCont .centreCard .left section .hiddenRadio:hover::after {
+  color: #fff;
+  background-color: #191d34;
+}
+
 .singleTestCont .centreCard .left section .options {
   margin-top: 1.5em;
   display: -ms-grid;

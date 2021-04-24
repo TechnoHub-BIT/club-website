@@ -21,6 +21,7 @@ const SingleTest = (props) => {
 
   const [quesLength, setLength] = useState();
   const [duration, setDuration] = useState();
+  const [answers, setAnswers] = useState([]);
 
   const ref = db.collection("Tests").doc(props.match.params.id);
   useEffect(() => {
@@ -43,6 +44,15 @@ const SingleTest = (props) => {
       } else console.log("No such test found!");
     });
   }, []);
+
+  //Store Answers
+
+  const handleAnswer = (e, index, option) => {
+    if (option === "Unanswered") answers[index] = null;
+    else if (tests.questions[index].correctAnswer === option)
+      answers[index] = "Correct";
+    else answers[index] = "Incorrect";
+  };
 
   //Form Start Check
   const [form, setForm] = useState(false);
@@ -79,18 +89,6 @@ const SingleTest = (props) => {
     }
   };
 
-  //CLear Selection Button
-  const clearSelection = (name) => {
-    const radioBtns = document.querySelectorAll(
-      "input[type='radio'][name='" + name + "']"
-    );
-
-    radioBtns.forEach((radioBtn) => {
-      if (radioBtn.value === "Unanswered") radioBtn.checked = true;
-      else radioBtn.checked = false;
-    });
-  };
-
   //Current User Details
   const { currentUser, logout } = useAuth();
 
@@ -112,17 +110,28 @@ const SingleTest = (props) => {
   const email = profiles.email;
   const title = tests.title;
 
+  let score = 0;
+
   //Submit Function
   const confirmSubmit = () => {
     pause();
+
+    //Caluclate Score
+    for (let i = 0; i < answers.length; i++) {
+      if (answers[i] == null) score += 0;
+      else if (answers[i] === "Correct")
+        score += parseInt(tests.positivemarks, 10);
+      else score -= parseInt(tests.negativemarks, 10);
+    }
+
     db.collection("Test-Results")
       .add({
         fullname: fullname,
         testname: title,
         email: email,
-        // timeleft: timeLeft,
+        timeleft: timeLeft,
         branch: branch,
-        // score: score,
+        score: score,
       })
       .then(() => {
         showModal(
@@ -146,7 +155,7 @@ const SingleTest = (props) => {
   };
 
   //Countdown Timer
-  const initialTime = 50 * 60 * 1000;
+  const initialTime = 60 * 60 * 1000;
   const interval = 1000;
 
   const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
@@ -170,7 +179,7 @@ const SingleTest = (props) => {
     pause();
   }, []);
 
-  if (timeLeft === 0 && form) {
+  if (hours === 0 && minutes === 0 && seconds === 0 && form) {
     setForm(false);
     showModal(
       <AlertModal
@@ -185,7 +194,7 @@ const SingleTest = (props) => {
 
   const restart = React.useCallback(() => {
     setForm(true);
-    const newTime = 0.2 * 60 * 1000;
+    const newTime = 60 * 60 * 1000;
     start(newTime);
   }, []);
 
@@ -225,31 +234,6 @@ const SingleTest = (props) => {
       }
     }
   };
-
-  const [questions, setQuestion] = useState([
-    {
-      question: "",
-      op1: "",
-      op2: "",
-      op3: "",
-      op4: "",
-      correctAnswer: "",
-    },
-  ]);
-
-  // const [score, setScore] = useState("")
-  // if(userAnswer == correctAnswer){
-  //     setScore({
-  //            score :score+1
-  //     })
-  // }
-
-  const handleAnswer = (e, index) => {};
-  //   const { name, value } = e.target;
-  //   const list = [...questions];
-  //   list[index][name] = value;
-  //   setQuestion(list);
-  // };
 
   //Question Button Navigations
   const questionBtns = [];
@@ -309,6 +293,12 @@ const SingleTest = (props) => {
                       <strong>Marks for each Wrong answer:</strong> -
                       {tests.negativemarks}
                     </li>
+                    <li>
+                      <strong>
+                        Reloading or closing the tab will end the test
+                        immediately.
+                      </strong>
+                    </li>
                   </ul>
                 </div>
                 <div className="navigation">
@@ -330,29 +320,22 @@ const SingleTest = (props) => {
                     <section ques-no={index + 1} key={index}>
                       <h3 className="smallTitle">Question No. {index + 1}</h3>
                       <div className="question">{item.question}</div>
-                      <div className="clearSelection">
-                        <button
-                          type="button"
-                          onClick={() => clearSelection("option" + (index + 1))}
-                        >
-                          Clear Selection
-                        </button>
-                      </div>
+                      <input
+                        type="radio"
+                        name={"option" + (index + 1)}
+                        onChange={(e) => handleAnswer(e, index, "Unanswered")}
+                        value="Unanswered"
+                        className="hiddenRadio"
+                        defaultChecked
+                      />
                       <div className="options">
-                        <input
-                          type="radio"
-                          name={"option" + (index + 1)}
-                          value="Unanswered"
-                          defaultChecked
-                          hidden
-                        />
                         <div>
                           <input
                             type="radio"
-                            onChange={handleAnswer}
+                            onChange={(e) => handleAnswer(e, index, "A")}
                             name={"option" + (index + 1)}
                             id={"optiona" + (index + 1)}
-                            value={item.op4}
+                            value={item.op1}
                           />
                           &nbsp;&nbsp; (A){" "}
                           <label htmlFor={"optiona" + (index + 1)}>
@@ -362,10 +345,10 @@ const SingleTest = (props) => {
                         <div>
                           <input
                             type="radio"
-                            onChange={handleAnswer}
+                            onChange={(e) => handleAnswer(e, index, "B")}
                             name={"option" + (index + 1)}
                             id={"optionb" + (index + 1)}
-                            value={item.op4}
+                            value={item.op2}
                           />
                           &nbsp;&nbsp; (B){" "}
                           <label htmlFor={"optionb" + (index + 1)}>
@@ -375,10 +358,10 @@ const SingleTest = (props) => {
                         <div>
                           <input
                             type="radio"
-                            onChange={handleAnswer}
+                            onChange={(e) => handleAnswer(e, index, "C")}
                             name={"option" + (index + 1)}
                             id={"optionc" + (index + 1)}
-                            value={item.op4}
+                            value={item.op3}
                           />
                           &nbsp;&nbsp; (C){" "}
                           <label htmlFor={"optionc" + (index + 1)}>
@@ -388,7 +371,7 @@ const SingleTest = (props) => {
                         <div>
                           <input
                             type="radio"
-                            onChange={handleAnswer}
+                            onChange={(e) => handleAnswer(e, index, "D")}
                             name={"option" + (index + 1)}
                             id={"optiond" + (index + 1)}
                             value={item.op4}
@@ -461,4 +444,5 @@ const SingleTest = (props) => {
     </React.Fragment>
   );
 };
+
 export default SingleTest;
