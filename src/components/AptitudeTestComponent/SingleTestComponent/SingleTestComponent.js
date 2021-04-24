@@ -186,7 +186,7 @@ const SingleTest = (props) => {
   };
 
   //Countdown Timer
-  const initialTime = 60 * 60 * 1000;
+  const initialTime = parseInt(tests.duration) * 60 * 1000;
   const interval = 1000;
 
   const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
@@ -225,7 +225,7 @@ const SingleTest = (props) => {
 
   const restart = React.useCallback(() => {
     setForm(true);
-    const newTime = 60 * 60 * 1000;
+    const newTime = parseInt(tests.duration) * 60 * 1000;
     start(newTime);
   }, []);
 
