@@ -1,8 +1,7 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./CreateTestComponent.css";
 import { db } from "../../../firebase";
 import { useAuth } from "../../../contexts/AuthContext";
-
 
 const CreateTest = () => {
   const [title, setTitle] = useState("");
@@ -107,7 +106,7 @@ const CreateTest = () => {
           title: title,
           duration: duration,
           totalmarks: totalmarks,
-          teststatus:teststatus,
+          teststatus: teststatus,
           testdate: testdate,
           starttime: starttime,
           endtime: endtime,
@@ -167,7 +166,13 @@ const CreateTest = () => {
                   <label htmlFor="duration">Test Duration(In mins.)*</label>
                 </div>
                 <div className="input">
-                  <select name="status" id="status"   onChange={teststatus} value={status} required>
+                  <select
+                    name="status"
+                    id="status"
+                    onChange={teststatus}
+                    value={status}
+                    required
+                  >
                     <option value="">--Test Status--</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
