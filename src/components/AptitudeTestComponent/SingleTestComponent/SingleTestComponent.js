@@ -145,8 +145,11 @@ const SingleTest = (props) => {
       .set({
         testname: title,
         timeleft: timeLeft,
+        answers: answers,
         score: score,
       });
+    // }
+    // }, [currentUser]);
 
     db.collection("Tests")
       .doc(props.match.params.id)
