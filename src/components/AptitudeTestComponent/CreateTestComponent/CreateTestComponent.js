@@ -167,7 +167,7 @@ const CreateTest = () => {
                   <label htmlFor="duration">Test Duration(In mins.)*</label>
                 </div>
                 <div className="input">
-                  <select name="status" id="status"   onChange={teststatus} value={status} required>
+                  <select name="status" id="status" onChange={status} value={teststatus} required>
                     <option value="">--Test Status--</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
