@@ -111,7 +111,7 @@ class Main extends Component {
             <Route exact path="/edittest/:id" component={EditTest} />
             <PrivateRoute exact path="/createtest" component={CreateTest} />
             <PrivateRoute exact path="/tests" component={TestsList} />
-            <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
+            <PrivateRoute exact path="/leaderboard/:id" component={Leaderboard} />
 
             <Footer />
             {/* </Switch> */}

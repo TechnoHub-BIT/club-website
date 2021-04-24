@@ -133,7 +133,7 @@ const SingleTest = (props) => {
         email: email,
         timeleft: timeLeft,
         branch: branch,
-        score: score,
+        score: score
       })
       .then(() => {
         showModal(

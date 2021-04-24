@@ -3,6 +3,7 @@ import { db } from "../../../firebase";
 import "./TestsListComponent.css";
 import Moment from "moment";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const TestsList = () => {
   const [tests, setTest] = useState([]);
@@ -54,6 +55,22 @@ const TestsList = () => {
       />
     );
   };
+
+    //Current User Details
+    const { currentUser, logout } = useAuth();
+
+    const [profiles, setProfiles] = useState([]);
+  
+    useEffect(() => {
+      if (currentUser) {
+        db.collection("members")
+          .doc(currentUser.uid)
+          .onSnapshot(function (doc) {
+            const data = doc.data();
+            setProfiles(data);
+          });
+      }
+    }, [currentUser]);
 
   return (
     <React.Fragment>
@@ -120,7 +137,7 @@ const TestsList = () => {
                         <i className="far fa-trash-alt"></i>
                       </button>
                     </a>
-                    <a href="/leaderboard">
+                    <a href={"/leaderboard/" + test.id}>
                       <button type="button">
                         <i className="fas fa-trophy"></i>
                       </button>
