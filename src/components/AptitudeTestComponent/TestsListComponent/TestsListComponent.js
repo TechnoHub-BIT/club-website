@@ -115,6 +115,9 @@ const TestsList = () => {
                     <div className="date">
                       {Moment(test.testdate).format("ll")}
                     </div>
+                    <div className="date">
+                    {test.teststatus}
+                    </div>
                   </div>
                   <div className="duration">{test.duration} mins.</div>
                   <div className="buttons">

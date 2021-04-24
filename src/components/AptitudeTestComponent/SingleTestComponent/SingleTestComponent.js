@@ -40,6 +40,7 @@ const SingleTest = (props) => {
           positivemarks: Test.positivemarks,
           negativemarks: Test.negativemarks,
           questions: Test.questions,
+          teststatus:Test.teststatus
         });
       } else console.log("No such test found!");
     });
@@ -282,7 +283,8 @@ const SingleTest = (props) => {
       {modal}
       <div className="singleTestCont">
         <h1 className="title">
-          {tests.title}
+          {tests.title}<br></br>
+         teststatus: {tests.teststatus}
           <button type="button" onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>

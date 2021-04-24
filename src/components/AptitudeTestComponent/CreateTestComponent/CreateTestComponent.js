@@ -42,6 +42,10 @@ const CreateTest = () => {
   const nMarks = (e) => {
     setNegativemarks(e.target.value);
   };
+  const [teststatus, setTestStatus] = useState("");
+  const status = (e) => {
+    setTestStatus(e.target.value);
+  };
 
   const [questions, setQuestion] = useState([
     { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
@@ -76,6 +80,7 @@ const CreateTest = () => {
       starttime !== "" &&
       endtime !== "" &&
       negativemarks !== "" &&
+      teststatus !== "" &&
       positivemarks !== ""
     ) {
       // && question !== "" || op1 !== "" || op2 !== "" || op3 !=="" || op4 !== "" || correctAnswer !== "")
@@ -85,6 +90,7 @@ const CreateTest = () => {
           title: title,
           duration: duration,
           totalmarks: totalmarks,
+          teststatus:teststatus,
           testdate: testdate,
           starttime: starttime,
           endtime: endtime,
@@ -144,7 +150,7 @@ const CreateTest = () => {
                   <label htmlFor="duration">Test Duration(In mins.)*</label>
                 </div>
                 <div className="input">
-                  <select name="status" id="status" required>
+                  <select name="status" id="status"   onChange={teststatus} value={status} required>
                     <option value="">--Test Status--</option>
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
