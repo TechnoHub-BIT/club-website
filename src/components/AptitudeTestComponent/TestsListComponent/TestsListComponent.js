@@ -112,7 +112,6 @@ const TestsList = () => {
                       </button>
                     </a>
                     <a>
-                      {/* deleteBlog(test.id) */}
                       <button
                         onClick={() => deleteBlogModal(test.id)}
                         type="button"
