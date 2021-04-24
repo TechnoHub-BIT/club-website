@@ -126,13 +126,14 @@ const SingleTest = (props) => {
 
     db.collection("Tests")
       .doc(props.match.params.id)
-      .collection("results")
-      .add({
+      .collection("results").doc(fullname)
+      .set({
         fullname: fullname,
         testname: title,
         email: email,
         timeleft: timeLeft,
         branch: branch,
+        givenTest: "True",
         score: score
       })
       .then(() => {
@@ -200,12 +201,37 @@ const SingleTest = (props) => {
     start(newTime);
   }, []);
 
+
+  const [result, setResult] = useState([]);
+  useEffect(() => {
+    db.collection('Tests').doc(props.match.params.id).collection('results').get()
+      .then(response => {
+        const fetchResults = [];
+        response.forEach(document => {
+          const fetchResult = {
+            id: document.id,
+            ...document.data()
+          };
+          fetchResults.push(fetchResult);
+        });
+        setResult(fetchResults);
+      })
+    
+  
+   }, []);
+
   //Start Test Function
+  // const checkUser
+  // if(result.givenTest === "True"){
   const startTest = () => {
     closeModal();
     restart();
     sectionChanger("start", 0);
   };
+// }
+// else{
+//   alert("you have already given the test")
+// }
 
   const onSubmit = (e) => {
     e.preventDefault();
