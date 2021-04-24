@@ -56,21 +56,21 @@ const TestsList = () => {
     );
   };
 
-    //Current User Details
-    const { currentUser, logout } = useAuth();
+  //Current User Details
+  const { currentUser, logout } = useAuth();
 
-    const [profiles, setProfiles] = useState([]);
-  
-    useEffect(() => {
-      if (currentUser) {
-        db.collection("members")
-          .doc(currentUser.uid)
-          .onSnapshot(function (doc) {
-            const data = doc.data();
-            setProfiles(data);
-          });
-      }
-    }, [currentUser]);
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
 
   return (
     <React.Fragment>
@@ -129,7 +129,6 @@ const TestsList = () => {
                       </button>
                     </a>
                     <a>
-                      {/* deleteBlog(test.id) */}
                       <button
                         onClick={() => deleteBlogModal(test.id)}
                         type="button"

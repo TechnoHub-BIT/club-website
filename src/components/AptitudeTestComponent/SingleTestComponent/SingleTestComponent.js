@@ -46,7 +46,6 @@ const SingleTest = (props) => {
   }, []);
 
   //Store Answers
-
   const handleAnswer = (e, index, option) => {
     if (option === "Unanswered") answers[index] = null;
     else if (tests.questions[index].correctAnswer === option)
