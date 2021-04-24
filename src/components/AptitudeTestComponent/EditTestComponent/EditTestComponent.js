@@ -243,7 +243,7 @@ const EditTest = (props) => {
               <div className="createForm">
                 <form>
                   <h3 className="smallTitle">Basic Test Details</h3>
-                  <div className="inputGroup twoInputs">
+                  <div className="inputGroup threeInputs">
                     <div className="input">
                       <input
                         type="text"
@@ -267,6 +267,13 @@ const EditTest = (props) => {
                         required
                       />
                       <label htmlFor="duration">Test Duration(In mins.)*</label>
+                    </div>
+                    <div className="input">
+                      <select name="status" id="status" required>
+                        <option value="">--Test Status--</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                      </select>
                     </div>
                   </div>
                   <div className="inputGroup threeInputs">
