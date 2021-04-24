@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const EditTest = (props) => {
   const [tests, setTest] = useState([""]);
@@ -23,6 +24,21 @@ const EditTest = (props) => {
       console.log("No such test found!");
     }
   });
+
+  const { currentUser, logout } = useAuth();
+
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     const fetchquestions = async () => {
