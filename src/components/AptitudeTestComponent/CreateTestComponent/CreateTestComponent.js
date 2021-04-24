@@ -44,8 +44,8 @@ const CreateTest = () => {
   };
 
   const [questions, setQuestion] = useState([
-    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" }],
-  );
+    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+  ]);
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
@@ -90,7 +90,7 @@ const CreateTest = () => {
           endtime: endtime,
           positivemarks: positivemarks,
           negativemarks: negativemarks,
-          questions: questions
+          questions: questions,
         })
         .then(() => {
           alert("Test created!");
@@ -118,7 +118,7 @@ const CreateTest = () => {
           <div className="createForm">
             <form>
               <h3 className="smallTitle">Basic Test Details</h3>
-              <div className="inputGroup twoInputs">
+              <div className="inputGroup threeInputs">
                 <div className="input">
                   <input
                     type="text"
@@ -142,6 +142,13 @@ const CreateTest = () => {
                     required
                   />
                   <label htmlFor="duration">Test Duration(In mins.)*</label>
+                </div>
+                <div className="input">
+                  <select name="status" id="status" required>
+                    <option value="">--Test Status--</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
                 </div>
               </div>
               <div className="inputGroup threeInputs">
@@ -223,101 +230,102 @@ const CreateTest = () => {
               </div>
             </form>
             <form>
-              { questions && questions.map((create, index, val) => (
-                <div>
-                  <h3 className="smallTitle">
-                    Question No. {index + 1} Details
-                  </h3>
-                  <div class="inputGroup twoInputs" key={index}>
-                    <div className="input">
-                      <input
-                        type="text"
-                        name="question"
-                        id={"question" + index}
-                        value={create.question}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Question"
-                      />
-                      <label htmlFor={"question" + index}>Question</label>
+              {questions &&
+                questions.map((create, index, val) => (
+                  <div>
+                    <h3 className="smallTitle">
+                      Question No. {index + 1} Details
+                    </h3>
+                    <div class="inputGroup twoInputs" key={index}>
+                      <div className="input">
+                        <input
+                          type="text"
+                          name="question"
+                          id={"question" + index}
+                          value={create.question}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Question"
+                        />
+                        <label htmlFor={"question" + index}>Question</label>
+                      </div>
+                      <div className="input">
+                        <select
+                          name="correctAnswer"
+                          value={create.correctAnswer}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Correct Option"
+                        >
+                          <option value="">--Select Correct Option--</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                        </select>
+                      </div>
                     </div>
-                    <div className="input">
-                      <select
-                        name="correctAnswer"
-                        value={create.correctAnswer}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Correct Option"
+                    <div className="inputGroup twoInputs">
+                      <div className="input">
+                        <input
+                          type="text"
+                          name="op1"
+                          id={"optiona" + index}
+                          value={create.op1}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Option A"
+                        />
+                        <label htmlFor={"optiona" + index}>Option A</label>
+                      </div>
+                      <div className="input">
+                        <input
+                          type="text"
+                          name="op2"
+                          id={"optionb" + index}
+                          value={create.op2}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Option B"
+                        />
+                        <label htmlFor={"optionb" + index}>Option B</label>
+                      </div>
+                      <div className="input">
+                        <input
+                          type="text"
+                          name="op3"
+                          id={"optionc" + index}
+                          value={create.op3}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Option C"
+                        />
+                        <label htmlFor={"optionc" + index}>Option C</label>
+                      </div>
+                      <div className="input">
+                        <input
+                          type="text"
+                          name="op4"
+                          id={"optiond" + index}
+                          value={create.op4}
+                          onChange={(e) => handleChange(e, index)}
+                          placeholder="Option D"
+                        />
+                        <label htmlFor={"optiond" + index}>Option D</label>
+                      </div>
+                      <button
+                        type="button"
+                        className="addBtn"
+                        onClick={() => addMore(create)}
                       >
-                        <option value="">--Select Correct Option--</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                      </select>
+                        <i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question
+                      </button>
+                      <button
+                        type="button"
+                        className="cancelBtn"
+                        onClick={() => handleRemoveQuestion(create)}
+                      >
+                        <i className="fas fa-minus"></i>&nbsp;&nbsp;cancel
+                        Question
+                      </button>
                     </div>
                   </div>
-                  <div className="inputGroup twoInputs">
-                    <div className="input">
-                      <input
-                        type="text"
-                        name="op1"
-                        id={"optiona" + index}
-                        value={create.op1}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Option A"
-                      />
-                      <label htmlFor={"optiona" + index}>Option A</label>
-                    </div>
-                    <div className="input">
-                      <input
-                        type="text"
-                        name="op2"
-                        id={"optionb" + index}
-                        value={create.op2}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Option B"
-                      />
-                      <label htmlFor={"optionb" + index}>Option B</label>
-                    </div>
-                    <div className="input">
-                      <input
-                        type="text"
-                        name="op3"
-                        id={"optionc" + index}
-                        value={create.op3}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Option C"
-                      />
-                      <label htmlFor={"optionc" + index}>Option C</label>
-                    </div>
-                    <div className="input">
-                      <input
-                        type="text"
-                        name="op4"
-                        id={"optiond" + index}
-                        value={create.op4}
-                        onChange={(e) => handleChange(e, index)}
-                        placeholder="Option D"
-                      />
-                      <label htmlFor={"optiond" + index}>Option D</label>
-                    </div>
-                    <button
-                      type="button"
-                      className="addBtn"
-                      onClick={() => addMore(create)}
-                    >
-                      <i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question
-                    </button>
-                    <button
-                      type="button"
-                      className="cancelBtn"
-                      onClick={() => handleRemoveQuestion(create)}
-                    >
-                      <i className="fas fa-minus"></i>&nbsp;&nbsp;cancel
-                      Question
-                    </button>
-                  </div>
-                </div>
-              ))}
+                ))}
               <div className="inputGroup twoInputs w50p">
                 <button
                   type="button"
