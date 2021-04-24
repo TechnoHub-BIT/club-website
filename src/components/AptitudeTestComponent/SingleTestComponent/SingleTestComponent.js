@@ -2,33 +2,47 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import "./SingleTestComponent.css";
 import Moment from "moment";
-import { useAuth } from '../../../contexts/AuthContext'
+import { useAuth } from "../../../contexts/AuthContext";
 import useCountDown from "react-countdown-hook";
+import AlertModal from "../../AlertModalComponent/AlertModalComponent";
+import { useHistory } from "react-router-dom";
 
 const SingleTest = (props) => {
+  let history = useHistory();
+
+  //Modal
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const [tests, setTest] = useState([]);
 
+  const [quesLength, setLength] = useState();
+  const [duration, setDuration] = useState();
+
   const ref = db.collection("Tests").doc(props.match.params.id);
-  ref.get().then((doc) => {
-    if (doc.exists) {
-      const Test = doc.data();
-      const bol = doc.data().questions.length;
-      console.log(bol)
-      setTest({
-        id: doc.id,
-        title: Test.title,
-        duration: Test.duration,
-        totalmarks: Test.totalmarks,
-        testdate: Test.testdate,
-        starttime: Test.starttime,
-        endtime: Test.endtime,
-        positivemarks: Test.positivemarks,
-        negativemarks: Test.negativemarks,
-        questions: Test.questions,
-        
-      });
-    } else console.log("No such test found!");
-  });
+  useEffect(() => {
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Test = doc.data();
+        setLength(Test.questions.length);
+        setTest({
+          id: doc.id,
+          title: Test.title,
+          duration: Test.duration,
+          totalmarks: Test.totalmarks,
+          testdate: Test.testdate,
+          starttime: Test.starttime,
+          endtime: Test.endtime,
+          positivemarks: Test.positivemarks,
+          negativemarks: Test.negativemarks,
+          questions: Test.questions,
+        });
+      } else console.log("No such test found!");
+    });
+  }, []);
 
   //Form Start Check
   const [form, setForm] = useState(false);
@@ -77,17 +91,79 @@ const SingleTest = (props) => {
     });
   };
 
+  //Current User Details
+  const { currentUser, logout } = useAuth();
+
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
+
+  const fullname = profiles.fullname;
+  const branch = profiles.branch;
+  const email = profiles.email;
+  const title = tests.title;
+
+  //Submit Function
+  const confirmSubmit = () => {
+    pause();
+    db.collection("Test-Results")
+      .add({
+        fullname: fullname,
+        testname: title,
+        email: email,
+        timeleft: timeLeft,
+        branch: branch,
+        score: score,
+      })
+      .then(() => {
+        showModal(
+          <AlertModal
+            message="Your test has been submitted"
+            icon="successful"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
   //Countdown Timer
-  const initialTime = 0.5 * 60 * 1000;
+  const initialTime = 50 * 60 * 1000;
   const interval = 1000;
 
   const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
 
   let hours = parseInt(timeLeft / 3600000);
   let minutes = parseInt(timeLeft / 60000);
-  let seconds = parseInt(timeLeft / 1000);
+  let seconds = parseInt(timeLeft / 1000) % 60;
 
   if (minutes === 60) minutes = 0;
+
+  let hoursDisplay = hours;
+  let minutesDisplay = minutes;
+  let secondsDisplay = seconds;
+
+  if (hours <= 9) hoursDisplay = "0" + hours;
+  if (minutes <= 9) minutesDisplay = "0" + minutes;
+  if (seconds <= 9) secondsDisplay = "0" + seconds;
 
   useEffect(() => {
     start();
@@ -96,82 +172,108 @@ const SingleTest = (props) => {
 
   if (timeLeft === 0 && form) {
     setForm(false);
-    console.warn("Time up!");
+    showModal(
+      <AlertModal
+        message="Time's Up!"
+        icon="exclamation"
+        leftBtn="Okay"
+        action={confirmSubmit}
+        close={closeModal}
+      />
+    );
   }
 
   const restart = React.useCallback(() => {
     setForm(true);
-    const newTime = 60.2 * 60 * 1000;
+    const newTime = 0.2 * 60 * 1000;
     start(newTime);
   }, []);
 
+  //Start Test Function
+  const startTest = () => {
+    closeModal();
+    restart();
+    sectionChanger("start", 0);
+  };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
 
-  const {currentUser, logout} = useAuth();
-
-    const [profiles, setProfiles] = useState([]);
-
-    useEffect(() => {
-        if(currentUser) {
-            db.collection("members")
-            .doc(currentUser.uid)
-            .onSnapshot(function (doc) {
-                const data = doc.data();
-                setProfiles(data);
-            });
-        }
-    }, [currentUser]);
-
-    const fullname = profiles.fullname;
-    const branch = profiles.branch;
-    const email = profiles.email;
-    const title = tests.title
-    const onSubmit = (e) => {{
-        e.preventDefault();
-        db.collection("Test-Results")
-          .add({
-            fullname: fullname,
-            testname:title,
-            email: email,
-            // timeleft: timeLeft,
-            branch: branch,
-            // score: score,
-        
-          })
-          .then(() => {
-            alert("Test submited!");
-          })
-          .catch((error) => {
-            alert(error.message);
-          });
-      } 
-    };
-    const [questions, setQuestion] = useState([{
-       question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" ,
-    }]);
-
-    // const [score, setScore] = useState("")
-    // if(userAnswer == correctAnswer){
-    //     setScore({
-    //            score :score+1
-    //     })
-    // }
-
-    const handleAnswer = (e, index) => {
-
+    if (!form) {
+      showModal(
+        <AlertModal
+          message="Start the test before submitting it!"
+          icon="exclamation"
+          leftBtn="Start Test"
+          rightBtn="Cancel"
+          action={startTest}
+          close={closeModal}
+        />
+      );
+    } else {
+      if (timeLeft > 0) {
+        showModal(
+          <AlertModal
+            message="Are you sure you want to submit the Test?"
+            icon="question"
+            leftBtn="Submit"
+            rightBtn="Cancel"
+            action={confirmSubmit}
+            close={closeModal}
+          />
+        );
+      }
     }
-    //   const { name, value } = e.target;
-    //   const list = [...questions];
-    //   list[index][name] = value;
-    //   setQuestion(list);
-    // };
-    
+  };
+
+  const [questions, setQuestion] = useState([
+    {
+      question: "",
+      op1: "",
+      op2: "",
+      op3: "",
+      op4: "",
+      correctAnswer: "",
+    },
+  ]);
+
+  // const [score, setScore] = useState("")
+  // if(userAnswer == correctAnswer){
+  //     setScore({
+  //            score :score+1
+  //     })
+  // }
+
+  const handleAnswer = (e, index) => {};
+  //   const { name, value } = e.target;
+  //   const list = [...questions];
+  //   list[index][name] = value;
+  //   setQuestion(list);
+  // };
+
+  //Question Button Navigations
+  const questionBtns = [];
+
+  for (let i = 0; i < quesLength; i++) {
+    questionBtns.push(
+      <button
+        type="button"
+        className="question"
+        onClick={() => sectionChanger("direct", i + 1)}
+        key={i}
+      >
+        {i + 1}
+      </button>
+    );
+  }
+
   return (
     <React.Fragment>
+      {modal}
       <div className="singleTestCont">
         <h1 className="title">
           {tests.title}
-          <button type="button"  onClick={onSubmit}>
+          <button type="button" onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>
         </h1>
@@ -194,6 +296,9 @@ const SingleTest = (props) => {
                       <strong>Test Duration:</strong> {tests.duration} minutes.
                     </li>
                     <li>
+                      <strong>Total Questions:</strong> {quesLength}.
+                    </li>
+                    <li>
                       <strong>Total Marks:</strong> {tests.totalmarks}.
                     </li>
                     <li>
@@ -201,12 +306,8 @@ const SingleTest = (props) => {
                       {tests.positivemarks}.
                     </li>
                     <li>
-                      <strong>Negative Marks for each Wrong answer:</strong> -
+                      <strong>Marks for each Wrong answer:</strong> -
                       {tests.negativemarks}
-                    </li>
-                    <li>
-                      <strong>total questions</strong> :
-                      {/* {tests.questions.length} */}
                     </li>
                   </ul>
                 </div>
@@ -215,8 +316,7 @@ const SingleTest = (props) => {
                     type="button"
                     className="startBtn"
                     onClick={() => {
-                      restart();
-                      sectionChanger("start", 0);
+                      startTest();
                     }}
                   >
                     Start Test&nbsp;&nbsp;
@@ -228,7 +328,7 @@ const SingleTest = (props) => {
                 tests.questions.map((item, index) => {
                   return (
                     <section ques-no={index + 1} key={index}>
-                      <h3 className="smallTitle">Question No. {index + 1}/{questions.length}</h3>
+                      <h3 className="smallTitle">Question No. {index + 1}</h3>
                       <div className="question">{item.question}</div>
                       <div className="clearSelection">
                         <button
@@ -240,7 +340,7 @@ const SingleTest = (props) => {
                       </div>
                       <div className="options">
                         <input
-                          type="radio" 
+                          type="radio"
                           name={"option" + (index + 1)}
                           value="Unanswered"
                           defaultChecked
@@ -248,7 +348,8 @@ const SingleTest = (props) => {
                         />
                         <div>
                           <input
-                            type="radio" onChange={handleAnswer}
+                            type="radio"
+                            onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optiona" + (index + 1)}
                             value={item.op4}
@@ -260,7 +361,8 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio" onChange={handleAnswer}
+                            type="radio"
+                            onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optionb" + (index + 1)}
                             value={item.op4}
@@ -272,7 +374,8 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio" onChange={handleAnswer}
+                            type="radio"
+                            onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optionc" + (index + 1)}
                             value={item.op4}
@@ -284,7 +387,8 @@ const SingleTest = (props) => {
                         </div>
                         <div>
                           <input
-                            type="radio" onChange={handleAnswer}
+                            type="radio"
+                            onChange={handleAnswer}
                             name={"option" + (index + 1)}
                             id={"optiond" + (index + 1)}
                             value={item.op4}
@@ -316,14 +420,26 @@ const SingleTest = (props) => {
                             &nbsp;&nbsp;Previous
                           </button>
                         )}
-                        <button
-                          type="button"
-                          className="nextBtn"
-                          onClick={() => sectionChanger("next", index + 1)}
-                        >
-                          Save & Next&nbsp;&nbsp;
-                          <i className="fas fa-long-arrow-alt-right"></i>
-                        </button>
+                        {index === quesLength - 1 ? (
+                          <button
+                            type="button"
+                            className="nextBtn"
+                            disabled
+                            onClick={() => sectionChanger("next", index + 1)}
+                          >
+                            Save & Next&nbsp;&nbsp;
+                            <i className="fas fa-long-arrow-alt-right"></i>
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="nextBtn"
+                            onClick={() => sectionChanger("next", index + 1)}
+                          >
+                            Save & Next&nbsp;&nbsp;
+                            <i className="fas fa-long-arrow-alt-right"></i>
+                          </button>
+                        )}
                       </div>
                     </section>
                   );
@@ -332,38 +448,13 @@ const SingleTest = (props) => {
           </div>
           <div className="right">
             <div className="timer">
-              <p>Time left: {hours + ":" + minutes + ":" + seconds}</p>
+              <p>
+                Time left
+                <br />
+                {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
+              </p>
             </div>
-            <div className="questionBtns">
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 1)}
-              >
-                1
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 2)}
-              >
-                2
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 3)}
-              >
-                3
-              </button>
-              <button
-                type="button"
-                className="question"
-                onClick={() => sectionChanger("direct", 4)}
-              >
-                4
-              </button>
-            </div>
+            <div className="questionBtns">{questionBtns}</div>
           </div>
         </div>
       </div>
