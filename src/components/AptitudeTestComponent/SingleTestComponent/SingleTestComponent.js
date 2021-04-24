@@ -25,6 +25,7 @@ const SingleTest = (props) => {
         positivemarks: Test.positivemarks,
         negativemarks: Test.negativemarks,
         questions: Test.questions,
+        
       });
     } else console.log("No such test found!");
   });
