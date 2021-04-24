@@ -126,19 +126,23 @@ const TestsList = () => {
                         <i className="fas fa-book"></i>
                       </button>
                     </a>
-                    <a href={"/edittest/" + test.id}>
-                      <button type="button">
-                        <i className="fas fa-pencil-alt"></i>
-                      </button>
-                    </a>
-                    <a>
-                      <button
-                        onClick={() => deleteBlogModal(test.id)}
-                        type="button"
-                      >
-                        <i className="far fa-trash-alt"></i>
-                      </button>
-                    </a>
+                    {profiles.id === 1 || profiles.id === 4 ? (
+                      <a href={"/edittest/" + test.id}>
+                        <button type="button">
+                          <i className="fas fa-pencil-alt"></i>
+                        </button>
+                      </a>
+                    ) : null}
+                    {profiles.id === 1 || profiles.id === 4 ? (
+                      <a>
+                        <button
+                          onClick={() => deleteBlogModal(test.id)}
+                          type="button"
+                        >
+                          <i className="far fa-trash-alt"></i>
+                        </button>
+                      </a>
+                    ) : null}
                     <a href={"/leaderboard/" + test.id}>
                       <button type="button">
                         <i className="fas fa-trophy"></i>
