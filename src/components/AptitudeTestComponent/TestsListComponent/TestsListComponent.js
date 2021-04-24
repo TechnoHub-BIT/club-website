@@ -78,11 +78,13 @@ const TestsList = () => {
       <div className="testsListCont">
         <h1 className="title">
           All Tests
-          <a href="/createtest">
-            <button type="button">
-              <i className="fas fa-plus"></i>&nbsp;&nbsp;Create New test
-            </button>
-          </a>
+          {profiles.id === 1 || profiles.id === 4 ? (
+            <a href="/createtest">
+              <button type="button">
+                <i className="fas fa-plus"></i>&nbsp;&nbsp;Create New test
+              </button>
+            </a>
+          ) : null}
         </h1>
         <div className="centreCard">
           <div className="testsList">
@@ -115,9 +117,7 @@ const TestsList = () => {
                     <div className="date">
                       {Moment(test.testdate).format("ll")}
                     </div>
-                    <div className="date">
-                    {test.teststatus}
-                    </div>
+                    <div className="date">{test.teststatus}</div>
                   </div>
                   <div className="duration">{test.duration} mins.</div>
                   <div className="buttons">

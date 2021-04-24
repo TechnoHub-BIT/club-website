@@ -40,9 +40,23 @@ const SingleTest = (props) => {
           positivemarks: Test.positivemarks,
           negativemarks: Test.negativemarks,
           questions: Test.questions,
-          teststatus:Test.teststatus
+          teststatus: Test.teststatus,
         });
-      } else console.log("No such test found!");
+      } else
+        showModal(
+          <AlertModal
+            message="This is not a Valid Test Link!"
+            icon="exclamation"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
     });
   }, []);
 
@@ -300,8 +314,9 @@ const SingleTest = (props) => {
       {modal}
       <div className="singleTestCont">
         <h1 className="title">
-          {tests.title}<br></br>
-         teststatus: {tests.teststatus}
+          {tests.title}
+          <br></br>
+          teststatus: {tests.teststatus}
           <button type="button" onClick={onSubmit}>
             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
           </button>
