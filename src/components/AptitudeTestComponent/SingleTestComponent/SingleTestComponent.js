@@ -125,14 +125,15 @@ const SingleTest = (props) => {
 
     db.collection("Tests")
       .doc(props.match.params.id)
-      .collection("results").doc(email)
+      .collection("results")
+      .doc(email)
       .set({
         fullname: fullname,
         testname: title,
         email: email,
         timeleft: timeLeft,
         branch: branch,
-        score: score
+        score: score,
       })
       .then(() => {
         showModal(
@@ -199,38 +200,54 @@ const SingleTest = (props) => {
     start(newTime);
   }, []);
 
-
   const [result, setResult] = useState([]);
   useEffect(() => {
-    db.collection('Tests').doc(props.match.params.id).collection('results').get()
-      .then(response => {
+    db.collection("Tests")
+      .doc(props.match.params.id)
+      .collection("results")
+      .get()
+      .then((response) => {
         const fetchResults = [];
-        response.forEach(document => {
+        response.forEach((document) => {
           const fetchResult = {
             id: document.id,
-            ...document.data()
+            ...document.data(),
           };
           fetchResults.push(fetchResult);
         });
         setResult(fetchResults);
-      })
-    
-  
-   }, []);
-
+      });
+  }, []);
 
   const startTest = () => {
-  const ref = db.collection("Tests").doc(props.match.params.id).collection('results').doc(email);
-  ref.get().then((doc) => {
-    if (doc.exists) {
-   alert("You have already given test")
-    } else {
-      closeModal();
-      restart();
-      sectionChanger("start", 0);
-    }
-  });
-}
+    const ref = db
+      .collection("Tests")
+      .doc(props.match.params.id)
+      .collection("results")
+      .doc(email);
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        showModal(
+          <AlertModal
+            message="You have already given the test once!"
+            icon="exclamation"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
+      } else {
+        closeModal();
+        restart();
+        sectionChanger("start", 0);
+      }
+    });
+  };
   const onSubmit = (e) => {
     e.preventDefault();
 
