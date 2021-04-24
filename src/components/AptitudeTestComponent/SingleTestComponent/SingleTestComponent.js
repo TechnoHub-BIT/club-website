@@ -126,14 +126,13 @@ const SingleTest = (props) => {
 
     db.collection("Tests")
       .doc(props.match.params.id)
-      .collection("results").doc(fullname)
+      .collection("results").doc(email)
       .set({
         fullname: fullname,
         testname: title,
         email: email,
         timeleft: timeLeft,
         branch: branch,
-        givenTest: "True",
         score: score
       })
       .then(() => {
@@ -220,19 +219,19 @@ const SingleTest = (props) => {
   
    }, []);
 
-  //Start Test Function
-  // const checkUser
-  // if(result.givenTest === "True"){
-  const startTest = () => {
-    closeModal();
-    restart();
-    sectionChanger("start", 0);
-  };
-// }
-// else{
-//   alert("you have already given the test")
-// }
 
+  const startTest = () => {
+  const ref = db.collection("Tests").doc(props.match.params.id).collection('results').doc(email);
+  ref.get().then((doc) => {
+    if (doc.exists) {
+   alert("You have already given test")
+    } else {
+      closeModal();
+      restart();
+      sectionChanger("start", 0);
+    }
+  });
+}
   const onSubmit = (e) => {
     e.preventDefault();
 
