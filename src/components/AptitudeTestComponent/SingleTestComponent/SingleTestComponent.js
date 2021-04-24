@@ -115,14 +115,14 @@ const SingleTest = (props) => {
   //Submit Function
   const confirmSubmit = () => {
     pause();
-    db.collection("Test-Results")
+    db.collection("Tests").doc(props.match.params.id).collection("results")
       .add({
         fullname: fullname,
         testname: title,
-        email: email,
-        timeleft: timeLeft,
-        branch: branch,
-        score: score,
+        email:email,
+        timeleft:timeLeft,
+        branch:branch,
+        // score: score,
       })
       .then(() => {
         showModal(
