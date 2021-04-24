@@ -6,6 +6,8 @@ import { useAuth } from "../../../contexts/AuthContext";
 import useCountDown from "react-countdown-hook";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Fade } from "react-reveal";
 
 const SingleTest = (props) => {
   let history = useHistory();
@@ -186,7 +188,7 @@ const SingleTest = (props) => {
   };
 
   //Countdown Timer
-  const initialTime = parseInt(tests.duration) * 60 * 1000;
+  const initialTime = 35 * 60 * 1000;
   const interval = 1000;
 
   const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
@@ -225,7 +227,7 @@ const SingleTest = (props) => {
 
   const restart = React.useCallback(() => {
     setForm(true);
-    const newTime = parseInt(tests.duration) * 60 * 1000;
+    const newTime = 35 * 60 * 1000;
     start(newTime);
   }, []);
 
@@ -255,7 +257,7 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email);
     ref.get().then((doc) => {
-      if (doc.exists) {
+      if (doc.exists)
         showModal(
           <AlertModal
             message="You have already given the test once!"
@@ -270,7 +272,7 @@ const SingleTest = (props) => {
             }}
           />
         );
-      } else if (tests.teststatus === "Inactive")
+      else if (tests.teststatus === "Inactive")
         showModal(
           <AlertModal
             message="The test is not available at the moment!"
@@ -286,7 +288,6 @@ const SingleTest = (props) => {
           />
         );
       else {
-        closeModal();
         restart();
         sectionChanger("start", 0);
       }
@@ -295,31 +296,17 @@ const SingleTest = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!form) {
+    if (timeLeft > 0)
       showModal(
         <AlertModal
-          message="Start the test before submitting it!"
-          icon="exclamation"
-          leftBtn="Start Test"
+          message="Are you sure you want to submit the Test?"
+          icon="question"
+          leftBtn="Submit"
           rightBtn="Cancel"
-          action={startTest}
+          action={confirmSubmit}
           close={closeModal}
         />
       );
-    } else {
-      if (timeLeft > 0) {
-        showModal(
-          <AlertModal
-            message="Are you sure you want to submit the Test?"
-            icon="question"
-            leftBtn="Submit"
-            rightBtn="Cancel"
-            action={confirmSubmit}
-            close={closeModal}
-          />
-        );
-      }
-    }
   };
 
   //Question Button Navigations
@@ -341,194 +328,207 @@ const SingleTest = (props) => {
   return (
     <React.Fragment>
       {modal}
+
+      <Helmet>
+        <title>{tests.title} | TechnoHub BITD</title>
+        <meta
+          name="title"
+          content={tests.title + " | Aptitude Tests by TechnoHub BITD"}
+        />
+      </Helmet>
       <div className="singleTestCont">
-        <h1 className="title">
-          {tests.title}
-          <br></br>
-          teststatus: {tests.teststatus}
-          <button type="button" onClick={onSubmit}>
-            <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
-          </button>
-        </h1>
-        <div className="centreCard">
-          <div className="left">
-            <form>
-              <section className="active">
-                <div className="testInstructions">
-                  <h3 className="smallTitle">Test Instructions</h3>
-                  <ul>
-                    <li>
-                      <strong>Test Date:</strong>{" "}
-                      {Moment(tests.testdate).format("ll")}.
-                    </li>
-                    <li>
-                      <strong>You can give the test between:</strong>{" "}
-                      {tests.starttime} to {tests.endtime}.
-                    </li>
-                    <li>
-                      <strong>Test Duration:</strong> {tests.duration} minutes.
-                    </li>
-                    <li>
-                      <strong>Total Questions:</strong> {quesLength}.
-                    </li>
-                    <li>
-                      <strong>Total Marks:</strong> {tests.totalmarks}.
-                    </li>
-                    <li>
-                      <strong>Marks for each Correct answer:</strong>{" "}
-                      {tests.positivemarks}.
-                    </li>
-                    <li>
-                      <strong>Marks for each Wrong answer:</strong> -
-                      {tests.negativemarks}
-                    </li>
-                    <li>
-                      <strong>
-                        Reloading or closing the tab will end the test
-                        immediately.
-                      </strong>
-                    </li>
-                  </ul>
-                </div>
-                <div className="navigation">
-                  <button
-                    type="button"
-                    className="startBtn"
-                    onClick={() => {
-                      startTest();
-                    }}
-                  >
-                    Start Test&nbsp;&nbsp;
-                    <i className="fas fa-long-arrow-alt-right"></i>
-                  </button>
-                </div>
-              </section>
-              {tests.questions &&
-                tests.questions.map((item, index) => {
-                  return (
-                    <section ques-no={index + 1} key={index}>
-                      <h3 className="smallTitle">Question No. {index + 1}</h3>
-                      <div className="question">{item.question}</div>
-                      <input
-                        type="radio"
-                        name={"option" + (index + 1)}
-                        onChange={(e) => handleAnswer(e, index, "Unanswered")}
-                        value="Unanswered"
-                        className="hiddenRadio"
-                        defaultChecked
-                      />
-                      <div className="options">
-                        <div>
-                          <input
-                            type="radio"
-                            onChange={(e) => handleAnswer(e, index, "A")}
-                            name={"option" + (index + 1)}
-                            id={"optiona" + (index + 1)}
-                            value={item.op1}
-                          />
-                          &nbsp;&nbsp; (A){" "}
-                          <label htmlFor={"optiona" + (index + 1)}>
-                            {item.op1}
-                          </label>
+        <Fade up>
+          <h1 className="title">
+            {tests.title}
+            {form ? (
+              <button type="button" onClick={onSubmit}>
+                <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
+              </button>
+            ) : null}
+          </h1>
+          <div className={form ? "centreCard" : "centreCard full"}>
+            <div className="left">
+              <form>
+                <section className="active">
+                  <div className="testInstructions">
+                    <h3 className="smallTitle">Test Instructions</h3>
+                    <ul>
+                      <li>
+                        <strong>Test Date:</strong>{" "}
+                        {Moment(tests.testdate).format("ll")}.
+                      </li>
+                      <li>
+                        <strong>You can give the test between:</strong>{" "}
+                        {tests.starttime} to {tests.endtime}.
+                      </li>
+                      <li>
+                        <strong>Test Duration:</strong> {tests.duration}{" "}
+                        minutes.
+                      </li>
+                      <li>
+                        <strong>Total Questions:</strong> {quesLength}.
+                      </li>
+                      <li>
+                        <strong>Total Marks:</strong> {tests.totalmarks}.
+                      </li>
+                      <li>
+                        <strong>Marks for each Correct answer:</strong>{" "}
+                        {tests.positivemarks}.
+                      </li>
+                      <li>
+                        <strong>Marks for each Wrong answer:</strong> -
+                        {tests.negativemarks}
+                      </li>
+                      <li>
+                        <strong>
+                          Reloading or closing the tab will end the test
+                          immediately.
+                        </strong>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="navigation">
+                    <button
+                      type="button"
+                      className="startBtn"
+                      onClick={() => {
+                        startTest();
+                      }}
+                    >
+                      Start Test&nbsp;&nbsp;
+                      <i className="fas fa-long-arrow-alt-right"></i>
+                    </button>
+                  </div>
+                </section>
+                {tests.questions &&
+                  tests.questions.map((item, index) => {
+                    return (
+                      <section ques-no={index + 1} key={index}>
+                        <h3 className="smallTitle">Question No. {index + 1}</h3>
+                        <div className="question">{item.question}</div>
+                        <input
+                          type="radio"
+                          name={"option" + (index + 1)}
+                          onChange={(e) => handleAnswer(e, index, "Unanswered")}
+                          value="Unanswered"
+                          className="hiddenRadio"
+                          defaultChecked
+                        />
+                        <div className="options">
+                          <div>
+                            <input
+                              type="radio"
+                              onChange={(e) => handleAnswer(e, index, "A")}
+                              name={"option" + (index + 1)}
+                              id={"optiona" + (index + 1)}
+                              value={item.op1}
+                            />
+                            &nbsp;&nbsp; (A){" "}
+                            <label htmlFor={"optiona" + (index + 1)}>
+                              {item.op1}
+                            </label>
+                          </div>
+                          <div>
+                            <input
+                              type="radio"
+                              onChange={(e) => handleAnswer(e, index, "B")}
+                              name={"option" + (index + 1)}
+                              id={"optionb" + (index + 1)}
+                              value={item.op2}
+                            />
+                            &nbsp;&nbsp; (B){" "}
+                            <label htmlFor={"optionb" + (index + 1)}>
+                              {item.op2}
+                            </label>
+                          </div>
+                          <div>
+                            <input
+                              type="radio"
+                              onChange={(e) => handleAnswer(e, index, "C")}
+                              name={"option" + (index + 1)}
+                              id={"optionc" + (index + 1)}
+                              value={item.op3}
+                            />
+                            &nbsp;&nbsp; (C){" "}
+                            <label htmlFor={"optionc" + (index + 1)}>
+                              {item.op3}
+                            </label>
+                          </div>
+                          <div>
+                            <input
+                              type="radio"
+                              onChange={(e) => handleAnswer(e, index, "D")}
+                              name={"option" + (index + 1)}
+                              id={"optiond" + (index + 1)}
+                              value={item.op4}
+                            />
+                            &nbsp;&nbsp; (D){" "}
+                            <label htmlFor={"optiond" + (index + 1)}>
+                              {item.op4}
+                            </label>
+                          </div>
                         </div>
-                        <div>
-                          <input
-                            type="radio"
-                            onChange={(e) => handleAnswer(e, index, "B")}
-                            name={"option" + (index + 1)}
-                            id={"optionb" + (index + 1)}
-                            value={item.op2}
-                          />
-                          &nbsp;&nbsp; (B){" "}
-                          <label htmlFor={"optionb" + (index + 1)}>
-                            {item.op2}
-                          </label>
+                        <div className="navigation">
+                          {index === 0 ? (
+                            <button
+                              type="button"
+                              className="prevBtn"
+                              disabled
+                              onClick={() => sectionChanger("next", index + 1)}
+                            >
+                              <i className="fas fa-long-arrow-alt-left"></i>
+                              &nbsp;&nbsp;Previous
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="prevBtn"
+                              onClick={() => sectionChanger("prev", index + 1)}
+                            >
+                              <i className="fas fa-long-arrow-alt-left"></i>
+                              &nbsp;&nbsp;Previous
+                            </button>
+                          )}
+                          {index === quesLength - 1 ? (
+                            <button
+                              type="button"
+                              className="nextBtn"
+                              disabled
+                              onClick={() => sectionChanger("next", index + 1)}
+                            >
+                              Save & Next&nbsp;&nbsp;
+                              <i className="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="nextBtn"
+                              onClick={() => sectionChanger("next", index + 1)}
+                            >
+                              Save & Next&nbsp;&nbsp;
+                              <i className="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                          )}
                         </div>
-                        <div>
-                          <input
-                            type="radio"
-                            onChange={(e) => handleAnswer(e, index, "C")}
-                            name={"option" + (index + 1)}
-                            id={"optionc" + (index + 1)}
-                            value={item.op3}
-                          />
-                          &nbsp;&nbsp; (C){" "}
-                          <label htmlFor={"optionc" + (index + 1)}>
-                            {item.op3}
-                          </label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            onChange={(e) => handleAnswer(e, index, "D")}
-                            name={"option" + (index + 1)}
-                            id={"optiond" + (index + 1)}
-                            value={item.op4}
-                          />
-                          &nbsp;&nbsp; (D){" "}
-                          <label htmlFor={"optiond" + (index + 1)}>
-                            {item.op4}
-                          </label>
-                        </div>
-                      </div>
-                      <div className="navigation">
-                        {index === 0 ? (
-                          <button
-                            type="button"
-                            className="prevBtn"
-                            disabled
-                            onClick={() => sectionChanger("next", index + 1)}
-                          >
-                            <i className="fas fa-long-arrow-alt-left"></i>
-                            &nbsp;&nbsp;Previous
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            className="prevBtn"
-                            onClick={() => sectionChanger("prev", index + 1)}
-                          >
-                            <i className="fas fa-long-arrow-alt-left"></i>
-                            &nbsp;&nbsp;Previous
-                          </button>
-                        )}
-                        {index === quesLength - 1 ? (
-                          <button
-                            type="button"
-                            className="nextBtn"
-                            disabled
-                            onClick={() => sectionChanger("next", index + 1)}
-                          >
-                            Save & Next&nbsp;&nbsp;
-                            <i className="fas fa-long-arrow-alt-right"></i>
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            className="nextBtn"
-                            onClick={() => sectionChanger("next", index + 1)}
-                          >
-                            Save & Next&nbsp;&nbsp;
-                            <i className="fas fa-long-arrow-alt-right"></i>
-                          </button>
-                        )}
-                      </div>
-                    </section>
-                  );
-                })}
-            </form>
-          </div>
-          <div className="right">
-            <div className="timer">
-              <p>
-                Time left
-                <br />
-                {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
-              </p>
+                      </section>
+                    );
+                  })}
+              </form>
             </div>
-            <div className="questionBtns">{questionBtns}</div>
+            {form ? (
+              <div className="right">
+                <div className="timer">
+                  <p>
+                    Time left
+                    <br />
+                    {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
+                  </p>
+                </div>
+                <div className="questionBtns">{questionBtns}</div>
+              </div>
+            ) : null}
           </div>
-        </div>
+        </Fade>
       </div>
     </React.Fragment>
   );

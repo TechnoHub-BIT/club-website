@@ -11,6 +11,8 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 0 10vw;
+  text-align: left;
+  font-size: 2rem;
 }
 
 .singleTestCont .title button {
@@ -20,6 +22,7 @@
   border: 2px solid #00c851;
   color: #fff;
   border-radius: 5px;
+  white-space: nowrap;
   outline: none;
   cursor: pointer;
   -webkit-transition: 0.3s all ease;
@@ -38,6 +41,11 @@
   -ms-grid-columns: (2fr 1fr)[1];
       grid-template-columns: repeat(1, 2fr 1fr);
   grid-gap: 2em;
+}
+
+.singleTestCont .centreCard.full {
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
 }
 
 .singleTestCont .centreCard .left {
@@ -260,6 +268,9 @@
   }
   .singleTestCont .centreCard .left section {
     padding: 10px 30px 0;
+  }
+  .singleTestCont .centreCard .left section ul {
+    margin-left: 0;
   }
   .singleTestCont .centreCard .left section .navigation {
     margin: 1.5em auto 0;
