@@ -137,18 +137,16 @@ const SingleTest = (props) => {
         score += parseInt(tests.positivemarks, 10);
       else score -= parseInt(tests.negativemarks, 10);
     }
-    // useEffect(() => {
-    //   if(currentUser) {
-          db.collection("members")
-          .doc(currentUser.uid)
-          .collection("tests").doc(title)
+
+    db.collection("members")
+      .doc(currentUser.uid)
+      .collection("tests")
+      .doc(title)
       .set({
         testname: title,
         timeleft: timeLeft,
-        score: score
-      })
-      // }
-  // }, [currentUser]);
+        score: score,
+      });
 
     db.collection("Tests")
       .doc(props.match.params.id)
@@ -163,7 +161,7 @@ const SingleTest = (props) => {
         score: score,
       })
       .then(() => {
-        console.log(currentUser.uid)
+        console.log(currentUser.uid);
         showModal(
           <AlertModal
             message="Your test has been submitted"
@@ -269,7 +267,22 @@ const SingleTest = (props) => {
             }}
           />
         );
-      } else {
+      } else if (tests.teststatus === "Inactive")
+        showModal(
+          <AlertModal
+            message="The test is not available at the moment!"
+            icon="exclamation"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
+      else {
         closeModal();
         restart();
         sectionChanger("start", 0);

@@ -116,8 +116,17 @@ const TestsList = () => {
                     </a>
                     <div className="date">
                       {Moment(test.testdate).format("ll")}
+                      <br />
+                      {test.teststatus === "Active" ? (
+                        <span style={{ color: "#00c851" }}>
+                          {test.teststatus}
+                        </span>
+                      ) : (
+                        <span style={{ color: "#ff4444" }}>
+                          {test.teststatus}
+                        </span>
+                      )}
                     </div>
-                    <div className="date">{test.teststatus}</div>
                   </div>
                   <div className="duration">{test.duration} mins.</div>
                   <div className="buttons">
