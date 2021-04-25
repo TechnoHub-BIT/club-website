@@ -62,7 +62,7 @@ const CreateTest = () => {
   };
 
   const [questions, setQuestion] = useState([
-    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "", questionType:"" },
   ]);
 
   const handleChange = (e, index) => {
@@ -75,7 +75,7 @@ const CreateTest = () => {
   const addMore = () => {
     setQuestion([
       ...questions,
-      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "" },
+      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "",questionType:"" },
     ]);
   };
 
@@ -297,7 +297,7 @@ const CreateTest = () => {
                 </form>
                 <form>
                   {questions &&
-                    questions.map((create, index, val) => (
+                    questions.map((create, index) => (
                       <div>
                         <h3 className="smallTitle">
                           Question No. {index + 1} Details&nbsp;&nbsp;
@@ -326,28 +326,23 @@ const CreateTest = () => {
                         </div>
                         <div className="inputGroup twoInputs">
                           <div className="input">
-                            <select name="quesType">
-                              <option value="">--Select Question Type--</option>
+                            <select name="questionType" value={create.questionType}
+                            onChange={(e) => handleChange(e, index)}>
+                              <option >--Select Question Type--</option>
                               <option value="MCQ">MCQ</option>
                               <option value="MSQ">MSQ</option>
                             </select>
                           </div>
                           <div className="input">
-                            <select
-                              name="correctAnswer"
-                              value={create.correctAnswer}
-                              onChange={(e) => handleChange(e, index)}
-                              placeholder="Correct Option"
-                            >
-                              <option value="">
-                                --Select Correct Option--
-                              </option>
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                            </select>
-                          </div>
+                            <input
+                            name="correctAnswer"
+                            type="text"
+                            value={create.correctAnswer}
+                            onChange={(e) => handleChange(e, index)}
+                            placeholder="Correct Option"
+                            />
+                            <label htmlFor={"correctAnswer" + index}>Correct Answer</label>
+                          </div>                     
                         </div>
                         <div className="inputGroup twoInputs">
                           <div className="input">

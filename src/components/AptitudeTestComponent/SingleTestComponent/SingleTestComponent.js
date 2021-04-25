@@ -418,6 +418,19 @@ const SingleTest = (props) => {
                         />
                         <div className="options">
                           <div>
+                          <input
+                              type="radio"
+                              onChange={(e) => handleAnswer(e, index, "M")}
+                              name={"option" + (index + 1)}
+                              id={"option" + (index + 1)}
+                              value={item.questionType}
+                            />
+                            &nbsp;&nbsp; {" "}
+                            <label htmlFor={"option" + (index + 1)}>
+                              {item.questionType}
+                            </label>
+                          </div>
+                          <div>
                             <input
                               type="radio"
                               onChange={(e) => handleAnswer(e, index, "A")}
