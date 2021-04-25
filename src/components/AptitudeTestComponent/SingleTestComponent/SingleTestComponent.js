@@ -328,9 +328,8 @@ const SingleTest = (props) => {
   return (
     <React.Fragment>
       {modal}
-
       <Helmet>
-        <title>{tests.title} | TechnoHub BITD</title>
+        <title>{tests.title + " | TechnoHub BITD"}</title>
         <meta
           name="title"
           content={tests.title + " | Aptitude Tests by TechnoHub BITD"}

@@ -107,11 +107,11 @@ class Main extends Component {
             <Route exact path="/tedxbitd" component={Tedxbitd} />
 
             {/* Aptitude Test Pages */}
-            <Route exact path="/test/:id" component={SingleTest} />
-            <Route exact path="/edittest/:id" component={EditTest} />
+            <PrivateRoute exact path="/test/:id" component={SingleTest} />
+            <PrivateRoute exact path="/edittest/:id" component={EditTest} />
             <PrivateRoute exact path="/createtest" component={CreateTest} />
-            <PrivateRoute exact path="/tests" component={TestsList} />
-            <PrivateRoute exact path="/leaderboard/:id" component={Leaderboard} />
+            <Route exact path="/tests" component={TestsList} />
+            <Route exact path="/leaderboard/:id" component={Leaderboard} />
 
             <Footer />
             {/* </Switch> */}

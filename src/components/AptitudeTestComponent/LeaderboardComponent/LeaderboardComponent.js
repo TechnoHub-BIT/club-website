@@ -88,71 +88,105 @@ const Leaderboard = (props) => {
         <Fade up>
           <div className="leaderboardCont">
             <h1 className="title">LEADERBOARD</h1>
-            <div className="centreCard">
-              <div className="leadersList">
-                <div className="header">
-                  <div className="left">
-                    <i className="fas fa-trophy"></i>
-                    <div className="testDetails">
-                      <div className="name">{test.title}</div>
-                      <div className="marks">
-                        Maximum Marks: {test.totalmarks}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="right">
-                    <div className="date">
-                      {Moment(test.testdate).format("ll")}
-                    </div>
-                  </div>
-                </div>
-                {result.map((test, index) => {
-                  let badge = null;
-                  if (index === 0)
-                    badge = (
-                      <div className="badge gold">
-                        <i className="fas fa-award"></i>
-                      </div>
-                    );
-                  else if (index === 1)
-                    badge = (
-                      <div className="badge silver">
-                        <i className="fas fa-award"></i>
-                      </div>
-                    );
-                  else if (index === 2)
-                    badge = (
-                      <div className="badge bronze">
-                        <i className="fas fa-award"></i>
-                      </div>
-                    );
-                  else
-                    badge = (
-                      <div className="badge" style={{ opacity: "0" }}>
-                        <i className="fas fa-award"></i>
-                      </div>
-                    );
-
-                  //Display only Top 10 Scores
-                  if (index < 10) {
-                    return (
-                      <div className="leader">
-                        <div className="sno">{index + 1}.</div>
-                        <div className="leaderDetails">
-                          {badge}
-                          <div className="details">
-                            <div className="name">{test.fullname}</div>
-                            <div className="branch">{test.branch}</div>
-                          </div>
+            {result.length != 0 ? (
+              <div className="centreCard">
+                <div className="leadersList">
+                  <div className="header">
+                    <div className="left">
+                      <i className="fas fa-trophy"></i>
+                      <div className="testDetails">
+                        <div className="name">{test.title}</div>
+                        <div className="marks">
+                          Maximum Marks: {test.totalmarks}
                         </div>
-                        <div className="time">{test.timeleft}</div>
-                        <div className="score">{test.score}</div>
                       </div>
-                    );
-                  }
-                })}
+                    </div>
+                    <div className="right">
+                      <div className="date">
+                        {Moment(test.testdate).format("ll")}
+                      </div>
+                    </div>
+                  </div>
+                  {result.map((test, index) => {
+                    let badge = null;
+                    if (index === 0)
+                      badge = (
+                        <div className="badge gold">
+                          <i className="fas fa-award"></i>
+                        </div>
+                      );
+                    else if (index === 1)
+                      badge = (
+                        <div className="badge silver">
+                          <i className="fas fa-award"></i>
+                        </div>
+                      );
+                    else if (index === 2)
+                      badge = (
+                        <div className="badge bronze">
+                          <i className="fas fa-award"></i>
+                        </div>
+                      );
+                    else
+                      badge = (
+                        <div className="badge" style={{ opacity: "0" }}>
+                          <i className="fas fa-award"></i>
+                        </div>
+                      );
+
+                    //Display only Top 10 Scores
+                    if (index < 10) {
+                      return (
+                        <div className="leader">
+                          <div className="sno">{index + 1}.</div>
+                          <div className="leaderDetails">
+                            {badge}
+                            <div className="details">
+                              <div className="name">{test.fullname}</div>
+                              <div className="branch">{test.branch}</div>
+                            </div>
+                          </div>
+                          <div className="time">
+                            {parseInt((2100000 - test.timeleft) / 3600000, 10) <
+                            10
+                              ? "0" +
+                                parseInt(
+                                  (2100000 - test.timeleft) / 3600000,
+                                  10
+                                ) +
+                                ":"
+                              : parseInt(
+                                  (2100000 - test.timeleft) / 3600000,
+                                  10
+                                ) + ":"}
+                            {parseInt((2100000 - test.timeleft) / 60000, 10) <
+                            10
+                              ? "0" +
+                                parseInt(
+                                  (2100000 - test.timeleft) / 60000,
+                                  10
+                                ) +
+                                ":"
+                              : parseInt(
+                                  (2100000 - test.timeleft) / 60000,
+                                  10
+                                ) + ":"}
+                            {((2100000 - test.timeleft) / 1000) % 60 < 10
+                              ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
+                              : ((2100000 - test.timeleft) / 1000) % 60}
+                          </div>
+                          <div className="score">{test.score}</div>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
               </div>
-            </div>
+            ) : (
+              <h4 style={{ textAlign: "center", padding: "3em 20px" }}>
+                There are no entries yet!
+              </h4>
+            )}
           </div>
         </Fade>
       </React.Fragment>
