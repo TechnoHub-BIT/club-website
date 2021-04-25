@@ -7,18 +7,36 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 
 const TestsList = () => {
+  // const [leader, setLeader] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchdata = async () => {
+  //     db.collection("Tests").onSnapshot(function (data) {
+  //       setLeader(
+  //         data.docs.map((doc) => ({
+  //           ...doc.data(),
+  //           id: doc.id,
+  //         }))
+  //       );
+  //     });
+  //   };
+  //   fetchdata();
+  // }, []);
   const [tests, setTest] = useState([]);
 
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("Tests").onSnapshot(function (data) {
-        setTest(
-          data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }))
-        );
-      });
+      db.collection("members")
+        .doc(currentUser.uid)
+        .collection("tests")
+        .onSnapshot(function (data) {
+          setTest(
+            data.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }))
+          );
+        });
     };
     fetchdata();
   }, []);
@@ -91,9 +109,7 @@ const TestsList = () => {
                 </div>
                 <div className="testTitle">
                   Test Title(Max. Marks)
-                  <div className="date">
-                    <strong>Date</strong>
-                  </div>
+                  <div className="date">{/* <strong>Date</strong> */}</div>
                 </div>
                 <div className="duration">
                   <strong>Time Taken/Your Score</strong>
@@ -107,28 +123,45 @@ const TestsList = () => {
                   <div className="test">
                     <div className="index">{i + 1}</div>
                     <div className="testTitle">
-                      {test.title + "(" + test.totalmarks + " Marks)"}
+                      {test.id}
                       <div className="date">
-                        {Moment(test.testdate).format("ll")}
+                        {/* {Moment(test.testdate).format("ll")} */}
                       </div>
                     </div>
                     <div className="duration">
                       <strong className="onlyMobile">
                         Time Taken/Your Score:&nbsp;&nbsp;
                       </strong>
-                      00:05:00/25
+                      {parseInt((2100000 - test.timeleft) / 3600000, 10) < 10
+                        ? "0" +
+                          parseInt((2100000 - test.timeleft) / 3600000, 10) +
+                          ":"
+                        : parseInt((2100000 - test.timeleft) / 3600000, 10) +
+                          ":"}
+                      {parseInt((2100000 - test.timeleft) / 60000, 10) < 10
+                        ? "0" +
+                          parseInt((2100000 - test.timeleft) / 60000, 10) +
+                          ":"
+                        : parseInt((2100000 - test.timeleft) / 60000, 10) + ":"}
+                      {((2100000 - test.timeleft) / 1000) % 60 < 10
+                        ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
+                        : ((2100000 - test.timeleft) / 1000) % 60}
+                      &nbsp;&nbsp;/&nbsp;&nbsp;
+                      <strong style={{ fontSize: "1.3rem" }}>
+                        {test.score}
+                      </strong>
                     </div>
                     <div className="buttons">
-                      <a href={"/answerkey"}>
+                      <a href={"/answerkey/" + test.id}>
                         <button type="button">
                           <i className="far fa-chart-bar"></i>
                         </button>
                       </a>
-                      <a href={"/leaderboard/" + test.id}>
+                      {/* <a href={"/leaderboard/" + leader.id}>
                         <button type="button">
                           <i className="fas fa-trophy"></i>
                         </button>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 );

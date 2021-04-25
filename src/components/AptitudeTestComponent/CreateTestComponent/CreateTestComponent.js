@@ -132,14 +132,11 @@ const CreateTest = () => {
             <AlertModal
               message="Test has been created successfully!"
               icon="successful"
-              leftBtn="Create another Test"
-              rightBtn="View all Tests"
+              leftBtn="Okay"
               action={() => {
-                history.push("/createtest");
-              }}
-              close={() => {
                 history.push("/tests");
               }}
+              close={closeModal}
             />
           );
         })
@@ -147,12 +144,21 @@ const CreateTest = () => {
           alert(error.message);
         });
     } else {
-      alert("Please fill in all the details!");
+      showModal(
+        <AlertModal
+          message="Please fill in all the details!"
+          icon="exclamation"
+          leftBtn="Okay"
+          action={closeModal}
+          close={closeModal}
+        />
+      );
     }
   };
 
   return (
     <React.Fragment>
+      {modal}
       <Helmet>
         <title>Aptitude Tests | TechnoHub BITD</title>
         <meta name="title" content="Aptitude Tests by TechnoHub BITD" />

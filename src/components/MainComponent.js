@@ -115,7 +115,7 @@ class Main extends Component {
             <Route exact path="/tests" component={TestsList} />
             <Route exact path="/leaderboard/:id" component={Leaderboard} />
             <PrivateRoute exact path="/mytests" component={MyTests} />
-            <PrivateRoute exact path="/answerkey" component={AnswerKey} />
+            <PrivateRoute exact path="/answerkey/:id" component={AnswerKey} />
 
             <Footer />
             {/* </Switch> */}
