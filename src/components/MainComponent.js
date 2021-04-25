@@ -50,6 +50,7 @@ import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListCompo
 import SingleTest from "./AptitudeTestComponent/SingleTestComponent/SingleTestComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestComponent";
 import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/LeaderboardComponent";
+import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 
 class Main extends Component {
   render() {
@@ -112,6 +113,7 @@ class Main extends Component {
             <PrivateRoute exact path="/createtest" component={CreateTest} />
             <Route exact path="/tests" component={TestsList} />
             <Route exact path="/leaderboard/:id" component={Leaderboard} />
+            <PrivateRoute exact path="/mytests" component={MyTests} />
 
             <Footer />
             {/* </Switch> */}

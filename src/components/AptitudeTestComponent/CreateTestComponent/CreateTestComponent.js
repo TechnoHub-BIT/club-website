@@ -281,7 +281,16 @@ const CreateTest = () => {
                     questions.map((create, index, val) => (
                       <div>
                         <h3 className="smallTitle">
-                          Question No. {index + 1} Details
+                          Question No. {index + 1} Details&nbsp;&nbsp;
+                          {questions.length !== 1 && (
+                            <button
+                              type="button"
+                              className="removeBtn"
+                              onClick={() => handleRemoveQuestion(index)}
+                            >
+                              <i className="fas fa-times"></i>
+                            </button>
+                          )}
                         </h3>
                         <div class="inputGroup twoInputs" key={index}>
                           <div className="input">
@@ -357,34 +366,27 @@ const CreateTest = () => {
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
-                          {questions.length - 1 === index && <button
+                          {questions.length - 1 === index && (
+                            <button
+                              type="button"
+                              className="addBtn"
+                              onClick={() => addMore(index)}
+                            >
+                              <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
+                              Question
+                            </button>
+                          )}
+                          <button
                             type="button"
-                            className="addBtn"
-                            onClick={() => addMore(index)}
+                            className="createBtn"
+                            onClick={firestoremaisave}
                           >
-                            <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
-                            Question
-                          </button>}
-                          {questions.length !== 1 && <button
-                            type="button"
-                            className="removeBtn"
-                            onClick={() => handleRemoveQuestion(index)}
-                          >
-                            <i className="fas fa-minus"></i>&nbsp;&nbsp;Remove
-                            Question
-                          </button>}
+                            <i className="fas fa-check"></i>&nbsp;&nbsp;Create
+                            Test
+                          </button>
                         </div>
                       </div>
                     ))}
-                  <div className="inputGroup w50p">
-                    <button
-                      type="button"
-                      className="createBtn"
-                      onClick={firestoremaisave}
-                    >
-                      <i className="fas fa-check"></i>&nbsp;&nbsp;Create Test
-                    </button>
-                  </div>
                 </form>
               </div>
             </div>

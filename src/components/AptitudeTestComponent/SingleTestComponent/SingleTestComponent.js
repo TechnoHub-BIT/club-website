@@ -24,10 +24,10 @@ const SingleTest = (props) => {
   const [quesLength, setLength] = useState();
   const [duration, setDuration] = useState();
   const [answers, setAnswers] = useState([]);
+  const [options, setOptions] = useState([]);
 
- 
-  useEffect( () => {
-    const ref =  db.collection("Tests").doc(props.match.params.id);
+  useEffect(() => {
+    const ref = db.collection("Tests").doc(props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
@@ -66,10 +66,16 @@ const SingleTest = (props) => {
 
   //Store Answers
   const handleAnswer = (e, index, option) => {
-    if (option === "Unanswered") answers[index] = null;
-    else if (tests.questions[index].correctAnswer === option)
+    if (option === "Unanswered") {
+      options[index] = null;
+      answers[index] = null;
+    } else if (tests.questions[index].correctAnswer === option) {
+      options[index] = option;
       answers[index] = "Correct";
-    else answers[index] = "Incorrect";
+    } else {
+      options[index] = option;
+      answers[index] = "Incorrect";
+    }
   };
 
   //Form Start Check
@@ -87,7 +93,7 @@ const SingleTest = (props) => {
       action === "start" ||
       action === "next" ||
       action === "prev"
-    )   
+    )
       document.querySelector("section.active").classList.remove("active");
 
     const sections = document.querySelectorAll("section");
@@ -149,11 +155,9 @@ const SingleTest = (props) => {
       .set({
         testname: title,
         timeleft: timeLeft,
-        answers: answers,
+        answers: options,
         score: score,
       });
-    // }
-    // }, [currentUser]);
 
     db.collection("Tests")
       .doc(props.match.params.id)
@@ -227,7 +231,7 @@ const SingleTest = (props) => {
     );
   }
 
-  const restart = React.useCallback(  () => {
+  const restart = React.useCallback(() => {
     setForm(true);
     const newTime = 35 * 60 * 1000;
     start(newTime);
@@ -379,12 +383,6 @@ const SingleTest = (props) => {
                       <li>
                         <strong>Marks for each Wrong answer:</strong> -
                         {tests.negativemarks}
-                      </li>
-                      <li>
-                        <strong>
-                          Reloading or closing the tab will end the test
-                          immediately.
-                        </strong>
                       </li>
                     </ul>
                   </div>

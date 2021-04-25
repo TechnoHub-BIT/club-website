@@ -67,6 +67,7 @@
 .testsListCont .centreCard .testsList .test > div {
   width: 100%;
   text-align: center;
+  white-space: nowrap;
 }
 
 .testsListCont .centreCard .testsList .test > div strong {
