@@ -126,16 +126,21 @@ const TestsList = () => {
                         <br />
                         {test.teststatus === "Active" ? (
                           <span style={{ color: "#00c851" }}>
-                            {test.teststatus}
+                            {test.teststatus} Now
                           </span>
                         ) : (
                           <span style={{ color: "#ff4444" }}>
-                            {test.teststatus}
+                            {test.teststatus} Now
                           </span>
                         )}
                       </div>
                     </div>
-                    <div className="duration">{test.duration} mins.</div>
+                    <div className="duration">
+                      <strong className="onlyMobile">
+                        Test Duration:&nbsp;&nbsp;
+                      </strong>
+                      {test.duration} mins.
+                    </div>
                     <div className="buttons">
                       <a href={"/test/" + test.id}>
                         <button type="button">

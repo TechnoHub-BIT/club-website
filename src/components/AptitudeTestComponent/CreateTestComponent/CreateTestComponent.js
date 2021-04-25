@@ -128,18 +128,37 @@ const CreateTest = () => {
           questions: questions,
         })
         .then(() => {
-          alert("Test created!");
+          showModal(
+            <AlertModal
+              message="Test has been created successfully!"
+              icon="successful"
+              leftBtn="Okay"
+              action={() => {
+                history.push("/tests");
+              }}
+              close={closeModal}
+            />
+          );
         })
         .catch((error) => {
           alert(error.message);
         });
     } else {
-      alert("Please fill in all the details!");
+      showModal(
+        <AlertModal
+          message="Please fill in all the details!"
+          icon="exclamation"
+          leftBtn="Okay"
+          action={closeModal}
+          close={closeModal}
+        />
+      );
     }
   };
   
   return (
     <React.Fragment>
+      {modal}
       <Helmet>
         <title>Aptitude Tests | TechnoHub BITD</title>
         <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
@@ -292,7 +311,7 @@ const CreateTest = () => {
                             </button>
                           )}
                         </h3>
-                        <div class="inputGroup twoInputs" key={index}>
+                        <div class="inputGroup" key={index}>
                           <div className="input">
                             <input
                               type="text"
@@ -303,6 +322,15 @@ const CreateTest = () => {
                               placeholder="Question"
                             />
                             <label htmlFor={"question" + index}>Question</label>
+                          </div>
+                        </div>
+                        <div className="inputGroup twoInputs">
+                          <div className="input">
+                            <select name="quesType">
+                              <option value="">--Select Question Type--</option>
+                              <option value="MCQ">MCQ</option>
+                              <option value="MSQ">MSQ</option>
+                            </select>
                           </div>
                           <div className="input">
                             <select
@@ -366,7 +394,9 @@ const CreateTest = () => {
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
-                          {questions.length - 1 === index && (
+                        </div>
+                        {questions.length - 1 === index && (
+                          <div className="inputGroup twoInputs w50p">
                             <button
                               type="button"
                               className="addBtn"
@@ -375,16 +405,16 @@ const CreateTest = () => {
                               <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                               Question
                             </button>
-                          )}
-                          <button
-                            type="button"
-                            className="createBtn"
-                            onClick={firestoremaisave}
-                          >
-                            <i className="fas fa-check"></i>&nbsp;&nbsp;Create
-                            Test
-                          </button>
-                        </div>
+                            <button
+                              type="button"
+                              className="createBtn"
+                              onClick={firestoremaisave}
+                            >
+                              <i className="fas fa-check"></i>&nbsp;&nbsp;Create
+                              Test
+                            </button>
+                          </div>
+                        )}
                       </div>
                     ))}
                 </form>
