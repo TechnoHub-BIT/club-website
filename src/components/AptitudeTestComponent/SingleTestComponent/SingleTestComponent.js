@@ -133,7 +133,8 @@ const SingleTest = (props) => {
   const branch = profiles.branch;
   const email = profiles.email;
   const title = tests.title;
-
+  const totalmarks = tests.totalmarks;
+  const testdate = tests.testdate
   let score = 0;
 
   //Submit Function
@@ -156,6 +157,8 @@ const SingleTest = (props) => {
         testname: title,
         timeleft: timeLeft,
         answers: options,
+        testdate:testdate,
+        totalmarks:totalmarks,
         score: score,
       });
 
