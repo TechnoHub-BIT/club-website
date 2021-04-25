@@ -128,7 +128,20 @@ const CreateTest = () => {
           questions: questions,
         })
         .then(() => {
-          alert("Test created!");
+          showModal(
+            <AlertModal
+              message="Test has been created successfully!"
+              icon="successful"
+              leftBtn="Create another Test"
+              rightBtn="View all Tests"
+              action={() => {
+                history.push("/createtest");
+              }}
+              close={() => {
+                history.push("/tests");
+              }}
+            />
+          );
         })
         .catch((error) => {
           alert(error.message);

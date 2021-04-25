@@ -96,7 +96,7 @@ const TestsList = () => {
                   </div>
                 </div>
                 <div className="duration">
-                  <strong>Time Taken/Score</strong>
+                  <strong>Time Taken/Your Score</strong>
                 </div>
                 <div className="buttons">
                   <strong>Action Buttons</strong>
@@ -107,12 +107,17 @@ const TestsList = () => {
                   <div className="test">
                     <div className="index">{i + 1}</div>
                     <div className="testTitle">
-                      {test.title + "(" + test.totalmarks + ")"}
+                      {test.title + "(" + test.totalmarks + " Marks)"}
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
                       </div>
                     </div>
-                    <div className="duration">{test.duration}/25</div>
+                    <div className="duration">
+                      <strong className="onlyMobile">
+                        Time Taken/Your Score:&nbsp;&nbsp;
+                      </strong>
+                      00:05:00/25
+                    </div>
                     <div className="buttons">
                       <a href={"/answerkey"}>
                         <button type="button">
