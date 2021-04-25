@@ -46,11 +46,7 @@ class Editblog extends React.Component {
         });
     }
 
-    onChange = (e) => {
-        const state = this.state
-        state[e.target.name] = e.target.value;
-        this.setState({ Blogs: state });
-    }
+  
 
     onSubmit = (e) => {
         e.preventDefault();

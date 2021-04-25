@@ -12,7 +12,7 @@ const TestsList = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("Tests").onSnapshot(function (data) {
+      db.collection("Tests").orderBy('testdate').onSnapshot(function (data) {
         setTest(
           data.docs.map((doc) => ({
             ...doc.data(),

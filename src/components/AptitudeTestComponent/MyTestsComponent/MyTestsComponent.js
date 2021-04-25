@@ -7,23 +7,6 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 
 const TestsList = () => {
-
-
-  // const [leader, setLeader] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     db.collection("Tests").onSnapshot(function (data) {
-  //       setLeader(
-  //         data.docs.map((doc) => ({
-  //           ...doc.data(),
-  //           id: doc.id,
-  //         }))
-  //       );
-  //     });
-  //   };
-  //   fetchdata();
-  // }, []);
   const [tests, setTest] = useState([]);
 
   useEffect(() => {
