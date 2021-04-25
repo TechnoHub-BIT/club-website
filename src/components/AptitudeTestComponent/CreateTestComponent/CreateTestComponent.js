@@ -311,7 +311,7 @@ const CreateTest = () => {
                             </button>
                           )}
                         </h3>
-                        <div class="inputGroup twoInputs" key={index}>
+                        <div class="inputGroup" key={index}>
                           <div className="input">
                             <input
                               type="text"
@@ -322,6 +322,15 @@ const CreateTest = () => {
                               placeholder="Question"
                             />
                             <label htmlFor={"question" + index}>Question</label>
+                          </div>
+                        </div>
+                        <div className="inputGroup twoInputs">
+                          <div className="input">
+                            <select name="quesType">
+                              <option value="">--Select Question Type--</option>
+                              <option value="MCQ">MCQ</option>
+                              <option value="MSQ">MSQ</option>
+                            </select>
                           </div>
                           <div className="input">
                             <select
@@ -385,7 +394,9 @@ const CreateTest = () => {
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
-                          {questions.length - 1 === index && (
+                        </div>
+                        {questions.length - 1 === index && (
+                          <div className="inputGroup twoInputs w50p">
                             <button
                               type="button"
                               className="addBtn"
@@ -394,16 +405,16 @@ const CreateTest = () => {
                               <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                               Question
                             </button>
-                          )}
-                          <button
-                            type="button"
-                            className="createBtn"
-                            onClick={firestoremaisave}
-                          >
-                            <i className="fas fa-check"></i>&nbsp;&nbsp;Create
-                            Test
-                          </button>
-                        </div>
+                            <button
+                              type="button"
+                              className="createBtn"
+                              onClick={firestoremaisave}
+                            >
+                              <i className="fas fa-check"></i>&nbsp;&nbsp;Create
+                              Test
+                            </button>
+                          </div>
+                        )}
                       </div>
                     ))}
                 </form>
