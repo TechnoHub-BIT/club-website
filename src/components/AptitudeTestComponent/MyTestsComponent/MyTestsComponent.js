@@ -114,7 +114,7 @@ const TestsList = () => {
                     </div>
                     <div className="duration">{test.duration}/25</div>
                     <div className="buttons">
-                      <a href={"/leaderboard/" + test.id}>
+                      <a href={"/answerkey"}>
                         <button type="button">
                           <i className="far fa-chart-bar"></i>
                         </button>
