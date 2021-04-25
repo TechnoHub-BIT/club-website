@@ -104,10 +104,13 @@ const SingleTest = (props) => {
       if (counter === 0) {
         options[index] = null;
         answers[index] = null;
-      } else if (tests.questions[index].correctAnswer === optionsToStore) {
+      } else if (
+        tests.questions[index].correctAnswer === optionsToStore ||
+        !incorrect
+      ) {
         options[index] = optionsToStore;
         answers[index] = "Correct";
-      } else {
+      } else if (incorrect) {
         options[index] = optionsToStore;
         answers[index] = "Incorrect";
       }
