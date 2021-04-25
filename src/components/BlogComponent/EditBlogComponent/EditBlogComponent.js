@@ -19,7 +19,7 @@ import { resetWarningCache } from "prop-types";
 
 class Editblog extends React.Component {
     constructor(props) {
-        super(props);
+        super(props);  
         this.state = {
             key: '',
             blogtitle: '',
