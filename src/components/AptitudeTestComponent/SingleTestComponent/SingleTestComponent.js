@@ -14,7 +14,7 @@ const SingleTest = (props) => {
   const [modal, showModal] = useState("");
 
   const closeModal = () => {
-    showModal("");
+    showModal("  ");
   };
 
   const [tests, setTest] = useState([]);
@@ -23,11 +23,13 @@ const SingleTest = (props) => {
   const [duration, setDuration] = useState();
   const [answers, setAnswers] = useState([]);
 
-  const ref = db.collection("Tests").doc(props.match.params.id);
-  useEffect(() => {
+ 
+  useEffect( () => {
+    const ref =  db.collection("Tests").doc(props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
+        setDuration(Test.duration);
         setLength(Test.questions.length);
         setTest({
           id: doc.id,
@@ -83,7 +85,7 @@ const SingleTest = (props) => {
       action === "start" ||
       action === "next" ||
       action === "prev"
-    )
+    )   
       document.querySelector("section.active").classList.remove("active");
 
     const sections = document.querySelectorAll("section");
@@ -223,7 +225,7 @@ const SingleTest = (props) => {
     );
   }
 
-  const restart = React.useCallback(() => {
+  const restart = React.useCallback(  () => {
     setForm(true);
     const newTime = parseInt(tests.duration) * 60 * 1000;
     start(newTime);

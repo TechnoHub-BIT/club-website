@@ -24,7 +24,8 @@ import { Zoom, Fade } from 'react-reveal';
 import { useAuth } from "../../contexts/AuthContext";
 import LikeButton from './LikeButton'
 
-function BlogComponent() {
+function BlogComponent(props) {
+
 
     const { currentUser } = useAuth();
     const [currentProfile, setCurrentProfile] = useState('');
@@ -36,7 +37,46 @@ function BlogComponent() {
                 setCurrentProfile(data);
             });
     }
+//     const [comment, setComment] = useState([]);
+//   const Ucomment = (e) => {
+//     setComment(e.target.value);
+//   };
 
+//   const fullname =   currentProfile.fullname
+// const photourl = currentUser.photoURL
+// const date = new Date().toLocaleDateString();
+
+// const onSubmit= () => {
+//     db.collection("Blogs")
+//     .doc(blogedit.Blogs.id)
+//     .collection("Comments")
+//     .doc(currentProfile.email)
+//     .set({
+//    fullname:fullname,
+//    photourl:photourl,
+//    comment:comment,
+//    date:date,
+//     });
+// }
+// const [blogcomment, setBlogCcmment] = useState([]);
+// useEffect(() => {
+//   db.collection("Blogs")
+//     .doc(blogedit.id)
+//     .collection("Comments")
+//     // .orderBy("score", "desc")
+//     .get()
+//     .then((response) => {
+//       const fetchComments = [];
+//       response.forEach((document) => {
+//         const fetchComment = {
+//           id: document.id,
+//           ...document.data(),
+//         };
+//         fetchComments.push(fetchComment);
+//       });
+//       setBlogCcmment(fetchComments);
+//     });
+// }, []);
     const qur = queryString("blog");
 
     const [blogedit, setblogs] = useState([]);
@@ -45,9 +85,12 @@ function BlogComponent() {
         const fetchdata = async () => {
             db.collection("Blogs")
                 .onSnapshot(function (data) {
+                    
                     setblogs(data.docs.map(doc => ({
                         ...doc.data(), id: doc.id
+                  
                     })));
+                  
                 })
         }
         fetchdata();
@@ -89,8 +132,10 @@ function BlogComponent() {
 
     return (
         <React.Fragment>
-            {
+            <div>
+            {blogedit &&
                 blogedit.map(Blogs => {
+                    
                     if (Blogs.blogtitle === checkTitle && Blogs.blogauthor === checkAuthor) {
                         counter++;
 
@@ -117,17 +162,25 @@ function BlogComponent() {
                                                     className="blogDetails"
                                                 >
                                                 </div>
+<div>
 
-                                                {/* //  Edit and Delete Blog Buttons */}
-
-                                                {/* <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
-
+{/* <input type = "text" onChange={Ucomment} value={comment} />
+    <button type = "submit" onClick={onSubmit}>Add comment</button>                                            */}
+                                                {/* {currentProfile.id === 1 ? (
+                                                //   Edit and Delete Blog Buttons 
+                                                 <div>
+                                                 <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
                                                 {
-                                                    (currentProfile.id === 1) &&
                                                     <Button color="danger" onClick={() => onDelete(Blogs.id)}>Delete Blog Permanently</Button>
                                                 }
+                                                <LikeButton like={Blogs} /> 
+                                                </div>
+                                                ) : null} */}
 
-                                                <LikeButton like={Blogs} /> */}
+
+
+{/* {Blogs.id} */}
+</div>
 
                                                 <div className="shareButtons">
                                                     <h6>Share on:</h6>
@@ -176,6 +229,25 @@ function BlogComponent() {
                         <meta name="title" content={checkTitle} />
                     </Helmet>
             }
+            </div>
+            {/* { blogcomment.map((user)=>{
+    return(
+        <div>
+            <div>
+                {user.fullname}
+            </div>
+            <div>
+                {user.date}
+            </div>
+            <div>
+                {user.photoURL}
+            </div>
+            <div>
+                {user.comment}
+            </div>
+        </div>
+    )
+})} */}
         </React.Fragment>
     );
 }
