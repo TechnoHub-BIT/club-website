@@ -188,8 +188,8 @@ const CreateTest = () => {
                       <select
                         name="status"
                         id="status"
-                        onChange={teststatus}
-                        value={status}
+                        onChange={status}
+                        value={teststatus}
                         required
                       >
                         <option value="">--Test Status--</option>
