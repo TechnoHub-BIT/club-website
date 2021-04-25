@@ -357,22 +357,22 @@ const CreateTest = () => {
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
-                          <button
+                          {questions.length - 1 === index && <button
                             type="button"
                             className="addBtn"
-                            onClick={() => addMore(create)}
+                            onClick={() => addMore(index)}
                           >
                             <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                             Question
-                          </button>
-                          <button
+                          </button>}
+                          {questions.length !== 1 && <button
                             type="button"
                             className="removeBtn"
-                            onClick={() => handleRemoveQuestion(create)}
+                            onClick={() => handleRemoveQuestion(index)}
                           >
                             <i className="fas fa-minus"></i>&nbsp;&nbsp;Remove
                             Question
-                          </button>
+                          </button>}
                         </div>
                       </div>
                     ))}

@@ -12,6 +12,7 @@
     "bitly-react": "^6.0.12",
     "bootstrap": "^4.5.3",
     "bootstrap-social": "^5.1.1",
+    "caniuse-lite": "^1.0.30001214",
     "chokidar": "^3.5.1",
     "cross-fetch": "^3.0.6",
     "emailjs": "^3.3.0",
