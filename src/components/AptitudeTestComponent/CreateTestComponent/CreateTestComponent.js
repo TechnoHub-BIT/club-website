@@ -62,7 +62,15 @@ const CreateTest = () => {
   };
 
   const [questions, setQuestion] = useState([
-    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "", questionType:"" },
+    {
+      question: "",
+      op1: "",
+      op2: "",
+      op3: "",
+      op4: "",
+      correctAnswer: "",
+      questionType: "",
+    },
   ]);
 
   const handleChange = (e, index) => {
@@ -75,7 +83,15 @@ const CreateTest = () => {
   const addMore = () => {
     setQuestion([
       ...questions,
-      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "",questionType:"" },
+      {
+        question: "",
+        op1: "",
+        op2: "",
+        op3: "",
+        op4: "",
+        correctAnswer: "",
+        questionType: "",
+      },
     ]);
   };
 
@@ -155,7 +171,7 @@ const CreateTest = () => {
       );
     }
   };
-  
+
   return (
     <React.Fragment>
       {modal}
@@ -326,23 +342,29 @@ const CreateTest = () => {
                         </div>
                         <div className="inputGroup twoInputs">
                           <div className="input">
-                            <select name="questionType" value={create.questionType}
-                            onChange={(e) => handleChange(e, index)}>
-                              <option >--Select Question Type--</option>
+                            <select
+                              name="questionType"
+                              value={create.questionType}
+                              onChange={(e) => handleChange(e, index)}
+                            >
+                              <option>--Select Question Type--</option>
                               <option value="MCQ">MCQ</option>
                               <option value="MSQ">MSQ</option>
                             </select>
                           </div>
                           <div className="input">
                             <input
-                            name="correctAnswer"
-                            type="text"
-                            value={create.correctAnswer}
-                            onChange={(e) => handleChange(e, index)}
-                            placeholder="Correct Option"
+                              name="correctAnswer"
+                              type="text"
+                              id={"correctAnswer" + index}
+                              value={create.correctAnswer}
+                              onChange={(e) => handleChange(e, index)}
+                              placeholder="Correct Option"
                             />
-                            <label htmlFor={"correctAnswer" + index}>Correct Answer</label>
-                          </div>                     
+                            <label htmlFor={"correctAnswer" + index}>
+                              Correct Answer
+                            </label>
+                          </div>
                         </div>
                         <div className="inputGroup twoInputs">
                           <div className="input">

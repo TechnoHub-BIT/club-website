@@ -66,16 +66,65 @@ const SingleTest = (props) => {
 
   //Store Answers
   const handleAnswer = (e, index, option) => {
-    if (option === "Unanswered") {
-      options[index] = null;
-      answers[index] = null;
-    } else if (tests.questions[index].correctAnswer === option) {
-      options[index] = option;
-      answers[index] = "Correct";
+    const type = e.target.type;
+
+    if (type === "checkbox") {
+      let selectedAnswers = [];
+
+      const checkboxes = document.querySelectorAll(
+        "input[type='checkbox'][name='" + e.target.name + "']"
+      );
+      let counter = 0;
+      checkboxes.forEach((checkbox, cbIndex) => {
+        if (checkbox.checked === true) {
+          counter++;
+          if (cbIndex === 0) selectedAnswers.push("A");
+          else if (cbIndex === 1) selectedAnswers.push("B");
+          else if (cbIndex === 2) selectedAnswers.push("C");
+          else selectedAnswers.push("D");
+        }
+      });
+
+      const correctOptions = tests.questions[index].correctAnswer.split(",");
+      let incorrect = true;
+
+      for (let i = 0; i < selectedAnswers.length; i++) {
+        for (let j = 0; j < correctOptions.length; j++) {
+          if (selectedAnswers[i] === correctOptions[j]) {
+            incorrect = false;
+            break;
+          } else incorrect = true;
+        }
+
+        if (incorrect) break;
+      }
+
+      const optionsToStore = selectedAnswers.toString();
+
+      if (counter === 0) {
+        options[index] = null;
+        answers[index] = null;
+      } else if (tests.questions[index].correctAnswer === optionsToStore) {
+        options[index] = optionsToStore;
+        answers[index] = "Correct";
+      } else {
+        options[index] = optionsToStore;
+        answers[index] = "Incorrect";
+      }
     } else {
-      options[index] = option;
-      answers[index] = "Incorrect";
+      if (option === "Unanswered") {
+        options[index] = null;
+        answers[index] = null;
+      } else if (tests.questions[index].correctAnswer === option) {
+        options[index] = option;
+        answers[index] = "Correct";
+      } else {
+        options[index] = option;
+        answers[index] = "Incorrect";
+      }
     }
+
+    console.log(answers + "\n" + options);
   };
 
   //Form Start Check
@@ -134,7 +183,7 @@ const SingleTest = (props) => {
   const email = profiles.email;
   const title = tests.title;
   const totalmarks = tests.totalmarks;
-  const testdate = tests.testdate
+  const testdate = tests.testdate;
   let score = 0;
 
   //Submit Function
@@ -157,8 +206,8 @@ const SingleTest = (props) => {
         testname: title,
         timeleft: timeLeft,
         answers: options,
-        testdate:testdate,
-        totalmarks:totalmarks,
+        testdate: testdate,
+        totalmarks: totalmarks,
         score: score,
       });
 
@@ -407,82 +456,137 @@ const SingleTest = (props) => {
                     return (
                       <section ques-no={index + 1} key={index}>
                         <h3 className="smallTitle">Question No. {index + 1}</h3>
-                        <div className="question">{item.question}</div>
-                        <input
-                          type="radio"
-                          name={"option" + (index + 1)}
-                          onChange={(e) => handleAnswer(e, index, "Unanswered")}
-                          value="Unanswered"
-                          className="hiddenRadio"
-                          defaultChecked
-                        />
-                        <div className="options">
-                          <div>
-                          <input
-                              type="radio"
-                              onChange={(e) => handleAnswer(e, index, "M")}
-                              name={"option" + (index + 1)}
-                              id={"option" + (index + 1)}
-                              value={item.questionType}
-                            />
-                            &nbsp;&nbsp; {" "}
-                            <label htmlFor={"option" + (index + 1)}>
-                              {item.questionType}
-                            </label>
-                          </div>
-                          <div>
-                            <input
-                              type="radio"
-                              onChange={(e) => handleAnswer(e, index, "A")}
-                              name={"option" + (index + 1)}
-                              id={"optiona" + (index + 1)}
-                              value={item.op1}
-                            />
-                            &nbsp;&nbsp; (A){" "}
-                            <label htmlFor={"optiona" + (index + 1)}>
-                              {item.op1}
-                            </label>
-                          </div>
-                          <div>
-                            <input
-                              type="radio"
-                              onChange={(e) => handleAnswer(e, index, "B")}
-                              name={"option" + (index + 1)}
-                              id={"optionb" + (index + 1)}
-                              value={item.op2}
-                            />
-                            &nbsp;&nbsp; (B){" "}
-                            <label htmlFor={"optionb" + (index + 1)}>
-                              {item.op2}
-                            </label>
-                          </div>
-                          <div>
-                            <input
-                              type="radio"
-                              onChange={(e) => handleAnswer(e, index, "C")}
-                              name={"option" + (index + 1)}
-                              id={"optionc" + (index + 1)}
-                              value={item.op3}
-                            />
-                            &nbsp;&nbsp; (C){" "}
-                            <label htmlFor={"optionc" + (index + 1)}>
-                              {item.op3}
-                            </label>
-                          </div>
-                          <div>
-                            <input
-                              type="radio"
-                              onChange={(e) => handleAnswer(e, index, "D")}
-                              name={"option" + (index + 1)}
-                              id={"optiond" + (index + 1)}
-                              value={item.op4}
-                            />
-                            &nbsp;&nbsp; (D){" "}
-                            <label htmlFor={"optiond" + (index + 1)}>
-                              {item.op4}
-                            </label>
-                          </div>
+                        <div className="question">
+                          {item.question}
+                          <br />
+                          {item.questionType === "MSQ"
+                            ? "(More than one correct option)"
+                            : null}
                         </div>
+                        {item.questionType === "MCQ" ? (
+                          <input
+                            type="radio"
+                            name={"option" + (index + 1)}
+                            onChange={(e) =>
+                              handleAnswer(e, index, "Unanswered")
+                            }
+                            value="Unanswered"
+                            className="hiddenRadio"
+                            defaultChecked
+                          />
+                        ) : null}
+                        {item.questionType === "MCQ" ? (
+                          <div className="options">
+                            <div>
+                              <input
+                                type="radio"
+                                onChange={(e) => handleAnswer(e, index, "A")}
+                                name={"option" + (index + 1)}
+                                id={"optiona" + (index + 1)}
+                                value={item.op1}
+                              />
+                              &nbsp;&nbsp; (A){" "}
+                              <label htmlFor={"optiona" + (index + 1)}>
+                                {item.op1}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="radio"
+                                onChange={(e) => handleAnswer(e, index, "B")}
+                                name={"option" + (index + 1)}
+                                id={"optionb" + (index + 1)}
+                                value={item.op2}
+                              />
+                              &nbsp;&nbsp; (B){" "}
+                              <label htmlFor={"optionb" + (index + 1)}>
+                                {item.op2}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="radio"
+                                onChange={(e) => handleAnswer(e, index, "C")}
+                                name={"option" + (index + 1)}
+                                id={"optionc" + (index + 1)}
+                                value={item.op3}
+                              />
+                              &nbsp;&nbsp; (C){" "}
+                              <label htmlFor={"optionc" + (index + 1)}>
+                                {item.op3}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="radio"
+                                onChange={(e) => handleAnswer(e, index, "D")}
+                                name={"option" + (index + 1)}
+                                id={"optiond" + (index + 1)}
+                                value={item.op4}
+                              />
+                              &nbsp;&nbsp; (D){" "}
+                              <label htmlFor={"optiond" + (index + 1)}>
+                                {item.op4}
+                              </label>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="options">
+                            <div>
+                              <input
+                                type="checkbox"
+                                onChange={(e) => handleAnswer(e, index, "A")}
+                                name={"option" + (index + 1)}
+                                id={"optiona" + (index + 1)}
+                                value={item.op1}
+                              />
+                              &nbsp;&nbsp; (A){" "}
+                              <label htmlFor={"optiona" + (index + 1)}>
+                                {item.op1}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="checkbox"
+                                onChange={(e) => handleAnswer(e, index, "B")}
+                                name={"option" + (index + 1)}
+                                id={"optionb" + (index + 1)}
+                                value={item.op2}
+                              />
+                              &nbsp;&nbsp; (B){" "}
+                              <label htmlFor={"optionb" + (index + 1)}>
+                                {item.op2}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="checkbox"
+                                onChange={(e) => handleAnswer(e, index, "C")}
+                                name={"option" + (index + 1)}
+                                id={"optionc" + (index + 1)}
+                                value={item.op3}
+                              />
+                              &nbsp;&nbsp; (C){" "}
+                              <label htmlFor={"optionc" + (index + 1)}>
+                                {item.op3}
+                              </label>
+                            </div>
+                            <div>
+                              <input
+                                type="checkbox"
+                                onChange={(e) => handleAnswer(e, index, "D")}
+                                name={"option" + (index + 1)}
+                                id={"optiond" + (index + 1)}
+                                value={item.op4}
+                              />
+                              &nbsp;&nbsp; (D){" "}
+                              <label htmlFor={"optiond" + (index + 1)}>
+                                {item.op4}
+                              </label>
+                            </div>
+                          </div>
+                        )}
+
                         <div className="navigation">
                           {index === 0 ? (
                             <button
