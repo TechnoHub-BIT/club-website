@@ -11,6 +11,8 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 0 15vw;
+  text-align: left;
+  font-size: 2rem;
 }
 
 .createTestCont .title button {
@@ -179,12 +181,8 @@
 }
 
 .createTestCont .centreCard .createForm button.removeBtn {
-  height: 30px;
-  width: 30px;
-  padding: 0;
   background-color: #eb0808;
   border: 2px solid #eb0808;
-  font-size: 0.9rem;
 }
 
 .createTestCont .centreCard .createForm button.removeBtn:hover {
