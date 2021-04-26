@@ -75,6 +75,8 @@ const SingleTest = (props) => {
         "input[type='checkbox'][name='" + e.target.name + "']"
       );
       let counter = 0;
+
+      //Search for all selected checkboxes' options
       checkboxes.forEach((checkbox, cbIndex) => {
         if (checkbox.checked === true) {
           counter++;
@@ -88,17 +90,21 @@ const SingleTest = (props) => {
       const correctOptions = tests.questions[index].correctAnswer.split(",");
       let incorrect = true;
 
+      //Check if all selected options are present in the correct options
       for (let i = 0; i < selectedAnswers.length; i++) {
         for (let j = 0; j < correctOptions.length; j++) {
+          //Check if selected option is present in the correct options or not
           if (selectedAnswers[i] === correctOptions[j]) {
             incorrect = false;
             break;
           } else incorrect = true;
         }
 
+        //Break even if any one selected option is not present in the correct options
         if (incorrect) break;
       }
 
+      //Convert selected answers to string to store in database
       const optionsToStore = selectedAnswers.toString();
 
       if (counter === 0) {
@@ -126,8 +132,6 @@ const SingleTest = (props) => {
         answers[index] = "Incorrect";
       }
     }
-
-    console.log(answers + "\n" + options);
   };
 
   //Form Start Check
@@ -201,6 +205,7 @@ const SingleTest = (props) => {
       else score -= parseInt(tests.negativemarks, 10);
     }
 
+    //Store details in tests collection of members database
     db.collection("members")
       .doc(currentUser.uid)
       .collection("tests")
@@ -214,6 +219,7 @@ const SingleTest = (props) => {
         score: score,
       });
 
+    //Store details in results collection of test database
     db.collection("Tests")
       .doc(props.match.params.id)
       .collection("results")
@@ -249,21 +255,22 @@ const SingleTest = (props) => {
   };
 
   //Countdown Timer
-  const initialTime = 35 * 60 * 1000;
-  const interval = 1000;
+  const initialTime = 35 * 60 * 1000; //minutes * seconds * microseconds
+  const interval = 1000; //Should always be 1000
 
-  const [timeLeft, { start, pause }] = useCountDown(initialTime, interval);
+  const [timeLeft, { start, pause }] = useCountDown(initialTime, interval); //react-countdown-hook
 
-  let hours = parseInt(timeLeft / 3600000);
-  let minutes = parseInt(timeLeft / 60000);
-  let seconds = parseInt(timeLeft / 1000) % 60;
+  let hours = parseInt(timeLeft / 3600000); //Calculate hours from timeLeft
+  let minutes = parseInt(timeLeft / 60000); //Calculate minutes from timeLeft
+  let seconds = parseInt(timeLeft / 1000) % 60; //Calculate seconds from timeLeft
 
-  if (minutes === 60) minutes = 0;
+  if (minutes === 60) minutes = 0; //Set seconds as 0 on becoming 60
 
   let hoursDisplay = hours;
   let minutesDisplay = minutes;
   let secondsDisplay = seconds;
 
+  //Add extra 0 for single digit numbers
   if (hours <= 9) hoursDisplay = "0" + hours;
   if (minutes <= 9) minutesDisplay = "0" + minutes;
   if (seconds <= 9) secondsDisplay = "0" + seconds;
@@ -273,6 +280,7 @@ const SingleTest = (props) => {
     pause();
   }, []);
 
+  //Submit form on time up
   if (hours === 0 && minutes === 0 && seconds === 0 && form) {
     setForm(false);
     showModal(
@@ -286,6 +294,7 @@ const SingleTest = (props) => {
     );
   }
 
+  //Start timer on Quiz start
   const restart = React.useCallback(() => {
     setForm(true);
     const newTime = 35 * 60 * 1000;
@@ -317,6 +326,8 @@ const SingleTest = (props) => {
       .doc(props.match.params.id)
       .collection("results")
       .doc(email);
+
+    //Check if the user has already given the test or not
     ref.get().then((doc) => {
       if (doc.exists)
         showModal(
@@ -333,6 +344,7 @@ const SingleTest = (props) => {
             }}
           />
         );
+      //Check if test is active or not
       else if (tests.teststatus === "Inactive")
         showModal(
           <AlertModal
@@ -348,12 +360,14 @@ const SingleTest = (props) => {
             }}
           />
         );
+      //Start the test
       else {
         restart();
         sectionChanger("start", 0);
       }
     });
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
