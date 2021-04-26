@@ -6,6 +6,7 @@ import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
+import { TextArea } from "semantic-ui-react";
 
 const CreateTest = () => {
   let history = useHistory();
@@ -74,6 +75,7 @@ const CreateTest = () => {
       op4: "",
       correctAnswer: "",
       questionType: "",
+      explanation:""
     },
   ]);
 
@@ -95,6 +97,7 @@ const CreateTest = () => {
         op4: "",
         correctAnswer: "",
         questionType: "",
+        explanation:""
       },
     ]);
   };
@@ -355,6 +358,19 @@ const CreateTest = () => {
                               placeholder="Question"
                             />
                             <label htmlFor={"question" + index}>Question</label>
+                          </div>
+                        </div>
+                        <div class="inputGroup" key={index}>
+                          <div className="input">
+                            <TextArea
+                              type="text"
+                              name="explanation"
+                              id={"explanation" + index}
+                              value={create.explanation}
+                              onChange={(e) => handleChange(e, index)}
+                              placeholder="explanation"
+                            />
+                            <label htmlFor={"explanation" + index}>Explanation</label>
                           </div>
                         </div>
                         <div className="inputGroup twoInputs">
