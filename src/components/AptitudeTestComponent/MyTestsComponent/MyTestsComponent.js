@@ -7,28 +7,14 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 
 const TestsList = () => {
-  // const [leader, setLeader] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     db.collection("Tests").onSnapshot(function (data) {
-  //       setLeader(
-  //         data.docs.map((doc) => ({
-  //           ...doc.data(),
-  //           id: doc.id,
-  //         }))
-  //       );
-  //     });
-  //   };
-  //   fetchdata();
-  // }, []);
   const [tests, setTest] = useState([]);
 
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("members")
         .doc(currentUser.uid)
-        .collection("tests")
+        .collection("tests").orderBy('testdate','desc')
         .onSnapshot(function (data) {
           setTest(
             data.docs.map((doc) => ({
@@ -123,7 +109,7 @@ const TestsList = () => {
                   <div className="test">
                     <div className="index">{i + 1}</div>
                     <div className="testTitle">
-                      {test.id}({test.totalmarks})
+                      {test.testname}({test.totalmarks})
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
                       </div>

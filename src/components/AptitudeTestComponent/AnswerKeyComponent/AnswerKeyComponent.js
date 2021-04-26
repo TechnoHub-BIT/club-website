@@ -53,9 +53,8 @@ const AnswerKey = (props) => {
   return (
     <React.Fragment>
    
-     
       {testname.map((item) => {
-        if (tests.testname === item.title) {
+        if (item.title ===  tests.testname ) {
           return (
             <div>
               {item.questions.map((que,index) => {
