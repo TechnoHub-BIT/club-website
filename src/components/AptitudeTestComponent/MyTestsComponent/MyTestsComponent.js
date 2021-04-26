@@ -123,9 +123,9 @@ const TestsList = () => {
                   <div className="test">
                     <div className="index">{i + 1}</div>
                     <div className="testTitle">
-                      {test.id}
+                      {test.id}({test.totalmarks})
                       <div className="date">
-                        {/* {Moment(test.testdate).format("ll")} */}
+                        {Moment(test.testdate).format("ll")}
                       </div>
                     </div>
                     <div className="duration">
