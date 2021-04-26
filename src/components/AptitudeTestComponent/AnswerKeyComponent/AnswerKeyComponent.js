@@ -100,6 +100,9 @@ const AnswerKey = (props) => {
                           <div>
                             Correct Option: Option ({que.correctAnswer})
                           </div>
+                          <div>
+                            Explanation: {que.explanation}
+                            </div>
                           <div
                             className={
                               que.correctAnswer === yourOptions[index]
