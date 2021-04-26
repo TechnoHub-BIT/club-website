@@ -60,6 +60,10 @@ const CreateTest = () => {
   const status = (e) => {
     setTestStatus(e.target.value);
   };
+  const [answerstatus, setAnswerstatus] = useState("");
+  const answerkeystatus = (e) => {
+    setAnswerstatus(e.target.value);
+  };
 
   const [questions, setQuestion] = useState([
     {
@@ -126,7 +130,9 @@ const CreateTest = () => {
       endtime !== "" &&
       negativemarks !== "" &&
       teststatus !== "" &&
-      positivemarks !== ""
+      positivemarks !== "" &&
+      answerstatus !== "" &&
+      teststatus !== ""
     ) {
       // && question !== "" || op1 !== "" || op2 !== "" || op3 !=="" || op4 !== "" || correctAnswer !== "")
       e.preventDefault();
@@ -136,6 +142,7 @@ const CreateTest = () => {
           duration: duration,
           totalmarks: totalmarks,
           teststatus: teststatus,
+          answerstatus:answerstatus,
           testdate: testdate,
           starttime: starttime,
           endtime: endtime,
@@ -235,7 +242,8 @@ const CreateTest = () => {
                       </select>
                     </div>
                     <div className="input">
-                      <select name="answerkey" id="answerkey" required>
+                      <select name="answerkey" onChange={answerkeystatus}
+                        value={answerstatus} id="answerkey" required>
                         <option value="">--Answer Key Status--</option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>

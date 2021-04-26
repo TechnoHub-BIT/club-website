@@ -112,6 +112,7 @@ const TestsList = () => {
                       {test.testname}({test.totalmarks})
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
+                        {test.answerstatus}
                       </div>
                     </div>
                     <div className="duration">
