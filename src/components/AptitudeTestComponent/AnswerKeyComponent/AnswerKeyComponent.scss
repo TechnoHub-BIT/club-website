@@ -1,0 +1,82 @@
+.answerKeyCont {
+  .title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vw;
+    text-align: left;
+    font-size: 2rem;
+
+    button {
+      font-size: 1rem;
+      padding: 10px 30px;
+      background-color: #00c851;
+      border: 2px solid #00c851;
+      color: #fff;
+      border-radius: 5px;
+      white-space: nowrap;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        background-color: #007e33;
+        border-color: #007e33;
+      }
+    }
+  }
+
+  .centreCard {
+    margin: 3em 10vw;
+    box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
+    border-radius: 20px;
+    padding: 20px 30px 30px;
+
+    .smallTitle {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-top: 1.5em;
+    }
+
+    .questions {
+      .singleQuestion {
+        .options {
+          margin: 1.5em 0;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-row-gap: 1em;
+        }
+
+        .green {
+          color: #00c851;
+        }
+
+        .red {
+          color: #ff4444;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .answerKeyCont {
+    .title {
+      padding: 0 20px;
+      font-size: 1.7rem;
+
+      button {
+        padding: 7px 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .centreCard {
+      margin: 2em 20px 3em;
+      grid-template-columns: repeat(1, 1fr);
+      font-size: 0.9rem;
+    }
+  }
+}

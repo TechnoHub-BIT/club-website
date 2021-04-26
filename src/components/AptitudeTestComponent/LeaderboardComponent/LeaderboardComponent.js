@@ -147,6 +147,9 @@ const Leaderboard = (props) => {
                             </div>
                           </div>
                           <div className="time">
+                            <strong className="onlyMobile">
+                              Time Taken:&nbsp;&nbsp;
+                            </strong>
                             {parseInt((2100000 - test.timeleft) / 3600000, 10) <
                             10
                               ? "0" +
@@ -175,7 +178,15 @@ const Leaderboard = (props) => {
                               ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
                               : ((2100000 - test.timeleft) / 1000) % 60}
                           </div>
-                          <div className="score">{test.score}</div>
+                          <div className="score">
+                            {test.score}
+                            <strong className="onlyMobile">
+                              &nbsp;&nbsp;
+                              <span style={{ fontSize: "1rem" }}>
+                                markes scored
+                              </span>
+                            </strong>
+                          </div>
                         </div>
                       );
                     }

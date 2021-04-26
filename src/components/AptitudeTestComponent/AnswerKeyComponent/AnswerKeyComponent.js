@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./AnswerKeyComponent.css";
 import { db } from "../../../firebase";
 import { useAuth } from "../../../contexts/AuthContext";
+import { Helmet } from "react-helmet";
+import { Fade } from "react-reveal";
 
 const AnswerKey = (props) => {
   const { currentUser, logout } = useAuth();
@@ -51,39 +54,71 @@ const AnswerKey = (props) => {
     fetchdata();
   }, []);
 
+  const yourAnswers = [];
+  const yourOptions = [];
+
+  tests.answers &&
+    tests.answers.map((items, index) => {
+      yourAnswers.push(items);
+    });
+
+  tests.options &&
+    tests.options.map((items, index) => {
+      yourOptions.push(items);
+    });
+
   return (
     <React.Fragment>
-   
-      {testname.map((item) => {
-        if (item.title ===  tests.testname ) {
-          return (
-            <div>
-              {item.questions.map((que,index) => {
-                return <div>
-                    
-                    <div>Q{index+1}.      {que.question}</div>
-                <div>correct Answer:  {que.correctAnswer}</div>
-                <div>option (A):  {que.op1}</div>
-                <div>option (B):  {que.op2}</div>
-                <div>option (C):  {que.op3}</div>
-                <div>option (D):  {que.op4}</div>
-                </div>;
-              })}
-            </div>
-          );
-        }
-      })}
-      <h1>Your answers</h1>
-      {tests.options &&
-        tests.options.map((items,index) => {
-          return <div>{index+1}:  {items}</div>;
-        })}
-
-      {tests.answers &&
-        tests.answers.map((items,index) => {
-          
-          return <div>{index+1}:  {items}</div>;
-        })}
+      <div className="answerKeyCont">
+        <Fade up>
+          <h1 className="title">
+            {tests.testname}- Answer Key
+            <a href="/mytests">
+              <button type="button">
+                <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
+              </button>
+            </a>
+          </h1>
+          <div className="centreCard">
+            {testname.map((item) => {
+              if (item.title === tests.testname) {
+                return (
+                  <div className="questions">
+                    {item.questions.map((que, index) => {
+                      return (
+                        <div className="singleQuestion">
+                          <h3 className="smallTitle">
+                            Question No. {index + 1}
+                          </h3>
+                          <div className="question">{que.question}</div>
+                          <div className="options">
+                            <div>Option (A): {que.op1}</div>
+                            <div>Option (B): {que.op2}</div>
+                            <div>Option (C): {que.op3}</div>
+                            <div>Option (D): {que.op4}</div>
+                          </div>
+                          <div>
+                            Correct Option: Option ({que.correctAnswer})
+                          </div>
+                          <div
+                            className={
+                              que.correctAnswer === yourOptions[index]
+                                ? "green"
+                                : "red"
+                            }
+                          >
+                            Your Answer: Option ({yourOptions[index]})
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </Fade>
+      </div>
     </React.Fragment>
   );
 };

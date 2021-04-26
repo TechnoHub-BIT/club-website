@@ -19,6 +19,9 @@ const SingleTest = (props) => {
     showModal("  ");
   };
 
+  //Form Start Check
+  const [form, setForm] = useState(false);
+
   const [tests, setTest] = useState([]);
 
   const [quesLength, setLength] = useState();
@@ -31,7 +34,7 @@ const SingleTest = (props) => {
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
-        setDuration(Test.duration);
+        setDuration(Test.duration.charAt(0));
         setLength(Test.questions.length);
         setTest({
           id: doc.id,
@@ -63,6 +66,8 @@ const SingleTest = (props) => {
         );
     });
   }, []);
+
+  console.log(duration);
 
   //Store Answers
   const handleAnswer = (e, index, option) => {
@@ -135,9 +140,6 @@ const SingleTest = (props) => {
       }
     }
   };
-
-  //Form Start Check
-  const [form, setForm] = useState(false);
 
   //Next, Previous and Question Buttons
   const sectionChanger = (action, index) => {
@@ -395,6 +397,7 @@ const SingleTest = (props) => {
       <button
         type="button"
         className="question"
+        title={"Go to Question " + (i + 1)}
         onClick={() => sectionChanger("direct", i + 1)}
         key={i}
       >
@@ -418,7 +421,7 @@ const SingleTest = (props) => {
           <h1 className="title">
             {tests.title}
             {form ? (
-              <button type="button" onClick={onSubmit}>
+              <button type="button" title="Submit Test" onClick={onSubmit}>
                 <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
               </button>
             ) : null}
@@ -486,6 +489,7 @@ const SingleTest = (props) => {
                         {item.questionType === "MCQ" ? (
                           <input
                             type="radio"
+                            title="Clear Selection"
                             name={"option" + (index + 1)}
                             onChange={(e) =>
                               handleAnswer(e, index, "Unanswered")
@@ -612,6 +616,7 @@ const SingleTest = (props) => {
                             <button
                               type="button"
                               className="prevBtn"
+                              title="This is the first Question"
                               disabled
                               onClick={() => sectionChanger("next", index + 1)}
                             >
@@ -622,6 +627,7 @@ const SingleTest = (props) => {
                             <button
                               type="button"
                               className="prevBtn"
+                              title={"Go to Question " + index}
                               onClick={() => sectionChanger("prev", index + 1)}
                             >
                               <i className="fas fa-long-arrow-alt-left"></i>
@@ -632,6 +638,7 @@ const SingleTest = (props) => {
                             <button
                               type="button"
                               className="nextBtn"
+                              title="This is the last Question"
                               disabled
                               onClick={() => sectionChanger("next", index + 1)}
                             >
@@ -642,6 +649,7 @@ const SingleTest = (props) => {
                             <button
                               type="button"
                               className="nextBtn"
+                              title={"Go to Question " + (index + 2)}
                               onClick={() => sectionChanger("next", index + 1)}
                             >
                               Save & Next&nbsp;&nbsp;
@@ -657,7 +665,16 @@ const SingleTest = (props) => {
             {form ? (
               <div className="right">
                 <div className="timer">
-                  <p>
+                  <p
+                    title={
+                      hoursDisplay +
+                      ":" +
+                      minutesDisplay +
+                      ":" +
+                      secondsDisplay +
+                      " are left"
+                    }
+                  >
                     Time left
                     <br />
                     {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}

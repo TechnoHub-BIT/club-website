@@ -12,14 +12,16 @@ const TestsList = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("Tests").orderBy('testdate').onSnapshot(function (data) {
-        setTest(
-          data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }))
-        );
-      });
+      db.collection("Tests")
+        .orderBy("testdate")
+        .onSnapshot(function (data) {
+          setTest(
+            data.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }))
+          );
+        });
     };
     fetchdata();
   }, []);
@@ -135,7 +137,7 @@ const TestsList = () => {
                         )}
                       </div>
                     </div>
-                  
+
                     <div className="duration">
                       <strong className="onlyMobile">
                         Test Duration:&nbsp;&nbsp;
