@@ -134,8 +134,6 @@ const SingleTest = (props) => {
         answers[index] = "Incorrect";
       }
     }
-
-    console.log(answers + "\n" + options);
   };
 
   //Form Start Check
