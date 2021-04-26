@@ -26,8 +26,6 @@ const SingleTest = (props) => {
   const [answers, setAnswers] = useState([]);
   const [options, setOptions] = useState([]);
 
-
-
   useEffect(() => {
     const ref = db.collection("Tests").doc(props.match.params.id);
     ref.get().then((doc) => {
@@ -134,6 +132,8 @@ const SingleTest = (props) => {
         answers[index] = "Incorrect";
       }
     }
+
+    console.log(answers + "\n" + options);
   };
 
   //Form Start Check
@@ -216,7 +216,7 @@ const SingleTest = (props) => {
         testname: title,
         timeleft: timeLeft,
         options: options,
-        answers:answers,
+        answers: answers,
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,
