@@ -194,7 +194,7 @@ const CreateTest = () => {
               <div className="createForm">
                 <form>
                   <h3 className="smallTitle">Basic Test Details</h3>
-                  <div className="inputGroup threeInputs">
+                  <div className="inputGroup twoInputs">
                     <div className="input">
                       <input
                         type="text"
@@ -219,6 +219,8 @@ const CreateTest = () => {
                       />
                       <label htmlFor="duration">Test Duration(In mins.)*</label>
                     </div>
+                  </div>
+                  <div className="inputGroup twoInputs">
                     <div className="input">
                       <select
                         name="status"
@@ -228,6 +230,13 @@ const CreateTest = () => {
                         required
                       >
                         <option value="">--Test Status--</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                      </select>
+                    </div>
+                    <div className="input">
+                      <select name="answerkey" id="answerkey" required>
+                        <option value="">--Answer Key Status--</option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                       </select>
