@@ -34,98 +34,149 @@ const EditTest = (props) => {
 
 
 
-  const [title, setTitle] = useState("");
-  const handleOnChange = (e) => {
-    setTitle(e.target.value);
-  };
+  // const [title, setTitle] = useState("");
+  // const handleOnChange = (e) => {
+  //   setTitle(e.target.value);
+  // };
 
-  const [duration, setDuration] = useState("");
-  const testduration = (e) => {
-    setDuration(e.target.value);
-  };
+  // const [duration, setDuration] = useState("");
+  // const testduration = (e) => {
+  //   setDuration(e.target.value);
+  // };
 
-  const [totalmarks, setTotalmarks] = useState("");
-  const marks = (e) => {
-    setTotalmarks(e.target.value);
-  };
+  // const [totalmarks, setTotalmarks] = useState("");
+  // const marks = (e) => {
+  //   setTotalmarks(e.target.value);
+  // };
 
-  const [testdate, setTestdate] = useState("");
-  const date = (e) => {
-    setTestdate(e.target.value);
-  };
+  // const [testdate, setTestdate] = useState("");
+  // const date = (e) => {
+  //   setTestdate(e.target.value);
+  // };
 
-  const [starttime, setStarttime] = useState("");
-  const sTime = (e) => {
-    setStarttime(e.target.value);
-  };
+  // const [starttime, setStarttime] = useState("");
+  // const sTime = (e) => {
+  //   setStarttime(e.target.value);
+  // };
 
-  const [endtime, setEndtime] = useState("");
-  const eTime = (e) => {
-    setEndtime(e.target.value);
-  };
+  // const [endtime, setEndtime] = useState("");
+  // const eTime = (e) => {
+  //   setEndtime(e.target.value);
+  // };
 
-  const [positivemarks, setPositivemarks] = useState("");
-  const pMarks = (e) => {
-    setPositivemarks(e.target.value);
-  };
+  // const [positivemarks, setPositivemarks] = useState("");
+  // const pMarks = (e) => {
+  //   setPositivemarks(e.target.value);
+  // };
 
-  const [negativemarks, setNegativemarks] = useState("");
-  const nMarks = (e) => {
-    setNegativemarks(e.target.value);
-  };
-  const [teststatus, setTestStatus] = useState("");
-  const status = (e) => {
-    setTestStatus(e.target.name);
-  };
+  // const [negativemarks, setNegativemarks] = useState("");
+  // const nMarks = (e) => {
+  //   setNegativemarks(e.target.value);
+  // };
+  // const [teststatus, setTestStatus] = useState("");
+  // const status = (e) => {
+  //   setTestStatus(e.target.value);
+  // };
 //   onChange = (e) => {
 //     const state = this.state
 //     state[e.target.name] = e.target.value;
 //     this.setState({ Blogs: state });
 // }
-// const handleInputChange = (e) => {
-//     const list = tests;
-//     list[e.target.name] = e.target.value;
-//     setInputList(list);
-//   };
+
+// const [ tes,setTes] = useState({
+//   title:'',
+//   duration:'',
+//   totalmarks:'',
+//   teststatus:'',
+//   testdate:'',
+//   starttime:'',
+//   endtime:'',
+//   positivemarks:'',
+//   negativemarks:''})
 
 
+  const handleInputChange = (e) => {
+    const state = tests
+    state[e.target.name] = e.target.value;
+    setTest(state);
+  }
 
-  const onSubmit = (e) => {
-    if (
-      title !== "" &&
-      duration !== "" &&
-      totalmarks !== "" &&
-      testdate !== "" &&
-      starttime !== "" &&
-      endtime !== "" &&
-      negativemarks !== "" &&
-      teststatus !== "" &&
-      positivemarks !== ""
-    ) {
-      e.preventDefault();
-      db.collection("Tests").doc(props.match.params.id)
-        .update({
-          title: title,
-          duration: duration,
-          totalmarks: totalmarks,
-          teststatus: teststatus,
-          testdate: testdate,
-          starttime: starttime,
-          endtime: endtime,
-          positivemarks: positivemarks,
-          negativemarks: negativemarks,
+  const onSubmit = () => {
+    const { title,
+    duration,
+    totalmarks,
+    teststatus,
+    testdate,
+    starttime,
+    endtime,
+    positivemarks,
+    negativemarks} = tests;
+
+    const updateRef = db.collection("Tests").doc(props.match.params.id);
+    updateRef.update({
+      title,
+    duration,
+    totalmarks,
+    teststatus,
+    testdate,
+    starttime,
+    endtime,
+    positivemarks,
+    negativemarks
+    }).then((docRef) => {
+      setTest({
+        title:'',
+  duration:'',
+  totalmarks:'',
+  teststatus:'',
+  testdate:'',
+  starttime:'',
+  endtime:'',
+  positivemarks:'',
+  negativemarks:''
+      });
+      // this.props.history.push("/show/"+this.props.match.params.id)
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+  }
+  //   if (
+  //     title !== "" &&
+  //     duration !== "" &&
+  //     totalmarks !== "" &&
+  //     testdate !== "" &&
+  //     starttime !== "" &&
+  //     endtime !== "" &&
+  //     negativemarks !== "" &&
+  //     teststatus !== "" &&
+  //     positivemarks !== ""
+  //   ) 
+  //   {
+  //     e.preventDefault();
+  //     db.collection("Tests").doc(props.match.params.id)
+  //       .update({
+  //         title: title,
+  //         duration: duration,
+  //         totalmarks: totalmarks,
+  //         teststatus: teststatus,
+  //         testdate: testdate,
+  //         starttime: starttime,
+  //         endtime: endtime,
+  //         positivemarks: positivemarks,
+  //         negativemarks: negativemarks,
           
-        })
-        .then(() => {
-          alert("Test created!");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    } else {
-      alert("Please fill in all the details!");
-    }
-  };
+  //       })
+  //       .then(() => {
+  //         alert("Test created!");
+  //       })
+  //       .catch((error) => {
+  //         alert(error.message);
+  //       });
+  //   } else {
+  //     alert("Please fill in all the details!");
+  //   }
+  // };
 
   const [tests, setTest] = useState([]);
   useEffect(() => {
@@ -133,7 +184,7 @@ const EditTest = (props) => {
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
-        setDuration(Test.duration);
+        // setDuration(Test.duration);
         // setLength(Test.questions.length);
         setTest({
           id: doc.id,
@@ -165,6 +216,29 @@ const EditTest = (props) => {
         );
     });
   }, []);
+  const [questions, setQuestion] = useState([
+    { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "", questionType:"" },
+  ]);
+
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...questions];
+    list[index][name] = value;
+    setQuestion(list);
+  };
+
+  const addMore = () => {
+    setQuestion([
+      ...questions,
+      { question: "", op1: "", op2: "", op3: "", op4: "", correctAnswer: "",questionType:"" },
+    ]);
+  };
+
+  const handleRemoveQuestion = (index) => {
+    const list = [...questions];
+    list.splice(index, 1);
+    setQuestion(list);
+  };
 
 
   if (validity)
@@ -178,7 +252,7 @@ const EditTest = (props) => {
         <Fade up>
           <div className="createTestCont">
             <h1 className="title">
-              Create New Test
+              Edit Test
               <a href="/tests">
                 <button type="button">
                   <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
@@ -193,10 +267,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="text"
-                        name="name"
+                        name="title"
                         id="name"
                         placeholder="Test Name"
-                        onChange={handleOnChange}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.title}
                         required
                       />
@@ -208,7 +282,7 @@ const EditTest = (props) => {
                         name="duration"
                         id="duration"
                         placeholder="Test Duration(In mins.)"
-                        onChange={testduration}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.duration}
                         required
                       />
@@ -216,9 +290,9 @@ const EditTest = (props) => {
                     </div>
                     <div className="input">
                       <select
-                        name="status"
+                        name="teststatus"
                         id="status"
-                        onChange={status}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.teststatus}
                         required
                       >
@@ -232,10 +306,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="date"
-                        name="date"
+                        name="testdate"
                         id="date"
                         placeholder="Test Date"
-                        onChange={date}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.testdate}
                         required
                       />
@@ -244,10 +318,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="time"
-                        name="stime"
+                        name="starttime"
                         id="stime"
                         placeholder="Starting Time"
-                        onChange={sTime}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.starttime}
                         required
                       />
@@ -256,10 +330,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="time"
-                        name="etime"
+                        name="endtime"
                         id="etime"
                         placeholder="Ending TIme"
-                        onChange={eTime}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.endtime}
                         required
                       />
@@ -270,10 +344,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="marks"
-                        name="marks"
+                        name="totalmarks"
                         id="marks"
                         placeholder="Total marks"
-                        onChange={marks}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.totalmarks}
                         required
                       />
@@ -282,10 +356,10 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="number"
-                        name="pmarks"
+                        name="positivemarks"
                         id="pmarks"
                         placeholder="Positive Marks"
-                        onChange={pMarks}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.positivemarks}
                         required
                       />
@@ -294,11 +368,11 @@ const EditTest = (props) => {
                     <div className="input">
                       <input
                         type="number"
-                        name="nmarks"
+                        name="negativemarks"
                         id="nmarks"
                         min="0"
                         placeholder="Negative Marks"
-                        onChange={nMarks}
+                        onChange={(e) => handleInputChange(e)}
                         value={tests.negativemarks}
                         required
                       />
@@ -307,7 +381,7 @@ const EditTest = (props) => {
                   </div>
                 </form>
                 <form>
-                    {/* {tests.questions && tests.questions.map((create, index) => (
+                    {tests.questions && tests.questions.map((create, index) => (
                       <div>
                         <h3 className="smallTitle">
                           Question No. {index + 1} Details
@@ -404,7 +478,7 @@ const EditTest = (props) => {
                           </button>
                         </div>
                       </div>
-                    ))} */}
+                    ))}
                     <div className="inputGroup twoInputs w50p">
                       {/* <button type="button" className="addBtn" onClick={addMore}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Question</button>
                                 <button type="button" className="cancelBtn" onClick={handleRemoveQuestion}><i className="fas fa-minus"></i>&nbsp;&nbsp;cancel Question</button> */}
