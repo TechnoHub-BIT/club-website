@@ -28,6 +28,7 @@ const AnswerKey = (props) => {
       const Test = doc.data();
       setTest({
         answers: Test.answers,
+        options: Test.options,
         testname: Test.testname,
       });
       //   } else setValidity(false);
