@@ -107,9 +107,11 @@ const SingleTest = (props) => {
       //Convert selected answers to string to store in database
       const optionsToStore = selectedAnswers.toString();
 
-      if (counter === 0) {
-        options[index] = null;
+      if (counter < correctOptions.length) {
         answers[index] = null;
+
+        if (counter === 0) options[index] = null;
+        else options[index] = optionsToStore;
       } else if (
         tests.questions[index].correctAnswer === optionsToStore ||
         !incorrect
