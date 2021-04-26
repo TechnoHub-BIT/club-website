@@ -135,6 +135,7 @@ const TestsList = () => {
                         )}
                       </div>
                     </div>
+                  
                     <div className="duration">
                       <strong className="onlyMobile">
                         Test Duration:&nbsp;&nbsp;

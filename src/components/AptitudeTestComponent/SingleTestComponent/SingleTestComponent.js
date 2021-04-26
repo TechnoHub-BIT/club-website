@@ -26,6 +26,8 @@ const SingleTest = (props) => {
   const [answers, setAnswers] = useState([]);
   const [options, setOptions] = useState([]);
 
+
+
   useEffect(() => {
     const ref = db.collection("Tests").doc(props.match.params.id);
     ref.get().then((doc) => {
@@ -214,6 +216,7 @@ const SingleTest = (props) => {
         testname: title,
         timeleft: timeLeft,
         answers: options,
+        // answers:answers,
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,
