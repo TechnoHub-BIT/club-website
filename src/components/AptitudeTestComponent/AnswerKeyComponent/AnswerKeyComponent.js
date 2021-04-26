@@ -63,6 +63,10 @@ const AnswerKey = (props) => {
                     
                     <div>Q{index+1}.      {que.question}</div>
                 <div>correct Answer:  {que.correctAnswer}</div>
+                <div>option (A):  {que.op1}</div>
+                <div>option (B):  {que.op2}</div>
+                <div>option (C):  {que.op3}</div>
+                <div>option (D):  {que.op4}</div>
                 </div>;
               })}
             </div>
