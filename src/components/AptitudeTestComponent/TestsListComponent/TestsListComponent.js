@@ -97,7 +97,10 @@ const TestsList = () => {
           </h1>
           <div className="centreCard">
             <div className="testsList">
-              <div className="test">
+              <div
+                className="test"
+                style={{ backgroundColor: "#ff4444", color: "#fff" }}
+              >
                 <div className="index">
                   <strong>S.No.</strong>
                 </div>
