@@ -236,7 +236,7 @@ const SingleTest = (props) => {
         fullname: fullname,
         testname: title,
         email: email,
-     
+
         timeleft: timeLeft,
         branch: branch,
         score: score,

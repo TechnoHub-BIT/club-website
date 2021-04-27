@@ -38,13 +38,12 @@
   -webkit-box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
           box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
   border-radius: 20px;
-  padding: 20px 30px 30px;
+  padding: 30px;
 }
 
 .answerKeyCont .centreCard .smallTitle {
   font-size: 1.3rem;
   font-weight: 500;
-  margin-top: 1.5em;
 }
 
 .answerKeyCont .centreCard .questions .singleQuestion {
@@ -75,6 +74,7 @@
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 1em;
+  font-size: 0.9rem;
 }
 
 .answerKeyCont .centreCard .questions .singleQuestion .green {
@@ -83,6 +83,10 @@
 
 .answerKeyCont .centreCard .questions .singleQuestion .red {
   color: #ff4444;
+}
+
+.answerKeyCont .centreCard .questions .singleQuestion:not(:first-child) {
+  margin-top: 2em;
 }
 
 @media only screen and (max-width: 992px) {
