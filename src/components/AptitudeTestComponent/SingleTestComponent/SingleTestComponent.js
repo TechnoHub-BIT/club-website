@@ -46,7 +46,7 @@ const SingleTest = (props) => {
           endtime: Test.endtime,
           positivemarks: Test.positivemarks,
           negativemarks: Test.negativemarks,
-          answerstatus : Test.answerstatus,
+          answerstatus: Test.answerstatus,
           questions: Test.questions,
           teststatus: Test.teststatus,
         });
@@ -67,8 +67,6 @@ const SingleTest = (props) => {
         );
     });
   }, []);
-
-  console.log(duration);
 
   //Store Answers
   const handleAnswer = (e, index, option) => {
@@ -114,10 +112,15 @@ const SingleTest = (props) => {
       const optionsToStore = selectedAnswers.toString();
 
       if (counter < correctOptions.length) {
-        answers[index] = null;
+        if (counter === 0) {
+          answers[index] = null;
+          options[index] = null;
+        } else {
+          options[index] = optionsToStore;
 
-        if (counter === 0) options[index] = null;
-        else options[index] = optionsToStore;
+          if (incorrect) answers[index] = "Incorrect";
+          else answers[index] = null;
+        }
       } else if (
         tests.questions[index].correctAnswer === optionsToStore ||
         !incorrect
@@ -236,13 +239,11 @@ const SingleTest = (props) => {
         fullname: fullname,
         testname: title,
         email: email,
-
         timeleft: timeLeft,
         branch: branch,
         score: score,
       })
       .then(() => {
-        console.log(currentUser.uid);
         showModal(
           <AlertModal
             message="Your test has been submitted"

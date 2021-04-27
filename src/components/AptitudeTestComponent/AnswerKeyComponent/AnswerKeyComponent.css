@@ -46,6 +46,14 @@
   font-weight: 500;
 }
 
+.answerKeyCont .centreCard .smallTitle .green {
+  color: #00c851;
+}
+
+.answerKeyCont .centreCard .smallTitle .red {
+  color: #ff4444;
+}
+
 .answerKeyCont .centreCard .questions .singleQuestion {
   display: -ms-grid;
   display: grid;

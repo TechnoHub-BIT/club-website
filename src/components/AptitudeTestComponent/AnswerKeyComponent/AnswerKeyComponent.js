@@ -80,6 +80,26 @@ const AnswerKey = (props) => {
       yourOptions.push(items);
     });
 
+  const className = (index) => {
+    let colour = null;
+
+    if (yourAnswers[index] === "Correct") colour = "green";
+    else if (yourAnswers[index] === "Incorrect") colour = "red";
+
+    return colour;
+  };
+
+  const findMarks = (index, pno, nno) => {
+    let marks = "+0";
+
+    if (yourAnswers[index] === "Correct") marks = "+" + pno;
+    else if (yourAnswers[index] === "Incorrect") marks = "-" + nno;
+
+    return marks;
+  };
+
+  console.log(yourAnswers);
+
   if (validity)
     return (
       <React.Fragment>
@@ -101,9 +121,6 @@ const AnswerKey = (props) => {
                 if (item.title === tests.testname) {
                   return item.answerstatus === "Active" ? (
                     <div>
-                      negativemarks: {item.negativemarks}
-                      <br></br>
-                      positive marks: {item.positivemarks}
                       <div className="questions">
                         {item.questions.map((que, index) => {
                           return (
@@ -111,6 +128,16 @@ const AnswerKey = (props) => {
                               <div className="left">
                                 <h3 className="smallTitle">
                                   Question No. {index + 1}
+                                  <div
+                                    className={className(index)}
+                                    style={{ marginTop: "0.2em" }}
+                                  >
+                                    {findMarks(
+                                      index,
+                                      item.positivemarks,
+                                      item.negativemarks
+                                    )}
+                                  </div>
                                 </h3>
 
                                 <div className="question">{que.question}</div>
@@ -125,14 +152,11 @@ const AnswerKey = (props) => {
                                 <div>
                                   Correct Option: Option ({que.correctAnswer})
                                 </div>
-                                <div
-                                  className={
-                                    que.correctAnswer === yourOptions[index]
-                                      ? "green"
-                                      : "red"
-                                  }
-                                >
-                                  Your Answer: Option ({yourOptions[index]})
+                                <div className={className(index)}>
+                                  Your Answer:&nbsp;&nbsp;
+                                  {yourOptions[index] != null
+                                    ? "Option (" + yourOptions[index] + ")"
+                                    : "Unanswered"}
                                 </div>
                                 <div className="explanation">
                                   <strong>Explanation:</strong>{" "}
