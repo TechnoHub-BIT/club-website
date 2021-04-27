@@ -445,7 +445,7 @@ class EditTest extends Component {
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
                         </div>
-                        {/* {questions.length - 1 === index && ( */}
+                        {this.state.questions.length - 1 === index && (
                         <div className="inputGroup twoInputs w50p">
                           <button
                             type="button"
@@ -456,7 +456,7 @@ class EditTest extends Component {
                             Question
                           </button>
                         </div>
-                        {/* )} */}
+                         )} 
                       </div>
                     ))}
                   <button

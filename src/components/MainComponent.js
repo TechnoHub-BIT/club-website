@@ -66,14 +66,9 @@ class Main extends Component {
 
   render() {
     return (
-      // <ThemeProvider theme={this.state.theme === "light" ? lightTheme : darkTheme }>
       <React.Fragment>
         <Router>
-          {/* <AuthProvider> */}
-          {/* <GlobalStyle />
-        <StyledApp>
-          hello bavisetti
-          <button onClick={() => this.themeToggler()}>change theme</button> */}
+          <AuthProvider>
             {/* <Switch> */}
             <ScrollToTop />
             <Navbar />
@@ -135,11 +130,10 @@ class Main extends Component {
 
             <Footer />
             {/* </Switch> */}
-            {/* </StyledApp> */}
-          {/* </AuthProvider> */}
+          </AuthProvider>
         </Router>
       </React.Fragment>
-      // </ThemeProvider>
+
     );
   }
 }
