@@ -1,6 +1,5 @@
 .answerKeyCont {
   .title {
-    text-align: center;
     font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: space-between;
@@ -42,6 +41,25 @@
 
     .questions {
       .singleQuestion {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-gap: 1em;
+
+        strong {
+          font-weight: 500;
+        }
+
+        .right {
+          .explanation {
+            margin-top: 0.5em;
+
+            p {
+              word-wrap: break-word;
+              font-size: 0.9rem;
+            }
+          }
+        }
+
         .options {
           margin: 1.5em 0;
           display: grid;
@@ -77,6 +95,33 @@
       margin: 2em 20px 3em;
       grid-template-columns: repeat(1, 1fr);
       font-size: 0.9rem;
+      padding: 20px;
+
+      .questions {
+        .singleQuestion {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1em;
+          align-items: center;
+
+          .right {
+            .explanation {
+              margin-top: 1em;
+
+              p {
+                margin-top: 0.3em;
+                font-size: 0.85rem;
+                max-width: calc(100vw - 40px - 40px);
+              }
+            }
+          }
+
+          .options {
+            grid-template-columns: repeat(1, 1fr);
+            grid-row-gap: 1.5em;
+          }
+        }
+      }
     }
   }
 }

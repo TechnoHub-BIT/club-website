@@ -7,14 +7,14 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 
 const TestsList = () => {
-
   const [tests, setTest] = useState([]);
 
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("members")
         .doc(currentUser.uid)
-        .collection("tests").orderBy('testdate','desc')
+        .collection("tests")
+        .orderBy("testdate", "desc")
         .onSnapshot(function (data) {
           setTest(
             data.docs.map((doc) => ({
@@ -89,7 +89,10 @@ const TestsList = () => {
           <h1 className="title">My Tests</h1>
           <div className="centreCard">
             <div className="testsList">
-              <div className="test">
+              <div
+                className="test"
+                style={{ backgroundColor: "#ff4444", color: "#fff" }}
+              >
                 <div className="index">
                   <strong>S.No.</strong>
                 </div>
@@ -112,7 +115,16 @@ const TestsList = () => {
                       {test.testname}({test.totalmarks})
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
-                        {test.answerstatus}
+                        <br />
+                        {test.answerstatus === "Active" ? (
+                          <span style={{ color: "#00c851" }}>
+                            Answer key available
+                          </span>
+                        ) : (
+                          <span style={{ color: "#ff4444" }}>
+                            Answer key unavailable
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="duration">
