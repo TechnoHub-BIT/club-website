@@ -96,7 +96,7 @@ const EditTest = (props) => {
 
 
   const handleInputChange = (e) => {
-    const state = tests
+    const state = tests;
     state[e.target.name] = e.target.value;
     setTest(state);
   }
@@ -113,7 +113,7 @@ const EditTest = (props) => {
     negativemarks} = tests;
 
     const updateRef = db.collection("Tests").doc(props.match.params.id);
-    updateRef.update({
+    updateRef.set({
       title,
     duration,
     totalmarks,
@@ -155,7 +155,7 @@ const EditTest = (props) => {
   //   {
   //     e.preventDefault();
   //     db.collection("Tests").doc(props.match.params.id)
-  //       .update({
+  //       .set({
   //         title: title,
   //         duration: duration,
   //         totalmarks: totalmarks,
