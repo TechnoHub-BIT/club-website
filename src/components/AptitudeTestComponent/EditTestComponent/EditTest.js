@@ -1,144 +1,187 @@
 import React, { Component } from "react";
-
 import { db } from "../../../firebase";
-import { useAuth } from "../../../contexts/AuthContext";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
-import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import { TextArea } from "semantic-ui-react";
 
-class Edittest2 extends Component {
+class EditTest extends Component {
+  //     const { currentUser, logout } = useAuth();
+  //   const [profiles, setProfiles] = useState([]);
 
-//     const { currentUser, logout } = useAuth();
-//   const [profiles, setProfiles] = useState([]);
+  //   useEffect(() => {
+  //     if (currentUser) {
+  //       db.collection("members")
+  //         .doc(currentUser.uid)
+  //         .onSnapshot(function (doc) {
+  //           const data = doc.data();
+  //           setState(data);
+  //         });
+  //     }
+  //   }, [currentUser]);
 
-//   useEffect(() => {
-//     if (currentUser) {
-//       db.collection("members")
-//         .doc(currentUser.uid)
-//         .onSnapshot(function (doc) {
-//           const data = doc.data();
-//           setState(data);
-//         });
-//     }
-//   }, [currentUser]);
-
-
-    state = {
-        title:'',
-        duration:'',
-        totalmarks:'',
-        teststatus:'',
-        testdate:'',
-        starttime:'',
-        endtime:'',
-        positivemarks:'',
-        negativemarks:'',
-        answerstatus:'',
-        profiles:'',
-        questions:[{ question:'',op1: "",op2: "",op3: "",op4: "",correctAnswer: "",questionType: "",explanation:""}]
-    };
-
-    componentDidMount() {
-        const ref = db.collection("Tests").doc(this.props.match.params.id);
-        ref.get().then((doc) => {
-            const test = doc.data();
-            this.setState({
-            // id: doc.id,
-            title: test.title,
-            duration: test.duration,
-            totalmarks: test.totalmarks,
-            testdate: test.testdate,
-            starttime: test.starttime,
-            endtime: test.endtime,
-            positivemarks: test.positivemarks,
-            negativemarks: test.negativemarks,
-            questions: test.questions,
-            teststatus: test.teststatus,
-            answerstatus:test.answerstatus,
-            questions:test.questions
-            });
-        });
-    }
-
-    onChange = (e) => {
-        const state = this.state
-        state[e.target.name] = e.target.value;
-        this.setState({ test:state});
-      }
-       handleChange = (e, index) => {
-        const { name, value } = e.target;
-        const list = [...this.state.questions];
-        list[index][name] = value;
-        this.setState(list);
-      };
-    
-
-    onSubmit = (e) => {
-        e.preventDefault();
-        const { title,duration,totalmarks, teststatus,testdate,starttime,endtime,positivemarks,negativemarks,answerstatus,questions}  = this.state;
-        const updateRef = db.collection("Tests").doc(this.props.match.params.id);
-        updateRef.update({
-            title,
-            duration,
-            totalmarks,
-            teststatus,
-            testdate,
-            starttime,
-            endtime,
-            positivemarks,
-            negativemarks,
-            answerstatus,
-            questions
-        }).then((docRef) => {
-            this.setState({
-                title:'',
-                duration:'',
-                totalmarks:'',
-                teststatus:'',
-                testdate:'',
-                starttime:'',
-                endtime:'',
-                positivemarks:'',
-                negativemarks:'',
-                answerstatus:'',
-                questions:[{ question:'',op1: "",op2: "",op3: "",op4: "",correctAnswer: "",questionType: "",explanation:""}]
-            })
-            this.props.history.push("/tests")
-            .then(() => {
-                alert("Test update");
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-        })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
-    }
-
-   addMore = () => {
-    this.setState((prevState) => ({
-        questions: [...prevState.questions,{ question:'',op1: "",op2: "",op3: "",op4: "",correctAnswer: "",questionType: "",explanation:""}]
-    }))
+  state = {
+    title: "",
+    duration: "",
+    totalmarks: "",
+    teststatus: "",
+    testdate: "",
+    starttime: "",
+    endtime: "",
+    positivemarks: "",
+    negativemarks: "",
+    answerstatus: "",
+    profiles: "",
+    questions: [
+      {
+        question: "",
+        op1: "",
+        op2: "",
+        op3: "",
+        op4: "",
+        correctAnswer: "",
+        questionType: "",
+        explanation: "",
+      },
+    ],
   };
 
-handleRemoveQuestion = (index) => {
-    this.setState({
-        questions : this.state.questions.filter((s,sindex) => index !== sindex)
-    })
-}
+  componentDidMount() {
+    const ref = db.collection("Tests").doc(this.props.match.params.id);
+    ref.get().then((doc) => {
+      const test = doc.data();
+      this.setState({
+        // id: doc.id,
+        title: test.title,
+        duration: test.duration,
+        totalmarks: test.totalmarks,
+        testdate: test.testdate,
+        starttime: test.starttime,
+        endtime: test.endtime,
+        positivemarks: test.positivemarks,
+        negativemarks: test.negativemarks,
+        questions: test.questions,
+        teststatus: test.teststatus,
+        answerstatus: test.answerstatus,
+        questions: test.questions,
+      });
+    });
+  }
 
-render(){
-  return (
-    <React.Fragment>
-      {/* {modal} */}
-      <Helmet>
-        <title>Aptitude Tests | TechnoHub BITD</title>
-        <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
-      </Helmet>
-      {/* {profiles.id === 1 || profiles.id === 4 ? ( */}
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState({ test: state });
+  };
+  handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...this.state.questions];
+    list[index][name] = value;
+    this.setState(list);
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const {
+      title,
+      duration,
+      totalmarks,
+      teststatus,
+      testdate,
+      starttime,
+      endtime,
+      positivemarks,
+      negativemarks,
+      answerstatus,
+      questions,
+    } = this.state;
+    const updateRef = db.collection("Tests").doc(this.props.match.params.id);
+    updateRef
+      .update({
+        title,
+        duration,
+        totalmarks,
+        teststatus,
+        testdate,
+        starttime,
+        endtime,
+        positivemarks,
+        negativemarks,
+        answerstatus,
+        questions,
+      })
+      .then((docRef) => {
+        this.setState({
+          title: "",
+          duration: "",
+          totalmarks: "",
+          teststatus: "",
+          testdate: "",
+          starttime: "",
+          endtime: "",
+          positivemarks: "",
+          negativemarks: "",
+          answerstatus: "",
+          questions: [
+            {
+              question: "",
+              op1: "",
+              op2: "",
+              op3: "",
+              op4: "",
+              correctAnswer: "",
+              questionType: "",
+              explanation: "",
+            },
+          ],
+        });
+        this.props.history
+          .push("/tests")
+          .then(() => {
+            alert("Test update");
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
+
+  addMore = () => {
+    this.setState((prevState) => ({
+      questions: [
+        ...prevState.questions,
+        {
+          question: "",
+          op1: "",
+          op2: "",
+          op3: "",
+          op4: "",
+          correctAnswer: "",
+          questionType: "",
+          explanation: "",
+        },
+      ],
+    }));
+  };
+
+  handleRemoveQuestion = (index) => {
+    this.setState({
+      questions: this.state.questions.filter((s, sindex) => index !== sindex),
+    });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        {/* {modal} */}
+        <Helmet>
+          <title>Aptitude Tests | TechnoHub BITD</title>
+          <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
+        </Helmet>
+        {/* {profiles.id === 1 || profiles.id === 4 ? ( */}
         <Fade up>
           <div className="createTestCont">
             <h1 className="title">
@@ -160,7 +203,6 @@ render(){
                         name="title"
                         // id="name"
                         placeholder="Test Name"
-                        
                         value={this.state.title}
                         onChange={this.onChange}
                         required
@@ -195,8 +237,13 @@ render(){
                       </select>
                     </div>
                     <div className="input">
-                      <select name="answerstatus" onChange={this.onChange}
-                        value={this.state.answerstatus} id="answerkey" required>
+                      <select
+                        name="answerstatus"
+                        onChange={this.onChange}
+                        value={this.state.answerstatus}
+                        id="answerkey"
+                        required
+                      >
                         <option value="">--Answer Key Status--</option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
@@ -304,7 +351,7 @@ render(){
                               name="question"
                               id={index}
                               value={questions.question}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Question"
                             />
                             <label htmlFor={"question" + index}>Question</label>
@@ -317,10 +364,12 @@ render(){
                               name="explanation"
                               id={index}
                               value={questions.explanation}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="explanation"
                             />
-                            <label htmlFor={"explanation" + index}>Explanation</label>
+                            <label htmlFor={"explanation" + index}>
+                              Explanation
+                            </label>
                           </div>
                         </div>
                         <div className="inputGroup twoInputs">
@@ -328,7 +377,7 @@ render(){
                             <select
                               name="questionType"
                               value={questions.questionType}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                             >
                               <option>--Select Question Type--</option>
                               <option value="MCQ">MCQ</option>
@@ -341,7 +390,7 @@ render(){
                               type="text"
                               id={index}
                               value={questions.correctAnswer}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Correct Option"
                             />
                             <label htmlFor={"correctAnswer" + index}>
@@ -356,7 +405,7 @@ render(){
                               name="op1"
                               id={index}
                               value={questions.op1}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option A"
                             />
                             <label htmlFor={"optiona" + index}>Option A</label>
@@ -368,7 +417,7 @@ render(){
                               id={index}
                               data-id={index}
                               value={questions.op2}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option B"
                             />
                             <label htmlFor={"optionb" + index}>Option B</label>
@@ -379,7 +428,7 @@ render(){
                               name="op3"
                               id={index}
                               value={questions.op3}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option C"
                             />
                             <label htmlFor={"optionc" + index}>Option C</label>
@@ -390,41 +439,39 @@ render(){
                               name="op4"
                               id={index}
                               value={questions.op4}
-                              onChange={(e) => this.handleChange(e,index)}
+                              onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option D"
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
                           </div>
                         </div>
                         {/* {questions.length - 1 === index && ( */}
-                          <div className="inputGroup twoInputs w50p">
-                            <button
-                              type="button"
-                              className="addBtn"
-                              onClick={(e) => this.addMore(index)}
-                            >
-                              <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
-                              Question
-                            </button>
-                          </div>
+                        <div className="inputGroup twoInputs w50p">
+                          <button
+                            type="button"
+                            className="addBtn"
+                            onClick={(e) => this.addMore(index)}
+                          >
+                            <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
+                            Question
+                          </button>
+                        </div>
                         {/* )} */}
-                        
                       </div>
                     ))}
-                    <button
-                              type="button"
-                              className="createBtn"
-                              onClick={this.onSubmit}
-                            >
-                              <i className="fas fa-check"></i>&nbsp;&nbsp;Create
-                              Test
-                            </button>
+                  <button
+                    type="button"
+                    className="createBtn"
+                    onClick={this.onSubmit}
+                  >
+                    <i className="fas fa-check"></i>&nbsp;&nbsp;Update Test
+                  </button>
                 </form>
               </div>
             </div>
           </div>
         </Fade>
-     {/* ) : (
+        {/* ) : (
         <AlertModal
           message="You aren't authorized to access this page!"
           icon="exclamation"
@@ -438,9 +485,9 @@ render(){
         //   }}
         />
       )}  */}
-    </React.Fragment>
-  );
-        }
-};
+      </React.Fragment>
+    );
+  }
+}
 
-export default Edittest2;
+export default EditTest;

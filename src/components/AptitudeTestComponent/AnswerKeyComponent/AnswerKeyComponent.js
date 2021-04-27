@@ -103,9 +103,6 @@ const AnswerKey = (props) => {
                             <div>
                               Correct Option: Option ({que.correctAnswer})
                             </div>
-                            <div className="explanation">
-                              Explanation: <p>{que.explanation}</p>
-                            </div>
                             <div
                               className={
                                 que.correctAnswer === yourOptions[index]
@@ -114,6 +111,10 @@ const AnswerKey = (props) => {
                               }
                             >
                               Your Answer: Option ({yourOptions[index]})
+                            </div>
+                            <div className="explanation">
+                              <strong>Explanation:</strong>{" "}
+                              <p>{que.explanation}</p>
                             </div>
                           </div>
                         </div>

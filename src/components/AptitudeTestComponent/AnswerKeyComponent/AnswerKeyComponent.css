@@ -1,5 +1,4 @@
 .answerKeyCont .title {
-  text-align: center;
   font-family: "Poppins", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,12 +50,22 @@
 .answerKeyCont .centreCard .questions .singleQuestion {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
   grid-gap: 1em;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.answerKeyCont .centreCard .questions .singleQuestion strong {
+  font-weight: 500;
+}
+
+.answerKeyCont .centreCard .questions .singleQuestion .right .explanation {
+  margin-top: 0.5em;
+}
+
+.answerKeyCont .centreCard .questions .singleQuestion .right .explanation p {
+  word-wrap: break-word;
+  font-size: 0.9rem;
 }
 
 .answerKeyCont .centreCard .questions .singleQuestion .options {
@@ -90,6 +99,30 @@
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
     font-size: 0.9rem;
+    padding: 20px;
+  }
+  .answerKeyCont .centreCard .questions .singleQuestion {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .answerKeyCont .centreCard .questions .singleQuestion .right .explanation {
+    margin-top: 1em;
+  }
+  .answerKeyCont .centreCard .questions .singleQuestion .right .explanation p {
+    margin-top: 0.3em;
+    font-size: 0.85rem;
+    max-width: calc(100vw - 40px - 40px);
+  }
+  .answerKeyCont .centreCard .questions .singleQuestion .options {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 1.5em;
   }
 }
 /*# sourceMappingURL=AnswerKeyComponent.css.map */

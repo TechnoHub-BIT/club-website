@@ -48,11 +48,10 @@ import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/T
 import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
 import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListComponent";
 import SingleTest from "./AptitudeTestComponent/SingleTestComponent/SingleTestComponent";
-import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestComponent";
 import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/LeaderboardComponent";
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
-import Edittest2 from "./AptitudeTestComponent/EditTestComponent/EditTest";
+import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
 
 class Main extends Component {
   render() {
@@ -112,7 +111,7 @@ class Main extends Component {
             {/* Aptitude Test Pages */}
             <PrivateRoute exact path="/test/:id" component={SingleTest} />
             {/* <PrivateRoute exact path="/edittest/:id" component={EditTest} /> */}
-              <Route exact path="/edittest/:id" component={Edittest2} />
+            <Route exact path="/edittest/:id" component={EditTest} />
             <PrivateRoute exact path="/createtest" component={CreateTest} />
             <Route exact path="/tests" component={TestsList} />
             <Route exact path="/leaderboard/:id" component={Leaderboard} />
