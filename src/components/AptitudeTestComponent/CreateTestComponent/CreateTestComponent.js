@@ -75,7 +75,7 @@ const CreateTest = () => {
       op4: "",
       correctAnswer: "",
       questionType: "",
-      explanation:""
+      explanation: "",
     },
   ]);
 
@@ -97,7 +97,7 @@ const CreateTest = () => {
         op4: "",
         correctAnswer: "",
         questionType: "",
-        explanation:""
+        explanation: "",
       },
     ]);
   };
@@ -145,7 +145,7 @@ const CreateTest = () => {
           duration: duration,
           totalmarks: totalmarks,
           teststatus: teststatus,
-          answerstatus:answerstatus,
+          answerstatus: answerstatus,
           testdate: testdate,
           starttime: starttime,
           endtime: endtime,
@@ -245,8 +245,13 @@ const CreateTest = () => {
                       </select>
                     </div>
                     <div className="input">
-                      <select name="answerkey" onChange={answerkeystatus}
-                        value={answerstatus} id="answerkey" required>
+                      <select
+                        name="answerkey"
+                        onChange={answerkeystatus}
+                        value={answerstatus}
+                        id="answerkey"
+                        required
+                      >
                         <option value="">--Answer Key Status--</option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
@@ -365,12 +370,12 @@ const CreateTest = () => {
                             <TextArea
                               type="text"
                               name="explanation"
-                              id={"explanation" + index}
+                              id="explanation"
                               value={create.explanation}
                               onChange={(e) => handleChange(e, index)}
-                              placeholder="explanation"
+                              placeholder="Explanation"
                             />
-                            <label htmlFor={"explanation" + index}>Explanation</label>
+                            <label htmlFor="explanation">Explanation</label>
                           </div>
                         </div>
                         <div className="inputGroup twoInputs">

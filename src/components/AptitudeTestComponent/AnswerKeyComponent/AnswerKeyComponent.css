@@ -48,6 +48,17 @@
   margin-top: 1.5em;
 }
 
+.answerKeyCont .centreCard .questions .singleQuestion {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .answerKeyCont .centreCard .questions .singleQuestion .options {
   margin: 1.5em 0;
   display: -ms-grid;

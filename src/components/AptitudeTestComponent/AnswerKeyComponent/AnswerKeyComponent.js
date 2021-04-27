@@ -87,30 +87,34 @@ const AnswerKey = (props) => {
                     {item.questions.map((que, index) => {
                       return (
                         <div className="singleQuestion">
-                          <h3 className="smallTitle">
-                            Question No. {index + 1}
-                          </h3>
-                          <div className="question">{que.question}</div>
-                          <div className="options">
-                            <div>Option (A): {que.op1}</div>
-                            <div>Option (B): {que.op2}</div>
-                            <div>Option (C): {que.op3}</div>
-                            <div>Option (D): {que.op4}</div>
-                          </div>
-                          <div>
-                            Correct Option: Option ({que.correctAnswer})
-                          </div>
-                          <div>
-                            Explanation: {que.explanation}
+                          <div className="left">
+                            <h3 className="smallTitle">
+                              Question No. {index + 1}
+                            </h3>
+                            <div className="question">{que.question}</div>
+                            <div className="options">
+                              <div>Option (A): {que.op1}</div>
+                              <div>Option (B): {que.op2}</div>
+                              <div>Option (C): {que.op3}</div>
+                              <div>Option (D): {que.op4}</div>
                             </div>
-                          <div
-                            className={
-                              que.correctAnswer === yourOptions[index]
-                                ? "green"
-                                : "red"
-                            }
-                          >
-                            Your Answer: Option ({yourOptions[index]})
+                          </div>
+                          <div className="right">
+                            <div>
+                              Correct Option: Option ({que.correctAnswer})
+                            </div>
+                            <div className="explanation">
+                              Explanation: <p>{que.explanation}</p>
+                            </div>
+                            <div
+                              className={
+                                que.correctAnswer === yourOptions[index]
+                                  ? "green"
+                                  : "red"
+                              }
+                            >
+                              Your Answer: Option ({yourOptions[index]})
+                            </div>
                           </div>
                         </div>
                       );

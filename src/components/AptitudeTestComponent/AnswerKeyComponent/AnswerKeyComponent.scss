@@ -42,6 +42,21 @@
 
     .questions {
       .singleQuestion {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+        align-items: center;
+
+        .left {
+        }
+
+        .right {
+          .explanation {
+            p {
+            }
+          }
+        }
+
         .options {
           margin: 1.5em 0;
           display: grid;
