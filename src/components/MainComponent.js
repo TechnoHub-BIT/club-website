@@ -53,7 +53,17 @@ import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
 
+//Dark mode light mode
+// import styled,{ThemeProvider} from 'styled-components'
+// import {lightTheme , darkTheme , GlobalStyle}  from "./Theme";
+
+
+// const StyledApp = styled.div`
+// color: ${(props) => props.theme.fontColor}
+// `;
+
 class Main extends Component {
+
   render() {
     return (
       <React.Fragment>
@@ -123,6 +133,7 @@ class Main extends Component {
           </AuthProvider>
         </Router>
       </React.Fragment>
+
     );
   }
 }

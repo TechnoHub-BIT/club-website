@@ -51,7 +51,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^2.0.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
