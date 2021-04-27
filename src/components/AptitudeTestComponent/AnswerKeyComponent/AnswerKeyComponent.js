@@ -4,10 +4,22 @@ import { db } from "../../../firebase";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
+import AlertModal from "../../AlertModalComponent/AlertModalComponent";
+import { useHistory } from "react-router-dom";
 
 const AnswerKey = (props) => {
+  let history = useHistory();
+
+  //Modal
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const { currentUser, logout } = useAuth();
   const [profiles, setProfiles] = useState([]);
+
   useEffect(() => {
     if (currentUser) {
       db.collection("members")
@@ -19,6 +31,8 @@ const AnswerKey = (props) => {
     }
   }, [currentUser]);
 
+  const [validity, setValidity] = useState(true);
+
   const [tests, setTest] = useState([""]);
   const ref = db
     .collection("members")
@@ -27,15 +41,14 @@ const AnswerKey = (props) => {
     .doc(props.match.params.id);
   useEffect(() => {
     ref.get().then((doc) => {
-      //   if (doc.exists) {
-      const Test = doc.data();
-      setTest({
-        answers: Test.answers,
-        options: Test.options,
-        testname: Test.testname,
-      });
-      //   } else setValidity(false);
-      // });
+      if (doc.exists) {
+        const Test = doc.data();
+        setTest({
+          answers: Test.answers,
+          options: Test.options,
+          testname: Test.testname,
+        });
+      } else setValidity(false);
     });
   }, []);
 
@@ -67,68 +80,84 @@ const AnswerKey = (props) => {
       yourOptions.push(items);
     });
 
-  return (
-    <React.Fragment>
-      <div className="answerKeyCont">
-        <Fade up>
-          <h1 className="title">
-            {tests.testname}- Answer Key
-            <a href="/mytests">
-              <button type="button">
-                <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
-              </button>
-            </a>
-          </h1>
-          <div className="centreCard">
-            {testname.map((item) => {
-              if (item.title === tests.testname) {
-                return (
-                  <div className="questions">
-                    {item.questions.map((que, index) => {
-                      return (
-                        <div className="singleQuestion">
-                          <div className="left">
-                            <h3 className="smallTitle">
-                              Question No. {index + 1}
-                            </h3>
-                            <div className="question">{que.question}</div>
-                            <div className="options">
-                              <div>Option (A): {que.op1}</div>
-                              <div>Option (B): {que.op2}</div>
-                              <div>Option (C): {que.op3}</div>
-                              <div>Option (D): {que.op4}</div>
+  if (validity)
+    return (
+      <React.Fragment>
+        <div className="answerKeyCont">
+          <Fade up>
+            <h1 className="title">
+              {tests.testname}- Answer Key
+              <a href="/mytests">
+                <button type="button">
+                  <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
+                </button>
+              </a>
+            </h1>
+            <div className="centreCard">
+              {testname.map((item) => {
+                if (item.title === tests.testname) {
+                  return (
+                    <div className="questions">
+                      {item.questions.map((que, index) => {
+                        return (
+                          <div className="singleQuestion">
+                            <div className="left">
+                              <h3 className="smallTitle">
+                                Question No. {index + 1}
+                              </h3>
+                              <div className="question">{que.question}</div>
+                              <div className="options">
+                                <div>Option (A): {que.op1}</div>
+                                <div>Option (B): {que.op2}</div>
+                                <div>Option (C): {que.op3}</div>
+                                <div>Option (D): {que.op4}</div>
+                              </div>
+                            </div>
+                            <div className="right">
+                              <div>
+                                Correct Option: Option ({que.correctAnswer})
+                              </div>
+                              <div
+                                className={
+                                  que.correctAnswer === yourOptions[index]
+                                    ? "green"
+                                    : "red"
+                                }
+                              >
+                                Your Answer: Option ({yourOptions[index]})
+                              </div>
+                              <div className="explanation">
+                                <strong>Explanation:</strong>{" "}
+                                <p>{que.explanation}</p>
+                              </div>
                             </div>
                           </div>
-                          <div className="right">
-                            <div>
-                              Correct Option: Option ({que.correctAnswer})
-                            </div>
-                            <div
-                              className={
-                                que.correctAnswer === yourOptions[index]
-                                  ? "green"
-                                  : "red"
-                              }
-                            >
-                              Your Answer: Option ({yourOptions[index]})
-                            </div>
-                            <div className="explanation">
-                              <strong>Explanation:</strong>{" "}
-                              <p>{que.explanation}</p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              }
-            })}
-          </div>
-        </Fade>
-      </div>
-    </React.Fragment>
-  );
+                        );
+                      })}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </Fade>
+        </div>
+      </React.Fragment>
+    );
+  else
+    return (
+      <AlertModal
+        message="This is not a Valid Test Link!"
+        icon="exclamation"
+        leftBtn="Go to Profile"
+        rightBtn="View All Tests"
+        action={() => {
+          history.push("/profile");
+        }}
+        close={() => {
+          history.push("/mytests");
+        }}
+      />
+    );
 };
 
 export default AnswerKey;

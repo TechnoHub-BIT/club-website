@@ -446,26 +446,27 @@ class EditTest extends Component {
                           </div>
                         </div>
                         {this.state.questions.length - 1 === index && (
-                        <div className="inputGroup twoInputs w50p">
-                          <button
-                            type="button"
-                            className="addBtn"
-                            onClick={(e) => this.addMore(index)}
-                          >
-                            <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
-                            Question
-                          </button>
-                        </div>
-                         )} 
+                          <div className="inputGroup twoInputs w50p">
+                            <button
+                              type="button"
+                              className="addBtn"
+                              onClick={(e) => this.addMore(index)}
+                            >
+                              <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
+                              Question
+                            </button>
+                            <button
+                              type="button"
+                              className="createBtn"
+                              onClick={this.onSubmit}
+                            >
+                              <i className="fas fa-check"></i>&nbsp;&nbsp;Update
+                              Test
+                            </button>
+                          </div>
+                        )}
                       </div>
                     ))}
-                  <button
-                    type="button"
-                    className="createBtn"
-                    onClick={this.onSubmit}
-                  >
-                    <i className="fas fa-check"></i>&nbsp;&nbsp;Update Test
-                  </button>
                 </form>
               </div>
             </div>
