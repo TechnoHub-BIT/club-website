@@ -87,6 +87,7 @@ const AnswerKey = (props) => {
           <Fade up>
             <h1 className="title">
               {tests.testname}- Answer Key
+            
               <a href="/mytests">
                 <button type="button">
                   <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
@@ -97,6 +98,9 @@ const AnswerKey = (props) => {
               {testname.map((item) => {
                 if (item.title === tests.testname) {
                   return (
+                    <div>  {item.answerstatus}<br></br>
+                  negativemarks:  {item.negativemarks}<br></br>
+                  positive marks:  {item.positivemarks}
                     <div className="questions">
                       {item.questions.map((que, index) => {
                         return (
@@ -105,6 +109,7 @@ const AnswerKey = (props) => {
                               <h3 className="smallTitle">
                                 Question No. {index + 1}
                               </h3>
+                              
                               <div className="question">{que.question}</div>
                               <div className="options">
                                 <div>Option (A): {que.op1}</div>
@@ -134,6 +139,7 @@ const AnswerKey = (props) => {
                           </div>
                         );
                       })}
+                    </div>
                     </div>
                   );
                 }
