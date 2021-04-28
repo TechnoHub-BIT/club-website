@@ -80,6 +80,26 @@ const AnswerKey = (props) => {
       yourOptions.push(items);
     });
 
+  const className = (index) => {
+    let colour = null;
+
+    if (yourAnswers[index] === "Correct") colour = "green";
+    else if (yourAnswers[index] === "Incorrect") colour = "red";
+
+    return colour;
+  };
+
+  const findMarks = (index, pno, nno) => {
+    let marks = "+0";
+
+    if (yourAnswers[index] === "Correct") marks = "+" + pno;
+    else if (yourAnswers[index] === "Incorrect") marks = "-" + nno;
+
+    return marks;
+  };
+
+  console.log(yourAnswers);
+
   if (validity)
     return (
       <React.Fragment>
@@ -87,59 +107,80 @@ const AnswerKey = (props) => {
           <Fade up>
             <h1 className="title">
               {tests.testname}- Answer Key
-            
               <a href="/mytests">
                 <button type="button">
                   <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
                 </button>
               </a>
             </h1>
-            <div className="centreCard">
+            <div
+              className="centreCard"
+              style={{ position: "relative", zIndex: "1" }}
+            >
               {testname.map((item) => {
                 if (item.title === tests.testname) {
-                  return (
-                    <div>  {item.answerstatus}<br></br>
-                  negativemarks:  {item.negativemarks}<br></br>
-                  positive marks:  {item.positivemarks}
-                    <div className="questions">
-                      {item.questions.map((que, index) => {
-                        return (
-                          <div className="singleQuestion">
-                            <div className="left">
-                              <h3 className="smallTitle">
-                                Question No. {index + 1}
-                              </h3>                              
-                              <div className="question">{que.question}</div>
-                              <div className="options">
-                                <div>Option (A): {que.op1}</div>
-                                <div>Option (B): {que.op2}</div>
-                                <div>Option (C): {que.op3}</div>
-                                <div>Option (D): {que.op4}</div>
+                  return item.answerstatus === "Active" ? (
+                    <div>
+                      <div className="questions">
+                        {item.questions.map((que, index) => {
+                          return (
+                            <div className="singleQuestion">
+                              <div className="left">
+                                <h3 className="smallTitle">
+                                  Question No. {index + 1}
+                                  <div
+                                    className={className(index)}
+                                    style={{ marginTop: "0.2em" }}
+                                  >
+                                    {findMarks(
+                                      index,
+                                      item.positivemarks,
+                                      item.negativemarks
+                                    )}
+                                  </div>
+                                </h3>
+
+                                <div className="question">{que.question}</div>
+                                <div className="options">
+                                  <div>Option (A): {que.op1}</div>
+                                  <div>Option (B): {que.op2}</div>
+                                  <div>Option (C): {que.op3}</div>
+                                  <div>Option (D): {que.op4}</div>
+                                </div>
+                              </div>
+                              <div className="right">
+                                <div>
+                                  Correct Option: Option ({que.correctAnswer})
+                                </div>
+                                <div className={className(index)}>
+                                  Your Answer:&nbsp;&nbsp;
+                                  {yourOptions[index] != null
+                                    ? "Option (" + yourOptions[index] + ")"
+                                    : "Unanswered"}
+                                </div>
+                                <div className="explanation">
+                                  <strong>Explanation:</strong>{" "}
+                                  <p>{que.explanation}</p>
+                                </div>
                               </div>
                             </div>
-                            <div className="right">
-                              <div>
-                                Correct Option: Option ({que.correctAnswer})
-                              </div>
-                              <div
-                                className={
-                                  que.correctAnswer === yourOptions[index]
-                                    ? "green"
-                                    : "red"
-                                }
-                              >
-                                Your Answer: Option ({yourOptions[index]})
-                              </div>
-                              <div className="explanation">
-                                <strong>Explanation:</strong>{" "}
-                                <p>{que.explanation}</p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
-                    </div>
+                  ) : (
+                    <AlertModal
+                      message="Answer Key is not available at the moment!"
+                      icon="exclamation"
+                      leftBtn="Go to Profile"
+                      rightBtn="View All Tests"
+                      action={() => {
+                        history.push("/profile");
+                      }}
+                      close={() => {
+                        history.push("/mytests");
+                      }}
+                    />
                   );
                 }
               })}

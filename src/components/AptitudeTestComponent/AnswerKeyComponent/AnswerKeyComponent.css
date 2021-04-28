@@ -46,6 +46,14 @@
   font-weight: 500;
 }
 
+.answerKeyCont .centreCard .smallTitle .green {
+  color: #00c851;
+}
+
+.answerKeyCont .centreCard .smallTitle .red {
+  color: #ff4444;
+}
+
 .answerKeyCont .centreCard .questions .singleQuestion {
   display: -ms-grid;
   display: grid;
@@ -65,6 +73,7 @@
 .answerKeyCont .centreCard .questions .singleQuestion .right .explanation p {
   word-wrap: break-word;
   font-size: 0.9rem;
+  color: #858383;
 }
 
 .answerKeyCont .centreCard .questions .singleQuestion .options {
