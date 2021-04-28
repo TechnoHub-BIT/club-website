@@ -104,7 +104,7 @@ const TestsList = () => {
                   <strong>Time Taken/Your Score</strong>
                 </div>
                 <div className="buttons">
-                  <strong>Action Buttons</strong>
+                  <strong>Answer Key</strong>
                 </div>
               </div>
               {tests.map((test, i) => {
@@ -151,7 +151,14 @@ const TestsList = () => {
                       </strong>
                     </div>
                     <div className="buttons">
-                      <a href={"/answerkey/" + test.id}>
+                      <a href={"/answerkey/" + test.id} title="View Answer Key">
+                        <strong
+                          className="onlyMobile"
+                          style={{ color: "#000" }}
+                        >
+                          View Answer Key
+                        </strong>
+                        &nbsp;&nbsp;
                         <button type="button">
                           <i className="far fa-chart-bar"></i>
                         </button>

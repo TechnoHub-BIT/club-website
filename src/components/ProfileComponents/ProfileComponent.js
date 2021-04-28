@@ -22,7 +22,6 @@ const ProfileComponent = () => {
         });
     }
   }, [currentUser]);
-  
 
   const [quesLength, setLength] = useState();
   useEffect(() => {
@@ -30,10 +29,10 @@ const ProfileComponent = () => {
       db.collection("members")
         .doc(currentUser.uid)
         .collection("tests")
-        .get().then(function(querySnapshot) { 
+        .get()
+        .then(function (querySnapshot) {
           setLength(querySnapshot.size);
         });
-
     };
     fetchdata();
   }, []);
@@ -79,10 +78,8 @@ const ProfileComponent = () => {
                 <Link to="/mytests">
                   <div className="statCard">
                     <div className="cardDetails">
-                      <h5>Aptitude Tests</h5>
-                      <h3 className="cardCount">
-                        {quesLength}
-                        +</h3>
+                      <h5>Aptitude Tests Given</h5>
+                      <h3 className="cardCount">{quesLength}</h3>
                     </div>
                     <img
                       src="./assets/images/profile/aptitude.png"

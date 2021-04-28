@@ -32,10 +32,10 @@
         margin-bottom: 2em;
       }
 
-      div {
+      .buttons {
         button {
           padding: 10px 45px;
-          background-color: #7c90fdbb;
+          background-color: #adb9ffbb;
           color: #191d34;
           border: 1px solid #191d34;
           font-weight: 500;
@@ -77,6 +77,28 @@
 
         p {
           font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modalCont {
+    .modalContent {
+      .modalBody {
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          button {
+            width: 200px;
+
+            &:last-child {
+              margin: 1em 0 0 0 !important;
+            }
+          }
         }
       }
     }

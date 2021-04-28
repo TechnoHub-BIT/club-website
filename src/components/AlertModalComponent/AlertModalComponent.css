@@ -35,9 +35,9 @@
   margin-bottom: 2em;
 }
 
-.modalCont .modalContent .modalBody div button {
+.modalCont .modalContent .modalBody .buttons button {
   padding: 10px 45px;
-  background-color: #7c90fdbb;
+  background-color: #adb9ffbb;
   color: #191d34;
   border: 1px solid #191d34;
   font-weight: 500;
@@ -81,6 +81,27 @@
   }
   .modalCont .modalContent .modalBody p {
     font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modalCont .modalContent .modalBody .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modalCont .modalContent .modalBody .buttons button {
+    width: 200px;
+  }
+  .modalCont .modalContent .modalBody .buttons button:last-child {
+    margin: 1em 0 0 0 !important;
   }
 }
 /*# sourceMappingURL=AlertModalComponent.css.map */

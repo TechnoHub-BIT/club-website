@@ -248,13 +248,13 @@ const SingleTest = (props) => {
           <AlertModal
             message="Your test has been submitted"
             icon="successful"
-            leftBtn="Go to Home"
-            rightBtn="View other Tests"
+            leftBtn="View other Tests"
+            rightBtn="View Leaderboard"
             action={() => {
-              history.push("/home");
+              history.push("/tests");
             }}
             close={() => {
-              history.push("/tests");
+              history.push("/leaderboard/" + tests.id);
             }}
           />
         );
@@ -454,7 +454,7 @@ const SingleTest = (props) => {
                         <strong>Total Questions:</strong> {quesLength}.
                       </li>
                       <li>
-                        <strong>Total Marks:</strong> {tests.totalmarks}.
+                        <strong>Maximum Marks:</strong> {tests.totalmarks}.
                       </li>
                       <li>
                         <strong>Marks for each Correct answer:</strong>{" "}

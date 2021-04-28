@@ -57,13 +57,11 @@ import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
 // import styled,{ThemeProvider} from 'styled-components'
 // import {lightTheme , darkTheme , GlobalStyle}  from "./Theme";
 
-
 // const StyledApp = styled.div`
 // color: ${(props) => props.theme.fontColor}
 // `;
 
 class Main extends Component {
-
   render() {
     return (
       <React.Fragment>
@@ -120,8 +118,7 @@ class Main extends Component {
 
             {/* Aptitude Test Pages */}
             <PrivateRoute exact path="/test/:id" component={SingleTest} />
-            {/* <PrivateRoute exact path="/edittest/:id" component={EditTest} /> */}
-            <Route exact path="/edittest/:id" component={EditTest} />
+            <PrivateRoute exact path="/edittest/:id" component={EditTest} />
             <PrivateRoute exact path="/createtest" component={CreateTest} />
             <Route exact path="/tests" component={TestsList} />
             <Route exact path="/leaderboard/:id" component={Leaderboard} />
@@ -133,7 +130,6 @@ class Main extends Component {
           </AuthProvider>
         </Router>
       </React.Fragment>
-
     );
   }
 }
