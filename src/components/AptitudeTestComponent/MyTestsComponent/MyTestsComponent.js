@@ -77,6 +77,21 @@ const TestsList = () => {
     }
   }, [currentUser]);
 
+  const [testname, setTestname] = useState([]);
+  useEffect(() => {
+    const fetchdata = async () => {
+      db.collection("Tests").onSnapshot(function (data) {
+        setTestname(
+          data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
+      });
+    };
+    fetchdata();
+  }, []);
+
   return (
     <React.Fragment>
       {modal}
@@ -116,15 +131,23 @@ const TestsList = () => {
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
                         <br />
-                        {test.answerstatus === "Active" ? (
-                          <span style={{ color: "#00c851" }}>
-                            Answer key available
-                          </span>
-                        ) : (
-                          <span style={{ color: "#ff4444" }}>
-                            Answer key unavailable
-                          </span>
-                        )}
+                        {testname.map((item) => {
+                          if (item.title === test.testname) {
+                            return (
+                              <div>
+                                {item.answerstatus === "Active" ? (
+                                  <span style={{ color: "#00c851" }}>
+                                    Answer key available
+                                  </span>
+                                ) : (
+                                  <span style={{ color: "#ff4444" }}>
+                                    Answer key unavailable
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          }
+                        })}
                       </div>
                     </div>
                     <div className="duration">

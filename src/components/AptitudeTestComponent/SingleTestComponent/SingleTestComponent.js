@@ -198,7 +198,6 @@ const SingleTest = (props) => {
   const email = profiles.email;
   const title = tests.title;
   const totalmarks = tests.totalmarks;
-  const answerstatus = tests.answerstatus;
   const testdate = tests.testdate;
   let score = 0;
 
@@ -224,7 +223,6 @@ const SingleTest = (props) => {
         timeleft: timeLeft,
         options: options,
         answers: answers,
-        answerstatus: answerstatus,
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,
