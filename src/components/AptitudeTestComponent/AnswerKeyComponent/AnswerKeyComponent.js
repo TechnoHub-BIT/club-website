@@ -108,8 +108,7 @@ const AnswerKey = (props) => {
                             <div className="left">
                               <h3 className="smallTitle">
                                 Question No. {index + 1}
-                              </h3>
-                              
+                              </h3>                              
                               <div className="question">{que.question}</div>
                               <div className="options">
                                 <div>Option (A): {que.op1}</div>
