@@ -185,7 +185,7 @@ const Leaderboard = (props) => {
                             <strong className="onlyMobile">
                               &nbsp;&nbsp;
                               <span style={{ fontSize: "1rem" }}>
-                                markes scored
+                                marks scored
                               </span>
                             </strong>
                           </div>

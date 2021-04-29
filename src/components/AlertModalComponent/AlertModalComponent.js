@@ -36,7 +36,7 @@ class AlertModalComponent extends Component {
             <div className="modalBody">
               <img src={icon} alt="Status Icon" />
               <p>{this.props.message}</p>
-              <div>
+              <div className="buttons">
                 <button
                   type="button"
                   onClick={() => {

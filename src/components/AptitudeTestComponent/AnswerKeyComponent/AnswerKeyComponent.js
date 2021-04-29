@@ -150,7 +150,8 @@ const AnswerKey = (props) => {
                               </div>
                               <div className="right">
                                 <div>
-                                  Correct Option: Option ({que.correctAnswer})
+                                  Correct Option:&nbsp;&nbsp;Option (
+                                  {que.correctAnswer})
                                 </div>
                                 <div className={className(index)}>
                                   Your Answer:&nbsp;&nbsp;

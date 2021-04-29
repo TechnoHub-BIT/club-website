@@ -153,20 +153,20 @@ const TestsList = () => {
                       {test.duration} mins.
                     </div>
                     <div className="buttons">
-                      <a href={"/test/" + test.id}>
+                      <a href={"/test/" + test.id} title="Give Test">
                         <button type="button">
                           <i className="fas fa-book"></i>
                         </button>
                       </a>
                       {profiles.id === 1 || profiles.id === 4 ? (
-                        <a href={"/edittest/" + test.id}>
+                        <a href={"/edittest/" + test.id} title="Edit Test">
                           <button type="button">
                             <i className="fas fa-pencil-alt"></i>
                           </button>
                         </a>
                       ) : null}
                       {profiles.id === 1 || profiles.id === 4 ? (
-                        <a>
+                        <a title="Delete Test">
                           <button
                             onClick={() => deleteBlogModal(test.id)}
                             type="button"
@@ -175,7 +175,10 @@ const TestsList = () => {
                           </button>
                         </a>
                       ) : null}
-                      <a href={"/leaderboard/" + test.id}>
+                      <a
+                        href={"/leaderboard/" + test.id}
+                        title="View Leaderboard"
+                      >
                         <button type="button">
                           <i className="fas fa-trophy"></i>
                         </button>
