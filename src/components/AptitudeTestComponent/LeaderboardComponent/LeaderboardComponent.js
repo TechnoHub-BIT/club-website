@@ -42,12 +42,14 @@ const Leaderboard = (props) => {
     });
   }, []);
 
+  //  let tb =  db.collection("Tests").doc(props.match.params.id).collection("results").orderBy("score", "desc").orderBy("timeleft", "desc").startAt(test.score).endAt(test.score +'\uf8ff').get();
   const [result, setResult] = useState([]);
   useEffect(() => {
     db.collection("Tests")
       .doc(props.match.params.id)
       .collection("results")
       .orderBy("score", "desc")
+      // .orderBy("timeleft", "desc")
       .get()
       .then((response) => {
         const fetchResults = [];

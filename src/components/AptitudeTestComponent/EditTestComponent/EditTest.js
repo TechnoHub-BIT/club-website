@@ -32,6 +32,8 @@ class EditTest extends Component {
     negativemarks: "",
     answerstatus: "",
     profiles: "",
+    testprivacy: "",
+    privacypassword: "",
     questions: [
       {
         question: "",
@@ -64,6 +66,8 @@ class EditTest extends Component {
         teststatus: test.teststatus,
         answerstatus: test.answerstatus,
         questions: test.questions,
+        testprivacy: test.testprivacy,
+        privacypassword: test.privacypassword,
       });
     });
   }
@@ -73,6 +77,7 @@ class EditTest extends Component {
     state[e.target.name] = e.target.value;
     this.setState({ test: state });
   };
+
   handleChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...this.state.questions];
@@ -94,6 +99,8 @@ class EditTest extends Component {
       negativemarks,
       answerstatus,
       questions,
+      testprivacy,
+      privacypassword,
     } = this.state;
     const updateRef = db.collection("Tests").doc(this.props.match.params.id);
     updateRef
@@ -109,6 +116,8 @@ class EditTest extends Component {
         negativemarks,
         answerstatus,
         questions,
+        testprivacy,
+        privacypassword,
       })
       .then((docRef) => {
         this.setState({
@@ -122,6 +131,8 @@ class EditTest extends Component {
           positivemarks: "",
           negativemarks: "",
           answerstatus: "",
+          testprivacy: "",
+          privacypassword: "",
           questions: [
             {
               question: "",
@@ -223,6 +234,30 @@ class EditTest extends Component {
                     </div>
                   </div>
                   <div className="inputGroup twoInputs">
+                    <div className="input">
+                      <select
+                        name="testprivacy"
+                        id="testprivacy"
+                        onChange={this.onChange}
+                        value={this.state.testprivacy}
+                        required
+                      >
+                        <option value="">--Test Privacy--</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                      </select>
+                    </div>
+                    <div className="input">
+                      <input
+                        type="password"
+                        name="privacypassword"
+                        id="privacypassword"
+                        placeholder="Test privacy password"
+                        onChange={this.onChange}
+                        value={this.state.privacypassword}
+                      />
+                      <label htmlFor="pmarks">Test privacy password*</label>
+                    </div>
                     <div className="input">
                       <select
                         name="teststatus"
@@ -346,7 +381,7 @@ class EditTest extends Component {
                         </h3>
                         <div class="inputGroup" key={index}>
                           <div className="input">
-                            <input
+                            <TextArea
                               type="text"
                               name="question"
                               id={index}

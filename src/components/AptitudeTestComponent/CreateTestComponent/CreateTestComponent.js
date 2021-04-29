@@ -66,6 +66,17 @@ const CreateTest = () => {
     setAnswerstatus(e.target.value);
   };
 
+  const [testprivacy, setTestprivacy] = useState("");
+  const privacy = (e) => {
+    setTestprivacy(e.target.value);
+  };
+  
+  const [privacypassword, setPrivacypassword] = useState("");
+  const ppassword = (e) => {
+    setPrivacypassword(e.target.value);
+  };
+
+
   const [questions, setQuestion] = useState([
     {
       question: "",
@@ -135,7 +146,8 @@ const CreateTest = () => {
       teststatus !== "" &&
       positivemarks !== "" &&
       answerstatus !== "" &&
-      teststatus !== ""
+      teststatus !== "" &&
+      testprivacy !== ""
     ) {
       // && question !== "" || op1 !== "" || op2 !== "" || op3 !=="" || op4 !== "" || correctAnswer !== "")
       e.preventDefault();
@@ -152,6 +164,8 @@ const CreateTest = () => {
           positivemarks: positivemarks,
           negativemarks: negativemarks,
           questions: questions,
+          testprivacy:testprivacy,
+          privacypassword:privacypassword,
         })
         .then(() => {
           showModal(
@@ -231,6 +245,31 @@ const CreateTest = () => {
                     </div>
                   </div>
                   <div className="inputGroup twoInputs">
+                  <div className="input">
+                      <select
+                        name="status"
+                        id="status"
+                        onChange={privacy}
+                        value={testprivacy}
+                        required
+                      >
+                        <option value="">--Test Privacy--</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                      </select>
+                    </div>
+                    <div className="input">
+                      <input
+                        type="password"
+                        name="pmarks"
+                        id="pmarks"
+                        placeholder="Test privacy password"
+                        onChange={ppassword}
+                        value={privacypassword}
+                       
+                      />
+                      <label htmlFor="ppassword">Test privacy password*</label>
+                    </div>
                     <div className="input">
                       <select
                         name="status"
@@ -354,7 +393,7 @@ const CreateTest = () => {
                         </h3>
                         <div class="inputGroup" key={index}>
                           <div className="input">
-                            <input
+                            <TextArea
                               type="text"
                               name="question"
                               id={"question" + index}
