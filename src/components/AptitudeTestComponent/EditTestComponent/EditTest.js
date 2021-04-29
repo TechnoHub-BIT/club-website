@@ -236,30 +236,6 @@ class EditTest extends Component {
                   <div className="inputGroup twoInputs">
                     <div className="input">
                       <select
-                        name="testprivacy"
-                        id="testprivacy"
-                        onChange={this.onChange}
-                        value={this.state.testprivacy}
-                        required
-                      >
-                        <option value="">--Test Privacy--</option>
-                        <option value="Public">Public</option>
-                        <option value="Private">Private</option>
-                      </select>
-                    </div>
-                    <div className="input">
-                      <input
-                        type="password"
-                        name="privacypassword"
-                        id="privacypassword"
-                        placeholder="Test privacy password"
-                        onChange={this.onChange}
-                        value={this.state.privacypassword}
-                      />
-                      <label htmlFor="pmarks">Test privacy password*</label>
-                    </div>
-                    <div className="input">
-                      <select
                         name="teststatus"
                         id="status"
                         onChange={this.onChange}
@@ -283,6 +259,32 @@ class EditTest extends Component {
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                       </select>
+                    </div>
+                    <div className="input">
+                      <select
+                        name="testprivacy"
+                        id="testprivacy"
+                        onChange={this.onChange}
+                        value={this.state.testprivacy}
+                        required
+                      >
+                        <option value="">--Test Privacy--</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                      </select>
+                    </div>
+                    <div className="input">
+                      <input
+                        type="password"
+                        name="privacypassword"
+                        id="privacypassword"
+                        placeholder="Test privacy password"
+                        onChange={this.onChange}
+                        value={this.state.privacypassword}
+                      />
+                      <label htmlFor="privacypassword">
+                        Test Password(if private)
+                      </label>
                     </div>
                   </div>
                   <div className="inputGroup threeInputs">

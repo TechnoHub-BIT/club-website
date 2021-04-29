@@ -16,7 +16,18 @@ const SingleTest = (props) => {
   const [modal, showModal] = useState("");
 
   const closeModal = () => {
-    showModal("  ");
+    showModal("");
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", alertUser);
+    return () => {
+      window.removeEventListener("beforeunload", alertUser);
+    };
+  }, []);
+  const alertUser = (e) => {
+    e.preventDefault();
+    e.returnValue = "";
   };
 
   //Form Start Check
