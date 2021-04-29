@@ -126,6 +126,11 @@ const TestsList = () => {
                         {test.title}&nbsp;&nbsp;
                         <i className="fas fa-external-link-alt"></i>
                       </a>
+                       {/* privacy options */}
+                       <div>
+                        {test.testprivacy}
+                        {/* {test.privacypassword} */}
+                        </div>
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
                         <br />
