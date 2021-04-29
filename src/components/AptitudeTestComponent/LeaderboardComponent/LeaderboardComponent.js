@@ -62,6 +62,32 @@ const Leaderboard = (props) => {
       });
   }, []);
 
+  const bubbleSort = (inputArr) => {
+    let len = inputArr.length;
+    for (let i = 0; i < len; i++) {
+      for (let j = 0; j < len; j++) {
+        if (inputArr[j] > inputArr[j + 1]) {
+          let tmp = inputArr[j];
+          inputArr[j] = inputArr[j + 1];
+          inputArr[j + 1] = tmp;
+        }
+      }
+    }
+
+    return inputArr;
+  };
+
+  console.log(result);
+
+  let items = [];
+  result.forEach((item) => {
+    items.push(item.timeLeft);
+
+    console.log(item.timeLeft);
+  });
+
+  console.log(items);
+
   //Current User Details
   const { currentUser, logout } = useAuth();
 
@@ -129,8 +155,11 @@ const Leaderboard = (props) => {
                       );
                     else
                       badge = (
-                        <div className="badge" style={{ opacity: "0" }}>
-                          <i className="fas fa-award"></i>
+                        <div
+                          className="badge onlyMobile"
+                          style={{ fontSize: "1.2rem", fontWeight: "500" }}
+                        >
+                          {index + 1}.
                         </div>
                       );
 
@@ -142,7 +171,11 @@ const Leaderboard = (props) => {
                           <div className="leaderDetails">
                             {badge}
                             <div className="details">
-                              <div className="name">{test.fullname}</div>
+                              <div className="name">
+                                {test.fullname != null
+                                  ? test.fullname
+                                  : test.email}
+                              </div>
                               <div className="branch">{test.branch}</div>
                             </div>
                           </div>
