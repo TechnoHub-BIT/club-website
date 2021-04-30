@@ -16,7 +16,19 @@ const SingleTest = (props) => {
   const [modal, showModal] = useState("");
 
   const closeModal = () => {
-    showModal("  ");
+    showModal("");
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", alertUser);
+    return () => {
+      window.removeEventListener("beforeunload", alertUser);
+    };
+  }, []);
+
+  const alertUser = (e) => {
+    e.preventDefault();
+    e.returnValue = "";
   };
 
   //Form Start Check
@@ -49,6 +61,8 @@ const SingleTest = (props) => {
           answerstatus: Test.answerstatus,
           questions: Test.questions,
           teststatus: Test.teststatus,
+          testprivacy: Test.testprivacy,
+          privacypassword: Test.privacypassword,
         });
       } else
         showModal(
@@ -303,9 +317,10 @@ const SingleTest = (props) => {
   }
 
   //Start timer on Quiz start
-  const restart = React.useCallback(() => {
+  const restart = React.useCallback((duration) => {
     setForm(true);
-    const newTime = 35 * 60 * 1000;
+    console.log(duration);
+    const newTime = parseInt(duration, 10) * 60 * 1000;
     start(newTime);
   }, []);
 
@@ -328,7 +343,7 @@ const SingleTest = (props) => {
       });
   }, []);
 
-  const startTest = () => {
+  const startTest = (duration) => {
     const ref = db
       .collection("Tests")
       .doc(props.match.params.id)
@@ -370,7 +385,7 @@ const SingleTest = (props) => {
         );
       //Start the test
       else {
-        restart();
+        restart(duration);
         sectionChanger("start", 0);
       }
     });
@@ -469,7 +484,7 @@ const SingleTest = (props) => {
                       type="button"
                       className="startBtn"
                       onClick={() => {
-                        startTest();
+                        startTest(tests.duration);
                       }}
                     >
                       Start Test&nbsp;&nbsp;

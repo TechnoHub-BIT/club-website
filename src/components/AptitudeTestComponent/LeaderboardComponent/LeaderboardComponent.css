@@ -9,6 +9,7 @@
           box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
   margin: 3em 15vw;
   border-radius: 20px;
+  text-align: center;
 }
 
 .leaderboardCont .centreCard .leadersList {
@@ -47,6 +48,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: left;
 }
 
 .leaderboardCont .centreCard .leadersList .header .left i {
@@ -145,6 +147,26 @@
   border-bottom-right-radius: 20px;
 }
 
+.leaderboardCont .centreCard .viewAllBtn {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #00c851;
+  border: 2px solid #00c851;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.leaderboardCont .centreCard .viewAllBtn:hover {
+  background-color: #007e33;
+  border-color: #007e33;
+}
+
 @media only screen and (max-width: 992px) {
   .leaderboardCont .title {
     font-size: 1.7rem;
@@ -208,6 +230,10 @@
   .leaderboardCont .centreCard .leadersList .leader:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+  }
+  .leaderboardCont .centreCard .viewAllBtn {
+    padding: 7px 10px;
+    font-size: 0.9rem;
   }
 }
 /*# sourceMappingURL=LeaderboardComponent.css.map */

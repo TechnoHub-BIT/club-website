@@ -70,12 +70,11 @@ const CreateTest = () => {
   const privacy = (e) => {
     setTestprivacy(e.target.value);
   };
-  
+
   const [privacypassword, setPrivacypassword] = useState("");
   const ppassword = (e) => {
     setPrivacypassword(e.target.value);
   };
-
 
   const [questions, setQuestion] = useState([
     {
@@ -164,8 +163,8 @@ const CreateTest = () => {
           positivemarks: positivemarks,
           negativemarks: negativemarks,
           questions: questions,
-          testprivacy:testprivacy,
-          privacypassword:privacypassword,
+          testprivacy: testprivacy,
+          privacypassword: privacypassword,
         })
         .then(() => {
           showModal(
@@ -245,31 +244,6 @@ const CreateTest = () => {
                     </div>
                   </div>
                   <div className="inputGroup twoInputs">
-                  <div className="input">
-                      <select
-                        name="status"
-                        id="status"
-                        onChange={privacy}
-                        value={testprivacy}
-                        required
-                      >
-                        <option value="">--Test Privacy--</option>
-                        <option value="Public">Public</option>
-                        <option value="Private">Private</option>
-                      </select>
-                    </div>
-                    <div className="input">
-                      <input
-                        type="password"
-                        name="pmarks"
-                        id="pmarks"
-                        placeholder="Test privacy password"
-                        onChange={ppassword}
-                        value={privacypassword}
-                       
-                      />
-                      <label htmlFor="ppassword">Test privacy password*</label>
-                    </div>
                     <div className="input">
                       <select
                         name="status"
@@ -296,6 +270,32 @@ const CreateTest = () => {
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                       </select>
+                    </div>
+                    <div className="input">
+                      <select
+                        name="privacy"
+                        id="privacy"
+                        onChange={privacy}
+                        value={testprivacy}
+                        required
+                      >
+                        <option value="">--Test Privacy--</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                      </select>
+                    </div>
+                    <div className="input">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Test privacy password"
+                        onChange={ppassword}
+                        value={privacypassword}
+                      />
+                      <label htmlFor="password">
+                        Test Password(if private)
+                      </label>
                     </div>
                   </div>
                   <div className="inputGroup threeInputs">

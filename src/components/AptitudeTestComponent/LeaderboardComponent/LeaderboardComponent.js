@@ -22,6 +22,8 @@ const Leaderboard = (props) => {
 
   const [test, setTest] = useState([]);
 
+  const [listLimit, setLimit] = useState(10);
+
   const ref = db.collection("Tests").doc(props.match.params.id);
   useEffect(() => {
     ref.get().then((doc) => {
@@ -63,6 +65,44 @@ const Leaderboard = (props) => {
         setResult(fetchResults);
       });
   }, []);
+
+  //Convert timeleft into integer
+  result.forEach((item) => {
+    item.timeleft = parseInt(item.timeleft, 10);
+  });
+
+  //FUnction to sort array based pn timeleft
+  const dynamicSort = (property) => {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function (a, b) {
+      /* next line works with strings and numbers,
+       * and you may want to customize it to your needs
+       */
+      var result =
+        a[property] > b[property] ? -1 : a[property] < b[property] ? 1 : 0;
+      return result * sortOrder;
+    };
+  };
+
+  function dynamicSortMultiple() {
+    var props = arguments;
+    return function (obj1, obj2) {
+      var i = 0,
+        result = 0,
+        numberOfProperties = props.length;
+      while (result === 0 && i < numberOfProperties) {
+        result = dynamicSort(props[i])(obj1, obj2);
+        i++;
+      }
+      return result;
+    };
+  }
+
+  console.log(result.sort(dynamicSortMultiple("score", "timeleft")));
 
   //Current User Details
   const { currentUser, logout } = useAuth();
@@ -131,20 +171,27 @@ const Leaderboard = (props) => {
                       );
                     else
                       badge = (
-                        <div className="badge" style={{ opacity: "0" }}>
-                          <i className="fas fa-award"></i>
+                        <div
+                          className="badge onlyMobile"
+                          style={{ fontSize: "1.2rem", fontWeight: "500" }}
+                        >
+                          {index + 1}.
                         </div>
                       );
 
                     //Display only Top 10 Scores
-                    if (index < 10) {
+                    if (index < listLimit) {
                       return (
                         <div className="leader">
                           <div className="sno">{index + 1}.</div>
                           <div className="leaderDetails">
                             {badge}
                             <div className="details">
-                              <div className="name">{test.fullname}</div>
+                              <div className="name">
+                                {test.fullname != null
+                                  ? test.fullname
+                                  : test.email}
+                              </div>
                               <div className="branch">{test.branch}</div>
                             </div>
                           </div>
@@ -194,6 +241,24 @@ const Leaderboard = (props) => {
                     }
                   })}
                 </div>
+                {listLimit === 10 ? (
+                  <button
+                    type="button"
+                    className="viewAllBtn"
+                    onClick={() => setLimit(result.length)}
+                  >
+                    <i className="fas fa-eye"></i>&nbsp;&nbsp;View All
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="viewAllBtn"
+                    onClick={() => setLimit(10)}
+                  >
+                    <i className="fas fa-long-arrow-alt-up"></i>&nbsp;&nbsp;Show
+                    Top 10
+                  </button>
+                )}
               </div>
             ) : (
               <h4 style={{ textAlign: "center", padding: "3em 20px" }}>

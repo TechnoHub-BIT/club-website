@@ -9,6 +9,7 @@
     box-shadow: 18px 18px 36px #bebebe, -18px -18px 36px #ffffff;
     margin: 3em 15vw;
     border-radius: 20px;
+    text-align: center;
 
     .leadersList {
       display: flex;
@@ -29,6 +30,7 @@
         .left {
           display: flex;
           align-items: center;
+          text-align: left;
 
           i {
             font-size: 2rem;
@@ -124,6 +126,25 @@
         }
       }
     }
+
+    .viewAllBtn {
+      font-size: 1rem;
+      padding: 10px 30px;
+      background-color: #00c851;
+      border: 2px solid #00c851;
+      color: #fff;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      white-space: nowrap;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all ease;
+
+      &:hover {
+        background-color: #007e33;
+        border-color: #007e33;
+      }
+    }
   }
 }
 
@@ -197,6 +218,11 @@
             border-bottom-right-radius: 10px;
           }
         }
+      }
+
+      .viewAllBtn {
+        padding: 7px 10px;
+        font-size: 0.9rem;
       }
     }
   }
