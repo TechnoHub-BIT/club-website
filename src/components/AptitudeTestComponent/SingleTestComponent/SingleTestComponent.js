@@ -238,7 +238,7 @@ const SingleTest = (props) => {
         timeleft: timeLeft,
         options: options,
         answers: answers,
-        testduration:testduration,
+        testduration: testduration,
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,
@@ -321,7 +321,6 @@ const SingleTest = (props) => {
   //Start timer on Quiz start
   const restart = React.useCallback((duration) => {
     setForm(true);
-    console.log(duration);
     const newTime = parseInt(duration, 10) * 60 * 1000;
     start(newTime);
   }, []);
@@ -373,7 +372,7 @@ const SingleTest = (props) => {
       else if (tests.teststatus === "Inactive")
         showModal(
           <AlertModal
-            message="The test is not available at the moment!"
+            message="This test is not available at the moment!"
             icon="exclamation"
             leftBtn="Go to Home"
             rightBtn="View other Tests"
@@ -386,11 +385,24 @@ const SingleTest = (props) => {
           />
         );
       //Start the test
-      else {
-        restart(duration);
-        sectionChanger("start", 0);
-      }
+      // else if (tests.testprivacy === "Private")
+      //   showModal(
+      //     <AlertModal
+      //       message="This test is private, enter password to continue!"
+      //       icon="exclamation"
+      //       leftBtn="Continue"
+      //       action={confirmStart}
+      //       actionParam={duration}
+      //       close={closeModal}
+      //     />
+      //   );
+      else confirmStart(duration);
     });
+  };
+
+  const confirmStart = (duration) => {
+    restart(duration);
+    sectionChanger("start", 0);
   };
 
   const onSubmit = (e) => {
@@ -500,7 +512,12 @@ const SingleTest = (props) => {
                       <section ques-no={index + 1} key={index}>
                         <h3 className="smallTitle">Question No. {index + 1}</h3>
                         <div className="question">
-                          {item.question}
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: item.question,
+                            }}
+                            className="blogDetails"
+                          ></div>
                           <br />
                           {item.questionType === "MSQ"
                             ? "(More than one correct option)"
