@@ -6,6 +6,7 @@ import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 const TestsList = () => {
   const [tests, setTest] = useState([]);
@@ -122,15 +123,19 @@ const TestsList = () => {
                   <div className="test">
                     <div className="index">{i + 1}</div>
                     <div className="testTitle">
+                      {test.testprivacy === "Private" ? (
+                        <span>
+                          <i
+                            className="fas fa-lock"
+                            style={{ color: "#ffbb33" }}
+                          ></i>
+                          &nbsp;&nbsp;
+                        </span>
+                      ) : null}
                       <a href={"/test/" + test.id}>
                         {test.title}&nbsp;&nbsp;
                         <i className="fas fa-external-link-alt"></i>
                       </a>
-                       {/* privacy options */}
-                       <div>
-                        {test.testprivacy}
-                        {/* {test.privacypassword} */}
-                        </div>
                       <div className="date">
                         {Moment(test.testdate).format("ll")}
                         <br />

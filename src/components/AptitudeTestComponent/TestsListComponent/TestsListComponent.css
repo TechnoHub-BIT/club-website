@@ -228,7 +228,6 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    text-align: left;
   }
   .testsListCont .centreCard .testsList .test {
     padding: 20px;
@@ -239,6 +238,12 @@
   }
   .testsListCont .centreCard .testsList .test .onlyMobile {
     display: inline;
+  }
+  .testsListCont .centreCard .testsList .test .testTitle {
+    overflow: hidden;
+  }
+  .testsListCont .centreCard .testsList .test .testTitle a {
+    text-overflow: ellipsis;
   }
   .testsListCont .centreCard .testsList .test .index {
     display: none;

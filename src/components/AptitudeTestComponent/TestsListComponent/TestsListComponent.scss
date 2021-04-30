@@ -221,7 +221,6 @@
       .testsList {
         display: flex;
         flex-direction: column;
-        text-align: left;
 
         .test {
           padding: 20px;
@@ -231,6 +230,14 @@
 
           .onlyMobile {
             display: inline;
+          }
+
+          .testTitle {
+            overflow: hidden;
+
+            a {
+              text-overflow: ellipsis;
+            }
           }
 
           .index {
