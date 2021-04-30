@@ -269,6 +269,7 @@ class EditTest extends Component {
                         <option value="">--Test Status--</option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
+                        <option value="Over">Over</option>
                       </select>
                     </div>
                     <div className="input">
