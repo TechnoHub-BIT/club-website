@@ -213,6 +213,7 @@ const SingleTest = (props) => {
   const title = tests.title;
   const totalmarks = tests.totalmarks;
   const testdate = tests.testdate;
+  const testduration = tests.duration;
   let score = 0;
 
   //Submit Function
@@ -237,6 +238,7 @@ const SingleTest = (props) => {
         timeleft: timeLeft,
         options: options,
         answers: answers,
+        testduration:testduration,
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,

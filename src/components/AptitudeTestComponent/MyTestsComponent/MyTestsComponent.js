@@ -168,9 +168,11 @@ const TestsList = () => {
                       {((2100000 - test.timeleft) / 1000) % 60 < 10
                         ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
                         : ((2100000 - test.timeleft) / 1000) % 60}
-                      &nbsp;&nbsp;/&nbsp;&nbsp;
+                        {/* total duration */}
+                        ({test.testduration})
+                      &nbsp;&nbsp;/&nbsp;&nbsp; 
                       <strong style={{ fontSize: "1.3rem" }}>
-                        {test.score}
+                       {test.score}
                       </strong>
                     </div>
                     <div className="buttons">
