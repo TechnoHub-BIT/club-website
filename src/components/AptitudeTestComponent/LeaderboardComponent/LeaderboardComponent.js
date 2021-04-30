@@ -102,7 +102,7 @@ const Leaderboard = (props) => {
     };
   }
 
-  console.log(result.sort(dynamicSortMultiple("score", "timeleft")));
+  result.sort(dynamicSortMultiple("score", "timeleft"));
 
   //Current User Details
   const { currentUser, logout } = useAuth();
@@ -119,6 +119,19 @@ const Leaderboard = (props) => {
         });
     }
   }, [currentUser]);
+
+  //Calculate Time taken from Time left
+  const calcTime = (testDuration, timeLeft) => {
+    let hours = parseInt((testDuration - timeLeft) / 3600000, 10);
+    let minutes = parseInt((testDuration - timeLeft) / 60000, 10);
+    let seconds = parseInt(((testDuration - timeLeft) / 1000) % 60, 10);
+
+    if (hours < 10) hours = "0" + hours;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (seconds < 10) seconds = "0" + seconds;
+
+    return hours + ":" + minutes + ":" + seconds;
+  };
 
   if (validity)
     return (
@@ -149,7 +162,7 @@ const Leaderboard = (props) => {
                       </div>
                     </div>
                   </div>
-                  {result.map((test, index) => {
+                  {result.map((leader, index) => {
                     let badge = null;
                     if (index === 0)
                       badge = (
@@ -181,6 +194,9 @@ const Leaderboard = (props) => {
 
                     //Display only Top 10 Scores
                     if (index < listLimit) {
+                      const testDuration =
+                        parseInt(test.duration, 10) * 60 * 1000;
+
                       return (
                         <div className="leader">
                           <div className="sno">{index + 1}.</div>
@@ -188,47 +204,21 @@ const Leaderboard = (props) => {
                             {badge}
                             <div className="details">
                               <div className="name">
-                                {test.fullname != null
-                                  ? test.fullname
-                                  : test.email}
+                                {leader.fullname != null
+                                  ? leader.fullname
+                                  : leader.email}
                               </div>
-                              <div className="branch">{test.branch}</div>
+                              <div className="branch">{leader.branch}</div>
                             </div>
                           </div>
                           <div className="time">
                             <strong className="onlyMobile">
                               Time Taken:&nbsp;&nbsp;
                             </strong>
-                            {parseInt((2100000 - test.timeleft) / 3600000, 10) <
-                            10
-                              ? "0" +
-                                parseInt(
-                                  (2100000 - test.timeleft) / 3600000,
-                                  10
-                                ) +
-                                ":"
-                              : parseInt(
-                                  (2100000 - test.timeleft) / 3600000,
-                                  10
-                                ) + ":"}
-                            {parseInt((2100000 - test.timeleft) / 60000, 10) <
-                            10
-                              ? "0" +
-                                parseInt(
-                                  (2100000 - test.timeleft) / 60000,
-                                  10
-                                ) +
-                                ":"
-                              : parseInt(
-                                  (2100000 - test.timeleft) / 60000,
-                                  10
-                                ) + ":"}
-                            {((2100000 - test.timeleft) / 1000) % 60 < 10
-                              ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
-                              : ((2100000 - test.timeleft) / 1000) % 60}
+                            {calcTime(testDuration, leader.timeleft)}
                           </div>
                           <div className="score">
-                            {test.score}
+                            {leader.score}
                             <strong className="onlyMobile">
                               &nbsp;&nbsp;
                               <span style={{ fontSize: "1rem" }}>

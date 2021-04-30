@@ -66,9 +66,11 @@
         .testTitle {
           text-align: left;
           font-weight: 500;
+          overflow: hidden;
 
           a {
             text-decoration: underline !important;
+            text-overflow: ellipsis;
           }
 
           .date {
@@ -230,14 +232,6 @@
 
           .onlyMobile {
             display: inline;
-          }
-
-          .testTitle {
-            overflow: hidden;
-
-            a {
-              text-overflow: ellipsis;
-            }
           }
 
           .index {
