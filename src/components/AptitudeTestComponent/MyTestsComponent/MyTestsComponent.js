@@ -92,6 +92,19 @@ const TestsList = () => {
     fetchdata();
   }, []);
 
+  //Calculate Time taken from Time left
+  const calcTime = (testDuration, timeLeft) => {
+    let hours = parseInt((testDuration - timeLeft) / 3600000, 10);
+    let minutes = parseInt((testDuration - timeLeft) / 60000, 10);
+    let seconds = parseInt(((testDuration - timeLeft) / 1000) % 60, 10);
+
+    if (hours < 10) hours = "0" + hours;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (seconds < 10) seconds = "0" + seconds;
+
+    return hours + ":" + minutes + ":" + seconds;
+  };
+
   return (
     <React.Fragment>
       {modal}
@@ -101,7 +114,14 @@ const TestsList = () => {
       </Helmet>
       <div className="testsListCont">
         <Fade up>
-          <h1 className="title">My Tests</h1>
+          <h1 className="title">
+            My Tests
+            <a href="/tests">
+              <button type="button">
+                <i className="fas fa-book"></i>&nbsp;&nbsp;Give a Test
+              </button>
+            </a>
+          </h1>
           <div className="centreCard">
             <div className="testsList">
               <div
@@ -123,6 +143,8 @@ const TestsList = () => {
                 </div>
               </div>
               {tests.map((test, i) => {
+                const testDuration =
+                  parseInt(test.testduration, 10) * 60 * 1000;
                 return (
                   <div className="test">
                     <div className="index">{i + 1}</div>
@@ -154,25 +176,10 @@ const TestsList = () => {
                       <strong className="onlyMobile">
                         Time Taken/Your Score:&nbsp;&nbsp;
                       </strong>
-                      {parseInt((2100000 - test.timeleft) / 3600000, 10) < 10
-                        ? "0" +
-                          parseInt((2100000 - test.timeleft) / 3600000, 10) +
-                          ":"
-                        : parseInt((2100000 - test.timeleft) / 3600000, 10) +
-                          ":"}
-                      {parseInt((2100000 - test.timeleft) / 60000, 10) < 10
-                        ? "0" +
-                          parseInt((2100000 - test.timeleft) / 60000, 10) +
-                          ":"
-                        : parseInt((2100000 - test.timeleft) / 60000, 10) + ":"}
-                      {((2100000 - test.timeleft) / 1000) % 60 < 10
-                        ? "0" + (((2100000 - test.timeleft) / 1000) % 60)
-                        : ((2100000 - test.timeleft) / 1000) % 60}
-                        {/* total duration */}
-                        ({test.testduration})
-                      &nbsp;&nbsp;/&nbsp;&nbsp; 
+                      {calcTime(testDuration, test.timeleft)}
+                      &nbsp;&nbsp;/&nbsp;&nbsp;
                       <strong style={{ fontSize: "1.3rem" }}>
-                       {test.score}
+                        {test.score}
                       </strong>
                     </div>
                     <div className="buttons">
