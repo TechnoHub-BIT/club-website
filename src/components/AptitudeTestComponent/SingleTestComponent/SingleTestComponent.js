@@ -516,7 +516,6 @@ const SingleTest = (props) => {
                             dangerouslySetInnerHTML={{
                               __html: item.question,
                             }}
-                            className="blogDetails"
                           ></div>
                           <br />
                           {item.questionType === "MSQ"

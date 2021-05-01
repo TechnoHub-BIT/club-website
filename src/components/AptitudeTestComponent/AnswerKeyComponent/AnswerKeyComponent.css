@@ -66,6 +66,12 @@
   font-weight: 500;
 }
 
+.answerKeyCont .centreCard .questions .singleQuestion .left .question {
+  margin: 0.5em 0;
+  font-size: 0.95rem;
+  color: #727070;
+}
+
 .answerKeyCont .centreCard .questions .singleQuestion .right .explanation {
   margin-top: 0.5em;
 }
@@ -73,7 +79,7 @@
 .answerKeyCont .centreCard .questions .singleQuestion .right .explanation p {
   word-wrap: break-word;
   font-size: 0.9rem;
-  color: #858383;
+  color: #727070;
 }
 
 .answerKeyCont .centreCard .questions .singleQuestion .options {
@@ -82,7 +88,7 @@
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 1em;
+  grid-gap: 1em;
   font-size: 0.9rem;
 }
 

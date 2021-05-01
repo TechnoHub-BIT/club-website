@@ -139,13 +139,29 @@ const AnswerKey = (props) => {
                                     )}
                                   </div>
                                 </h3>
-
-                                <div className="question">{que.question}</div>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: que.question,
+                                  }}
+                                  className="question"
+                                ></div>
                                 <div className="options">
-                                  <div>Option (A): {que.op1}</div>
-                                  <div>Option (B): {que.op2}</div>
-                                  <div>Option (C): {que.op3}</div>
-                                  <div>Option (D): {que.op4}</div>
+                                  <div>
+                                    <strong>Option (A):&nbsp;&nbsp;</strong>
+                                    {que.op1}
+                                  </div>
+                                  <div>
+                                    <strong>Option (B):&nbsp;&nbsp;</strong>
+                                    {que.op2}
+                                  </div>
+                                  <div>
+                                    <strong>Option (C):&nbsp;&nbsp;</strong>
+                                    {que.op3}
+                                  </div>
+                                  <div>
+                                    <strong>Option (D):&nbsp;&nbsp;</strong>
+                                    {que.op4}
+                                  </div>
                                 </div>
                               </div>
                               <div className="right">
@@ -161,7 +177,12 @@ const AnswerKey = (props) => {
                                 </div>
                                 <div className="explanation">
                                   <strong>Explanation:</strong>{" "}
-                                  <p>{que.explanation}</p>
+                                  <p
+                                    dangerouslySetInnerHTML={{
+                                      __html: que.explanation,
+                                    }}
+                                    className="question"
+                                  ></p>
                                 </div>
                               </div>
                             </div>
