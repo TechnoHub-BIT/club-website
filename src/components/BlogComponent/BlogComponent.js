@@ -1,139 +1,196 @@
 import React, { useState, useEffect } from "react";
 import "./BlogComponent.css";
 import {
-    FacebookShareButton,
-    FacebookIcon,
-    LinkedinShareButton,
-    LinkedinIcon,
-    TelegramShareButton,
-    TelegramIcon,
-    TwitterShareButton,
-    TwitterIcon,
-    WhatsappShareButton,
-    WhatsappIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
 } from "react-share";
 
 import { db } from "../../firebase";
 import queryString from "./query";
-import { Alert, Button, ButtonToggle } from 'reactstrap';
-import Moment from 'moment';
+import { Alert, Button, ButtonToggle } from "reactstrap";
+import Moment from "moment";
 import { Helmet } from "react-helmet";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
-import { Zoom, Fade } from 'react-reveal';
+import { Zoom, Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
-import LikeButton from './LikeButton'
+import LikeButton from "./LikeButton";
 
 function BlogComponent(props) {
+  const { currentUser } = useAuth();
+  const [currentProfile, setCurrentProfile] = useState("");
+  if (currentUser) {
+    db.collection("members")
+      .doc(currentUser.uid)
+      .onSnapshot(function (doc) {
+        const data = doc.data();
+        setCurrentProfile(data);
+      });
+  }
 
+  // fetching the blog
+  const [blogedit, setblogs] = useState("");
+  const ref = db
+    .collection("NewBlogcategory")
+    .doc(props.match.params.blogcategory)
+    .collection("CBlogs")
+    .doc(props.match.params.id);
+  useEffect(() => {
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Test = doc.data();
+        setblogs({
+          blogtitle: Test.blogtitle,
+          blogauthor: Test.blogauthor,
+          blogimageurl: Test.blogimageurl,
+          blogdate: Test.blogdate,
+          blogcontent: Test.blogcontent,
+        });
+      }
+    });
+  }, []);
 
-    const { currentUser } = useAuth();
-    const [currentProfile, setCurrentProfile] = useState('');
-    if (currentUser) {
-        db.collection("members")
-            .doc(currentUser.uid)
-            .onSnapshot(function (doc) {
-                const data = doc.data();
-                setCurrentProfile(data);
-            });
-    }
-//     const [comment, setComment] = useState([]);
-//   const Ucomment = (e) => {
-//     setComment(e.target.value);
-//   };
+  const fullname = currentProfile.fullname;
+  const photourl = currentUser.photoURL;
+  const date = new Date().toLocaleDateString();
 
-//   const fullname =   currentProfile.fullname
-// const photourl = currentUser.photoURL
-// const date = new Date().toLocaleDateString();
+  const [comment, setComment] = useState([]);
+  const Ucomment = (e) => {
+    setComment(e.target.value);
+  };
 
-// const onSubmit= () => {
-//     db.collection("Blogs")
-//     .doc(blogedit.Blogs.id)
-//     .collection("Comments")
-//     .doc(currentProfile.email)
-//     .set({
-//    fullname:fullname,
-//    photourl:photourl,
-//    comment:comment,
-//    date:date,
-//     });
-// }
-// const [blogcomment, setBlogCcmment] = useState([]);
-// useEffect(() => {
-//   db.collection("Blogs")
-//     .doc(blogedit.id)
-//     .collection("Comments")
-//     // .orderBy("score", "desc")
-//     .get()
-//     .then((response) => {
-//       const fetchComments = [];
-//       response.forEach((document) => {
-//         const fetchComment = {
-//           id: document.id,
-//           ...document.data(),
-//         };
-//         fetchComments.push(fetchComment);
-//       });
-//       setBlogCcmment(fetchComments);
-//     });
-// }, []);
-    const qur = queryString("blog");
+  // storing comments in firestore
+  const onSubmit = () => {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      // .doc(currentProfile.email)
+      .add({
+        fullname: fullname,
+        photourl: photourl,
+        comment: comment,
+        date: date,
+      });
+  };
 
-    const [blogedit, setblogs] = useState([]);
+  // fetching the comment from firestore
+  const [blogcomment, setBlogComment] = useState([]);
+  useEffect(() => {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .get()
+      .then((response) => {
+        const fetchComments = [];
+        response.forEach((document) => {
+          const fetchComment = {
+            id: document.id,
+            ...document.data(),
+          };
+          fetchComments.push(fetchComment);
+        });
+        setBlogComment(fetchComments);
+      });
+  }, []);
 
-    useEffect(() => {
-        const fetchdata = async () => {
-            db.collection("Blogs")
-                .onSnapshot(function (data) {
-                    
-                    setblogs(data.docs.map(doc => ({
-                        ...doc.data(), id: doc.id
-                  
-                    })));
-                  
-                })
-        }
-        fetchdata();
-    }, []);
+  const [reply, setReply] = useState([]);
+  const Rcomment = (e) => {
+    setReply(e.target.value);
+  };
 
-    function onDelete(id) {
-        db.collection('Blogs').doc(id).delete()
-            .catch((err) => {
-                console.error(err);
-            })
-    }
+  // storing the reply of comment in firestore
+  const onRSubmit = () => {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .doc("WNGal0tsxNuIsYahdatD")
+      .collection("Replys")
+      .add({
+        fullname: fullname,
+        photourl: photourl,
+        reply: reply,
+        date: date,
+      });
+  };
 
-    const setCharAt = (str, index, chr) => {
-        if (index > str.length - 1) return str;
-        return (str.substring(0, index) + chr + str.substring(index + 1));
-    }
+  // fetching the reply from firestore
+  const [commentReply, setCommentReply] = useState([]);
+  useEffect(() => {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .doc("WNGal0tsxNuIsYahdatD")
+      .collection("Replys")
+      .get()
+      .then((response) => {
+        const fetchReplys = [];
+        response.forEach((document) => {
+          const fetchReply = {
+            id: document.id,
+            ...document.data(),
+          };
+          fetchReplys.push(fetchReply);
+        });
+        setCommentReply(fetchReplys);
+      });
+  }, []);
 
-    const getIndices = (str) => {
-        let indices = [];
+  //   function onDelete(id) {
+  //     db.collection("Blogs")
+  //       .doc(id)
+  //       .delete()
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   }
 
-        for (let i = 0; i < str.length; i++) {
-            let char = str.charAt(i);
+  // const setCharAt = (str, index, chr) => {
+  //     if (index > str.length - 1) return str;
+  //     return (str.substring(0, index) + chr + str.substring(index + 1));
+  // }
 
-            if (char === " ")
-                indices.push(i);
-        }
-        return indices;
-    }
+  // const getIndices = (str) => {
+  //     let indices = [];
 
-    let checkTitle = qur[0].replace(/-/g, " ");
+  //     for (let i = 0; i < str.length; i++) {
+  //         let char = str.charAt(i);
 
-    for (let i = 0; i < getIndices(qur[0]).length; i++) {
-        checkTitle = setCharAt(checkTitle, getIndices(qur[0])[i], "-");
-    }
+  //         if (char === " ")
+  //             indices.push(i);
+  //     }
+  //     return indices;
+  // }
 
-    const checkAuthor = qur[1].replace(/-/g, " ");
+  // let checkTitle = qur[0].replace(/-/g, " ");
 
-    let counter = 0;
+  // for (let i = 0; i < getIndices(qur[0]).length; i++) {
+  //     checkTitle = setCharAt(checkTitle, getIndices(qur[0])[i], "-");
+  // }
 
-    return (
-        <React.Fragment>
-            <div>
-            {blogedit &&
+  // const checkAuthor = qur[1].replace(/-/g, " ");
+
+  let counter = 0;
+
+  return (
+    <React.Fragment>
+      <div>
+        {/* {
                 blogedit.map(Blogs => {
                     
                     if (Blogs.blogtitle === checkTitle && Blogs.blogauthor === checkAuthor) {
@@ -146,27 +203,32 @@ function BlogComponent(props) {
                         const newAuthor = blogAuthor.replace(/ /g, "-");
 
                         const shareUrl = "http://technohubbit.in/blogpost?title=" + newTitle + "&author=" + newAuthor;
-                        const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n";
+                        const shareText = "\n\nHere's TechnoHub's blog post on \"" + Blogs.blogtitle + "\" by " + Blogs.blogauthor + ".\n\n"; */}
 
-                        return (
-                            <div>
-                                <HeaderTitle heading={Blogs.blogtitle} blogImage={Blogs.blogimageurl} author={Blogs.blogauthor} date={Moment(Blogs.blogdate).format('ll')} />
-                                <div className="blogContainer">
-                                    <div className="blogContents">
-                                        <div>
-                                            <Fade>
-                                                <div
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: Blogs.blogcontent
-                                                    }}
-                                                    className="blogDetails"
-                                                >
-                                                </div>
-<div>
-
-{/* <input type = "text" onChange={Ucomment} value={comment} />
-    <button type = "submit" onClick={onSubmit}>Add comment</button>                                            */}
-                                                {/* {currentProfile.id === 1 ? (
+        {/* return ( */}
+        <div>
+          <HeaderTitle
+            heading={blogedit.blogtitle}
+            blogImage={blogedit.blogimageurl}
+            author={blogedit.blogauthor}
+            date={Moment(blogedit.blogdate).format("ll")}
+          />
+          <div className="blogContainer">
+            <div className="blogContents">
+              <div>
+                <Fade>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: blogedit.blogcontent,
+                    }}
+                    className="blogDetails"
+                  ></div>
+                  <div>
+                    <input type="text" onChange={Ucomment} value={comment} />
+                    <button type="submit" onClick={onSubmit}>
+                      Add comment
+                    </button>
+                    {/* {currentProfile.id === 1 ? (
                                                 //   Edit and Delete Blog Buttons 
                                                  <div>
                                                  <Link to={"/editblog?id=" + Blogs.id}>Edit</Link>
@@ -176,13 +238,75 @@ function BlogComponent(props) {
                                                 <LikeButton like={Blogs} /> 
                                                 </div>
                                                 ) : null} */}
+                  </div>
+                  <div>
+                    {blogcomment.map((user) => {
+                      return (
+                        <div>
+                          <div>{user.fullname}</div>
+                          <div>{user.date}</div>
+                          <div>
+                            {user.photoURL ? (
+                              <img
+                                src={user.photoURL}
+                                className="profileImage"
+                                alt="Profile"
+                              />
+                            ) : (
+                              <img
+                                src="./assets/images/profile-user.svg"
+                                className="profileImage"
+                                alt="Profile"
+                              />
+                            )}
+                          </div>
+                          <div>{user.comment}</div>
+                          <input
+                            type="text"
+                            onChange={Rcomment}
+                            value={reply}
+                            id={user.id}
+                            placeholder={"reply to " + user.fullname}
+                          />
+                          <button
+                            type="submit"
+                            id={user.id}
+                            onClick={onRSubmit}
+                          >
+                            {user.id}{" "}
+                          </button>
+                          <div>
+                            {commentReply.map((item) => {
+                              return (
+                                <div>
+                                  <div>{item.fullname}</div>
+                                  <div>{item.date}</div>
+                                  <div>
+                                    {item.photoURL ? (
+                                      <img
+                                        src={item.photoURL}
+                                        className="profileImage"
+                                        alt="Profile"
+                                      />
+                                    ) : (
+                                      <img
+                                        src="./assets/images/profile-user.svg"
+                                        className="profileImage"
+                                        alt="Profile"
+                                      />
+                                    )}
+                                  </div>
+                                  <div>{item.reply}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
 
-
-
-{/* {Blogs.id} */}
-</div>
-
-                                                <div className="shareButtons">
+                  {/* <div className="shareButtons">
                                                     <h6>Share on:</h6>
                                                     <FacebookShareButton url={shareUrl} quote={shareText}>
                                                         <FacebookIcon size="32" round={true} />
@@ -199,17 +323,17 @@ function BlogComponent(props) {
                                                     <LinkedinShareButton url={shareUrl} title={shareText}>
                                                         <LinkedinIcon size="32" round={true} />
                                                     </LinkedinShareButton>
-                                                </div>
-                                            </Fade>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    }
+                                                </div> */}
+                </Fade>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* )
+                    // }
                 })
-            }
-            {
+            } */}
+        {/* {
                 counter === 0 ?
                     <div className="errorMessage">
                         <Helmet>
@@ -225,31 +349,13 @@ function BlogComponent(props) {
                     </div>
                     :
                     <Helmet>
-                        <title>Blog post by {checkAuthor} | TechnoHub BITD</title>
-                        <meta name="title" content={checkTitle} />
+                        <title>Blog post by {blogAuthor} | TechnoHub BITD</title>
+                        <meta name="title" content={blogTitle} />
                     </Helmet>
-            }
-            </div>
-            {/* { blogcomment.map((user)=>{
-    return(
-        <div>
-            <div>
-                {user.fullname}
-            </div>
-            <div>
-                {user.date}
-            </div>
-            <div>
-                {user.photoURL}
-            </div>
-            <div>
-                {user.comment}
-            </div>
-        </div>
-    )
-})} */}
-        </React.Fragment>
-    );
+            } */}
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default BlogComponent;

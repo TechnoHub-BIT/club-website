@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./BlogListComponent.css";
 import { db } from "../../../firebase";
 import queryString from "../query";
@@ -8,23 +8,25 @@ import { Helmet } from "react-helmet";
 import { Zoom } from 'react-reveal';
 
 
-function BlogListComponent() {
+function BlogListComponent(props) {
 
     const qur = queryString("blogList");
 
-    const [blogedit, setblogs] = React.useState([]);
+    const [blogedit, setblogs] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchdata = async () => {
-            db.collection("Blogs").orderBy("blogdate", "asc")
-                .onSnapshot(function (data) {
+            db.collection("NewBlogcategory").doc(props.match.params.id).collection("CBlogs").orderBy("blogdate", "asc")
+                .onSnapshot(function (data) { 
                     setblogs(data.docs.map(doc => ({
                         ...doc.data(), id: doc.id
                     })));
+                  
                 })
         }
         fetchdata();
     }, []);
+ 
 
     let counter = 0;
     return (
@@ -32,21 +34,13 @@ function BlogListComponent() {
             <div className="blogContainer">
                 <div className="blogContents">
                     <div className="alertMessage">
-                        <h4>{qur} Blogs</h4>
+                        <h4> Blogs</h4>
                     </div>
-                    {blogedit.map(Blogs => {
-                        if (Blogs.blogcategory === qur) {
-                            counter++; 
-
-                            const blogTitle = Blogs.blogtitle.replace(/-/g, "%20");
-                            const newTitle = blogTitle.replace(/ /g, "-");
-
-                            const blogAuthor = Blogs.blogauthor.replace(/-/g, "%20");
-                            const newAuthor = blogAuthor.replace(/ /g, "-");
-
+                    { blogedit.map(Blogs => {
+                            counter++;
                             return (
                                 <Zoom>
-                                    <a href={"/blogpost?title=" + newTitle + "&author=" + newAuthor} className="singleBlog">
+                                    <a href={"/blog/"+ Blogs.blogcategory + "/"+ Blogs.id}>
                                         <img src={"https://drive.google.com/uc?export=view&id=" + Blogs.blogimageurl} className="blogImage" />
                                         <div className="blogHeader">
                                             <div className="headerContent">
@@ -59,7 +53,6 @@ function BlogListComponent() {
                                     </a>
                                 </Zoom>
                             )
-                        }
                     })}
                     {
                         counter === 0 ?
@@ -78,7 +71,7 @@ function BlogListComponent() {
                             :
                             <Helmet>
                                 {console.log(counter)}
-                                <title>{qur} Blogs | TechnoHub BITD</title>
+                                <title> Blogs | TechnoHub BITD</title>
                             </Helmet>
                     }
                 </div>

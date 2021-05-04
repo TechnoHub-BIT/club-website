@@ -10,7 +10,7 @@ class AddCategoryComponent extends Component {
 
     componentDidMount() {
      
-        db.collection('Blogcategory')
+        db.collection('NewBlogcategory')
             .get()
             .then(snapshot => {
 
