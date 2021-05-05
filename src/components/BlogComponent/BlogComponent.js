@@ -23,6 +23,7 @@ import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Zoom, Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
 import LikeButton from "./LikeButton";
+import { doc } from "prettier";
 
 function BlogComponent(props) {
   const { currentUser } = useAuth();
@@ -36,13 +37,18 @@ function BlogComponent(props) {
       });
   }
 
+  const tu = props.match.params.blogcategory;
+  const bu = props.match.params.id;
+
+  // console.log(tu);
+  // console.log(bu);
   // fetching the blog
   const [blogedit, setblogs] = useState("");
   const ref = db
     .collection("NewBlogcategory")
-    .doc(props.match.params.blogcategory)
+    .doc(tu)
     .collection("CBlogs")
-    .doc(props.match.params.id);
+    .doc(bu);
   useEffect(() => {
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -105,52 +111,6 @@ function BlogComponent(props) {
       });
   }, []);
 
-  const [reply, setReply] = useState([]);
-  const Rcomment = (e) => {
-    setReply(e.target.value);
-  };
-
-  // storing the reply of comment in firestore
-  const onRSubmit = () => {
-    db.collection("NewBlogcategory")
-      .doc(props.match.params.blogcategory)
-      .collection("CBlogs")
-      .doc(props.match.params.id)
-      .collection("Comments")
-      .doc("WNGal0tsxNuIsYahdatD")
-      .collection("Replys")
-      .add({
-        fullname: fullname,
-        photourl: photourl,
-        reply: reply,
-        date: date,
-      });
-  };
-
-  // fetching the reply from firestore
-  const [commentReply, setCommentReply] = useState([]);
-  useEffect(() => {
-    db.collection("NewBlogcategory")
-      .doc(props.match.params.blogcategory)
-      .collection("CBlogs")
-      .doc(props.match.params.id)
-      .collection("Comments")
-      .doc("WNGal0tsxNuIsYahdatD")
-      .collection("Replys")
-      .get()
-      .then((response) => {
-        const fetchReplys = [];
-        response.forEach((document) => {
-          const fetchReply = {
-            id: document.id,
-            ...document.data(),
-          };
-          fetchReplys.push(fetchReply);
-        });
-        setCommentReply(fetchReplys);
-      });
-  }, []);
-
   //   function onDelete(id) {
   //     db.collection("Blogs")
   //       .doc(id)
@@ -194,8 +154,8 @@ function BlogComponent(props) {
                 blogedit.map(Blogs => {
                     
                     if (Blogs.blogtitle === checkTitle && Blogs.blogauthor === checkAuthor) {
+                       
                         counter++;
-
                         const blogTitle = Blogs.blogtitle.replace(/-/g, "%20");
                         const newTitle = blogTitle.replace(/ /g, "-");
 
@@ -241,6 +201,7 @@ function BlogComponent(props) {
                   </div>
                   <div>
                     {blogcomment.map((user) => {
+                      const users = user.id;
                       return (
                         <div>
                           <div>{user.fullname}</div>
@@ -261,46 +222,18 @@ function BlogComponent(props) {
                             )}
                           </div>
                           <div>{user.comment}</div>
-                          <input
-                            type="text"
-                            onChange={Rcomment}
-                            value={reply}
-                            id={user.id}
-                            placeholder={"reply to " + user.fullname}
-                          />
-                          <button
-                            type="submit"
-                            id={user.id}
-                            onClick={onRSubmit}
+                          <a
+                            href={
+                              "/blog/" +
+                              props.match.params.blogcategory +
+                              "/" +
+                              props.match.params.id +
+                              "/" +
+                              users
+                            }
                           >
-                            {user.id}{" "}
-                          </button>
-                          <div>
-                            {commentReply.map((item) => {
-                              return (
-                                <div>
-                                  <div>{item.fullname}</div>
-                                  <div>{item.date}</div>
-                                  <div>
-                                    {item.photoURL ? (
-                                      <img
-                                        src={item.photoURL}
-                                        className="profileImage"
-                                        alt="Profile"
-                                      />
-                                    ) : (
-                                      <img
-                                        src="./assets/images/profile-user.svg"
-                                        className="profileImage"
-                                        alt="Profile"
-                                      />
-                                    )}
-                                  </div>
-                                  <div>{item.reply}</div>
-                                </div>
-                              );
-                            })}
-                          </div>
+                            <button>view reply</button>
+                          </a>
                         </div>
                       );
                     })}
@@ -333,26 +266,27 @@ function BlogComponent(props) {
                     // }
                 })
             } */}
-        {/* {
-                counter === 0 ?
-                    <div className="errorMessage">
-                        <Helmet>
-                            <title>Blogs | TechnoHub BITD</title>
-                        </Helmet>
-                        <Zoom>
-                            <Alert color="danger" style={{ textAlign: "center" }}>
-                                Oops! Looks like this blog does not exist.
-                                <br />
-                                <a href="/blog"><ButtonToggle color="danger">Go Back</ButtonToggle></a>
-                            </Alert>
-                        </Zoom>
-                    </div>
-                    :
-                    <Helmet>
-                        <title>Blog post by {blogAuthor} | TechnoHub BITD</title>
-                        <meta name="title" content={blogTitle} />
-                    </Helmet>
-            } */}
+        {counter === 0 ? (
+          <div className="errorMessage">
+            <Helmet>
+              <title>Blogs | TechnoHub BITD</title>
+            </Helmet>
+            <Zoom>
+              <Alert color="danger" style={{ textAlign: "center" }}>
+                Oops! Looks like this blog does not exist.
+                <br />
+                <a href="/blog">
+                  <ButtonToggle color="danger">Go Back</ButtonToggle>
+                </a>
+              </Alert>
+            </Zoom>
+          </div>
+        ) : (
+          <Helmet>
+            <title>Blog post by {blogedit.blogauthor} | TechnoHub BITD</title>
+            <meta name="title" content={blogedit.blogtitle} />
+          </Helmet>
+        )}
       </div>
     </React.Fragment>
   );

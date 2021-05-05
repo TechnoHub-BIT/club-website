@@ -34,6 +34,7 @@ import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
 import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
+import Reply from "./BlogComponent/Reply";
 
 //Admin Pages
 import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponent";
@@ -52,6 +53,7 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
+
 
 //Dark mode light mode
 // import styled,{ThemeProvider} from 'styled-components'
@@ -99,6 +101,7 @@ class Main extends Component {
             <Route exact path="/blog/:id" component={BlogList} />
             <PrivateRoute exact path="/addBlog" component={AddBlog} />
             <Route exact path="/blog/:blogcategory/:id" component={Blog} />
+            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} />
             {/* <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
               <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
