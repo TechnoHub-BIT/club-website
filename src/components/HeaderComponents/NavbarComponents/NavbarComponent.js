@@ -68,6 +68,9 @@ class Header extends Component {
               <Link to="/">
                 <img src={logoWhite} alt="TechnoHub White Logo" />
               </Link>
+              <Link to="/aboutus">
+                <li>ABOUT US</li>
+              </Link>
               <Link to="/blog">
                 <li>BLOG</li>
               </Link>
@@ -82,9 +85,6 @@ class Header extends Component {
               </Link>
               <Link to="/events">
                 <li>EVENTS</li>
-              </Link>
-              <Link to="/ourmembers">
-                <li>CLUB MEMBERS</li>
               </Link>
               <Link to="/tests">APTITUDE</Link>
               <HeaderButtons />

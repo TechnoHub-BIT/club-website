@@ -93,7 +93,10 @@ const AnswerKey = (props) => {
     let marks = "+0";
 
     if (yourAnswers[index] === "Correct") marks = "+" + pno;
-    else if (yourAnswers[index] === "Incorrect") marks = "-" + nno;
+    else if (yourAnswers[index] === "Incorrect") {
+      if (parseInt(nno, 10) === 0) marks = "+" + nno;
+      else marks = "-" + nno;
+    }
 
     return marks;
   };
