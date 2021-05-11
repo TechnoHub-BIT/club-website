@@ -15,7 +15,7 @@ class categoriesComponent extends React.Component {
   };
 
   componentDidMount() {
-    db.collection("Blogcategory")
+    db.collection("NewBlogcategory")
       .get()
       .then((snapshot) => {
         const Blogcategorytype = [];
@@ -56,7 +56,7 @@ class categoriesComponent extends React.Component {
                     <Zoom>
                       <a
                         href={
-                          "/bloglist?cat=" + Blogcategorytype.blogcategorytype
+                          "/blog/" + Blogcategorytype.blogcategorytype
                         }
                         className="singleCategory"
                       >

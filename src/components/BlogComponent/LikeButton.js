@@ -6,7 +6,7 @@ class LikeButton extends Component {
 
     state = {
         clapCount:''
-    }
+    } 
 
     incrementLike = () => {
         const blogRef = db.collection('Blogs').doc(this.props.like.id);

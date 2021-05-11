@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import {
   Breadcrumb,
@@ -20,6 +20,7 @@ import { useAuth } from "../../contexts/AuthContext";
 export default function AddBlogComponent() {
   const { currentUser } = useAuth();
   const [currentProfile, setCurrentProfile] = useState("");
+
 
   const [blogtitle, setTitle] = useState("");
   const handleOnChange = (e) => {
@@ -49,12 +50,12 @@ export default function AddBlogComponent() {
     if (
       blogtitle !== "" &&
       blogauthor !== "" &&
-      blogcategory !== "" &&
+      // blogcategory !== "" &&
       blogimageurl !== ""
     ) {
       e.preventDefault();
-      db.collection("Blogs")
-        .add({
+      db.collection("NewBlogcategory").doc(blogcategory).collection("CBlogs").doc(blogtitle)
+        .set({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
           blogauthor: blogauthor,
@@ -85,8 +86,8 @@ export default function AddBlogComponent() {
   const blogcategorysave = (e) => {
     if (blogcategorytype !== "" && blogcategorynameurl !== "") {
       e.preventDefault();
-      db.collection("Blogcategory")
-        .add({
+      db.collection("NewBlogcategory").doc(blogcategorytype)
+        .set({
           blogcategorytype: blogcategorytype,
           blogcategorynameurl: blogcategorynameurl,
         })
@@ -108,6 +109,22 @@ export default function AddBlogComponent() {
         setCurrentProfile(data);
       });
   }
+
+const [members , setMembers] = useState([])
+  useEffect(() => {
+    const fetchdata = async () => {
+      db.collection("members")
+        .onSnapshot(function (data) {
+          setMembers(
+            data.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }))
+          );
+        });
+    };
+    fetchdata();
+  }, []);
 
   const onChange = (value) => {
     content(value);
@@ -151,17 +168,24 @@ export default function AddBlogComponent() {
                 <AddCategory change={category} value={blogcategory} />
               </div>
               <div className="input-group">
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  onChange={author}
-                  value={blogauthor}
-                  placeholder="Blog Title"
-                  required
-                />
-                <label for="title">Blog Author</label>
-                {/* <AddAuthorComponent change={author} value={blogauthor} /> */}
+              <select
+                        name="privacy"
+                        id="privacy"
+                        onChange={author}
+                        value={blogauthor}
+                        required
+                      >
+                        <option value="">--Blog Author--</option>
+                {
+                    members.map(mem => {
+                        return( 
+                             <option value={mem.fullname}>{ mem.fullname }</option>
+                            
+                        );
+                    })
+                }
+                      
+                      </select>
               </div>
               <div className="input-group">
                 <input
