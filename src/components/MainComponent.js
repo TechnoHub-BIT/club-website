@@ -54,7 +54,6 @@ import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
 
-
 //Dark mode light mode
 // import styled,{ThemeProvider} from 'styled-components'
 // import {lightTheme , darkTheme , GlobalStyle}  from "./Theme";
@@ -97,11 +96,13 @@ class Main extends Component {
             <PrivateRoute exact path="/admin" component={NewMembers} />
 
             {/* Blog Pages */}
-            <Route exact path="/blog" component={BlogCategories} />
-            <Route exact path="/blog/:id" component={BlogList} />
             <PrivateRoute exact path="/addBlog" component={AddBlog} />
-            <Route exact path="/blog/:blogcategory/:id" component={Blog} />
-            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} />
+            <Route exact path="/blog" component={BlogCategories} />
+            {/* <Route exact path="/blog/:id" component={BlogList} /> */}
+            <Route exact path="/bloglist" component={BlogList} />
+            <Route exact path="/blogpost" component={Blog} />
+            {/* <Route exact path="/blog/:blogcategory/:id" component={Blog} />
+            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} /> */}
             {/* <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
               <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
