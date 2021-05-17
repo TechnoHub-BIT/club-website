@@ -165,10 +165,10 @@ const AnswerKey = (props) => {
                                     <strong>Option (D):&nbsp;&nbsp;</strong>
                                     {que.op4}
                                   </div>
-                                  {item.op5 !== "" ? (
+                                  {que.op5 !== "" ? (
                                     <div>
                                       <strong>Option (D):&nbsp;&nbsp;</strong>
-                                      {item.op4}
+                                      {que.op5}
                                     </div>
                                   ) : null}
                                 </div>
@@ -184,7 +184,7 @@ const AnswerKey = (props) => {
                                     ? "Option (" + yourOptions[index] + ")"
                                     : "Unanswered"}
                                 </div>
-                                {item.explanation !== "" ? (
+                                {que.explanation !== "" ? (
                                   <div className="explanation">
                                     <strong>Explanation:</strong>{" "}
                                     <p
