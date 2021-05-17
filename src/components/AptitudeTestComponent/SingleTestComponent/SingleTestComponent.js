@@ -384,8 +384,7 @@ const SingleTest = (props) => {
             }}
           />
         );
-
-        else if (tests.teststatus === "Over")
+      else if (tests.teststatus === "Over")
         showModal(
           <AlertModal
             message="This test is Over!"
@@ -521,7 +520,7 @@ const SingleTest = (props) => {
                         Start Test&nbsp;&nbsp;
                         <i className="fas fa-long-arrow-alt-right"></i>
                       </button>
-                    ) :  null }
+                    ) : null}
                   </div>
                 </section>
                 {tests.questions &&
