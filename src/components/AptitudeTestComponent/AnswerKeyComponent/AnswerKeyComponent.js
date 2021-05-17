@@ -165,6 +165,12 @@ const AnswerKey = (props) => {
                                     <strong>Option (D):&nbsp;&nbsp;</strong>
                                     {que.op4}
                                   </div>
+                                  {item.op5 !== "" ? (
+                                    <div>
+                                      <strong>Option (D):&nbsp;&nbsp;</strong>
+                                      {item.op4}
+                                    </div>
+                                  ) : null}
                                 </div>
                               </div>
                               <div className="right">
@@ -178,15 +184,17 @@ const AnswerKey = (props) => {
                                     ? "Option (" + yourOptions[index] + ")"
                                     : "Unanswered"}
                                 </div>
-                                <div className="explanation">
-                                  <strong>Explanation:</strong>{" "}
-                                  <p
-                                    dangerouslySetInnerHTML={{
-                                      __html: que.explanation,
-                                    }}
-                                    className="question"
-                                  ></p>
-                                </div>
+                                {item.explanation !== "" ? (
+                                  <div className="explanation">
+                                    <strong>Explanation:</strong>{" "}
+                                    <p
+                                      dangerouslySetInnerHTML={{
+                                        __html: que.explanation,
+                                      }}
+                                      className="question"
+                                    ></p>
+                                  </div>
+                                ) : null}
                               </div>
                             </div>
                           );

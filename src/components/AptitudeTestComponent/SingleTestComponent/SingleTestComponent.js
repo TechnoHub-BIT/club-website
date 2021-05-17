@@ -384,8 +384,7 @@ const SingleTest = (props) => {
             }}
           />
         );
-
-        else if (tests.teststatus === "Over")
+      else if (tests.teststatus === "Over")
         showModal(
           <AlertModal
             message="This test is Over!"
@@ -521,7 +520,7 @@ const SingleTest = (props) => {
                         Start Test&nbsp;&nbsp;
                         <i className="fas fa-long-arrow-alt-right"></i>
                       </button>
-                    ) :  null }
+                    ) : null}
                   </div>
                 </section>
                 {tests.questions &&
@@ -607,6 +606,21 @@ const SingleTest = (props) => {
                                 {item.op4}
                               </label>
                             </div>
+                            {item.op5 !== "" ? (
+                              <div>
+                                <input
+                                  type="radio"
+                                  onChange={(e) => handleAnswer(e, index, "E")}
+                                  name={"option" + (index + 1)}
+                                  id={"optione" + (index + 1)}
+                                  value={item.op5}
+                                />
+                                &nbsp;&nbsp; (E){" "}
+                                <label htmlFor={"optione" + (index + 1)}>
+                                  {item.op5}
+                                </label>
+                              </div>
+                            ) : null}
                           </div>
                         ) : (
                           <div className="options">
@@ -662,6 +676,21 @@ const SingleTest = (props) => {
                                 {item.op4}
                               </label>
                             </div>
+                            {item.op5 !== "" ? (
+                              <div>
+                                <input
+                                  type="checkbox"
+                                  onChange={(e) => handleAnswer(e, index, "E")}
+                                  name={"option" + (index + 1)}
+                                  id={"optione" + (index + 1)}
+                                  value={item.op5}
+                                />
+                                &nbsp;&nbsp; (E){" "}
+                                <label htmlFor={"optione" + (index + 1)}>
+                                  {item.op5}
+                                </label>
+                              </div>
+                            ) : null}
                           </div>
                         )}
 
@@ -770,6 +799,12 @@ const SingleTest = (props) => {
                               <strong>Option (D):&nbsp;&nbsp;</strong>
                               {item.op4}
                             </div>
+                            {item.op5 !== "" ? (
+                              <div>
+                                <strong>Option (D):&nbsp;&nbsp;</strong>
+                                {item.op4}
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                         <div className="right">
@@ -777,15 +812,17 @@ const SingleTest = (props) => {
                             Correct Option:&nbsp;&nbsp;Option (
                             {item.correctAnswer})
                           </div>
-                          <div className="explanation">
-                            <strong>Explanation:</strong>{" "}
-                            <p
-                              dangerouslySetInnerHTML={{
-                                __html: item.explanation,
-                              }}
-                              className="question"
-                            ></p>
-                          </div>
+                          {item.explanation !== "" ? (
+                            <div className="explanation">
+                              <strong>Explanation:</strong>{" "}
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html: item.explanation,
+                                }}
+                                className="question"
+                              ></p>
+                            </div>
+                          ) : null}
                         </div>
                       </div>
                     </section>

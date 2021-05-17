@@ -41,6 +41,7 @@ class EditTest extends Component {
         op2: "",
         op3: "",
         op4: "",
+        op5: "",
         correctAnswer: "",
         questionType: "",
         explanation: "",
@@ -140,6 +141,7 @@ class EditTest extends Component {
               op2: "",
               op3: "",
               op4: "",
+              op5: "",
               correctAnswer: "",
               questionType: "",
               explanation: "",
@@ -170,6 +172,7 @@ class EditTest extends Component {
           op2: "",
           op3: "",
           op4: "",
+          op5: "",
           correctAnswer: "",
           questionType: "",
           explanation: "",
@@ -481,6 +484,17 @@ class EditTest extends Component {
                               placeholder="Option D"
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
+                          </div>
+                          <div className="input">
+                            <input
+                              type="text"
+                              name="op5"
+                              id={index}
+                              value={questions.op5}
+                              onChange={(e) => this.handleChange(e, index)}
+                              placeholder="Option E"
+                            />
+                            <label htmlFor={"optione" + index}>Option E</label>
                           </div>
                         </div>
                         {this.state.questions.length - 1 === index && (
