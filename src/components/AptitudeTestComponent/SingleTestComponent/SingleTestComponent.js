@@ -384,6 +384,22 @@ const SingleTest = (props) => {
             }}
           />
         );
+
+        else if (tests.teststatus === "Over")
+        showModal(
+          <AlertModal
+            message="This test is Over!"
+            icon="exclamation"
+            leftBtn="View other Tests"
+            // rightBtn="View other Tests"
+            action={() => {
+              history.push("/tests");
+            }}
+            // close={() => {
+            //   history.push("/tests");
+            // }}
+          />
+        );
       //Start the test
       // else if (tests.testprivacy === "Private")
       //   showModal(
@@ -494,16 +510,18 @@ const SingleTest = (props) => {
                     </ul>
                   </div>
                   <div className="navigation">
-                    <button
-                      type="button"
-                      className="startBtn"
-                      onClick={() => {
-                        startTest(tests.duration);
-                      }}
-                    >
-                      Start Test&nbsp;&nbsp;
-                      <i className="fas fa-long-arrow-alt-right"></i>
-                    </button>
+                    {tests.teststatus === "Active" || "Inactive" ? (
+                      <button
+                        type="button"
+                        className="startBtn"
+                        onClick={() => {
+                          startTest(tests.duration);
+                        }}
+                      >
+                        Start Test&nbsp;&nbsp;
+                        <i className="fas fa-long-arrow-alt-right"></i>
+                      </button>
+                    ) :  null }
                   </div>
                 </section>
                 {tests.questions &&
@@ -719,6 +737,61 @@ const SingleTest = (props) => {
                 <div className="questionBtns">{questionBtns}</div>
               </div>
             ) : null}
+            {tests.teststatus === "Over"
+              ? tests.questions &&
+                tests.questions.map((item, index) => {
+                  return (
+                    <section ques-no={index + 1} key={index}>
+                      <div className="singleQuestion">
+                        <div className="left">
+                          <h3 className="smallTitle">
+                            Question No. {index + 1}
+                          </h3>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: item.question,
+                            }}
+                            className="question"
+                          ></div>
+                          <div className="options">
+                            <div>
+                              <strong>Option (A):&nbsp;&nbsp;</strong>
+                              {item.op1}
+                            </div>
+                            <div>
+                              <strong>Option (B):&nbsp;&nbsp;</strong>
+                              {item.op2}
+                            </div>
+                            <div>
+                              <strong>Option (C):&nbsp;&nbsp;</strong>
+                              {item.op3}
+                            </div>
+                            <div>
+                              <strong>Option (D):&nbsp;&nbsp;</strong>
+                              {item.op4}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="right">
+                          <div>
+                            Correct Option:&nbsp;&nbsp;Option (
+                            {item.correctAnswer})
+                          </div>
+                          <div className="explanation">
+                            <strong>Explanation:</strong>{" "}
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: item.explanation,
+                              }}
+                              className="question"
+                            ></p>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  );
+                })
+              : null}
           </div>
         </Fade>
       </div>

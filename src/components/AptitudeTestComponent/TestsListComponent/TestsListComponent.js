@@ -143,10 +143,13 @@ const TestsList = () => {
                           <span style={{ color: "#00c851" }}>
                             {test.teststatus} Now
                           </span>
-                        ) : (
-                          <span style={{ color: "#ff4444" }}>
+                        ) : (test.teststatus === "Over" ?
+                          <span style={{ color: "#ffa203" }}>
                             {test.teststatus} Now
-                          </span>
+                          </span> :
+                          <span style={{ color: "#ff4444" }}>
+                          {test.teststatus} Now
+                        </span>
                         )}
                       </div>
                     </div>

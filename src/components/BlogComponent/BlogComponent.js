@@ -24,6 +24,7 @@ import { Zoom, Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
 import LikeButton from "./LikeButton";
 import { doc } from "prettier";
+import EditComments from "./EditComments/EditComments";
 
 function BlogComponent(props) {
   const { currentUser } = useAuth();
@@ -111,14 +112,129 @@ function BlogComponent(props) {
       });
   }, []);
 
-  //   function onDelete(id) {
-  //     db.collection("Blogs")
-  //       .doc(id)
-  //       .delete()
-  //       .catch((err) => {
-  //         console.error(err);
+  function onDeleteComment(id) {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .doc(id)
+      .delete()
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  const [reply, setReply] = useState([]);
+  const Rcomment = (e) => {
+    setReply(e.target.value);
+  };
+
+  const [show, setShow] = useState(false);
+  // storing the reply of comment in firestore
+  const onRSubmit = (id) => {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .doc(id)
+      .collection("Replys")
+      .add({
+        fullname: fullname,
+        photourl: photourl,
+        reply: reply,
+        date: date,
+      });
+  };
+
+  function onVR(id) {
+    db.collection("NewBlogcategory")
+      .doc(props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(props.match.params.id)
+      .collection("Comments")
+      .doc(id)
+      .collection("Replys")
+      .get()
+      .then((response) => {
+        const fetchReplys = [];
+        response.forEach((document) => {
+          const fetchReply = {
+            id: document.id,
+            ...document.data(),
+          };
+          fetchReplys.push(fetchReply);
+        });
+        setCommentReply(fetchReplys);
+      });
+  }
+
+  function onEdit(id) {
+    const ref = db
+      .collection("NewBlogcategory")
+      .doc(this.props.match.params.blogcategory)
+      .collection("CBlogs")
+      .doc(this.props.match.params.id)
+      .collection("Comments")
+      .doc(id);
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Blogcategory = doc.data();
+        this.setState({
+          key: doc.id,
+          comment: Blogcategory.comment,
+          date: Blogcategory.date,
+          // fullname: Blogcategory.fullname,
+          // photourl: Blogcategory.photourl,
+        });
+      } else {
+        console.log("No such document!");
+      }
+    });
+  }
+  // fetching the reply from firestore
+  const [commentReply, setCommentReply] = useState([]);
+  // useEffect((id) => {
+  //   db.collection("NewBlogcategory")
+  //     .doc(props.match.params.blogcategory)
+  //     .collection("CBlogs")
+  //     .doc(props.match.params.id)
+  //     .collection("Comments")
+  //     .doc(id)
+  //     .collection("Replys")
+  //     .get()
+  //     .then((response) => {
+  //       const fetchReplys = [];
+  //       response.forEach((document) => {
+  //         const fetchReply = {
+  //           id: document.id,
+  //           ...document.data(),
+  //         };
+  //         fetchReplys.push(fetchReply);
   //       });
-  //   }
+  //       setCommentReply(fetchReplys);
+  //     });
+  // }, []);
+
+  // getting length of replies
+  // const [quesLength, setLength] = useState();
+  // useEffect((id) => {
+  //   const fetchdata = async () => {
+  //     db.collection("NewBlogcategory")
+  //       .doc(props.match.params.blogcategory)
+  //       .collection("CBlogs")
+  //       .doc(props.match.params.id)
+  //       .collection("Comments")
+  //       .doc(id)
+  //       .collection("Replys")
+  //       .get()
+  //       .then(function (querySnapshot) {
+  //         setLength(querySnapshot.size);
+  //       });
+  //   };
+  //   fetchdata();
+  // }, []);
 
   // const setCharAt = (str, index, chr) => {
   //     if (index > str.length - 1) return str;
@@ -202,40 +318,185 @@ function BlogComponent(props) {
                   <div>
                     {blogcomment.map((user) => {
                       const users = user.id;
-                      return (
-                        <div>
-                          <div>{user.fullname}</div>
-                          <div>{user.date}</div>
+                      if (user.fullname === currentProfile.fullname) {
+                        return (
                           <div>
-                            {user.photoURL ? (
-                              <img
-                                src={user.photoURL}
-                                className="profileImage"
-                                alt="Profile"
-                              />
-                            ) : (
-                              <img
-                                src="./assets/images/profile-user.svg"
-                                className="profileImage"
-                                alt="Profile"
-                              />
-                            )}
+                            <div>{user.fullname}</div>
+                            <div>{user.date}</div>
+                            <div>
+                              {user.photoURL ? (
+                                <img
+                                  src={user.photoURL}
+                                  className="profileImage"
+                                  alt="Profile"
+                                />
+                              ) : (
+                                <img
+                                  src="./assets/images/profile-user.svg"
+                                  className="profileImage"
+                                  alt="Profile"
+                                />
+                              )}
+                            </div>
+                            <div>{user.comment}</div>
+                            <div>
+                              {/* <EditComments onClick={() => onEdit(user.id)} >Edit </EditComments> */}
+                              <button onClick={() => onEdit(user.id)}>
+                                Edit
+                              </button>
+                              {/* <div className="input-group">
+            <input type="text" name="author" id="author" onChange={Ucomment} name="comment" value={comment} placeholder="comment" required />
+            <label for="author">Edit Comment</label>
+            <button type="submit" onClick={onSubmit}>update comment</button>
+        </div> */}
+                            </div>
+                            <div>
+                              <button onClick={() => onDeleteComment(user.id)}>
+                                Delete
+                              </button>
+                            </div>
+                            {/* <a
+                              href={
+                                "/blog/" +
+                                props.match.params.blogcategory +
+                                "/" +
+                                props.match.params.id +
+                                "/" +
+                                users
+                              }
+                            > */}
+                            <div>
+                              {/* <button onClick={() => setShow(!true)}> */}
+                              <button onClick={() => onVR(user.id)}>
+                                view reply
+                              </button>
+                              {/* </a> */}
+                              {/* { show ?  */}
+                              <div>
+                                <div>
+                                  {commentReply.map((item) => {
+                                    return (
+                                      <div>
+                                        <div>{item.fullname}</div>
+                                        <div>{item.date}</div>
+                                        <div>
+                                          {item.photoURL ? (
+                                            <img
+                                              src={item.photoURL}
+                                              className="profileImage"
+                                              alt="Profile"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="./assets/images/profile-user.svg"
+                                              className="profileImage"
+                                              alt="Profile"
+                                            />
+                                          )}
+                                        </div>
+                                        <div>{item.reply}</div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                                <input
+                                  type="text"
+                                  onChange={Rcomment}
+                                  value={reply}
+                                  placeholder={"reply "}
+                                />
+                                <button
+                                  type="submit"
+                                  onClick={() => onRSubmit(users)}
+                                >
+                                  add reply
+                                </button>
+                              </div>
+                              {/* : null} */}
+                            </div>
+                            {/* </a> */}
                           </div>
-                          <div>{user.comment}</div>
-                          <a
-                            href={
-                              "/blog/" +
-                              props.match.params.blogcategory +
-                              "/" +
-                              props.match.params.id +
-                              "/" +
-                              users
-                            }
-                          >
-                            <button>view reply</button>
-                          </a>
-                        </div>
-                      );
+                        );
+                      } else {
+                        return (
+                          <div>
+                            <div>{user.fullname}</div>
+                            <div>{user.date}</div>
+                            <div>
+                              {user.photoURL ? (
+                                <img
+                                  src={user.photoURL}
+                                  className="profileImage"
+                                  alt="Profile"
+                                />
+                              ) : (
+                                <img
+                                  src="./assets/images/profile-user.svg"
+                                  className="profileImage"
+                                  alt="Profile"
+                                />
+                              )}
+                            </div>
+                            <div>{user.comment}</div>
+                            {/* <a
+                              href={
+                                "/blog/" +
+                                props.match.params.blogcategory +
+                                "/" +
+                                props.match.params.id +
+                                "/" +
+                                users
+                              }
+                            > */}
+                            <button onClick={() => onVR(user.id)}>
+                              view  reply
+                            </button>
+                            {/* </a> */}
+                            {show ? (
+                              <div>
+                                <div>
+                                  {commentReply.map((item) => {
+                                    return (
+                                      <div>
+                                        <div>{item.fullname}</div>
+                                        <div>{item.date}</div>
+                                        <div>
+                                          {item.photoURL ? (
+                                            <img
+                                              src={item.photoURL}
+                                              className="profileImage"
+                                              alt="Profile"
+                                            />
+                                          ) : (
+                                            <img
+                                              src="./assets/images/profile-user.svg"
+                                              className="profileImage"
+                                              alt="Profile"
+                                            />
+                                          )}
+                                        </div>
+                                        <div>{item.reply}</div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                                <input
+                                  type="text"
+                                  onChange={Rcomment}
+                                  value={reply}
+                                  placeholder={"reply "}
+                                />
+                                <button
+                                  type="submit"
+                                  onClick={() => onRSubmit(users)}
+                                >
+                                  add reply
+                                </button>
+                              </div>
+                            ) : null}
+                          </div>
+                        );
+                      }
                     })}
                   </div>
 
