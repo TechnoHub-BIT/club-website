@@ -225,6 +225,40 @@
       font-weight: 500;
       margin-top: 1.5em;
     }
+
+    .singleQuestion {
+      strong {
+        font-weight: 500;
+      }
+
+      .question {
+        margin: 0.5em 0;
+        font-size: 0.95rem;
+        color: #727070;
+      }
+
+      .explanation {
+        margin-top: 0.5em;
+
+        p {
+          word-wrap: break-word;
+          font-size: 0.9rem;
+          color: #727070;
+        }
+      }
+
+      .options {
+        margin: 1.5em 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+        font-size: 0.9rem;
+      }
+
+      .green {
+        color: #00c851;
+      }
+    }
   }
 }
 
@@ -274,6 +308,31 @@
         .timer {
           border-radius: 10px;
           font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .singleTestCont {
+    .centreCard {
+      .singleQuestion {
+        .question {
+          font-size: 0.9rem;
+        }
+
+        .explanation {
+          p {
+            font-size: 0.9rem;
+          }
+        }
+
+        .options {
+          margin: 1.5em 0;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 1em;
+          font-size: 0.9rem;
         }
       }
     }

@@ -390,16 +390,14 @@ const SingleTest = (props) => {
             message="This test is Over!"
             icon="exclamation"
             leftBtn="View other Tests"
-            // rightBtn="View other Tests"
             action={() => {
               history.push("/tests");
             }}
-            // close={() => {
-            //   history.push("/tests");
-            // }}
+            close={() => {
+              history.push("/tests");
+            }}
           />
         );
-      //Start the test
       // else if (tests.testprivacy === "Private")
       //   showModal(
       //     <AlertModal
@@ -509,7 +507,7 @@ const SingleTest = (props) => {
                     </ul>
                   </div>
                   <div className="navigation">
-                    {tests.teststatus === "Active" || "Inactive" ? (
+                    {tests.teststatus !== "Over" ? (
                       <button
                         type="button"
                         className="startBtn"
@@ -523,196 +521,6 @@ const SingleTest = (props) => {
                     ) : null}
                   </div>
                 </section>
-                {tests.questions &&
-                  tests.questions.map((item, index) => {
-                    return (
-                      <section ques-no={index + 1} key={index}>
-                        <h3 className="smallTitle">Question No. {index + 1}</h3>
-                        <div className="question">
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: item.question,
-                            }}
-                          ></div>
-                          <br />
-                          {item.questionType === "MSQ"
-                            ? "(More than one correct option)"
-                            : null}
-                        </div>
-                        {item.questionType === "MCQ" ? (
-                          <input
-                            type="radio"
-                            title="Clear Selection"
-                            name={"option" + (index + 1)}
-                            onChange={(e) =>
-                              handleAnswer(e, index, "Unanswered")
-                            }
-                            value="Unanswered"
-                            className="hiddenRadio"
-                            defaultChecked
-                          />
-                        ) : null}
-                        {item.questionType === "MCQ" ? (
-                          <div className="options">
-                            <div>
-                              <input
-                                type="radio"
-                                onChange={(e) => handleAnswer(e, index, "A")}
-                                name={"option" + (index + 1)}
-                                id={"optiona" + (index + 1)}
-                                value={item.op1}
-                              />
-                              &nbsp;&nbsp; (A){" "}
-                              <label htmlFor={"optiona" + (index + 1)}>
-                                {item.op1}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                onChange={(e) => handleAnswer(e, index, "B")}
-                                name={"option" + (index + 1)}
-                                id={"optionb" + (index + 1)}
-                                value={item.op2}
-                              />
-                              &nbsp;&nbsp; (B){" "}
-                              <label htmlFor={"optionb" + (index + 1)}>
-                                {item.op2}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                onChange={(e) => handleAnswer(e, index, "C")}
-                                name={"option" + (index + 1)}
-                                id={"optionc" + (index + 1)}
-                                value={item.op3}
-                              />
-                              &nbsp;&nbsp; (C){" "}
-                              <label htmlFor={"optionc" + (index + 1)}>
-                                {item.op3}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                onChange={(e) => handleAnswer(e, index, "D")}
-                                name={"option" + (index + 1)}
-                                id={"optiond" + (index + 1)}
-                                value={item.op4}
-                              />
-                              &nbsp;&nbsp; (D){" "}
-                              <label htmlFor={"optiond" + (index + 1)}>
-                                {item.op4}
-                              </label>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="options">
-                            <div>
-                              <input
-                                type="checkbox"
-                                onChange={(e) => handleAnswer(e, index, "A")}
-                                name={"option" + (index + 1)}
-                                id={"optiona" + (index + 1)}
-                                value={item.op1}
-                              />
-                              &nbsp;&nbsp; (A){" "}
-                              <label htmlFor={"optiona" + (index + 1)}>
-                                {item.op1}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="checkbox"
-                                onChange={(e) => handleAnswer(e, index, "B")}
-                                name={"option" + (index + 1)}
-                                id={"optionb" + (index + 1)}
-                                value={item.op2}
-                              />
-                              &nbsp;&nbsp; (B){" "}
-                              <label htmlFor={"optionb" + (index + 1)}>
-                                {item.op2}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="checkbox"
-                                onChange={(e) => handleAnswer(e, index, "C")}
-                                name={"option" + (index + 1)}
-                                id={"optionc" + (index + 1)}
-                                value={item.op3}
-                              />
-                              &nbsp;&nbsp; (C){" "}
-                              <label htmlFor={"optionc" + (index + 1)}>
-                                {item.op3}
-                              </label>
-                            </div>
-                            <div>
-                              <input
-                                type="checkbox"
-                                onChange={(e) => handleAnswer(e, index, "D")}
-                                name={"option" + (index + 1)}
-                                id={"optiond" + (index + 1)}
-                                value={item.op4}
-                              />
-                              &nbsp;&nbsp; (D){" "}
-                              <label htmlFor={"optiond" + (index + 1)}>
-                                {item.op4}
-                              </label>
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="navigation">
-                          {index === 0 ? (
-                            <button
-                              type="button"
-                              className="prevBtn"
-                              title="This is the first Question"
-                              disabled
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              <i className="fas fa-long-arrow-alt-left"></i>
-                              &nbsp;&nbsp;Previous
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              className="prevBtn"
-                              title={"Go to Question " + index}
-                              onClick={() => sectionChanger("prev", index + 1)}
-                            >
-                              <i className="fas fa-long-arrow-alt-left"></i>
-                              &nbsp;&nbsp;Previous
-                            </button>
-                          )}
-                          {index === quesLength - 1 ? (
-                            <button
-                              type="button"
-                              className="nextBtn"
-                              title="This is the last Question"
-                              disabled
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              Save & Next&nbsp;&nbsp;
-                              <i className="fas fa-long-arrow-alt-right"></i>
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              className="nextBtn"
-                              title={"Go to Question " + (index + 2)}
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              Save & Next&nbsp;&nbsp;
-                              <i className="fas fa-long-arrow-alt-right"></i>
-                            </button>
-                          )}
-                        </div>
-                      </section>
-                    );
-                  })}
               </form>
             </div>
             {form ? (
@@ -736,58 +544,50 @@ const SingleTest = (props) => {
                 <div className="questionBtns">{questionBtns}</div>
               </div>
             ) : null}
+
             {tests.teststatus === "Over"
               ? tests.questions &&
                 tests.questions.map((item, index) => {
                   return (
-                    <section ques-no={index + 1} key={index}>
-                      <div className="singleQuestion">
-                        <div className="left">
-                          <h3 className="smallTitle">
-                            Question No. {index + 1}
-                          </h3>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: item.question,
-                            }}
-                            className="question"
-                          ></div>
-                          <div className="options">
-                            <div>
-                              <strong>Option (A):&nbsp;&nbsp;</strong>
-                              {item.op1}
-                            </div>
-                            <div>
-                              <strong>Option (B):&nbsp;&nbsp;</strong>
-                              {item.op2}
-                            </div>
-                            <div>
-                              <strong>Option (C):&nbsp;&nbsp;</strong>
-                              {item.op3}
-                            </div>
-                            <div>
-                              <strong>Option (D):&nbsp;&nbsp;</strong>
-                              {item.op4}
-                            </div>
-                          </div>
+                    <div className="singleQuestion">
+                      <h3 className="smallTitle">Question No. {index + 1}</h3>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: item.question,
+                        }}
+                        className="question"
+                      ></div>
+                      <div className="options">
+                        <div>
+                          <strong>Option (A):&nbsp;&nbsp;</strong>
+                          {item.op1}
                         </div>
-                        <div className="right">
-                          <div>
-                            Correct Option:&nbsp;&nbsp;Option (
-                            {item.correctAnswer})
-                          </div>
-                          <div className="explanation">
-                            <strong>Explanation:</strong>{" "}
-                            <p
-                              dangerouslySetInnerHTML={{
-                                __html: item.explanation,
-                              }}
-                              className="question"
-                            ></p>
-                          </div>
+                        <div>
+                          <strong>Option (B):&nbsp;&nbsp;</strong>
+                          {item.op2}
+                        </div>
+                        <div>
+                          <strong>Option (C):&nbsp;&nbsp;</strong>
+                          {item.op3}
+                        </div>
+                        <div>
+                          <strong>Option (D):&nbsp;&nbsp;</strong>
+                          {item.op4}
                         </div>
                       </div>
-                    </section>
+                      <div className="green">
+                        Correct Option:&nbsp;&nbsp;Option ({item.correctAnswer})
+                      </div>
+                      <div className="explanation">
+                        <strong>Explanation:</strong>{" "}
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: item.explanation,
+                          }}
+                          className="question"
+                        ></p>
+                      </div>
+                    </div>
                   );
                 })
               : null}

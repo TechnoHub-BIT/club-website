@@ -245,6 +245,40 @@
   margin-top: 1.5em;
 }
 
+.singleTestCont .centreCard .singleQuestion strong {
+  font-weight: 500;
+}
+
+.singleTestCont .centreCard .singleQuestion .question {
+  margin: 0.5em 0;
+  font-size: 0.95rem;
+  color: #727070;
+}
+
+.singleTestCont .centreCard .singleQuestion .explanation {
+  margin-top: 0.5em;
+}
+
+.singleTestCont .centreCard .singleQuestion .explanation p {
+  word-wrap: break-word;
+  font-size: 0.9rem;
+  color: #727070;
+}
+
+.singleTestCont .centreCard .singleQuestion .options {
+  margin: 1.5em 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  font-size: 0.9rem;
+}
+
+.singleTestCont .centreCard .singleQuestion .green {
+  color: #00c851;
+}
+
 @media only screen and (max-width: 992px) {
   .singleTestCont .title {
     padding: 0 20px;
@@ -288,6 +322,22 @@
   .singleTestCont .centreCard .right .timer {
     border-radius: 10px;
     font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .singleTestCont .centreCard .singleQuestion .question {
+    font-size: 0.9rem;
+  }
+  .singleTestCont .centreCard .singleQuestion .explanation p {
+    font-size: 0.9rem;
+  }
+  .singleTestCont .centreCard .singleQuestion .options {
+    margin: 1.5em 0;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
+    font-size: 0.9rem;
   }
 }
 /*# sourceMappingURL=SingleTestComponent.css.map */
