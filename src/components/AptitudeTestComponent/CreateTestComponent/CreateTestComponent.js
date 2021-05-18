@@ -83,6 +83,7 @@ const CreateTest = () => {
       op2: "",
       op3: "",
       op4: "",
+      op5: "",
       correctAnswer: "",
       questionType: "",
       explanation: "",
@@ -105,6 +106,7 @@ const CreateTest = () => {
         op2: "",
         op3: "",
         op4: "",
+        op5: "",
         correctAnswer: "",
         questionType: "",
         explanation: "",
@@ -438,6 +440,7 @@ const CreateTest = () => {
                               value={create.correctAnswer}
                               onChange={(e) => handleChange(e, index)}
                               placeholder="Correct Option"
+                              required
                             />
                             <label htmlFor={"correctAnswer" + index}>
                               Correct Answer
@@ -488,6 +491,17 @@ const CreateTest = () => {
                               placeholder="Option D"
                             />
                             <label htmlFor={"optiond" + index}>Option D</label>
+                          </div>
+                          <div className="input">
+                            <input
+                              type="text"
+                              name="op5"
+                              id={"optione" + index}
+                              value={create.op5}
+                              onChange={(e) => handleChange(e, index)}
+                              placeholder="Option E"
+                            />
+                            <label htmlFor={"optione" + index}>Option E</label>
                           </div>
                         </div>
                         {questions.length - 1 === index && (
