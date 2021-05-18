@@ -18,6 +18,7 @@ import Footer from "./FooterComponents/FooterComponent";
 
 //Profile Pages
 import Settings from "./ProfileComponents/SettingsComponent";
+import Notifications from "./ProfileComponents/Notifications";
 import Register from "./ProfileComponents/RegisterComponent";
 import EditProfile from "./ProfileComponents/EditComponent";
 import SignUpComponent from "./SignUpComponents/SignUpComponent";
@@ -96,6 +97,7 @@ class Main extends Component {
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/edit" component={EditProfile} />
             <PrivateRoute exact path="/settings" component={Settings} />
+            <PrivateRoute exact path="/notifications" component={Notifications} />
             <PrivateRoute exact path="/register" component={Register} />
 
             {/* Admin Pages */}
@@ -104,14 +106,14 @@ class Main extends Component {
             {/* Blog Pages */}
             <PrivateRoute exact path="/addBlog" component={AddBlog} />
             <Route exact path="/blog" component={BlogCategories} />
-            {/* <Route exact path="/blog/:id" component={BlogList} /> */}
-            <Route exact path="/bloglist" component={BlogList} />
-            <Route exact path="/blogpost" component={Blog} />
-            {/* <Route exact path="/blog/:blogcategory/:id" component={Blog} />
-            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} /> */}
-            {/* <PrivateRoute exact path="/editblog" component={EditBlog} />
+            <Route exact path="/blog/:id" component={BlogList} />
+            {/* <Route exact path="/bloglist" component={BlogList} /> */}
+            {/* <Route exact path="/blogpost" component={Blog} /> */}
+            <Route exact path="/blog/:blogcategory/:id" component={Blog} />
+            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} />
+            <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
-              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
+              <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
 
             {/* Event Pages */}
             <Route exact path="/addevent" component={AddEvent} />

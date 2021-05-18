@@ -37,6 +37,20 @@ const ProfileComponent = () => {
     fetchdata();
   }, []);
 
+  const [number, setNumber] = useState();
+  useEffect(() => {
+    const fetchdata = async () => {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .collection("notifications")
+        .get()
+        .then(function (querySnapshot) {
+          setNumber(querySnapshot.size);
+        });
+    };
+    fetchdata();
+  }, []);
+
   return (
     <div className="profileCont">
       <HeaderTitle heading="PROFILE" />
@@ -62,6 +76,11 @@ const ProfileComponent = () => {
               <div className="profileNavItem">
                 <Link to="/settings">
                   <i className="fas fa-cogs"></i> Settings
+                </Link>
+              </div>
+              <div className="profileNavItem">
+                <Link to="/notifications">
+                  <i className="fas fa-bell"></i> Notifications {number}
                 </Link>
               </div>
             </div>
