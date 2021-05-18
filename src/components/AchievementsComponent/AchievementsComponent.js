@@ -110,6 +110,16 @@ const achievements = (props) => {
                                     IEEE Bombay along with IEEE BIT-Durg and others conducted an online Electric Circuit Designing Competition. Participants had to design in TinkerCAD, while staying online in the meet, in the span of an hour. Amongst 48 Participants, Anurag Sharma, secured 3rd position! He was also awarded a cash prize of 2000 Rupees!
                                 </SingleAchievement>
                             </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/anurag-sharma.png">
+                                	Team Barleyn led by Anubhav Bhatt and Team Aminochains led by Sija Badgaiyan represented BIT, Durg at Hult Prize Impact Summit Mumbai and Punjab respectively.
+                                </SingleAchievement>
+                            </div>
+                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                <SingleAchievement path="./assets/images/achievements/anurag-sharma.png">
+                                	Team Annapurna led by Vinayak Rawat won the state level innovation business plan competition held on 9/3/21 conducted by Institute Innovation Cell, BIT, Durg.
+                                </SingleAchievement>
+                            </div>
                         </Zoom>
                     </div>
                 </div>

@@ -87,7 +87,7 @@ const ProfileComponent = () => {
                     />
                   </div>
                 </Link>
-                <Link to="/projects">
+                <Link to="/blog">
                   <div className="statCard">
                     <div className="cardDetails">
                       <h5>Blog Posts</h5>

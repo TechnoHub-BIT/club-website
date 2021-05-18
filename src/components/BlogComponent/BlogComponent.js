@@ -44,11 +44,9 @@ function BlogComponent(props) {
     useEffect(() => {
         const fetchdata = async () => {
             db.collection("Blogs")
-                .onSnapshot(function (data) {
-                    
+                .onSnapshot(function (data) {   
                     setblogs(data.docs.map(doc => ({
                         ...doc.data(), id: doc.id
-                  
                     })));
                   
                 })

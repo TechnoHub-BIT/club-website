@@ -30,12 +30,18 @@ class EventsComponent extends Component {
             </div> */}
             <div className="eventsCardCont">
               <Zoom>
-                <SingleEvent to="/tedxbitd" img="./assets/images/events_img/tedxbitd.jpg" title="TEDxBITD" subtitle="APR 17 2021" />
+                <SingleEvent to="/tedxbitd" img="./assets/images/events_img/tedxbitd.jpg" title="TEDxBITD" subtitle="JUN 06 2021" />
               </Zoom>
             </div>
             <h1 className="sectionTitle">Past Events</h1>
             <div className="eventsCardCont">
               <Zoom>
+                <SingleEvent to="/hackathon2020" img="./assets/images/events_img/hackathonlogo.jpeg" title="Opportunities in Electronics Engineering, " subtitle="MAy 01 2021" />
+
+                <SingleEvent to="/hackathon2020" img="./assets/images/events_img/hackathonlogo.jpeg" title="Opportunities in Civil Engineering, " subtitle="APRIL 03 2021" />
+
+                <SingleEvent to="/hackathon2020" img="./assets/images/events_img/hackathonlogo.jpeg" title="How to Ace your summer internship" subtitle="MAR 21 2021" />
+
                 <SingleEvent to="/hackathon2020" img="./assets/images/events_img/hackathonlogo.jpeg" title="Hackathon" subtitle="OCT 17 - 18 2020" />
 
                 <SingleEvent to="/hult2021" img="./assets/images/events_img/HultPrize_nov2020.png" title="Hult Prize 2021" subtitle="AUG 23 - NOV 08 2020" />

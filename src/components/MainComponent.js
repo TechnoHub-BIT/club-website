@@ -7,7 +7,7 @@ import ScrollToTop from "./ScrollToTop";
 //Pages
 import Home from "./HomeComponents/HomeComponent";
 import About from "./AboutUsComponents/AboutUsComponent";
-import EventPage from "./EventsComponents/EventsComponent";
+//import EventPage from "./EventsComponents/EventsComponent";
 import Navbar from "./HeaderComponents/NavbarComponents/NavbarComponent";
 import Contact from "./ContactUsComponents/ContactComponents";
 import OurMembers from "./MembersListComponent/MembersList";
@@ -40,6 +40,10 @@ import Reply from "./BlogComponent/Reply";
 import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponent";
 
 //Events Pages
+import AddEvent from "./EventsComponents/AddEvents/AddEvents";
+import EventList from "./EventsComponents/DisplayEvents/EventList"
+import SingleEvent from "./EventsComponents/DisplayEvents/SingleEvent";
+
 import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
 import ArmedForces from "./EventsComponents/EventPagesComponent/ArmedForceComponent/ArmedForceComponent";
 import TechExpo2019 from "./EventsComponents/EventPagesComponent/Tech-ExpoComponent/Tech-ExpoComponent";
@@ -53,6 +57,8 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
+
+
 
 //Dark mode light mode
 // import styled,{ThemeProvider} from 'styled-components'
@@ -76,7 +82,7 @@ class Main extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/aboutus" component={About} />
             <Route exact path="/contactus" component={Contact} />
-            <Route exact path="/events" component={EventPage} />
+            {/* <Route exact path="/events" component={EventPage} /> */}
             <PrivateRoute exact path="/ourmembers" component={OurMembers} />
             <Route exact path="/achievements" component={Achievements} />
             <Route exact path="/gallery" component={Gallery} />
@@ -108,6 +114,10 @@ class Main extends Component {
               <PrivateRoute exact path="/editcategory/:id" component={EditCategory} /> */}
 
             {/* Event Pages */}
+            <Route exact path="/addevent" component={AddEvent} />
+            <Route exact path="/events" component={EventList} />
+            <Route exact path="/events/:id" component={SingleEvent} />
+
             <Route exact path="/hackathon2020" component={Hackathon2020} />
             <Route exact path="/hult2021" component={TechExpo2019} />
             <Route exact path="/evbysurajsd" component={TechExpo2019} />
