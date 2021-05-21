@@ -12,7 +12,6 @@ import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/tooltip";
 import "bootstrap/dist/css/bootstrap.css";
 import { db } from "../../firebase";
-import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../contexts/AuthContext";
 // import AddAuthorComponent from './AddAuthorComponent/AddAuthorComponent';
@@ -25,10 +24,13 @@ export default function AddBlogComponent() {
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
-
   const [blogcategory, setCategory] = useState("");
   const category = (e) => {
     setCategory(e.target.value);
+  };
+  const [blogcategoryid, setBlogCategoryId] = useState("");
+  const categoryid = (e) => {
+    setBlogCategoryId(e.target.value);
   };
   const [blogauthor, setAuthor] = useState("");
   const author = (e) => {
@@ -38,7 +40,6 @@ export default function AddBlogComponent() {
   const authorid = (e) => {
     setAuthorId(e.target.value);
   };
-
   const [blogimageurl, setImageUrl] = useState("");
   const imageurl = (e) => {
     setImageUrl(e.target.value);
@@ -47,6 +48,7 @@ export default function AddBlogComponent() {
   const content = (param) => {
     setContent(param);
   };
+  const [like] = useState(0);
 
   const blogdate = new Date().toLocaleDateString();
 
@@ -59,9 +61,9 @@ export default function AddBlogComponent() {
     ) {
       e.preventDefault();
       db.collection("NewBlogcategory")
-        .doc(blogcategory)
+        .doc(blogcategoryid)
         .collection("CBlogs")
-        .doc(blogtitle)
+        .doc()
         .set({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
@@ -69,6 +71,7 @@ export default function AddBlogComponent() {
           blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
           blogdate: blogdate,
+          like: like,
           blogcontent: blogcontent,
         })
         .then(() => {
@@ -91,12 +94,11 @@ export default function AddBlogComponent() {
     setblogcategorynameurl(e.target.value);
   };
 
-  const blogcategorysave = (e) => {
+  const blogcategorysave = (e, id) => {
     if (blogcategorytype !== "" && blogcategorynameurl !== "") {
       e.preventDefault();
       db.collection("NewBlogcategory")
-        .doc(blogcategorytype)
-        .set({
+        .add({
           blogcategorytype: blogcategorytype,
           blogcategorynameurl: blogcategorynameurl,
         })
@@ -111,18 +113,33 @@ export default function AddBlogComponent() {
     }
   };
   useEffect(() => {
-  if (currentUser) {
-    db.collection("members")
-      .doc(currentUser.uid)
-      .onSnapshot(function (doc) {
-        const data = doc.data();
-        setCurrentProfile(data);
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setCurrentProfile(data);
+        });
+    }
+  }, []);
+  const [list, setList] = useState([]);
+  const refe = db.collection("NewBlogcategory");
+  useEffect(() => {
+    const fetchdata = async () => {
+      refe.onSnapshot(function (data) {
+        setList(
+          data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
       });
-  }
-}, []);
+    };
+    fetchdata();
+  }, []);
 
   const [members, setMembers] = useState([]);
-  const ref = db.collection("members")
+  const ref = db.collection("members");
   useEffect(() => {
     const fetchdata = async () => {
       ref.onSnapshot(function (data) {
@@ -142,8 +159,7 @@ export default function AddBlogComponent() {
   };
 
   return (
-    
-     <React.Fragment>
+    <React.Fragment>
       <Helmet>
         <title>Add Blog | TechnoHub BITD</title>
       </Helmet>
@@ -177,8 +193,44 @@ export default function AddBlogComponent() {
                 <label for="title">Blog Title</label>
               </div>
               <div className="input-group">
-                <AddCategory change={category} value={blogcategory} />
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={category}
+                  value={blogcategory}
+                  required
+                >
+                  <option value="">--Blog Category List--</option>
+                  {list.map((cat) => {
+                    return (
+                      <option value={cat.blogcategorytype}>
+                        {cat.blogcategorytype} {cat.id}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
+              <div className="input-group">
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={categoryid}
+                  value={blogcategoryid}
+                  required
+                >
+                  <option value="">--Blog Category List--</option>
+                  {list.map((cat) => {
+                    return (
+                      <option value={cat.id}>
+                        {cat.blogcategorytype} {cat.id}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              {/* <div className="input-group">
+                <AddCategory change={category} value={blogcategory} />
+              </div> */}
               <div className="input-group">
                 <select
                   name="privacy"
@@ -189,7 +241,11 @@ export default function AddBlogComponent() {
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
-                    return <option value={mem.fullname}>{mem.fullname} {mem.id}</option>;
+                    return (
+                      <option value={mem.fullname}>
+                        {mem.fullname} {mem.id}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
@@ -203,7 +259,11 @@ export default function AddBlogComponent() {
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
-                    return <option value={mem.id}>{mem.fullname} {mem.id}</option>;
+                    return (
+                      <option value={mem.id}>
+                        {mem.fullname} {mem.id}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
@@ -271,7 +331,7 @@ export default function AddBlogComponent() {
                 <label for="cimage">Category Image Drive ID(1920x1080)</label>
               </div>
               <div className="input-group w50p">
-                <button type="submit" onClick={blogcategorysave}>
+                <button type="submit" onClick={(id) => blogcategorysave(id)}>
                   Add Category
                 </button>
               </div>

@@ -113,7 +113,7 @@ function BlogListComponent(props) {
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("NewBlogcategory")
-        .doc(blogcategory )
+        .doc(blogcategory)
         .collection("CBlogs")
         .orderBy("blogdate", "asc")
         .onSnapshot(function (data) {
@@ -140,7 +140,7 @@ function BlogListComponent(props) {
             counter++;
             return (
               <Zoom>
-                <a href={"/blog/" + Blogs.blogcategory + "/" + Blogs.id}>
+                <a href={"/blog/" + blogcategory + "/" + Blogs.id}>
                   <img
                     src={
                       "https://drive.google.com/uc?export=view&id=" +

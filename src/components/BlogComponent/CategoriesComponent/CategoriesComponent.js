@@ -166,7 +166,7 @@ class categoriesComponent extends React.Component {
                     <Zoom>
                       <a
                         href={
-                          "/blog/" + Blogcategorytype.blogcategorytype
+                          "/blog/" + Blogcategorytype.id
                         }
                         className="singleCategory"
                       >

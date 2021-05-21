@@ -35,7 +35,6 @@ import Blog from "./BlogComponent/BlogComponent";
 import Collaborations from "./CollaborationsComponent/CollaborationsComponent";
 import BlogCategories from "./BlogComponent/CategoriesComponent/CategoriesComponent";
 import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
-import Reply from "./BlogComponent/Reply";
 
 //Admin Pages
 import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponent";
@@ -110,7 +109,6 @@ class Main extends Component {
             {/* <Route exact path="/bloglist" component={BlogList} /> */}
             {/* <Route exact path="/blogpost" component={Blog} /> */}
             <Route exact path="/blog/:blogcategory/:blogname" component={Blog} />
-            <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} />
             <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
               <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
