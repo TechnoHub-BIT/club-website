@@ -602,6 +602,9 @@ ref.onSnapshot((doc) => {
           </Helmet>
         )}
         <button type="submit" onClick={onDeleteBlog}> Delete Blog</button>
+        <a href={"/editblog/" + blogcategory + "/"+ blogname } >
+          <button type="button">Edit</button>
+        </a>
       </div>
     </React.Fragment>
   );

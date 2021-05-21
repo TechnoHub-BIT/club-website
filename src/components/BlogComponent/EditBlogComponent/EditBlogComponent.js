@@ -17,10 +17,8 @@ import queryString from "../query";
 import { resetWarningCache } from "prop-types";
 
 
-class Editblog extends React.Component {
-    constructor(props) {
-        super(props);  
-        this.state = {
+class Editblog extends React.Component { 
+        state = {
             key: '',
             blogtitle: '',
             blogcategory: '',
@@ -29,15 +27,15 @@ class Editblog extends React.Component {
             blogcontent: '',
             qur: queryString("editBlog"),
         };
-    }
+    
 
     componentDidMount() {
-        const ref = db.collection("NewBlogcategory").doc(this.state.qur);
+        const ref = db.collection("NewBlogcategory").doc(this.props.match.params.blogcategory).collection("CBlogs").doc(this.props.match.params.blogname);
         ref.get().then((doc) => {
             const Blogs = doc.data();
             this.setState({
                 key: doc.id,
-                blogtitle: Blogs.blogtitle,
+               blogtitle: Blogs.blogtitle,
                 blogcategory: Blogs.blogcategory,
                 blogauthor: Blogs.blogauthor,
                 blogimageurl: Blogs.blogimageurl,
@@ -45,7 +43,11 @@ class Editblog extends React.Component {
             });
         });
     }
-
+    onChange = (e) => {
+        const state = this.state;
+        state[e.target.name] = e.target.value;
+        this.setState({ Blogs: state });
+      };
   
 
     onSubmit = (e) => {
@@ -53,7 +55,7 @@ class Editblog extends React.Component {
 
         const { blogtitle, blogcategory, blogauthor, blogimageurl, blogcontent } = this.state;
 
-        const updateRef = db.collection("NewBlogcategory").doc(this.state.qur);
+        const updateRef =  db.collection("NewBlogcategory").doc(this.props.match.params.blogcategory).collection("CBlogs").doc(this.props.match.params.blogname);
         updateRef.set({
             blogtitle,
             blogcategory,
@@ -83,6 +85,7 @@ class Editblog extends React.Component {
                 console.error("Error adding document: ", error);
             });
     }
+
 
     contentChange = (value) => {
         const currentState = this.state;
