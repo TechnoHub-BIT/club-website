@@ -106,10 +106,10 @@ class Main extends Component {
             {/* Blog Pages */}
             <PrivateRoute exact path="/addBlog" component={AddBlog} />
             <Route exact path="/blog" component={BlogCategories} />
-            <Route exact path="/blog/:id" component={BlogList} />
+            <Route exact path="/blog/:blogcategory" component={BlogList} />
             {/* <Route exact path="/bloglist" component={BlogList} /> */}
             {/* <Route exact path="/blogpost" component={Blog} /> */}
-            <Route exact path="/blog/:blogcategory/:id" component={Blog} />
+            <Route exact path="/blog/:blogcategory/:blogname" component={Blog} />
             <Route exact path="/blog/:blogcategory/:id/:users" component={Reply} />
             <PrivateRoute exact path="/editblog" component={EditBlog} />
               <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />

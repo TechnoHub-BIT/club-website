@@ -82,6 +82,11 @@ const SettingsComponent = () => {
               <div className="profileNavItem active">
                 <Link to="/settings"><i className="fas fa-cogs"></i> Settings</Link>
               </div>
+              <div className="profileNavItem ">
+                <Link to="/notifications">
+                  <i className="fas fa-bell"></i> Notifications
+                </Link>
+              </div>
             </div>
             <div className="profileContent">
               <div className="settings">

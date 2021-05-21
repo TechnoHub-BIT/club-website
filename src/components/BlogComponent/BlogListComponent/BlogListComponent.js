@@ -103,16 +103,17 @@ import { Alert, ButtonToggle } from "reactstrap";
 import Moment from "moment";
 import { Helmet } from "react-helmet";
 import { Zoom } from "react-reveal";
+import { useParams } from "react-router";
 
 function BlogListComponent(props) {
-  const qur = queryString("blogList");
 
+  const { blogcategory } = useParams();
   const [blogedit, setblogs] = useState([]);
 
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("NewBlogcategory")
-        .doc(props.match.params.id)
+        .doc(blogcategory )
         .collection("CBlogs")
         .orderBy("blogdate", "asc")
         .onSnapshot(function (data) {

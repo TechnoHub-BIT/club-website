@@ -122,9 +122,10 @@ export default function AddBlogComponent() {
 }, []);
 
   const [members, setMembers] = useState([]);
+  const ref = db.collection("members")
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("members").onSnapshot(function (data) {
+      ref.onSnapshot(function (data) {
         setMembers(
           data.docs.map((doc) => ({
             ...doc.data(),
