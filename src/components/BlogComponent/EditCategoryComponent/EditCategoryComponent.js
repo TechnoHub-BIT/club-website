@@ -18,14 +18,12 @@ import queryString from "../query";
 import editcategory from "./EditCategory"
 
 class EditCategoryComponent extends Component {
-    constructor(props) {
-      super(props);
-      this.ref = db.collection('Blogcategory');
-      this.unsubscribe = null;
-      this.state = {
+      ref = db.collection("NewBlogcategory");
+      unsubscribe = null;
+      state = {
         Blogs: []
       };
-    }
+    
   
     onCollectionUpdate = (querySnapshot) => {
       const Blogs = [];
@@ -48,7 +46,7 @@ class EditCategoryComponent extends Component {
     }
     
     delete(id){
-        db.collection('Blogcategory').doc(id).delete().then(() => {
+        db.collection("NewBlogcategory").doc(id).delete().then(() => {
            console.log("Document successfully deleted!");
            this.props.history.push("/")
          }).catch((error) => {

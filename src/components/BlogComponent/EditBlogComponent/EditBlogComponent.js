@@ -32,7 +32,7 @@ class Editblog extends React.Component {
     }
 
     componentDidMount() {
-        const ref = db.collection("Blogs").doc(this.state.qur);
+        const ref = db.collection("NewBlogcategory").doc(this.state.qur);
         ref.get().then((doc) => {
             const Blogs = doc.data();
             this.setState({
@@ -53,7 +53,7 @@ class Editblog extends React.Component {
 
         const { blogtitle, blogcategory, blogauthor, blogimageurl, blogcontent } = this.state;
 
-        const updateRef = db.collection('Blogs').doc(this.state.qur);
+        const updateRef = db.collection("NewBlogcategory").doc(this.state.qur);
         updateRef.set({
             blogtitle,
             blogcategory,

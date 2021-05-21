@@ -11,20 +11,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { db } from "../../../firebase";
 import { Helmet } from "react-helmet";
 
-class EditCategory extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+
+class EditCategory extends Component {
+           state = {
             key: '',
             blogcategorynameurl: '',
             blogcategorytype: ''
-
         };
-    }
 
     componentDidMount() {
-        const ref = db.collection('Blogcategory').doc(this.props.match.params.id);
+
+        const ref = db.collection("NewBlogcategory").doc(this.props.match.params.id);
         ref.get().then((doc) => {
             if (doc.exists) {
                 const Blogcategory = doc.data();
@@ -45,34 +43,25 @@ class EditCategory extends Component {
         this.setState({ Blogcategory: state });
     }
 
-
     onSubmit = (e) => {
         e.preventDefault();
-
         const { blogcategorynameurl, blogcategorytype } = this.state;
-
-        const updateRef = db.collection('Blogcategory').doc(this.state.key);
+        const updateRef = db.collection("NewBlogcategory").doc(this.state.key);
         updateRef.set({
             blogcategorynameurl,
             blogcategorytype
-
-
         }).then((docRef) => {
             this.setState({
                 key: '',
                 blogcategorynameurl: '',
                 blogcategorytype: ''
-
-
             });
-            this.props.history.push("/editblogcategory/" + this.props.match.params.blogcategory)
+            this.props.history.push("/editblogcategory")
         })
             .catch((error) => {
                 console.error("Error adding document: ", error);
             });
         }
-
-
 
     render() {
         return (

@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { db } from "../../firebase";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../contexts/AuthContext";
-// import AddAuthorComponent from './AddAuthorComponent/AddAuthorComponent';
+
 
 export default function AddBlogComponent() {
   const { currentUser } = useAuth();

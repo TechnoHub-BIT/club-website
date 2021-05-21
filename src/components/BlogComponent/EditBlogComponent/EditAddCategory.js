@@ -8,7 +8,7 @@ class EditAddComponent extends React.Component {
     }
     componentDidMount() {
     
-        db.collection('Blogcategory')
+        db.collection("NewBlogcategory")
             .get()
             .then(snapshot => {
 
