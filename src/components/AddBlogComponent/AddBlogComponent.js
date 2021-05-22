@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import {
   Breadcrumb,
@@ -12,28 +12,30 @@ import "bootstrap/js/dist/dropdown";
 import "bootstrap/js/dist/tooltip";
 import "bootstrap/dist/css/bootstrap.css";
 import { db } from "../../firebase";
-import AddCategory from "./AddCategoryComponent/AddCategoryComponent";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../contexts/AuthContext";
-// import AddAuthorComponent from './AddAuthorComponent/AddAuthorComponent';
+
 
 export default function AddBlogComponent() {
   const { currentUser } = useAuth();
   const [currentProfile, setCurrentProfile] = useState("");
 
-
   const [blogtitle, setTitle] = useState("");
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
-
   const [blogcategory, setCategory] = useState("");
   const category = (e) => {
     setCategory(e.target.value);
   };
+
   const [blogauthor, setAuthor] = useState("");
   const author = (e) => {
     setAuthor(e.target.value);
+  };
+  const [blogauthorid, setAuthorId] = useState("");
+  const authorid = (e) => {
+    setAuthorId(e.target.value);
   };
   const [blogimageurl, setImageUrl] = useState("");
   const imageurl = (e) => {
@@ -43,6 +45,7 @@ export default function AddBlogComponent() {
   const content = (param) => {
     setContent(param);
   };
+  const [like] = useState(0);
 
   const blogdate = new Date().toLocaleDateString();
 
@@ -54,13 +57,16 @@ export default function AddBlogComponent() {
       blogimageurl !== ""
     ) {
       e.preventDefault();
-      db.collection("NewBlogcategory").doc(blogcategory).collection("CBlogs").doc(blogtitle)
-        .set({
+      db
+        .collection("Blogs")
+        .add({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
           blogauthor: blogauthor,
+          blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
           blogdate: blogdate,
+          like: like,
           blogcontent: blogcontent,
         })
         .then(() => {
@@ -83,11 +89,11 @@ export default function AddBlogComponent() {
     setblogcategorynameurl(e.target.value);
   };
 
-  const blogcategorysave = (e) => {
+  const blogcategorysave = (e, id) => {
     if (blogcategorytype !== "" && blogcategorynameurl !== "") {
       e.preventDefault();
-      db.collection("NewBlogcategory").doc(blogcategorytype)
-        .set({
+      db.collection("Blogcategory")
+        .add({
           blogcategorytype: blogcategorytype,
           blogcategorynameurl: blogcategorynameurl,
         })
@@ -101,27 +107,44 @@ export default function AddBlogComponent() {
       alert("Please fill in all the details");
     }
   };
-  if (currentUser) {
-    db.collection("members")
-      .doc(currentUser.uid)
-      .onSnapshot(function (doc) {
-        const data = doc.data();
-        setCurrentProfile(data);
-      });
-  }
-
-const [members , setMembers] = useState([])
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setCurrentProfile(data);
+        });
+    }
+  }, []);
+  const [list, setList] = useState([]);
+  const refe = db.collection("Blogcategory");
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("members")
-        .onSnapshot(function (data) {
-          setMembers(
-            data.docs.map((doc) => ({
-              ...doc.data(),
-              id: doc.id,
-            }))
-          );
-        });
+      refe.onSnapshot(function (data) {
+        setList(
+          data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
+      });
+    };
+    fetchdata();
+  }, []);
+
+  const [members, setMembers] = useState([]);
+  const ref = db.collection("members");
+  useEffect(() => {
+    const fetchdata = async () => {
+      ref.onSnapshot(function (data) {
+        setMembers(
+          data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
+      });
     };
     fetchdata();
   }, []);
@@ -165,27 +188,58 @@ const [members , setMembers] = useState([])
                 <label for="title">Blog Title</label>
               </div>
               <div className="input-group">
-                <AddCategory change={category} value={blogcategory} />
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={category}
+                  value={blogcategory}
+                  required
+                >
+                  <option value="">--Blog Category List--</option>
+                  {list.map((cat) => {
+                    return (
+                      <option value={cat.blogcategorytype}>
+                        {cat.blogcategorytype} 
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               <div className="input-group">
-              <select
-                        name="privacy"
-                        id="privacy"
-                        onChange={author}
-                        value={blogauthor}
-                        required
-                      >
-                        <option value="">--Blog Author--</option>
-                {
-                    members.map(mem => {
-                        return( 
-                             <option value={mem.fullname}>{ mem.fullname }</option>
-                            
-                        );
-                    })
-                }
-                      
-                      </select>
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={author}
+                  value={blogauthor}
+                  required
+                >
+                  <option value="">--Blog Author--</option>
+                  {members.map((mem) => {
+                    return (
+                      <option value={mem.fullname}>
+                        {mem.fullname} {mem.id}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className="input-group">
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={authorid}
+                  value={blogauthorid}
+                  required
+                >
+                  <option value="">--Blog Author--</option>
+                  {members.map((mem) => {
+                    return (
+                      <option value={mem.id}>
+                        {mem.fullname} {mem.id}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               <div className="input-group">
                 <input
@@ -251,7 +305,7 @@ const [members , setMembers] = useState([])
                 <label for="cimage">Category Image Drive ID(1920x1080)</label>
               </div>
               <div className="input-group w50p">
-                <button type="submit" onClick={blogcategorysave}>
+                <button type="submit" onClick={(id) => blogcategorysave(id)}>
                   Add Category
                 </button>
               </div>
