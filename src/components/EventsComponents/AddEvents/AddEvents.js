@@ -61,7 +61,7 @@ const AddEvent = () => {
           eventdate: eventdate,
           eventimage: eventimage,
           eventcontent: eventcontent,
-          eventtype:eventtype
+          eventtype: eventtype,
         })
         .then(() => {
           alert("Event Posted!");
@@ -93,17 +93,17 @@ const AddEvent = () => {
           <label for="title">Event Title</label>
         </div>
         <div className="input-group">
-        <select
-                  name="privacy"
-                  id="privacy"
-                  onChange={type}
-                  value={eventtype}
-                  required
-                >
-                  <option value="">--Event Type--</option>
-                  <option value="Upcoming Event">Upcoming Event</option>
-                  <option value="Past Event"> Past Event</option>
-                </select>
+          <select
+            name="privacy"
+            id="privacy"
+            onChange={type}
+            value={eventtype}
+            required
+          >
+            <option value="">--Event Type--</option>
+            <option value="Upcoming Event">Upcoming Event</option>
+            <option value="Past Event"> Past Event</option>
+          </select>
         </div>
         {/* <div className="input-group"> */}
         <h3>Date</h3>
@@ -115,8 +115,18 @@ const AddEvent = () => {
           showYearDropdown
           scrollableMonthYearDropdown
         />
-        {/* <label for="title">Event Date</label> */}
-        {/* </div> */}
+        {/* <div className="input-group">
+          <input
+            type="date"
+            name="date"
+            id="date"
+            onChange={image}
+            value={eventimage}
+            placeholder="Event Date"
+            required
+          />
+          <label for="date">Event Date</label>
+        </div> */}
         <div className="input-group">
           <input
             type="text"
@@ -155,4 +165,5 @@ const AddEvent = () => {
     </div>
   );
 };
+
 export default AddEvent;
