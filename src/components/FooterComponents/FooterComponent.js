@@ -79,13 +79,7 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
-              <a
-                href="https://technoquiz.herokuapp.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Aptitude Test
-              </a>
+              <Link to="/tests">Aptitude Tests</Link>
             </li>
             <li>
               <i className="fas fa-angle-right"></i>
