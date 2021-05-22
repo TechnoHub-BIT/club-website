@@ -18,7 +18,7 @@ import queryString from "../query";
 import editcategory from "./EditCategory"
 
 class EditCategoryComponent extends Component {
-      ref = db.collection("NewBlogcategory");
+      ref = db.collection("Blogcategory");
       unsubscribe = null;
       state = {
         Blogs: []
@@ -30,7 +30,7 @@ class EditCategoryComponent extends Component {
       querySnapshot.forEach((doc) => {
         const {  blogcategorynameurl, blogcategorytype } = doc.data();
         Blogs.push({
-          key: doc.id,
+          id: doc.id,
          blogcategorynameurl,
          blogcategorytype
        
@@ -46,7 +46,7 @@ class EditCategoryComponent extends Component {
     }
     
     delete(id){
-        db.collection("NewBlogcategory").doc(id).delete().then(() => {
+        db.collection("Blogcategory").doc(id).delete().then(() => {
            console.log("Document successfully deleted!");
            this.props.history.push("/")
          }).catch((error) => {
@@ -75,7 +75,7 @@ class EditCategoryComponent extends Component {
                   {this.state.Blogs.map(Blog=>
                     <tr>
                       <td style={{verticalAlign: "middle"}}>{Blog.blogcategorytype}</td>
-                      <td><Link to={`/Editcategory/${Blog.key}`}><button className="btn btn-info"><i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit</button></Link></td>
+                      <td><Link to={`/Editcategory/${Blog.id}`}><button className="btn btn-info"><i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit</button></Link></td>
                       {/* <td><button onClick={this.delete.bind(this, Blog.key)} class="btn btn-danger">Delete</button></td> */}
                     </tr>
                   )}

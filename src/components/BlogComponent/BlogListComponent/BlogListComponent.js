@@ -112,10 +112,8 @@ function BlogListComponent(props) {
 
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("NewBlogcategory")
-        .doc(blogcategory)
-        .collection("CBlogs")
-        .orderBy("blogdate", "asc")
+      db.collection("Blogs")
+        .orderBy("blogdate", "desc")
         .onSnapshot(function (data) {
           setblogs(
             data.docs.map((doc) => ({
@@ -138,6 +136,7 @@ function BlogListComponent(props) {
           </div>
           {blogedit.map((Blogs) => {
             counter++;
+            if(blogcategory === Blogs.blogcategory)
             return (
               <Zoom>
                 <a href={"/blog/" + blogcategory + "/" + Blogs.id}>

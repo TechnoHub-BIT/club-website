@@ -110,7 +110,7 @@ class Main extends Component {
             {/* <Route exact path="/blogpost" component={Blog} /> */}
             <Route exact path="/blog/:blogcategory/:blogname" component={Blog} />
             <PrivateRoute exact path="/editblog/:blogcategory/:blogname" component={EditBlog} />
-            <PrivateRoute exact path="/editblogcategory" component={EditBlogCategory} />
+            <PrivateRoute exact path="/editcategory" component={EditBlogCategory} />
             <PrivateRoute exact path="/editcategory/:id" component={EditCategory} />
 
             {/* Event Pages */}

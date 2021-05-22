@@ -100,7 +100,7 @@ import { Zoom } from "react-reveal";
 
 const CategoriesComponent = () => {
   const [blogcategory, setBlogCategory] = useState([]);
-  const refe = db.collection("NewBlogcategory");
+  const refe = db.collection("Blogcategory");
   useEffect(() => {
     const fetchdata = async () => {
       refe.onSnapshot(function (data) {
@@ -140,7 +140,7 @@ const CategoriesComponent = () => {
               blogcategory.map((blog) => {
                 return (
                   <Zoom>
-                    <a href={"/blog/" + blog.id} className="singleCategory">
+                    <a href={"/blog/" + blog.blogcategorytype} className="singleCategory">
                       <img
                         src={
                           "https://drive.google.com/uc?export=view&id=" +

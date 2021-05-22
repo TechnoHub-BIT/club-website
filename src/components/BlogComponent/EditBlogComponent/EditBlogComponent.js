@@ -30,7 +30,7 @@ class Editblog extends React.Component {
     
 
     componentDidMount() {
-        const ref = db.collection("NewBlogcategory").doc(this.props.match.params.blogcategory).collection("CBlogs").doc(this.props.match.params.blogname);
+        const ref = db.collection("Blogs").doc(this.props.match.params.blogname);
         ref.get().then((doc) => {
             const Blogs = doc.data();
             this.setState({
@@ -48,14 +48,12 @@ class Editblog extends React.Component {
         state[e.target.name] = e.target.value;
         this.setState({ Blogs: state });
       };
-  
-
     onSubmit = (e) => {
         e.preventDefault();
 
         const { blogtitle, blogcategory, blogauthor, blogimageurl, blogcontent } = this.state;
 
-        const updateRef =  db.collection("NewBlogcategory").doc(this.props.match.params.blogcategory).collection("CBlogs").doc(this.props.match.params.blogname);
+        const updateRef =  db.collection("Blogs").doc(this.props.match.params.blogname);
         updateRef.set({
             blogtitle,
             blogcategory,
@@ -73,7 +71,7 @@ class Editblog extends React.Component {
             });
 
            
-            this.props.history.push("/editblogpost/" + this.state.qur)
+            this.props.history.push("/editblogpost/")
             .then(() => {
                 alert("Blog category added");
             })

@@ -224,9 +224,7 @@ function BlogComponent(props) {
   const [authorid, setAuthorId] = useState("");
   const [blogedit, setblogs] = useState("");
   const ref = db
-    .collection("NewBlogcategory")
-    .doc(blogcategory)
-    .collection("CBlogs")
+    .collection("Blogs")
     .doc(blogname);
   useEffect(() => {
     ref.get().then((doc) => {
@@ -247,9 +245,8 @@ function BlogComponent(props) {
   }, []);
 
   function onDeleteComment(id) {
-    db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+    db
+      .collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .doc(id)
@@ -271,9 +268,7 @@ function BlogComponent(props) {
   // storing comments in firestore
   const onSubmit = () => {
     console.log(authorid);
-    db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+     db.collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .add({
@@ -297,9 +292,7 @@ function BlogComponent(props) {
   const [blogcomment, setBlogComment] = useState([]);
   useEffect(() => {
     const unsubscribe = db
-      .collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+      .collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .onSnapshot((querySnapshot) => {
@@ -312,34 +305,53 @@ function BlogComponent(props) {
     return unsubscribe;
   }, []);
 
-  const [reply, setReply] = useState([]);
-  const Rcomment = (e) => {
-    setReply(e.target.value);
+  // const [reply, setReply] = useState([]);
+  // const Rcomment = (e) => {
+  //   setReply(e.target.value);
+  // };
+  const [replies, setReplies] = useState([
+    {
+      reply: "",
+      fullname: "",
+      photourl: "",
+      date: ""
+    },
+  ]);
+
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...replies];
+    list[index][name] = value;
+    setReplies(list);
   };
 
+  const addReply = () => {
+    setReplies([
+      {
+        reply: "",
+        fullname: "",
+        photourl: "",
+        date: ""
+      },
+    ]);
+  };
   // storing the reply of comment in firestore
   const onRSubmit = (id) => {
-    db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+    db
+      .collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .doc(id)
-      .collection("Replys")
-      .add({
-        fullname: fullname,
-        photourl: photourl,
-        reply: reply,
-        date: date,
+      .update({
+replies:replies
       });
   };
 
   const [commentReply, setCommentReply] = useState([]);
   const [show, setShow] = useState(false);
   function onVR(id) {
-    db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+    db
+      .collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .doc(id)
@@ -394,10 +406,9 @@ function BlogComponent(props) {
   //  })
   // }
   const incrementLike = () => {
-  ref =  db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
-      .doc(blogname)
+ const ref =  db
+      .collection("Blogs")
+      .doc(blogname);
 ref.onSnapshot((doc) => {
   const data = doc.data().like;
   console.log(data)
@@ -421,9 +432,8 @@ ref.onSnapshot((doc) => {
 
   //Deleting blog
   function onDeleteBlog() {
-    db.collection("NewBlogcategory")
-      .doc(blogcategory)
-      .collection("CBlogs")
+    db
+      .collection("Blogs")
       .doc(blogname)
       .delete()
       .catch((err) => {
@@ -525,13 +535,14 @@ ref.onSnapshot((doc) => {
                         <div>
                           <input
                             type="text"
-                            onChange={Rcomment}
-                            value={reply}
+                            name="reply"
+                            // onChange={(e) => handleChange(e, index)}
+                            // value={reply}
                             placeholder={"reply "}
                           />
                           <button
                             type="submit"
-                            onClick={() => onRSubmit(users)}
+                            onClick={() => addReply(users)}
                           >
                             add reply
                           </button>

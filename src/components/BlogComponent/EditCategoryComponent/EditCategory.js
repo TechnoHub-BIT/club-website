@@ -23,7 +23,7 @@ class EditCategory extends Component {
 
   componentDidMount() {
     const ref = db
-      .collection("NewBlogcategory")
+      .collection("Blogcategory")
       .doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -48,7 +48,7 @@ class EditCategory extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { blogcategorynameurl, blogcategorytype } = this.state;
-    const updateRef = db.collection("NewBlogcategory").doc(this.state.key);
+    const updateRef = db.collection("Blogcategory").doc(this.props.match.params.id);
     updateRef
       .set({
         blogcategorynameurl,
@@ -60,7 +60,7 @@ class EditCategory extends Component {
           blogcategorynameurl: "",
           blogcategorytype: "",
         });
-        this.props.history.push("/editblogcategory");
+        this.props.history.push("/Editcategory");
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
