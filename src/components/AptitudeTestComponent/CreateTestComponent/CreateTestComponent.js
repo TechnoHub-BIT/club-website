@@ -76,6 +76,11 @@ const CreateTest = () => {
     setPrivacypassword(e.target.value);
   };
 
+  const [testdescription, setTestDescription] = useState("");
+  const description = (e) => {
+    setTestDescription(e.target.value);
+  };
+
   const [questions, setQuestion] = useState([
     {
       question: "",
@@ -167,6 +172,7 @@ const CreateTest = () => {
           questions: questions,
           testprivacy: testprivacy,
           privacypassword: privacypassword,
+          testdescription: testdescription,
         })
         .then(() => {
           showModal(
@@ -375,6 +381,19 @@ const CreateTest = () => {
                         required
                       />
                       <label htmlFor="nmarks">Negative Marks*</label>
+                    </div>
+                  </div>
+                  <div class="inputGroup">
+                    <div className="input">
+                      <TextArea
+                        type="text"
+                        name="testdescription"
+                        id="testdescription"
+                        value={testdescription}
+                        onChange={description}
+                        placeholder="Test description"
+                      />
+                      <label htmlFor="Test Description">Test Description</label>
                     </div>
                   </div>
                 </form>

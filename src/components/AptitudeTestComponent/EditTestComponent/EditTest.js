@@ -34,6 +34,7 @@ class EditTest extends Component {
     profiles: "",
     testprivacy: "",
     privacypassword: "",
+    testdescription:"",
     questions: [
       {
         question: "",
@@ -69,6 +70,7 @@ class EditTest extends Component {
         questions: test.questions,
         testprivacy: test.testprivacy,
         privacypassword: test.privacypassword,
+        testdescription:test.testdescription,
       });
     });
   }
@@ -102,6 +104,7 @@ class EditTest extends Component {
       questions,
       testprivacy,
       privacypassword,
+      testdescription,
     } = this.state;
     const updateRef = db.collection("Tests").doc(this.props.match.params.id);
     updateRef
@@ -119,6 +122,7 @@ class EditTest extends Component {
         questions,
         testprivacy,
         privacypassword,
+        testdescription,
       })
       .then((docRef) => {
         this.setState({
@@ -134,6 +138,7 @@ class EditTest extends Component {
           answerstatus: "",
           testprivacy: "",
           privacypassword: "",
+          testdescription: "",
           questions: [
             {
               question: "",
@@ -366,6 +371,19 @@ class EditTest extends Component {
                         required
                       />
                       <label htmlFor="nmarks">Negative Marks*</label>
+                    </div>
+                  </div>
+                  <div class="inputGroup">
+                    <div className="input">
+                      <TextArea
+                        type="text"
+                        name="testdescription"
+                        id="testdescription"
+                        value={this.state.testdescription}
+                        onChange={this.onChange}
+                        placeholder="Test description"
+                      />
+                      <label htmlFor="Test Description">Test Description</label>
                     </div>
                   </div>
                 </form>

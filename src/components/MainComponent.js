@@ -57,6 +57,7 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
+import EditEvent from "./EventsComponents/EditEvent/EditEvent";
 
 //Dark mode light mode
 // import styled,{ThemeProvider} from 'styled-components'
@@ -94,11 +95,7 @@ class Main extends Component {
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/edit" component={EditProfile} />
             <PrivateRoute exact path="/settings" component={Settings} />
-            <PrivateRoute
-              exact
-              path="/notifications"
-              component={Notifications}
-            />
+            <PrivateRoute exact path="/notifications" component={Notifications}/>
             <PrivateRoute exact path="/register" component={Register} />
 
             {/* Admin Pages */}
@@ -108,8 +105,6 @@ class Main extends Component {
             <PrivateRoute exact path="/addBlog" component={AddBlog} />
             <Route exact path="/blog" component={BlogCategories} />
             <Route exact path="/blog/:blogcategory" component={BlogList} />
-            {/* <Route exact path="/bloglist" component={BlogList} /> */}
-            {/* <Route exact path="/blogpost" component={Blog} /> */}
             <Route
               exact
               path="/blog/:blogcategory/:blogname"
@@ -134,7 +129,8 @@ class Main extends Component {
             {/* Event Pages */}
             <PrivateRoute exact path="/addevent" component={AddEvent} />
             <Route exact path="/events" component={EventList} />
-            <Route exact path="/events/:id" component={SingleEvent} />
+            <Route exact path="/events/:eventname" component={SingleEvent} />
+            <PrivateRoute exact path ="/editevent/:eventname" component={EditEvent} />
 
             <Route exact path="/hackathon2020" component={Hackathon2020} />
             <Route exact path="/hult2021" component={TechExpo2019} />

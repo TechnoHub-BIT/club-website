@@ -12,13 +12,16 @@ import {
 import { Helmet } from "react-helmet";
 import { db } from "../../../firebase";
 import Moment from "moment";
+import { useParams } from "react-router";
 
 
 
 const SingleEvent = (props) => {
+
+  const {eventname} = useParams();
   // fetch the event
   const [event, setEvent] = useState("");
-  const ref = db.collection("Events").doc(props.match.params.id);
+  const ref = db.collection("Events").doc(eventname);
   useEffect(() => {
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -53,7 +56,7 @@ const SingleEvent = (props) => {
               {event.eventtitle}
             </CardTitle>
             <CardSubtitle className="events-card-hackathon-subtitle">
-            {/* {Moment(event.eventdate.toDate()).format("ll")} */}
+            {Moment(event.eventdate).format("ll")}
             </CardSubtitle>
           </CardBody>
         </Col>
@@ -66,6 +69,13 @@ const SingleEvent = (props) => {
           ></div>
         </CardText>
       </Card>
+      <a href={"/editevent/" + eventname}>
+      <div className="input-group w50p">
+                <button type="button">
+                  Edit Event
+                </button>
+              </div>
+              </a>
     </div>
   );
 };
