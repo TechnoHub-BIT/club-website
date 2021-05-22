@@ -14,7 +14,6 @@ import {
 } from "react-share";
 
 import { db } from "../../firebase";
-
 import { Alert, Button, ButtonToggle } from "reactstrap";
 import Moment from "moment";
 import { Helmet } from "react-helmet";
@@ -25,7 +24,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { doc } from "prettier";
 import EditComments from "./EditComments/EditComments";
 
-function BlogComponent(props) {
+const BlogComponent = (props) => {
   const { blogcategory, blogname } = useParams();
 
   const { currentUser } = useAuth();
@@ -38,6 +37,8 @@ function BlogComponent(props) {
         setCurrentProfile(data);
       });
   }
+
+  const [blogExists, setBlogExists] = useState(true);
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
@@ -57,7 +58,7 @@ function BlogComponent(props) {
           blogcontent: Test.blogcontent,
           like: Test.like,
         });
-      }
+      } else setBlogExists(false);
     });
   }, []);
 
@@ -246,6 +247,9 @@ function BlogComponent(props) {
 
   let counter = 0;
 
+  const shareUrl = "..";
+  const shareText = "..";
+
   return (
     <React.Fragment>
       <div>
@@ -267,24 +271,24 @@ function BlogComponent(props) {
                     className="blogDetails"
                   ></div>
 
-                  {/* <div className="shareButtons">
-                                                    <h6>Share on:</h6>
-                                                    <FacebookShareButton url={shareUrl} quote={shareText}>
-                                                        <FacebookIcon size="32" round={true} />
-                                                    </FacebookShareButton>
-                                                    <TwitterShareButton url={shareUrl} title={shareText}>
-                                                        <TwitterIcon size="32" round={true} />
-                                                    </TwitterShareButton>
-                                                    <WhatsappShareButton url={shareUrl} title={shareText}>
-                                                        <WhatsappIcon size="32" round={true} />
-                                                    </WhatsappShareButton>
-                                                    <TelegramShareButton url={shareUrl} title={shareText}>
-                                                        <TelegramIcon size="32" round={true} />
-                                                    </TelegramShareButton>
-                                                    <LinkedinShareButton url={shareUrl} title={shareText}>
-                                                        <LinkedinIcon size="32" round={true} />
-                                                    </LinkedinShareButton>
-                  </div> */}
+                  <div className="shareButtons">
+                    <h6>Share on:</h6>
+                    <FacebookShareButton url={shareUrl} quote={shareText}>
+                      <FacebookIcon size="32" round={true} />
+                    </FacebookShareButton>
+                    <TwitterShareButton url={shareUrl} title={shareText}>
+                      <TwitterIcon size="32" round={true} />
+                    </TwitterShareButton>
+                    <WhatsappShareButton url={shareUrl} title={shareText}>
+                      <WhatsappIcon size="32" round={true} />
+                    </WhatsappShareButton>
+                    <TelegramShareButton url={shareUrl} title={shareText}>
+                      <TelegramIcon size="32" round={true} />
+                    </TelegramShareButton>
+                    <LinkedinShareButton url={shareUrl} title={shareText}>
+                      <LinkedinIcon size="32" round={true} />
+                    </LinkedinShareButton>
+                  </div>
                 </Fade>
                 <div>
                   no.of likes
@@ -306,9 +310,9 @@ function BlogComponent(props) {
                         <div>{user.fullname}</div>
                         <div>{user.date}</div>
                         <div>
-                          {user.photoURL ? (
+                          {user.photourl ? (
                             <img
-                              src={user.photoURL}
+                              src={user.photourl}
                               className="profileImage"
                               alt="Profile"
                             />
@@ -361,9 +365,9 @@ function BlogComponent(props) {
                                       <div>{item.fullname}</div>
                                       <div>{item.date}</div>
                                       <div>
-                                        {item.photoURL ? (
+                                        {currentUser.photoURL ? (
                                           <img
-                                            src={item.photoURL}
+                                            src={currentUser.photoURL}
                                             className="profileImage"
                                             alt="Profile"
                                           />
@@ -419,6 +423,6 @@ function BlogComponent(props) {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default BlogComponent;

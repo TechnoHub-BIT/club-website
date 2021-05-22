@@ -8,7 +8,6 @@ import { Zoom } from "react-reveal";
 import { useParams } from "react-router";
 
 function BlogListComponent(props) {
-
   const { blogcategory } = useParams();
   const [blogedit, setblogs] = useState([]);
 
@@ -38,32 +37,35 @@ function BlogListComponent(props) {
           </div>
           {blogedit.map((Blogs) => {
             counter++;
-            if(blogcategory === Blogs.blogcategory)
-            return (
-              <Zoom>
-                <a href={"/blog/" + blogcategory + "/" + Blogs.id}>
-                  <img
-                    src={
-                      "https://drive.google.com/uc?export=view&id=" +
-                      Blogs.blogimageurl
-                    }
-                    className="blogImage"
-                  />
-                  <div className="blogHeader">
-                    <div className="headerContent">
-                      <div className="blogTitle">{Blogs.blogtitle}</div>
-                      <div className="blogAuthor">by {Blogs.blogauthor}</div>
-                      <div className="blogCategory">
-                        in {Blogs.blogcategory} Posts
-                      </div>
-                      <div className="blogDate">
-                        Posted on {Moment(Blogs.blogdate).format("ll")}
+            if (blogcategory === Blogs.blogcategory)
+              return (
+                <Zoom>
+                  <a
+                    href={"/blog/" + blogcategory + "/" + Blogs.id}
+                    className="singleBlog"
+                  >
+                    <img
+                      src={
+                        "https://drive.google.com/uc?export=view&id=" +
+                        Blogs.blogimageurl
+                      }
+                      className="blogImage"
+                    />
+                    <div className="blogHeader">
+                      <div className="headerContent">
+                        <div className="blogTitle">{Blogs.blogtitle}</div>
+                        <div className="blogAuthor">by {Blogs.blogauthor}</div>
+                        <div className="blogCategory">
+                          in {Blogs.blogcategory} Posts
+                        </div>
+                        <div className="blogDate">
+                          Posted on {Moment(Blogs.blogdate).format("ll")}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </Zoom>
-            );
+                  </a>
+                </Zoom>
+              );
           })}
           {counter === 0 ? (
             <div>
