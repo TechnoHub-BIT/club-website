@@ -27,6 +27,9 @@ const AddEvent = () => {
   };
 
   const [eventdate, setEventDate] = useState("");
+  const date = (e) => {
+    setEventDate(e.target.value);
+  };
 
   const [eventimage, setEventImage] = useState("");
   const image = (e) => {
@@ -105,28 +108,18 @@ const AddEvent = () => {
             <option value="Past Event"> Past Event</option>
           </select>
         </div>
-        {/* <div className="input-group"> */}
-        <h3>Date</h3>
-        <DatePicker
-          selected={eventdate}
-          onChange={(date) => setEventDate(date)}
-          dateFormat="dd/MM/yyyy"
-          isClearable
-          showYearDropdown
-          scrollableMonthYearDropdown
-        />
-        {/* <div className="input-group">
+        <div className="input-group">
           <input
             type="date"
             name="date"
             id="date"
-            onChange={image}
-            value={eventimage}
+            onChange={date}
+            value={eventdate}
             placeholder="Event Date"
             required
           />
           <label for="date">Event Date</label>
-        </div> */}
+        </div>
         <div className="input-group">
           <input
             type="text"

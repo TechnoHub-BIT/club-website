@@ -66,7 +66,7 @@ const EventList = () => {
                           <div className="cardBody">
                             <h2 className="cardTitle">{item.eventtitle}</h2>
                             <h5 className="cardSubtitle">
-                              {Moment(item.eventdate.toDate()).format("ll")}
+                              {Moment(item.eventdate).format("ll")}
                             </h5>
                           </div>
                         </div>
@@ -89,7 +89,7 @@ const EventList = () => {
                           <div className="cardBody">
                             <h2 className="cardTitle">{item.eventtitle}</h2>
                             <h5 className="cardSubtitle">
-                              {Moment(item.eventdate.toDate()).format("ll")}
+                              {Moment(item.eventdate).format("ll")}
                             </h5>
                           </div>
                         </div>
