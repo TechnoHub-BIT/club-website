@@ -98,7 +98,6 @@
 import React, { useEffect, useState } from "react";
 import "./BlogListComponent.css";
 import { db } from "../../../firebase";
-import queryString from "../query";
 import { Alert, ButtonToggle } from "reactstrap";
 import Moment from "moment";
 import { Helmet } from "react-helmet";

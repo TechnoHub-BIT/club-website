@@ -140,7 +140,10 @@ const CategoriesComponent = () => {
               blogcategory.map((blog) => {
                 return (
                   <Zoom>
-                    <a href={"/blog/" + blog.blogcategorytype} className="singleCategory">
+                    <a
+                      href={"/blog/" + blog.blogcategorytype}
+                      className="singleCategory"
+                    >
                       <img
                         src={
                           "https://drive.google.com/uc?export=view&id=" +

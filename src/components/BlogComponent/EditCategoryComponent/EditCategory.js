@@ -22,9 +22,7 @@ class EditCategory extends Component {
   };
 
   componentDidMount() {
-    const ref = db
-      .collection("Blogcategory")
-      .doc(this.props.match.params.id);
+    const ref = db.collection("Blogcategory").doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const Blogcategory = doc.data();
@@ -48,7 +46,9 @@ class EditCategory extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { blogcategorynameurl, blogcategorytype } = this.state;
-    const updateRef = db.collection("Blogcategory").doc(this.props.match.params.id);
+    const updateRef = db
+      .collection("Blogcategory")
+      .doc(this.props.match.params.id);
     updateRef
       .set({
         blogcategorynameurl,

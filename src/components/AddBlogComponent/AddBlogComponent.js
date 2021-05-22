@@ -28,10 +28,7 @@ export default function AddBlogComponent() {
   const category = (e) => {
     setCategory(e.target.value);
   };
-  const [blogcategoryid, setBlogCategoryId] = useState("");
-  const categoryid = (e) => {
-    setBlogCategoryId(e.target.value);
-  };
+
   const [blogauthor, setAuthor] = useState("");
   const author = (e) => {
     setAuthor(e.target.value);
@@ -60,11 +57,9 @@ export default function AddBlogComponent() {
       blogimageurl !== ""
     ) {
       e.preventDefault();
-      db.collection("NewBlogcategory")
-        .doc(blogcategoryid)
-        .collection("CBlogs")
-        .doc()
-        .set({
+      db
+        .collection("Blogs")
+        .add({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
           blogauthor: blogauthor,
@@ -97,7 +92,7 @@ export default function AddBlogComponent() {
   const blogcategorysave = (e, id) => {
     if (blogcategorytype !== "" && blogcategorynameurl !== "") {
       e.preventDefault();
-      db.collection("NewBlogcategory")
+      db.collection("Blogcategory")
         .add({
           blogcategorytype: blogcategorytype,
           blogcategorynameurl: blogcategorynameurl,
@@ -123,7 +118,7 @@ export default function AddBlogComponent() {
     }
   }, []);
   const [list, setList] = useState([]);
-  const refe = db.collection("NewBlogcategory");
+  const refe = db.collection("Blogcategory");
   useEffect(() => {
     const fetchdata = async () => {
       refe.onSnapshot(function (data) {
@@ -204,33 +199,12 @@ export default function AddBlogComponent() {
                   {list.map((cat) => {
                     return (
                       <option value={cat.blogcategorytype}>
-                        {cat.blogcategorytype} {cat.id}
+                        {cat.blogcategorytype} 
                       </option>
                     );
                   })}
                 </select>
               </div>
-              <div className="input-group">
-                <select
-                  name="privacy"
-                  id="privacy"
-                  onChange={categoryid}
-                  value={blogcategoryid}
-                  required
-                >
-                  <option value="">--Blog Category List--</option>
-                  {list.map((cat) => {
-                    return (
-                      <option value={cat.id}>
-                        {cat.blogcategorytype} {cat.id}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              {/* <div className="input-group">
-                <AddCategory change={category} value={blogcategory} />
-              </div> */}
               <div className="input-group">
                 <select
                   name="privacy"

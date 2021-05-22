@@ -194,7 +194,7 @@ import {
 } from "react-share";
 
 import { db } from "../../firebase";
-import queryString from "./query";
+
 import { Alert, Button, ButtonToggle } from "reactstrap";
 import Moment from "moment";
 import { Helmet } from "react-helmet";
@@ -202,7 +202,6 @@ import { Link, useParams } from "react-router-dom";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Zoom, Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
-import LikeButton from "./LikeButton";
 import { doc } from "prettier";
 import EditComments from "./EditComments/EditComments";
 
@@ -223,9 +222,7 @@ function BlogComponent(props) {
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
   const [blogedit, setblogs] = useState("");
-  const ref = db
-    .collection("Blogs")
-    .doc(blogname);
+  const ref = db.collection("Blogs").doc(blogname);
   useEffect(() => {
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -238,15 +235,14 @@ function BlogComponent(props) {
           blogimageurl: Test.blogimageurl,
           blogdate: Test.blogdate,
           blogcontent: Test.blogcontent,
-          like:Test.like
+          like: Test.like,
         });
       }
     });
   }, []);
 
   function onDeleteComment(id) {
-    db
-      .collection("Blogs")
+    db.collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .doc(id)
@@ -268,15 +264,12 @@ function BlogComponent(props) {
   // storing comments in firestore
   const onSubmit = () => {
     console.log(authorid);
-     db.collection("Blogs")
-      .doc(blogname)
-      .collection("Comments")
-      .add({
-        fullname: fullname,
-        photourl: photourl,
-        comment: comment,
-        date: date,
-      });
+    db.collection("Blogs").doc(blogname).collection("Comments").add({
+      fullname: fullname,
+      photourl: photourl,
+      comment: comment,
+      date: date,
+    });
 
     db.collection("members")
       .doc(authorid)
@@ -314,7 +307,7 @@ function BlogComponent(props) {
       reply: "",
       fullname: "",
       photourl: "",
-      date: ""
+      date: "",
     },
   ]);
 
@@ -331,27 +324,21 @@ function BlogComponent(props) {
         reply: "",
         fullname: "",
         photourl: "",
-        date: ""
+        date: "",
       },
     ]);
   };
   // storing the reply of comment in firestore
   const onRSubmit = (id) => {
-    db
-      .collection("Blogs")
-      .doc(blogname)
-      .collection("Comments")
-      .doc(id)
-      .update({
-replies:replies
-      });
+    db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
+      replies: replies,
+    });
   };
 
   const [commentReply, setCommentReply] = useState([]);
   const [show, setShow] = useState(false);
   function onVR(id) {
-    db
-      .collection("Blogs")
+    db.collection("Blogs")
       .doc(blogname)
       .collection("Comments")
       .doc(id)
@@ -406,14 +393,12 @@ replies:replies
   //  })
   // }
   const incrementLike = () => {
- const ref =  db
-      .collection("Blogs")
-      .doc(blogname);
-ref.onSnapshot((doc) => {
-  const data = doc.data().like;
-  console.log(data)
-  // setLike(data + 1);
-});
+    const ref = db.collection("Blogs").doc(blogname);
+    ref.onSnapshot((doc) => {
+      const data = doc.data().like;
+      console.log(data);
+      // setLike(data + 1);
+    });
   };
 
   // useEffect(() => {
@@ -429,11 +414,9 @@ ref.onSnapshot((doc) => {
   //       })
   // }, []);
 
-
   //Deleting blog
   function onDeleteBlog() {
-    db
-      .collection("Blogs")
+    db.collection("Blogs")
       .doc(blogname)
       .delete()
       .catch((err) => {
@@ -540,10 +523,7 @@ ref.onSnapshot((doc) => {
                             // value={reply}
                             placeholder={"reply "}
                           />
-                          <button
-                            type="submit"
-                            onClick={() => addReply(users)}
-                          >
+                          <button type="submit" onClick={() => addReply(users)}>
                             add reply
                           </button>
                         </div>
@@ -612,8 +592,8 @@ ref.onSnapshot((doc) => {
             <meta name="title" content={blogedit.blogtitle} />
           </Helmet>
         )}
-        <button type="submit" onClick={onDeleteBlog}> Delete Blog</button>
-        <a href={"/editblog/" + blogcategory + "/"+ blogname } >
+        {/* <button type="submit" onClick={onDeleteBlog}> Delete Blog</button> */}
+        <a href={"/editblog/" + blogcategory + "/" + blogname}>
           <button type="button">Edit</button>
         </a>
       </div>
