@@ -393,7 +393,7 @@ const CreateTest = () => {
                         onChange={description}
                         placeholder="Test description"
                       />
-                      <label htmlFor="Test Description">Test Description</label>
+                      <label htmlFor="testdescription">Test Description</label>
                     </div>
                   </div>
                 </form>

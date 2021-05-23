@@ -37,7 +37,6 @@ const SingleTest = (props) => {
   const [tests, setTest] = useState([]);
 
   const [quesLength, setLength] = useState();
-  const [duration, setDuration] = useState();
   const [answers, setAnswers] = useState([]);
   const [options, setOptions] = useState([]);
 
@@ -46,7 +45,6 @@ const SingleTest = (props) => {
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
-        setDuration(Test.duration.charAt(0));
         setLength(Test.questions.length);
         setTest({
           id: doc.id,
@@ -63,6 +61,7 @@ const SingleTest = (props) => {
           teststatus: Test.teststatus,
           testprivacy: Test.testprivacy,
           privacypassword: Test.privacypassword,
+          testdescription: Test.testdescription,
         });
       } else
         showModal(
@@ -504,6 +503,12 @@ const SingleTest = (props) => {
                         <strong>Marks for each Wrong answer:</strong> -
                         {tests.negativemarks}
                       </li>
+                      {tests.testdescription ? (
+                        <li>
+                          <strong>Additional Information:</strong>{" "}
+                          <p>{tests.testdescription}</p>
+                        </li>
+                      ) : null}
                     </ul>
                   </div>
                   <div className="navigation">
@@ -794,7 +799,7 @@ const SingleTest = (props) => {
                           <strong>Option (D):&nbsp;&nbsp;</strong>
                           {item.op4}
                         </div>
-                        {item.op5 != null ? (
+                        {item.op5 ? (
                           <div>
                             <strong>Option (E):&nbsp;&nbsp;</strong>
                             {item.op5}

@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { db } from "../../../firebase";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import { TextArea } from "semantic-ui-react";
+import { useAuth } from "../../../contexts/AuthContext";
 
 class EditTest extends Component {
   //     const { currentUser, logout } = useAuth();
@@ -34,7 +35,7 @@ class EditTest extends Component {
     profiles: "",
     testprivacy: "",
     privacypassword: "",
-    testdescription:"",
+    testdescription: "",
     questions: [
       {
         question: "",
@@ -70,7 +71,7 @@ class EditTest extends Component {
         questions: test.questions,
         testprivacy: test.testprivacy,
         privacypassword: test.privacypassword,
-        testdescription:test.testdescription,
+        testdescription: test.testdescription,
       });
     });
   }
@@ -383,14 +384,14 @@ class EditTest extends Component {
                         onChange={this.onChange}
                         placeholder="Test description"
                       />
-                      <label htmlFor="Test Description">Test Description</label>
+                      <label htmlFor="testdescription">Test Description</label>
                     </div>
                   </div>
                 </form>
                 <form>
                   {this.state.questions &&
                     this.state.questions.map((questions, index) => (
-                      <div>
+                      <div key={index}>
                         <h3 className="smallTitle">
                           Question No. {index + 1} Details&nbsp;&nbsp;
                           {questions.length !== 1 && (
@@ -403,12 +404,12 @@ class EditTest extends Component {
                             </button>
                           )}
                         </h3>
-                        <div class="inputGroup" key={index}>
+                        <div class="inputGroup">
                           <div className="input">
                             <TextArea
                               type="text"
                               name="question"
-                              id={index}
+                              id={"question" + index}
                               value={questions.question}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Question"
@@ -416,12 +417,12 @@ class EditTest extends Component {
                             <label htmlFor={"question" + index}>Question</label>
                           </div>
                         </div>
-                        <div class="inputGroup" key={index}>
+                        <div class="inputGroup">
                           <div className="input">
                             <TextArea
                               type="text"
                               name="explanation"
-                              id={index}
+                              id={"explanation" + index}
                               value={questions.explanation}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="explanation"
@@ -447,7 +448,7 @@ class EditTest extends Component {
                             <input
                               name="correctAnswer"
                               type="text"
-                              id={index}
+                              id={"correctAnswer" + index}
                               value={questions.correctAnswer}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Correct Option"
@@ -462,7 +463,7 @@ class EditTest extends Component {
                             <input
                               type="text"
                               name="op1"
-                              id={index}
+                              id={"optiona" + index}
                               value={questions.op1}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option A"
@@ -473,8 +474,7 @@ class EditTest extends Component {
                             <input
                               type="text"
                               name="op2"
-                              id={index}
-                              data-id={index}
+                              id={"optionb" + index}
                               value={questions.op2}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option B"
@@ -485,7 +485,7 @@ class EditTest extends Component {
                             <input
                               type="text"
                               name="op3"
-                              id={index}
+                              id={"optionc" + index}
                               value={questions.op3}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option C"
@@ -496,7 +496,7 @@ class EditTest extends Component {
                             <input
                               type="text"
                               name="op4"
-                              id={index}
+                              id={"optiond" + index}
                               value={questions.op4}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option D"
@@ -507,7 +507,7 @@ class EditTest extends Component {
                             <input
                               type="text"
                               name="op5"
-                              id={index}
+                              id={"optione" + index}
                               value={questions.op5}
                               onChange={(e) => this.handleChange(e, index)}
                               placeholder="Option E"

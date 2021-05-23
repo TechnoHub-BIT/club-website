@@ -51,6 +51,15 @@
           list-style-type: none;
 
           li {
+            p {
+              width: calc(80vw - 60px - 1em);
+              word-wrap: break-word;
+              color: #727070;
+              font-size: 0.95rem;
+              margin-top: 0.5em;
+              margin-left: 1em;
+            }
+
             strong {
               font-weight: 500;
             }
@@ -288,6 +297,13 @@
 
           ul {
             margin-left: 0;
+
+            li {
+              p {
+                width: calc(100vw - 40px - 60px - 1em);
+                font-size: 0.9rem;
+              }
+            }
           }
 
           .navigation {
