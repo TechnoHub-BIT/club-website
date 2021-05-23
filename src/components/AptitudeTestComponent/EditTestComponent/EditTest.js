@@ -5,20 +5,11 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import { TextArea } from "semantic-ui-react";
 
-class EditTest extends Component {
-  //     const { currentUser, logout } = useAuth();
-  //   const [profiles, setProfiles] = useState([]);
+const AuthContext = React.createContext();
 
-  //   useEffect(() => {
-  //     if (currentUser) {
-  //       db.collection("members")
-  //         .doc(currentUser.uid)
-  //         .onSnapshot(function (doc) {
-  //           const data = doc.data();
-  //           setState(data);
-  //         });
-  //     }
-  //   }, [currentUser]);
+class EditTest extends Component {
+  
+
 
   state = {
     title: "",

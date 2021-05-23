@@ -92,14 +92,14 @@ const BlogComponent = (props) => {
       date: date,
     });
 
-    db.collection("members")
-      .doc(authorid)
-      .collection("notifications")
-      .doc()
-      .set({
-        fullname: fullname,
-        photourl: photourl,
-      });
+    // db.collection("members")
+    //   .doc(authorid)
+    //   .collection("notifications")
+    //   .doc()
+    //   .set({
+    //     fullname: fullname,
+    //     photourl: photourl,
+    //   });
   };
 
   // fetching the comment from firestore
@@ -119,10 +119,10 @@ const BlogComponent = (props) => {
     return unsubscribe;
   }, []);
 
-  // const [reply, setReply] = useState([]);
-  // const Rcomment = (e) => {
-  //   setReply(e.target.value);
-  // };
+  const [reply, setReply] = useState([]);
+  const Rcomment = (e) => {
+    setReply(e.target.value);
+  };
   const [replies, setReplies] = useState([
     {
       reply: "",
@@ -149,6 +149,7 @@ const BlogComponent = (props) => {
       },
     ]);
   };
+  
   // storing the reply of comment in firestore
   const onRSubmit = (id) => {
     db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
