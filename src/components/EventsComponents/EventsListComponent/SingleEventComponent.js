@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "./ArmedForceComponent.css";
 import {
   Card,
   CardImg,
@@ -14,7 +13,7 @@ import { db } from "../../../firebase";
 import Moment from "moment";
 import { useParams } from "react-router";
 
-const SingleEvent = (props) => {
+const SingleEvent = () => {
   const { eventname } = useParams();
   // fetch the event
   const [event, setEvent] = useState("");
@@ -45,7 +44,6 @@ const SingleEvent = (props) => {
           top
           width="100%"
           src={event.eventimage}
-          alt={event.eventtitle}
           alt={event.eventtitle}
         />
         <Col>

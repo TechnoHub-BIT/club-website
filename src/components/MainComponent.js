@@ -39,10 +39,10 @@ import BlogList from "./BlogComponent/BlogListComponent/BlogListComponent";
 //Admin Pages
 import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponent";
 
-//Events Pages
-import AddEvent from "./EventsComponents/AddEvents/AddEvents";
-import EventList from "./EventsComponents/DisplayEvents/EventList";
-import SingleEvent from "./EventsComponents/DisplayEvents/SingleEvent";
+//Event Pages
+import AddEvent from "./EventsComponents/AddEventComponent/AddEventComponent";
+import EventsList from "./EventsComponents/EventsListComponent/EventsListComponent";
+import SingleEvent from "./EventsComponents/EventsListComponent/SingleEventComponent";
 
 import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
 import ArmedForces from "./EventsComponents/EventPagesComponent/ArmedForceComponent/ArmedForceComponent";
@@ -95,7 +95,11 @@ class Main extends Component {
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/edit" component={EditProfile} />
             <PrivateRoute exact path="/settings" component={Settings} />
-            <PrivateRoute exact path="/notifications" component={Notifications}/>
+            <PrivateRoute
+              exact
+              path="/notifications"
+              component={Notifications}
+            />
             <PrivateRoute exact path="/register" component={Register} />
 
             {/* Admin Pages */}
@@ -127,10 +131,14 @@ class Main extends Component {
             />
 
             {/* Event Pages */}
-            <PrivateRoute exact path="/addevent" component={AddEvent} />
-            <Route exact path="/events" component={EventList} />
+            <Route exact path="/events" component={EventsList} />
             <Route exact path="/events/:eventname" component={SingleEvent} />
-            <PrivateRoute exact path ="/editevent/:eventname" component={EditEvent} />
+            <PrivateRoute exact path="/addevent" component={AddEvent} />
+            <PrivateRoute
+              exact
+              path="/editevent/:eventname"
+              component={EditEvent}
+            />
 
             <Route exact path="/hackathon2020" component={Hackathon2020} />
             <Route exact path="/hult2021" component={TechExpo2019} />

@@ -190,7 +190,7 @@ const CreateTest = () => {
         .catch((error) => {
           alert(error.message);
         });
-    } else {
+    } else
       showModal(
         <AlertModal
           message="Please fill in all the details!"
@@ -200,7 +200,6 @@ const CreateTest = () => {
           close={closeModal}
         />
       );
-    }
   };
 
   return (
