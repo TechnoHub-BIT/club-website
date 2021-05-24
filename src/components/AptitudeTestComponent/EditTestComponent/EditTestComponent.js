@@ -37,7 +37,7 @@ class EditTest extends Component {
   };
 
   componentDidMount() {
-    const ref = db.collection("Tests").doc(this.props.testName);
+    const ref = db.collection("Tests").doc(this.props.id);
     ref.get().then((doc) => {
       const test = doc.data();
       this.setState({
