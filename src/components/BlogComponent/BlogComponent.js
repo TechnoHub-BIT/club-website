@@ -22,6 +22,8 @@ import { Zoom, Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
 import { doc } from "prettier";
 import EditComments from "./EditComments/EditComments";
+import firebase from "firebase";
+
 
 const BlogComponent = (props) => {
   const { blogcategory, blogname } = useParams();
@@ -123,7 +125,7 @@ const BlogComponent = (props) => {
     setReply(e.target.value);
   };
 
-  const [addreply,setAddReply] = useState(false)
+  const [addreply, setAddReply] = useState(false);
   const [replies, setCommentReply] = useState([
     {
       reply: "",
@@ -132,9 +134,9 @@ const BlogComponent = (props) => {
       date: "",
     },
   ]);
-const handleReply = (e) => {
-  setCommentReply(e.target.value)
-}
+  const handleReply = (e) => {
+    setCommentReply(e.target.value);
+  };
   // const handleReply = (e, index) => {
   //   const { name, value } = e.target;
   //   const list = [...replies];
@@ -152,14 +154,28 @@ const handleReply = (e) => {
       },
     ]);
   };
-  
-  // storing the reply of comment in firestore
-  const onRSubmit = (id) => {
-    db.collection("Blogs").doc(blogname).collection("Comments").doc(id).add({
-      replies: replies,
-    });
-  };
 
+  // storing the reply of comment in firestore
+  // const onRSubmit = (id) => {
+  //   db.collection("Blogs").doc(blogname).collection("Comments").doc(id).add({
+  //     replies: replies,
+  //   });
+  // };
+
+  var onRSubmit = (id) => {
+    db.collection("Blogs")
+      .doc(blogname)
+      .collection("Comments")
+      .doc(id)
+      .update({
+        replies: firebase.firestore.FieldValue.arrayUnion({
+          // reply: reply,
+          fullname: fullname,
+          photourl: photourl,
+          date: date,
+        }),
+      });
+  };
 
   const [show, setShow] = useState(false);
   function onVR(id) {
@@ -254,185 +270,192 @@ const handleReply = (e) => {
   const shareUrl = "..";
   const shareText = "..";
 
-   return <h3 className="text-center">Blogs are Under Construction</h3>;
+  //  return <h3 className="text-center">Blogs are Under Construction</h3>;
 
-  // return (
-  //   <React.Fragment>
-  //     <div>
-  //       <div>
-  //         <HeaderTitle
-  //           heading={blogedit.blogtitle}
-  //           blogImage={blogedit.blogimageurl}
-  //           author={blogedit.blogauthor}
-  //           date={Moment(blogedit.blogdate).format("ll")}
-  //         />
-  //         <div className="blogContainer">
-  //           <div className="blogContents">
-  //             <div>
-  //               <Fade>
-  //                 <div
-  //                   dangerouslySetInnerHTML={{
-  //                     __html: blogedit.blogcontent,
-  //                   }}
-  //                   className="blogDetails"
-  //                 ></div>
+  return (
+    <React.Fragment>
+      <div>
+        <div>
+          <HeaderTitle
+            heading={blogedit.blogtitle}
+            blogImage={blogedit.blogimageurl}
+            author={blogedit.blogauthor}
+            date={Moment(blogedit.blogdate).format("ll")}
+          />
+          <div className="blogContainer">
+            <div className="blogContents">
+              <div>
+                <Fade>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: blogedit.blogcontent,
+                    }}
+                    className="blogDetails"
+                  ></div>
 
-  //                 <div className="shareButtons">
-  //                   <h6>Share on:</h6>
-  //                   <FacebookShareButton url={shareUrl} quote={shareText}>
-  //                     <FacebookIcon size="32" round={true} />
-  //                   </FacebookShareButton>
-  //                   <TwitterShareButton url={shareUrl} title={shareText}>
-  //                     <TwitterIcon size="32" round={true} />
-  //                   </TwitterShareButton>
-  //                   <WhatsappShareButton url={shareUrl} title={shareText}>
-  //                     <WhatsappIcon size="32" round={true} />
-  //                   </WhatsappShareButton>
-  //                   <TelegramShareButton url={shareUrl} title={shareText}>
-  //                     <TelegramIcon size="32" round={true} />
-  //                   </TelegramShareButton>
-  //                   <LinkedinShareButton url={shareUrl} title={shareText}>
-  //                     <LinkedinIcon size="32" round={true} />
-  //                   </LinkedinShareButton>
-  //                 </div>
-  //               </Fade>
-  //               <div>
-  //                 no.of likes
-  //                 <Button type="submit" color="primary" onClick={incrementLike}>
-  //                   {blogedit.like} 👏
-  //                 </Button>
-  //               </div>
-  //               <div>
-  //                 <input type="text" onChange={Ucomment} value={comment} />
-  //                 <button type="submit" onClick={onSubmit}>
-  //                   Add comment
-  //                 </button>
-  //               </div>
-  //               <div>
-  //                 {blogcomment.map((user,index) => {
-  //                   const users = user.id;
-  //                   return (
-  //                     <div>
-  //                       <div>{user.fullname}</div>
-  //                       <div>{user.date}</div>
-  //                       <div>
-  //                         {user.photourl ? (
-  //                           <img
-  //                             src={user.photourl}
-  //                             className="profileImage"
-  //                             alt="Profile"
-  //                           />
-  //                         ) : (
-  //                           <img
-  //                             src="./assets/images/profile-user.svg"
-  //                             className="profileImage"
-  //                             alt="Profile"
-  //                           />
-  //                         )}
-  //                       </div>
-  //                       <div>{user.comment}</div>
-  //                       {user.fullname === currentProfile.fullname ? (
-  //                         <div>
-  //                           <div>
-  //                             <button onClick={() => onDeleteComment(user.id)}>
-  //                               Delete
-  //                             </button>
-  //                           </div>
-  //                           {/* <div>
-  //                           <button onClick={() => onEdit(user.id)}>
-  //                             Edit
-  //                           </button>
-  //                         </div> */}
-  //                         </div>
-  //                       ) : null}
-                        
-  //                         {addreply ? 
-  //                         <div>
-  //                         <input
-  //                           type="text"
-  //                           name="reply"
-  //                           onChange={(e) => handleReply(e)}
-  //                           value={replies}
-  //                           placeholder={"reply "}
-  //                         />
-  //                         <button type="submit" onClick={() => onRSubmit(users)}>
-  //                           submit reply
-  //                         </button>
-  //                         </div>
-  //                         :null}
-  //                      <div><button onClick={() => setAddReply(!addreply)}>Add reply</button></div>
-  //                       <div>
-  //                         {/* <button onClick={() => setShow(!true)}> */}
-  //                         <button onClick={() => onVR(user.id)}>
-  //                           view reply
-  //                         </button>
-  //                         {/* {show ? (
-  //                           <div>
-  //                             <div>
-  //                               {replies && replies.map((item) => {
-  //                                 return (
-  //                                   <div>
-  //                                     <div>{item.fullname}</div>
-  //                                     <div>{item.date}</div>
-  //                                     <div>
-  //                                       {currentUser.photoURL ? (
-  //                                         <img
-  //                                           src={currentUser.photoURL}
-  //                                           className="profileImage"
-  //                                           alt="Profile"
-  //                                         />
-  //                                       ) : (
-  //                                         <img
-  //                                           src="./assets/images/profile-user.svg"
-  //                                           className="profileImage"
-  //                                           alt="Profile"
-  //                                         />
-  //                                       )}
-  //                                     </div>
-  //                                     <div>{item.reply}</div>
-  //                                   </div>
-  //                                 );
-  //                               })}
-  //                             </div>
-  //                           </div>
-  //                         ) : null} */}
-  //                       </div>
-  //                     </div>
-  //                   );
-  //                 })}
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       {counter === 0 ? (
-  //         <div className="errorMessage">
-  //           <Helmet>
-  //             <title>Blogs | TechnoHub BITD</title>
-  //           </Helmet>
-  //           <Zoom>
-  //             <Alert color="danger" style={{ textAlign: "center" }}>
-  //               Oops! Looks like this blog does not exist.
-  //               <br />
-  //               <a href="/blog">
-  //                 <ButtonToggle color="danger">Go Back</ButtonToggle>
-  //               </a>
-  //             </Alert>
-  //           </Zoom>
-  //         </div>
-  //       ) : (
-  //         <Helmet>
-  //           <title>Blog post by {blogedit.blogauthor} | TechnoHub BITD</title>
-  //           <meta name="title" content={blogedit.blogtitle} />
-  //         </Helmet>
-  //       )}
-  //       {/* <button type="submit" onClick={onDeleteBlog}> Delete Blog</button> */}
-  //       <a href={"/editblog/" + blogcategory + "/" + blogname}>
-  //         <button type="button">Edit</button>
-  //       </a>
-  //     </div>
-  //   </React.Fragment>
-  // );
+                  <div className="shareButtons">
+                    <h6>Share on:</h6>
+                    <FacebookShareButton url={shareUrl} quote={shareText}>
+                      <FacebookIcon size="32" round={true} />
+                    </FacebookShareButton>
+                    <TwitterShareButton url={shareUrl} title={shareText}>
+                      <TwitterIcon size="32" round={true} />
+                    </TwitterShareButton>
+                    <WhatsappShareButton url={shareUrl} title={shareText}>
+                      <WhatsappIcon size="32" round={true} />
+                    </WhatsappShareButton>
+                    <TelegramShareButton url={shareUrl} title={shareText}>
+                      <TelegramIcon size="32" round={true} />
+                    </TelegramShareButton>
+                    <LinkedinShareButton url={shareUrl} title={shareText}>
+                      <LinkedinIcon size="32" round={true} />
+                    </LinkedinShareButton>
+                  </div>
+                </Fade>
+                <div>
+                  no.of likes
+                  <Button type="submit" color="primary" onClick={incrementLike}>
+                    {blogedit.like} 👏
+                  </Button>
+                </div>
+                <div>
+                  <input type="text" onChange={Ucomment} value={comment} />
+                  <button type="submit" onClick={onSubmit}>
+                    Add comment
+                  </button>
+                </div>
+                <div>
+                  {blogcomment.map((user, index) => {
+                    const users = user.id;
+                    return (
+                      <div>
+                        <div>{user.fullname}</div>
+                        <div>{user.date}</div>
+                        <div>
+                          {user.photourl ? (
+                            <img
+                              src={user.photourl}
+                              className="profileImage"
+                              alt="Profile"
+                            />
+                          ) : (
+                            <img
+                              src="./assets/images/profile-user.svg"
+                              className="profileImage"
+                              alt="Profile"
+                            />
+                          )}
+                        </div>
+                        <div>{user.comment}</div>
+                        {user.fullname === currentProfile.fullname ? (
+                          <div>
+                            <div>
+                              <button onClick={() => onDeleteComment(user.id)}>
+                                Delete
+                              </button>
+                            </div>
+                            {/* <div>
+                            <button onClick={() => onEdit(user.id)}>
+                              Edit
+                            </button>
+                          </div> */}
+                          </div>
+                        ) : null}
+
+                        {addreply ? (
+                          <div>
+                            <input
+                              type="text"
+                              name="reply"
+                              onChange={(e) => handleReply(e)}
+                              value={reply}
+                              placeholder={"reply "}
+                            />
+                            <button
+                              type="submit"
+                              onClick={() => onRSubmit(users)}
+                            >
+                              submit reply
+                            </button>
+                          </div>
+                        ) : null}
+                        <div>
+                          <button onClick={() => setAddReply(!addreply)}>
+                            Add reply
+                          </button>
+                        </div>
+                        <div>
+                          {/* <button onClick={() => setShow(!true)}> */}
+                          <button onClick={() => onVR(user.id)}>
+                            view reply
+                          </button>
+                          {/* {show ? (
+                            <div>
+                              <div>
+                                {replies && replies.map((item) => {
+                                  return (
+                                    <div>
+                                      <div>{item.fullname}</div>
+                                      <div>{item.date}</div>
+                                      <div>
+                                        {currentUser.photoURL ? (
+                                          <img
+                                            src={currentUser.photoURL}
+                                            className="profileImage"
+                                            alt="Profile"
+                                          />
+                                        ) : (
+                                          <img
+                                            src="./assets/images/profile-user.svg"
+                                            className="profileImage"
+                                            alt="Profile"
+                                          />
+                                        )}
+                                      </div>
+                                      <div>{item.reply}</div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          ) : null} */}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {counter === 0 ? (
+          <div className="errorMessage">
+            <Helmet>
+              <title>Blogs | TechnoHub BITD</title>
+            </Helmet>
+            <Zoom>
+              <Alert color="danger" style={{ textAlign: "center" }}>
+                Oops! Looks like this blog does not exist.
+                <br />
+                <a href="/blog">
+                  <ButtonToggle color="danger">Go Back</ButtonToggle>
+                </a>
+              </Alert>
+            </Zoom>
+          </div>
+        ) : (
+          <Helmet>
+            <title>Blog post by {blogedit.blogauthor} | TechnoHub BITD</title>
+            <meta name="title" content={blogedit.blogtitle} />
+          </Helmet>
+        )}
+        {/* <button type="submit" onClick={onDeleteBlog}> Delete Blog</button> */}
+        <a href={"/editblog/" + blogcategory + "/" + blogname}>
+          <button type="button">Edit</button>
+        </a>
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default BlogComponent;
