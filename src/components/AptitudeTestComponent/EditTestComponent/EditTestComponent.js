@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import { db } from "../../../firebase";
-import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import { TextArea } from "semantic-ui-react";
@@ -41,7 +40,6 @@ class EditTest extends Component {
     ref.get().then((doc) => {
       const test = doc.data();
       this.setState({
-        // id: doc.id,
         title: test.title,
         duration: test.duration,
         totalmarks: test.totalmarks,
@@ -179,7 +177,6 @@ class EditTest extends Component {
           <title>Aptitude Tests | TechnoHub BITD</title>
           <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
         </Helmet>
-        {/* {profiles.id === 1 || profiles.id === 4 ? ( */}
         <Fade up>
           <div className="createTestCont">
             <h1 className="title">
@@ -520,20 +517,6 @@ class EditTest extends Component {
             </div>
           </div>
         </Fade>
-        {/* ) : (
-        <AlertModal
-          message="You aren't authorized to access this page!"
-          icon="exclamation"
-          leftBtn="Go to Home"
-          rightBtn="View other Tests"
-        //   action={() => {
-        //     history.push("/home");
-        //   }}
-        //   close={() => {
-        //     history.push("/tests");
-        //   }}
-        />
-      )}  */}
       </React.Fragment>
     );
   }
