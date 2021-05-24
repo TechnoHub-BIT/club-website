@@ -15,6 +15,8 @@ import { db } from "../../../firebase";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 import { resetWarningCache } from "prop-types";
+import { useParams } from "react-router";
+
 
 class EditEvent extends Component {
   state = {
@@ -45,9 +47,14 @@ class EditEvent extends Component {
     state[e.target.name] = e.target.value;
     this.setState({ Blogs: state });
   };
+  contentChange = (value) => {
+    const currentState = this.state;
+    currentState.eventcontent = value;
+    this.setState(currentState);
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
-
     const {
       eventtitle,
       eventdate,
@@ -58,7 +65,7 @@ class EditEvent extends Component {
 
     const updateRef = db
       .collection("Events")
-      .doc(this.props.match.params.eventname);
+      .doc(this.props.eventName);
     updateRef
       .set({
         eventtitle,
@@ -76,27 +83,12 @@ class EditEvent extends Component {
           eventcontent: "",
           eventtype: "",
         });
-
-        this.props.history
-          .push("/events/")
-          .then(() => {
-            alert("Event Updated");
-          })
-          .catch((error) => {
-            alert(error.message);
-          });
+        this.props.historyPush();
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
   };
-
-  contentChange = (value) => {
-    const currentState = this.state;
-    currentState.blogcontent = value;
-    this.setState(currentState);
-  };
-
   render() {
     return (
       <React.Fragment>
@@ -113,7 +105,7 @@ class EditEvent extends Component {
           />
         </Breadcrumb>
         <div class="addEventForm">
-          <form>
+          <form onSubmit={this.onSubmit}>
             <div className="title">
               <h3>Edit Event</h3>
             </div>
@@ -187,7 +179,7 @@ class EditEvent extends Component {
               />
             </div>
             <div className="input-group w50p">
-              <button type="submit" onClick={this.onSubmit}>
+              <button type="submit">
                 Update Event
               </button>
             </div>
