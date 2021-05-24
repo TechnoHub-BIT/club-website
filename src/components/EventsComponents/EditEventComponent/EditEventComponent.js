@@ -15,6 +15,7 @@ import { db } from "../../../firebase";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 import { resetWarningCache } from "prop-types";
+import { useParams } from "react-router";
 
 class EditEvent extends Component {
   state = {
@@ -61,9 +62,7 @@ class EditEvent extends Component {
       eventtype,
     } = this.state;
 
-    const updateRef = db
-      .collection("Events")
-      .doc(this.props.eventName);
+    const updateRef = db.collection("Events").doc(this.props.eventName);
     updateRef
       .set({
         eventtitle,
@@ -177,9 +176,7 @@ class EditEvent extends Component {
               />
             </div>
             <div className="input-group w50p">
-              <button type="submit">
-                Update Event
-              </button>
+              <button type="submit">Update Event</button>
             </div>
           </form>
         </div>
