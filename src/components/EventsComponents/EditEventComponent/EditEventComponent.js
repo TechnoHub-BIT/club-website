@@ -15,8 +15,6 @@ import { db } from "../../../firebase";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 import { resetWarningCache } from "prop-types";
-import { useParams } from "react-router";
-
 
 class EditEvent extends Component {
   state = {
