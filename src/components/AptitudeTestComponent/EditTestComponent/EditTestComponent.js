@@ -92,7 +92,7 @@ class EditTest extends Component {
       privacypassword,
       testdescription,
     } = this.state;
-    const updateRef = db.collection("Tests").doc(this.props.match.params.id);
+    const updateRef = db.collection("Tests").doc(this.props.id);
     updateRef
       .update({
         title,
@@ -139,14 +139,7 @@ class EditTest extends Component {
             },
           ],
         });
-        this.props.history
-          .push("/tests")
-          .then(() => {
-            alert("Test update");
-          })
-          .catch((error) => {
-            alert(error.message);
-          });
+        this.props.historyPush();
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
