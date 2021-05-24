@@ -45,11 +45,6 @@ import EditEvent from "./EventsComponents/EditEventComponent/EditEventUserCheck"
 import EventsList from "./EventsComponents/EventsListComponent/EventsListComponent";
 import SingleEvent from "./EventsComponents/SingleEventComponent/SingleEventComponent";
 
-import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
-import ArmedForces from "./EventsComponents/EventPagesComponent/ArmedForceComponent/ArmedForceComponent";
-import TechExpo2019 from "./EventsComponents/EventPagesComponent/Tech-ExpoComponent/Tech-ExpoComponent";
-import Tedxbitd from "./EventsComponents/EventPagesComponent/TEDxBITDComponent/TEDxBITDComponent";
-
 //Aptitude Test Pages
 import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
 import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListComponent";
@@ -139,18 +134,6 @@ class Main extends Component {
               path="/editevent/:eventname"
               component={EditEvent}
             />
-
-            <Route exact path="/hackathon2020" component={Hackathon2020} />
-            <Route exact path="/hult2021" component={TechExpo2019} />
-            <Route exact path="/evbysurajsd" component={TechExpo2019} />
-            <Route exact path="/autocad" component={TechExpo2019} />
-            <Route exact path="/positionyourself" component={TechExpo2019} />
-            <Route exact path="/hut2020" component={TechExpo2019} />
-            <Route exact path="/roboticsworkshop" component={TechExpo2019} />
-            <Route exact path="/headstartfriday" component={TechExpo2019} />
-            <Route exact path="/armedforces" component={ArmedForces} />
-            <Route exact path="/techexpo2019" component={TechExpo2019} />
-            <Route exact path="/tedxbitd" component={Tedxbitd} />
 
             {/* Aptitude Test Pages */}
             <PrivateRoute exact path="/test/:id" component={SingleTest} />

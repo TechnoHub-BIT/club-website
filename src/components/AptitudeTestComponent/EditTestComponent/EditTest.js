@@ -9,9 +9,6 @@ import { useAuth } from "../../../contexts/AuthContext";
 const AuthContext = React.createContext();
 
 class EditTest extends Component {
-  
-
-
   state = {
     title: "",
     duration: "",
@@ -44,7 +41,7 @@ class EditTest extends Component {
   };
 
   componentDidMount() {
-    const ref = db.collection("Tests").doc(this.props.match.params.id);
+    const ref = db.collection("Tests").doc(this.props.id);
     ref.get().then((doc) => {
       const test = doc.data();
       this.setState({
@@ -99,7 +96,7 @@ class EditTest extends Component {
       privacypassword,
       testdescription,
     } = this.state;
-    const updateRef = db.collection("Tests").doc(this.props.match.params.id);
+    const updateRef = db.collection("Tests").doc(this.props.id);
     updateRef
       .update({
         title,
@@ -147,14 +144,7 @@ class EditTest extends Component {
             },
           ],
         });
-        this.props.history
-          .push("/tests")
-          .then(() => {
-            alert("Test update");
-          })
-          .catch((error) => {
-            alert(error.message);
-          });
+        this.props.historyPush();
       })
       .catch((error) => {
         console.error("Error adding document: ", error);

@@ -122,7 +122,9 @@ const BlogComponent = (props) => {
   const Rcomment = (e) => {
     setReply(e.target.value);
   };
-  const [replies, setReplies] = useState([
+
+  const [addreply,setAddReply] = useState(false)
+  const [replies, setCommentReply] = useState([
     {
       reply: "",
       fullname: "",
@@ -130,16 +132,18 @@ const BlogComponent = (props) => {
       date: "",
     },
   ]);
-
-  const handleChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...replies];
-    list[index][name] = value;
-    setReplies(list);
-  };
+const handleReply = (e) => {
+  setCommentReply(e.target.value)
+}
+  // const handleReply = (e, index) => {
+  //   const { name, value } = e.target;
+  //   const list = [...replies];
+  //   list[index][name] = value;
+  //   setCommentReply(list);
+  // };
 
   const addReply = () => {
-    setReplies([
+    setCommentReply([
       {
         reply: "",
         fullname: "",
@@ -151,12 +155,12 @@ const BlogComponent = (props) => {
   
   // storing the reply of comment in firestore
   const onRSubmit = (id) => {
-    db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
+    db.collection("Blogs").doc(blogname).collection("Comments").doc(id).add({
       replies: replies,
     });
   };
 
-  const [commentReply, setCommentReply] = useState([]);
+
   const [show, setShow] = useState(false);
   function onVR(id) {
     db.collection("Blogs")
@@ -250,7 +254,7 @@ const BlogComponent = (props) => {
   const shareUrl = "..";
   const shareText = "..";
 
-  return <h3 className="text-center">Blogs are Under Construction</h3>;
+   return <h3 className="text-center">Blogs are Under Construction</h3>;
 
   // return (
   //   <React.Fragment>
@@ -305,7 +309,7 @@ const BlogComponent = (props) => {
   //                 </button>
   //               </div>
   //               <div>
-  //                 {blogcomment.map((user) => {
+  //                 {blogcomment.map((user,index) => {
   //                   const users = user.id;
   //                   return (
   //                     <div>
@@ -341,27 +345,31 @@ const BlogComponent = (props) => {
   //                         </div> */}
   //                         </div>
   //                       ) : null}
-  //                       <div>
+                        
+  //                         {addreply ? 
+  //                         <div>
   //                         <input
   //                           type="text"
   //                           name="reply"
-  //                           // onChange={(e) => handleChange(e, index)}
-  //                           // value={reply}
+  //                           onChange={(e) => handleReply(e)}
+  //                           value={replies}
   //                           placeholder={"reply "}
   //                         />
-  //                         <button type="submit" onClick={() => addReply(users)}>
-  //                           add reply
+  //                         <button type="submit" onClick={() => onRSubmit(users)}>
+  //                           submit reply
   //                         </button>
-  //                       </div>
+  //                         </div>
+  //                         :null}
+  //                      <div><button onClick={() => setAddReply(!addreply)}>Add reply</button></div>
   //                       <div>
   //                         {/* <button onClick={() => setShow(!true)}> */}
   //                         <button onClick={() => onVR(user.id)}>
   //                           view reply
   //                         </button>
-  //                         {show ? (
+  //                         {/* {show ? (
   //                           <div>
   //                             <div>
-  //                               {commentReply.map((item) => {
+  //                               {replies && replies.map((item) => {
   //                                 return (
   //                                   <div>
   //                                     <div>{item.fullname}</div>
@@ -387,7 +395,7 @@ const BlogComponent = (props) => {
   //                               })}
   //                             </div>
   //                           </div>
-  //                         ) : null}
+  //                         ) : null} */}
   //                       </div>
   //                     </div>
   //                   );
