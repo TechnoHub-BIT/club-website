@@ -27,8 +27,11 @@ const EditUserCheck = () => {
 
   return (
     <React.Fragment>
-      {profiles.id === 1 ? (
-        <EditEventComponent eventName={eventname} historyPush={() => history.push("/events")}/>
+      {profiles.id === 1 || profiles.id === 3 ? (
+        <EditEventComponent
+          eventName={eventname}
+          historyPush={() => history.push("/events")}
+        />
       ) : (
         <AlertModal
           message="You aren't authorized to access this page!"

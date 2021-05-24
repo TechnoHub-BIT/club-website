@@ -92,7 +92,7 @@ const SingleEvent = () => {
             <LinkedinIcon size="32" round={true} />
           </LinkedinShareButton>
         </div>
-        {profiles.id === 1 ? (
+        {profiles.id === 1 || profiles.id === 3 ? (
           <a href={"/editevent/" + eventname} className="editBtn">
             <button type="button">
               <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit Event
