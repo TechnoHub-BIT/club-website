@@ -92,6 +92,7 @@ const CreateTest = () => {
       correctAnswer: "",
       questionType: "",
       explanation: "",
+      imageUrl:"",
     },
   ]);
 
@@ -115,6 +116,7 @@ const CreateTest = () => {
         correctAnswer: "",
         questionType: "",
         explanation: "",
+        imageUrl: "",
       },
     ]);
   };
@@ -520,6 +522,17 @@ const CreateTest = () => {
                               placeholder="Option E"
                             />
                             <label htmlFor={"optione" + index}>Option E</label>
+                          </div>
+                          <div className="input">
+                            <input
+                              type="text"
+                              name="imageUrl"
+                              id={"imageUrl" + index}
+                              value={create.imageUrl}
+                              onChange={(e) => handleChange(e, index)}
+                              placeholder="Question Image Url"
+                            />
+                            <label htmlFor={"imageUrl" + index}>Question Image Url</label>
                           </div>
                         </div>
                         {questions.length - 1 === index && (

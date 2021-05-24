@@ -38,6 +38,7 @@ class EditTest extends Component {
         correctAnswer: "",
         questionType: "",
         explanation: "",
+        imageUrl: "",
       },
     ],
   };
@@ -142,6 +143,7 @@ class EditTest extends Component {
               correctAnswer: "",
               questionType: "",
               explanation: "",
+              imageUrl: "",
             },
           ],
         });
@@ -504,6 +506,17 @@ class EditTest extends Component {
                               placeholder="Option E"
                             />
                             <label htmlFor={"optione" + index}>Option E</label>
+                          </div>
+                          <div className="input">
+                            <input
+                              type="text"
+                              name="imageUrl"
+                              id={"imageUrl" + index}
+                              value={questions.imageUrl}
+                              onChange={(e) => this.handleChange(e, index)}
+                              placeholder="Question Image Url"
+                            />
+                            <label htmlFor={"imageUrl" + index}>Question Image Url</label>
                           </div>
                         </div>
                         {this.state.questions.length - 1 === index && (
