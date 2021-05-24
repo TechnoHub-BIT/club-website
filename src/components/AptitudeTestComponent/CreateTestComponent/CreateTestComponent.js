@@ -224,7 +224,7 @@ const CreateTest = () => {
             </h1>
             <div className="centreCard">
               <div className="createForm">
-                <form onSubmit={firestoremaisave}>
+                <form>
                   <h3 className="smallTitle">Basic Test Details</h3>
                   <div className="inputGroup twoInputs">
                     <div className="input">
@@ -526,14 +526,14 @@ const CreateTest = () => {
                           <div className="input">
                             <input
                               type="text"
-                              name="imageurl"
-                              id="imageUrl"
+                              name="imageUrl"
+                              id={"imageUrl" + index}
                               value={create.imageUrl}
                               onChange={(e) => handleChange(e, index)}
-                              placeholder="Question Image URL(Optional)"
+                              placeholder="Question Image URL"
                             />
-                            <label htmlFor="imageUrl">
-                              Question Image URL(Optional)
+                            <label htmlFor={"imageUrl" + index}>
+                              Question Image URL
                             </label>
                           </div>
                         </div>
@@ -547,7 +547,11 @@ const CreateTest = () => {
                               <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                               Question
                             </button>
-                            <button type="submit" className="createBtn">
+                            <button
+                              type="button"
+                              className="createBtn"
+                              onClick={firestoremaisave}
+                            >
                               <i className="fas fa-check"></i>&nbsp;&nbsp;Create
                               Test
                             </button>
