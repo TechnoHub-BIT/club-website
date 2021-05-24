@@ -3,13 +3,13 @@ import { db } from "../../../firebase";
 import { useAuth } from "../../../contexts/AuthContext";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
-import EditTestComponent from "./EditTestComponent";
+import EditEventComponent from "./EditEventComponent";
 import { useParams } from "react-router";
 
 const EditUserCheck = () => {
   let history = useHistory();
 
-  const { id } = useParams();
+  const { eventname } = useParams();
 
   const { currentUser, logout } = useAuth();
   const [profiles, setProfiles] = useState([]);
@@ -27,8 +27,8 @@ const EditUserCheck = () => {
 
   return (
     <React.Fragment>
-      {profiles.id === 1 || profiles.id === 4 ? (
-        <EditTestComponent testName={id} />
+      {profiles.id === 1 ? (
+        <EditEventComponent eventName={eventname} />
       ) : (
         <AlertModal
           message="You aren't authorized to access this page!"
