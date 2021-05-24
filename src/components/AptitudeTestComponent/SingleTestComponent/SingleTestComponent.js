@@ -811,7 +811,7 @@ const SingleTest = (props) => {
                       </div>
                       <div className="explanation">
                         <strong>Explanation:</strong>{" "}
-                        {item.explanation === "" ? (
+                        {item.explanation ? (
                           <p
                             dangerouslySetInnerHTML={{
                               __html: item.explanation,

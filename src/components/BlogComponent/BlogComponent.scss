@@ -3,16 +3,17 @@
 .blogContainer {
   margin: 20px;
 }
+
 .errorMessage {
   width: 65vw;
   margin: 6em auto;
 }
 
-
 .blogContents {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .profileImage {
     height: 200px;
     width: 200px;
@@ -24,7 +25,7 @@
     font-family: "Montserrat", sans-serif !important;
     text-align: justify;
     font-size: 0.9em;
-   
+
     p {
       span {
         font-family: "Montserrat", sans-serif !important;
@@ -46,7 +47,6 @@
     }
   }
 }
-
 
 @media only screen and (min-width: 992px) {
   .blogContents {

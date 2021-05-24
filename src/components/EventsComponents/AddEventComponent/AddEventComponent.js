@@ -8,6 +8,11 @@ import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
+import HeaderTitle from "../../HeaderComponents/HeaderTitle";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+} from "../../BreadcrumbComponent/BreadcrumbComponent";
 
 const AddEvent = () => {
   let history = useHistory();
@@ -111,9 +116,13 @@ const AddEvent = () => {
     <React.Fragment>
       {modal}
       <Helmet>
-        <title>Aptitude Tests | TechnoHub BITD</title>
-        <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
+        <title>Add Event | TechnoHub BITD</title>
       </Helmet>
+      <HeaderTitle heading="ADD EVENT" />
+      <Breadcrumb>
+        <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+        <BreadcrumbItem icon="fas fa-plus" title="Add Event" status="active" />
+      </Breadcrumb>
       {profiles.id === 1 ? (
         <Fade up>
           <div className="addEventForm">

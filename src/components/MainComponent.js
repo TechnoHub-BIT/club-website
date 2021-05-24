@@ -41,8 +41,9 @@ import NewMembers from "./AdminComponents/NewMembersComponent/NewMembersComponen
 
 //Event Pages
 import AddEvent from "./EventsComponents/AddEventComponent/AddEventComponent";
+import EditEvent from "./EventsComponents/EditEventComponent/EditEventUserCheck";
 import EventsList from "./EventsComponents/EventsListComponent/EventsListComponent";
-import SingleEvent from "./EventsComponents/EventsListComponent/SingleEventComponent";
+import SingleEvent from "./EventsComponents/SingleEventComponent/SingleEventComponent";
 
 import Hackathon2020 from "./EventsComponents/EventPagesComponent/HackathonComponent/HackathonComponent";
 import ArmedForces from "./EventsComponents/EventPagesComponent/ArmedForceComponent/ArmedForceComponent";
@@ -56,8 +57,7 @@ import SingleTest from "./AptitudeTestComponent/SingleTestComponent/SingleTestCo
 import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/LeaderboardComponent";
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
-import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTest";
-import EditEvent from "./EventsComponents/EditEvent/EditEvent";
+import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestUserCheck";
 
 //Dark mode light mode
 // import styled,{ThemeProvider} from 'styled-components'

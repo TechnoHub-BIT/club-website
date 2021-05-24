@@ -1,0 +1,43 @@
+.singleEventCont {
+  padding: 30px 15vw;
+}
+
+.singleEventCont .eventDetails {
+  padding: 0 15px 15px;
+  font-family: "Montserrat", sans-serif !important;
+  text-align: justify;
+  font-size: 0.9em;
+}
+
+.singleEventCont .eventDetails p span {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.05em !important;
+}
+
+.singleEventCont .shareButtons {
+  margin-top: 1em;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+}
+
+.singleEventCont .shareButtons button {
+  outline: none;
+}
+
+.singleEventCont .shareButtons button:not(:first-child) {
+  margin-left: 0.5em;
+}
+
+.singleEventCont .editBtn button {
+  margin: 20px 0;
+  padding: 7px 30px;
+  background-color: #191d34;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+}
+/*# sourceMappingURL=SingleEventComponent.css.map */

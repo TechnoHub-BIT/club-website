@@ -222,7 +222,7 @@ const CreateTest = () => {
             </h1>
             <div className="centreCard">
               <div className="createForm">
-                <form>
+                <form onSubmit={firestoremaisave}>
                   <h3 className="smallTitle">Basic Test Details</h3>
                   <div className="inputGroup twoInputs">
                     <div className="input">
@@ -532,11 +532,7 @@ const CreateTest = () => {
                               <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                               Question
                             </button>
-                            <button
-                              type="button"
-                              className="createBtn"
-                              onClick={firestoremaisave}
-                            >
+                            <button type="submit" className="createBtn">
                               <i className="fas fa-check"></i>&nbsp;&nbsp;Create
                               Test
                             </button>
