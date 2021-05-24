@@ -190,7 +190,7 @@ const CreateTest = () => {
         .catch((error) => {
           alert(error.message);
         });
-    } else {
+    } else
       showModal(
         <AlertModal
           message="Please fill in all the details!"
@@ -200,7 +200,6 @@ const CreateTest = () => {
           close={closeModal}
         />
       );
-    }
   };
 
   return (
@@ -393,7 +392,7 @@ const CreateTest = () => {
                         onChange={description}
                         placeholder="Test description"
                       />
-                      <label htmlFor="Test Description">Test Description</label>
+                      <label htmlFor="testdescription">Test Description</label>
                     </div>
                   </div>
                 </form>

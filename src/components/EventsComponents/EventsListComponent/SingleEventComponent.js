@@ -1,5 +1,4 @@
-import React,{useEffect,useState} from "react";
-// import "./ArmedForceComponent.css";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardImg,
@@ -14,11 +13,8 @@ import { db } from "../../../firebase";
 import Moment from "moment";
 import { useParams } from "react-router";
 
-
-
-const SingleEvent = (props) => {
-
-  const {eventname} = useParams();
+const SingleEvent = () => {
+  const { eventname } = useParams();
   // fetch the event
   const [event, setEvent] = useState("");
   const ref = db.collection("Events").doc(eventname);
@@ -47,7 +43,7 @@ const SingleEvent = (props) => {
           className="card_img"
           top
           width="100%"
-          src={event.eventimage} alt={event.eventtitle}
+          src={event.eventimage}
           alt={event.eventtitle}
         />
         <Col>
@@ -56,7 +52,7 @@ const SingleEvent = (props) => {
               {event.eventtitle}
             </CardTitle>
             <CardSubtitle className="events-card-hackathon-subtitle">
-            {Moment(event.eventdate).format("ll")}
+              {Moment(event.eventdate).format("ll")}
             </CardSubtitle>
           </CardBody>
         </Col>
@@ -70,12 +66,10 @@ const SingleEvent = (props) => {
         </CardText>
       </Card>
       <a href={"/editevent/" + eventname}>
-      <div className="input-group w50p">
-                <button type="button">
-                  Edit Event
-                </button>
-              </div>
-              </a>
+        <div className="input-group w50p">
+          <button type="button">Edit Event</button>
+        </div>
+      </a>
     </div>
   );
 };

@@ -7,16 +7,10 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const Leaderboard = (props) => {
   let history = useHistory();
-
-  //Modal
-  const [modal, showModal] = useState("");
-
-  const closeModal = () => {
-    showModal("");
-  };
 
   const [validity, setValidity] = useState(true);
 
@@ -143,6 +137,37 @@ const Leaderboard = (props) => {
         <Fade up>
           <div className="leaderboardCont">
             <h1 className="title">LEADERBOARD</h1>
+            <table id="resultsExcelTable" className="table d-none">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>E-mail</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result.map((leader, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{leader.fullname}</td>
+                      <td>{leader.email}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            {profiles.id === 1 || profiles.id === 4 ? (
+              <div style={{ marginLeft: "15vw" }}>
+                <ReactHTMLTableToExcel
+                  className="btn btn-info"
+                  table="resultsExcelTable"
+                  filename={test.title + "-Results"}
+                  sheet="Sheet"
+                  buttonText="Export List as Spreadsheet"
+                />
+              </div>
+            ) : null}
+
             {result.length != 0 ? (
               <div className="centreCard">
                 <div className="leadersList">

@@ -64,6 +64,15 @@
   list-style-type: none;
 }
 
+.singleTestCont .centreCard .left section ul li p {
+  width: calc(80vw - 60px - 1em);
+  word-wrap: break-word;
+  color: #727070;
+  font-size: 0.95rem;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
 .singleTestCont .centreCard .left section ul li strong {
   font-weight: 500;
 }
@@ -305,6 +314,10 @@
   }
   .singleTestCont .centreCard .left section ul {
     margin-left: 0;
+  }
+  .singleTestCont .centreCard .left section ul li p {
+    width: calc(100vw - 40px - 60px - 1em);
+    font-size: 0.9rem;
   }
   .singleTestCont .centreCard .left section .navigation {
     margin: 1.5em auto 0;

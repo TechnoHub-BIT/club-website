@@ -10,13 +10,6 @@ import { useHistory } from "react-router-dom";
 const AnswerKey = (props) => {
   let history = useHistory();
 
-  //Modal
-  const [modal, showModal] = useState("");
-
-  const closeModal = () => {
-    showModal("");
-  };
-
   const { currentUser, logout } = useAuth();
   const [profiles, setProfiles] = useState([]);
 
@@ -106,6 +99,10 @@ const AnswerKey = (props) => {
   if (validity)
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Answer Key | TechnoHub BITD</title>
+          <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
+        </Helmet>
         <div className="answerKeyCont">
           <Fade up>
             <h1 className="title">
@@ -167,7 +164,7 @@ const AnswerKey = (props) => {
                                   </div>
                                   {que.op5 !== "" ? (
                                     <div>
-                                      <strong>Option (D):&nbsp;&nbsp;</strong>
+                                      <strong>Option (E):&nbsp;&nbsp;</strong>
                                       {que.op5}
                                     </div>
                                   ) : null}
