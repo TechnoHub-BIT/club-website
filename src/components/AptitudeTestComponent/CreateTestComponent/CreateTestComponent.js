@@ -92,7 +92,7 @@ const CreateTest = () => {
       correctAnswer: "",
       questionType: "",
       explanation: "",
-      imageUrl:"",
+      imageUrl: "",
     },
   ]);
 
@@ -224,7 +224,7 @@ const CreateTest = () => {
             </h1>
             <div className="centreCard">
               <div className="createForm">
-                <form onSubmit={firestoremaisave}>
+                <form>
                   <h3 className="smallTitle">Basic Test Details</h3>
                   <div className="inputGroup twoInputs">
                     <div className="input">
@@ -530,9 +530,11 @@ const CreateTest = () => {
                               id={"imageUrl" + index}
                               value={create.imageUrl}
                               onChange={(e) => handleChange(e, index)}
-                              placeholder="Question Image Url"
+                              placeholder="Question Image URL"
                             />
-                            <label htmlFor={"imageUrl" + index}>Question Image Url</label>
+                            <label htmlFor={"imageUrl" + index}>
+                              Question Image URL
+                            </label>
                           </div>
                         </div>
                         {questions.length - 1 === index && (
@@ -545,7 +547,11 @@ const CreateTest = () => {
                               <i className="fas fa-plus"></i>&nbsp;&nbsp;Add
                               Question
                             </button>
-                            <button type="submit" className="createBtn">
+                            <button
+                              type="button"
+                              className="createBtn"
+                              onClick={firestoremaisave}
+                            >
                               <i className="fas fa-check"></i>&nbsp;&nbsp;Create
                               Test
                             </button>
