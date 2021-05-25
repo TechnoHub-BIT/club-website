@@ -6,7 +6,6 @@ import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 const TestsList = () => {
   const [tests, setTest] = useState([]);

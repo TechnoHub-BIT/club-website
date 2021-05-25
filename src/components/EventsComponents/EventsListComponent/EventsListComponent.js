@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import { Zoom } from "react-reveal";
 import { db } from "../../../firebase";
 import Moment from "moment";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const EventList = () => {
   const [event, setEvent] = useState([]);
@@ -25,6 +26,23 @@ const EventList = () => {
     };
     fetchdata();
   }, []);
+
+  const { currentUser, logout } = useAuth();
+
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
+
+  let eventCounter = 0;
 
   return (
     <React.Fragment>
@@ -46,16 +64,18 @@ const EventList = () => {
           />
         </Breadcrumb>
         <div className="container">
+          {profiles.id === 1 || profiles.id === 3 ? (
+            <a href="/addevent">
+              <button className="btn btn-success">
+                <i className="fas fa-plus"></i>&nbsp;&nbsp;Add New Event
+              </button>
+            </a>
+          ) : null}
           <h1 className="sectionTitle">Upcoming Events</h1>
-          {/* <div className="eventsCard comingSoon">
-              <div className="cardBody">
-                <h2 className="cardTitle">Coming Soon</h2>
-                <h5 className="cardSubtitle">Stay Tuned with Us</h5>
-              </div>
-            </div> */}
           <div className="eventsCardCont">
             {event.map((item) => {
-              if (item.eventtype === "Upcoming Event")
+              if (item.eventtype === "Upcoming Event") {
+                eventCounter++;
                 return (
                   <Zoom>
                     <a href={"/events/" + item.id}>
@@ -79,8 +99,17 @@ const EventList = () => {
                     </a>
                   </Zoom>
                 );
+              }
             })}
           </div>
+          {eventCounter === 0 ? (
+            <div className="eventsCard comingSoon">
+              <div className="cardBody">
+                <h2 className="cardTitle">More events are coming</h2>
+                <h5 className="cardSubtitle">Stay tuned with us</h5>
+              </div>
+            </div>
+          ) : null}
           <h1 className="sectionTitle">Past Events</h1>
           <div className="eventsCardCont">
             {event.map((item) => {

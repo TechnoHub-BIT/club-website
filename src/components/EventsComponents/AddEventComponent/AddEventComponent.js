@@ -198,7 +198,7 @@ const AddEvent = () => {
               </div>
               <div className="input-group w50p">
                 <button type="submit" onClick={firestoremaisave}>
-                  Post Event
+                  Add Event
                 </button>
               </div>
             </form>

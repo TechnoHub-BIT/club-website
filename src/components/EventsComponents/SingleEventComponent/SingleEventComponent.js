@@ -19,8 +19,18 @@ import {
   WhatsappIcon,
 } from "react-share";
 import { useAuth } from "../../../contexts/AuthContext";
+import AlertModal from "../../AlertModalComponent/AlertModalComponent";
+import { useHistory } from "react-router-dom";
 
 const SingleEvent = () => {
+  let history = useHistory();
+
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const { eventname } = useParams();
 
   // Fetch the event
@@ -40,16 +50,30 @@ const SingleEvent = () => {
     });
   }, []);
 
-  function onDeleteEvent() {
+  const deleteEventModal = () => {
+    showModal(
+      <AlertModal
+        message="Are you sure you want to delete the Event?"
+        icon="delete"
+        leftBtn="Delete"
+        rightBtn="Cancel"
+        action={onDeleteEvent}
+        close={closeModal}
+      />
+    );
+  };
+
+  const onDeleteEvent = () => {
     db.collection("Events")
       .doc(eventname)
-      .delete().then(() => {
-        alert("Event Deleted!");
+      .delete()
+      .then(() => {
+        history.push("/events");
       })
       .catch((err) => {
-        console.error(err);
+        alert(err);
       });
-  }
+  };
 
   const { currentUser, logout } = useAuth();
 
@@ -68,11 +92,13 @@ const SingleEvent = () => {
 
   const shareUrl = "http://technohubbit.in/events/" + eventname;
   const shareText =
-    "Check out this event on TechnoHub BIT's official website- " +
-    event.eventtitle;
+    "\n\nCheck out this event on TechnoHub BIT's official website- " +
+    event.eventtitle +
+    "\n\n";
 
   return (
     <React.Fragment>
+      {modal}
       <HeaderTitle
         heading={event.eventtitle}
         blogImage={event.eventimage}
@@ -106,13 +132,20 @@ const SingleEvent = () => {
         </div>
         {profiles.id === 1 || profiles.id === 3 ? (
           <div>
-          <a href={"/editevent/" + eventname} className="editBtn">
-            <button type="button">
-              <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit Event
+            <a href={"/editevent/" + eventname} className="editBtn">
+              <button type="button">
+                <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit Event
+              </button>
+            </a>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => deleteEventModal()}
+              style={{ margin: "0 0 0 1em" }}
+            >
+              <i className="far fa-trash-alt"></i>&nbsp;&nbsp;Delete Event
             </button>
-          </a>
-         <button type="submit" onClick={onDeleteEvent}> Delete Event</button> 
-         </div>
+          </div>
         ) : null}
       </div>
     </React.Fragment>

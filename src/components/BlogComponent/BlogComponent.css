@@ -54,6 +54,68 @@
   margin-left: 0.5em;
 }
 
+.blogContents .addComment input {
+  padding: 10px 30px;
+}
+
+.blogContents .addComment button {
+  padding: 10px 30px;
+  border: 1px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.blogContents .commentsList .singleComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.blogContents .commentsList .singleComment .left img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.blogContents .commentsList .singleComment .right {
+  margin-left: 1em;
+}
+
+.blogContents .commentsList .singleComment .right h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.blogContents .commentsList .singleComment .right h5 .comment {
+  color: #727070;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+}
+
+.blogContents .commentsList .singleComment .right .date {
+  color: #727070;
+  font-size: 0.95rem;
+  margin-top: 0.5em;
+}
+
+.blogContents .commentsList .singleComment .right .date .actionBtns {
+  margin-left: 1em;
+}
+
+.blogContents .commentsList .singleComment .right .date .actionBtns button {
+  padding: 3px 12px;
+  font-size: 0.8em;
+  margin-top: 0;
+}
+
+.blogContents .commentsList .singleComment:not(:first-child) {
+  margin-top: 2em;
+}
+
 @media only screen and (min-width: 992px) {
   .blogContents {
     width: 70%;

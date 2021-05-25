@@ -46,6 +46,70 @@
       }
     }
   }
+
+  .addComment {
+    input {
+      padding: 10px 30px;
+    }
+
+    button {
+      padding: 10px 30px;
+      border: 1px solid #000;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  .commentsList {
+    .singleComment {
+      display: flex;
+      align-items: center;
+
+      .left {
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+        }
+      }
+
+      .right {
+        margin-left: 1em;
+
+        h5 {
+          font-size: 1rem;
+          font-weight: 600;
+
+          .comment {
+            color: #727070;
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-left: 0.5em;
+          }
+        }
+
+        .date {
+          color: #727070;
+          font-size: 0.95rem;
+          margin-top: 0.5em;
+
+          .actionBtns {
+            margin-left: 1em;
+
+            button {
+              padding: 3px 12px;
+              font-size: 0.8em;
+              margin-top: 0;
+            }
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 2em;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 992px) {
