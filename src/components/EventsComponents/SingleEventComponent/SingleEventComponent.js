@@ -56,15 +56,16 @@ const SingleEvent = () => {
   }, [currentUser]);
 
   const shareUrl = "http://technohubbit.in/events/" + eventname;
-  const shareText = "Check out this event on TechnoHub BIT's official website.";
+  const shareText =
+    "Check out this event on TechnoHub BIT's official website- " +
+    event.eventtitle;
 
   return (
     <React.Fragment>
       <HeaderTitle
         heading={event.eventtitle}
         blogImage={event.eventimage}
-        author={event.eventtitle}
-        date={Moment(event.eventdate).format("ll")}
+        eventDate={Moment(event.eventdate).format("ll")}
       />
       <div className="singleEventCont">
         <div

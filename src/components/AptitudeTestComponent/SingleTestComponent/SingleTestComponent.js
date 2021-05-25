@@ -542,6 +542,17 @@ const SingleTest = (props) => {
                             ? "(More than one correct option)"
                             : null}
                         </div>
+                        {item.imageUrl ? (
+                          <img
+                            src={
+                              "https://drive.google.com/uc?export=view&id=" +
+                              item.imageUrl
+                            }
+                            alt={tests.title}
+                            className="questionImage"
+                          />
+                        ) : null}
+
                         {item.questionType === "MCQ" ? (
                           <input
                             type="radio"

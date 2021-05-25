@@ -530,10 +530,10 @@ const CreateTest = () => {
                               id={"imageUrl" + index}
                               value={create.imageUrl}
                               onChange={(e) => handleChange(e, index)}
-                              placeholder="Question Image URL"
+                              placeholder="Question Image URL(1920x1080px)"
                             />
                             <label htmlFor={"imageUrl" + index}>
-                              Question Image URL
+                              Question Image URL(1920x1080px)
                             </label>
                           </div>
                         </div>

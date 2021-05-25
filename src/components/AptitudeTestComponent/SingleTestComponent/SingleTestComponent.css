@@ -91,6 +91,11 @@
   display: block;
 }
 
+.singleTestCont .centreCard .left section .questionImage {
+  width: 100%;
+  border-radius: 10px;
+}
+
 .singleTestCont .centreCard .left section .clearSelection button {
   border-radius: 5px;
   padding: 7px 10px;

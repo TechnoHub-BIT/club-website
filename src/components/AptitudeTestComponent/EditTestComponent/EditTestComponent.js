@@ -504,9 +504,11 @@ class EditTest extends Component {
                               id={"imageUrl" + index}
                               value={questions.imageUrl}
                               onChange={(e) => this.handleChange(e, index)}
-                              placeholder="Question Image Url"
+                              placeholder="Question Image URL(1920x1080px)"
                             />
-                            <label htmlFor={"imageUrl" + index}>Question Image Url</label>
+                            <label htmlFor={"imageUrl" + index}>
+                              Question Image URL(1920x1080px)
+                            </label>
                           </div>
                         </div>
                         {this.state.questions.length - 1 === index && (

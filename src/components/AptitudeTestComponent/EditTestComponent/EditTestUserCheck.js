@@ -3,7 +3,7 @@ import { db } from "../../../firebase";
 import { useAuth } from "../../../contexts/AuthContext";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
-import EditTest from "./EditTest";
+import EditTest from "./EditTestComponent";
 import { useParams } from "react-router";
 
 const EditUserCheck = () => {

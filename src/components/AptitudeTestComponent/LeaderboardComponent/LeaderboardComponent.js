@@ -140,6 +140,7 @@ const Leaderboard = (props) => {
             <table id="resultsExcelTable" className="table d-none">
               <thead>
                 <tr>
+                  <th>S.No.</th>
                   <th>Name</th>
                   <th>E-mail</th>
                 </tr>
@@ -148,7 +149,7 @@ const Leaderboard = (props) => {
                 {result.map((leader, index) => {
                   return (
                     <tr key={index}>
-                      <td>{index + 1}</td>
+                      <td>{index + 1}.</td>
                       <td>{leader.fullname}</td>
                       <td>{leader.email}</td>
                     </tr>
