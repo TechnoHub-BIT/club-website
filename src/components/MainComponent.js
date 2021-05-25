@@ -7,7 +7,6 @@ import ScrollToTop from "./ScrollToTop";
 //Pages
 import Home from "./HomeComponents/HomeComponent";
 import About from "./AboutUsComponents/AboutUsComponent";
-//import EventPage from "./EventsComponents/EventsComponent";
 import Navbar from "./HeaderComponents/NavbarComponents/NavbarComponent";
 import Contact from "./ContactUsComponents/ContactComponents";
 import OurMembers from "./MembersListComponent/MembersList";
@@ -53,14 +52,6 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestUserCheck";
-
-//Dark mode light mode
-// import styled,{ThemeProvider} from 'styled-components'
-// import {lightTheme , darkTheme , GlobalStyle}  from "./Theme";
-
-// const StyledApp = styled.div`
-// color: ${(props) => props.theme.fontColor}
-// `;
 
 class Main extends Component {
   render() {
