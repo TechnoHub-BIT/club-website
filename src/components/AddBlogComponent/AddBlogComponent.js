@@ -217,7 +217,7 @@ export default function AddBlogComponent() {
                   {members.map((mem) => {
                     return (
                       <option value={mem.fullname}>
-                        {mem.fullname} {mem.id}
+                        {mem.fullname} 
                       </option>
                     );
                   })}
@@ -235,7 +235,7 @@ export default function AddBlogComponent() {
                   {members.map((mem) => {
                     return (
                       <option value={mem.id}>
-                        {mem.fullname} {mem.id}
+                        {mem.fullname} 
                       </option>
                     );
                   })}

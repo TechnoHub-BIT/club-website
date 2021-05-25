@@ -40,6 +40,17 @@ const SingleEvent = () => {
     });
   }, []);
 
+  function onDeleteEvent() {
+    db.collection("Events")
+      .doc(eventname)
+      .delete().then(() => {
+        alert("Event Deleted!");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   const { currentUser, logout } = useAuth();
 
   const [profiles, setProfiles] = useState([]);
@@ -94,11 +105,14 @@ const SingleEvent = () => {
           </LinkedinShareButton>
         </div>
         {profiles.id === 1 || profiles.id === 3 ? (
+          <div>
           <a href={"/editevent/" + eventname} className="editBtn">
             <button type="button">
               <i className="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit Event
             </button>
           </a>
+         <button type="submit" onClick={onDeleteEvent}> Delete Event</button> 
+         </div>
         ) : null}
       </div>
     </React.Fragment>
