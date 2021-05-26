@@ -122,14 +122,15 @@ const BlogComponent = () => {
   };
 
   // storing comments in firestore
-  const onSubmit = () => {
-    console.log(authorid);
+  const onAddComment = () => {
     db.collection("Blogs").doc(blogname).collection("Comments").add({
       fullname: fullname,
       photourl: photourl,
       comment: comment,
       date: date,
     });
+
+    setComment(null);
   };
 
   // fetching the comment from firestore
@@ -245,7 +246,7 @@ const BlogComponent = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={onSubmit}
+                    onClick={onAddComment}
                   >
                     Add comment
                   </button>
