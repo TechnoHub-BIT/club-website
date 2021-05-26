@@ -6,6 +6,7 @@ class EditAddComponent extends React.Component {
   state = {
     Blogcategory: null,
   };
+
   componentDidMount() {
     db.collection("Blogcategory")
       .get()
@@ -30,7 +31,6 @@ class EditAddComponent extends React.Component {
         value={this.props.blogcategory}
         required
       >
-        <option value="">--Select Category--</option>
         {this.state.Blogcategorytype &&
           this.state.Blogcategorytype.map((Blogcategorytype) => {
             return (

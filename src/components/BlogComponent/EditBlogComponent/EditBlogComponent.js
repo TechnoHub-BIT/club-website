@@ -26,6 +26,7 @@ class Editblog extends React.Component {
     blogauthor: "",
     blogimageurl: "",
     blogcontent: "",
+    blogdate:"",
   };
 
   componentDidMount() {
@@ -39,9 +40,11 @@ class Editblog extends React.Component {
         blogauthor: Blogs.blogauthor,
         blogimageurl: Blogs.blogimageurl,
         blogcontent: Blogs.blogcontent,
+        blogdate:Blogs.blogdate,
       });
     });
   }
+
   onChange = (e) => {
     const state = this.state;
     state[e.target.name] = e.target.value;
@@ -55,7 +58,6 @@ class Editblog extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
     const {
       blogtitle,
       blogcategory,
@@ -153,7 +155,7 @@ class Editblog extends React.Component {
                 />
                 <label for="author">Blog Author</label>
               </div>
-              <div className="input-group">
+              {/* <div className="input-group">
                 <input
                   type="date"
                   name="blogdate"
@@ -164,7 +166,7 @@ class Editblog extends React.Component {
                   required
                 />
                 <label for="date">Blog Date</label>
-              </div>
+              </div> */}
               <div className="input-group">
                 <input
                   type="text"
