@@ -2,21 +2,21 @@ import React from "react";
 import "../../input.css";
 import { db } from "../../../firebase";
 
-class EditAddComponent extends React.Component {
+class EditAddAuthor extends React.Component {
   state = {
-    Blogcategorytype: "",
+    fullname: "",
   };
 
   componentDidMount() {
-    db.collection("Blogcategory")
+      db.collection("members")
       .get()
       .then((snapshot) => {
-        const Blogcategorytype = [];
+        const fullname = [];
         snapshot.forEach((doc) => {
           const data = doc.data();
-          Blogcategorytype.push(data);
+          fullname.push(data);
         });
-        this.setState({ Blogcategorytype: Blogcategorytype });
+        this.setState({ fullname: fullname});
       })
       .catch((error) => console.log(error));
   }
@@ -24,17 +24,17 @@ class EditAddComponent extends React.Component {
   render() {
     return (
       <select
-        id="category"
-        name="blogcategory"
+        id="blogauthor"
+        name="blogauthor"
         onChange={this.props.onChange}
         value={this.props.value}
         required
       >
-        {this.state.Blogcategorytype &&
-          this.state.Blogcategorytype.map((Blogcategorytype) => {
+        {this.state.fullname &&
+          this.state.fullname.map((Blogcategorytype) => {
             return (
-              <option value={Blogcategorytype.blogcategorytype}>
-                {Blogcategorytype.blogcategorytype}
+              <option value={Blogcategorytype.fullname}>
+                {Blogcategorytype.fullname}
               </option>
             );
           })}
@@ -43,4 +43,4 @@ class EditAddComponent extends React.Component {
   }
 }
 
-export default EditAddComponent;
+export default EditAddAuthor;

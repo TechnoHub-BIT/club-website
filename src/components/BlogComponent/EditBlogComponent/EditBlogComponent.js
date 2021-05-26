@@ -17,6 +17,7 @@ import EditAdd from "./EditAddCategory";
 import { Helmet } from "react-helmet";
 import { render } from "@testing-library/react";
 import { resetWarningCache } from "prop-types";
+import EditAddAuthor from "./EditAddAuthor";
 
 class Editblog extends React.Component {
   state = {
@@ -88,7 +89,7 @@ class Editblog extends React.Component {
           blogimageurl: "",
           blogcontent: "",
           blogdate: "",
-        }).alert("Blog updated");
+        });
         this.props.history
           .push("/blog/")
           .then(() => {
@@ -142,32 +143,15 @@ class Editblog extends React.Component {
                   onChange={this.onChange}
                   value={this.state.blogcategory}
                 />
+                {/* <label for="category">Blog Category</label> */}
               </div>
               <div className="input-group">
-                <input
-                  type="text"
-                  name="author"
-                  id="author"
+                <EditAddAuthor
                   onChange={this.onChange}
-                  name="blogauthor"
                   value={this.state.blogauthor}
-                  placeholder="Blog Author"
-                  required
                 />
-                <label for="author">Blog Author</label>
+                {/* <label for="author">Blog Author</label> */}
               </div>
-              {/* <div className="input-group">
-                <input
-                  type="date"
-                  name="blogdate"
-                  id="blogdate"
-                  onChange={this.onChange}
-                  value={this.state.blogdate}
-                  placeholder="Blog Date"
-                  required
-                />
-                <label for="date">Blog Date</label>
-              </div> */}
               <div className="input-group">
                 <input
                   type="text"
