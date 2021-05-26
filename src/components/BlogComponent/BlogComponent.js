@@ -72,9 +72,14 @@ const BlogComponent = () => {
       });
   };
 
-  const fullname = currentProfile.fullname;
-  const photourl = currentUser.photoURL;
-  const date = new Date();
+  let fullname = null;
+  let photourl = null;
+  if (currentUser) {
+    fullname = currentProfile.fullname;
+    photourl = currentUser.photoURL;
+  }
+
+  const date = new Date().toLocaleString();
 
   const [comment, setComment] = useState([]);
   const Ucomment = (e) => {
@@ -88,7 +93,7 @@ const BlogComponent = () => {
       fullname: fullname,
       photourl: photourl,
       comment: comment,
-      date: new Date(),
+      date: date,
     });
 
     // db.collection("members")
@@ -315,16 +320,44 @@ const BlogComponent = () => {
                     {blogedit.like} 👏
                   </Button>
                 </div> */}
-            <div className="addComment">
-              <input type="text" onChange={Ucomment} value={comment} />
-              <button type="button" onClick={onSubmit}>
-                Add comment
-              </button>
-            </div>
+            {currentUser ? (
+              <div className="addComment">
+                <div className="left">
+                  {currentUser.photoURL ? (
+                    <img
+                      src={currentUser.photoURL}
+                      className="profileImage"
+                      alt="Profile"
+                    />
+                  ) : (
+                    <img
+                      src={ProfileImage}
+                      className="profileImage"
+                      alt="Profile"
+                    />
+                  )}
+                </div>
+                <div className="right">
+                  <textarea
+                    type="text"
+                    onChange={Ucomment}
+                    value={comment}
+                    placeholder="Type your comment here"
+                  ></textarea>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={onSubmit}
+                  >
+                    Add comment
+                  </button>
+                </div>
+              </div>
+            ) : null}
+
             <div className="commentsList">
               {blogcomment.map((user, index) => {
                 const users = user.id;
-                console.log(user.date);
 
                 return (
                   <div className="singleComment" key={index}>

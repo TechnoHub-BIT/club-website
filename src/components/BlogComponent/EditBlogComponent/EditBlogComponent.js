@@ -26,7 +26,7 @@ class Editblog extends React.Component {
     blogauthor: "",
     blogimageurl: "",
     blogcontent: "",
-    blogdate:"",
+    blogdate: "",
   };
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class Editblog extends React.Component {
         blogauthor: Blogs.blogauthor,
         blogimageurl: Blogs.blogimageurl,
         blogcontent: Blogs.blogcontent,
-        blogdate:Blogs.blogdate,
+        blogdate: Blogs.blogdate,
       });
     });
   }
@@ -87,8 +87,8 @@ class Editblog extends React.Component {
           blogauthor: "",
           blogimageurl: "",
           blogcontent: "",
-          blogdate:"",
-        }).alert("Blog updated")
+          blogdate: "",
+        }).alert("Blog updated");
         this.props.history
           .push("/blog/")
           .then(() => {
@@ -102,6 +102,7 @@ class Editblog extends React.Component {
         console.error("Error adding document: ", error);
       });
   };
+
   render() {
     return (
       <React.Fragment>
