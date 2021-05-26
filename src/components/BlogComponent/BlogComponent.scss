@@ -1,27 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .blogContainer {
-  margin: 20px;
-}
-
-.errorMessage {
-  width: 65vw;
-  margin: 6em auto;
+  margin: 10px;
 }
 
 .blogContents {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .profileImage {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-  }
+  justify-content: center;
 
   .blogDetails {
-    padding: 0 15px 15px;
+    padding: 0 5px 15px;
     font-family: "Montserrat", sans-serif !important;
     text-align: justify;
     font-size: 0.9em;
@@ -65,15 +55,16 @@
       align-items: flex-end;
 
       textarea {
-        width: 70vw;
+        width: 75vw;
         margin-top: 0;
+        font-size: 0.9rem;
+        padding: 7px;
       }
 
       button {
         width: min-content;
         white-space: nowrap;
-        margin-right: 0;
-        margin-top: 1em;
+        margin: 0.5em 0 0 0;
       }
     }
   }
@@ -98,7 +89,6 @@
           font-weight: 600;
 
           .comment {
-            color: #727070;
             font-size: 0.95rem;
             font-weight: 400;
             margin-left: 0.5em;
@@ -141,11 +131,23 @@
 
 @media only screen and (min-width: 992px) {
   .blogContents {
-    width: 80%;
+    width: 70vw;
     margin: auto;
 
     .shareButtons {
       margin: 2em 0 0 0;
+    }
+
+    .addComment {
+      .right {
+        textarea {
+          width: 70vw;
+        }
+
+        button {
+          margin: 0.5em 0 0 0;
+        }
+      }
     }
   }
 }

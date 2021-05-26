@@ -14,16 +14,26 @@ import {
 } from "react-share";
 import { db } from "../../firebase";
 import Moment from "moment";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Fade } from "react-reveal";
 import { useAuth } from "../../contexts/AuthContext";
-import { doc } from "prettier";
 import EditComments from "./EditComments/EditComments";
 import firebase from "firebase";
 import ProfileImage from "../../img/profile-user.svg";
+import AlertModal from "../AlertModalComponent/AlertModalComponent";
+import { useHistory } from "react-router-dom";
 
 const BlogComponent = () => {
+  let history = useHistory();
+
+  //Modal
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const { blogcategory, blogname } = useParams();
 
   const { currentUser } = useAuth();
@@ -38,7 +48,6 @@ const BlogComponent = () => {
   }
 
   const [show, setShow] = useState(false);
-  const [blogExists, setBlogExists] = useState(true);
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
@@ -58,7 +67,21 @@ const BlogComponent = () => {
           blogcontent: Test.blogcontent,
           like: Test.like,
         });
-      } else setBlogExists(false);
+      } else
+        showModal(
+          <AlertModal
+            message="This is not a Valid Test Link!"
+            icon="exclamation"
+            leftBtn="Go to Home"
+            rightBtn="View other Tests"
+            action={() => {
+              history.push("/home");
+            }}
+            close={() => {
+              history.push("/tests");
+            }}
+          />
+        );
     });
   }, []);
 
@@ -148,6 +171,7 @@ const BlogComponent = () => {
 
   return (
     <React.Fragment>
+      {modal}
       <div>
         <HeaderTitle
           heading={blogedit.blogtitle}
@@ -194,17 +218,9 @@ const BlogComponent = () => {
               <div className="addComment">
                 <div className="left">
                   {currentUser.photoURL ? (
-                    <img
-                      src={currentUser.photoURL}
-                      className="profileImage"
-                      alt="Profile"
-                    />
+                    <img src={currentUser.photoURL} alt="Profile" />
                   ) : (
-                    <img
-                      src={ProfileImage}
-                      className="profileImage"
-                      alt="Profile"
-                    />
+                    <img src={ProfileImage} alt="Profile" />
                   )}
                 </div>
                 <div className="right">
@@ -223,7 +239,12 @@ const BlogComponent = () => {
                   </button>
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <h5>
+                You need to login to add a comment!{" "}
+                <a href="/login">Login now</a>
+              </h5>
+            )}
 
             <div className="commentsList">
               {blogcomment.map((user, index) => {
@@ -231,17 +252,9 @@ const BlogComponent = () => {
                   <div className="singleComment" key={index}>
                     <div className="left">
                       {user.photourl ? (
-                        <img
-                          src={user.photourl}
-                          className="profileImage"
-                          alt="Profile"
-                        />
+                        <img src={user.photourl} alt="Profile" />
                       ) : (
-                        <img
-                          src={ProfileImage}
-                          className="profileImage"
-                          alt="Profile"
-                        />
+                        <img src={ProfileImage} alt="Profile" />
                       )}
                     </div>
                     <div className="right">
