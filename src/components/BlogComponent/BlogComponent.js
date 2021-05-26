@@ -37,6 +37,7 @@ const BlogComponent = () => {
       });
   }
 
+  const [show, setShow] = useState(false);
   const [blogExists, setBlogExists] = useState(true);
 
   // fetching the blog
@@ -61,11 +62,10 @@ const BlogComponent = () => {
     });
   }, []);
 
-  const onDeleteComment = (id) => {
+  //Deleting blog
+  const onDeleteBlog = () => {
     db.collection("Blogs")
       .doc(blogname)
-      .collection("Comments")
-      .doc(id)
       .delete()
       .catch((err) => {
         console.error(err);
@@ -103,7 +103,7 @@ const BlogComponent = () => {
     const unsubscribe = db
       .collection("Blogs")
       .doc(blogname)
-      .collection("Comments")
+      .collection("Comments").orderBy("date","asc")
       .onSnapshot((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
@@ -114,15 +114,28 @@ const BlogComponent = () => {
     return unsubscribe;
   }, []);
 
-  //Deleting blog
-  const onDeleteBlog = () => {
+  // Delete comments
+  const onDeleteComment = (id) => {
     db.collection("Blogs")
       .doc(blogname)
+      .collection("Comments")
+      .doc(id)
       .delete()
       .catch((err) => {
         console.error(err);
       });
   };
+
+  //edit comments
+  // const onEdit = () => {
+  //   db.collection("Blogs")
+  //     .doc(blogname)
+  //     .collection("Comments")
+  //     .onSnapshot(function (doc) {
+  //       const data = doc.data();
+  //       setCurrentProfile(data);
+  //     });
+  // }
 
   const shareUrl = "http://technohubbit.in/" + blogcategory + "/" + blogname;
   const shareText =
@@ -231,21 +244,34 @@ const BlogComponent = () => {
                       )}
                     </div>
                     <div className="right">
-                      <h5>
-                        {user.fullname}
-                        <span className="comment">{user.comment}</span>
-                      </h5>
+                      {user.fullname === currentProfile.fullname ? (
+                        <h5>
+                          {user.fullname}
+                          {show ? (
+                            <span className="comment">
+                              <input>{user.comment}</input>
+                            </span>
+                          ) : (
+                            <span className="comment">{user.comment}</span>
+                          )}
+                        </h5>
+                      ) : (
+                        <h5>
+                          {user.fullname}
+                          <span className="comment">{user.comment}</span>
+                        </h5>
+                      )}
                       <div className="date">
                         {Moment(user.date).format("ll")}
                         {user.fullname === currentProfile.fullname ? (
                           <span className="actionBtns">
-                            {/* <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={() => onEdit(user.id)}
-                              >
-                                Edit
-                              </button> */}
+                            <button
+                              type="button"
+                              className="btn btn-primary"
+                              onClick={() => setShow(!show)}
+                            >
+                              Edit
+                            </button>
                             <button
                               type="button"
                               className="btn btn-danger"
