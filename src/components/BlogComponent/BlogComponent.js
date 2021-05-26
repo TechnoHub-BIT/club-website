@@ -47,7 +47,17 @@ const BlogComponent = () => {
       });
   }
 
-  const [show, setShow] = useState(false);
+  const setInput = (inputId) => {
+    const input = document.querySelector("#" + inputId);
+    if (input.hasAttribute("readOnly")) {
+      input.readOnly = false;
+      input.classList.add("editComment");
+      input.focus();
+    } else {
+      input.readOnly = true;
+      input.classList.remove("editComment");
+    }
+  };
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
@@ -262,6 +272,7 @@ const BlogComponent = () => {
                         {user.fullname}
                         <input
                           className="comment"
+                          id={"comment" + index}
                           value={user.comment}
                           readOnly
                         />
@@ -273,7 +284,7 @@ const BlogComponent = () => {
                             <button
                               type="button"
                               className="btn btn-primary"
-                              onClick={() => setShow(!show)}
+                              onClick={() => setInput("comment" + index)}
                             >
                               Edit
                             </button>
