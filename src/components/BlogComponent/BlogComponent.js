@@ -23,6 +23,7 @@ import firebase from "firebase";
 import ProfileImage from "../../img/profile-user.svg";
 import AlertModal from "../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
+import SingleComment from "./SingleCommentComponent/SingleComponent";
 
 const BlogComponent = () => {
   let history = useHistory();
@@ -46,18 +47,6 @@ const BlogComponent = () => {
         setCurrentProfile(data);
       });
   }
-
-  const setInput = (inputId) => {
-    const input = document.querySelector("#" + inputId);
-    if (input.hasAttribute("readOnly")) {
-      input.readOnly = false;
-      input.classList.add("editComment");
-      input.focus();
-    } else {
-      input.readOnly = true;
-      input.classList.remove("editComment");
-    }
-  };
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
@@ -137,17 +126,16 @@ const BlogComponent = () => {
 
   // storing comments in firestore
   const onAddComment = () => {
-    if (comment){
+    if (comment) {
       db.collection("Blogs").doc(blogname).collection("Comments").add({
         fullname: fullname,
         photourl: photourl,
         comment: comment,
         date: date,
       });
+    } else {
+      alert("Please add a comment");
     }
-      else{
-        alert("Please add a comment")
-      }
 
     setComment(null);
   };
@@ -280,61 +268,13 @@ const BlogComponent = () => {
             <div className="commentsList">
               {blogcomment.map((user, index) => {
                 return (
-                  <div className="singleComment" key={index}>
-                    <div className="left">
-                      {user.photourl ? (
-                        <img src={user.photourl} alt="Profile" />
-                      ) : (
-                        <img src={ProfileImage} alt="Profile" />
-                      )}
-                    </div>
-                    <div className="right">
-                      <h5>
-                        {user.fullname}
-                        <input
-                          className="comment"
-                          id={"comment" + index}
-                          value={user.comment}
-                          // onChange={Ecomment}
-                          readOnly
-                        />
-                      </h5>
-                      <div className="date">
-                        {Moment(user.date).format("ll")}
-                        {user.fullname === currentProfile.fullname ? (
-                          <span className="actionBtns">
-                            <button
-                              type="button"
-                              className="btn btn-primary"
-                              onClick={() => setInput("comment" + index)}
-                            >
-                              Edit
-                            </button>
-                            {/* <button
-                              type="button"
-                              onClick={editComment(user.id)}
-                            >
-                              Update
-                            </button> */}
-                          </span>
-                        ) : null}
-                        {user.fullname === currentProfile.fullname ||
-                        currentProfile.id === 1 ||
-                        currentProfile.id === 3 ||
-                        blogedit.blogauthor == currentProfile.fullname ? (
-                          <span className="actionBtns">
-                            <button
-                              type="button"
-                              className="btn btn-danger"
-                              onClick={() => onDeleteComment(user.id)}
-                            >
-                              Delete
-                            </button>
-                          </span>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <SingleComment
+                    user={user}
+                    currentProfile={currentProfile}
+                    blogEdit={blogedit}
+                    onDelete={() => onDeleteComment(user.id)}
+                    key={index}
+                  />
                 );
               })}
             </div>
