@@ -120,6 +120,22 @@
   border: 1px solid #000;
 }
 
+.blogContents .commentsList .singleComment .right h5 .comment::-webkit-input-placeholder {
+  color: #000;
+}
+
+.blogContents .commentsList .singleComment .right h5 .comment:-ms-input-placeholder {
+  color: #000;
+}
+
+.blogContents .commentsList .singleComment .right h5 .comment::-ms-input-placeholder {
+  color: #000;
+}
+
+.blogContents .commentsList .singleComment .right h5 .comment::placeholder {
+  color: #000;
+}
+
 .blogContents .commentsList .singleComment .right .date {
   color: #727070;
   font-size: 0.85rem;

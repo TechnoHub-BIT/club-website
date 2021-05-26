@@ -47,15 +47,17 @@ const BlogComponent = () => {
       });
   }
 
-  const setInput = (inputId) => {
+  const setInput = (inputId, value) => {
     const input = document.querySelector("#" + inputId);
     if (input.hasAttribute("readOnly")) {
       input.readOnly = false;
       input.classList.add("editComment");
       input.focus();
+      input.value = value;
     } else {
       input.readOnly = true;
       input.classList.remove("editComment");
+      input.value = null;
     }
   };
 
@@ -273,7 +275,7 @@ const BlogComponent = () => {
                         <input
                           className="comment"
                           id={"comment" + index}
-                          value={user.comment}
+                          placeholder={user.comment}
                           readOnly
                         />
                       </h5>
@@ -284,7 +286,9 @@ const BlogComponent = () => {
                             <button
                               type="button"
                               className="btn btn-primary"
-                              onClick={() => setInput("comment" + index)}
+                              onClick={() =>
+                                setInput("comment" + index, user.comment)
+                              }
                             >
                               Edit
                             </button>

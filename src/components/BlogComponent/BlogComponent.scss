@@ -98,6 +98,10 @@
             &.editComment {
               border: 1px solid #000;
             }
+
+            &::placeholder {
+              color: #000;
+            }
           }
         }
 
