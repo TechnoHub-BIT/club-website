@@ -34,6 +34,7 @@
 //     .collection("CBlogs")
 //     .doc(this.props.match.params.id)
 //     .collection("Comments")
+//     .doc(id)
 //     .doc(id);
 //     ref.get().then((doc) => {
 //         if (doc.exists) {
