@@ -258,23 +258,14 @@ const BlogComponent = () => {
                       )}
                     </div>
                     <div className="right">
-                      {user.fullname === currentProfile.fullname ? (
-                        <h5>
-                          {user.fullname}
-                          {show ? (
-                            <span className="comment">
-                              <input>{user.comment}</input>
-                            </span>
-                          ) : (
-                            <span className="comment">{user.comment}</span>
-                          )}
-                        </h5>
-                      ) : (
-                        <h5>
-                          {user.fullname}
-                          <span className="comment">{user.comment}</span>
-                        </h5>
-                      )}
+                      <h5>
+                        {user.fullname}
+                        <input
+                          className="comment"
+                          value={user.comment}
+                          readOnly
+                        />
+                      </h5>
                       <div className="date">
                         {Moment(user.date).format("ll")}
                         {user.fullname === currentProfile.fullname ? (
@@ -290,6 +281,7 @@ const BlogComponent = () => {
                         ) : null}
                         {user.fullname === currentProfile.fullname ||
                         currentProfile.id === 1 ||
+                        currentProfile.id === 3 ||
                         blogedit.blogauthor == currentProfile.fullname ? (
                           <span className="actionBtns">
                             <button
