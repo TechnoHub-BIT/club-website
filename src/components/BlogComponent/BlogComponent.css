@@ -69,9 +69,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .blogContents .commentsList .singleComment .left img {
@@ -98,7 +95,7 @@
 
 .blogContents .commentsList .singleComment .right .date {
   color: #727070;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   margin-top: 0.5em;
 }
 
@@ -113,7 +110,17 @@
 }
 
 .blogContents .commentsList .singleComment:not(:first-child) {
+  position: relative;
   margin-top: 2em;
+}
+
+.blogContents .commentsList .singleComment:not(:first-child)::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: #a5a1a1;
+  top: -1em;
 }
 
 @media only screen and (min-width: 992px) {
