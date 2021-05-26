@@ -47,6 +47,12 @@ class Editblog extends React.Component {
     state[e.target.name] = e.target.value;
     this.setState({ Blogs: state });
   };
+  contentChange = (value) => {
+    const currentState = this.state;
+    currentState.blogcontent = value;
+    this.setState(currentState);
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -56,6 +62,7 @@ class Editblog extends React.Component {
       blogauthor,
       blogimageurl,
       blogcontent,
+      blogdate,
     } = this.state;
 
     const updateRef = db
@@ -68,6 +75,7 @@ class Editblog extends React.Component {
         blogauthor,
         blogimageurl,
         blogcontent,
+        blogdate,
       })
       .then((docRef) => {
         this.setState({
@@ -77,10 +85,10 @@ class Editblog extends React.Component {
           blogauthor: "",
           blogimageurl: "",
           blogcontent: "",
-        });
-
+          blogdate:"",
+        }).alert("Blog updated")
         this.props.history
-          .push("/editblogpost/")
+          .push("/blog/")
           .then(() => {
             alert("Blog category added");
           })
@@ -92,14 +100,6 @@ class Editblog extends React.Component {
         console.error("Error adding document: ", error);
       });
   };
-
-  contentChange = (value) => {
-    const currentState = this.state;
-    currentState.blogcontent = value;
-
-    this.setState(currentState);
-  };
-
   render() {
     return (
       <React.Fragment>
@@ -152,6 +152,18 @@ class Editblog extends React.Component {
                   required
                 />
                 <label for="author">Blog Author</label>
+              </div>
+              <div className="input-group">
+                <input
+                  type="date"
+                  name="blogdate"
+                  id="blogdate"
+                  onChange={this.onChange}
+                  value={this.state.blogdate}
+                  placeholder="Blog Date"
+                  required
+                />
+                <label for="date">Blog Date</label>
               </div>
               <div className="input-group">
                 <input
