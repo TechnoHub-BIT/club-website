@@ -52,6 +52,7 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestUserCheck";
+import MyBlogs from "./ProfileComponents/MyBlogs";
 
 class Main extends Component {
   render() {
@@ -115,6 +116,7 @@ class Main extends Component {
               path="/editcategory/:id"
               component={EditCategory}
             />
+            <PrivateRoute exact path="/myblogs" component={MyBlogs} />
 
             {/* Event Pages */}
             <Route exact path="/events" component={EventsList} />
