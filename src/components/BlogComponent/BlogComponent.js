@@ -137,7 +137,7 @@ const BlogComponent = () => {
 
   // storing comments in firestore
   const onAddComment = () => {
-    if (comment !== "")
+    if (comment)
       db.collection("Blogs").doc(blogname).collection("Comments").add({
         fullname: fullname,
         photourl: photourl,
