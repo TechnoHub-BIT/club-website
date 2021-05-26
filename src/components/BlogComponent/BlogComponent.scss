@@ -63,7 +63,6 @@
   .commentsList {
     .singleComment {
       display: flex;
-      align-items: center;
 
       .left {
         img {
@@ -90,7 +89,7 @@
 
         .date {
           color: #727070;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           margin-top: 0.5em;
 
           .actionBtns {
@@ -106,7 +105,17 @@
       }
 
       &:not(:first-child) {
+        position: relative;
         margin-top: 2em;
+
+        &::before {
+          position: absolute;
+          content: "";
+          height: 1px;
+          width: 100%;
+          background-color: #a5a1a1;
+          top: -1em;
+        }
       }
     }
   }

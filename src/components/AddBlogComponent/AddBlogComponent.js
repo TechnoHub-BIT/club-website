@@ -15,7 +15,6 @@ import { db } from "../../firebase";
 import { Helmet } from "react-helmet";
 import { useAuth } from "../../contexts/AuthContext";
 
-
 export default function AddBlogComponent() {
   const { currentUser } = useAuth();
   const [currentProfile, setCurrentProfile] = useState("");
@@ -57,8 +56,7 @@ export default function AddBlogComponent() {
       blogimageurl !== ""
     ) {
       e.preventDefault();
-      db
-        .collection("Blogs")
+      db.collection("Blogs")
         .add({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
@@ -169,7 +167,6 @@ export default function AddBlogComponent() {
               status="active"
             />
           </Breadcrumb>
-
           <div className="formsCont">
             <form>
               <div className="title">
@@ -199,7 +196,7 @@ export default function AddBlogComponent() {
                   {list.map((cat) => {
                     return (
                       <option value={cat.blogcategorytype}>
-                        {cat.blogcategorytype} 
+                        {cat.blogcategorytype}
                       </option>
                     );
                   })}
@@ -215,11 +212,7 @@ export default function AddBlogComponent() {
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
-                    return (
-                      <option value={mem.fullname}>
-                        {mem.fullname} 
-                      </option>
-                    );
+                    return <option value={mem.fullname}>{mem.fullname}</option>;
                   })}
                 </select>
               </div>
@@ -233,11 +226,7 @@ export default function AddBlogComponent() {
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
-                    return (
-                      <option value={mem.id}>
-                        {mem.fullname} 
-                      </option>
-                    );
+                    return <option value={mem.id}>{mem.fullname}</option>;
                   })}
                 </select>
               </div>

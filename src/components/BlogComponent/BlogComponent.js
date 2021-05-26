@@ -74,7 +74,7 @@ const BlogComponent = () => {
 
   const fullname = currentProfile.fullname;
   const photourl = currentUser.photoURL;
-  const date = new Date().toLocaleDateString();
+  const date = new Date();
 
   const [comment, setComment] = useState([]);
   const Ucomment = (e) => {
@@ -88,7 +88,7 @@ const BlogComponent = () => {
       fullname: fullname,
       photourl: photourl,
       comment: comment,
-      date: date,
+      date: new Date(),
     });
 
     // db.collection("members")
@@ -324,9 +324,10 @@ const BlogComponent = () => {
             <div className="commentsList">
               {blogcomment.map((user, index) => {
                 const users = user.id;
+                console.log(user.date);
 
                 return (
-                  <div className="singleComment">
+                  <div className="singleComment" key={index}>
                     <div className="left">
                       {user.photourl ? (
                         <img
