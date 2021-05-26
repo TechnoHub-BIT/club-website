@@ -137,13 +137,12 @@ const BlogComponent = () => {
 
   // storing comments in firestore
   const onAddComment = () => {
-    if (comment !== "")
-      db.collection("Blogs").doc(blogname).collection("Comments").add({
-        fullname: fullname,
-        photourl: photourl,
-        comment: comment,
-        date: date,
-      });
+    db.collection("Blogs").doc(blogname).collection("Comments").add({
+      fullname: fullname,
+      photourl: photourl,
+      comment: comment,
+      date: date,
+    });
 
     setComment(null);
   };
