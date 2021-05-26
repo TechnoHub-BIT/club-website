@@ -47,7 +47,19 @@ const BlogComponent = () => {
       });
   }
 
-  const [show, setShow] = useState(false);
+  const setInput = (inputId, value) => {
+    const input = document.querySelector("#" + inputId);
+    if (input.hasAttribute("readOnly")) {
+      input.readOnly = false;
+      input.classList.add("editComment");
+      input.focus();
+      input.value = value;
+    } else {
+      input.readOnly = true;
+      input.classList.remove("editComment");
+      input.value = null;
+    }
+  };
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
@@ -257,6 +269,15 @@ const BlogComponent = () => {
                       )}
                     </div>
                     <div className="right">
+                      <h5>
+                        {user.fullname}
+                        <input
+                          className="comment"
+                          id={"comment" + index}
+                          placeholder={user.comment}
+                          readOnly
+                        />
+                      </h5>
                       <div className="date">
                         {Moment(user.date).format("ll")}
                         {user.fullname === currentProfile.fullname ? (
@@ -264,23 +285,17 @@ const BlogComponent = () => {
                             <button
                               type="button"
                               className="btn btn-primary"
-                              onClick={() => setShow(!show)}
+                              onClick={() =>
+                                setInput("comment" + index, user.comment)
+                              }
                             >
                               Edit
                             </button>
-                            {/* <h5>
-                              {user.fullname}
-                              <span className="comment"><input name="comment" onChange={Ucomment} >{user.comment}</input></span>
-                            </h5> */}
                           </span>
-                        ) : (
-                          <h5>
-                            {user.fullname}
-                            <span className="comment">{user.comment}</span>
-                          </h5>
-                        )}
+                        ) : null}
                         {user.fullname === currentProfile.fullname ||
                         currentProfile.id === 1 ||
+                        currentProfile.id === 3 ||
                         blogedit.blogauthor == currentProfile.fullname ? (
                           <span className="actionBtns">
                             <button
