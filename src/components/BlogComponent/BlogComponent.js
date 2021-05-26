@@ -245,7 +245,6 @@ const BlogComponent = () => {
                 <a href="/login">Login now</a>
               </h5>
             )}
-
             <div className="commentsList">
               {blogcomment.map((user, index) => {
                 return (
