@@ -109,8 +109,9 @@ const ProfileComponent = () => {
                 <Link to="/myblogs">
                   <div className="statCard">
                     <div className="cardDetails">
-                      <h5>Blog Posts</h5>
-                      {/* <h3 className="cardCount">18+</h3> */}
+                      <h5>My Blogs</h5> 
+                           {/* <h3 className="cardCount">{bloglength}</h3> */}
+                
                     </div>
                     <img
                       src="./assets/images/profile/posts.png"
