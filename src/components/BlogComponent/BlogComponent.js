@@ -103,7 +103,8 @@ const BlogComponent = () => {
     const unsubscribe = db
       .collection("Blogs")
       .doc(blogname)
-      .collection("Comments").orderBy("date","asc")
+      .collection("Comments")
+      .orderBy("date", "asc")
       .onSnapshot((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
@@ -272,6 +273,12 @@ const BlogComponent = () => {
                             >
                               Edit
                             </button>
+                          </span>
+                        ) : null}
+                        {user.fullname === currentProfile.fullname ||
+                        currentProfile.id === 1 ||
+                        blogedit.blogauthor == currentProfile.fullname ? (
+                          <span className="actionBtns">
                             <button
                               type="button"
                               className="btn btn-danger"
