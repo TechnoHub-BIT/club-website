@@ -158,6 +158,9 @@ const BlogComponent = () => {
   //     });
   // }
 
+  const onChangeEdit = () => {};
+  const onEditComment = () => {};
+
   const shareUrl = "http://technohubbit.in/" + blogcategory + "/" + blogname;
   const shareText =
     "\n\nCheck out this blog post by " +
@@ -249,6 +252,8 @@ const BlogComponent = () => {
                     currentProfile={currentProfile}
                     blogEdit={blogedit}
                     onDelete={() => onDeleteComment(user.id)}
+                    onChangeEdit={() => onChangeEdit()}
+                    onEdit={() => onEditComment(user.id)}
                     key={index}
                   />
                 );

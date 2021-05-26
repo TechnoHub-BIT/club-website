@@ -19,31 +19,31 @@ class EditCommentModal extends Component {
         <div className={this.state.modalClass}>
           <div className="modalContent">
             <div className="modalBody">
-              <p>{this.props.message}</p>
+              <textarea
+                value={this.props.comment}
+                onChange={this.props.onChange}
+              ></textarea>
               <div className="buttons">
                 <button
                   type="button"
                   onClick={() => {
                     this.props.close();
-                    this.props.action(this.props.actionParam);
-                    if (this.props.reload != null) window.location.reload();
+                    this.props.onSave();
                     this.closeModal();
                   }}
                 >
-                  {this.props.leftBtn}
+                  Save
                 </button>
-                {this.props.rightBtn != null ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.closeModal();
-                      this.props.close();
-                    }}
-                    style={{ marginLeft: "1em" }}
-                  >
-                    {this.props.rightBtn}
-                  </button>
-                ) : null}
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.closeModal();
+                    this.props.close();
+                  }}
+                  style={{ marginLeft: "1em" }}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </div>

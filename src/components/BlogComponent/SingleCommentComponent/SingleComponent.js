@@ -14,11 +14,11 @@ const SingleComment = (props) => {
   const openEditModal = () => {
     showModal(
       <EditCommentModal
-        message={props.user.comment}
-        icon="successful"
-        leftBtn="Save"
+        comment={props.user.comment}
         action={closeModal}
-        close={closeModal}
+        close={() => closeModal()}
+        onChange={props.onChangeEdit}
+        onSave={props.onEdit}
       />
     );
   };
