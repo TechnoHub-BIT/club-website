@@ -227,21 +227,21 @@ const SingleTest = (props) => {
       else score -= parseInt(tests.negativemarks, 10);
     }
 
-    //Store details in tests collection of members database
-    db.collection("members")
-      .doc(currentUser.uid)
-      .collection("tests")
-      .doc(title)
-      .set({
-        testname: title,
-        timeleft: timeLeft,
-        options: options,
-        answers: answers,
-        testduration: testduration,
-        testdate: testdate,
-        totalmarks: totalmarks,
-        score: score,
-      });
+    // //Store details in tests collection of members database
+    // db.collection("members")
+    //   .doc(currentUser.uid)
+    //   .collection("tests")
+    //   .doc(title)
+    //   .set({
+    //     testname: title,
+    //     timeleft: timeLeft,
+    //     options: options,
+    //     answers: answers,
+    //     testduration: testduration,
+    //     testdate: testdate,
+    //     totalmarks: totalmarks,
+    //     score: score,
+    //   });
 
     //Store details in results collection of test database
     db.collection("Tests")
@@ -252,6 +252,8 @@ const SingleTest = (props) => {
         fullname: fullname,
         testname: title,
         email: email,
+        options: options,
+        answers: answers,
         timeleft: timeLeft,
         branch: branch,
         score: score,

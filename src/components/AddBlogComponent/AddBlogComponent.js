@@ -32,10 +32,6 @@ export default function AddBlogComponent() {
   const author = (e) => {
     setAuthor(e.target.value);
   };
-  // const [blogauthorid, setAuthorId] = useState("");
-  // const authorid = (e) => {
-  //   setAuthorId(e.target.value);
-  // };
   const [blogimageurl, setImageUrl] = useState("");
   const imageurl = (e) => {
     setImageUrl(e.target.value);
@@ -61,7 +57,6 @@ export default function AddBlogComponent() {
           blogtitle: blogtitle,
           blogcategory: blogcategory,
           blogauthor: blogauthor,
-          // blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
           blogdate: blogdate,
           like: like,
@@ -216,20 +211,6 @@ export default function AddBlogComponent() {
                   })}
                 </select>
               </div>
-              {/* <div className="input-group">
-                <select
-                  name="privacy"
-                  id="privacy"
-                  onChange={authorid}
-                  value={blogauthorid}
-                  required
-                >
-                  <option value="">--Blog Author--</option>
-                  {members.map((mem) => {
-                    return <option value={mem.id}>{mem.fullname}</option>;
-                  })}
-                </select>
-              </div> */}
               <div className="input-group">
                 <input
                   type="text"
