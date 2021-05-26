@@ -23,7 +23,7 @@ import firebase from "firebase";
 import ProfileImage from "../../img/profile-user.svg";
 import AlertModal from "../AlertModalComponent/AlertModalComponent";
 import { useHistory } from "react-router-dom";
-import SingleComment from "./SingleCommentComponent/SingleComponent";
+import SingleComment from "./SingleCommentComponent/SingleCommentComponent";
 
 const BlogComponent = () => {
   const { blogcategory, blogname } = useParams();
@@ -87,10 +87,7 @@ const BlogComponent = () => {
     setComment(e.target.value);
   };
 
-  // const [ecomment, setEComment] = useState([]);
-  // const Ecomment = (e) => {
-  //   setEComment(e.target.value);
-  // };
+
 
   // const editComment = (id) => {
   //   db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
@@ -100,6 +97,7 @@ const BlogComponent = () => {
   //     date: date,
   //   });
   // };
+
 
   // storing comments in firestore
   const onAddComment = () => {
@@ -146,20 +144,6 @@ const BlogComponent = () => {
         console.error(err);
       });
   };
-
-  //edit comments
-  // const onEdit = () => {
-  //   db.collection("Blogs")
-  //     .doc(blogname)
-  //     .collection("Comments")
-  //     .onSnapshot(function (doc) {
-  //       const data = doc.data();
-  //       setCurrentProfile(data);
-  //     });
-  // }
-
-  const onChangeEdit = () => {};
-  const onEditComment = () => {};
 
   const shareUrl = "http://technohubbit.in/" + blogcategory + "/" + blogname;
   const shareText =
@@ -252,8 +236,6 @@ const BlogComponent = () => {
                     currentProfile={currentProfile}
                     blogEdit={blogedit}
                     onDelete={() => onDeleteComment(user.id)}
-                    onChangeEdit={() => onChangeEdit()}
-                    onEdit={() => onEditComment(user.id)}
                     key={index}
                   />
                 );

@@ -1,31 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Moment from "moment";
 import ProfileImage from "../../../img/profile-user.svg";
-import EditCommentModal from "./EditCommentModal";
 
 const SingleComment = (props) => {
-  //Modal
-  const [modal, showModal] = useState("");
-
-  const closeModal = () => {
-    showModal("");
-  };
-
-  const openEditModal = () => {
-    showModal(
-      <EditCommentModal
-        comment={props.user.comment}
-        action={closeModal}
-        close={() => closeModal()}
-        onChange={props.onChangeEdit}
-        onSave={props.onEdit}
-      />
-    );
-  };
-
   return (
     <React.Fragment>
-      {modal}
       <div className="singleComment">
         <div className="left">
           {props.user.photourl ? (
@@ -41,17 +20,6 @@ const SingleComment = (props) => {
           </h5>
           <div className="date">
             {Moment(props.user.date).format("ll")}
-            {props.user.fullname === props.currentProfile.fullname ? (
-              <span className="actionBtns">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={openEditModal}
-                >
-                  Edit
-                </button>
-              </span>
-            ) : null}
             {props.user.fullname === props.currentProfile.fullname ||
             props.currentProfile.id === 1 ||
             props.currentProfile.id === 3 ||

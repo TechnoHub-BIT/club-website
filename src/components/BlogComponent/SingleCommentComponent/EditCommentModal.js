@@ -21,7 +21,7 @@ class EditCommentModal extends Component {
             <div className="modalBody">
               <textarea
                 value={this.props.comment}
-                onChange={this.props.onChange}
+                onChange={(e) => this.props.onChangeEdit(e)}
               ></textarea>
               <div className="buttons">
                 <button
