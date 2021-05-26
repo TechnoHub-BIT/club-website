@@ -47,54 +47,54 @@ const BlogComponent = () => {
       });
   }
 
-  const setInput = (inputId, value) => {
+  const setInput = (inputId) => {
     const input = document.querySelector("#" + inputId);
     if (input.hasAttribute("readOnly")) {
       input.readOnly = false;
       input.classList.add("editComment");
       input.focus();
-      input.value = value;
     } else {
       input.readOnly = true;
       input.classList.remove("editComment");
-      input.value = null;
     }
   };
 
   // fetching the blog
   const [authorid, setAuthorId] = useState("");
   const [blogedit, setblogs] = useState("");
-  const ref = db.collection("Blogs").doc(blogname);
   useEffect(() => {
-    ref.get().then((doc) => {
-      if (doc.exists) {
-        const Test = doc.data();
-        setAuthorId(Test.blogauthorid);
-        setblogs({
-          blogtitle: Test.blogtitle,
-          blogauthor: Test.blogauthor,
-          blogauthorid: Test.blogauthorid,
-          blogimageurl: Test.blogimageurl,
-          blogdate: Test.blogdate,
-          blogcontent: Test.blogcontent,
-          like: Test.like,
-        });
-      } else
-        showModal(
-          <AlertModal
-            message="This is not a Valid Test Link!"
-            icon="exclamation"
-            leftBtn="Go to Home"
-            rightBtn="View other Tests"
-            action={() => {
-              history.push("/home");
-            }}
-            close={() => {
-              history.push("/tests");
-            }}
-          />
-        );
-    });
+    db.collection("Blogs")
+      .doc(blogname)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const Test = doc.data();
+          setAuthorId(Test.blogauthorid);
+          setblogs({
+            blogtitle: Test.blogtitle,
+            blogauthor: Test.blogauthor,
+            blogauthorid: Test.blogauthorid,
+            blogimageurl: Test.blogimageurl,
+            blogdate: Test.blogdate,
+            blogcontent: Test.blogcontent,
+            like: Test.like,
+          });
+        } else
+          showModal(
+            <AlertModal
+              message="This is not a Valid Test Link!"
+              icon="exclamation"
+              leftBtn="Go to Home"
+              rightBtn="View other Tests"
+              action={() => {
+                history.push("/home");
+              }}
+              close={() => {
+                history.push("/tests");
+              }}
+            />
+          );
+      });
   }, []);
 
   //Deleting blog
@@ -275,7 +275,7 @@ const BlogComponent = () => {
                         <input
                           className="comment"
                           id={"comment" + index}
-                          placeholder={user.comment}
+                          value={user.comment}
                           readOnly
                         />
                       </h5>
@@ -286,9 +286,7 @@ const BlogComponent = () => {
                             <button
                               type="button"
                               className="btn btn-primary"
-                              onClick={() =>
-                                setInput("comment" + index, user.comment)
-                              }
+                              onClick={() => setInput("comment" + index)}
                             >
                               Edit
                             </button>
