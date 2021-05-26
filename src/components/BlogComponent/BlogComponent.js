@@ -139,7 +139,7 @@ const BlogComponent = () => {
       .collection("Blogs")
       .doc(blogname)
       .collection("Comments")
-      .orderBy("date", "asc")
+      .orderBy("date", "desc")
       .onSnapshot((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
@@ -257,7 +257,6 @@ const BlogComponent = () => {
                 <a href="/login">Login now</a>
               </h5>
             )}
-
             <div className="commentsList">
               {blogcomment.map((user, index) => {
                 return (
