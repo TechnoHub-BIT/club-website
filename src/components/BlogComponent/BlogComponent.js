@@ -26,15 +26,6 @@ import { useHistory } from "react-router-dom";
 import SingleComment from "./SingleCommentComponent/SingleComponent";
 
 const BlogComponent = () => {
-  let history = useHistory();
-
-  //Modal
-  const [modal, showModal] = useState("");
-
-  const closeModal = () => {
-    showModal("");
-  };
-
   const { blogcategory, blogname } = useParams();
 
   const { currentUser } = useAuth();
@@ -68,21 +59,7 @@ const BlogComponent = () => {
             blogcontent: Test.blogcontent,
             like: Test.like,
           });
-        } else
-          showModal(
-            <AlertModal
-              message="This is not a Valid Test Link!"
-              icon="exclamation"
-              leftBtn="Go to Home"
-              rightBtn="View other Tests"
-              action={() => {
-                history.push("/home");
-              }}
-              close={() => {
-                history.push("/tests");
-              }}
-            />
-          );
+        } else console.log("Non-existing");
       });
   }, []);
 
@@ -191,7 +168,6 @@ const BlogComponent = () => {
 
   return (
     <React.Fragment>
-      {modal}
       <div>
         <HeaderTitle
           heading={blogedit.blogtitle}
