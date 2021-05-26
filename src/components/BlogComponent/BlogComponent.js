@@ -121,14 +121,29 @@ const BlogComponent = () => {
     setComment(e.target.value);
   };
 
-  // storing comments in firestore
-  const onAddComment = () => {
-    db.collection("Blogs").doc(blogname).collection("Comments").add({
+  const [ecomment, setEComment] = useState([]);
+  const Ecomment = (e) => {
+    setEComment(e.target.value);
+  };
+
+  const editComment = (id) => {
+    db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
       fullname: fullname,
       photourl: photourl,
-      comment: comment,
+      comment: ecomment,
       date: date,
     });
+  };
+
+  // storing comments in firestore
+  const onAddComment = () => {
+    if (comment !== "")
+      db.collection("Blogs").doc(blogname).collection("Comments").add({
+        fullname: fullname,
+        photourl: photourl,
+        comment: comment,
+        date: date,
+      });
 
     setComment(null);
   };
@@ -276,6 +291,7 @@ const BlogComponent = () => {
                           className="comment"
                           id={"comment" + index}
                           value={user.comment}
+                          onChange={Ecomment}
                           readOnly
                         />
                       </h5>
@@ -289,6 +305,12 @@ const BlogComponent = () => {
                               onClick={() => setInput("comment" + index)}
                             >
                               Edit
+                            </button>
+                            <button
+                              type="button"
+                              onClick={editComment(user.id)}
+                            >
+                              Update
                             </button>
                           </span>
                         ) : null}
