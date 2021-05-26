@@ -144,19 +144,6 @@ class Editblog extends React.Component {
                 />
                {/* <label for="category">Blog Category</label> */}
               </div>
-              {/* <div className="input-group">
-                <input
-                  type="text"
-                  name="author"
-                  id="author"
-                  onChange={this.onChange}
-                  name="blogauthor"
-                  value={this.state.blogauthor}
-                  placeholder="Blog Author"
-                  required
-                />
-                <label for="author">Blog Author</label>
-              </div> */}
               <div className="input-group">
                 <EditAddAuthor
                   onChange={this.onChange}
