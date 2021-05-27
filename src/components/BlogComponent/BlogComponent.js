@@ -52,7 +52,6 @@ const BlogComponent = () => {
           setAuthorId(Test.blogauthorid);
           setblogs({
             blogtitle: Test.blogtitle,
-            blogauthor: Test.blogauthor,
             blogauthorid: Test.blogauthorid,
             blogimageurl: Test.blogimageurl,
             blogdate: Test.blogdate,

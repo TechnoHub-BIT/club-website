@@ -28,7 +28,7 @@ export default function AddBlogComponent() {
     setCategory(e.target.value);
   };
 
-  const [blogauthor, setAuthor] = useState("");
+  const [blogauthorid, setAuthor] = useState("");
   const author = (e) => {
     setAuthor(e.target.value);
   };
@@ -47,7 +47,7 @@ export default function AddBlogComponent() {
   const firestoremaisave = (e) => {
     if (
       blogtitle !== "" &&
-      blogauthor !== "" &&
+      blogauthorid !== "" &&
       // blogcategory !== "" &&
       blogimageurl !== ""
     ) {
@@ -56,7 +56,7 @@ export default function AddBlogComponent() {
         .add({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
-          blogauthor: blogauthor,
+          blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
           blogdate: blogdate,
           like: like,
@@ -202,12 +202,12 @@ export default function AddBlogComponent() {
                   name="privacy"
                   id="privacy"
                   onChange={author}
-                  value={blogauthor}
+                  value={blogauthorid}
                   required
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
-                    return <option value={mem.fullname}>{mem.fullname}</option>;
+                    return <option value={mem.id}>{mem.fullname}</option>;
                   })}
                 </select>
               </div>
