@@ -87,8 +87,6 @@ const BlogComponent = () => {
     setComment(e.target.value);
   };
 
-
-
   // const editComment = (id) => {
   //   db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
   //     fullname: fullname,
@@ -97,7 +95,6 @@ const BlogComponent = () => {
   //     date: date,
   //   });
   // };
-
 
   // storing comments in firestore
   const onAddComment = () => {
