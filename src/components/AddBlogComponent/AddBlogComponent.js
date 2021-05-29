@@ -28,9 +28,9 @@ export default function AddBlogComponent() {
     setCategory(e.target.value);
   };
 
-  const [blogauthorid, setAuthor] = useState("");
-  const author = (e) => {
-    setAuthor(e.target.value);
+  const [blogauthorid, setAuthorId] = useState("");
+  const authorid = (e) => {
+    setAuthorId(e.target.value);
   };
   const [blogimageurl, setImageUrl] = useState("");
   const imageurl = (e) => {
@@ -39,6 +39,10 @@ export default function AddBlogComponent() {
   const [blogcontent, setContent] = useState("");
   const content = (param) => {
     setContent(param);
+  };
+  const [blogauthor, setAuthor] = useState("");
+  const author = (e) => {
+    setAuthor(e.target.value);
   };
   const [like] = useState(0);
 
@@ -58,6 +62,7 @@ export default function AddBlogComponent() {
           blogcategory: blogcategory,
           blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
+          blogauthor:blogauthor,
           blogdate: blogdate,
           like: like,
           blogcontent: blogcontent,
@@ -201,13 +206,27 @@ export default function AddBlogComponent() {
                 <select
                   name="privacy"
                   id="privacy"
-                  onChange={author}
+                  onChange={authorid}
                   value={blogauthorid}
                   required
                 >
                   <option value="">--Blog Author--</option>
                   {members.map((mem) => {
                     return <option value={mem.id}>{mem.fullname}</option>;
+                  })}
+                </select>
+              </div>
+              <div className="input-group">
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={author}
+                  value={blogauthor}
+                  required
+                >
+                  <option value="">--Blog Author--</option>
+                  {members.map((mem) => {
+                    return <option value={mem.fullname}>{mem.fullname}</option>;
                   })}
                 </select>
               </div>

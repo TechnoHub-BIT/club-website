@@ -111,12 +111,12 @@ const achievements = (props) => {
                                 </SingleAchievement>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12">
-                                <SingleAchievement path="./assets/images/achievements/anurag-sharma.png">
+                                <SingleAchievement >
                                 	Team Barleyn led by Anubhav Bhatt and Team Aminochains led by Sija Badgaiyan represented BIT, Durg at Hult Prize Impact Summit Mumbai and Punjab respectively.
                                 </SingleAchievement>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12">
-                                <SingleAchievement path="./assets/images/achievements/anurag-sharma.png">
+                                <SingleAchievement >
                                 	Team Annapurna led by Vinayak Rawat won the state level innovation business plan competition held on 9/3/21 conducted by Institute Innovation Cell, BIT, Durg.
                                 </SingleAchievement>
                             </div>

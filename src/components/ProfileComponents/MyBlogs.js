@@ -64,15 +64,15 @@ const MyBlogs = () => {
                   <strong>S.No.</strong>
                 </div>
                 <div className="testTitle">
-                  Test Title(Max. Marks)
+                  Blog Title
                   <div className="date">{/* <strong>Date</strong> */}</div>
                 </div>
-                <div className="duration">
+                {/* <div className="duration">
                   <strong>Time Taken/Your Score</strong>
                 </div>
                 <div className="buttons">
                   <strong>Answer Key</strong>
-                </div>
+                </div> */}
               </div>
 
               {blogedit.map((blogs, i) => {
