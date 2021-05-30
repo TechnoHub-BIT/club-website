@@ -510,7 +510,12 @@ const SingleTest = (props) => {
                       {tests.testdescription ? (
                         <li>
                           <strong>Additional Information:</strong>{" "}
-                          <p>{tests.testdescription}</p>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: tests.testdescription,
+                            }}
+                          ></p>
+                          {/* <p>{tests.testdescription}</p> */}
                         </li>
                       ) : null}
                     </ul>
