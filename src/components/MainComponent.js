@@ -10,7 +10,6 @@ import About from "./AboutUsComponents/AboutUsComponent";
 import Navbar from "./HeaderComponents/NavbarComponents/NavbarComponent";
 import Contact from "./ContactUsComponents/ContactComponents";
 import OurMembers from "./MembersListComponent/MembersList";
-import Achievements from "./AchievementsComponent/AchievementsComponent";
 import Projects from "./ProjectsComponent/ProjectsComponent";
 import Gallery from "./GalleryComponent/GalleryComponent";
 import Footer from "./FooterComponents/FooterComponent";
@@ -24,6 +23,7 @@ import SignUpComponent from "./SignUpComponents/SignUpComponent";
 import Login from "./LogInComponents/LogInComponent";
 import Profile from "./ProfileComponents/ProfileComponent";
 import ForgotPassword from "./LogInComponents/ForgotPasswordComponent";
+import MyBlogs from "./ProfileComponents/MyBlogs";
 
 //Blog Pages
 import AddBlog from "./AddBlogComponent/AddBlogComponent";
@@ -44,6 +44,11 @@ import EditEvent from "./EventsComponents/EditEventComponent/EditEventUserCheck"
 import EventsList from "./EventsComponents/EventsListComponent/EventsListComponent";
 import SingleEvent from "./EventsComponents/SingleEventComponent/SingleEventComponent";
 
+//Achievement Pages
+import Achievements from "./AchievementsComponent/AchievementsComponent";
+import AddAchievement from "./AchievementsComponent/AddAchievement.js/AddAchievement";
+import EditAchievement from "./AchievementsComponent/EditAcievement.js/EditAchievement";
+
 //Aptitude Test Pages
 import CreateTest from "./AptitudeTestComponent/CreateTestComponent/CreateTestComponent";
 import TestsList from "./AptitudeTestComponent/TestsListComponent/TestsListComponent";
@@ -52,7 +57,8 @@ import Leaderboard from "./AptitudeTestComponent/LeaderboardComponent/Leaderboar
 import MyTests from "./AptitudeTestComponent/MyTestsComponent/MyTestsComponent";
 import AnswerKey from "./AptitudeTestComponent/AnswerKeyComponent/AnswerKeyComponent";
 import EditTest from "./AptitudeTestComponent/EditTestComponent/EditTestUserCheck";
-import MyBlogs from "./ProfileComponents/MyBlogs";
+
+
 
 class Main extends Component {
   render() {
@@ -70,7 +76,7 @@ class Main extends Component {
             <Route exact path="/contactus" component={Contact} />
             {/* <Route exact path="/events" component={EventPage} /> */}
             <PrivateRoute exact path="/ourmembers" component={OurMembers} />
-            <Route exact path="/achievements" component={Achievements} />
+            {/* <Route exact path="/achievements" component={Achievements} /> */}
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/projects" component={Projects} />
             <Route exact path="/collabs" component={Collaborations} />
@@ -122,11 +128,14 @@ class Main extends Component {
             <Route exact path="/events" component={EventsList} />
             <Route exact path="/events/:eventname" component={SingleEvent} />
             <PrivateRoute exact path="/addevent" component={AddEvent} />
-            <PrivateRoute
-              exact
-              path="/editevent/:eventname"
-              component={EditEvent}
-            />
+            <PrivateRoute exact path="/editevent/:eventname" component={EditEvent} />
+
+             {/* Achievement Pages */}
+             <Route exact path="/achievements" component={Achievements} />
+             {/* <Route exact path="/achievement/:id" component={} /> */}
+             <Route exact path="/addachievement" component={AddAchievement} />
+             <Route exact path="/editachievement/:id" component={EditAchievement} />
+
 
             {/* Aptitude Test Pages */}
             <PrivateRoute exact path="/test/:id" component={SingleTest} />

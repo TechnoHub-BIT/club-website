@@ -1,38 +1,138 @@
-import React from "react";
-import {Breadcrumb, BreadcrumbItem} from "../BreadcrumbComponent/BreadcrumbComponent";
+import React,{useState,useEffect} from "react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+} from "../BreadcrumbComponent/BreadcrumbComponent";
 import SingleAchievement from "./SingleAchievementComponent/SingleAchievement";
 import HeaderTitle from "../HeaderComponents/HeaderTitle";
 import { Helmet } from "react-helmet";
 import "./Achievements.css";
 import { Zoom } from "react-reveal";
+import { useAuth } from "../../contexts/AuthContext";
+import { db } from "../../firebase";
+import { useHistory, useParams } from "react-router";
 
-const achievements = (props) => {
-    return(
-        <React.Fragment>    
-            <Helmet>
-                <title>Achievements | TechnoHub BITD</title>
-                <meta name="description" content="Features accomplishments of our peers from TechnoHub BITD to acknowledge their attainment in countless states. This also serves a purpose of setting up an example to the enthusiasts." />
-            </Helmet>
-            <HeaderTitle heading="ACHIEVEMENTS" image="achievements.jpg" />
-            <div className="achievementsCont">
-                <Breadcrumb>
-                    <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
-                    <BreadcrumbItem icon="fas fa-award" title="Achievements" status="active" />
-                </Breadcrumb>
-                <div className="container-fluid">
-                    <div className="row">
-                        <Zoom>
-                            <div className="col-lg-4 col-md-6 col-sm-12">
-                                <SingleAchievement path="./assets/images/achievements/gsea.jpeg">
+
+const Achievements = (props) => {
+
+    const {id} = useParams()
+    const history = useHistory()
+    const { currentUser, logout } = useAuth();
+    const [profiles, setProfiles] = useState([]);
+    useEffect(() => {
+      if (currentUser) {
+        db.collection("members")
+          .doc(currentUser.uid)
+          .onSnapshot(function (doc) {
+            const data = doc.data();
+            setProfiles(data);
+          });
+      }
+    }, [currentUser]);
+
+    const [achievements,setAchievements] = useState([])
+    useEffect(() => {
+        const fetchdata = async () => {
+          db.collection("Achievements").onSnapshot(function (data) {
+            setAchievements(
+              data.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+              }))
+            );
+          });
+        };
+        fetchdata();
+      }, []);
+
+      const onDeleteAchievement = () => {
+        db.collection("Achievements")
+          .doc(id)
+          .delete()
+          .then(() => {
+            history.push("/achievements");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      };
+
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>Achievements | TechnoHub BITD</title>
+        <meta
+          name="description"
+          content="Features accomplishments of our peers from TechnoHub BITD to acknowledge their attainment in countless states. This also serves a purpose of setting up an example to the enthusiasts."
+        />
+      </Helmet>
+      <HeaderTitle heading="ACHIEVEMENTS" image="achievements.jpg" />
+      <div className="achievementsCont">
+        <Breadcrumb>
+          <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
+          <BreadcrumbItem
+            icon="fas fa-award"
+            title="Achievements"
+            status="active"
+          />
+        </Breadcrumb>
+        <div className="container-fluid">
+          <div className="row">
+          {profiles.id === 1 || profiles.id === 3 ? (
+                  <a href="/addachievement">
+                    <button className="btn btn-success">
+                      <i className="fas fa-plus"></i>&nbsp;&nbsp;Add New Achievement
+                    </button>
+                  </a>
+                ) : null}
+              <div className="col-lg-4 col-md-6 col-sm-12">
+               
+              {achievements.map((item) => {
+                // eventCounter++;
+                return (
+                  <Zoom>
+                    <a href={"/achievement/" + item.id}>
+                      <div className="eventsCard">
+                        <div className="cardImage">
+                          <img
+                            src={
+                              "https://drive.google.com/uc?export=view&id=" +
+                              item.achievementUrl
+                            }
+                            alt="none"
+                            // alt={item.eventtitle}
+                          />
+                        </div>
+                        <div className="cardBody">
+                          <h2 className="cardTitle">{item.achievementcontent}</h2>
+                        </div>
+                      </div>
+                    </a>
+                    {profiles.id === 1 || profiles.id === 3 ? (
+                        <div>
+                  <a href={`/editachievement/${item.id}`}>
+                    <button className="btn btn-success">
+                      <i className="fas fa-edit"></i>&nbsp;&nbsp;Edit Achievement
+                    </button>
+                  </a>
+                  <button onClick={() => onDeleteAchievement(item.id)} className="btn btn-danger">
+                  <i className="fas fa-delete"></i>&nbsp;&nbsp;Delete Achievement
+                </button>
+                </div>
+                ) : null}
+                  </Zoom>
+                );
+            })}
+                {/* <SingleAchievement path="./assets/images/achievements/gsea.jpeg">
                                     It is a matter of pride and honor that one of the team
                                     members of TechnoHub competed in the Global Student
                                     Entrepreneurship Award(GSEA) with well-known
                                     entrepreneurs and won the cash prize worth Rs. 1 Lakh. The
                                     winning members moved forward to the regionals which was
                                     held at Coimbatore.
-                                </SingleAchievement>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                </SingleAchievement> */}
+              </div>
+              {/* <div className="col-lg-4 col-md-6 col-sm-12">
                                 <SingleAchievement path="./assets/images/achievements/e-yantra.jpg">
                                     Seriate to the event was EYANTRA which is an initiative to
                                     spread education in Embedded systems and Robotics by IIT
@@ -119,13 +219,13 @@ const achievements = (props) => {
                                 <SingleAchievement >
                                 	Team Annapurna led by Vinayak Rawat won the state level innovation business plan competition held on 9/3/21 conducted by Institute Innovation Cell, BIT, Durg.
                                 </SingleAchievement>
-                            </div>
-                        </Zoom>
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>
-    );
-}
+                            </div> */}
 
-export default achievements;
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default Achievements;

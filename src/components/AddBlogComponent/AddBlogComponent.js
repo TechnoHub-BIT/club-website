@@ -114,12 +114,12 @@ export default function AddBlogComponent() {
           setCurrentProfile(data);
         });
     }
-  }, []);
+  }, [currentUser]);
   const [list, setList] = useState([]);
-  const refe = db.collection("Blogcategory");
+  
   useEffect(() => {
     const fetchdata = async () => {
-      refe.onSnapshot(function (data) {
+      db.collection("Blogcategory").onSnapshot(function (data) {
         setList(
           data.docs.map((doc) => ({
             ...doc.data(),
@@ -132,10 +132,9 @@ export default function AddBlogComponent() {
   }, []);
 
   const [members, setMembers] = useState([]);
-  const ref = db.collection("members");
   useEffect(() => {
     const fetchdata = async () => {
-      ref.onSnapshot(function (data) {
+      db.collection("members").onSnapshot(function (data) {
         setMembers(
           data.docs.map((doc) => ({
             ...doc.data(),

@@ -1,12 +1,10 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import { db } from "../../../firebase";
-import AlertModal from "../../AlertModalComponent/AlertModalComponent";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import { TextArea } from "semantic-ui-react";
-import { useAuth } from "../../../contexts/AuthContext";
 
-const AuthContext = React.createContext();
+
 
 class EditTest extends Component {
   state = {
