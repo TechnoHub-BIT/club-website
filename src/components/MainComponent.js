@@ -133,8 +133,8 @@ class Main extends Component {
              {/* Achievement Pages */}
              <Route exact path="/achievements" component={Achievements} />
              {/* <Route exact path="/achievement/:id" component={} /> */}
-             <Route exact path="/addachievement" component={AddAchievement} />
-             <Route exact path="/editachievement/:id" component={EditAchievement} />
+             {/* <Route exact path="/addachievement" component={AddAchievement} />
+             <Route exact path="/editachievement/:id" component={EditAchievement} /> */}
 
 
             {/* Aptitude Test Pages */}

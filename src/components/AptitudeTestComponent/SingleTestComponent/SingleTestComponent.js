@@ -5,14 +5,14 @@ import Moment from "moment";
 import { useAuth } from "../../../contexts/AuthContext";
 import useCountDown from "react-countdown-hook";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import Options from "./OptionsComponent/OptionsComponent";
 
 const SingleTest = (props) => {
   let history = useHistory();
-
+const {id} = useParams();
   //Modal
   const [modal, showModal] = useState("");
 
@@ -42,7 +42,7 @@ const SingleTest = (props) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    const ref = db.collection("Tests").doc(props.match.params.id);
+    const ref = db.collection("Tests").doc(id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
@@ -220,7 +220,7 @@ const SingleTest = (props) => {
   let score = 0;
 
   //Submit Function
-  const confirmSubmit = () => {
+  const confirmSubmit = async() => {
     pause();
 
     //Caluclate Score
@@ -232,7 +232,7 @@ const SingleTest = (props) => {
     }
 
     // //Store details in tests collection of members database
-    db.collection("members")
+   await db.collection("members")
       .doc(currentUser.uid)
       .collection("tests")
       .doc(title)
@@ -245,11 +245,15 @@ const SingleTest = (props) => {
         testdate: testdate,
         totalmarks: totalmarks,
         score: score,
+      }).then(() => {
+        console.log("submitted");
+      }).catch((error) => {
+        alert(error.message);
       });
 
     //Store details in results collection of test database
-    db.collection("Tests")
-      .doc(props.match.params.id)
+    await db.collection("Tests")
+      .doc(id)
       .collection("results")
       .doc(email)
       .set({
@@ -331,7 +335,7 @@ const SingleTest = (props) => {
   const [result, setResult] = useState([]);
   useEffect(() => {
     db.collection("Tests")
-      .doc(props.match.params.id)
+      .doc(id)
       .collection("results")
       .get()
       .then((response) => {
@@ -350,7 +354,7 @@ const SingleTest = (props) => {
   const startTest = (duration) => {
     const ref = db
       .collection("Tests")
-      .doc(props.match.params.id)
+      .doc(id)
       .collection("results")
       .doc(email);
 
@@ -421,11 +425,13 @@ const SingleTest = (props) => {
     sectionChanger("start", 0);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
-
-    if (timeLeft > 0)
-      showModal(
+    // if(hours !== 0 && minutes !== 0 && seconds !== 0)
+    // if (timeLeft > 0)
+    try {
+      if (timeLeft > 0)
+      await  showModal(
         <AlertModal
           message="Are you sure you want to submit the Test?"
           icon="question"
@@ -434,7 +440,11 @@ const SingleTest = (props) => {
           action={confirmSubmit}
           close={closeModal}
         />
-      );
+      )}
+      catch(error) {
+        alert(error.message);
+      }
+
   };
 
   //Question Button Navigations

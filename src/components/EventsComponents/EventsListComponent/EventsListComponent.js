@@ -15,7 +15,7 @@ const EventList = () => {
   const [event, setEvent] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("Events").onSnapshot(function (data) {
+      db.collection("Events").orderBy("eventdate", "desc").onSnapshot(function (data) {
         setEvent(
           data.docs.map((doc) => ({
             ...doc.data(),

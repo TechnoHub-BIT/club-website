@@ -48,6 +48,7 @@ const BlogComponent = () => {
       .then((doc) => {
         if (doc.exists) {
           const Test = doc.data();
+  
           setblogs({
             blogtitle: Test.blogtitle,
             blogauthorid: Test.blogauthorid,
@@ -61,24 +62,33 @@ const BlogComponent = () => {
         } else console.log("Non-existing");
       });
   }, []);
-// console.log(blogedit.blogauthor)
+
+  // console.log(blogedit.blogauthorid)
+
+// useEffect(() => {
+// getAuthorid();
+// },[])
 
 //   const [user ,setUser] = useState("");
-//   useEffect(() => {
-//     db.collection("members")
-//     .doc(blogedit.blogauthorid)
-//     .then((doc) => {
-//       if (doc.exists) {
-//         const Test = doc.data();
-//         setUser({
-//           fullname: Test.fullname,
-//         });
-//       } else console.log("Non-existing");
-//     });
-//   },[]) 
 
-  // const name = "narayan"
-  // console.log(name)
+//     async function UserId(){
+//       if(blogedit.blogauthorid !== undefined){
+//        await db.collection("members").doc(blogedit.blogauthorid).get()
+//       .then((doc) => {
+//         if (doc.exists) {
+//           const Test = doc.data();
+//           setUser({
+//             fullname: Test.fullname,
+//           });
+//           console.log(user.fullname)
+//         } else console.log("Non-existing");
+//       });
+//     }else{
+//       continue;
+//     }
+//     }
+
+
 
 
   //Deleting blog
@@ -165,6 +175,7 @@ const BlogComponent = () => {
           heading={blogedit.blogtitle}
           blogImage={blogedit.blogimageurl}
           author={blogedit.blogauthor}
+
           date={Moment(blogedit.blogdate).format("ll")}
         />
       {/* {user.fullname} */}

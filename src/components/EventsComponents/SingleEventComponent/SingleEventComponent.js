@@ -45,6 +45,10 @@ const SingleEvent = () => {
           eventimage: Test.eventimage,
           eventdate: Test.eventdate,
           eventcontent: Test.eventcontent,
+          facebook: Test.facebook,
+          instagram: Test.instagram,
+          twitter:Test.twitter,
+          linkedin:Test.linkedin
         });
       }
     });
