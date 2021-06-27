@@ -26,6 +26,13 @@ import { useHistory } from "react-router-dom";
 import SingleComment from "./SingleCommentComponent/SingleCommentComponent";
 
 const BlogComponent = () => {
+  //Modal
+  const [modal, showModal] = useState("");
+
+  const closeModal = () => {
+    showModal("");
+  };
+
   const { blogcategory, blogname } = useParams();
 
   const { currentUser } = useAuth();
@@ -105,8 +112,6 @@ const BlogComponent = () => {
         comment: comment,
         date: date,
       });
-    } else {
-      alert("Please add a comment");
     }
 
     setComment(null);
@@ -142,7 +147,8 @@ const BlogComponent = () => {
       });
   };
 
-  const shareUrl = "http://technohubbit.in/" + blogcategory + "/" + blogname;
+  const shareUrl =
+    "http://technohubbit.in/blog/" + blogcategory + "/" + blogname;
   const shareText =
     "\n\nCheck out this blog post by " +
     blogedit.blogauthor +
@@ -152,6 +158,7 @@ const BlogComponent = () => {
 
   return (
     <React.Fragment>
+      {modal}
       <div>
         <HeaderTitle
           heading={blogedit.blogtitle}

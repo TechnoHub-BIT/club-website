@@ -15,14 +15,16 @@ const EventList = () => {
   const [event, setEvent] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      db.collection("Events").onSnapshot(function (data) {
-        setEvent(
-          data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }))
-        );
-      });
+      db.collection("Events")
+        .orderBy("eventdate", "desc")
+        .onSnapshot(function (data) {
+          setEvent(
+            data.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }))
+          );
+        });
     };
     fetchdata();
   }, []);
@@ -78,22 +80,21 @@ const EventList = () => {
                 eventCounter++;
                 return (
                   <Zoom>
-                    <a href={"/events/" + item.id}>
-                      <div className="eventsCard">
-                        <div className="cardImage">
-                          <img
-                            src={
-                              "https://drive.google.com/uc?export=view&id=" +
-                              item.eventimage
-                            }
-                            alt={item.eventtitle}
-                          />
-                        </div>
-                        <div className="cardBody">
-                          <h2 className="cardTitle">{item.eventtitle}</h2>
-                          <h5 className="cardSubtitle">
-                            {Moment(item.eventdate).format("ll")}
-                          </h5>
+                    <a href={"/events/" + item.id} className="singleEvent">
+                      <img
+                        src={
+                          "https://drive.google.com/uc?export=view&id=" +
+                          item.eventimage
+                        }
+                        className="eventImage"
+                        alt={item.eventtitle}
+                      />
+                      <div className="eventHeader">
+                        <div className="headerContent">
+                          <div className="eventTitle">{item.eventtitle}</div>
+                          <div className="eventDate">
+                            Held on {Moment(item.eventdate).format("ll")}
+                          </div>
                         </div>
                       </div>
                     </a>
@@ -103,11 +104,9 @@ const EventList = () => {
             })}
           </div>
           {eventCounter === 0 ? (
-            <div className="eventsCard comingSoon">
-              <div className="cardBody">
-                <h2 className="cardTitle">More events are coming</h2>
-                <h5 className="cardSubtitle">Stay tuned with us</h5>
-              </div>
+            <div className="comingSoon">
+              <h2>More events are coming</h2>
+              <h5>Stay tuned with us</h5>
             </div>
           ) : null}
           <h1 className="sectionTitle">Past Events</h1>
@@ -116,22 +115,21 @@ const EventList = () => {
               if (item.eventtype === "Past Event")
                 return (
                   <Zoom>
-                    <a href={"/events/" + item.id}>
-                      <div className="eventsCard">
-                        <div className="cardImage">
-                          <img
-                            src={
-                              "https://drive.google.com/uc?export=view&id=" +
-                              item.eventimage
-                            }
-                            alt={item.eventtitle}
-                          />
-                        </div>
-                        <div className="cardBody">
-                          <h2 className="cardTitle">{item.eventtitle}</h2>
-                          <h5 className="cardSubtitle">
-                            {Moment(item.eventdate).format("ll")}
-                          </h5>
+                    <a href={"/events/" + item.id} className="singleEvent">
+                      <img
+                        src={
+                          "https://drive.google.com/uc?export=view&id=" +
+                          item.eventimage
+                        }
+                        className="eventImage"
+                        alt={item.eventtitle}
+                      />
+                      <div className="eventHeader">
+                        <div className="headerContent">
+                          <div className="eventTitle">{item.eventtitle}</div>
+                          <div className="eventDate">
+                            Held on {Moment(item.eventdate).format("ll")}
+                          </div>
                         </div>
                       </div>
                     </a>

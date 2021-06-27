@@ -16,7 +16,7 @@ const SingleComment = (props) => {
         <div className="right">
           <h5>
             {props.user.fullname}
-            <input className="comment" value={props.user.comment} readOnly />
+            <span className="comment">{props.user.comment}</span>
           </h5>
           <div className="date">
             {Moment(props.user.date).format("ll")}

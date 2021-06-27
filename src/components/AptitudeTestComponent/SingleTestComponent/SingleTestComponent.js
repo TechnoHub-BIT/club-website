@@ -158,8 +158,6 @@ const SingleTest = (props) => {
         answers[index] = "Incorrect";
       }
     }
-
-    console.log(options + "\n\n" + answers);
   };
 
   //Next, Previous and Question Buttons
