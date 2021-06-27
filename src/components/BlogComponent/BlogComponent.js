@@ -47,7 +47,6 @@ const BlogComponent = () => {
   }
 
   // fetching the blog
-  const [authorid, setAuthorId] = useState("");
   const [blogedit, setblogs] = useState("");
   useEffect(() => {
     db.collection("Blogs")
@@ -56,11 +55,11 @@ const BlogComponent = () => {
       .then((doc) => {
         if (doc.exists) {
           const Test = doc.data();
-          setAuthorId(Test.blogauthorid);
+
           setblogs({
             blogtitle: Test.blogtitle,
-            blogauthor: Test.blogauthor,
             blogauthorid: Test.blogauthorid,
+            blogauthor: Test.blogauthor,
             blogimageurl: Test.blogimageurl,
             blogdate: Test.blogdate,
             blogcontent: Test.blogcontent,
@@ -69,6 +68,31 @@ const BlogComponent = () => {
         } else console.log("Non-existing");
       });
   }, []);
+
+  // console.log(blogedit.blogauthorid)
+
+  // useEffect(() => {
+  // getAuthorid();
+  // },[])
+
+  //   const [user ,setUser] = useState("");
+
+  //     async function UserId(){
+  //       if(blogedit.blogauthorid !== undefined){
+  //        await db.collection("members").doc(blogedit.blogauthorid).get()
+  //       .then((doc) => {
+  //         if (doc.exists) {
+  //           const Test = doc.data();
+  //           setUser({
+  //             fullname: Test.fullname,
+  //           });
+  //           console.log(user.fullname)
+  //         } else console.log("Non-existing");
+  //       });
+  //     }else{
+  //       continue;
+  //     }
+  //     }
 
   //Deleting blog
   const onDeleteBlog = () => {
@@ -94,15 +118,6 @@ const BlogComponent = () => {
     setComment(e.target.value);
   };
 
-  // const editComment = (id) => {
-  //   db.collection("Blogs").doc(blogname).collection("Comments").doc(id).update({
-  //     fullname: fullname,
-  //     photourl: photourl,
-  //     comment: ecomment,
-  //     date: date,
-  //   });
-  // };
-
   // storing comments in firestore
   const onAddComment = () => {
     if (comment) {
@@ -113,7 +128,6 @@ const BlogComponent = () => {
         date: date,
       });
     }
-
     setComment(null);
   };
 
@@ -166,6 +180,7 @@ const BlogComponent = () => {
           author={blogedit.blogauthor}
           date={Moment(blogedit.blogdate).format("ll")}
         />
+        {/* {user.fullname} */}
         <div className="blogContainer">
           <div className="blogContents">
             <Fade>

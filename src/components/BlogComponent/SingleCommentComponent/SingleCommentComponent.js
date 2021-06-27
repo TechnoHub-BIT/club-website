@@ -19,7 +19,7 @@ const SingleComment = (props) => {
             <span className="comment">{props.user.comment}</span>
           </h5>
           <div className="date">
-            {Moment(props.user.date).format("ll")}
+            {Moment(props.user.date).format("LL")}
             {props.user.fullname === props.currentProfile.fullname ||
             props.currentProfile.id === 1 ||
             props.currentProfile.id === 3 ||

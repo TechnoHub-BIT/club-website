@@ -28,9 +28,9 @@ export default function AddBlogComponent() {
     setCategory(e.target.value);
   };
 
-  const [blogauthor, setAuthor] = useState("");
-  const author = (e) => {
-    setAuthor(e.target.value);
+  const [blogauthorid, setAuthorId] = useState("");
+  const authorid = (e) => {
+    setAuthorId(e.target.value);
   };
   const [blogimageurl, setImageUrl] = useState("");
   const imageurl = (e) => {
@@ -40,6 +40,10 @@ export default function AddBlogComponent() {
   const content = (param) => {
     setContent(param);
   };
+  const [blogauthor, setAuthor] = useState("");
+  const author = (e) => {
+    setAuthor(e.target.value);
+  };
   const [like] = useState(0);
 
   const blogdate = new Date().toLocaleDateString();
@@ -47,7 +51,7 @@ export default function AddBlogComponent() {
   const firestoremaisave = (e) => {
     if (
       blogtitle !== "" &&
-      blogauthor !== "" &&
+      blogauthorid !== "" &&
       // blogcategory !== "" &&
       blogimageurl !== ""
     ) {
@@ -56,8 +60,9 @@ export default function AddBlogComponent() {
         .add({
           blogtitle: blogtitle,
           blogcategory: blogcategory,
-          blogauthor: blogauthor,
+          blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
+          blogauthor:blogauthor,
           blogdate: blogdate,
           like: like,
           blogcontent: blogcontent,
@@ -109,12 +114,12 @@ export default function AddBlogComponent() {
           setCurrentProfile(data);
         });
     }
-  }, []);
+  }, [currentUser]);
   const [list, setList] = useState([]);
-  const refe = db.collection("Blogcategory");
+  
   useEffect(() => {
     const fetchdata = async () => {
-      refe.onSnapshot(function (data) {
+      db.collection("Blogcategory").onSnapshot(function (data) {
         setList(
           data.docs.map((doc) => ({
             ...doc.data(),
@@ -127,10 +132,9 @@ export default function AddBlogComponent() {
   }, []);
 
   const [members, setMembers] = useState([]);
-  const ref = db.collection("members");
   useEffect(() => {
     const fetchdata = async () => {
-      ref.onSnapshot(function (data) {
+      db.collection("members").onSnapshot(function (data) {
         setMembers(
           data.docs.map((doc) => ({
             ...doc.data(),
@@ -194,6 +198,20 @@ export default function AddBlogComponent() {
                         {cat.blogcategorytype}
                       </option>
                     );
+                  })}
+                </select>
+              </div>
+              <div className="input-group">
+                <select
+                  name="privacy"
+                  id="privacy"
+                  onChange={authorid}
+                  value={blogauthorid}
+                  required
+                >
+                  <option value="">--Blog Author--</option>
+                  {members.map((mem) => {
+                    return <option value={mem.id}>{mem.fullname}</option>;
                   })}
                 </select>
               </div>

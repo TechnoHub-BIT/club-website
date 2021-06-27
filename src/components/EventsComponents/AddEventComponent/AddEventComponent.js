@@ -5,7 +5,7 @@ import "react-summernote/dist/react-summernote.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { db } from "../../../firebase";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import HeaderTitle from "../../HeaderComponents/HeaderTitle";
@@ -66,6 +66,10 @@ const AddEvent = () => {
   const onChange = (value) => {
     content(value);
   };
+  const [facebook, setFacebook] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [twitter, setTwitter] = useState('');
+  const [linkedin, setLinkedin] = useState('');
 
   const firestoremaisave = (e) => {
     if (
@@ -83,6 +87,10 @@ const AddEvent = () => {
           eventimage: eventimage,
           eventcontent: eventcontent,
           eventtype: eventtype,
+          facebook: facebook,
+          instagram:instagram,
+          twitter:twitter,
+          linkedin:linkedin
         })
         .then(() => {
           showModal(
@@ -178,6 +186,54 @@ const AddEvent = () => {
                   required
                 />
                 <label for="image">Event Image Drive ID(1920x1080)</label>
+              </div>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="linkedin"
+                  id="linkedin"
+                  onChange={(e) => setLinkedin(e.target.value)}
+                  value={linkedin}
+                  placeholder="Linkdein Link"
+                  required
+                />
+                <label for="linkedin">Linkdein Link</label>
+              </div>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="twitter"
+                  id="twitter"
+                  onChange={(e) => setTwitter(e.target.value)}
+                  value={twitter}
+                  placeholder="Twitter Link"
+                  required
+                />
+                <label for="twitter">Twitter Link</label>
+              </div>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="instagram"
+                  id="instagram"
+                  onChange={(e) => setInstagram(e.target.value)}
+                  value={instagram}
+                  placeholder="Instagram Link"
+                  required
+                />
+                <label for="instagram">Instagram Link</label>
+              </div>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="facebook"
+                  id="facebook"
+                  onChange={(e) => setFacebook(e.target.value)}
+                  value={facebook}
+                  placeholder="Facebook Link"
+                  required
+                />
+                <label for="facebook">Facebook Link</label>
               </div>
               <div className="summernote">
                 <ReactSummernote

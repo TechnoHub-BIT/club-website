@@ -73,6 +73,10 @@
   margin-left: 1em;
 }
 
+.singleTestCont .centreCard .left section ul li p a {
+  text-decoration: underline !important;
+}
+
 .singleTestCont .centreCard .left section ul li strong {
   font-weight: 500;
 }
