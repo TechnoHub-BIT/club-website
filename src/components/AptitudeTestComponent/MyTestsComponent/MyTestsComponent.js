@@ -10,22 +10,39 @@ const TestsList = () => {
   const [tests, setTest] = useState([]);
 
   useEffect(() => {
-    const fetchdata = async () => {
+    const fetchdata = () => {
       db.collection("members")
         .doc(currentUser.uid)
-        .collection("tests")
-        .orderBy("testdate", "desc")
+        .collection("Tests")
+        // .orderBy("testdate", "desc")
         .onSnapshot(function (data) {
-          setTest(
-            data.docs.map((doc) => ({
+          const fetchTestDetails = [];
+          data.docs.map((doc) => {
+            const fetchTest = {
               ...doc.data(),
               id: doc.id,
-            }))
-          );
+            };
+            if (fetchTest.testID) {
+              db.collection("Tests")
+                .doc(fetchTest.testID)
+                .collection("results")
+                .doc(currentUser.email)
+                .onSnapshot(function (document) {
+                  const fetchTest1 = {
+                    ...fetchTest,
+                    ...document.data(),
+                  };
+                  fetchTestDetails.push(fetchTest1);
+                });
+            }
+          });
+          setTest(fetchTestDetails);
+          console.log(fetchTestDetails);
         });
     };
     fetchdata();
   }, []);
+  console.log(tests);
 
   const deleteBlog = (id) => {
     db.collection("Tests")
@@ -106,110 +123,120 @@ const TestsList = () => {
   };
 
   return (
-    <React.Fragment>
-      {modal}
-      <Helmet>
-        <title>Aptitude Tests | TechnoHub BITD</title>
-        <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
-      </Helmet>
-      <div className="testsListCont">
-        <Fade up>
-          <h1 className="title">
-            My Tests
-            <a href="/tests">
-              <button type="button">
-                <i className="fas fa-book"></i>&nbsp;&nbsp;Give a Test
-              </button>
-            </a>
-          </h1>
-          <div className="centreCard">
-            <div className="testsList">
-              <div
-                className="test"
-                style={{ backgroundColor: "#ff4444", color: "#fff" }}
-              >
-                <div className="index">
-                  <strong>S.No.</strong>
-                </div>
-                <div className="testTitle">
-                  Test Title(Max. Marks)
-                  <div className="date">{/* <strong>Date</strong> */}</div>
-                </div>
-                <div className="duration">
-                  <strong>Time Taken/Your Score</strong>
-                </div>
-                <div className="buttons">
-                  <strong>Answer Key</strong>
-                </div>
-              </div>
-              {tests.map((test, i) => {
-                const testDuration =
-                  parseInt(test.testduration, 10) * 60 * 1000;
-                return (
-                  <div className="test">
-                    <div className="index">{i + 1}</div>
-                    <div className="testTitle">
-                      {test.testname}({test.totalmarks})
-                      <div className="date">
-                        {Moment(test.testdate).format("ll")}
-                        <br />
-                        {testname.map((item) => {
-                          if (item.title === test.testname) {
-                            return (
-                              <div>
-                                {item.answerstatus === "Active" ? (
-                                  <span style={{ color: "#00c851" }}>
-                                    Answer key available
-                                  </span>
-                                ) : (
-                                  <span style={{ color: "#ff4444" }}>
-                                    Answer key unavailable
-                                  </span>
-                                )}
-                              </div>
-                            );
-                          }
-                        })}
-                      </div>
-                    </div>
-                    <div className="duration">
-                      <strong className="onlyMobile">
-                        Time Taken/Your Score:&nbsp;&nbsp;
-                      </strong>
-                      {calcTime(testDuration, test.timeleft)}
-                      &nbsp;&nbsp;/&nbsp;&nbsp;
-                      <strong style={{ fontSize: "1.3rem" }}>
-                        {test.score}
-                      </strong>
-                    </div>
-                    <div className="buttons">
-                      <a href={"/answerkey/" + test.id} title="View Answer Key">
-                        <strong
-                          className="onlyMobile"
-                          style={{ color: "#000" }}
-                        >
-                          View Answer Key
-                        </strong>
-                        &nbsp;&nbsp;
-                        <button type="button">
-                          <i className="far fa-chart-bar"></i>
-                        </button>
-                      </a>
-                      {/* <a href={"/leaderboard/" + leader.id}>
-                        <button type="button">
-                          <i className="fas fa-trophy"></i>
-                        </button>
-                      </a> */}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Fade>
-      </div>
-    </React.Fragment>
+    <div>
+      hi
+      {/* {console.log(currentUser.email)} */}
+      {tests.map((name) => {
+        return <div>{name.testID}</div>;
+      })}
+    </div>
   );
+  // return (
+  //   <React.Fragment>
+  //     {modal}
+  //     <Helmet>
+  //       <title>Aptitude Tests | TechnoHub BITD</title>
+  //       <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
+  //     </Helmet>
+  //     <div className="testsListCont">
+  //       <Fade up>
+  //         <h1 className="title">
+  //           My Tests
+  //           <a href="/tests">
+  //             <button type="button">
+  //               <i className="fas fa-book"></i>&nbsp;&nbsp;Give a Test
+  //             </button>
+  //           </a>
+  //         </h1>
+  //         <div className="centreCard">
+  //           <div className="testsList">
+  //             <div
+  //               className="test"
+  //               style={{ backgroundColor: "#ff4444", color: "#fff" }}
+  //             >
+  //               <div className="index">
+  //                 <strong>S.No.</strong>
+  //               </div>
+  //               <div className="testTitle">
+  //                 Test Title(Max. Marks)
+  //                 <div className="date">{/* <strong>Date</strong> */}</div>
+  //               </div>
+  //               <div className="duration">
+  //                 <strong>Time Taken/Your Score</strong>
+  //               </div>
+  //               <div className="buttons">
+  //                 <strong>Answer Key</strong>
+  //               </div>
+  //             </div>
+  //             {tests.map((test, i) => {
+  //               const testDuration =
+  //                 parseInt(test.testduration, 10) * 60 * 1000;
+  //               return (
+  //                 <div className="test">
+  //                   <div className="index">{i + 1}</div>
+  //                   <div className="testTitle">
+  //                     {test.testID}
+  //                     {test.testname}({test.totalmarks})
+  //                     <div className="date">
+  //                       {Moment(test.testdate).format("ll")}
+  //                       <br />
+  //                       {testname.map((item) => {
+  //                         if (item.title === test.testname) {
+  //                           return (
+  //                             <div>
+  //                               {item.answerstatus === "Active" ? (
+  //                                 <span style={{ color: "#00c851" }}>
+  //                                   Answer key available
+  //                                 </span>
+  //                               ) : (
+  //                                 <span style={{ color: "#ff4444" }}>
+  //                                   Answer key unavailable
+  //                                 </span>
+  //                               )}
+  //                             </div>
+  //                           );
+  //                         }
+  //                       })}
+  //                     </div>
+  //                   </div>
+  //                   <div className="duration">
+  //                     <strong className="onlyMobile">
+  //                       Time Taken/Your Score:&nbsp;&nbsp;
+  //                     </strong>
+  //                     {calcTime(testDuration, test.timeleft)}
+  //                     &nbsp;&nbsp;/&nbsp;&nbsp;
+  //                     <strong style={{ fontSize: "1.3rem" }}>
+  //                       {test.score}
+  //                     </strong>
+  //                   </div>
+  //                   <div className="buttons">
+  //                     <a href={"/answerkey/" + test.id} title="View Answer Key">
+  //                       <strong
+  //                         className="onlyMobile"
+  //                         style={{ color: "#000" }}
+  //                       >
+  //                         View Answer Key
+  //                       </strong>
+  //                       &nbsp;&nbsp;
+  //                       <button type="button">
+  //                         <i className="far fa-chart-bar"></i>
+  //                       </button>
+  //                     </a>
+  //                     {/* <a href={"/leaderboard/" + leader.id}>
+  //                       <button type="button">
+  //                         <i className="fas fa-trophy"></i>
+  //                       </button>
+  //                     </a> */}
+  //                   </div>
+  //                 </div>
+  //               );
+  //             })}
+  //           </div>
+  //         </div>
+  //       </Fade>
+  //     </div>
+  //   </React.Fragment>
+  // );
 };
 
 export default TestsList;

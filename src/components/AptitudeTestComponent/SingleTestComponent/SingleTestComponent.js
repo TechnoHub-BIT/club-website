@@ -234,22 +234,24 @@ const {id} = useParams();
     // //Store details in tests collection of members database
    await db.collection("members")
       .doc(currentUser.uid)
-      .collection("tests")
-      .doc(title)
-      .set({
-        testname: title,
-        timeleft: timeLeft,
-        options: options,
-        answers: answers,
-        testduration: testduration,
-        testdate: testdate,
-        totalmarks: totalmarks,
-        score: score,
-      }).then(() => {
-        console.log("submitted");
-      }).catch((error) => {
-        alert(error.message);
-      });
+      .collection("Tests")
+      // .doc(title)
+      .add({
+        testID:id,
+        // testname: title,
+        // timeleft: timeLeft,
+        // options: options,
+        // answers: answers,
+        // testduration: testduration,
+        // testdate: testdate,
+        // totalmarks: totalmarks,
+        // score: score,
+      })
+      // .then(() => {
+      //   console.log("submitted");
+      // }).catch((error) => {
+      //   alert(error.message);
+      // });
 
     //Store details in results collection of test database
     await db.collection("Tests")
@@ -257,11 +259,14 @@ const {id} = useParams();
       .collection("results")
       .doc(email)
       .set({
-        fullname: fullname,
-        testname: title,
-        email: email,
+        userId:currentUser.uid,
+        // fullname: fullname,
+        // testname: title,
+        // email: email,
+                options: options,
+        answers: answers,
         timeleft: timeLeft,
-        branch: branch,
+        // branch: branch,
         score: score,
       })
       .then(() => {

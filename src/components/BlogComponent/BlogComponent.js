@@ -41,55 +41,116 @@ const BlogComponent = () => {
 
   // fetching the blog
   const [blogedit, setblogs] = useState("");
-  useEffect(() => {
-    db.collection("Blogs")
-      .doc(blogname)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          const Test = doc.data();
-  
-          setblogs({
-            blogtitle: Test.blogtitle,
-            blogauthorid: Test.blogauthorid,
-            blogauthor:Test.blogauthor,
-            blogimageurl: Test.blogimageurl,
-            blogdate: Test.blogdate,
-            blogcontent: Test.blogcontent,
-            like: Test.like,
-          });
-        
-        } else console.log("Non-existing");
-      });
-  }, []);
+
+  async function renderDetails() {
+    const ref = await db.collection("Blogs").doc(blogname);
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Test = doc.data();
+
+        setblogs({
+          blogtitle: Test.blogtitle,
+          blogauthorid: Test.blogauthorid,
+          blogauthor: Test.blogauthor,
+          blogimageurl: Test.blogimageurl,
+          blogdate: Test.blogdate,
+          blogcontent: Test.blogcontent,
+          like: Test.like,
+        });
+        setNa(Test.blogauthorid);
+      } else console.log("Non-existing");
+    });
+  }
+  // console.log(blogedit)
+  // for (let i = 0; i < cars.length; i++) {
+  //   text += cars[i] + "<br>";
+  // }
+
+  const [na, setNa] = useState("");
+  // async function ref() {
+
+  // const refe =  await console.log(na);
+  // return refe;
+  // }
+//   useEffect(() => {
+    
+//     // doe();
+//     //  ref();
+// // UserId();
+
+//   });
+  const [user ,setUser] = useState("");
+  // useEffect(() => { 
+    renderDetails();
+  // function doe(){
+  for (let i = 0; i < 100; i++) {
+    if (na == " ") {
+      console.log(na)
+      continue;
+    } else if(na) {
+      // useEffect(() => {
+      db.collection("members").doc(na).get()
+        .then((doc) => {
+          if (doc.exists) {
+            const Test = doc.data();
+            setUser({
+              fullname: Test.fullname,
+            });
+          }
+        })
+      // },[])
+      // setUser("narayan")
+      console.log(na,i);
+      break;
+    }
+  }
+// }
+// },[])
+  // console.log(blogedit.blogauthor);
+  // useEffect(() => {
+  //   db.collection("Blogs")
+  //     .doc(blogname)
+  //     .get()
+  //     .then((doc) => {
+  //       if (doc.exists) {
+  //         const Test = doc.data();
+
+  //         setblogs({
+  //           blogtitle: Test.blogtitle,
+  //           blogauthorid: Test.blogauthorid,
+  //           blogauthor:Test.blogauthor,
+  //           blogimageurl: Test.blogimageurl,
+  //           blogdate: Test.blogdate,
+  //           blogcontent: Test.blogcontent,
+  //           like: Test.like,
+  //         });
+
+  //       } else console.log("Non-existing");
+  //     });
+  // }, []);
 
   // console.log(blogedit.blogauthorid)
 
-// useEffect(() => {
-// getAuthorid();
-// },[])
-
-//   const [user ,setUser] = useState("");
-
-//     async function UserId(){
-//       if(blogedit.blogauthorid !== undefined){
-//        await db.collection("members").doc(blogedit.blogauthorid).get()
-//       .then((doc) => {
-//         if (doc.exists) {
-//           const Test = doc.data();
-//           setUser({
-//             fullname: Test.fullname,
-//           });
-//           console.log(user.fullname)
-//         } else console.log("Non-existing");
-//       });
-//     }else{
-//       continue;
-//     }
-//     }
+  // useEffect(() => {
+  // getAuthorid();
+  // },[])
 
 
 
+      // async function UserId(){
+      //   if(na !== undefined){
+      //    await db.collection("members").doc(na).get()
+      //   .then((doc) => {
+      //     if (doc.exists) {
+      //       const Test = doc.data();
+      //       setUser({
+      //         fullname: Test.fullname,
+      //       });
+      //       console.log(user.fullname)
+      //     } else console.log("Non-existing");
+      //   });
+      // }
+      // }
 
   //Deleting blog
   const onDeleteBlog = () => {
@@ -175,10 +236,10 @@ const BlogComponent = () => {
           heading={blogedit.blogtitle}
           blogImage={blogedit.blogimageurl}
           author={blogedit.blogauthor}
-
           date={Moment(blogedit.blogdate).format("ll")}
         />
-      {/* {user.fullname} */}
+        {/* {user} */}
+        {user.fullname}
         <div className="blogContainer">
           <div className="blogContents">
             <Fade>
