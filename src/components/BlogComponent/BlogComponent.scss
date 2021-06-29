@@ -92,16 +92,6 @@
             font-size: 0.95rem;
             font-weight: 400;
             margin-left: 0.5em;
-            border: none;
-            outline: none;
-
-            &.editComment {
-              border: 1px solid #000;
-            }
-
-            &::placeholder {
-              color: #000;
-            }
           }
         }
 

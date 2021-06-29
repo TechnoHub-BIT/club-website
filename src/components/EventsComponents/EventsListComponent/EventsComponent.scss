@@ -3,109 +3,111 @@
   margin: 2em 0 1em;
   font-size: 2em;
 }
+
 a {
   text-decoration: none !important;
 }
+
 .eventsCardCont {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 1.5em;
-  margin: 0 0 2em;
+  margin-bottom: 3em;
 
-  .eventsCard {
-    display: grid;
-    grid-template-columns: repeat(1, 45% 55%);
+  .singleEvent {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    text-decoration: none;
     box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
     border-radius: 10px;
-    border: none !important;
-    height: 200px;
     transition: 0.3s all ease;
+
+    .eventImage {
+      width: 100%;
+      border-radius: 0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .eventHeader {
+      width: 100%;
+      padding: 20px;
+
+      .headerContent {
+        .eventTitle {
+          font-size: 1.5em;
+        }
+
+        .eventDate {
+          font-size: 0.9em;
+          color: #727171;
+        }
+      }
+    }
 
     &:hover {
       transform: scale(1.03);
     }
+  }
+}
 
-    .cardImage {
-      img {
-        height: 200px;
-        width: 100%;
+.comingSoon {
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 10px;
+  height: 25vh;
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+}
+
+.alertMessage {
+  text-align: center;
+
+  h4 {
+    margin: 1em 0;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .eventsCardCont {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1.5em;
+    padding: 0;
+
+    .singleEvent {
+      display: flex;
+      flex-direction: row;
+
+      .eventImage {
+        height: 220px;
+        width: auto;
+        border-radius: 0;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
       }
     }
-
-    .cardBody {
-      height: 200px;
-      margin: 0 !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      border: none !important;
-      color: #000;
-
-      .cardTitle {
-        font-size: 1.25em;
-      }
-
-      .cardSubtitle {
-        color: #616161;
-        font-size: 1.1em;
-      }
-    }
-  }
-}
-.eventsCard.comingSoon {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  background-color: lightgray;
-  box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
-  border-radius: 10px;
-  text-align: center;
-  transition: 0.3s all ease;
-
-  &:hover {
-    transform: scale(1.03);
   }
 
-  .cardBody {
-    margin: 0 !important;
-    padding: 30px 10px !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border: none !important;
-    color: #000;
-
-    .cardTitle {
-      font-size: 1.25em;
+  .comingSoon {
+    h2 {
+      font-size: 2rem;
     }
 
-    .cardSubtitle {
-      color: #616161;
-      font-size: 1.1em;
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .eventsCardCont {
-    grid-template-columns: repeat(1, 1fr);
-
-    .eventsCard {
-      grid-template-columns: repeat(1, 2fr 3fr);
-      height: 170px;
-
-      .cardImage {
-        img {
-          height: 170px;
-        }
-      }
-
-      .cardBody {
-        height: 170px;
-      }
+    h5 {
+      font-size: 1.5rem;
     }
   }
 }

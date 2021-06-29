@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  height: 40vh;
+  height: 30vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +78,7 @@
 
 @media only screen and (min-width: 992px) {
   .headerTitleCont {
-    height: 60vh;
+    height: 40vh;
   }
   .headerTitleCont .headerTitle {
     font-size: 3.5em;

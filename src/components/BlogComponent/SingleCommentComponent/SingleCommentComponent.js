@@ -16,10 +16,10 @@ const SingleComment = (props) => {
         <div className="right">
           <h5>
             {props.user.fullname}
-            <input className="comment" value={props.user.comment} readOnly />
+            <span className="comment">{props.user.comment}</span>
           </h5>
           <div className="date">
-            {Moment(props.user.date).format("ll")}
+            {Moment(props.user.date).format("LL")}
             {props.user.fullname === props.currentProfile.fullname ||
             props.currentProfile.id === 1 ||
             props.currentProfile.id === 3 ||

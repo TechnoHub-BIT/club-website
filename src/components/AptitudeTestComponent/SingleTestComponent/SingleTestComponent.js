@@ -12,7 +12,7 @@ import Options from "./OptionsComponent/OptionsComponent";
 
 const SingleTest = (props) => {
   let history = useHistory();
-const {id} = useParams();
+  const { id } = useParams();
   //Modal
   const [modal, showModal] = useState("");
 
@@ -158,8 +158,6 @@ const {id} = useParams();
         answers[index] = "Incorrect";
       }
     }
-
-    console.log(options + "\n\n" + answers);
   };
 
   //Next, Previous and Question Buttons
@@ -220,10 +218,10 @@ const {id} = useParams();
   let score = 0;
 
   //Submit Function
-  const confirmSubmit = async() => {
+  const confirmSubmit = async () => {
     pause();
 
-    //Caluclate Score
+    //Calculate Score
     for (let i = 0; i < answers.length; i++) {
       if (answers[i] == null) score += 0;
       else if (answers[i] === "Correct")
@@ -231,8 +229,9 @@ const {id} = useParams();
       else score -= parseInt(tests.negativemarks, 10);
     }
 
-    // //Store details in tests collection of members database
-   await db.collection("members")
+    //Store details in tests collection of members database
+    await db
+      .collection("members")
       .doc(currentUser.uid)
       .collection("Tests")
       // .doc(title)
@@ -254,7 +253,8 @@ const {id} = useParams();
       // });
 
     //Store details in results collection of test database
-    await db.collection("Tests")
+    await db
+      .collection("Tests")
       .doc(id)
       .collection("results")
       .doc(email)
@@ -357,11 +357,7 @@ const {id} = useParams();
   }, []);
 
   const startTest = (duration) => {
-    const ref = db
-      .collection("Tests")
-      .doc(id)
-      .collection("results")
-      .doc(email);
+    const ref = db.collection("Tests").doc(id).collection("results").doc(email);
 
     //Check if the user has already given the test or not
     ref.get().then((doc) => {
@@ -430,26 +426,25 @@ const {id} = useParams();
     sectionChanger("start", 0);
   };
 
-  const onSubmit = async(e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     // if(hours !== 0 && minutes !== 0 && seconds !== 0)
     // if (timeLeft > 0)
     try {
       if (timeLeft > 0)
-      await  showModal(
-        <AlertModal
-          message="Are you sure you want to submit the Test?"
-          icon="question"
-          leftBtn="Submit"
-          rightBtn="Cancel"
-          action={confirmSubmit}
-          close={closeModal}
-        />
-      )}
-      catch(error) {
-        alert(error.message);
-      }
-
+        await showModal(
+          <AlertModal
+            message="Are you sure you want to submit the Test?"
+            icon="question"
+            leftBtn="Submit"
+            rightBtn="Cancel"
+            action={confirmSubmit}
+            close={closeModal}
+          />
+        );
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   //Question Button Navigations

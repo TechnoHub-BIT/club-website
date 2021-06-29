@@ -11,87 +11,13 @@ a {
 .eventsCardCont {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 50% 50%;
-      grid-template-columns: 50% 50%;
-  grid-gap: 1.5em;
-  margin: 0 0 2em;
-}
-
-.eventsCardCont .eventsCard {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (45% 55%)[1];
-      grid-template-columns: repeat(1, 45% 55%);
-  -webkit-box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
-          box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
-  border-radius: 10px;
-  border: none !important;
-  height: 200px;
-  -webkit-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-
-.eventsCardCont .eventsCard:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-}
-
-.eventsCardCont .eventsCard .cardImage img {
-  height: 200px;
-  width: 100%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.eventsCardCont .eventsCard .cardBody {
-  height: 200px;
-  margin: 0 !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  border: none !important;
-  color: #000;
-}
-
-.eventsCardCont .eventsCard .cardBody .cardTitle {
-  font-size: 1.25em;
-}
-
-.eventsCardCont .eventsCard .cardBody .cardSubtitle {
-  color: #616161;
-  font-size: 1.1em;
-}
-
-.eventsCard.comingSoon {
-  display: -ms-grid;
-  display: grid;
   -ms-grid-columns: (1fr)[1];
       grid-template-columns: repeat(1, 1fr);
-  background-color: lightgray;
-  -webkit-box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
-          box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
-  border-radius: 10px;
-  text-align: center;
-  -webkit-transition: 0.3s all ease;
-  transition: 0.3s all ease;
+  grid-gap: 1.5em;
+  margin-bottom: 3em;
 }
 
-.eventsCard.comingSoon:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-}
-
-.eventsCard.comingSoon .cardBody {
-  margin: 0 !important;
-  padding: 30px 10px !important;
+.eventsCardCont .singleEvent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,38 +25,108 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: #000;
+  text-decoration: none;
+  -webkit-box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+          box-shadow: 12px 12px 29px #d6d6d6, -12px -12px 29px #ffffff;
+  border-radius: 10px;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.eventsCardCont .singleEvent .eventImage {
+  width: 100%;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.eventsCardCont .singleEvent .eventHeader {
+  width: 100%;
+  padding: 20px;
+}
+
+.eventsCardCont .singleEvent .eventHeader .headerContent .eventTitle {
+  font-size: 1.5em;
+}
+
+.eventsCardCont .singleEvent .eventHeader .headerContent .eventDate {
+  font-size: 0.9em;
+  color: #727171;
+}
+
+.eventsCardCont .singleEvent:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.comingSoon {
+  background-color: darkgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
-  border: none !important;
-  color: #000;
+  border-radius: 10px;
+  height: 25vh;
 }
 
-.eventsCard.comingSoon .cardBody .cardTitle {
-  font-size: 1.25em;
+.comingSoon h2 {
+  font-size: 1.5rem;
 }
 
-.eventsCard.comingSoon .cardBody .cardSubtitle {
-  color: #616161;
-  font-size: 1.1em;
+.comingSoon h5 {
+  font-size: 1.1rem;
 }
 
-@media only screen and (max-width: 768px) {
+.alertMessage {
+  text-align: center;
+}
+
+.alertMessage h4 {
+  margin: 1em 0;
+  font-size: 2em;
+}
+
+@media only screen and (min-width: 992px) {
   .eventsCardCont {
+    display: -ms-grid;
+    display: grid;
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1.5em;
+    padding: 0;
   }
-  .eventsCardCont .eventsCard {
-    -ms-grid-columns: (2fr 3fr)[1];
-        grid-template-columns: repeat(1, 2fr 3fr);
-    height: 170px;
+  .eventsCardCont .singleEvent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
-  .eventsCardCont .eventsCard .cardImage img {
-    height: 170px;
+  .eventsCardCont .singleEvent .eventImage {
+    height: 220px;
+    width: auto;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
-  .eventsCardCont .eventsCard .cardBody {
-    height: 170px;
+  .comingSoon h2 {
+    font-size: 2rem;
+  }
+  .comingSoon h5 {
+    font-size: 1.5rem;
   }
 }
 /*# sourceMappingURL=EventsComponent.css.map */

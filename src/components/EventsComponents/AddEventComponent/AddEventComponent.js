@@ -131,7 +131,7 @@ const AddEvent = () => {
         <BreadcrumbItem icon="fas fa-home" title="Home" path="/" />
         <BreadcrumbItem icon="fas fa-plus" title="Add Event" status="active" />
       </Breadcrumb>
-      {profiles.id === 1 ? (
+      {profiles.id === 1 || profiles.id === 3 ? (
         <Fade up>
           <div className="addEventForm">
             <form>
