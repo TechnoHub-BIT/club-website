@@ -84,7 +84,7 @@ const BlogComponent = () => {
           blogcontent: Test.blogcontent,
           like: Test.like,
         });
-        setNa(Test.blogauthorid);
+
       } else console.log("Non-existing");
     });
   }
