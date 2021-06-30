@@ -236,7 +236,7 @@ const SingleTest = (props) => {
       .collection("Tests")
       // .doc(title)
       .add({
-        testID:id,
+        testID: id,
         // testname: title,
         // timeleft: timeLeft,
         // options: options,
@@ -245,12 +245,12 @@ const SingleTest = (props) => {
         // testdate: testdate,
         // totalmarks: totalmarks,
         // score: score,
-      })
-      // .then(() => {
-      //   console.log("submitted");
-      // }).catch((error) => {
-      //   alert(error.message);
-      // });
+      });
+    // .then(() => {
+    //   console.log("submitted");
+    // }).catch((error) => {
+    //   alert(error.message);
+    // });
 
     //Store details in results collection of test database
     await db
@@ -259,11 +259,11 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email)
       .set({
-        userId:currentUser.uid,
+        userId: currentUser.uid,
         // fullname: fullname,
         // testname: title,
         // email: email,
-                options: options,
+        options: options,
         answers: answers,
         timeleft: timeLeft,
         // branch: branch,
@@ -465,255 +465,256 @@ const SingleTest = (props) => {
   }
 
   return (
-    <React.Fragment>
-      {modal}
-      <Helmet>
-        <title>{tests.title + " | TechnoHub BITD"}</title>
-        <meta
-          name="title"
-          content={tests.title + " | Aptitude Tests by TechnoHub BITD"}
-        />
-      </Helmet>
-      <div className="singleTestCont">
-        <Fade up>
-          <h1 className="title">
-            {tests.title}
-            {form ? (
-              <button type="button" title="Submit Test" onClick={onSubmit}>
-                <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
-              </button>
-            ) : null}
-          </h1>
-          <div className={form ? "centreCard" : "centreCard full"}>
-            <div className="left">
-              <form>
-                <section className="active">
-                  <div className="testInstructions">
-                    <h3 className="smallTitle">Test Instructions</h3>
-                    <ul>
-                      <li>
-                        <strong>Test Date:</strong>{" "}
-                        {Moment(tests.testdate).format("ll")}.
-                      </li>
-                      <li>
-                        <strong>You can give the test between:</strong>{" "}
-                        {tests.starttime} to {tests.endtime}.
-                      </li>
-                      <li>
-                        <strong>Test Duration:</strong> {tests.duration}{" "}
-                        minutes.
-                      </li>
-                      <li>
-                        <strong>Total Questions:</strong> {quesLength}.
-                      </li>
-                      <li>
-                        <strong>Total Marks:</strong> {tests.totalmarks}.
-                      </li>
-                      <li>
-                        <strong>Marks for each Correct answer:</strong>{" "}
-                        {tests.positivemarks}.
-                      </li>
-                      <li>
-                        <strong>Marks for each Wrong answer:</strong> -
-                        {tests.negativemarks}
-                      </li>
-                      {tests.testdescription ? (
-                        <li>
-                          <strong>Additional Information:</strong>{" "}
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: tests.testdescription,
-                            }}
-                          ></p>
-                          {/* <p>{tests.testdescription}</p> */}
-                        </li>
-                      ) : null}
-                    </ul>
-                  </div>
-                  <div className="navigation">
-                    {tests.teststatus !== "Over" ? (
-                      <button
-                        type="button"
-                        className="startBtn"
-                        onClick={() => {
-                          startTest(tests.duration);
-                        }}
-                      >
-                        Start Test&nbsp;&nbsp;
-                        <i className="fas fa-long-arrow-alt-right"></i>
-                      </button>
-                    ) : null}
-                  </div>
-                </section>
-                {tests.questions &&
-                  tests.questions.map((item, index) => {
-                    return (
-                      <section ques-no={index + 1} key={index}>
-                        <h3 className="smallTitle">Question No. {index + 1}</h3>
-                        <div className="question">
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: item.question,
-                            }}
-                          ></div>
-                          <br />
-                          {item.questionType === "MSQ"
-                            ? "(More than one correct option)"
-                            : null}
-                        </div>
-                        {item.imageUrl ? (
-                          <img
-                            src={
-                              "https://drive.google.com/uc?export=view&id=" +
-                              item.imageUrl
-                            }
-                            alt={tests.title}
-                            className="questionImage"
-                          />
-                        ) : null}
+    <>{result}</>
+    // <React.Fragment>
+    //   {modal}
+    //   <Helmet>
+    //     <title>{tests.title + " | TechnoHub BITD"}</title>
+    //     <meta
+    //       name="title"
+    //       content={tests.title + " | Aptitude Tests by TechnoHub BITD"}
+    //     />
+    //   </Helmet>
+    //   <div className="singleTestCont">
+    //     <Fade up>
+    //       <h1 className="title">
+    //         {tests.title}
+    //         {form ? (
+    //           <button type="button" title="Submit Test" onClick={onSubmit}>
+    //             <i className="fas fa-check"></i>&nbsp;&nbsp;Submit Test
+    //           </button>
+    //         ) : null}
+    //       </h1>
+    //       <div className={form ? "centreCard" : "centreCard full"}>
+    //         <div className="left">
+    //           <form>
+    //             <section className="active">
+    //               <div className="testInstructions">
+    //                 <h3 className="smallTitle">Test Instructions</h3>
+    //                 <ul>
+    //                   <li>
+    //                     <strong>Test Date:</strong>{" "}
+    //                     {Moment(tests.testdate).format("ll")}.
+    //                   </li>
+    //                   <li>
+    //                     <strong>You can give the test between:</strong>{" "}
+    //                     {tests.starttime} to {tests.endtime}.
+    //                   </li>
+    //                   <li>
+    //                     <strong>Test Duration:</strong> {tests.duration}{" "}
+    //                     minutes.
+    //                   </li>
+    //                   <li>
+    //                     <strong>Total Questions:</strong> {quesLength}.
+    //                   </li>
+    //                   <li>
+    //                     <strong>Total Marks:</strong> {tests.totalmarks}.
+    //                   </li>
+    //                   <li>
+    //                     <strong>Marks for each Correct answer:</strong>{" "}
+    //                     {tests.positivemarks}.
+    //                   </li>
+    //                   <li>
+    //                     <strong>Marks for each Wrong answer:</strong> -
+    //                     {tests.negativemarks}
+    //                   </li>
+    //                   {tests.testdescription ? (
+    //                     <li>
+    //                       <strong>Additional Information:</strong>{" "}
+    //                       <p
+    //                         dangerouslySetInnerHTML={{
+    //                           __html: tests.testdescription,
+    //                         }}
+    //                       ></p>
+    //                       {/* <p>{tests.testdescription}</p> */}
+    //                     </li>
+    //                   ) : null}
+    //                 </ul>
+    //               </div>
+    //               <div className="navigation">
+    //                 {tests.teststatus !== "Over" ? (
+    //                   <button
+    //                     type="button"
+    //                     className="startBtn"
+    //                     onClick={() => {
+    //                       startTest(tests.duration);
+    //                     }}
+    //                   >
+    //                     Start Test&nbsp;&nbsp;
+    //                     <i className="fas fa-long-arrow-alt-right"></i>
+    //                   </button>
+    //                 ) : null}
+    //               </div>
+    //             </section>
+    //             {tests.questions &&
+    //               tests.questions.map((item, index) => {
+    //                 return (
+    //                   <section ques-no={index + 1} key={index}>
+    //                     <h3 className="smallTitle">Question No. {index + 1}</h3>
+    //                     <div className="question">
+    //                       <div
+    //                         dangerouslySetInnerHTML={{
+    //                           __html: item.question,
+    //                         }}
+    //                       ></div>
+    //                       <br />
+    //                       {item.questionType === "MSQ"
+    //                         ? "(More than one correct option)"
+    //                         : null}
+    //                     </div>
+    //                     {item.imageUrl ? (
+    //                       <img
+    //                         src={
+    //                           "https://drive.google.com/uc?export=view&id=" +
+    //                           item.imageUrl
+    //                         }
+    //                         alt={tests.title}
+    //                         className="questionImage"
+    //                       />
+    //                     ) : null}
 
-                        <Options
-                          item={item}
-                          index={index}
-                          handleAnswer={handleAnswer}
-                        />
+    //                     <Options
+    //                       item={item}
+    //                       index={index}
+    //                       handleAnswer={handleAnswer}
+    //                     />
 
-                        <div className="navigation">
-                          {index === 0 ? (
-                            <button
-                              type="button"
-                              className="prevBtn"
-                              title="This is the first Question"
-                              disabled
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              <i className="fas fa-long-arrow-alt-left"></i>
-                              &nbsp;&nbsp;Previous
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              className="prevBtn"
-                              title={"Go to Question " + index}
-                              onClick={() => sectionChanger("prev", index + 1)}
-                            >
-                              <i className="fas fa-long-arrow-alt-left"></i>
-                              &nbsp;&nbsp;Previous
-                            </button>
-                          )}
-                          {index === quesLength - 1 ? (
-                            <button
-                              type="button"
-                              className="nextBtn"
-                              title="This is the last Question"
-                              disabled
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              Save & Next&nbsp;&nbsp;
-                              <i className="fas fa-long-arrow-alt-right"></i>
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              className="nextBtn"
-                              title={"Go to Question " + (index + 2)}
-                              onClick={() => sectionChanger("next", index + 1)}
-                            >
-                              Save & Next&nbsp;&nbsp;
-                              <i className="fas fa-long-arrow-alt-right"></i>
-                            </button>
-                          )}
-                        </div>
-                      </section>
-                    );
-                  })}
-              </form>
-            </div>
-            {form ? (
-              <div className="right">
-                <div className="timer">
-                  <p
-                    title={
-                      hoursDisplay +
-                      ":" +
-                      minutesDisplay +
-                      ":" +
-                      secondsDisplay +
-                      " are left"
-                    }
-                  >
-                    Time left
-                    <br />
-                    {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
-                  </p>
-                </div>
-                <div className="questionBtns">{questionBtns}</div>
-              </div>
-            ) : null}
+    //                     <div className="navigation">
+    //                       {index === 0 ? (
+    //                         <button
+    //                           type="button"
+    //                           className="prevBtn"
+    //                           title="This is the first Question"
+    //                           disabled
+    //                           onClick={() => sectionChanger("next", index + 1)}
+    //                         >
+    //                           <i className="fas fa-long-arrow-alt-left"></i>
+    //                           &nbsp;&nbsp;Previous
+    //                         </button>
+    //                       ) : (
+    //                         <button
+    //                           type="button"
+    //                           className="prevBtn"
+    //                           title={"Go to Question " + index}
+    //                           onClick={() => sectionChanger("prev", index + 1)}
+    //                         >
+    //                           <i className="fas fa-long-arrow-alt-left"></i>
+    //                           &nbsp;&nbsp;Previous
+    //                         </button>
+    //                       )}
+    //                       {index === quesLength - 1 ? (
+    //                         <button
+    //                           type="button"
+    //                           className="nextBtn"
+    //                           title="This is the last Question"
+    //                           disabled
+    //                           onClick={() => sectionChanger("next", index + 1)}
+    //                         >
+    //                           Save & Next&nbsp;&nbsp;
+    //                           <i className="fas fa-long-arrow-alt-right"></i>
+    //                         </button>
+    //                       ) : (
+    //                         <button
+    //                           type="button"
+    //                           className="nextBtn"
+    //                           title={"Go to Question " + (index + 2)}
+    //                           onClick={() => sectionChanger("next", index + 1)}
+    //                         >
+    //                           Save & Next&nbsp;&nbsp;
+    //                           <i className="fas fa-long-arrow-alt-right"></i>
+    //                         </button>
+    //                       )}
+    //                     </div>
+    //                   </section>
+    //                 );
+    //               })}
+    //           </form>
+    //         </div>
+    //         {form ? (
+    //           <div className="right">
+    //             <div className="timer">
+    //               <p
+    //                 title={
+    //                   hoursDisplay +
+    //                   ":" +
+    //                   minutesDisplay +
+    //                   ":" +
+    //                   secondsDisplay +
+    //                   " are left"
+    //                 }
+    //               >
+    //                 Time left
+    //                 <br />
+    //                 {hoursDisplay + ":" + minutesDisplay + ":" + secondsDisplay}
+    //               </p>
+    //             </div>
+    //             <div className="questionBtns">{questionBtns}</div>
+    //           </div>
+    //         ) : null}
 
-            {tests.teststatus === "Over"
-              ? tests.questions &&
-                tests.questions.map((item, index) => {
-                  return (
-                    <div className="singleQuestion">
-                      <h3 className="smallTitle">Question No. {index + 1}</h3>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: item.question,
-                        }}
-                        className="question"
-                      ></div>
-                      <div className="options">
-                        <div>
-                          <strong>Option (A):&nbsp;&nbsp;</strong>
-                          {item.op1}
-                        </div>
-                        <div>
-                          <strong>Option (B):&nbsp;&nbsp;</strong>
-                          {item.op2}
-                        </div>
-                        <div>
-                          <strong>Option (C):&nbsp;&nbsp;</strong>
-                          {item.op3}
-                        </div>
-                        <div>
-                          <strong>Option (D):&nbsp;&nbsp;</strong>
-                          {item.op4}
-                        </div>
-                        {item.op5 ? (
-                          <div>
-                            <strong>Option (E):&nbsp;&nbsp;</strong>
-                            {item.op5}
-                          </div>
-                        ) : null}
-                      </div>
-                      <div className="green">
-                        Correct Option:&nbsp;&nbsp;Option ({item.correctAnswer})
-                      </div>
-                      <div className="explanation">
-                        <strong>Explanation:</strong>{" "}
-                        {item.explanation ? (
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: item.explanation,
-                            }}
-                            className="question"
-                          ></p>
-                        ) : (
-                          <p className="question">
-                            Sorry, no explanation is available for this question
-                            at the moment.
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })
-              : null}
-          </div>
-        </Fade>
-      </div>
-    </React.Fragment>
+    //         {tests.teststatus === "Over"
+    //           ? tests.questions &&
+    //             tests.questions.map((item, index) => {
+    //               return (
+    //                 <div className="singleQuestion">
+    //                   <h3 className="smallTitle">Question No. {index + 1}</h3>
+    //                   <div
+    //                     dangerouslySetInnerHTML={{
+    //                       __html: item.question,
+    //                     }}
+    //                     className="question"
+    //                   ></div>
+    //                   <div className="options">
+    //                     <div>
+    //                       <strong>Option (A):&nbsp;&nbsp;</strong>
+    //                       {item.op1}
+    //                     </div>
+    //                     <div>
+    //                       <strong>Option (B):&nbsp;&nbsp;</strong>
+    //                       {item.op2}
+    //                     </div>
+    //                     <div>
+    //                       <strong>Option (C):&nbsp;&nbsp;</strong>
+    //                       {item.op3}
+    //                     </div>
+    //                     <div>
+    //                       <strong>Option (D):&nbsp;&nbsp;</strong>
+    //                       {item.op4}
+    //                     </div>
+    //                     {item.op5 ? (
+    //                       <div>
+    //                         <strong>Option (E):&nbsp;&nbsp;</strong>
+    //                         {item.op5}
+    //                       </div>
+    //                     ) : null}
+    //                   </div>
+    //                   <div className="green">
+    //                     Correct Option:&nbsp;&nbsp;Option ({item.correctAnswer})
+    //                   </div>
+    //                   <div className="explanation">
+    //                     <strong>Explanation:</strong>{" "}
+    //                     {item.explanation ? (
+    //                       <p
+    //                         dangerouslySetInnerHTML={{
+    //                           __html: item.explanation,
+    //                         }}
+    //                         className="question"
+    //                       ></p>
+    //                     ) : (
+    //                       <p className="question">
+    //                         Sorry, no explanation is available for this question
+    //                         at the moment.
+    //                       </p>
+    //                     )}
+    //                   </div>
+    //                 </div>
+    //               );
+    //             })
+    //           : null}
+    //       </div>
+    //     </Fade>
+    //   </div>
+    // </React.Fragment>
   );
 };
 
