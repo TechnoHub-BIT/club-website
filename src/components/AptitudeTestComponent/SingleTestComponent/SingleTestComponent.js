@@ -233,24 +233,24 @@ const SingleTest = (props) => {
     await db
       .collection("members")
       .doc(currentUser.uid)
-      .collection("tests")
-      .doc(title)
-      .set({
-        testname: title,
-        timeleft: timeLeft,
-        options: options,
-        answers: answers,
-        testduration: testduration,
-        testdate: testdate,
-        totalmarks: totalmarks,
-        score: score,
+      .collection("Tests")
+      // .doc(title)
+      .add({
+        testID:id,
+        // testname: title,
+        // timeleft: timeLeft,
+        // options: options,
+        // answers: answers,
+        // testduration: testduration,
+        // testdate: testdate,
+        // totalmarks: totalmarks,
+        // score: score,
       })
-      .then(() => {
-        console.log("submitted");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+      // .then(() => {
+      //   console.log("submitted");
+      // }).catch((error) => {
+      //   alert(error.message);
+      // });
 
     //Store details in results collection of test database
     await db
@@ -259,11 +259,14 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email)
       .set({
-        fullname: fullname,
-        testname: title,
-        email: email,
+        userId:currentUser.uid,
+        // fullname: fullname,
+        // testname: title,
+        // email: email,
+                options: options,
+        answers: answers,
         timeleft: timeLeft,
-        branch: branch,
+        // branch: branch,
         score: score,
       })
       .then(() => {

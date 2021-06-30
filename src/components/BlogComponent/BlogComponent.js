@@ -69,7 +69,29 @@ const BlogComponent = () => {
       });
   }, []);
 
-  // console.log(blogedit.blogauthorid)
+  async function renderDetails() {
+    const ref = await db.collection("Blogs").doc(blogname);
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const Test = doc.data();
+
+        setblogs({
+          blogtitle: Test.blogtitle,
+          blogauthorid: Test.blogauthorid,
+          blogauthor: Test.blogauthor,
+          blogimageurl: Test.blogimageurl,
+          blogdate: Test.blogdate,
+          blogcontent: Test.blogcontent,
+          like: Test.like,
+        });
+
+      } else console.log("Non-existing");
+    });
+  }
+  // console.log(blogedit)
+  // for (let i = 0; i < cars.length; i++) {
+  //   text += cars[i] + "<br>";
+  // }
 
   // useEffect(() => {
   // getAuthorid();
@@ -93,6 +115,21 @@ const BlogComponent = () => {
   //       continue;
   //     }
   //     }
+
+      // async function UserId(){
+      //   if(na !== undefined){
+      //    await db.collection("members").doc(na).get()
+      //   .then((doc) => {
+      //     if (doc.exists) {
+      //       const Test = doc.data();
+      //       setUser({
+      //         fullname: Test.fullname,
+      //       });
+      //       console.log(user.fullname)
+      //     } else console.log("Non-existing");
+      //   });
+      // }
+      // }
 
   //Deleting blog
   const onDeleteBlog = () => {
