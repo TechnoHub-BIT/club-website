@@ -208,13 +208,13 @@ const SingleTest = (props) => {
     }
   }, [currentUser]);
 
-  const fullname = profiles.fullname;
-  const branch = profiles.branch;
+  // const fullname = profiles.fullname;
+  // const branch = profiles.branch;
   const email = profiles.email;
-  const title = tests.title;
-  const totalmarks = tests.totalmarks;
-  const testdate = tests.testdate;
-  const testduration = tests.duration;
+  // const title = tests.title;
+  // const totalmarks = tests.totalmarks;
+  // const testdate = tests.testdate;
+  // const testduration = tests.duration;
   let score = 0;
 
   //Submit Function
@@ -262,7 +262,7 @@ const SingleTest = (props) => {
         userId:currentUser.uid,
         // fullname: fullname,
         // testname: title,
-        // email: email,
+        email: email,
                 options: options,
         answers: answers,
         timeleft: timeLeft,
