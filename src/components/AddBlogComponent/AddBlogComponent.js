@@ -62,7 +62,7 @@ export default function AddBlogComponent() {
           blogcategory: blogcategory,
           blogauthorid: blogauthorid,
           blogimageurl: blogimageurl,
-          blogauthor:blogauthor,
+          blogauthor: blogauthor,
           blogdate: blogdate,
           like: like,
           blogcontent: blogcontent,
@@ -116,7 +116,7 @@ export default function AddBlogComponent() {
     }
   }, [currentUser]);
   const [list, setList] = useState([]);
-  
+
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("Blogcategory").onSnapshot(function (data) {
