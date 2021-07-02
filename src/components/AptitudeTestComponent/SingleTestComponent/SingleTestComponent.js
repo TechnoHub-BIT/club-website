@@ -208,13 +208,13 @@ const SingleTest = (props) => {
     }
   }, [currentUser]);
 
-  // const fullname = profiles.fullname;
-  // const branch = profiles.branch;
+  const fullname = profiles.fullname;
+  const branch = profiles.branch;
   const email = profiles.email;
-  // const title = tests.title;
-  // const totalmarks = tests.totalmarks;
-  // const testdate = tests.testdate;
-  // const testduration = tests.duration;
+  const title = tests.title;
+  const totalmarks = tests.totalmarks;
+  const testdate = tests.testdate;
+  const testduration = tests.duration;
   let score = 0;
 
   //Submit Function
@@ -234,23 +234,17 @@ const SingleTest = (props) => {
       .collection("members")
       .doc(currentUser.uid)
       .collection("Tests")
-      // .doc(title)
       .add({
-        testID: id,
-        // testname: title,
-        // timeleft: timeLeft,
-        // options: options,
-        // answers: answers,
-        // testduration: testduration,
-        // testdate: testdate,
-        // totalmarks: totalmarks,
-        // score: score,
+        testId: id,
+        testname: title,
+        timeleft: timeLeft,
+        options: options,
+        answers: answers,
+        testduration: testduration,
+        testdate: testdate,
+        totalmarks: totalmarks,
+        score: score,
       });
-    // .then(() => {
-    //   console.log("submitted");
-    // }).catch((error) => {
-    //   alert(error.message);
-    // });
 
     //Store details in results collection of test database
     await db
@@ -259,14 +253,14 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email)
       .set({
-        userId: currentUser.uid,
-        // fullname: fullname,
-        // testname: title,
-        email: email,
         options: options,
         answers: answers,
+        userId: currentUser.uid,
+        fullname: fullname,
+        testname: title,
+        email: email,
         timeleft: timeLeft,
-        // branch: branch,
+        branch: branch,
         score: score,
       })
       .then(() => {

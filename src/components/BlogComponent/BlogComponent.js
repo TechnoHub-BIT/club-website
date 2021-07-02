@@ -84,7 +84,6 @@ const BlogComponent = () => {
           blogcontent: Test.blogcontent,
           like: Test.like,
         });
-
       } else console.log("Non-existing");
     });
   }
@@ -116,20 +115,20 @@ const BlogComponent = () => {
   //     }
   //     }
 
-      // async function UserId(){
-      //   if(na !== undefined){
-      //    await db.collection("members").doc(na).get()
-      //   .then((doc) => {
-      //     if (doc.exists) {
-      //       const Test = doc.data();
-      //       setUser({
-      //         fullname: Test.fullname,
-      //       });
-      //       console.log(user.fullname)
-      //     } else console.log("Non-existing");
-      //   });
-      // }
-      // }
+  // async function UserId(){
+  //   if(na !== undefined){
+  //    await db.collection("members").doc(na).get()
+  //   .then((doc) => {
+  //     if (doc.exists) {
+  //       const Test = doc.data();
+  //       setUser({
+  //         fullname: Test.fullname,
+  //       });
+  //       console.log(user.fullname)
+  //     } else console.log("Non-existing");
+  //   });
+  // }
+  // }
 
   //Deleting blog
   const onDeleteBlog = () => {

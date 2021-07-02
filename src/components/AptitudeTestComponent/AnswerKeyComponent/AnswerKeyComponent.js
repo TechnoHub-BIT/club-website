@@ -9,7 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 const AnswerKey = (props) => {
   let history = useHistory();
-  const { id } = useParams();
+const {id} = useParams();
   const { currentUser, logout } = useAuth();
   const [profiles, setProfiles] = useState([]);
 
@@ -26,8 +26,7 @@ const AnswerKey = (props) => {
 
   const [validity, setValidity] = useState(true);
 
-  const [mytest, setMyTest] = useState("");
-  const [mytestans, setMyTestAns] = useState("");
+  const [tests, setTest] = useState([""]);
   const ref = db
     .collection("members")
     .doc(currentUser.uid)
@@ -37,36 +36,20 @@ const AnswerKey = (props) => {
     ref.get().then((doc) => {
       if (doc.exists) {
         const Test = doc.data();
-        // console.log(Test.testID)
-        setMyTest({
-          testID: Test.testID,
+        setTest({
+          answers: Test.answers,
+          options: Test.options,
+          testname: Test.testname,
         });
-
-        if (Test.testID) {
-          db.collection("Tests")
-            .doc(Test.testID)
-            .collection("results")
-            .doc(currentUser.email)
-            .onSnapshot(function (document) {
-              const Test = document.data();
-              setMyTestAns({
-                answers: Test.answers,
-                options: Test.options,
-                // score:Test.score,
-                // timeleft:Test.timeleft
-              });
-            });
-        }
       } else setValidity(false);
     });
   }, []);
-  // console.log(id);
-  console.log(mytestans);
-  const [tests, setTests] = useState([]);
+
+  const [testname, setTestname] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("Tests").onSnapshot(function (data) {
-        setTests(
+        setTestname(
           data.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id,
@@ -80,13 +63,13 @@ const AnswerKey = (props) => {
   const yourAnswers = [];
   const yourOptions = [];
 
-  mytestans.answers &&
-    mytestans.answers.map((items, index) => {
+  tests.answers &&
+    tests.answers.map((items, index) => {
       yourAnswers.push(items);
     });
 
-  mytestans.options &&
-    mytestans.options.map((items, index) => {
+  tests.options &&
+    tests.options.map((items, index) => {
       yourOptions.push(items);
     });
 
@@ -111,6 +94,8 @@ const AnswerKey = (props) => {
     return marks;
   };
 
+  console.log(yourAnswers);
+
   if (validity)
     return (
       <React.Fragment>
@@ -119,118 +104,118 @@ const AnswerKey = (props) => {
           <meta name="title" content="Aptitude Tests by TechnoHub BITD" />
         </Helmet>
         <div className="answerKeyCont">
-          {/* <Fade up> */}
-          {tests.map((item) => {
-            if (mytest.testID === item.id) {
-              return item.answerstatus === "Active" ? (
-                <div>
-                  <h1 className="title">
-                    {item.title}- Answer Key
-                    <a href="/mytests">
-                      <button type="button">
-                        <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
-                      </button>
-                    </a>
-                  </h1>
-                  <div
-                    className="centreCard"
-                    style={{ position: "relative", zIndex: "1" }}
-                  >
-                    <div className="questions">
-                      {item.questions.map((que, index) => {
-                        return (
-                          <div className="singleQuestion">
-                            <div className="left">
-                              <h3 className="smallTitle">
-                                Question No. {index + 1}
+          <Fade up>
+            <h1 className="title">
+              {tests.testname}- Answer Key
+              <a href="/mytests">
+                <button type="button">
+                  <i className="fas fa-eye"></i>&nbsp;&nbsp;View All Tests
+                </button>
+              </a>
+            </h1>
+            <div
+              className="centreCard"
+              style={{ position: "relative", zIndex: "1" }}
+            >
+              {testname.map((item) => {
+                if (item.title === tests.testname) {
+                  return item.answerstatus === "Active" ? (
+                    <div>
+                      <div className="questions">
+                        {item.questions.map((que, index) => {
+                          return (
+                            <div className="singleQuestion">
+                              <div className="left">
+                                <h3 className="smallTitle">
+                                  Question No. {index + 1}
+                                  <div
+                                    className={className(index)}
+                                    style={{ marginTop: "0.2em" }}
+                                  >
+                                    {findMarks(
+                                      index,
+                                      item.positivemarks,
+                                      item.negativemarks
+                                    )}
+                                  </div>
+                                </h3>
                                 <div
-                                  className={className(index)}
-                                  style={{ marginTop: "0.2em" }}
-                                >
-                                  {findMarks(
-                                    index,
-                                    item.positivemarks,
-                                    item.negativemarks
-                                  )}
-                                </div>
-                              </h3>
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: que.question,
-                                }}
-                                className="question"
-                              ></div>
-                              <div className="options">
-                                <div>
-                                  <strong>Option (A):&nbsp;&nbsp;</strong>
-                                  {que.op1}
-                                </div>
-                                <div>
-                                  <strong>Option (B):&nbsp;&nbsp;</strong>
-                                  {que.op2}
-                                </div>
-                                <div>
-                                  <strong>Option (C):&nbsp;&nbsp;</strong>
-                                  {que.op3}
-                                </div>
-                                <div>
-                                  <strong>Option (D):&nbsp;&nbsp;</strong>
-                                  {que.op4}
-                                </div>
-                                {que.op5 !== "" ? (
+                                  dangerouslySetInnerHTML={{
+                                    __html: que.question,
+                                  }}
+                                  className="question"
+                                ></div>
+                                <div className="options">
                                   <div>
-                                    <strong>Option (E):&nbsp;&nbsp;</strong>
-                                    {que.op5}
+                                    <strong>Option (A):&nbsp;&nbsp;</strong>
+                                    {que.op1}
+                                  </div>
+                                  <div>
+                                    <strong>Option (B):&nbsp;&nbsp;</strong>
+                                    {que.op2}
+                                  </div>
+                                  <div>
+                                    <strong>Option (C):&nbsp;&nbsp;</strong>
+                                    {que.op3}
+                                  </div>
+                                  <div>
+                                    <strong>Option (D):&nbsp;&nbsp;</strong>
+                                    {que.op4}
+                                  </div>
+                                  {que.op5 !== "" ? (
+                                    <div>
+                                      <strong>Option (E):&nbsp;&nbsp;</strong>
+                                      {que.op5}
+                                    </div>
+                                  ) : null}
+                                </div>
+                              </div>
+                              <div className="right">
+                                <div>
+                                  Correct Option:&nbsp;&nbsp;Option (
+                                  {que.correctAnswer})
+                                </div>
+                                <div className={className(index)}>
+                                  Your Answer:&nbsp;&nbsp;
+                                  {yourOptions[index] != null
+                                    ? "Option (" + yourOptions[index] + ")"
+                                    : "Unanswered"}
+                                </div>
+                                {que.explanation !== "" ? (
+                                  <div className="explanation">
+                                    <strong>Explanation:</strong>{" "}
+                                    <p
+                                      dangerouslySetInnerHTML={{
+                                        __html: que.explanation,
+                                      }}
+                                      className="question"
+                                    ></p>
                                   </div>
                                 ) : null}
                               </div>
                             </div>
-                            <div className="right">
-                              <div>
-                                Correct Option:&nbsp;&nbsp;Option (
-                                {que.correctAnswer})
-                              </div>
-                              <div className={className(index)}>
-                                Your Answer:&nbsp;&nbsp;
-                                {yourOptions[index] != null
-                                  ? "Option (" + yourOptions[index] + ")"
-                                  : "Unanswered"}
-                              </div>
-                              {que.explanation !== "" ? (
-                                <div className="explanation">
-                                  <strong>Explanation:</strong>{" "}
-                                  <p
-                                    dangerouslySetInnerHTML={{
-                                      __html: que.explanation,
-                                    }}
-                                    className="question"
-                                  ></p>
-                                </div>
-                              ) : null}
-                            </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ) : (
-                <AlertModal
-                  message="Answer Key is not available at the moment!"
-                  icon="exclamation"
-                  leftBtn="Go to Profile"
-                  rightBtn="View All Tests"
-                  action={() => {
-                    history.push("/profile");
-                  }}
-                  close={() => {
-                    history.push("/mytests");
-                  }}
-                />
-              );
-            }
-          })}
-          {/* </Fade> */}
+                  ) : (
+                    <AlertModal
+                      message="Answer Key is not available at the moment!"
+                      icon="exclamation"
+                      leftBtn="Go to Profile"
+                      rightBtn="View All Tests"
+                      action={() => {
+                        history.push("/profile");
+                      }}
+                      close={() => {
+                        history.push("/mytests");
+                      }}
+                    />
+                  );
+                }
+              })}
+            </div>
+          </Fade>
         </div>
       </React.Fragment>
     );

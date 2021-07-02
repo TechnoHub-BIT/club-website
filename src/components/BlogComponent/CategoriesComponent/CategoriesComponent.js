@@ -45,7 +45,12 @@ const CategoriesComponent = () => {
             status="active"
           />
         </Breadcrumb>
-        <div className="categoriesCont">
+        <h3 className="text-center py-5">
+          This section is under construction!
+          <br />
+          Will be live back soon.
+        </h3>
+        {/* <div className="categoriesCont">
           <div className="categoriesList">
             {blogcategory &&
               blogcategory.map((blog) => {
@@ -73,7 +78,7 @@ const CategoriesComponent = () => {
                 );
               })}
           </div>
-        </div>
+        </div> */}
       </div>
     </React.Fragment>
   );
