@@ -465,7 +465,7 @@ const SingleTest = (props) => {
   }
 
   return (
-    <>{result}</>
+    <React.Fragment>{result.score}</React.Fragment>
     // <React.Fragment>
     //   {modal}
     //   <Helmet>
