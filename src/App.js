@@ -2,8 +2,8 @@ import React from "react";
 import Main from "./components/MainComponent";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import config from 'react-reveal/globals';
- 
+import config from "react-reveal/globals";
+
 config({ ssrFadeout: true });
 
 const App = () => {

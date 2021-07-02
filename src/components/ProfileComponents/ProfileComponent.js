@@ -28,7 +28,7 @@ const ProfileComponent = () => {
     const fetchdata = async () => {
       db.collection("members")
         .doc(currentUser.uid)
-        .collection("tests")
+        .collection("Tests")
         .get()
         .then(function (querySnapshot) {
           setLength(querySnapshot.size);

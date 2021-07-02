@@ -21,6 +21,7 @@ function EditComponent() {
   const [contactNo, setContactNo] = useState("");
   const [workshops, setWorkshops] = useState("");
   const [interest, setInterest] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
 
   const [profiles, setProfiles] = useState([]);
 
@@ -131,6 +132,16 @@ function EditComponent() {
           //   console.log("Fullname successfully updated!");
         });
     }
+    // if (photoUrl !== "") {
+    //   db.collection("members")
+    //     .doc(currentUser.uid)
+    //     .update({
+    //       photoUrl: photoUrl,
+    //     })
+    //     .then(function () {
+    //       //   console.log("Fullname successfully updated!");
+    //     });
+    // }
     alert("Profile Successfully Updated");
   };
 
@@ -178,15 +189,15 @@ function EditComponent() {
                     <label for="name">Name</label>
                   </div>
                   {/* <div className="input-group">
-                                        <input type="file" id="image" placeholder="Profile Image" />
-                                        <label for="image">Profile Image</label>
+                                        <input type="text" id="image" placeholder="Profile Url" defaultValue={profiles.photoUrl} onChange={(event) => setPhotoUrl(event.target.value)} />
+                                        <label for="image">Profile URL</label>
                                     </div> */}
                   <div className="input-group">
                     <select
                       onChange={(event) => setBranch(event.target.value)}
                       required
                     >
-                      <option value="">Select Branch</option>
+                      <option value="">{profiles.branch}</option>
                       <option value="Computer Science Engineering">
                         Computer Science Engineering
                       </option>
@@ -216,7 +227,7 @@ function EditComponent() {
                       onChange={(event) => setSemester(event.target.value)}
                       required
                     >
-                      <option value="">Select Semester</option>
+                      <option value="">{profiles.semester}</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
