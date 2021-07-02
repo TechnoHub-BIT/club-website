@@ -208,13 +208,13 @@ const SingleTest = (props) => {
     }
   }, [currentUser]);
 
-  // const fullname = profiles.fullname;
-  // const branch = profiles.branch;
+  const fullname = profiles.fullname;
+  const branch = profiles.branch;
   const email = profiles.email;
-  // const title = tests.title;
-  // const totalmarks = tests.totalmarks;
-  // const testdate = tests.testdate;
-  // const testduration = tests.duration;
+  const title = tests.title;
+  const totalmarks = tests.totalmarks;
+  const testdate = tests.testdate;
+  const testduration = tests.duration;
   let score = 0;
 
   //Submit Function
@@ -235,8 +235,16 @@ const SingleTest = (props) => {
       .doc(currentUser.uid)
       .collection("Tests")
       .add({
-        testID: id,
-      });
+        testId:id,
+        testname: title,
+        timeleft: timeLeft,
+        options: options,
+        answers: answers,
+        testduration: testduration,
+        testdate: testdate,
+        totalmarks: totalmarks,
+        score: score,
+      })
 
     //Store details in results collection of test database
     await db
@@ -245,11 +253,14 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email)
       .set({
-        userId: currentUser.uid,
-        email: email,
         options: options,
         answers: answers,
+        userId:currentUser.uid,
+        fullname: fullname,
+        testname: title,
+        email: email,
         timeleft: timeLeft,
+        branch: branch,
         score: score,
       })
       .then(() => {
@@ -425,7 +436,6 @@ const SingleTest = (props) => {
             close={closeModal}
           />
         );
- 
     } catch (error) {
       alert(error.message);
     }

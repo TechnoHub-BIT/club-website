@@ -3,14 +3,13 @@ import "./LeaderboardComponent.css";
 import { db } from "../../../firebase";
 import Moment from "moment";
 import AlertModal from "../../AlertModalComponent/AlertModalComponent";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const Leaderboard = (props) => {
-  const { id } = useParams();
   let history = useHistory();
 
   const [validity, setValidity] = useState(true);
@@ -19,22 +18,7 @@ const Leaderboard = (props) => {
 
   const [listLimit, setLimit] = useState(10);
 
-  const { currentUser, logout } = useAuth();
-
-  const [profiles, setProfiles] = useState([]);
-
-  useEffect(() => {
-    if (currentUser) {
-      db.collection("members")
-        .doc(currentUser.uid)
-        .onSnapshot(function (doc) {
-          const data = doc.data();
-          setProfiles(data);
-        });
-    }
-  }, [currentUser]);
-
-  const ref = db.collection("Tests").doc(id);
+  const ref = db.collection("Tests").doc(props.match.params.id);
   useEffect(() => {
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -54,10 +38,11 @@ const Leaderboard = (props) => {
     });
   }, []);
 
+  //  let tb =  db.collection("Tests").doc(props.match.params.id).collection("results").orderBy("score", "desc").orderBy("timeleft", "desc").startAt(test.score).endAt(test.score +'\uf8ff').get();
   const [result, setResult] = useState([]);
   useEffect(() => {
     db.collection("Tests")
-      .doc(id)
+      .doc(props.match.params.id)
       .collection("results")
       .orderBy("score", "desc")
       // .orderBy("timeleft", "desc")
@@ -69,38 +54,9 @@ const Leaderboard = (props) => {
             id: document.id,
             ...document.data(),
           };
-          // if (fetchResult.userId) {
-          // db.collection("members")
-          //   .doc(fetchResult.userId)
-          //   .onSnapshot(function (doc) {
-          //     // const Test = doc.data();
-          //     const fetchUser = {
-          //       // fetchResults,
-          //       // id: document.id,
-          //       ...document.data(),
-          //       // name:Test.fullname
-          //       ...doc.data(),
-          //     };
-          //     fetchResults.push(fetchUser);
-          //   });
-          // }
-
           fetchResults.push(fetchResult);
         });
-
         setResult(fetchResults);
-      });
-  }, []);
-
-  const [memberList, setMemberList] = useState([]);
-
-  useEffect(() => {
-    db.collection("members")
-      .orderBy("fullname")
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        setMemberList(data);
       });
   }, []);
 
@@ -109,7 +65,7 @@ const Leaderboard = (props) => {
     item.timeleft = parseInt(item.timeleft, 10);
   });
 
-  // //FUnction to sort array based pn timeleft
+  //FUnction to sort array based pn timeleft
   const dynamicSort = (property) => {
     var sortOrder = 1;
     if (property[0] === "-") {
@@ -142,7 +98,21 @@ const Leaderboard = (props) => {
 
   result.sort(dynamicSortMultiple("score", "timeleft"));
 
-  // //Current User Details
+  //Current User Details
+  const { currentUser, logout } = useAuth();
+
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      db.collection("members")
+        .doc(currentUser.uid)
+        .onSnapshot(function (doc) {
+          const data = doc.data();
+          setProfiles(data);
+        });
+    }
+  }, [currentUser]);
 
   //Calculate Time taken from Time left
   const calcTime = (testDuration, timeLeft) => {
@@ -175,7 +145,17 @@ const Leaderboard = (props) => {
                   <th>E-mail</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                {result.map((leader, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}.</td>
+                      <td>{leader.fullname}</td>
+                      <td>{leader.email}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
             {profiles.id === 1 || profiles.id === 4 ? (
               <div style={{ marginLeft: "15vw" }}>
@@ -242,47 +222,36 @@ const Leaderboard = (props) => {
                     if (index < listLimit) {
                       const testDuration =
                         parseInt(test.duration, 10) * 60 * 1000;
+
                       return (
-                        <div>
-                          {memberList.map((use) => {
-                            if (leader.email === use.email)
-                              return (
-                                <div>
-                                  <div className="leader">
-                                    <div className="sno">{index + 1}.</div>
-                                    <div className="leaderDetails">
-                                      {badge}
-                                      <div className="details">
-                                        {/* <img src={use.photoUrl} /> */}
-                                        <div className="name">
-                                          {use.fullname != null
-                                            ? use.fullname
-                                            : use.email}
-                                        </div>
-                                        <div className="branch">
-                                          {use.branch}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="time">
-                                      <strong className="onlyMobile">
-                                        Time Taken:&nbsp;&nbsp;
-                                      </strong>
-                                      {calcTime(testDuration, leader.timeleft)}
-                                    </div>
-                                    <div className="score">
-                                      {leader.score}
-                                      <strong className="onlyMobile">
-                                        &nbsp;&nbsp;
-                                        <span style={{ fontSize: "1rem" }}>
-                                          marks scored
-                                        </span>
-                                      </strong>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                          })}
+                        <div className="leader">
+                          <div className="sno">{index + 1}.</div>
+                          <div className="leaderDetails">
+                            {badge}
+                            <div className="details">
+                              <div className="name">
+                                {leader.fullname != null
+                                  ? leader.fullname
+                                  : leader.email}
+                              </div>
+                              <div className="branch">{leader.branch}</div>
+                            </div>
+                          </div>
+                          <div className="time">
+                            <strong className="onlyMobile">
+                              Time Taken:&nbsp;&nbsp;
+                            </strong>
+                            {calcTime(testDuration, leader.timeleft)}
+                          </div>
+                          <div className="score">
+                            {leader.score}
+                            <strong className="onlyMobile">
+                              &nbsp;&nbsp;
+                              <span style={{ fontSize: "1rem" }}>
+                                marks scored
+                              </span>
+                            </strong>
+                          </div>
                         </div>
                       );
                     }

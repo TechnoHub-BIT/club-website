@@ -7,24 +7,21 @@ import { Helmet } from "react-helmet";
 import { Fade } from "react-reveal";
 
 const TestsList = () => {
-  const [mytest, setMyTest] = useState([]);
+  const [tests, setTest] = useState([]);
 
   useEffect(() => {
-    const fetchdata = () => {
+    const fetchdata = async () => {
       db.collection("members")
         .doc(currentUser.uid)
         .collection("Tests")
-        // .orderBy("testdate", "desc")
+        .orderBy("testdate", "desc")
         .onSnapshot(function (data) {
-          const fetchTestDetails = [];
-          data.docs.map((doc) => {
-            const fetchTest = {
+          setTest(
+            data.docs.map((doc) => ({
               ...doc.data(),
               id: doc.id,
-            };
-            fetchTestDetails.push(fetchTest);
-          });
-          setMyTest(fetchTestDetails);
+            }))
+          );
         });
     };
     fetchdata();
@@ -80,11 +77,11 @@ const TestsList = () => {
     }
   }, [currentUser]);
 
-  const [tests, setTests] = useState([]);
+  const [testname, setTestname] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
       db.collection("Tests").onSnapshot(function (data) {
-        setTests(
+        setTestname(
           data.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id,
@@ -139,7 +136,7 @@ const TestsList = () => {
                   <div className="date">{/* <strong>Date</strong> */}</div>
                 </div>
                 <div className="duration">
-                  {/* <strong>Time Taken/Your Score</strong> */}
+                  <strong>Time Taken/Your Score</strong>
                 </div>
                 <div className="buttons">
                   <strong>Answer Key</strong>
@@ -149,19 +146,18 @@ const TestsList = () => {
                 const testDuration =
                   parseInt(test.testduration, 10) * 60 * 1000;
                 return (
-                  <div>
-                    {mytest.map((item) => {
-                      if (test.id === item.testID) {
-                        return (
-                          <div className="test">
-                            <div className="index">{i + 1}</div>
-                            <div className="testTitle">
-                              {test.title}({test.totalmarks})
-                              <div className="date">
-                                {Moment(test.testdate).format("ll")}
-                                <br />
-
-                                {test.answerstatus === "Active" ? (
+                  <div className="test">
+                    <div className="index">{i + 1}</div>
+                    <div className="testTitle">
+                      {test.testname}({test.totalmarks})
+                      <div className="date">
+                        {Moment(test.testdate).format("ll")}
+                        <br />
+                        {testname.map((item) => {
+                          if (item.title === test.testname) {
+                            return (
+                              <div>
+                                {item.answerstatus === "Active" ? (
                                   <span style={{ color: "#00c851" }}>
                                     Answer key available
                                   </span>
@@ -171,43 +167,40 @@ const TestsList = () => {
                                   </span>
                                 )}
                               </div>
-                            </div>
-                            <div className="duration">
-                              {/* <strong className="onlyMobile">
-                                Time Taken/Your Score:&nbsp;&nbsp;
-                              </strong>
-                              {calcTime(testDuration, test.timeleft)}
-                              &nbsp;&nbsp;/&nbsp;&nbsp;
-                              <strong style={{ fontSize: "1.3rem" }}>
-                                {test.score}
-                              </strong> */}
-                            </div>
-                            <div className="buttons">
-                              <a
-                                href={"/myanswer/" + item.id}
-                                title="View Answer Key"
-                              >
-                                <strong
-                                  className="onlyMobile"
-                                  style={{ color: "#000" }}
-                                >
-                                  View Answer Key
-                                </strong>
-                                &nbsp;&nbsp;
-                                <button type="button">
-                                  <i className="far fa-chart-bar"></i>
-                                </button>
-                              </a>
-                              <a href={"/leaderboard/" + item.testID}>
-                                <button type="button">
-                                  <i className="fas fa-trophy"></i>
-                                </button>
-                              </a>
-                            </div>
-                          </div>
-                        );
-                      }
-                    })}
+                            );
+                          }
+                        })}
+                      </div>
+                    </div>
+                    <div className="duration">
+                      <strong className="onlyMobile">
+                        Time Taken/Your Score:&nbsp;&nbsp;
+                      </strong>
+                      {calcTime(testDuration, test.timeleft)}
+                      &nbsp;&nbsp;/&nbsp;&nbsp;
+                      <strong style={{ fontSize: "1.3rem" }}>
+                        {test.score}
+                      </strong>
+                    </div>
+                    <div className="buttons">
+                      <a href={"/myanswer/" + test.id} title="View Answer Key">
+                        <strong
+                          className="onlyMobile"
+                          style={{ color: "#000" }}
+                        >
+                          View Answer Key
+                        </strong>
+                        &nbsp;&nbsp;
+                        <button type="button">
+                          <i className="far fa-chart-bar"></i>
+                        </button>
+                      </a>
+                      {/* <a href={"/leaderboard/" + leader.id}>
+                        <button type="button">
+                          <i className="fas fa-trophy"></i>
+                        </button>
+                      </a> */}
+                    </div>
                   </div>
                 );
               })}
