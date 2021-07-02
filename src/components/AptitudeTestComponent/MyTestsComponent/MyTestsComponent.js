@@ -139,7 +139,7 @@ const TestsList = () => {
                   <div className="date">{/* <strong>Date</strong> */}</div>
                 </div>
                 <div className="duration">
-                  <strong>Time Taken/Your Score</strong>
+                  {/* <strong>Time Taken/Your Score</strong> */}
                 </div>
                 <div className="buttons">
                   <strong>Answer Key</strong>
@@ -161,7 +161,7 @@ const TestsList = () => {
                                 {Moment(test.testdate).format("ll")}
                                 <br />
 
-                                {item.answerstatus === "Active" ? (
+                                {test.answerstatus === "Active" ? (
                                   <span style={{ color: "#00c851" }}>
                                     Answer key available
                                   </span>
@@ -173,14 +173,14 @@ const TestsList = () => {
                               </div>
                             </div>
                             <div className="duration">
-                              <strong className="onlyMobile">
+                              {/* <strong className="onlyMobile">
                                 Time Taken/Your Score:&nbsp;&nbsp;
                               </strong>
                               {calcTime(testDuration, test.timeleft)}
                               &nbsp;&nbsp;/&nbsp;&nbsp;
                               <strong style={{ fontSize: "1.3rem" }}>
                                 {test.score}
-                              </strong>
+                              </strong> */}
                             </div>
                             <div className="buttons">
                               <a

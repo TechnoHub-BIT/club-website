@@ -234,23 +234,9 @@ const SingleTest = (props) => {
       .collection("members")
       .doc(currentUser.uid)
       .collection("Tests")
-      // .doc(title)
       .add({
-        testID:id,
-        // testname: title,
-        // timeleft: timeLeft,
-        // options: options,
-        // answers: answers,
-        // testduration: testduration,
-        // testdate: testdate,
-        // totalmarks: totalmarks,
-        // score: score,
-      })
-      // .then(() => {
-      //   console.log("submitted");
-      // }).catch((error) => {
-      //   alert(error.message);
-      // });
+        testID: id,
+      });
 
     //Store details in results collection of test database
     await db
@@ -259,14 +245,11 @@ const SingleTest = (props) => {
       .collection("results")
       .doc(email)
       .set({
-        userId:currentUser.uid,
-        // fullname: fullname,
-        // testname: title,
+        userId: currentUser.uid,
         email: email,
-                options: options,
+        options: options,
         answers: answers,
         timeleft: timeLeft,
-        // branch: branch,
         score: score,
       })
       .then(() => {
@@ -442,6 +425,7 @@ const SingleTest = (props) => {
             close={closeModal}
           />
         );
+ 
     } catch (error) {
       alert(error.message);
     }
