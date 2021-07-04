@@ -124,6 +124,8 @@ const Leaderboard = (props) => {
     if (minutes < 10) minutes = "0" + minutes;
     if (seconds < 10) seconds = "0" + seconds;
 
+    if (minutes === 60) minutes = "00";
+
     return hours + ":" + minutes + ":" + seconds;
   };
 
@@ -237,12 +239,13 @@ const Leaderboard = (props) => {
                               <div className="branch">{leader.branch}</div>
                             </div>
                           </div>
-                          <div className="time">
+                          <div></div>
+                          {/* <div className="time">
                             <strong className="onlyMobile">
                               Time Taken:&nbsp;&nbsp;
                             </strong>
                             {calcTime(testDuration, leader.timeleft)}
-                          </div>
+                          </div> */}
                           <div className="score">
                             {leader.score}
                             <strong className="onlyMobile">
