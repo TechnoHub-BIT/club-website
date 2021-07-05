@@ -65,12 +65,12 @@ const EventList = () => {
             status="active"
           />
         </Breadcrumb>
-        <h3 className="text-center py-5">
+        {/* <h3 className="text-center py-5">
           This section is under construction!
           <br />
           Will be live back soon.
-        </h3>
-        {/* <div className="container">
+        </h3> */}
+        <div className="container">
           {profiles.id === 1 || profiles.id === 3 ? (
             <a href="/addevent">
               <button className="btn btn-success">
@@ -142,7 +142,7 @@ const EventList = () => {
                 );
             })}
           </div>
-        </div> */}
+        </div>
       </div>
     </React.Fragment>
   );
